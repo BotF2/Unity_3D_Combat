@@ -9,8 +9,8 @@ namespace Assets.Script
 {
     class FedFormation : MonoBehaviour
     {
-        public GameObject ship_0;
-        public GameObject ship_1;
+        public GameObject fed_Cruiser_i;
+        public GameObject fed_Scout_i;
         public static float increamentZ = 400f;
         public int columns = 3;
         public List<GameObject> ships_Fed;
@@ -18,8 +18,8 @@ namespace Assets.Script
 
         void Start()
         {
-            StartHelper.Scale1000(ship_0);
-            StartHelper.Scale1000(ship_1);
+            StartHelper.Scale1000(fed_Cruiser_i);
+            StartHelper.Scale1000(fed_Scout_i);
         }
         private void Update()
         {
@@ -27,11 +27,11 @@ namespace Assets.Script
             {
                 for (int z = 0; z < columns; z++)
                 {
-                    var newGameObject0 = Instantiate(ship_0, new Vector3(0, 0, z * increamentZ), Quaternion.identity);
+                    GameObject newGameObject0 = Instantiate(fed_Cruiser_i, new Vector3(0, 0, z * increamentZ), Quaternion.identity);
                     StartHelper.RotatePlues90(newGameObject0);
                     ships_Fed.Add(newGameObject0);
 
-                    var newGameObject1 = Instantiate(ship_1, new Vector3(0, 200f, z * increamentZ), Quaternion.identity);
+                    GameObject newGameObject1 = Instantiate(fed_Scout_i, new Vector3(0, 200f, z * increamentZ), Quaternion.identity);
                     StartHelper.RotatePlues90(newGameObject1);
                     ships_Fed.Add(newGameObject1);
                 }

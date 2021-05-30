@@ -9,8 +9,8 @@ namespace Assets.Script
 {
     class KlingFormation : MonoBehaviour
     {
-        public GameObject ship_0;
-        public GameObject ship_1;
+        public GameObject kling_Cruiser_i;
+        public GameObject kling_Scout_i;
         public static float increamentX = 1155f;
         public static float increamentY = 200f;
         public static float increamentZ = 400f;
@@ -20,8 +20,8 @@ namespace Assets.Script
         
         void Start()
         {
-            StartHelper.Scale1000(ship_0);
-            StartHelper.Scale1000(ship_1);
+            StartHelper.Scale1000(kling_Cruiser_i);
+            StartHelper.Scale1000(kling_Scout_i);
         }
         private void Update()
         {            
@@ -29,11 +29,11 @@ namespace Assets.Script
             {
                 for (int z = 0; z < columns; z++)
                 {
-                    var newGameObject0 = Instantiate(ship_0, new Vector3(increamentX, 0, z * increamentZ), Quaternion.identity);
+                    GameObject newGameObject0 = Instantiate(kling_Cruiser_i, new Vector3(increamentX, 0, z * increamentZ), Quaternion.identity);
                     StartHelper.RotateNegative90(newGameObject0);
                     ships_Kling.Add(newGameObject0);
 
-                    var newGameObject1 = Instantiate(ship_1, new Vector3(increamentX, increamentY, z * increamentZ), Quaternion.identity);
+                    GameObject newGameObject1 = Instantiate(kling_Scout_i, new Vector3(increamentX, increamentY, z * increamentZ), Quaternion.identity);
                     StartHelper.RotateNegative90(newGameObject1);
                     ships_Kling.Add(newGameObject1);
                 }
