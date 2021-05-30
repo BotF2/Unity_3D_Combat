@@ -24,7 +24,16 @@ namespace Assets.Script
             _renderer = GetComponent<Renderer>();
             _orgMaterial = _renderer.sharedMaterial;
             CreateDesigns();
-            string _test = shipDesign[0].A_INDEX;
+            string _test = shipDesign[0].A_INDEX; // example to get out a value
+
+            foreach (var design in shipDesign)
+            {
+                if (_test == design.Key)
+                {
+                    _hull = design.Hull;
+                    _shields = design.Shield;
+                }
+            }
         }
 
 
