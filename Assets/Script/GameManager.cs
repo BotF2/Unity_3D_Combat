@@ -114,12 +114,7 @@ namespace Assets.Script
                     panelPlay.SetActive(true);
                     Score = 0;
                     _statePassedInit = true;
-                    //FedFormation fedShipList = new FedFormation();
-                    //fedPrefabs = fedShipList.FedShips();
-                    // _ships_0 = fedPrefabs.Count(); // hard code fed to Ships 0 for now
 
-                    //klingPrefabs = KlingFormation.KlingShips();
-                    //_ships_1 = klingPrefabs.Count(); // hard code kling to Ships 1 for now
                     SwitchtState(State.LOADNEXT);
                     break;
                 case State.PLAY:

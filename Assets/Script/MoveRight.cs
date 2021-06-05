@@ -6,44 +6,30 @@ namespace Assets.Script
 {
     public class MoveRight : MonoBehaviour
     {
-        float _speed = 40f;
-        Rigidbody _rigidbody;
-        public Vector3 _startVector;
-        float timer = 0;
-        bool timerReached = false;
+        //float _speed = 40f;
+        //Rigidbody _rigidbody;
+        ////public Vector3 movePosition = GameManager.Instance;
+        ////private Transform target;
 
 
-        void Start()
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-            _rigidbody.velocity = Vector3.right * _speed; // start going left but can change later
-        }
-        private void Update()
-        {
-            if (!timerReached)
-                timer += Time.deltaTime;
+        //void Start()
+        //{
+        //    _rigidbody = GetComponent<Rigidbody>();
+        //    _rigidbody.velocity = Vector3.right * _speed; // start going left but can change later
+        //}
+        //private void Update()
+        //{
 
-            if (!timerReached && timer > 1)
-            {
-                Debug.Log("Done waiting");
-                ResumeMove();
+        //}
+        //// Update is called once per frame
+        //void FixedUpdate()
+        //{
+        //    _rigidbody.velocity = _rigidbody.velocity.normalized * _speed;
+        //}
 
-                //Set to false so that We don't run this again
-                timerReached = true;
-            }
-        }
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-            _rigidbody.velocity = _rigidbody.velocity.normalized * _speed;
-        }
-        void ResumeMove()
-        {
-            _rigidbody.velocity = Vector3.right * _speed;
-        }
-        private void OnCollisionEnter(Collision collision)
-        {
+        //private void OnCollisionEnter(Collision collision)
+        //{
 
-        }
+        //}
     }
 }

@@ -17,23 +17,33 @@ namespace Assets.Script
         {
 
         }
-        static public void Scale1000(GameObject blenderModel)
+        static public void GetKlingTrans(GameObject gameObject)
         {
-            blenderModel.transform.localScale = new Vector3(1000, 1000, 1000);
+            gameObject.transform.localScale = new Vector3(500, 500, 500);
+            gameObject.transform.rotation *= Quaternion.Euler(0, -90f, 0);
+        }
+        static public void GetFedTrans(GameObject gameObject)
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            gameObject.transform.rotation *= Quaternion.Euler(0, 90f, 0);
+        }
+        static public void Scale500(GameObject objectScale)
+        {
+            objectScale.transform.localScale = new Vector3(500, 500, 500);
         }
         static public void Rotate180(GameObject turnAround)
         {
             turnAround.transform.rotation *= Quaternion.Euler(0, 180f, 0);
 
         }
-        static public void RotatePlues90(GameObject turnAround)
+        static public void RotatePlues90(GameObject turnLeft)
         {
-            turnAround.transform.rotation *= Quaternion.Euler(0, 90f, 0);
+            turnLeft.transform.rotation *= Quaternion.Euler(0, 90f, 0);
 
         }
-        static public void RotateNegative90(GameObject turnAround)
+        static public void RotateNegative90(GameObject turnRight)
         {
-            turnAround.transform.rotation *= Quaternion.Euler(0, -90f, 0);
+            turnRight.transform.rotation *= Quaternion.Euler(0, -90f, 0);
         }
     }
 }
