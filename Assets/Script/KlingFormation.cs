@@ -43,18 +43,19 @@ namespace Assets.Script
             kling_Scout_i_4.transform.SetParent(kling_4.transform, true);
             kling_Scout_i_5.transform.SetParent(kling_5.transform, true);
 
-            // How to set position of Child relative to Parent
-            //kling_Cruiser_i_0.transform.localPosition = new Vector3(0, 0, 0);
-            //kling_Cruiser_i_1.transform.localPosition = new Vector3(0, 0, 200);
-            //kling_Cruiser_i_2.transform.localPosition = new Vector3(0, 0, 400);
-            //kling_Cruiser_i_0.transform.localScale = new Vector3(500, 500, 500);
+            //kling_Cruiser_i_0.AddComponent<Rigidbody>();
+            //kling_Cruiser_i_1.AddComponent<Rigidbody>();
+            //kling_Cruiser_i_2.AddComponent<Rigidbody>();
+            //kling_Scout_i_3.AddComponent<Rigidbody>();
+            //kling_Scout_i_4.AddComponent<Rigidbody>();
+            //kling_Scout_i_5.AddComponent<Rigidbody>();
 
-            StartHelper.GetKlingTrans(kling_0); // turn -90 and scale up 500
-            StartHelper.GetKlingTrans(kling_1);
-            StartHelper.GetKlingTrans(kling_2);
-            StartHelper.GetKlingTrans(kling_3);
-            StartHelper.GetKlingTrans(kling_4);
-            StartHelper.GetKlingTrans(kling_5);
+            //StartHelper.GetKlingTrans(kling_0); // turn -90 and scale up 500
+            //StartHelper.GetKlingTrans(kling_1);
+            //StartHelper.GetKlingTrans(kling_2);
+            //StartHelper.GetKlingTrans(kling_3);
+            //StartHelper.GetKlingTrans(kling_4);
+            //StartHelper.GetKlingTrans(kling_5);
         }
         void Start()
         {

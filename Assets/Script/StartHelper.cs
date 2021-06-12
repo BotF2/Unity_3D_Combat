@@ -17,15 +17,19 @@ namespace Assets.Script
         {
 
         }
+        //static public void AddPhotonTorpedo(GameObject newObject)
+        //{
+        //    newObject.AddComponent<WeaponTest>();            
+        //}
         static public void GetKlingTrans(GameObject gameObject)
         {
-            gameObject.transform.localScale = new Vector3(500, 500, 500);
-            gameObject.transform.rotation *= Quaternion.Euler(0, -90f, 0);
+            //gameObject.transform.localScale = new Vector3(500, 500, 500);
+            //gameObject.transform.rotation *= Quaternion.Euler(0, -90f, 0);
         }
         static public void GetFedTrans(GameObject gameObject)
         {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
-            gameObject.transform.rotation *= Quaternion.Euler(0, 90f, 0);
+            //gameObject.transform.localScale = new Vector3(500, 500, 500);
+            //gameObject.transform.rotation *= Quaternion.Euler(0, 90f, 0);
         }
         static public void Scale500(GameObject objectScale)
         {

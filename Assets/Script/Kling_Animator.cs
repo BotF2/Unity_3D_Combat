@@ -10,7 +10,7 @@ namespace Assets.Script
         // must name class and file the same
         public Animator anim;
         public bool _doingInit_3;
-        public AudioSource warpAudosSource;
+        public AudioSource warpAudioSource;
 
         private void Awake()
         {
@@ -33,7 +33,8 @@ namespace Assets.Script
         }
         public void PlayWarp()
         {
-            warpAudosSource.Play();
+            //warpAudioSource.volume = 0.5f;
+            warpAudioSource.Play();
         }
     }
 }

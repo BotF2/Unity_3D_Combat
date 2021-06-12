@@ -536,4 +536,11 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.1
+    functionName: PlayWarp
+    data: 
+    objectReferenceParameter: {fileID: 919132149155446097, guid: 7b3cfd10ce50bd343adeb50c85d7a697, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

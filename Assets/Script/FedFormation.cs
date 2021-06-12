@@ -28,12 +28,12 @@ namespace Assets.Script
         private void Awake()
         {
             //fed_Cruiser_i_0 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_0.transform.position, Quaternion.identity, fed_Cruiser_i_Prefab.transform);
-            Fed_Cruiser_i_0 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_0.transform.position, fed_0.transform.rotation);
-            Fed_Cruiser_i_1 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_1.transform.position, fed_1.transform.rotation);
-            Fed_Cruiser_i_2 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_2.transform.position, fed_2.transform.rotation);
-            Fed_Scout_i_3 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_3.transform.position, fed_3.transform.rotation);
-            Fed_Scout_i_4 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_4.transform.position, fed_4.transform.rotation);
-            Fed_Scout_i_5 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_5.transform.position, fed_5.transform.rotation);
+            Fed_Cruiser_i_0 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_0.transform.position, fed_0.transform.rotation, fed_0.transform);
+            Fed_Cruiser_i_1 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_1.transform.position, fed_1.transform.rotation, fed_1.transform);
+            Fed_Cruiser_i_2 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_2.transform.position, fed_2.transform.rotation, fed_2.transform);
+            Fed_Scout_i_3 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_3.transform.position, fed_3.transform.rotation, fed_3.transform);
+            Fed_Scout_i_4 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_4.transform.position, fed_4.transform.rotation, fed_4.transform);
+            Fed_Scout_i_5 = (GameObject)Instantiate(fed_Scout_i_Prefab, fed_5.transform.position, fed_5.transform.rotation, fed_5.transform);
 
             Fed_Cruiser_i_0.transform.SetParent(fed_0.transform, true);
             Fed_Cruiser_i_1.transform.SetParent(fed_1.transform, true);
@@ -42,18 +42,14 @@ namespace Assets.Script
             Fed_Scout_i_4.transform.SetParent(fed_4.transform, true);
             Fed_Scout_i_5.transform.SetParent(fed_5.transform, true);
 
-            // How to set position of Child relative to Parent
-            //fed_Cruiser_i_0.transform.localPosition = new Vector3(0, 0, 0);
-            //fed_Cruiser_i_1.transform.localPosition = new Vector3(0, 0, 200);
-            //fed_Cruiser_i_2.transform.localPosition = new Vector3(0, 0, 400);
-            //fed_Cruiser_i_0.transform.localScale = new Vector3(500, 500, 500);
+            
 
-            StartHelper.GetFedTrans(fed_0); // turn -90 and scale 1
-            StartHelper.GetFedTrans(fed_1);
-            StartHelper.GetFedTrans(fed_2);
-            StartHelper.GetFedTrans(fed_3);
-            StartHelper.GetFedTrans(fed_4);
-            StartHelper.GetFedTrans(fed_5);
+            //StartHelper.GetFedTrans(fed_0); // turn -90 and scale 1
+            //StartHelper.GetFedTrans(fed_1);
+            //StartHelper.GetFedTrans(fed_2);
+            //StartHelper.GetFedTrans(fed_3);
+            //StartHelper.GetFedTrans(fed_4);
+            //StartHelper.GetFedTrans(fed_5);
 
         }
     }

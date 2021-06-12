@@ -14,13 +14,13 @@ namespace Assets.Script
         public Text textShips_0;
         public Text textShips_1;
 
-        public List<GameObject> fedPrefabs;
-        public List<GameObject> terranPrefabs;
-        public List<GameObject> romPrefabs;
-        public List<GameObject> klingPrefabs;
-        public List<GameObject> cardPrefabs;
-        public List<GameObject> domPrefabs;
-        public List<GameObject> borgPrefabs;
+        //public List<GameObject> fedPrefabs;
+        //public List<GameObject> terranPrefabs;
+        //public List<GameObject> romPrefabs;
+        //public List<GameObject> klingPrefabs;
+        //public List<GameObject> cardPrefabs;
+        //public List<GameObject> domPrefabs;
+        //public List<GameObject> borgPrefabs;
 
         public GameObject panelMenu;
         public GameObject panelPlay;
