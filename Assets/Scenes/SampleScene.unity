@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!4 &104755984
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +384,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!4 &146628164
 Transform:
   m_ObjectHideFlags: 0
@@ -526,12 +527,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4919279783028184142, guid: c57774e263194434d9ca36f268977fbb, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 4919279783028184143, guid: c57774e263194434d9ca36f268977fbb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4919279783028184146, guid: c57774e263194434d9ca36f268977fbb, type: 3}
       propertyPath: m_Name
       value: Borg_Cube
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4919279783028184145, guid: c57774e263194434d9ca36f268977fbb, type: 3}
+    - {fileID: 4919279783028184143, guid: c57774e263194434d9ca36f268977fbb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c57774e263194434d9ca36f268977fbb, type: 3}
 --- !u!1 &285004927
 GameObject:
@@ -545,9 +555,11 @@ GameObject:
   - component: {fileID: 285004929}
   - component: {fileID: 285004930}
   - component: {fileID: 285004931}
+  - component: {fileID: 285004933}
+  - component: {fileID: 285004932}
   m_Layer: 0
   m_Name: Kling_Y0_Z0
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 285004929}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!114 &285004931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,11 +621,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 285004927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!54 &285004932
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285004927}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &285004933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285004927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!1 &380304853
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,8 +690,8 @@ MonoBehaviour:
   kling_3: {fileID: 1970886312}
   kling_4: {fileID: 1861536511}
   kling_5: {fileID: 1365482392}
-  kling_Cruiser_i_Prefab: {fileID: 919132149155446097, guid: 8a88c2c4ec7771e4e8120541ac355f0f, type: 3}
-  kling_Scout_i_Prefab: {fileID: 919132149155446097, guid: 1e72571bfb16b4243af6e9460363c5e3, type: 3}
+  kling_Cruiser_i_Prefab: {fileID: 2075950707782171898, guid: 3cfdad2c45b391e4a89b77ba0a5a783b, type: 3}
+  kling_Scout_i_Prefab: {fileID: 4063519493246741022, guid: a83ec879888398b408291ab09a821cf3, type: 3}
 --- !u!4 &380304855
 Transform:
   m_ObjectHideFlags: 0
@@ -677,9 +718,11 @@ GameObject:
   - component: {fileID: 442020135}
   - component: {fileID: 442020134}
   - component: {fileID: 442020136}
+  - component: {fileID: 442020137}
+  - component: {fileID: 442020138}
   m_Layer: 0
   m_Name: Kling_Y0_Z2
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,9 +753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f30e601b1c1b24daa142796babb75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 442020135}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!95 &442020135
 Animator:
   serializedVersion: 3
@@ -741,11 +784,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 442020132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &442020137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442020132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!54 &442020138
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442020132}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &448248054
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,9 +906,11 @@ GameObject:
   - component: {fileID: 599974532}
   - component: {fileID: 599974533}
   - component: {fileID: 599974535}
+  - component: {fileID: 599974536}
+  - component: {fileID: 599974537}
   m_Layer: 0
   m_Name: Fed_Y0_Z1
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +948,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 599974532}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!4 &599974534
 Transform:
   m_ObjectHideFlags: 0
@@ -901,8 +976,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
   clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &599974536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599974531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &599974537
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599974531}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &618106971
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,9 +1085,11 @@ GameObject:
   - component: {fileID: 702151538}
   - component: {fileID: 702151537}
   - component: {fileID: 702151540}
+  - component: {fileID: 702151541}
+  - component: {fileID: 702151542}
   m_Layer: 0
   m_Name: Fed_Y0_Z0
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1002,7 +1108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 702151538}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!95 &702151538
 Animator:
   serializedVersion: 3
@@ -1048,8 +1155,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &702151541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702151536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &702151542
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702151536}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 138.6, z: 0}
+  m_LocalPosition: {x: -15112, y: 1219, z: 8738}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1679,9 +1815,11 @@ GameObject:
   - component: {fileID: 1150958937}
   - component: {fileID: 1150958936}
   - component: {fileID: 1150958939}
+  - component: {fileID: 1150958940}
+  - component: {fileID: 1150958941}
   m_Layer: 0
   m_Name: Fed_Y0_Z2
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1700,7 +1838,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1150958937}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!95 &1150958937
 Animator:
   serializedVersion: 3
@@ -1746,8 +1885,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
   clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1150958940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150958935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &1150958941
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150958935}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,13 +1948,6 @@ MonoBehaviour:
   textScore: {fileID: 973597409}
   textShips_0: {fileID: 841757962}
   textShips_1: {fileID: 1805729457}
-  fedPrefabs: []
-  terranPrefabs: []
-  romPrefabs: []
-  klingPrefabs: []
-  cardPrefabs: []
-  domPrefabs: []
-  borgPrefabs: []
   panelMenu: {fileID: 448248054}
   panelPlay: {fileID: 1107062860}
   panelCompleted: {fileID: 798439246}
@@ -1840,8 +2001,8 @@ MonoBehaviour:
   fed_3: {fileID: 1319496215}
   fed_4: {fileID: 1923525912}
   fed_5: {fileID: 1596952200}
-  fed_Cruiser_i_Prefab: {fileID: 919132149155446097, guid: 7b3cfd10ce50bd343adeb50c85d7a697, type: 3}
-  fed_Scout_i_Prefab: {fileID: 919132149155446097, guid: be7863eda6ec2bf4ea30686b9cd80240, type: 3}
+  fed_Cruiser_i_Prefab: {fileID: 7169747804910753421, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
+  fed_Scout_i_Prefab: {fileID: 8989540232703741394, guid: 4151bf2a9bb8fb14ebc16593609d55d4, type: 3}
 --- !u!4 &1190782648
 Transform:
   m_ObjectHideFlags: 0
@@ -2030,7 +2191,7 @@ GameObject:
   - component: {fileID: 1307873280}
   m_Layer: 5
   m_Name: ButtonEnterCombat
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2161,9 +2322,11 @@ GameObject:
   - component: {fileID: 1319496217}
   - component: {fileID: 1319496216}
   - component: {fileID: 1319496219}
+  - component: {fileID: 1319496220}
+  - component: {fileID: 1319496221}
   m_Layer: 0
   m_Name: Fed_Y1_Z0
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2182,7 +2345,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1319496217}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!95 &1319496217
 Animator:
   serializedVersion: 3
@@ -2228,8 +2392,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1319496220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319496215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &1319496221
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319496215}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1365482392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,9 +2435,11 @@ GameObject:
   - component: {fileID: 1365482395}
   - component: {fileID: 1365482394}
   - component: {fileID: 1365482396}
+  - component: {fileID: 1365482397}
+  - component: {fileID: 1365482398}
   m_Layer: 0
   m_Name: Kling_Y1_Z2
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2277,7 +2472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1365482395}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!95 &1365482395
 Animator:
   serializedVersion: 3
@@ -2306,11 +2501,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1365482392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1365482397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365482392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!54 &1365482398
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365482392}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1461760767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,9 +2674,11 @@ GameObject:
   - component: {fileID: 1596952202}
   - component: {fileID: 1596952201}
   - component: {fileID: 1596952204}
+  - component: {fileID: 1596952205}
+  - component: {fileID: 1596952206}
   m_Layer: 0
   m_Name: Fed_Y1_Z2
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2471,7 +2697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1596952202}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!95 &1596952202
 Animator:
   serializedVersion: 3
@@ -2503,7 +2730,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1596952204
 MonoBehaviour:
@@ -2517,8 +2744,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1596952205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596952200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &1596952206
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596952200}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1670698542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,9 +2834,11 @@ GameObject:
   - component: {fileID: 1708444364}
   - component: {fileID: 1708444363}
   - component: {fileID: 1708444365}
+  - component: {fileID: 1708444366}
+  - component: {fileID: 1708444367}
   m_Layer: 0
   m_Name: Kling_Y0_Z1
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2630,9 +2888,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2f30e601b1c1b24daa142796babb75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1708444363}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!114 &1708444365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2642,11 +2900,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1708444361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1708444366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708444361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!54 &1708444367
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708444361}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1805729455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,9 +3025,11 @@ GameObject:
   - component: {fileID: 1861536514}
   - component: {fileID: 1861536513}
   - component: {fileID: 1861536515}
+  - component: {fileID: 1861536516}
+  - component: {fileID: 1861536517}
   m_Layer: 0
   m_Name: Kling_Y1_Z1
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2773,7 +3062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1861536514}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!95 &1861536514
 Animator:
   serializedVersion: 3
@@ -2802,11 +3091,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1861536511}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1861536516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861536511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!54 &1861536517
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861536511}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1923525912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,9 +3137,11 @@ GameObject:
   - component: {fileID: 1923525914}
   - component: {fileID: 1923525913}
   - component: {fileID: 1923525916}
+  - component: {fileID: 1923525917}
+  - component: {fileID: 1923525918}
   m_Layer: 0
   m_Name: Fed_Y1_Z1
-  m_TagString: Untagged
+  m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2840,7 +3160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1923525914}
   _doingInit_0: 0
-  warpAudosSource_0: {fileID: 899714680}
+  _warpClip: {fileID: 8300000, guid: 000cb7e5df39e5349b5e422c931c4a11, type: 3}
+  warpAudioSource_0: {fileID: 899714680}
 --- !u!95 &1923525914
 Animator:
   serializedVersion: 3
@@ -2872,7 +3193,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1923525916
 MonoBehaviour:
@@ -2886,8 +3207,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4425645173217254656, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1923525917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923525912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+--- !u!54 &1923525918
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923525912}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1970886312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,9 +3250,11 @@ GameObject:
   - component: {fileID: 1970886314}
   - component: {fileID: 1970886315}
   - component: {fileID: 1970886316}
+  - component: {fileID: 1970886317}
+  - component: {fileID: 1970886318}
   m_Layer: 0
   m_Name: Kling_Y1_Z0
-  m_TagString: Untagged
+  m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2954,7 +3306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 1970886314}
   _doingInit_3: 0
-  warpAudosSource: {fileID: 899714680}
+  warpAudioSource: {fileID: 899714680}
 --- !u!114 &1970886316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2964,8 +3316,37 @@ MonoBehaviour:
   m_GameObject: {fileID: 1970886312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2751282500847558578, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 67e61df547339744bbc1f035a7f64f5b, type: 3}
+  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+--- !u!114 &1970886317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970886312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!54 &1970886318
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970886312}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 0

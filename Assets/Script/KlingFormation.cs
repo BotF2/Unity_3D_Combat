@@ -9,7 +9,6 @@ namespace Assets.Script
 {
     class KlingFormation : MonoBehaviour
     {
-
         public GameObject kling_0; // parent empty gameobjects
         public GameObject kling_1; // can use one parent for all or multiple parents 
         public GameObject kling_2;
