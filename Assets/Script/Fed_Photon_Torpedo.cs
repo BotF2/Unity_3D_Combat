@@ -22,17 +22,13 @@ public class Fed_Photon_Torpedo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             GameObject _temp = Instantiate(photonPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            _temp.layer = 20;
+            _temp.tag = "Fed";
             _temp.AddComponent<AudioSource>().playOnAwake = false;
             _temp.AddComponent<AudioSource>().clip = clip;
             _temp.GetComponent<CapsuleCollider>().radius = 50f;
             theSource = _temp.GetComponent<AudioSource>();
-           // theSource.volume = 0.2f;
-            theSource.PlayOneShot(clip);
-            _temp.tag = "Fed";
-            //_newTorpedo = true;
-
-            //_temp.AddComponent<AudioSource>().PlayOneShot(clip);
-
+            theSource.PlayOneShot(clip);           
         }
     }
     //public void OnCollisionEnter(Collision collision)

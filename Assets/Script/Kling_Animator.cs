@@ -33,7 +33,7 @@ namespace Assets.Script
         }
         public void PlayWarp()
         {
-            //warpAudioSource.volume = 0.5f;
+            warpAudioSource.volume = 0.1f;
             warpAudioSource.Play();
         }
     }

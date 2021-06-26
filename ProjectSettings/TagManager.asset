@@ -18,23 +18,23 @@ TagManager:
   - 
   - 
   - 
+  - FedShip
+  - TerranShip
+  - RomShip
+  - KlingShip
+  - CardShip
+  - Dom,Ship
+  - BorgShip
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - FedTorpedo
+  - TerranTorpedo
+  - RomTorpedo
+  - KlingTorpedo
+  - CardTorpedo
+  - DomTorpedo
+  - BorgTorpedo
   - 
   - 
   - 

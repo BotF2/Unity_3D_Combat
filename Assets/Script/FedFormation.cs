@@ -15,8 +15,7 @@ namespace Assets.Script
         public GameObject fed_3;
         public GameObject fed_4;
         public GameObject fed_5;
-        //public List<GameObject> parentArray = new GameObject(){fed_0, fed_1, fed_2, fed_3, fed_4, fed_5 }; // not working
-        //public Animation anim;
+
         public GameObject fed_Cruiser_i_Prefab;
         public GameObject fed_Scout_i_Prefab;
         private GameObject Fed_Cruiser_i_0;
@@ -41,16 +40,12 @@ namespace Assets.Script
             Fed_Scout_i_3.transform.SetParent(fed_3.transform, true);
             Fed_Scout_i_4.transform.SetParent(fed_4.transform, true);
             Fed_Scout_i_5.transform.SetParent(fed_5.transform, true);
-
-            
-
-            //StartHelper.GetFedTrans(fed_0); // turn -90 and scale 1
-            //StartHelper.GetFedTrans(fed_1);
-            //StartHelper.GetFedTrans(fed_2);
-            //StartHelper.GetFedTrans(fed_3);
-            //StartHelper.GetFedTrans(fed_4);
-            //StartHelper.GetFedTrans(fed_5);
-
+            Ships.SetLayerRecursively(fed_0, 10); 
+            Ships.SetLayerRecursively(fed_1, 10);
+            Ships.SetLayerRecursively(fed_2, 10);
+            Ships.SetLayerRecursively(fed_3, 10);
+            Ships.SetLayerRecursively(fed_4, 10);
+            Ships.SetLayerRecursively(fed_5, 10);
         }
     }
 }

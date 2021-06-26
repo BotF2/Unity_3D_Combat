@@ -27,6 +27,7 @@ namespace Assets.Script
         private GameObject kling_Scout_i_5;
         private void Awake()
         {
+
             //kling_Cruiser_i_0 = (GameObject)Instantiate(kling_Cruiser_i_Prefab, kling_0.transform.position, Quaternion.identity, kling_Cruiser_i_Prefab.transform);
             kling_Cruiser_i_0 = (GameObject)Instantiate(kling_Cruiser_i_Prefab, kling_0.transform.position, kling_0.transform.rotation);
             kling_Cruiser_i_1 = (GameObject)Instantiate(kling_Cruiser_i_Prefab, kling_1.transform.position, kling_1.transform.rotation);
@@ -34,27 +35,21 @@ namespace Assets.Script
             kling_Scout_i_3 = (GameObject)Instantiate(kling_Scout_i_Prefab, kling_3.transform.position, kling_3.transform.rotation);
             kling_Scout_i_4 = (GameObject)Instantiate(kling_Scout_i_Prefab, kling_4.transform.position, kling_4.transform.rotation);
             kling_Scout_i_5 = (GameObject)Instantiate(kling_Scout_i_Prefab, kling_5.transform.position, kling_5.transform.rotation);
-          
+
             kling_Cruiser_i_0.transform.SetParent(kling_0.transform, true);
             kling_Cruiser_i_1.transform.SetParent(kling_1.transform, true);
             kling_Cruiser_i_2.transform.SetParent(kling_2.transform, true);
             kling_Scout_i_3.transform.SetParent(kling_3.transform, true);
             kling_Scout_i_4.transform.SetParent(kling_4.transform, true);
             kling_Scout_i_5.transform.SetParent(kling_5.transform, true);
+            Ships.SetLayerRecursively(kling_0, 13);
+            Ships.SetLayerRecursively(kling_1, 13);
+            Ships.SetLayerRecursively(kling_2, 13);
+            Ships.SetLayerRecursively(kling_3, 13);
+            Ships.SetLayerRecursively(kling_4, 13);
+            Ships.SetLayerRecursively(kling_5, 13);
 
-            //kling_Cruiser_i_0.AddComponent<Rigidbody>();
-            //kling_Cruiser_i_1.AddComponent<Rigidbody>();
-            //kling_Cruiser_i_2.AddComponent<Rigidbody>();
-            //kling_Scout_i_3.AddComponent<Rigidbody>();
-            //kling_Scout_i_4.AddComponent<Rigidbody>();
-            //kling_Scout_i_5.AddComponent<Rigidbody>();
 
-            //StartHelper.GetKlingTrans(kling_0); // turn -90 and scale up 500
-            //StartHelper.GetKlingTrans(kling_1);
-            //StartHelper.GetKlingTrans(kling_2);
-            //StartHelper.GetKlingTrans(kling_3);
-            //StartHelper.GetKlingTrans(kling_4);
-            //StartHelper.GetKlingTrans(kling_5);
         }
         void Start()
         {

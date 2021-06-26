@@ -4,7 +4,16 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-
+    public enum Civilization
+    {
+        Fed,
+        Terran,
+        Rom,
+        Kling,
+        Card,
+        Dom,
+        Borg
+    }
     public class Ships : MonoBehaviour
     {
         public int _shields = 100;
@@ -90,6 +99,24 @@ namespace Assets.Script
                 Shield = shield;
             }
         }
+        public static void SetLayerRecursively(GameObject obj, int newLayer)
+        {
+          if (null == obj)
+            {
+                return;
+            }
+
+            obj.layer = newLayer;
+
+            foreach(Transform child in obj.transform)
+            {
+                if(null == child)
+                {
+                    continue;
+                }
+                SetLayerRecursively(child.gameObject, newLayer);
+            }
+        }
         private void CreateDesigns()
         {
             //List<Design> shipDesign = new List<Design>();
@@ -104,9 +131,6 @@ namespace Assets.Script
             newDesign = new Design("KLING_SCOUT_II", "KLING_SCOUT_II", 20, 40); shipDesign.Add(newDesign);
             newDesign = new Design("KLING_SCOUT_III", "KLING_SCOUT_III", 30, 60); shipDesign.Add(newDesign);
             newDesign = new Design("KLING_CRUISER_I", "KLING_CRUISER_I", 50, 100); shipDesign.Add(newDesign);
-
-
-
 
             //name = "FED_COLONY_SHIP_I)";
             //            name = "FED_COLONY_SHIP_II)";

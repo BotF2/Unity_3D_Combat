@@ -35,11 +35,7 @@ namespace Assets.Script
         }
         public void PlayWarp() // called in animation - warp
         {
-            //_object.AddComponent<AudioSource>().playOnAwake = false;
-            //_object.AddComponent<AudioSource>().clip = _warpClip;
-            //_object.AddComponent<AudioSource>().PlayOneShot(_warpClip);
-
-            //warpAudioSource_0.volume = 0.1f;
+            warpAudioSource_0.volume = 0.1f;
             warpAudioSource_0.Play();
         }
     }

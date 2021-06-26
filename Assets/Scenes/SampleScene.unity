@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 285004931}
   - component: {fileID: 285004933}
   - component: {fileID: 285004932}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y0_Z0
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!1 &380304853
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 442020136}
   - component: {fileID: 442020137}
   - component: {fileID: 442020138}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y0_Z2
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!54 &442020138
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 599974535}
   - component: {fileID: 599974536}
   - component: {fileID: 599974537}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y0_Z1
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -1006,7 +1006,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &618106971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 702151540}
   - component: {fileID: 702151541}
   - component: {fileID: 702151542}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y0_Z0
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -1185,7 +1185,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,7 +1817,7 @@ GameObject:
   - component: {fileID: 1150958939}
   - component: {fileID: 1150958940}
   - component: {fileID: 1150958941}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y0_Z2
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -1915,7 +1915,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2324,7 @@ GameObject:
   - component: {fileID: 1319496219}
   - component: {fileID: 1319496220}
   - component: {fileID: 1319496221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y1_Z0
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -2422,7 +2422,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1365482392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2437,7 +2437,7 @@ GameObject:
   - component: {fileID: 1365482396}
   - component: {fileID: 1365482397}
   - component: {fileID: 1365482398}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y1_Z2
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!54 &1365482398
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2676,7 +2676,7 @@ GameObject:
   - component: {fileID: 1596952204}
   - component: {fileID: 1596952205}
   - component: {fileID: 1596952206}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y1_Z2
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -2774,7 +2774,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1670698542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2836,7 +2836,7 @@ GameObject:
   - component: {fileID: 1708444365}
   - component: {fileID: 1708444366}
   - component: {fileID: 1708444367}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y0_Z1
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!54 &1708444367
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3027,7 +3027,7 @@ GameObject:
   - component: {fileID: 1861536515}
   - component: {fileID: 1861536516}
   - component: {fileID: 1861536517}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y1_Z1
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -3108,7 +3108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!54 &1861536517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3139,7 +3139,7 @@ GameObject:
   - component: {fileID: 1923525916}
   - component: {fileID: 1923525917}
   - component: {fileID: 1923525918}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fed_Y1_Z1
   m_TagString: Fed
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -3237,7 +3237,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &1970886312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,7 +3252,7 @@ GameObject:
   - component: {fileID: 1970886316}
   - component: {fileID: 1970886317}
   - component: {fileID: 1970886318}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Kling_Y1_Z0
   m_TagString: Kling
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -3333,7 +3333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8afbb714510de134b9f9391b573a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explotionPrefab: {fileID: 5169253879517602165, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+  explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
 --- !u!54 &1970886318
 Rigidbody:
   m_ObjectHideFlags: 0

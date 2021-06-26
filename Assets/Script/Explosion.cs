@@ -8,7 +8,7 @@ public class Explosion : MonoBehaviour
     private bool weAreTaggedFed = false;
     public GameObject explotionPrefab;
     private GameObject whoWeAre;
-
+    Rigidbody m_Rigidbody;
     public void Awake()
     {
         whoWeAre = gameObject;
@@ -24,6 +24,7 @@ public class Explosion : MonoBehaviour
                 break;
         }
     }
+
     public void OnCollisionEnter(Collision collision)
     {
         switch (collision.collider.gameObject.tag)
@@ -33,6 +34,7 @@ public class Explosion : MonoBehaviour
                     if (whoWeAre.tag != "Kling")
                     {
                         GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
+                        Destroy(explo, 3f);
                     }
                 break;
                 }
@@ -41,40 +43,12 @@ public class Explosion : MonoBehaviour
                     if (whoWeAre.tag != "Fed")
                     {
                         GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
+                        Destroy(explo, 3f);
                     }
                     break;
                 }
             default:
                 break;
         }
-
-        //Destroy(collision.collider.gameObject);
-        //Destroy(gameObject);
-        // GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
-        //Destroy(gameObject); // destroy the torpedo
-        // Destroy(explo, 3); // delete the explotion after 3 seconds
-        //if (collision.gameObject.tag == "ship")
-        //{
-        //    Destroy(collision.gameObject); // destroy ship that was hit
-        //}
     }
-        //public void OnCollisionEnter(Collision collision)
-        //{
-        //    //GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
-        //    //Destroy(gameObject); // destroy the torpedo
-        //    //Destroy(explo, 3); // delete the explotion after 3 seconds
-        //    //if (collision.gameObject.tag == "ship")
-        //    //{
-        //    //    Destroy(collision.gameObject); // destroy ship that was hit
-        //    //}
-        //}
-
-        // Update is called once per frame
-        //void FixedUpdate()
-        //{
-        //    if (torpedo == enabled)
-        //    {
-        //        Invoke("Detonate", 5);
-        //    }
-        //}
-    }
+}
