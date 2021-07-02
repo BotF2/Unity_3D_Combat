@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Script
 {
@@ -14,18 +15,39 @@ namespace Assets.Script
         Dom,
         Borg
     }
-    public class Ships : MonoBehaviour
+    public class Ship : MonoBehaviour
     {
-        public int _shields = 100;
-        public int _hull = 100;
-        public int _points = 100; // Score
-        public Material _hitMaterial;
+        //public Ship Instance;
+        public GameObject _shield;
+        private float _shieldHealth;
+        private float _hullHealth;
+        public Image _hullHealthImage;
+        public GameObject _warpCoreBreach;   
+        private Shields shield;
+        private int _torpedoDamage = 10;
+        //private int _points = 100; // Score
+
+        // public Material _hitMaterial;
         List<Design> shipDesign = new List<Design>();
-
-
         Material _orgMaterial;
         Renderer _renderer;
         private Object _gameObject;
+
+        public float Shields 
+        {
+            get {return _shieldHealth; }
+            set {_shieldHealth = value;}
+        }
+        public float Hull
+        {
+            get { return _hullHealth; }
+            set { _hullHealth = value; }
+        }
+        public int TorpedoDamage
+        {
+            get { return _torpedoDamage; }
+            set { _torpedoDamage = value; }
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -37,53 +59,60 @@ namespace Assets.Script
 
             foreach (var design in shipDesign)
             {
-                if (_test == design.Key)
-                {
-                    _hull = design.Hull;
-                    _shields = design.Shield;
-                }
+                //if (_test == design.Key)
+                //{
+                //    _hullHealth = design.Hull;
+                //    _shieldHealth = design.Shield;
+                //}
             }
+            _shieldHealth = 1f;
+            _hullHealth = 1f;
+            _hullHealthImage.fillAmount = _hullHealth;
+            shield = GetComponent<Shields>();
         }
-
 
         // Update is called once per frame
         void Update()
         {
-
+        //    Instance = (Ship)GameObject.FindObjectOfType(typeof(Ship));
         }
-        private void OnCollisionEnter(Collision collision)
+        public void OnCollisionEnter(Collision collision)
         {
-            if (_shields > 0)
+
+            //Ship firingShip = collision.gameObject.GetComponentInChildren(typeof(Ship)) as Ship;
+            // Photon_Torpedo torpedo = collision.gameObject.GetComponent(typeof(Photon_Torpedo)) as Photon_Torpedo;
+            //float damage =(float)(firingShip.TorpedoDamage /255);
+            float damage = 1f; // torpedo.WeaponDamage;
+
+            if (_shieldHealth > 0)
             {
-                _shields--;
+                _shieldHealth -= damage;
+                Debug.Log("sheilds hit damage" + damage);
             }
-            else if (_hull > 0)
+            else if (_hullHealth > 0)
             {
-                _hull--;
+                _hullHealth -= damage;
+                Debug.Log("hull hit damage" + damage);
             }
             else
             {
-                GameManager.Instance.Score += _points;
-                Destroy(_gameObject);
+                //GameManager.Instance.Score += _points;
+                Destroy(gameObject);
+                Debug.Log("good by");
             }
-            _renderer.sharedMaterial = _hitMaterial;
-            Invoke("RestoreMaterial", 0.05f);
+            //_renderer.sharedMaterial = _hitMaterial;
+            //Invoke("RestoreMaterial", 0.05f);
         }
         private void RestoreMaterial()
         {
             _renderer.sharedMaterial = _orgMaterial;
         }
-
-
-
         public class Design
         {
-
             public string A_INDEX;
             public string Key;
             public int Hull;
             public int Shield;
-
 
             public Design(
                     string a_index
@@ -92,13 +121,16 @@ namespace Assets.Script
                     , int shield
                     )
             {
-
                 A_INDEX = a_index;
                 Key = key;
                 Hull = hull;
                 Shield = shield;
             }
         }
+        //public static void PassShipObject(GameObject next)
+        //{
+        //    Ship child = next.AddComponent<Ship>();           
+        //}
         public static void SetLayerRecursively(GameObject obj, int newLayer)
         {
           if (null == obj)

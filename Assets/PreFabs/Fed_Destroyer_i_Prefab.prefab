@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &472809025970638640
+--- !u!1 &96157604933222518
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1646386597797757936}
-  - component: {fileID: 4381482930188604068}
-  - component: {fileID: 1499054457810160636}
-  - component: {fileID: 396958190176756792}
-  - component: {fileID: 1562329803269867919}
+  - component: {fileID: 5360801183710038179}
+  - component: {fileID: 4001833167798649959}
+  - component: {fileID: 2352531938755205426}
+  - component: {fileID: 8775103844099603927}
+  - component: {fileID: 2912018210133460820}
   m_Layer: 0
   m_Name: Fed_Destroyer_i
   m_TagString: Untagged
@@ -20,35 +20,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1646386597797757936
+--- !u!4 &5360801183710038179
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472809025970638640}
+  m_GameObject: {fileID: 96157604933222518}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2746318480636287554}
+  m_Father: {fileID: 545278750429575536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4381482930188604068
+--- !u!33 &4001833167798649959
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472809025970638640}
+  m_GameObject: {fileID: 96157604933222518}
   m_Mesh: {fileID: 2959467708922500008, guid: dc1309ebc31b4e748a6cab5ba3021c9b, type: 3}
---- !u!23 &1499054457810160636
+--- !u!23 &2352531938755205426
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472809025970638640}
+  m_GameObject: {fileID: 96157604933222518}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,13 +83,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &396958190176756792
+--- !u!54 &8775103844099603927
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472809025970638640}
+  m_GameObject: {fileID: 96157604933222518}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -99,13 +99,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!136 &1562329803269867919
+--- !u!136 &2912018210133460820
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472809025970638640}
+  m_GameObject: {fileID: 96157604933222518}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -113,7 +113,7 @@ CapsuleCollider:
   m_Height: 0.031893812
   m_Direction: 2
   m_Center: {x: 0.0000000037252903, y: 0.0052790167, z: -0.10875247}
---- !u!1 &3933558288006468664
+--- !u!1 &8371427762580722344
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2746318480636287554}
+  - component: {fileID: 545278750429575536}
   m_Layer: 0
   m_Name: Fed_Destroyer_i_Prefab
   m_TagString: ship
@@ -129,18 +129,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2746318480636287554
+--- !u!4 &545278750429575536
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3933558288006468664}
+  m_GameObject: {fileID: 8371427762580722344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 570, y: 496.52203, z: -1480.2859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1646386597797757936}
+  - {fileID: 5360801183710038179}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

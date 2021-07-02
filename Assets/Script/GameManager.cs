@@ -22,7 +22,6 @@ namespace Assets.Script
         public static GameManager Instance { get; private set; } // a static singleton, imporve this later
 
         //List<Tuple<CombatUnit, CombatWeapon[]>>
-
         public enum State { MENU, INIT, PLAY, COMPLETED, LOADNEXT, GAMEOVER };
         private State _state;
         bool _isSwitchingState;
@@ -106,7 +105,6 @@ namespace Assets.Script
                     panelPlay.SetActive(true);
                     Score = 0;
                     _statePassedInit = true;
-
                     SwitchtState(State.LOADNEXT);
                     break;
                 case State.PLAY:

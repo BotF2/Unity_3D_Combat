@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    class FedFormation : MonoBehaviour
+    public class FedFormation : MonoBehaviour
     {
         public GameObject fed_0; // parent empty gameobjects
         public GameObject fed_1; // can use one parent for all or multiple parents 
@@ -25,8 +25,7 @@ namespace Assets.Script
         private GameObject Fed_Scout_i_4;
         private GameObject Fed_Scout_i_5;
         private void Awake()
-        {
-            //fed_Cruiser_i_0 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_0.transform.position, Quaternion.identity, fed_Cruiser_i_Prefab.transform);
+        {             
             Fed_Cruiser_i_0 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_0.transform.position, fed_0.transform.rotation, fed_0.transform);
             Fed_Cruiser_i_1 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_1.transform.position, fed_1.transform.rotation, fed_1.transform);
             Fed_Cruiser_i_2 = (GameObject)Instantiate(fed_Cruiser_i_Prefab, fed_2.transform.position, fed_2.transform.rotation, fed_2.transform);
@@ -40,12 +39,13 @@ namespace Assets.Script
             Fed_Scout_i_3.transform.SetParent(fed_3.transform, true);
             Fed_Scout_i_4.transform.SetParent(fed_4.transform, true);
             Fed_Scout_i_5.transform.SetParent(fed_5.transform, true);
-            Ships.SetLayerRecursively(fed_0, 10); 
-            Ships.SetLayerRecursively(fed_1, 10);
-            Ships.SetLayerRecursively(fed_2, 10);
-            Ships.SetLayerRecursively(fed_3, 10);
-            Ships.SetLayerRecursively(fed_4, 10);
-            Ships.SetLayerRecursively(fed_5, 10);
+
+            Ship.SetLayerRecursively(fed_0, 10); 
+            Ship.SetLayerRecursively(fed_1, 10);
+            Ship.SetLayerRecursively(fed_2, 10);
+            Ship.SetLayerRecursively(fed_3, 10);
+            Ship.SetLayerRecursively(fed_4, 10);
+            Ship.SetLayerRecursively(fed_5, 10);
         }
     }
 }

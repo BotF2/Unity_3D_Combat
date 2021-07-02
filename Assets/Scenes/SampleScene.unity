@@ -554,9 +554,9 @@ GameObject:
   - component: {fileID: 285004928}
   - component: {fileID: 285004929}
   - component: {fileID: 285004930}
-  - component: {fileID: 285004931}
   - component: {fileID: 285004933}
   - component: {fileID: 285004932}
+  - component: {fileID: 285004935}
   m_Layer: 13
   m_Name: Kling_Y0_Z0
   m_TagString: Kling
@@ -612,20 +612,6 @@ MonoBehaviour:
   anim: {fileID: 285004929}
   _doingInit_3: 0
   warpAudioSource: {fileID: 899714680}
---- !u!114 &285004931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 285004927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!54 &285004932
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -655,6 +641,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explotionPrefab: {fileID: 5217844912408455810, guid: 44882b889c6f98340a7eba0682e57b0e, type: 3}
+--- !u!114 &285004935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285004927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &380304853
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,9 +720,9 @@ GameObject:
   - component: {fileID: 442020133}
   - component: {fileID: 442020135}
   - component: {fileID: 442020134}
-  - component: {fileID: 442020136}
   - component: {fileID: 442020137}
   - component: {fileID: 442020138}
+  - component: {fileID: 442020140}
   m_Layer: 13
   m_Name: Kling_Y0_Z2
   m_TagString: Kling
@@ -775,20 +778,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &442020136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 442020132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &442020137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,6 +807,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &442020140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442020132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &448248054
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,9 +911,9 @@ GameObject:
   - component: {fileID: 599974534}
   - component: {fileID: 599974532}
   - component: {fileID: 599974533}
-  - component: {fileID: 599974535}
   - component: {fileID: 599974536}
   - component: {fileID: 599974537}
+  - component: {fileID: 599974539}
   m_Layer: 10
   m_Name: Fed_Y0_Z1
   m_TagString: Fed
@@ -964,20 +970,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &599974535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599974531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &599974536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,6 +999,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &599974539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599974531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &618106971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,9 +1093,9 @@ GameObject:
   - component: {fileID: 702151539}
   - component: {fileID: 702151538}
   - component: {fileID: 702151537}
-  - component: {fileID: 702151540}
   - component: {fileID: 702151541}
   - component: {fileID: 702151542}
+  - component: {fileID: 702151544}
   m_Layer: 10
   m_Name: Fed_Y0_Z0
   m_TagString: Fed
@@ -1143,20 +1152,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &702151540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702151536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &702151541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1181,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &702151544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702151536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,9 +1826,9 @@ GameObject:
   - component: {fileID: 1150958938}
   - component: {fileID: 1150958937}
   - component: {fileID: 1150958936}
-  - component: {fileID: 1150958939}
   - component: {fileID: 1150958940}
   - component: {fileID: 1150958941}
+  - component: {fileID: 1150958943}
   m_Layer: 10
   m_Name: Fed_Y0_Z2
   m_TagString: Fed
@@ -1873,20 +1885,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1150958939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150958935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1150958940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,6 +1914,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &1150958943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150958935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,7 +2016,7 @@ MonoBehaviour:
   fed_3: {fileID: 1319496215}
   fed_4: {fileID: 1923525912}
   fed_5: {fileID: 1596952200}
-  fed_Cruiser_i_Prefab: {fileID: 7169747804910753421, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
+  fed_Cruiser_i_Prefab: {fileID: 993254891936991835, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
   fed_Scout_i_Prefab: {fileID: 8989540232703741394, guid: 4151bf2a9bb8fb14ebc16593609d55d4, type: 3}
 --- !u!4 &1190782648
 Transform:
@@ -2321,9 +2336,9 @@ GameObject:
   - component: {fileID: 1319496218}
   - component: {fileID: 1319496217}
   - component: {fileID: 1319496216}
-  - component: {fileID: 1319496219}
   - component: {fileID: 1319496220}
   - component: {fileID: 1319496221}
+  - component: {fileID: 1319496223}
   m_Layer: 10
   m_Name: Fed_Y1_Z0
   m_TagString: Fed
@@ -2380,20 +2395,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1319496219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319496215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1319496220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2424,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &1319496223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319496215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1365482392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,9 +2452,9 @@ GameObject:
   - component: {fileID: 1365482393}
   - component: {fileID: 1365482395}
   - component: {fileID: 1365482394}
-  - component: {fileID: 1365482396}
   - component: {fileID: 1365482397}
   - component: {fileID: 1365482398}
+  - component: {fileID: 1365482400}
   m_Layer: 13
   m_Name: Kling_Y1_Z2
   m_TagString: Kling
@@ -2492,20 +2510,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1365482396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365482392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1365482397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,6 +2539,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1365482400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365482392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1461760767
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,9 +2694,9 @@ GameObject:
   - component: {fileID: 1596952203}
   - component: {fileID: 1596952202}
   - component: {fileID: 1596952201}
-  - component: {fileID: 1596952204}
   - component: {fileID: 1596952205}
   - component: {fileID: 1596952206}
+  - component: {fileID: 1596952208}
   m_Layer: 10
   m_Name: Fed_Y1_Z2
   m_TagString: Fed
@@ -2732,20 +2753,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1596952204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596952200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1596952205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2775,6 +2782,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &1596952208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596952200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1670698542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,13 +2839,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670698542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3dfcc0701d57449a04dc2bd9fe0942, type: 3}
+  m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shields: 100
-  _hull: 100
-  _points: 100
-  _hitMaterial: {fileID: 0}
+  _shield: {fileID: 0}
+  _hullHealthImage: {fileID: 0}
+  _warpCoreBreach: {fileID: 0}
 --- !u!1 &1708444361
 GameObject:
   m_ObjectHideFlags: 0
@@ -2833,9 +2856,9 @@ GameObject:
   - component: {fileID: 1708444362}
   - component: {fileID: 1708444364}
   - component: {fileID: 1708444363}
-  - component: {fileID: 1708444365}
   - component: {fileID: 1708444366}
   - component: {fileID: 1708444367}
+  - component: {fileID: 1708444369}
   m_Layer: 13
   m_Name: Kling_Y0_Z1
   m_TagString: Kling
@@ -2891,20 +2914,6 @@ MonoBehaviour:
   anim: {fileID: 1708444363}
   _doingInit_3: 0
   warpAudioSource: {fileID: 899714680}
---- !u!114 &1708444365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708444361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1708444366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2934,6 +2943,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1708444369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708444361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1805729455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3024,9 +3050,9 @@ GameObject:
   - component: {fileID: 1861536512}
   - component: {fileID: 1861536514}
   - component: {fileID: 1861536513}
-  - component: {fileID: 1861536515}
   - component: {fileID: 1861536516}
   - component: {fileID: 1861536517}
+  - component: {fileID: 1861536519}
   m_Layer: 13
   m_Name: Kling_Y1_Z1
   m_TagString: Kling
@@ -3082,20 +3108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1861536515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861536511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1861536516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3125,6 +3137,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1861536519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861536511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1923525912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3136,9 +3165,9 @@ GameObject:
   - component: {fileID: 1923525915}
   - component: {fileID: 1923525914}
   - component: {fileID: 1923525913}
-  - component: {fileID: 1923525916}
   - component: {fileID: 1923525917}
   - component: {fileID: 1923525918}
+  - component: {fileID: 1923525920}
   m_Layer: 10
   m_Name: Fed_Y1_Z1
   m_TagString: Fed
@@ -3195,20 +3224,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1923525916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923525912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1923525917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3238,6 +3253,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 2
+--- !u!114 &1923525920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923525912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0
 --- !u!1 &1970886312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,9 +3281,9 @@ GameObject:
   - component: {fileID: 1970886313}
   - component: {fileID: 1970886314}
   - component: {fileID: 1970886315}
-  - component: {fileID: 1970886316}
   - component: {fileID: 1970886317}
   - component: {fileID: 1970886318}
+  - component: {fileID: 1970886320}
   m_Layer: 13
   m_Name: Kling_Y1_Z0
   m_TagString: Kling
@@ -3307,20 +3339,6 @@ MonoBehaviour:
   anim: {fileID: 1970886314}
   _doingInit_3: 0
   warpAudioSource: {fileID: 899714680}
---- !u!114 &1970886316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970886312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 7355522029080474110, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
-  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
 --- !u!114 &1970886317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3350,3 +3368,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &1970886320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970886312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be509dfeb2384e545b682ab67038b2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 196525540722226437, guid: cddf18ac4a003ba45913e1c87b3e5008, type: 3}
+  theSource: {fileID: 0}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 10
+  civ: 0

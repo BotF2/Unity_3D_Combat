@@ -34,6 +34,7 @@ public class Explosion : MonoBehaviour
                     if (whoWeAre.tag != "Kling")
                     {
                         GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
+                        
                         Destroy(explo, 3f);
                     }
                 break;
@@ -43,6 +44,7 @@ public class Explosion : MonoBehaviour
                     if (whoWeAre.tag != "Fed")
                     {
                         GameObject explo = Instantiate(explotionPrefab, transform.position, Quaternion.identity) as GameObject;
+                        
                         Destroy(explo, 3f);
                     }
                     break;

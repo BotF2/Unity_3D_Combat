@@ -7,6 +7,9 @@ public class Kling_Photon_Torpedo : MonoBehaviour
     public GameObject photonPrefab; // set to prefab in unity on parent of ship
     private AudioSource theSource;
     public AudioClip clip;
+    private float _weaponDamage = 0.5f;
+
+    public float WeaponDamage { get { return _weaponDamage; } set { _weaponDamage = value; } } // get from data base for weapon we got hit with
 
     private void Update()
     {
