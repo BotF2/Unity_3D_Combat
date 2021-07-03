@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4721904884632512045}
   - component: {fileID: 7017060846635149113}
   - component: {fileID: 126038418518902333}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: FedPhotonTorpedo
-  m_TagString: Fed
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4721904885040444747}
   - component: {fileID: 4721904885040444746}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 4721904885165726401}
   - component: {fileID: 4721904885165726431}
   - component: {fileID: 4721904885165726400}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: TorpedoEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

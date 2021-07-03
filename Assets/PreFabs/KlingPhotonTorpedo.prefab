@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5227894605007478247}
   - component: {fileID: 4802606506645553516}
   - component: {fileID: 651056781159610770}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: TorpedoEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4823,7 +4823,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6126196506169988295}
   - component: {fileID: 2124874284635506496}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4907,9 +4907,9 @@ GameObject:
   - component: {fileID: 7993021454659012819}
   - component: {fileID: 360013829285510207}
   - component: {fileID: 1259438027672612506}
-  m_Layer: 0
+  m_Layer: 23
   m_Name: KlingPhotonTorpedo
-  m_TagString: Kling
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

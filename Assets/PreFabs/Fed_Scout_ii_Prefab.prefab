@@ -112,9 +112,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2166188440786625787}
-  m_Layer: 0
+  - component: {fileID: 4074420654997727709}
+  - component: {fileID: 1926980922929350292}
+  - component: {fileID: 6946929281182668761}
+  - component: {fileID: 1016321947052544838}
+  m_Layer: 10
   m_Name: Fed_Scout_ii_Prefab
-  m_TagString: ship
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,3 +138,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4074420654997727709
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989540232703741394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.1}
+--- !u!114 &1926980922929350292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989540232703741394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shield: {fileID: 0}
+  _layer: 10
+  _hullHealthImage: {fileID: 0}
+  _warpCoreBreach: {fileID: 0}
+--- !u!54 &6946929281182668761
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989540232703741394}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1016321947052544838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989540232703741394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  clip: {fileID: 8300000, guid: 9b0668644f148b14b8e9828351fb8cc8, type: 3}
+  _weaponDamage: 0

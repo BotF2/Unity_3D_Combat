@@ -21,33 +21,33 @@ namespace Assets.Script
         public GameObject _shield;
         private float _shieldHealth;
         private float _hullHealth;
+        public int _layer;
         public Image _hullHealthImage;
         public GameObject _warpCoreBreach;   
         private Shields shield;
-        private int _torpedoDamage = 10;
+        private int _torpedoDamage;
         //private int _points = 100; // Score
 
         // public Material _hitMaterial;
         List<Design> shipDesign = new List<Design>();
         Material _orgMaterial;
         Renderer _renderer;
-        private Object _gameObject;
 
-        public float Shields 
-        {
-            get {return _shieldHealth; }
-            set {_shieldHealth = value;}
-        }
-        public float Hull
-        {
-            get { return _hullHealth; }
-            set { _hullHealth = value; }
-        }
-        public int TorpedoDamage
-        {
-            get { return _torpedoDamage; }
-            set { _torpedoDamage = value; }
-        }
+        //public float Shields 
+        //{
+        //    get {return _shieldHealth; }
+        //    set {_shieldHealth = value;}
+        //}
+        //public float Hull
+        //{
+        //    get { return _hullHealth; }
+        //    set { _hullHealth = value; }
+        //}
+        //public int TorpedoDamage
+        //{
+        //    get { return _torpedoDamage; }
+        //    set { _torpedoDamage = value; }
+        //}
 
         // Start is called before the first frame update
         void Start()
@@ -56,7 +56,7 @@ namespace Assets.Script
             _orgMaterial = _renderer.sharedMaterial;
             CreateDesigns();
             string _test = shipDesign[0].A_INDEX; // example to get out a value
-
+            gameObject.layer = _layer;
             foreach (var design in shipDesign)
             {
                 //if (_test == design.Key)
@@ -65,10 +65,10 @@ namespace Assets.Script
                 //    _shieldHealth = design.Shield;
                 //}
             }
-            _shieldHealth = 1f;
-            _hullHealth = 1f;
-            _hullHealthImage.fillAmount = _hullHealth;
-            shield = GetComponent<Shields>();
+            //_shieldHealth = 1f;
+            //_hullHealth = 1f;
+            //_hullHealthImage.fillAmount = _hullHealth;
+            //shield = GetComponent<Shields>();
         }
 
         // Update is called once per frame
@@ -78,10 +78,8 @@ namespace Assets.Script
         }
         public void OnCollisionEnter(Collision collision)
         {
-
-            //Ship firingShip = collision.gameObject.GetComponentInChildren(typeof(Ship)) as Ship;
-            // Photon_Torpedo torpedo = collision.gameObject.GetComponent(typeof(Photon_Torpedo)) as Photon_Torpedo;
-            //float damage =(float)(firingShip.TorpedoDamage /255);
+            string _tag = collision.gameObject.tag;
+            Debug.Log(" the tag " + _tag);
             float damage = 1f; // torpedo.WeaponDamage;
 
             if (_shieldHealth > 0)
@@ -97,7 +95,7 @@ namespace Assets.Script
             else
             {
                 //GameManager.Instance.Score += _points;
-                Destroy(gameObject);
+              //  Destroy(gameObject);
                 Debug.Log("good by");
             }
             //_renderer.sharedMaterial = _hitMaterial;

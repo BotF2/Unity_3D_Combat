@@ -10,11 +10,11 @@ public class Photon_Torpedo : MonoBehaviour
     //public Ship firingShip; 
     public AudioSource theSource;
     public AudioClip clip;
-    public float _weaponDamage = 10f;
+    public float _weaponDamage;
     public Civilization civ;
     //public Ship[] shipsArray;
 
-    public float WeaponDamage { get { return _weaponDamage; } set{ _weaponDamage = value; } } // get from data base for weapon we got hit with
+    //public float WeaponDamage { get { return _weaponDamage; } set{ _weaponDamage = value; } } // get from data base for weapon we got hit with
 
 
     private void Update()
@@ -75,10 +75,12 @@ public class Photon_Torpedo : MonoBehaviour
             //firingShip = gameObject.GetComponentInChildren<Ship>();
             _temp.layer = theLayer;
             _temp.tag = currentCiv;
-            _temp.AddComponent<AudioSource>().playOnAwake = false;
-            _temp.AddComponent<AudioSource>().clip = clip;
-            theSource = _temp.GetComponent<AudioSource>();
-            theSource.PlayOneShot(clip);
+            //_temp.AddComponent<AudioSource>().playOnAwake = false;
+            //_temp.AddComponent<AudioSource>().clip = clip;
+            //theSource = _temp.GetComponent<AudioSource>();
+            //theSource.PlayOneShot(clip);
+
+
             //Ship.PassShipObject(_temp.gameObject);
             //CapsuleCollider collider = _temp.GetComponent<CapsuleCollider>();
             //collider.enabled = true;
