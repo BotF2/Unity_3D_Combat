@@ -1,7 +1,11 @@
+using System;
+using System.Windows;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace Assets.Script
 {
@@ -17,7 +21,6 @@ namespace Assets.Script
     }
     public class Ship : MonoBehaviour
     {
-        //public Ship Instance;
         public GameObject _shield;
         private float _shieldHealth;
         private float _hullHealth;
@@ -26,6 +29,7 @@ namespace Assets.Script
         public GameObject _warpCoreBreach;   
         private Shields shield;
         private int _torpedoDamage;
+        public char separator = ';';
         //private int _points = 100; // Score
 
         // public Material _hitMaterial;
@@ -33,25 +37,17 @@ namespace Assets.Script
         Material _orgMaterial;
         Renderer _renderer;
 
-        //public float Shields 
-        //{
-        //    get {return _shieldHealth; }
-        //    set {_shieldHealth = value;}
-        //}
-        //public float Hull
-        //{
-        //    get { return _hullHealth; }
-        //    set { _hullHealth = value; }
-        //}
-        //public int TorpedoDamage
-        //{
-        //    get { return _torpedoDamage; }
-        //    set { _torpedoDamage = value; }
-        //}
+        private Dictionary<string, int> _weaponDictionary = new Dictionary<string, int>();
+        private void Awake()
+        {
+        }
 
         // Start is called before the first frame update
         void Start()
         {
+            string fullPath = Environment.CurrentDirectory + "\\Assets\\WeaponData.txt";
+            LoadWeapons(fullPath);
+
             _renderer = GetComponent<Renderer>();
             _orgMaterial = _renderer.sharedMaterial;
             CreateDesigns();
@@ -70,6 +66,40 @@ namespace Assets.Script
             //_hullHealthImage.fillAmount = _hullHealth;
             //shield = GetComponent<Shields>();
         }
+
+
+        public IList<string> LoadWeapons(string filename)
+        {
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _weapons = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+                //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
+                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
+                //Console.WriteLine(infotext);
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
+
+                    _weapons.Add(line.Trim());
+
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+
+                        _ = int.TryParse(coll[1], out int currentValue);
+                        _weaponDictionary.Add(coll[0].ToString(), currentValue);
+                    }
+                }
+                reader.Close();
+            }
+            return _weapons;
+        }        
 
         // Update is called once per frame
         void Update()

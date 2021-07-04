@@ -7,7 +7,7 @@ public class Fed_Photon_Torpedo : MonoBehaviour
     public GameObject photonPrefab; // set to prefab in unity on parent of ship
     private AudioSource theSource;
     public AudioClip clip;
-    public float _weaponDamage;
+    public float _weaponDamage = 12f;
 
     //public float WeaponDamage { get { return _weaponDamage; } set{ _weaponDamage = value; } } // get from data base for weapon we got hit with
 
