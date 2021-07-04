@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: -4837760526524809299}
   - component: {fileID: -2368875403672096207}
   - component: {fileID: -5949497411997993457}
-  - component: {fileID: -5488067901901321828}
+  - component: {fileID: 4743418279049065648}
   m_Layer: 10
   m_Name: Fed_Destroyer_i_Prefab
   m_TagString: Untagged
@@ -175,9 +175,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shield: {fileID: 0}
+  _shieldHealth: 33
+  _hullHealth: 11
   _layer: 10
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
+  separator: 59
 --- !u!54 &-5949497411997993457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,7 +197,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-5488067901901321828
+--- !u!114 &4743418279049065648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,9 +206,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8371427762580722344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738dec82db09b104b8765965110b43a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 92880a9c7372952449a8ab2188b04b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
   clip: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
-  _weaponDamage: 0

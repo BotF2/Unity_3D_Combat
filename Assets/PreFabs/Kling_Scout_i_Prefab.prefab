@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5628217723370392932}
   - component: {fileID: 6781213621474287315}
   - component: {fileID: -1464033414075526693}
-  - component: {fileID: 5041755544851181804}
+  - component: {fileID: 444283690186431639}
   m_Layer: 13
   m_Name: Kling_Scout_i_Prefab
   m_TagString: Untagged
@@ -161,9 +161,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shield: {fileID: 0}
+  _shieldHealth: 20
+  _hullHealth: 10
   _layer: 13
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
+  separator: 59
 --- !u!54 &-1464033414075526693
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -180,7 +183,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5041755544851181804
+--- !u!114 &444283690186431639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,9 +192,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4063519493246741022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970f1ae144f125c489b02a7f116f842e, type: 3}
+  m_Script: {fileID: 11500000, guid: 92880a9c7372952449a8ab2188b04b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   photonPrefab: {fileID: 7949007997485968392, guid: 3747aad155941dd4498dd0dfb8c3bcf5, type: 3}
   clip: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
-  _weaponDamage: 0

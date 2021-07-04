@@ -22,13 +22,13 @@ namespace Assets.Script
     public class Ship : MonoBehaviour
     {
         public GameObject _shield;
-        private float _shieldHealth;
-        private float _hullHealth;
+        public float _shieldHealth;
+        public float _hullHealth;
         public int _layer;
         public Image _hullHealthImage;
         public GameObject _warpCoreBreach;   
         private Shields shield;
-        private int _torpedoDamage;
+        //private int _torpedoDamage;
         public char separator = ';';
         //private int _points = 100; // Score
 
@@ -108,26 +108,35 @@ namespace Assets.Script
         }
         public void OnCollisionEnter(Collision collision)
         {
-            string _tag = collision.gameObject.tag;
-            Debug.Log(" the tag " + _tag);
-            float damage = 1f; // torpedo.WeaponDamage;
-
-            if (_shieldHealth > 0)
+            string nameOfWeapon = collision.gameObject.name;
+            if (_weaponDictionary.ContainsKey(nameOfWeapon))
             {
-                _shieldHealth -= damage;
-                Debug.Log("sheilds hit damage" + damage);
+                _weaponDictionary.TryGetValue(nameOfWeapon, out int damage);
+                if (damage > 0)
+                {
+                    if (_shieldHealth > 0)
+                    {
+                        _shieldHealth -= damage;
+                        if (_shieldHealth > 0 && _shieldHealth < damage)
+                        {
+                            _hullHealth -= (damage - _shieldHealth);
+                        }
+                        Debug.Log("sheilds hit damage" + damage);
+                    }
+                    else if (_hullHealth > 0)
+                    {
+                        _hullHealth -= damage;
+                        Debug.Log("hull hit damage" + damage);
+                    }
+                    else
+                    {
+                        //GameManager.Instance.Score += _points;
+                        Destroy(gameObject);
+                        Debug.Log("good by");
+                    }
+                }
             }
-            else if (_hullHealth > 0)
-            {
-                _hullHealth -= damage;
-                Debug.Log("hull hit damage" + damage);
-            }
-            else
-            {
-                //GameManager.Instance.Score += _points;
-              //  Destroy(gameObject);
-                Debug.Log("good by");
-            }
+            //ToDo - code regeneration of sheilds over time in update
             //_renderer.sharedMaterial = _hitMaterial;
             //Invoke("RestoreMaterial", 0.05f);
         }
