@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7017060846635149113}
   - component: {fileID: 126038418518902333}
   m_Layer: 20
-  m_Name: FedPhotonTorpedo
+  m_Name: Fed_Torpedo_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,7 +381,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.4523407, g: 0.71381974, b: 0.8962264, a: 1}
+      maxColor: {r: 0.78061587, g: 0.865196, b: 0.9245283, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1463,7 +1463,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1471,8 +1471,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.9528302, g: 0.92136884, b: 0.92136884, a: 1}
+        key1: {r: 0.1490196, g: 0.49805063, b: 0.85882354, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}

@@ -11,6 +11,6 @@ public class PhotonTorpedoSpeed : MonoBehaviour
     }
     public void OnCollisionEnter(Collision collision)
     {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject); // kill weapon gameobject holding speed script
     }
 }

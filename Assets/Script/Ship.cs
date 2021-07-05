@@ -21,17 +21,13 @@ namespace Assets.Script
     }
     public class Ship : MonoBehaviour
     {
-        public GameObject _shield;
+        public Shields _shield;
         public float _shieldHealth;
         public float _hullHealth;
         public int _layer;
         public Image _hullHealthImage;
         public GameObject _warpCoreBreach;   
-        private Shields shield;
-        //private int _torpedoDamage;
         public char separator = ';';
-        //private int _points = 100; // Score
-
         // public Material _hitMaterial;
         List<Design> shipDesign = new List<Design>();
         Material _orgMaterial;
@@ -113,9 +109,10 @@ namespace Assets.Script
             {
                 _weaponDictionary.TryGetValue(nameOfWeapon, out int damage);
                 if (damage > 0)
-                {
-                    if (_shieldHealth > 0)
+                {                       
+                    if ( _shieldHealth > 0)  //_shield != null &&
                     {
+                        //_shield.shieldsTakeDagame(damage);
                         _shieldHealth -= damage;
                         if (_shieldHealth > 0 && _shieldHealth < damage)
                         {

@@ -209,5 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92880a9c7372952449a8ab2188b04b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photonPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  weaponPrefab: {fileID: 4721904884632512047, guid: 6ae42a904ef6f6e44b54bf0f9180360e, type: 3}
+  explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clip: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
