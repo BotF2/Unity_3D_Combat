@@ -915,7 +915,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &618106971
 GameObject:
@@ -1219,101 +1219,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798439246}
   m_CullTransparentMesh: 1
---- !u!1 &837033723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 837033727}
-  - component: {fileID: 837033726}
-  - component: {fileID: 837033725}
-  - component: {fileID: 837033724}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &837033724
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837033723}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &837033725
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837033723}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 2bbba08c39eb0d54a8926870f372bed4, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &837033726
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837033723}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &837033727
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837033723}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1842, y: -629, z: 7489}
-  m_LocalScale: {x: 200, y: 200, z: 300}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 23
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841757960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1535,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 2
-  m_AntialiasingQuality: 2
+  m_AntialiasingQuality: 1
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
@@ -1947,8 +1852,8 @@ MonoBehaviour:
   fed_3: {fileID: 1319496215}
   fed_4: {fileID: 1923525912}
   fed_5: {fileID: 1596952200}
-  fed_Cruiser_i_Prefab: {fileID: 993254891936991835, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
-  fed_Scout_i_Prefab: {fileID: 8989540232703741394, guid: 4151bf2a9bb8fb14ebc16593609d55d4, type: 3}
+  fed_Cruiser_i_Prefab: {fileID: 6682610431045122130, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
+  fed_Scout_i_Prefab: {fileID: 5693726828458614973, guid: 4151bf2a9bb8fb14ebc16593609d55d4, type: 3}
 --- !u!4 &1190782648
 Transform:
   m_ObjectHideFlags: 0
@@ -2626,13 +2531,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shield: {fileID: 0}
-  _shieldHealth: 0
+  _shieldsMaxHealth: 0
   _hullHealth: 0
   _layer: 0
+  weaponPrefab: {fileID: 0}
+  shieldPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  clipTorpedoFire: {fileID: 0}
+  clipExplodTorpedo: {fileID: 0}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
-  separator: 59
 --- !u!1 &1708444361
 GameObject:
   m_ObjectHideFlags: 0

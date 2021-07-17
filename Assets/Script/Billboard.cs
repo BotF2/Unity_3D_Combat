@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
+    // use on torpedo sprit
     private Camera theCam;
     private float rotate =1f;
    // public bool holdStaticBuillboard;

@@ -157,13 +157,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shield: {fileID: 0}
-  _shieldHealth: 40
+  _shieldsMaxHealth: 20
   _hullHealth: 10
   _layer: 13
+  weaponPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
+  shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
+  explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+  clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
+  clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
-  separator: 59
 --- !u!54 &7354102504491571407
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,6 +195,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92880a9c7372952449a8ab2188b04b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
-  explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
-  clip: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}

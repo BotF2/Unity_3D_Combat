@@ -21,19 +21,30 @@ namespace Assets.Script
     }
     public class Ship : MonoBehaviour
     {
-        public Shields _shield;
-        public float _shieldHealth;
-        public float _hullHealth;
+        public int _shieldsMaxHealth; // hardcoded in prefabs
+        public int _hullHealth; // hardcoded in prefabs
         public int _layer;
+        public GameObject weaponPrefab; // set to prefab in unity on parent of ship
+        public GameObject shieldPrefab;
+        public GameObject explosionPrefab;
+        private AudioSource theSource;
+        public AudioClip clipTorpedoFire;
+        public AudioClip clipExplodTorpedo;
+        private int _shieldsCurrentHealth;
+        private float _shieldsRegeneratRate = 4f; // of Shields
+        private int _sheildsRegenerateAmount = 1;
+        private GameObject _shields;
+        private bool shieldsAreUp;
         public Image _hullHealthImage;
         public GameObject _warpCoreBreach;   
-        public char separator = ';';
+        private char separator = ';';
         // public Material _hitMaterial;
-        List<Design> shipDesign = new List<Design>();
+        //List<Design> shipDesign = new List<Design>();
         Material _orgMaterial;
         Renderer _renderer;
 
         private Dictionary<string, int> _weaponDictionary = new Dictionary<string, int>();
+       // private Dictionary<string, Vector3> _shipSizeDictionary = new Dictionary<string, Vector3>();
         private void Awake()
         {
         }
@@ -41,102 +52,165 @@ namespace Assets.Script
         // Start is called before the first frame update
         void Start()
         {
-            string fullPath = Environment.CurrentDirectory + "\\Assets\\WeaponData.txt";
-            LoadWeapons(fullPath);
+            _shieldsCurrentHealth = _shieldsMaxHealth;
+            InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
+            shieldsAreUp = true;
+            _shields.SetActive(true);
 
             _renderer = GetComponent<Renderer>();
             _orgMaterial = _renderer.sharedMaterial;
-            CreateDesigns();
-            string _test = shipDesign[0].A_INDEX; // example to get out a value
-            gameObject.layer = _layer;
-            foreach (var design in shipDesign)
-            {
-                //if (_test == design.Key)
-                //{
-                //    _hullHealth = design.Hull;
-                //    _shieldHealth = design.Shield;
-                //}
-            }
+
+
+          //  CreateDesigns();
+            //string _test = shipDesign[0].A_INDEX; // example to get out a value
+            //gameObject.layer = _layer;
+            //foreach (var design in shipDesign)
+            //{
+            //    //if (_test == design.Key)
+            //    //{
+            //    //    _hullHealth = design.Hull;
+            //    //    _shieldHealth = design.Shield;
+            //    //}
+            //}
             //_shieldHealth = 1f;
             //_hullHealth = 1f;
             //_hullHealthImage.fillAmount = _hullHealth;
             //shield = GetComponent<Shields>();
         }
-
-
-        public IList<string> LoadWeapons(string filename)
+        private void Update()
         {
-            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
-
-            var _weapons = new List<string>();
-            using (var reader = new StreamReader(file))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
-                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-                //Console.WriteLine(infotext);
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        continue;
-                    Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
-
-                    _weapons.Add(line.Trim());
-
-                    if (line.Length > 0)
-                    {
-                        var coll = line.Split(separator);
-
-                        _ = int.TryParse(coll[1], out int currentValue);
-                        _weaponDictionary.Add(coll[0].ToString(), currentValue);
-                    }
-                }
-                reader.Close();
+                GameObject _temp = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                _temp.layer = gameObject.layer + 10;
+                _temp.AddComponent<AudioSource>().playOnAwake = false;
+                _temp.AddComponent<AudioSource>().clip = clipTorpedoFire;
+                theSource = _temp.GetComponent<AudioSource>();
+                theSource.PlayOneShot(clipTorpedoFire);
             }
-            return _weapons;
-        }        
-
-        // Update is called once per frame
-        void Update()
-        {
-        //    Instance = (Ship)GameObject.FindObjectOfType(typeof(Ship));
         }
         public void OnCollisionEnter(Collision collision)
         {
-            string nameOfWeapon = collision.gameObject.name;
-            if (_weaponDictionary.ContainsKey(nameOfWeapon))
+            var theOriginOf = transform.position;
+            ContactPoint contact = collision.contacts[0];
+            Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
+            Vector3 positionOf = contact.point;
+            if (shieldsAreUp)
             {
-                _weaponDictionary.TryGetValue(nameOfWeapon, out int damage);
-                if (damage > 0)
-                {                       
-                    if ( _shieldHealth > 0)  //_shield != null &&
-                    {
-                        //_shield.shieldsTakeDagame(damage);
-                        _shieldHealth -= damage;
-                        if (_shieldHealth > 0 && _shieldHealth < damage)
-                        {
-                            _hullHealth -= (damage - _shieldHealth);
-                        }
-                        Debug.Log("sheilds hit damage" + damage);
-                    }
-                    else if (_hullHealth > 0)
-                    {
-                        _hullHealth -= damage;
-                        Debug.Log("hull hit damage" + damage);
-                    }
-                    else
-                    {
-                        //GameManager.Instance.Score += _points;
-                        Destroy(gameObject);
-                        Debug.Log("good by");
-                    }
-                }
+                ShieldsTakeDagame(1);
+                theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
+                positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
+                _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
+                Destroy(_shields, 2.5f);
             }
-            //ToDo - code regeneration of sheilds over time in update
-            //_renderer.sharedMaterial = _hitMaterial;
-            //Invoke("RestoreMaterial", 0.05f);
+            else
+            {
+
+            }
+            GameObject explo = Instantiate(explosionPrefab, theOriginOf, Quaternion.identity) as GameObject;
+            explo.AddComponent<AudioSource>().playOnAwake = false;
+            explo.AddComponent<AudioSource>().clip = clipExplodTorpedo;
+            theSource = explo.GetComponent<AudioSource>();
+            theSource.PlayOneShot(clipExplodTorpedo);
+            Destroy(explo, 2f);
         }
+        void Regenerate()
+        {
+            if (_shieldsCurrentHealth < _shieldsMaxHealth)
+                _shieldsCurrentHealth += _sheildsRegenerateAmount;
+            if (_shieldsCurrentHealth > _shieldsMaxHealth)
+            {
+                _shieldsCurrentHealth = _shieldsMaxHealth;
+            }
+        }
+        public void ShieldsTakeDagame(int damage)
+        {
+            _shieldsCurrentHealth -= damage;
+            if (_shieldsCurrentHealth < 1)
+            {
+                shieldsAreUp = false;
+                Destroy(_shields);
+                Debug.Log("Shields destroid");
+            }
+        }
+
+        //public IList<string> LoadWeapons(string filename) //  now loading weapon into prefab data on the ship
+        //{
+        //    var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+        //    var _weapons = new List<string>();
+        //    using (var reader = new StreamReader(file))
+        //    {
+        //        //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
+        //        //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
+        //        //Console.WriteLine(infotext);
+
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            if (line == null)
+        //                continue;
+        //            //Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
+
+        //            _weapons.Add(line.Trim());
+
+        //            if (line.Length > 0)
+        //            {
+        //                var coll = line.Split(separator);
+
+        //                _ = int.TryParse(coll[1], out int currentValue);
+        //                _weaponDictionary.Add(coll[0].ToString(), currentValue);
+        //            }
+        //        }
+        //        reader.Close();
+        //    }
+        //    return _weapons;
+        //}
+
+        //public void OnCollisionEnter(Collision collision)
+        //{
+        //    string nameOfWeapon = collision.gameObject.name;
+        //    if (_weaponDictionary.ContainsKey(nameOfWeapon))
+        //    {
+        //        _weaponDictionary.TryGetValue(nameOfWeapon, out int damage);
+        //        if (damage > 0)
+        //        {                       
+        //            if ( _shieldHealth > 0)  //_shield != null &&
+        //            {
+        //                //_shield.shieldsTakeDagame(damage);
+        //                _shieldHealth -= damage;
+        //                if (_shieldHealth > 0 && _shieldHealth < damage)
+        //                {
+        //                    _hullHealth -= (damage - _shieldHealth);
+        //                }
+        //                Debug.Log("sheilds hit damage" + damage);
+        //            }
+        //            else if (_hullHealth > 0)
+        //            {
+        //                _hullHealth -= damage;
+        //                Debug.Log("hull hit damage" + damage);
+        //            }
+        //            else
+        //            {
+        //                //GameManager.Instance.Score += _points;
+        //                Destroy(gameObject);
+        //                Debug.Log("good by");
+        //            }
+        //        }
+        //    }
+        //    //ToDo - code regeneration of sheilds over time in update
+        //    string nameOfShip = collision.gameObject.name;
+        //    if (_shipSizeDictionary.ContainsKey(nameOfShip))
+        //    {
+        //        _shipSizeDictionary.TryGetValue(nameOfShip, out Vector3 size);
+        //        if (size!= null)
+        //        {
+        //            sizeOfShip = size;
+        //        }
+        //    }
+        //    //_renderer.sharedMaterial = _hitMaterial;
+        //    //Invoke("RestoreMaterial", 0.05f);
+        //}
         private void RestoreMaterial()
         {
             _renderer.sharedMaterial = _orgMaterial;
@@ -161,10 +235,7 @@ namespace Assets.Script
                 Shield = shield;
             }
         }
-        //public static void PassShipObject(GameObject next)
-        //{
-        //    Ship child = next.AddComponent<Ship>();           
-        //}
+ 
         public static void SetLayerRecursively(GameObject obj, int newLayer)
         {
           if (null == obj)
@@ -183,20 +254,20 @@ namespace Assets.Script
                 SetLayerRecursively(child.gameObject, newLayer);
             }
         }
-        private void CreateDesigns()
-        {
-            //List<Design> shipDesign = new List<Design>();
-            Design newDesign;
+        //private void CreateDesigns()
+        //{
+        //    //List<Design> shipDesign = new List<Design>();
+        //    Design newDesign;
 
-            newDesign = new Design("FED_SCOUT_I", "FED_SCOUT_I", 11, 22); shipDesign.Add(newDesign);
-            newDesign = new Design("FED_SCOUT_II", "FED_SCOUT_II", 21, 42); shipDesign.Add(newDesign);
-            newDesign = new Design("FED_SCOUT_III", "FED_SCOUT_III", 31, 62); shipDesign.Add(newDesign);
-            newDesign = new Design("FED_CRUISER_I", "FED_CRUISER_I", 51, 102); shipDesign.Add(newDesign);
+        //    newDesign = new Design("FED_SCOUT_I", "FED_SCOUT_I", 11, 22); shipDesign.Add(newDesign);
+        //    newDesign = new Design("FED_SCOUT_II", "FED_SCOUT_II", 21, 42); shipDesign.Add(newDesign);
+        //    newDesign = new Design("FED_SCOUT_III", "FED_SCOUT_III", 31, 62); shipDesign.Add(newDesign);
+        //    newDesign = new Design("FED_CRUISER_I", "FED_CRUISER_I", 51, 102); shipDesign.Add(newDesign);
 
-            newDesign = new Design("KLING_SCOUT_I", "KLING_SCOUT_I", 10, 20); shipDesign.Add(newDesign);
-            newDesign = new Design("KLING_SCOUT_II", "KLING_SCOUT_II", 20, 40); shipDesign.Add(newDesign);
-            newDesign = new Design("KLING_SCOUT_III", "KLING_SCOUT_III", 30, 60); shipDesign.Add(newDesign);
-            newDesign = new Design("KLING_CRUISER_I", "KLING_CRUISER_I", 50, 100); shipDesign.Add(newDesign);
+        //    newDesign = new Design("KLING_SCOUT_I", "KLING_SCOUT_I", 10, 20); shipDesign.Add(newDesign);
+        //    newDesign = new Design("KLING_SCOUT_II", "KLING_SCOUT_II", 20, 40); shipDesign.Add(newDesign);
+        //    newDesign = new Design("KLING_SCOUT_III", "KLING_SCOUT_III", 30, 60); shipDesign.Add(newDesign);
+        //    newDesign = new Design("KLING_CRUISER_I", "KLING_CRUISER_I", 50, 100); shipDesign.Add(newDesign);
 
             //name = "FED_COLONY_SHIP_I)";
             //            name = "FED_COLONY_SHIP_II)";
@@ -632,7 +703,7 @@ namespace Assets.Script
             //name = "ZAHL_CRUISER)";
             //name = "ZAKDORN_CRUISER)";
             //name = "ZALKONIAN_CRUISER_I)";
-        }
+        //}
 
     }
 }
