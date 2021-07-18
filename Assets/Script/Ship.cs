@@ -25,6 +25,7 @@ namespace Assets.Script
         public int _hullHealth; // hardcoded in prefabs
         public int _layer;
         public GameObject weaponPrefab; // set to prefab in unity on parent of ship
+        private int _weaponDamage = 0;
         public GameObject shieldPrefab;
         public GameObject explosionPrefab;
         private AudioSource theSource;
@@ -42,24 +43,24 @@ namespace Assets.Script
         //List<Design> shipDesign = new List<Design>();
         Material _orgMaterial;
         Renderer _renderer;
-
         private Dictionary<string, int> _weaponDictionary = new Dictionary<string, int>();
-       // private Dictionary<string, Vector3> _shipSizeDictionary = new Dictionary<string, Vector3>();
+
         private void Awake()
         {
+            //LoadWeapons("WeaponData.txt");
         }
 
         // Start is called before the first frame update
         void Start()
         {
+            LoadWeapons(Environment.CurrentDirectory + "\\Assets\\" + "WeaponData.txt");
             _shieldsCurrentHealth = _shieldsMaxHealth;
-            InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
+            //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
-            _shields.SetActive(true);
+            //_shields.SetActive(true);
 
             _renderer = GetComponent<Renderer>();
             _orgMaterial = _renderer.sharedMaterial;
-
 
           //  CreateDesigns();
             //string _test = shipDesign[0].A_INDEX; // example to get out a value
@@ -81,13 +82,19 @@ namespace Assets.Script
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject _temp = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                _temp.layer = gameObject.layer + 10;
-                _temp.AddComponent<AudioSource>().playOnAwake = false;
-                _temp.AddComponent<AudioSource>().clip = clipTorpedoFire;
-                theSource = _temp.GetComponent<AudioSource>();
+                GameObject _weapon = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                _weapon.layer = gameObject.layer + 10;
+                _weapon.AddComponent<AudioSource>().playOnAwake = false;
+                _weapon.AddComponent<AudioSource>().clip = clipTorpedoFire;
+                theSource = _weapon.GetComponent<AudioSource>();
                 theSource.PlayOneShot(clipTorpedoFire);
+                Destroy(_weapon, 8f);
             }
+        }
+        private void FixedUpdate()
+        {
+            if (_shieldsCurrentHealth < 1)
+                shieldsAreUp = false;
         }
         public void OnCollisionEnter(Collision collision)
         {
@@ -95,17 +102,25 @@ namespace Assets.Script
             ContactPoint contact = collision.contacts[0];
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
             Vector3 positionOf = contact.point;
-            if (shieldsAreUp)
+            string weaponName = collision.gameObject.name;
+            if (_weaponDictionary.TryGetValue(weaponName, out int _result))
             {
-                ShieldsTakeDagame(1);
-                theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
-                positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
-                _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                Destroy(_shields, 2.5f);
+                _weaponDamage = _result;//_weaponDictionary[weaponName];
             }
-            else
+            switch (shieldsAreUp)
             {
-
+                case true:
+                    theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
+                    positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
+                    _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
+                    Destroy(_shields, 2.1f);
+                    ShieldsTakeDagame(_weaponDamage);
+                    break;
+                case false:
+                    HullTakeDamage(_weaponDamage);
+                    break;
+                default:
+                    break;
             }
             GameObject explo = Instantiate(explosionPrefab, theOriginOf, Quaternion.identity) as GameObject;
             explo.AddComponent<AudioSource>().playOnAwake = false;
@@ -126,46 +141,57 @@ namespace Assets.Script
         public void ShieldsTakeDagame(int damage)
         {
             _shieldsCurrentHealth -= damage;
+            Debug.Log("Shields took damage");
             if (_shieldsCurrentHealth < 1)
             {
-                shieldsAreUp = false;
-                Destroy(_shields);
+                //Destroy(_shields);
                 Debug.Log("Shields destroid");
             }
         }
+        public void HullTakeDamage(int damage)
+        {
+            _hullHealth -= damage;
+            Debug.Log("Hull took damage");
+            if (_hullHealth < 1)
+            {
+                Destroy(transform.gameObject);
+                Debug.Log("Ship destroid");
+            }
+        }
 
-        //public IList<string> LoadWeapons(string filename) //  now loading weapon into prefab data on the ship
-        //{
-        //    var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+        public void LoadWeapons(string filename) // List<sting>
+        {
+            
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
-        //    var _weapons = new List<string>();
-        //    using (var reader = new StreamReader(file))
-        //    {
-        //        //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
-        //        //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-        //        //Console.WriteLine(infotext);
+            var _weapons = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+                //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
+                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
+                //Console.WriteLine(infotext);
 
-        //        while (!reader.EndOfStream)
-        //        {
-        //            var line = reader.ReadLine();
-        //            if (line == null)
-        //                continue;
-        //            //Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    //Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
 
-        //            _weapons.Add(line.Trim());
+                    _weapons.Add(line.Trim());
 
-        //            if (line.Length > 0)
-        //            {
-        //                var coll = line.Split(separator);
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
 
-        //                _ = int.TryParse(coll[1], out int currentValue);
-        //                _weaponDictionary.Add(coll[0].ToString(), currentValue);
-        //            }
-        //        }
-        //        reader.Close();
-        //    }
-        //    return _weapons;
-        //}
+                        _ = int.TryParse(coll[1], out int currentValue);
+                        _weaponDictionary.Add(coll[0].ToString(), currentValue);
+                    }
+                }
+                reader.Close();
+            }
+           // return _weapons;
+        }
 
         //public void OnCollisionEnter(Collision collision)
         //{

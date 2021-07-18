@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 namespace Assets.Script
 {
-
     public class GameManager : MonoBehaviour
     {
         public Text textScore;
@@ -73,6 +72,8 @@ namespace Assets.Script
         {
             Instance = this;
             SwitchtState(State.MENU);
+            CombatantManager manager = new CombatantManager();
+            manager.Combatant();
         }
 
         public void SwitchtState(State newState, float delay = 0)

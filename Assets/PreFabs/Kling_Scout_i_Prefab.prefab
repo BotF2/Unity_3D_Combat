@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 5628217723370392932}
   - component: {fileID: 6781213621474287315}
   - component: {fileID: -1464033414075526693}
-  - component: {fileID: 444283690186431639}
   m_Layer: 13
   m_Name: Kling_Scout_i_Prefab
   m_TagString: Untagged
@@ -141,7 +140,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4063519493246741022}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.1
@@ -160,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shieldsMaxHealth: 10
-  _hullHealth: 8
+  _shieldsMaxHealth: 20
+  _hullHealth: 10
   _layer: 13
   weaponPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
@@ -186,15 +185,3 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &444283690186431639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4063519493246741022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92880a9c7372952449a8ab2188b04b5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
