@@ -11,14 +11,7 @@ public class Billboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //if (!holdStaticBuillboard) // if we need to keep sprite from being turned by camera hit
-        //{
         theCam = Camera.main; // only find it once
-        //}
-        //else
-        //{
-            //transform.rotation = theCam.transform.rotation;
-        //}
     }
 
     // Update is called once per frame

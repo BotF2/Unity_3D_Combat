@@ -41,7 +41,7 @@ namespace Assets.Script
         //private GameObject FriendInstance_4;
         //private GameObject FriendInstance_5;
 
-        public void Combatant()
+        public void Combatant() // moved function to GameManager
         {
             
             //LoadAssets(Environment.CurrentDirectory + "\\Assets\\" + "Assets.txt");

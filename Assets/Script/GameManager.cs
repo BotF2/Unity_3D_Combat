@@ -16,47 +16,54 @@ namespace Assets.Script
     {
         public GameObject friend_0;  // prefab empty gameobjects
         public GameObject enemy_0;
-        //List<GameObject> emptyFriendMarkers;
-        //List<GameObject> emptyEnemyMarkers;
 
         public GameObject Fed_Cruiser_ii;
+        public GameObject Fed_Cruiser_iii;
+        public GameObject Fed_lt_Cruiser_iv;
+        public GameObject Fed_hvy_Cruiser_iv;
         public GameObject Fed_Destroyer_i;
         public GameObject Fed_Destroyer_ii;
+        public GameObject Fed_Destroyer_iii;
+        public GameObject Fed_Destroyer_iv;
         public GameObject Fed_Scout_i;
         public GameObject Fed_Scout_ii;
+        public GameObject Fed_Scout_iii;
+        public GameObject Fed_Scout_iv;
+
         public GameObject Kling_Cruiser_ii;
         public GameObject Kling_Destroyer_i;
         public GameObject Kling_Destroyer_ii;
         public GameObject Kling_Scout_i;
         public GameObject Kling_Scout_ii;
+
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
         public GameObject Rom_Cruiser_ii;
         public GameObject Rom_Scout_i;
         public GameObject Rom_Scout_ii;
+
         public GameObject Card_Destroyer_i;
         public GameObject Card_Destroyer_ii;
         public GameObject Card_Cruiser_ii;
         public GameObject Card_Scout_i;
         public GameObject Card_Scout_ii;
+
         public GameObject Dom_Destroyer_i;
         public GameObject Dom_Destroyer_ii;
         public GameObject Dom_Cruiser_ii;
         public GameObject Dom_Scout_i;
         public GameObject Dom_Scout_ii;
+
         public GameObject Borg_Destroyer_i;
         public GameObject Borg_Destroyer_ii;
         public GameObject Borg_Cube_ii;
         public GameObject Borg_Scout_i;
 
-        // ToDo created this in galactic game level from combat ships and stations in sector
+        // ToDo created this in galactic game level from combat ships and stations in the combat sector
         public string[] friendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
         public string[] enemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
         private int friendShipLayer;
         private int enemyShipLayer;
-
-        // The combat dictionary holds the prefab ships & stations
-        //public Dictionary<string, GameObject> prefabDitionary; // = new Dictionary<string, GameObject>();
 
         //public Text textScore;
         public Text textShips_0;
@@ -125,17 +132,17 @@ namespace Assets.Script
         {
             Instance = this;
             SwitchtState(State.MENU);
-            //CombatantManager manager = new CombatantManager();
-            //manager.Combatant();
 
-            Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>()
+            Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
+                { "Fed_Destroyer_i", Fed_Destroyer_i }, //{ "Fed_Scout_i", Fed_Scout_i },
                 { "Fed_Cruiser_ii", Fed_Cruiser_ii }, { "Fed_Destroyer_ii", Fed_Destroyer_ii }, { "Fed_Scout_ii", Fed_Scout_ii },
-                { "Kling_Cruiser_ii", Kling_Cruiser_ii }, { "Kling_Destroyer_ii", Kling_Destroyer_i }, { "Kling_Scout_ii", Kling_Scout_ii }
+                { "Fed_Cruiser_iii", Fed_Cruiser_iii }, //{ "Fed_Destroyer_iii", Fed_Destroyer_iii }, { "Fed_Scout_iii", Fed_Scout_iii },
+                { "Kling_Cruiser_ii", Kling_Cruiser_ii }, //{ "Kling_Destroyer_ii", Kling_Destroyer_ii },
+                                                         { "Kling_Scout_ii", Kling_Scout_ii }
             };
 
             // load friend grid
-            //friend_0.transform.localScale = new Vector3(transform.localScale.x + 400f, transform.localScale.y + 400f, transform.localScale.z + 400f);
             friendArray = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { friend_0 };
             for (int i = 0; i < 3; i++)

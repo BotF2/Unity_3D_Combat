@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6682610431045122130
+--- !u!1 &4674614209567743108
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4474280003415406335}
-  - component: {fileID: 2488698118550818027}
-  - component: {fileID: 5575263717779789077}
-  - component: {fileID: 2056857606508161718}
+  - component: {fileID: 8027775598120614971}
+  - component: {fileID: 2513640229949470172}
+  - component: {fileID: 799961711449447244}
+  - component: {fileID: 2267968480585424247}
   m_Layer: 10
   m_Name: Fed_Cruiser_ii
   m_TagString: Untagged
@@ -19,49 +19,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4474280003415406335
+--- !u!4 &8027775598120614971
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682610431045122130}
+  m_GameObject: {fileID: 4674614209567743108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 570, y: 496.52203, z: -1480.2859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3773475947650622821}
+  - {fileID: 6936570285776200886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2488698118550818027
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682610431045122130}
-  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.1
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.1}
---- !u!114 &5575263717779789077
+--- !u!114 &2513640229949470172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682610431045122130}
+  m_GameObject: {fileID: 4674614209567743108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shieldsMaxHealth: 44
-  _hullHealth: 22
+  _shieldsMaxHealth: 55
+  _hullHealth: 33
   _layer: 10
   weaponPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
@@ -70,13 +56,13 @@ MonoBehaviour:
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
---- !u!54 &2056857606508161718
+--- !u!54 &799961711449447244
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682610431045122130}
+  m_GameObject: {fileID: 4674614209567743108}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -86,7 +72,21 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &8363804114177824937
+--- !u!136 &2267968480585424247
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674614209567743108}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.058502197
+  m_Height: 0.31628418
+  m_Direction: 2
+  m_Center: {x: -0.0007019043, y: 0, z: -0.15130615}
+--- !u!1 &4905910853404244440
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,10 +94,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3773475947650622821}
-  - component: {fileID: 5897945777929305261}
-  - component: {fileID: 8197760163260158271}
-  - component: {fileID: 5228396597465725545}
+  - component: {fileID: 6936570285776200886}
+  - component: {fileID: 980660051987874573}
+  - component: {fileID: 7041071941935643892}
   m_Layer: 10
   m_Name: Fed_Cruiser_ii
   m_TagString: Untagged
@@ -105,35 +104,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3773475947650622821
+--- !u!4 &6936570285776200886
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363804114177824937}
+  m_GameObject: {fileID: 4905910853404244440}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4474280003415406335}
+  m_Father: {fileID: 8027775598120614971}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5897945777929305261
+--- !u!33 &980660051987874573
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363804114177824937}
+  m_GameObject: {fileID: 4905910853404244440}
   m_Mesh: {fileID: -8545447256379345787, guid: a56de62bfe062be4c9947cd9c2fca1af, type: 3}
---- !u!23 &8197760163260158271
+--- !u!23 &7041071941935643892
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363804114177824937}
+  m_GameObject: {fileID: 4905910853404244440}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -168,17 +167,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5228396597465725545
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8363804114177824937}
-  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.14416514
-  m_Height: 0.068136185
-  m_Direction: 2
-  m_Center: {x: -0.000000013038516, y: -0.00059005804, z: -0.14520647}
