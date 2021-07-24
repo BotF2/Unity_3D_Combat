@@ -11,7 +11,7 @@ namespace Assets.Script
 {
     public enum Civilization
     {
-        Fed,
+        Fed =10,
         Terran,
         Rom,
         Kling,

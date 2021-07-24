@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8608985723807727272}
   - component: {fileID: 1660705520815671727}
   m_Layer: 10
-  m_Name: Fed_Destroyer_i_Prefab
+  m_Name: Fed_Destroyer_i
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

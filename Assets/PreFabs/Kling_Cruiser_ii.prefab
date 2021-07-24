@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2075950706946093729}
   - component: {fileID: 2075950706946093730}
   m_Layer: 0
-  m_Name: Kling_Cruiser_i
+  m_Name: Kling_Cruiser_ii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: -2079968044065577330}
   - component: {fileID: 7354102504491571407}
   m_Layer: 13
-  m_Name: Kling_Cruiser_i_Prefab
+  m_Name: Kling_Cruiser_ii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

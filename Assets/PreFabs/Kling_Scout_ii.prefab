@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3758454944591940420
+--- !u!1 &4063519493144682616
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4094563371912639184}
-  - component: {fileID: 3225221374221880247}
-  - component: {fileID: 5980759201330524019}
-  - component: {fileID: 6685213992398961960}
-  m_Layer: 10
-  m_Name: Fed_Scout_ii
+  - component: {fileID: 4063519493144682631}
+  - component: {fileID: 4063519493144682627}
+  - component: {fileID: 4063519493144682628}
+  - component: {fileID: 4063519493144682630}
+  m_Layer: 0
+  m_Name: Kling_Scout_ii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4094563371912639184
+--- !u!4 &4063519493144682631
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3758454944591940420}
+  m_GameObject: {fileID: 4063519493144682616}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1612326, y: 1.1612326, z: 1.1612326}
   m_Children: []
-  m_Father: {fileID: 7308229084372261809}
+  m_Father: {fileID: 4063519493246741021}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3225221374221880247
+--- !u!33 &4063519493144682627
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3758454944591940420}
-  m_Mesh: {fileID: -402102917105491364, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
---- !u!23 &5980759201330524019
+  m_GameObject: {fileID: 4063519493144682616}
+  m_Mesh: {fileID: 2959467708922500008, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
+--- !u!23 &4063519493144682628
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3758454944591940420}
+  m_GameObject: {fileID: 4063519493144682616}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,14 +60,10 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2813467912831258332, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: -8274133419916619345, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: 880774007180850119, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: -3522955778539423533, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: 4874126678125670354, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: -6629797300637803691, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: -3846018093981099296, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
-  - {fileID: -6087771358165109452, guid: 2049c564bcdba0a4a95f51fce66a02f3, type: 3}
+  - {fileID: -6478536213147159724, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
+  - {fileID: -3846018093981099296, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
+  - {fileID: 4874126678125670354, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
+  - {fileID: -876546973899608171, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,21 +85,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6685213992398961960
+--- !u!136 &4063519493144682630
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3758454944591940420}
+  m_GameObject: {fileID: 4063519493144682616}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.087353
-  m_Height: 0.04964
+  m_Radius: 0.04696837
+  m_Height: 0.039994404
   m_Direction: 2
-  m_Center: {x: 0.0000000037252903, y: 0.0015967581, z: -0.08784168}
---- !u!1 &5693726828458614973
+  m_Center: {x: 0.0000000037252903, y: 0.00055626314, z: -0.041422393}
+--- !u!1 &4063519493246741022
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,39 +107,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7308229084372261809}
-  - component: {fileID: 4699091732221604187}
-  - component: {fileID: 2251536722479063741}
-  - component: {fileID: 4280498487350857071}
-  m_Layer: 10
-  m_Name: Fed_Scout_ii_Prefab
+  - component: {fileID: 4063519493246741021}
+  - component: {fileID: 5628217723370392932}
+  - component: {fileID: 6781213621474287315}
+  - component: {fileID: -1464033414075526693}
+  m_Layer: 13
+  m_Name: Kling_Scout_ii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7308229084372261809
+--- !u!4 &4063519493246741021
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693726828458614973}
+  m_GameObject: {fileID: 4063519493246741022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 570, y: 496.52203, z: -1480.2859}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4094563371912639184}
+  - {fileID: 4063519493144682631}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4699091732221604187
+--- !u!136 &5628217723370392932
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693726828458614973}
+  m_GameObject: {fileID: 4063519493246741022}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -151,35 +147,35 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: -0.1}
---- !u!114 &2251536722479063741
+--- !u!114 &6781213621474287315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693726828458614973}
+  m_GameObject: {fileID: 4063519493246741022}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shieldsMaxHealth: 22
-  _hullHealth: 11
-  _layer: 10
-  weaponPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
+  _shieldsMaxHealth: 20
+  _hullHealth: 10
+  _layer: 13
+  weaponPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
---- !u!54 &4280498487350857071
+--- !u!54 &-1464033414075526693
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5693726828458614973}
+  m_GameObject: {fileID: 4063519493246741022}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
