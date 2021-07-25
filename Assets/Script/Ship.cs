@@ -9,22 +9,24 @@ using System.Linq;
 
 namespace Assets.Script
 {
-    public enum Civilization
-    {
-        Fed,
-        Terran,
-        Rom,
-        Kling,
-        Card,
-        Dom,
-        Borg
-    }
+    //public enum Civilization
+    //{
+    //    Fed,
+    //    Terran,
+    //    Rom,
+    //    Kling,
+    //    Card,
+    //    Dom,
+    //    Borg
+    //}
     public class Ship : MonoBehaviour
     {
         public int _shieldsMaxHealth; // hardcoded in prefabs
         public int _hullHealth; // hardcoded in prefabs
         public int _layer;
         public GameObject weaponPrefab; // set to prefab in unity on parent of ship
+        //public int torpeodDamaga;
+        //public int beamDamaga;
         private int _weaponDamage = 0;
         public GameObject shieldPrefab;
         public GameObject explosionPrefab;
@@ -41,8 +43,8 @@ namespace Assets.Script
         private char separator = ';';
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
-        Material _orgMaterial;
-        Renderer _renderer;
+        //Material _orgMaterial;
+        //Renderer _renderer;
         private Dictionary<string, int> _weaponDictionary = new Dictionary<string, int>();
 
         private void Awake()
@@ -59,8 +61,8 @@ namespace Assets.Script
             shieldsAreUp = true;
             //_shields.SetActive(true);
 
-            _renderer = GetComponent<Renderer>();
-            _orgMaterial = _renderer.sharedMaterial;
+            //_renderer = GetComponent<Renderer>();
+            //_orgMaterial = _renderer.sharedMaterial;
 
           //  CreateDesigns();
             //string _test = shipDesign[0].A_INDEX; // example to get out a value
@@ -103,6 +105,7 @@ namespace Assets.Script
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
             Vector3 positionOf = contact.point;
             string weaponName = collision.gameObject.name;
+            string _tag = collision.gameObject.tag;
             if (_weaponDictionary.TryGetValue(weaponName, out int _result))
             {
                 _weaponDamage = _result;//_weaponDictionary[weaponName];
@@ -237,10 +240,10 @@ namespace Assets.Script
         //    //_renderer.sharedMaterial = _hitMaterial;
         //    //Invoke("RestoreMaterial", 0.05f);
         //}
-        private void RestoreMaterial()
-        {
-            _renderer.sharedMaterial = _orgMaterial;
-        }
+        //private void RestoreMaterial()
+        //{
+        //    _renderer.sharedMaterial = _orgMaterial;
+        //}
         public class Design
         {
             public string A_INDEX;

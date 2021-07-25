@@ -16,6 +16,8 @@ namespace Assets.Script
     {
         public GameObject friend_0;  // prefab empty gameobjects
         public GameObject enemy_0;
+        public GameObject Fed_YO_Z0;
+        public GameObject Kling_Y0_Z0;
 
         public GameObject Fed_Cruiser_ii;
         public GameObject Fed_Cruiser_iii;
@@ -149,48 +151,51 @@ namespace Assets.Script
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 3; j < 6; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 6; j < 9; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 9; j < 12; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 12; j < 15; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 15; j < 18; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 18; j < 21; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-300, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
-                emptyFriendMarkers.RemoveAt(0);
+              
+                //emptyFriendMarkers.RemoveAt(0);
+                //emptyFriendMarkers.RemoveAt(0);
             }
+            emptyFriendMarkers.RemoveAt(0);
 
             // load enemy grid
             //enemy_0.transform.localScale = new Vector3(transform.localScale.x + 400f, transform.localScale.y + 400f, transform.localScale.z + 400f);
@@ -200,48 +205,48 @@ namespace Assets.Script
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 3; j < 6; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 6; j < 9; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 9; j < 12; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 12; j < 15; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 15; j < 18; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 18; j < 21; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(500, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                emptyEnemyMarkers.RemoveAt(0);
+                }              
             }
+            emptyEnemyMarkers.RemoveAt(0);
 
             // Get ship layers
             string readFriendName = friendArray[0].ToUpper();
@@ -256,20 +261,22 @@ namespace Assets.Script
             for (int i = 0; i < friendArray.Count(); i++)
             {
                 GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
-                _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
                 _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * 400f, transform.localScale.y * 400f, transform.localScale.z * 400f);
+                _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
+                emptyFriendMarkers[i].transform.SetParent(Fed_YO_Z0.transform, true);        
                 Ship.SetLayerRecursively(emptyFriendMarkers[i], friendShipLayer);
+
             }
 
             for (int i = 0; i < enemyArray.Count(); i++)
             {
                 GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
-                _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
                 _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * 400f, transform.localScale.y * 400f, transform.localScale.z * 400f);
+                _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
+                emptyEnemyMarkers[i].transform.SetParent(Kling_Y0_Z0.transform, true);
                 Ship.SetLayerRecursively(emptyEnemyMarkers[i], enemyShipLayer);
             }
         }
-
 
         public void SwitchtState(State newState, float delay = 0)
         {
@@ -431,8 +438,13 @@ namespace Assets.Script
                         break;
                 }
          }
-        
-      
-
+        // will give the child the same location, rotation and scale as the parent
+        //public static void SetParent(this Transform child, Transform parent)
+        //{
+        //    child.parent = parent;
+        //    child.localPosition = Vector3.zero;
+        //    child.localRotation = Quaternion.identity;
+        //    child.localScale = Vector3.one;
+        //}
     }
 }
