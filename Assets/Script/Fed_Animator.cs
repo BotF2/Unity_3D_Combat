@@ -10,7 +10,6 @@ namespace Assets.Script
         // must name class and file the same
         public Animator anim;
         public bool _doingInit_0;
-        public AudioClip _warpClip;
         public AudioSource warpAudioSource_0;
 
         private void Awake()
@@ -37,6 +36,12 @@ namespace Assets.Script
         {
             warpAudioSource_0.volume = 0.1f;
             warpAudioSource_0.Play();
+            //warpAudioSource_0.volume = 0.1f;
+            //warpAudioSource_0.Play();
+            //this.gameObject.AddComponent<AudioSource>().playOnAwake = false;
+            //this.gameObject.AddComponent<AudioSource>().clip = _warpClip;
+            ////theSource = explo.GetComponent<AudioSource>();
+            //warpAudioSource_0.PlayOneShot(_warpClip);
         }
     }
 }

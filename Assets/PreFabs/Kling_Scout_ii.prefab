@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4848819407762554506
+--- !u!1 &960271130701890872
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2287393570610082515}
-  - component: {fileID: 4998716191394752363}
-  - component: {fileID: 2694048407484788693}
-  - component: {fileID: 160733115898502777}
+  - component: {fileID: 702854180133880748}
+  - component: {fileID: 3929673578525095904}
+  - component: {fileID: 2461289292751682648}
+  - component: {fileID: 4724937402625831085}
+  - component: {fileID: 7504158529159104818}
   m_Layer: 13
   m_Name: Kling_Scout_ii
   m_TagString: Untagged
@@ -19,33 +20,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2287393570610082515
+--- !u!4 &702854180133880748
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848819407762554506}
+  m_GameObject: {fileID: 960271130701890872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 570, y: 496.52203, z: -1480.2859}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4532587404357835721}
+  - {fileID: 6665026997039616199}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4998716191394752363
+--- !u!114 &3929673578525095904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848819407762554506}
+  m_GameObject: {fileID: 960271130701890872}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   _shieldsMaxHealth: 20
   _hullHealth: 10
   _layer: 13
@@ -56,26 +58,13 @@ MonoBehaviour:
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
---- !u!65 &2694048407484788693
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848819407762554506}
-  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.10803223, y: 0.053497314, z: 0.095458984}
-  m_Center: {x: -0.0028686523, y: 0.001083374, z: -0.049072266}
---- !u!54 &160733115898502777
+--- !u!54 &2461289292751682648
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4848819407762554506}
+  m_GameObject: {fileID: 960271130701890872}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -85,7 +74,90 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &7560627949423611136
+--- !u!136 &4724937402625831085
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960271130701890872}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.050354004
+  m_Height: 0.10210905
+  m_Direction: 2
+  m_Center: {x: 0.00012207031, y: -0.005220413, z: -0.054516222}
+--- !u!114 &7504158529159104818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960271130701890872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipScale: 700
+  friend_0: {fileID: 0}
+  enemy_0: {fileID: 0}
+  Friend_YO_Z0: {fileID: 0}
+  Friend_YO_Z1: {fileID: 0}
+  Friend_YO_Z2: {fileID: 0}
+  Friend_Y1_Z0: {fileID: 0}
+  Friend_Y1_Z1: {fileID: 0}
+  Friend_Y1_Z2: {fileID: 0}
+  Enemy_Y0_Z0: {fileID: 0}
+  Enemy_Y0_Z1: {fileID: 0}
+  Enemy_Y0_Z2: {fileID: 0}
+  Enemy_Y1_Z0: {fileID: 0}
+  Enemy_Y1_Z1: {fileID: 0}
+  Enemy_Y1_Z2: {fileID: 0}
+  Fed_Cruiser_ii: {fileID: 0}
+  Fed_Cruiser_iii: {fileID: 0}
+  Fed_lt_Cruiser_iv: {fileID: 0}
+  Fed_hvy_Cruiser_iv: {fileID: 0}
+  Fed_Destroyer_i: {fileID: 0}
+  Fed_Destroyer_ii: {fileID: 0}
+  Fed_Destroyer_iii: {fileID: 0}
+  Fed_Destroyer_iv: {fileID: 0}
+  Fed_Scout_i: {fileID: 0}
+  Fed_Scout_ii: {fileID: 0}
+  Fed_Scout_iii: {fileID: 0}
+  Fed_Scout_iv: {fileID: 0}
+  Kling_Cruiser_ii: {fileID: 0}
+  Kling_Destroyer_i: {fileID: 0}
+  Kling_Destroyer_ii: {fileID: 0}
+  Kling_Scout_i: {fileID: 0}
+  Kling_Scout_ii: {fileID: 0}
+  Rom_Destroyer_i: {fileID: 0}
+  Rom_Destroyer_ii: {fileID: 0}
+  Rom_Cruiser_ii: {fileID: 0}
+  Rom_Scout_i: {fileID: 0}
+  Rom_Scout_ii: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 0}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  friendArray: []
+  enemyArray: []
+  panelMenu: {fileID: 0}
+  panelPlay: {fileID: 0}
+  panelCompleted: {fileID: 0}
+  panelGameOver: {fileID: 0}
+--- !u!1 &5565552219521267906
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,45 +165,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4532587404357835721}
-  - component: {fileID: 5454229430378673279}
-  - component: {fileID: 6934842278683458386}
+  - component: {fileID: 6665026997039616199}
+  - component: {fileID: 1979930460630625862}
+  - component: {fileID: 2521227194133260086}
   m_Layer: 0
-  m_Name: Kling_Scout_ii
+  m_Name: KLING_SCOUT_II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4532587404357835721
+--- !u!4 &6665026997039616199
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7560627949423611136}
+  m_GameObject: {fileID: 5565552219521267906}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1.1612326, y: 1.1612326, z: 1.1612326}
   m_Children: []
-  m_Father: {fileID: 2287393570610082515}
+  m_Father: {fileID: 702854180133880748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5454229430378673279
+--- !u!33 &1979930460630625862
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7560627949423611136}
+  m_GameObject: {fileID: 5565552219521267906}
   m_Mesh: {fileID: 2959467708922500008, guid: e241096c68b96a34fba25219f668f4d4, type: 3}
---- !u!23 &6934842278683458386
+--- !u!23 &2521227194133260086
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7560627949423611136}
+  m_GameObject: {fileID: 5565552219521267906}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

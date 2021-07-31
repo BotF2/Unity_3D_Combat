@@ -19,15 +19,20 @@ namespace Assets.Script
     //    Dom,
     //    Borg
     //}
+    //[RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        public int _shieldsMaxHealth; // hardcoded in prefabs
-        public int _hullHealth; // hardcoded in prefabs
+        //public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public int _shieldsMaxHealth; // set in ShipData.txt
+        public int _hullHealth; 
+        //private int _torpedoWarhead;
+        //private int _beamPower;
         public int _layer;
         public GameObject weaponPrefab; // set to prefab in unity on parent of ship
         //public int torpeodDamaga;
         //public int beamDamaga;
-        private int _weaponDamage = 0;
+        private int _torpedoDamage = 0;
+        private int _beamDamage = 0;
         public GameObject shieldPrefab;
         public GameObject explosionPrefab;
         private AudioSource theSource;
@@ -40,52 +45,53 @@ namespace Assets.Script
         private bool shieldsAreUp;
         public Image _hullHealthImage;
         public GameObject _warpCoreBreach;   
-        private char separator = ';';
+    
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
         //Material _orgMaterial;
         //Renderer _renderer;
-        private Dictionary<string, int> _weaponDictionary = new Dictionary<string, int>();
 
         private void Awake()
         {
-            //LoadWeapons("WeaponData.txt");
+
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            LoadWeapons(Environment.CurrentDirectory + "\\Assets\\" + "WeaponData.txt");
+            //var whatever = StaticStuff._shipsData;
+            //for (int i = 0; i < whatever.Count; i++)
+            //{
+            //    //if (whatever.ToString() == gameObject.name)
+            //    //{
+            //    //    _shieldsMaxHealth = whatever.;
+            //    //}
+            //}
+            ////var positionINT = StaticStuff._shipsData.FindIndex(item => item == gameObject.name);
+            if (StaticStuff._shipDataDictionary.TryGetValue(gameObject.name, out int[]_result))
+            {
+                _shieldsMaxHealth = _result[0];
+                _hullHealth = _result[1];
+                //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
+                //_beamPower = _result[3];
+            }
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
             //_shields.SetActive(true);
-
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
 
-          //  CreateDesigns();
-            //string _test = shipDesign[0].A_INDEX; // example to get out a value
-            //gameObject.layer = _layer;
-            //foreach (var design in shipDesign)
-            //{
-            //    //if (_test == design.Key)
-            //    //{
-            //    //    _hullHealth = design.Hull;
-            //    //    _shieldHealth = design.Shield;
-            //    //}
-            //}
-            //_shieldHealth = 1f;
-            //_hullHealth = 1f;
-            //_hullHealthImage.fillAmount = _hullHealth;
-            //shield = GetComponent<Shields>();
         }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-                GameObject _weapon = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            {               
+                 GameObject _weapon = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 _weapon.layer = gameObject.layer + 10;
+                _weapon.tag = gameObject.name.ToUpper();
+                
+                //_weapon.tag = gameObject.name; // THIS DOES NOT WORK, would need all ship names available on list of tags in Unity
                 _weapon.AddComponent<AudioSource>().playOnAwake = false;
                 _weapon.AddComponent<AudioSource>().clip = clipTorpedoFire;
                 theSource = _weapon.GetComponent<AudioSource>();
@@ -104,11 +110,12 @@ namespace Assets.Script
             ContactPoint contact = collision.contacts[0];
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
             Vector3 positionOf = contact.point;
-            string weaponName = collision.gameObject.name;
-            string _tag = collision.gameObject.tag;
-            if (_weaponDictionary.TryGetValue(weaponName, out int _result))
+            string weaponName = collision.gameObject.tag;
+
+            if (StaticStuff._shipDataDictionary.TryGetValue(weaponName, out int[] _result))
             {
-                _weaponDamage = _result;//_weaponDictionary[weaponName];
+                _torpedoDamage = _result[2];
+                _beamDamage = _result[3]; // ToDo, update to use beam damage also
             }
             switch (shieldsAreUp)
             {
@@ -117,10 +124,10 @@ namespace Assets.Script
                     positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
                     _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
                     Destroy(_shields, 2.1f);
-                    ShieldsTakeDagame(_weaponDamage);
+                    ShieldsTakeDagame(_torpedoDamage);
                     break;
                 case false:
-                    HullTakeDamage(_weaponDamage);
+                    HullTakeDamage(_torpedoDamage);
                     break;
                 default:
                     break;
@@ -159,109 +166,6 @@ namespace Assets.Script
             {
                 Destroy(transform.gameObject);
                 Debug.Log("Ship destroid");
-            }
-        }
-
-        public void LoadWeapons(string filename) // List<sting>
-        {
-            
-            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
-
-            var _weapons = new List<string>();
-            using (var reader = new StreamReader(file))
-            {
-                //Note1("string", int, "---------------  reading __to_PLZ_DB.txt (from file)");
-                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-                //Console.WriteLine(infotext);
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        continue;
-                    //Console.WriteLine("__to_PLZ_DB.txt (from file): {0}", line);
-
-                    _weapons.Add(line.Trim());
-
-                    if (line.Length > 0)
-                    {
-                        var coll = line.Split(separator);
-
-                        _ = int.TryParse(coll[1], out int currentValue);
-                        _weaponDictionary.Add(coll[0].ToString(), currentValue);
-                    }
-                }
-                reader.Close();
-            }
-           // return _weapons;
-        }
-
-        //public void OnCollisionEnter(Collision collision)
-        //{
-        //    string nameOfWeapon = collision.gameObject.name;
-        //    if (_weaponDictionary.ContainsKey(nameOfWeapon))
-        //    {
-        //        _weaponDictionary.TryGetValue(nameOfWeapon, out int damage);
-        //        if (damage > 0)
-        //        {                       
-        //            if ( _shieldHealth > 0)  //_shield != null &&
-        //            {
-        //                //_shield.shieldsTakeDagame(damage);
-        //                _shieldHealth -= damage;
-        //                if (_shieldHealth > 0 && _shieldHealth < damage)
-        //                {
-        //                    _hullHealth -= (damage - _shieldHealth);
-        //                }
-        //                Debug.Log("sheilds hit damage" + damage);
-        //            }
-        //            else if (_hullHealth > 0)
-        //            {
-        //                _hullHealth -= damage;
-        //                Debug.Log("hull hit damage" + damage);
-        //            }
-        //            else
-        //            {
-        //                //GameManager.Instance.Score += _points;
-        //                Destroy(gameObject);
-        //                Debug.Log("good by");
-        //            }
-        //        }
-        //    }
-        //    //ToDo - code regeneration of sheilds over time in update
-        //    string nameOfShip = collision.gameObject.name;
-        //    if (_shipSizeDictionary.ContainsKey(nameOfShip))
-        //    {
-        //        _shipSizeDictionary.TryGetValue(nameOfShip, out Vector3 size);
-        //        if (size!= null)
-        //        {
-        //            sizeOfShip = size;
-        //        }
-        //    }
-        //    //_renderer.sharedMaterial = _hitMaterial;
-        //    //Invoke("RestoreMaterial", 0.05f);
-        //}
-        //private void RestoreMaterial()
-        //{
-        //    _renderer.sharedMaterial = _orgMaterial;
-        //}
-        public class Design
-        {
-            public string A_INDEX;
-            public string Key;
-            public int Hull;
-            public int Shield;
-
-            public Design(
-                    string a_index
-                    , string key
-                    , int hull
-                    , int shield
-                    )
-            {
-                A_INDEX = a_index;
-                Key = key;
-                Hull = hull;
-                Shield = shield;
             }
         }
  

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2513640229949470172}
   - component: {fileID: 799961711449447244}
   - component: {fileID: 2267968480585424247}
+  - component: {fileID: 1844671466727725497}
   m_Layer: 10
   m_Name: Fed_Cruiser_ii
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4674614209567743108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 570, y: 496.52203, z: -1480.2859}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6936570285776200886}
@@ -46,12 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   _shieldsMaxHealth: 55
   _hullHealth: 33
   _layer: 10
   weaponPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
-  torpeodDamaga: 20
-  beamDamaga: 20
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
@@ -85,9 +85,78 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.058502197
-  m_Height: 0.31628418
+  m_Height: 0.31062102
   m_Direction: 2
-  m_Center: {x: -0.0007019043, y: 0, z: -0.15130615}
+  m_Center: {x: -0.0007019043, y: 0, z: -0.15413773}
+--- !u!114 &1844671466727725497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674614209567743108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipScale: 700
+  friend_0: {fileID: 0}
+  enemy_0: {fileID: 0}
+  Friend_YO_Z0: {fileID: 0}
+  Friend_YO_Z1: {fileID: 0}
+  Friend_YO_Z2: {fileID: 0}
+  Friend_Y1_Z0: {fileID: 0}
+  Friend_Y1_Z1: {fileID: 0}
+  Friend_Y1_Z2: {fileID: 0}
+  Enemy_Y0_Z0: {fileID: 0}
+  Enemy_Y0_Z1: {fileID: 0}
+  Enemy_Y0_Z2: {fileID: 0}
+  Enemy_Y1_Z0: {fileID: 0}
+  Enemy_Y1_Z1: {fileID: 0}
+  Enemy_Y1_Z2: {fileID: 0}
+  Fed_Cruiser_ii: {fileID: 0}
+  Fed_Cruiser_iii: {fileID: 0}
+  Fed_lt_Cruiser_iv: {fileID: 0}
+  Fed_hvy_Cruiser_iv: {fileID: 0}
+  Fed_Destroyer_i: {fileID: 0}
+  Fed_Destroyer_ii: {fileID: 0}
+  Fed_Destroyer_iii: {fileID: 0}
+  Fed_Destroyer_iv: {fileID: 0}
+  Fed_Scout_i: {fileID: 0}
+  Fed_Scout_ii: {fileID: 0}
+  Fed_Scout_iii: {fileID: 0}
+  Fed_Scout_iv: {fileID: 0}
+  Kling_Cruiser_ii: {fileID: 0}
+  Kling_Destroyer_i: {fileID: 0}
+  Kling_Destroyer_ii: {fileID: 0}
+  Kling_Scout_i: {fileID: 0}
+  Kling_Scout_ii: {fileID: 0}
+  Rom_Destroyer_i: {fileID: 0}
+  Rom_Destroyer_ii: {fileID: 0}
+  Rom_Cruiser_ii: {fileID: 0}
+  Rom_Scout_i: {fileID: 0}
+  Rom_Scout_ii: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 0}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  friendArray: []
+  enemyArray: []
+  panelMenu: {fileID: 0}
+  panelPlay: {fileID: 0}
+  panelCompleted: {fileID: 0}
+  panelGameOver: {fileID: 0}
 --- !u!1 &4905910853404244440
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +169,7 @@ GameObject:
   - component: {fileID: 980660051987874573}
   - component: {fileID: 7041071941935643892}
   m_Layer: 10
-  m_Name: Fed_Cruiser_ii
+  m_Name: FED_CRUISER_II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

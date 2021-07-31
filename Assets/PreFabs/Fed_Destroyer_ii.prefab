@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3908263661917887417
+--- !u!1 &7286169461284762676
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1637945417688807349}
-  - component: {fileID: 1095519511513718909}
-  - component: {fileID: 5731147834232937100}
-  - component: {fileID: 3541586268547348643}
-  m_Layer: 13
+  - component: {fileID: 477671747297132092}
+  - component: {fileID: 7535453606586424019}
+  - component: {fileID: 8941313324855050232}
+  - component: {fileID: 8893205944190786956}
+  - component: {fileID: 7158849504676131755}
+  m_Layer: 10
   m_Name: Fed_Destroyer_ii
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1637945417688807349
+--- !u!4 &477671747297132092
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908263661917887417}
+  m_GameObject: {fileID: 7286169461284762676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.257, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5671731895750925326}
+  - {fileID: 4972270455013258931}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1095519511513718909
+--- !u!114 &7535453606586424019
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908263661917887417}
+  m_GameObject: {fileID: 7286169461284762676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   _shieldsMaxHealth: 44
   _hullHealth: 22
   _layer: 10
@@ -56,26 +58,13 @@ MonoBehaviour:
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   _hullHealthImage: {fileID: 0}
   _warpCoreBreach: {fileID: 0}
---- !u!65 &5731147834232937100
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908263661917887417}
-  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.15537332, y: 0.064597145, z: 0.23528357}
-  m_Center: {x: -0.0018286481, y: -0.0020861086, z: -0.1227657}
---- !u!54 &3541586268547348643
+--- !u!54 &8941313324855050232
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908263661917887417}
+  m_GameObject: {fileID: 7286169461284762676}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -85,7 +74,90 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &8115877309585520523
+--- !u!136 &8893205944190786956
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286169461284762676}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.076703236
+  m_Height: 0.25935236
+  m_Direction: 2
+  m_Center: {x: 0.0011871308, y: 0, z: -0.13119929}
+--- !u!114 &7158849504676131755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286169461284762676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipScale: 700
+  friend_0: {fileID: 0}
+  enemy_0: {fileID: 0}
+  Friend_YO_Z0: {fileID: 0}
+  Friend_YO_Z1: {fileID: 0}
+  Friend_YO_Z2: {fileID: 0}
+  Friend_Y1_Z0: {fileID: 0}
+  Friend_Y1_Z1: {fileID: 0}
+  Friend_Y1_Z2: {fileID: 0}
+  Enemy_Y0_Z0: {fileID: 0}
+  Enemy_Y0_Z1: {fileID: 0}
+  Enemy_Y0_Z2: {fileID: 0}
+  Enemy_Y1_Z0: {fileID: 0}
+  Enemy_Y1_Z1: {fileID: 0}
+  Enemy_Y1_Z2: {fileID: 0}
+  Fed_Cruiser_ii: {fileID: 0}
+  Fed_Cruiser_iii: {fileID: 0}
+  Fed_lt_Cruiser_iv: {fileID: 0}
+  Fed_hvy_Cruiser_iv: {fileID: 0}
+  Fed_Destroyer_i: {fileID: 0}
+  Fed_Destroyer_ii: {fileID: 0}
+  Fed_Destroyer_iii: {fileID: 0}
+  Fed_Destroyer_iv: {fileID: 0}
+  Fed_Scout_i: {fileID: 0}
+  Fed_Scout_ii: {fileID: 0}
+  Fed_Scout_iii: {fileID: 0}
+  Fed_Scout_iv: {fileID: 0}
+  Kling_Cruiser_ii: {fileID: 0}
+  Kling_Destroyer_i: {fileID: 0}
+  Kling_Destroyer_ii: {fileID: 0}
+  Kling_Scout_i: {fileID: 0}
+  Kling_Scout_ii: {fileID: 0}
+  Rom_Destroyer_i: {fileID: 0}
+  Rom_Destroyer_ii: {fileID: 0}
+  Rom_Cruiser_ii: {fileID: 0}
+  Rom_Scout_i: {fileID: 0}
+  Rom_Scout_ii: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 0}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  friendArray: []
+  enemyArray: []
+  panelMenu: {fileID: 0}
+  panelPlay: {fileID: 0}
+  panelCompleted: {fileID: 0}
+  panelGameOver: {fileID: 0}
+--- !u!1 &8271997084124902491
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,45 +165,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5671731895750925326}
-  - component: {fileID: 1206138020488277648}
-  - component: {fileID: 6616859811285869928}
-  m_Layer: 0
-  m_Name: Fed_Destroyer_ii
+  - component: {fileID: 4972270455013258931}
+  - component: {fileID: 7254905171150982962}
+  - component: {fileID: 7545827623577194548}
+  m_Layer: 10
+  m_Name: FED_DESTROYER_II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5671731895750925326
+--- !u!4 &4972270455013258931
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8115877309585520523}
+  m_GameObject: {fileID: 8271997084124902491}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1637945417688807349}
+  m_Father: {fileID: 477671747297132092}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1206138020488277648
+--- !u!33 &7254905171150982962
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8115877309585520523}
+  m_GameObject: {fileID: 8271997084124902491}
   m_Mesh: {fileID: 2352360522602766994, guid: 193b92f32a97d4f4ba03817a12001238, type: 3}
---- !u!23 &6616859811285869928
+--- !u!23 &7545827623577194548
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8115877309585520523}
+  m_GameObject: {fileID: 8271997084124902491}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

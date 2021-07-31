@@ -163,6 +163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  WeaponNamedByShip: {fileID: 0}
   _shieldsMaxHealth: 22
   _hullHealth: 11
   _layer: 10

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,14 +13,59 @@ namespace Assets.Script
         friend,
         enemy
     }
+    //public class ShipData
+    //{
+    //    public string A_INDEX;
+    //    public string Key;
+    //    public int Hull;
+    //    public int Shield;
+    //    public int TorpedoDamage;
+    //    public int BeamDamage;
+
+    //    public ShipData(
+    //            string a_index
+    //            , string key
+    //            , int hull
+    //            , int shield
+    //            , int torpedoDamage
+    //            , int beamDamaga
+    //            )
+    //    {
+    //        A_INDEX = a_index;
+    //        Key = key;
+    //        Hull = hull;
+    //        Shield = shield;
+    //        TorpedoDamage = torpedoDamage;
+    //        BeamDamage = beamDamaga;
+    //    }
+    //}
     public class GameManager : MonoBehaviour
     {
-        public GameObject friend_0;  // prefab empty gameobjects
-        public GameObject enemy_0;
-        public GameObject Fed_YO_Z0;
-        public GameObject Kling_Y0_Z0;
+        public float shipScale = 700f;
+        private char separator = ';';
+        //public List<ShipData> shipDataList = new List<ShipData>();
+        public Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>();
 
-        public GameObject Fed_Cruiser_ii;
+        public GameObject friend_0;  // prefab empty gameobjects for the grid
+        public GameObject enemy_0;
+
+        #region the grid of empties
+        public GameObject Friend_YO_Z0; // warp animation empties
+        public GameObject Friend_YO_Z1;
+        public GameObject Friend_YO_Z2;
+        public GameObject Friend_Y1_Z0;
+        public GameObject Friend_Y1_Z1;
+        public GameObject Friend_Y1_Z2;
+        public GameObject Enemy_Y0_Z0;
+        public GameObject Enemy_Y0_Z1;
+        public GameObject Enemy_Y0_Z2;
+        public GameObject Enemy_Y1_Z0;
+        public GameObject Enemy_Y1_Z1;
+        public GameObject Enemy_Y1_Z2;
+        #endregion
+
+        #region prefab ships and stations
+        public GameObject Fed_Cruiser_ii; // prefab ships
         public GameObject Fed_Cruiser_iii;
         public GameObject Fed_lt_Cruiser_iv;
         public GameObject Fed_hvy_Cruiser_iv;
@@ -60,23 +106,23 @@ namespace Assets.Script
         public GameObject Borg_Destroyer_ii;
         public GameObject Borg_Cube_ii;
         public GameObject Borg_Scout_i;
+        #endregion
 
         // ToDo created this in galactic game level from combat ships and stations in the combat sector
         public string[] friendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
         public string[] enemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+
         private int friendShipLayer;
         private int enemyShipLayer;
-
-        //public Text textScore;
-        public Text textShips_0;
-        public Text textShips_1;
 
         public GameObject panelMenu;
         public GameObject panelPlay;
         public GameObject panelCompleted;
         public GameObject panelGameOver;
         //public GameObject[] levels;
-        public static GameManager Instance { get; private set; } // a static singleton, imporve this later
+        public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
+
+        //public Dictionary<string, List<int>> ShipDataDictionary { get { return _shipDataDictionary; } }
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
         public enum State { MENU, INIT, PLAY, COMPLETED, LOADNEXT, GAMEOVER };
@@ -85,40 +131,6 @@ namespace Assets.Script
 
         private bool _statePassedInit = false;
         public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
-        //private int _score;
-        private int _ships_0 = 2;
-        private int _ships_1 = 2;
-
-        //public int Score
-        //{
-        //    get { return _score; }
-        //    set
-        //    {
-        //        _score = value;
-        //        textScore.text = "SCORE: " + _score;
-        //    }
-        //}
-
-        public int Ships_0
-        {
-            get { return _ships_0; }
-            set
-            {
-                _ships_0 = value;
-                textShips_0.text = "SHIPS: " + _ships_0;
-            }
-        }
-
-
-        public int Ships_1
-        {
-            get { return _ships_1; }
-            set
-            {
-                _ships_1 = value;
-                textShips_1.text = "SHIPS: " + _ships_1;
-            }
-        }
 
         public void PlayClicked()
         {
@@ -126,26 +138,34 @@ namespace Assets.Script
         }
         private void Awake()
         {
-
+            Instance = this; // static reference to single GameManager
+            
         }
 
         // Start is called before the first frame update
         void Start()
         {
-            Instance = this;
+
             SwitchtState(State.MENU);
+            LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
+
+            List<GameObject> friendEmpties = new List<GameObject>()
+                {Friend_YO_Z0,Friend_YO_Z1, Friend_YO_Z2, Friend_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2};
+            List<GameObject> enemyEmpties = new List<GameObject>()
+                {Enemy_Y0_Z0, Enemy_Y0_Z1, Enemy_Y0_Z2, Enemy_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2};
 
             Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                { "Fed_Destroyer_i", Fed_Destroyer_i }, //{ "Fed_Scout_i", Fed_Scout_i },
-                { "Fed_Cruiser_ii", Fed_Cruiser_ii }, { "Fed_Destroyer_ii", Fed_Destroyer_ii }, { "Fed_Scout_ii", Fed_Scout_ii },
-                { "Fed_Cruiser_iii", Fed_Cruiser_iii }, //{ "Fed_Destroyer_iii", Fed_Destroyer_iii }, { "Fed_Scout_iii", Fed_Scout_iii },
-                { "Kling_Cruiser_ii", Kling_Cruiser_ii }, //{ "Kling_Destroyer_ii", Kling_Destroyer_ii },
-                                                         { "Kling_Scout_ii", Kling_Scout_ii }
+                { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
+                { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
+                { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+                { "KLING_CRUISER_II", Kling_Cruiser_ii }, //{ "KLING_DESTROYER_II", Kling_Destroyer_ii },
+                { "KLING_SCOUT_II", Kling_Scout_ii }
             };
 
-            // load friend grid
-            friendArray = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
+            # region load grids
+
+            friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_II", "FED_DESTROYER_II", "FED_DESTROYER_II" };
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { friend_0 };
             for (int i = 0; i < 3; i++)
             {
@@ -191,15 +211,10 @@ namespace Assets.Script
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
-              
-                //emptyFriendMarkers.RemoveAt(0);
-                //emptyFriendMarkers.RemoveAt(0);
             }
             emptyFriendMarkers.RemoveAt(0);
 
-            // load enemy grid
-            //enemy_0.transform.localScale = new Vector3(transform.localScale.x + 400f, transform.localScale.y + 400f, transform.localScale.z + 400f);
-            enemyArray = new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+            enemyArray = new string[] { "KLING_CRUISER_II", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_SCOUT_II" };
             List<GameObject> emptyEnemyMarkers = new List<GameObject>() { enemy_0 };
             for (int i = 0; i < 3; i++)
             {
@@ -247,6 +262,7 @@ namespace Assets.Script
                 }              
             }
             emptyEnemyMarkers.RemoveAt(0);
+            #endregion
 
             // Get ship layers
             string readFriendName = friendArray[0].ToUpper();
@@ -261,20 +277,23 @@ namespace Assets.Script
             for (int i = 0; i < friendArray.Count(); i++)
             {
                 GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
-                _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * 400f, transform.localScale.y * 400f, transform.localScale.z * 400f);
+                _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                 _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
-                emptyFriendMarkers[i].transform.SetParent(Fed_YO_Z0.transform, true);        
-                Ship.SetLayerRecursively(emptyFriendMarkers[i], friendShipLayer);
-
+                //_tempPrefabFriend.transform.position = new Vector3(emptyFriendMarkers[i].transform.position.x, emptyFriendMarkers[i].transform.position.y, emptyFriendMarkers[i].transform.position.z);
+                //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
+                emptyFriendMarkers[i].transform.SetParent(Friend_YO_Z0.transform, true);
+                Ship.SetLayerRecursively(Friend_YO_Z0, friendShipLayer);
             }
 
             for (int i = 0; i < enemyArray.Count(); i++)
             {
                 GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
-                _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * 400f, transform.localScale.y * 400f, transform.localScale.z * 400f);
+                _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+               // _tempPrefabEnemy.transform.position = new Vector3(emptyEnemyMarkers[i].transform.position.x, emptyEnemyMarkers[i].transform.position.y, emptyEnemyMarkers[i].transform.position.z);
                 _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
-                emptyEnemyMarkers[i].transform.SetParent(Kling_Y0_Z0.transform, true);
-                Ship.SetLayerRecursively(emptyEnemyMarkers[i], enemyShipLayer);
+               //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
+                emptyEnemyMarkers[i].transform.SetParent(Enemy_Y0_Z0.transform, true);
+                Ship.SetLayerRecursively(Enemy_Y0_Z0, enemyShipLayer);
             }
         }
 
@@ -338,7 +357,6 @@ namespace Assets.Script
                 case State.INIT:
                     break;
                 case State.PLAY:
-                    //Instantiate(playerPrefab);
                     break;
                 case State.COMPLETED:
                     break;
@@ -376,24 +394,24 @@ namespace Assets.Script
         }
         public void SetShipLayer(string civ, FriendOrFoe who)
         {
-                switch (civ)
-                {
-                    case "FED":
-                        {
-                            if (who == FriendOrFoe.friend)
-                                friendShipLayer = 10;
-                            else
-                                enemyShipLayer = 10;
-                                break;
-                        }
-                    case "TERRAN":
-                        {
-                            if (who == FriendOrFoe.friend)
-                                friendShipLayer = 11;
-                            else
-                                enemyShipLayer = 11;
-                            break;
-                        }
+            switch (civ)
+            {
+                case "FED":
+                    {
+                        if (who == FriendOrFoe.friend)
+                            friendShipLayer = 10;
+                        else
+                            enemyShipLayer = 10;
+                        break;
+                    }
+                case "TERRAN":
+                    {
+                        if (who == FriendOrFoe.friend)
+                            friendShipLayer = 11;
+                        else
+                            enemyShipLayer = 11;
+                        break;
+                    }
                 case "ROM":
                     {
                         if (who == FriendOrFoe.friend)
@@ -435,9 +453,9 @@ namespace Assets.Script
                         break;
                     }
                 default:
-                        break;
-                }
-         }
+                    break;
+            }
+        }
         // will give the child the same location, rotation and scale as the parent
         //public static void SetParent(this Transform child, Transform parent)
         //{
@@ -446,5 +464,124 @@ namespace Assets.Script
         //    child.localRotation = Quaternion.identity;
         //    child.localScale = Vector3.one;
         //}
+        private void SetRandomWarp(GameObject child, List<GameObject> warpEmpties)
+        {
+
+            System.Random num = new System.Random();
+            int choseOne = num.Next(0, 6);
+
+            switch (choseOne)
+            {
+                case 0:
+                    {
+                        child.transform.SetParent(warpEmpties[0].transform, true);
+                        break;
+                    }
+                case 1:
+                    {
+                        child.transform.SetParent(warpEmpties[1].transform, true);
+                        break;
+                    }
+                case 2:
+                    {
+                        child.transform.SetParent(warpEmpties[2].transform, true);
+                        break;
+                    }
+                case 3:
+                    {
+                        child.transform.SetParent(warpEmpties[3].transform, true);
+                        break;
+                    }
+                case 4:
+                    {
+                        child.transform.SetParent(warpEmpties[4].transform, true);
+                        break;
+                    }
+                case 5:
+                    {
+                        child.transform.SetParent(warpEmpties[5].transform, true);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+        //public class ShipData
+        //{
+        //    string A_INDEX;
+        //    //string Key;
+        //    int Hull;
+        //    int Shield;
+        //    int TorpedoDamage;
+        //    int BeamDamage;
+
+        //    public ShipData(
+        //            string a_index
+        //           // , string key
+        //            , int hull
+        //            , int shield
+        //            , int torpedoDamage
+        //            , int beamDamaga
+        //            )
+        //    {
+        //        A_INDEX = a_index;
+        //        //Key = key;
+        //        Hull = hull;
+        //        Shield = shield;
+        //        TorpedoDamage = torpedoDamage;
+        //        BeamDamage = beamDamaga;
+        //    }
+        //}
+        public void LoadShipData(string filename) // List<sting>
+        {
+
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+                //Note1("string", int, int, int, int, "---------------  reading __to_PLZ_DB.txt (from file)");
+                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
+                //Console.WriteLine(infotext);
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+                    //int[] _shipInts = new int[4];
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+                        //_ = int.TryParse(coll[1], out int currentValueOne);
+                        //_ = int.TryParse(coll[2], out int currentValueTwo);
+                        //_ = int.TryParse(coll[3], out int currentValueThree);
+                        //_ = int.TryParse(coll[4], out int currentValueFour);
+                        //ShipData shipDataNew = new ShipData(
+                        //  coll[0]
+                        //  //,coll[0]
+                        //  , currentValueOne
+                        //  , currentValueTwo
+                        //  , currentValueThree
+                        //  , currentValueFour
+                        //  );
+                        //shipDataList.Add(shipDataNew);
+
+                        _ = int.TryParse(coll[1], out int currentValueOne);
+                        _ = int.TryParse(coll[2], out int currentValueTwo);
+                        _ = int.TryParse(coll[3], out int currentValueThree);
+                        _ = int.TryParse(coll[4], out int currentValueFour);
+                        int[] shipDataArray = new int[] {currentValueOne, currentValueTwo, currentValueThree, currentValueFour};
+
+                        _shipDataDictionary.Add(coll[0].ToString(), shipDataArray);
+                        //_shipInts.Clear();
+                    }
+                }
+                reader.Close();
+                StaticStuff staticStuffToLoad = new StaticStuff();
+                staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+            }
+        }
     }
 }
