@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4724937402625831085}
   - component: {fileID: 7504158529159104818}
   m_Layer: 13
-  m_Name: Kling_Scout_ii
+  m_Name: KLING_SCOUT_II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   _shieldsMaxHealth: 20
   _hullHealth: 10
   _layer: 13
-  weaponPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
+  torpedoPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
+  beamPrefab: {fileID: 0}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}

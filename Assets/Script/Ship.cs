@@ -28,7 +28,8 @@ namespace Assets.Script
         //private int _torpedoWarhead;
         //private int _beamPower;
         public int _layer;
-        public GameObject weaponPrefab; // set to prefab in unity on parent of ship
+        public GameObject torpedoPrefab; // set to prefab in unity on parent of ship
+        public GameObject beamPrefab;
         //public int torpeodDamaga;
         //public int beamDamaga;
         private int _torpedoDamage = 0;
@@ -36,15 +37,18 @@ namespace Assets.Script
         public GameObject shieldPrefab;
         public GameObject explosionPrefab;
         private AudioSource theSource;
+        private AudioSource theNextSource;
         public AudioClip clipTorpedoFire;
         public AudioClip clipExplodTorpedo;
+        public AudioClip clipBeamWeapon;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
         private bool shieldsAreUp;
         public Image _hullHealthImage;
-        public GameObject _warpCoreBreach;   
+        public GameObject _warpCoreBreach;
+        private bool _isTorpedo;
     
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
@@ -87,16 +91,25 @@ namespace Assets.Script
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {               
-                 GameObject _weapon = Instantiate(weaponPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                _weapon.layer = gameObject.layer + 10;
-                _weapon.tag = gameObject.name.ToUpper();
-                
-                //_weapon.tag = gameObject.name; // THIS DOES NOT WORK, would need all ship names available on list of tags in Unity
-                _weapon.AddComponent<AudioSource>().playOnAwake = false;
-                _weapon.AddComponent<AudioSource>().clip = clipTorpedoFire;
-                theSource = _weapon.GetComponent<AudioSource>();
+                 GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                _tempTorpedo.layer = gameObject.layer + 10;
+                _tempTorpedo.tag = gameObject.name.ToUpper();
+                _tempTorpedo.AddComponent<AudioSource>().playOnAwake = false;
+                _tempTorpedo.AddComponent<AudioSource>().clip = clipTorpedoFire;
+                theSource = _tempTorpedo.GetComponent<AudioSource>();
                 theSource.PlayOneShot(clipTorpedoFire);
-                Destroy(_weapon, 8f);
+                Destroy(_tempTorpedo, 8f);
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                GameObject _tempBeam = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                _tempBeam.layer = gameObject.layer + 10;
+                _tempBeam.tag = gameObject.name.ToUpper();
+                _tempBeam.AddComponent<AudioSource>().playOnAwake = false;
+                _tempBeam.AddComponent<AudioSource>().clip = clipBeamWeapon;
+                theNextSource = _tempBeam.GetComponent<AudioSource>();
+                theNextSource.PlayOneShot(clipBeamWeapon);
+                Destroy(_tempBeam, 0.65f);
             }
         }
         private void FixedUpdate()
@@ -111,26 +124,56 @@ namespace Assets.Script
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
             Vector3 positionOf = contact.point;
             string weaponName = collision.gameObject.tag;
+            string gameObjectName = collision.gameObject.name;
+            if (gameObjectName.Contains("TORPEDO"))
+                _isTorpedo = true;
 
             if (StaticStuff._shipDataDictionary.TryGetValue(weaponName, out int[] _result))
             {
+                if (_isTorpedo)
                 _torpedoDamage = _result[2];
-                _beamDamage = _result[3]; // ToDo, update to use beam damage also
+                else
+                _beamDamage = _result[3]; 
             }
-            switch (shieldsAreUp)
+            if (_isTorpedo && _torpedoDamage > 0)
             {
-                case true:
-                    theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
-                    positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
-                    _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                    Destroy(_shields, 2.1f);
-                    ShieldsTakeDagame(_torpedoDamage);
-                    break;
-                case false:
-                    HullTakeDamage(_torpedoDamage);
-                    break;
-                default:
-                    break;
+                switch (shieldsAreUp)
+                {
+                    case true:
+                        theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
+                        positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
+                        _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
+                        Destroy(_shields, 2.1f);
+                        ShieldsTakeDagame(_torpedoDamage);
+                        _torpedoDamage = 0;
+                        break;
+                    case false:
+                        HullTakeDamage(_torpedoDamage);
+                        _torpedoDamage = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (!_isTorpedo && _beamDamage > 0)
+            {
+                switch (shieldsAreUp)
+                {
+                    case true:
+                        //theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
+                        //positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
+                        //_shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
+                        //Destroy(_shields, 2.1f);
+                        ShieldsTakeDagame(_beamDamage);
+                        _beamDamage = 0;
+                        break;
+                    case false:
+                        HullTakeDamage(_beamDamage);
+                        _beamDamage = 0;
+                        break;
+                    default:
+                        break;
+                }
             }
             GameObject explo = Instantiate(explosionPrefab, theOriginOf, Quaternion.identity) as GameObject;
             explo.AddComponent<AudioSource>().playOnAwake = false;
