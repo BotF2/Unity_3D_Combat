@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 namespace Assets.Script
 {
@@ -41,13 +41,13 @@ namespace Assets.Script
     //}
     public class GameManager : MonoBehaviour
     {
-        public float shipScale = 700f;
+        private float shipScale = 7000f;
         private char separator = ';';
-        //public List<ShipData> shipDataList = new List<ShipData>();
         public Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>();
 
         public GameObject friend_0;  // prefab empty gameobjects for the grid
         public GameObject enemy_0;
+        public static GameObject dummy;
 
         #region the grid of empties
         public GameObject Friend_YO_Z0; // warp animation empties
@@ -109,8 +109,10 @@ namespace Assets.Script
         #endregion
 
         // ToDo created this in galactic game level from combat ships and stations in the combat sector
-        public string[] friendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
-        public string[] enemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+        public static string[] friendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
+        public static string[] enemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>{ { 500, dummy } };
+        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject> { { 500, dummy } };
 
         private int friendShipLayer;
         private int enemyShipLayer;
@@ -164,99 +166,101 @@ namespace Assets.Script
             };
 
             # region load grids
-
+            int yFactor = 3000;
+            int zFactor = 3500;
+            int xFactorFriend = -3000;
             friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_II", "FED_DESTROYER_II", "FED_DESTROYER_II" };
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { friend_0 };
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity); 
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 3; j < 6; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 6; j < 9; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 9; j < 12; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 12; j < 15; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 15; j < 18; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
                 for (int j = 18; j < 21; j++)
                 {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(-1845, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
             }
             emptyFriendMarkers.RemoveAt(0);
-
+            int xFactor = 10000;
             enemyArray = new string[] { "KLING_CRUISER_II", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_SCOUT_II" };
             List<GameObject> emptyEnemyMarkers = new List<GameObject>() { enemy_0 };
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 3; j < 6; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 6; j < 9; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 9; j < 12; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 12; j < 15; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 15; j < 18; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
                 for (int j = 18; j < 21; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(3000, i * 300, j * 350), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }              
@@ -272,29 +276,41 @@ namespace Assets.Script
             string readEnemyName = enemyArray[0].ToUpper();
             string[] _collEnemy = readEnemyName.Split('_');
             SetShipLayer(_collEnemy[0], FriendOrFoe.enemy);
-
+            int _countFriends = 0;
             //instantiate prefab ships from friendArray onto as may emptyFriendMarkers using the prefab dictionary
             for (int i = 0; i < friendArray.Count(); i++)
             {
+
                 GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
                 _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                 _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
+                //var rend = _tempPrefabFriend.GetComponent<Renderer>();
+                //rend.enabled = false;
                 //_tempPrefabFriend.transform.position = new Vector3(emptyFriendMarkers[i].transform.position.x, emptyFriendMarkers[i].transform.position.y, emptyFriendMarkers[i].transform.position.z);
                 //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
                 emptyFriendMarkers[i].transform.SetParent(Friend_YO_Z0.transform, true);
+       
                 Ship.SetLayerRecursively(Friend_YO_Z0, friendShipLayer);
-            }
 
+                //_tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+                FriendShips.Add(_countFriends, _tempPrefabFriend);
+                _countFriends += 1;
+            }
+            //StaticStuff.LoadStaticFriendDictionary(FriendShips);
+            int _countEnemies = 0;
             for (int i = 0; i < enemyArray.Count(); i++)
             {
+
                 GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
                 _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-               // _tempPrefabEnemy.transform.position = new Vector3(emptyEnemyMarkers[i].transform.position.x, emptyEnemyMarkers[i].transform.position.y, emptyEnemyMarkers[i].transform.position.z);
                 _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
                //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
                 emptyEnemyMarkers[i].transform.SetParent(Enemy_Y0_Z0.transform, true);
                 Ship.SetLayerRecursively(Enemy_Y0_Z0, enemyShipLayer);
+                EnemyShips.Add(_countEnemies, _tempPrefabEnemy);
+                _countEnemies += 1;
             }
+            //StaticStuff.LoadStaticEnemyDictionary(EnemyShips);
         }
 
         public void SwitchtState(State newState, float delay = 0)

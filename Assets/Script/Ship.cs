@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 using System.Linq;
 
 namespace Assets.Script
@@ -22,34 +22,34 @@ namespace Assets.Script
     //[RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        //public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
         public int _shieldsMaxHealth; // set in ShipData.txt
-        public int _hullHealth; 
-        //private int _torpedoWarhead;
-        //private int _beamPower;
-        public int _layer;
-        public GameObject torpedoPrefab; // set to prefab in unity on parent of ship
-        public GameObject beamPrefab;
-        //public int torpeodDamaga;
-        //public int beamDamaga;
-        private int _torpedoDamage = 0;
+        public int _hullHealth;
+        private int _torpedoDamage = 0; // update with data of torpedo that hits
         private int _beamDamage = 0;
-        public GameObject shieldPrefab;
-        public GameObject explosionPrefab;
-        private AudioSource theSource;
-        private AudioSource theNextSource;
-        public AudioClip clipTorpedoFire;
-        public AudioClip clipExplodTorpedo;
-        public AudioClip clipBeamWeapon;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
         private bool shieldsAreUp;
-        public Image _hullHealthImage;
+      //  public Image _hullHealthImage;
         public GameObject _warpCoreBreach;
         private bool _isTorpedo;
-    
+        //private int _torpedoWarhead;
+        //private int _beamPower;
+        public int _layer;
+        public GameObject torpedoPrefab; // set in prefab of ships
+        public GameObject beamPrefab;
+        public GameObject shieldPrefab;
+        public GameObject explosionPrefab;
+
+        private AudioSource theSource;
+        private AudioSource theNextSource;
+        public AudioClip clipTorpedoFire;
+        public AudioClip clipExplodTorpedo;
+        public AudioClip clipBeamWeapon;
+       // private Renderer rend; // not working 
+  
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
         //Material _orgMaterial;
@@ -60,7 +60,6 @@ namespace Assets.Script
 
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             //var whatever = StaticStuff._shipsData;
@@ -72,6 +71,7 @@ namespace Assets.Script
             //    //}
             //}
             ////var positionINT = StaticStuff._shipsData.FindIndex(item => item == gameObject.name);
+           // rend = GetComponent<Renderer>();
             if (StaticStuff._shipDataDictionary.TryGetValue(gameObject.name, out int[]_result))
             {
                 _shieldsMaxHealth = _result[0];
@@ -90,15 +90,15 @@ namespace Assets.Script
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-            {               
-                 GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            {
+                GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                 _tempTorpedo.layer = gameObject.layer + 10;
                 _tempTorpedo.tag = gameObject.name.ToUpper();
                 _tempTorpedo.AddComponent<AudioSource>().playOnAwake = false;
                 _tempTorpedo.AddComponent<AudioSource>().clip = clipTorpedoFire;
                 theSource = _tempTorpedo.GetComponent<AudioSource>();
                 theSource.PlayOneShot(clipTorpedoFire);
-                Destroy(_tempTorpedo, 8f);
+                Destroy(_tempTorpedo, 8f);               
             }
             if (Input.GetKeyDown(KeyCode.B))
             {

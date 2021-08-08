@@ -47,18 +47,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca965e567eaf0446898097d72bd8cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   _shieldsMaxHealth: 0
   _hullHealth: 0
+  _warpCoreBreach: {fileID: 0}
   _layer: 0
   torpedoPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
-  beamPrefab: {fileID: 8919352157533723231, guid: be36503a1c8662942ad11e8299bce16f, type: 3}
+  beamPrefab: {fileID: 9124248098745324454, guid: be36503a1c8662942ad11e8299bce16f, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   clipBeamWeapon: {fileID: 8300000, guid: 97fc0e251bc73a84ea04f86f75437c54, type: 3}
-  _hullHealthImage: {fileID: 0}
-  _warpCoreBreach: {fileID: 0}
 --- !u!54 &5985982298413237413
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipScale: 700
   friend_0: {fileID: 0}
   enemy_0: {fileID: 0}
   Friend_YO_Z0: {fileID: 0}
@@ -152,8 +151,6 @@ MonoBehaviour:
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
   Borg_Scout_i: {fileID: 0}
-  friendArray: []
-  enemyArray: []
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}

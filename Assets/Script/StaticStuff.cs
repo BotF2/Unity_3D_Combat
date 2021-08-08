@@ -8,10 +8,20 @@ namespace Assets.Script
         //use static only if there is only one copy of it
         public static float shipScale = 700f;
         public static Dictionary<string, int[]> _shipDataDictionary;
+        public static Dictionary<int, object> _friendGameObjectDictionary;
+        public static Dictionary<int, object> _enemyGameObjectDictionary;
 
-        public void LoadStaticShipData(Dictionary<string, int[]> dictionary)
+        public void LoadStaticShipData(Dictionary<string, int[]> dataDictionary)
         {
-            _shipDataDictionary = dictionary;
+            _shipDataDictionary = dataDictionary;
         }
+        //public static void LoadStaticFriendDictionary(Dictionary<int, object> friendDictionary)
+        //{
+        //    _friendGameObjectDictionary = friendDictionary;
+        //}
+        //public static void LoadStaticEnemyDictionary(Dictionary<int, object> enemyDictionary)
+        //{
+        //    _enemyGameObjectDictionary = enemyDictionary;
+        //}
     }
 }
