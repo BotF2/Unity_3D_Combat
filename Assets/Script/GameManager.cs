@@ -140,14 +140,12 @@ namespace Assets.Script
         }
         private void Awake()
         {
-            Instance = this; // static reference to single GameManager
-            
+            Instance = this; // static reference to single GameManager           
         }
 
         // Start is called before the first frame update
         void Start()
         {
-
             SwitchtState(State.MENU);
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
 
@@ -280,7 +278,6 @@ namespace Assets.Script
             //instantiate prefab ships from friendArray onto as may emptyFriendMarkers using the prefab dictionary
             for (int i = 0; i < friendArray.Count(); i++)
             {
-
                 GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
                 _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                 _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);

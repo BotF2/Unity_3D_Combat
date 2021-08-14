@@ -50,16 +50,17 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   _shieldsMaxHealth: 20
   _hullHealth: 10
-  _hullHealthImage: {fileID: 0}
-  _warpCoreBreach: {fileID: 0}
+  _beamDamage: 0
+  shieldsAreUp: 0
+  _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _layer: 13
   torpedoPrefab: {fileID: 8421801461014872982, guid: caf81016b7758ec438863b4f22a3c3c8, type: 3}
-  beamPrefab: {fileID: 0}
+  beamPrefab: {fileID: 5033631567701610589, guid: 1dfb61c49117ac54eba5d4699c922b19, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
-  clipBeamWeapon: {fileID: 0}
+  clipBeamWeapon: {fileID: 8300000, guid: 97fc0e251bc73a84ea04f86f75437c54, type: 3}
 --- !u!54 &2461289292751682648
 Rigidbody:
   m_ObjectHideFlags: 0

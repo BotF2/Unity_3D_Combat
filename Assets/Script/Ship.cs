@@ -19,27 +19,33 @@ namespace Assets.Script
     //    Dom,
     //    Borg
     //}
-    //[RequireComponent(typeof(GameManager))]
+    [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullHealth;
         private int _torpedoDamage = 0; // update with data of torpedo that hits
-        private int _beamDamage = 0;
+        public int _beamDamage = 0;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
-        private bool shieldsAreUp;
+        public bool shieldsAreUp;
       //  public Image _hullHealthImage;
         public GameObject _warpCoreBreach;
         private bool _isTorpedo;
+        private Transform beamTargetTransform;
+
+        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private float diff = 0;
+        private Vector3[] linePositions = new Vector3[2]; // beam line render points in update
         //private int _torpedoWarhead;
         //private int _beamPower;
         public int _layer;
         public GameObject torpedoPrefab; // set in prefab of ships
         public GameObject beamPrefab;
+        private GameObject beamObject;
         public GameObject shieldPrefab;
         public GameObject explosionPrefab;
 
@@ -85,10 +91,28 @@ namespace Assets.Script
             //_shields.SetActive(true);
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
+            if (GameManager.FriendShips.Count > 1)
+            {
+                string whoTorpedo = gameObject.name.Substring(0, 3);
+                string friendShips = GameManager.friendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
+                if (whoTorpedo == friendShips)
+                    theLocalTargetDictionary = GameManager.EnemyShips;
+                else
+                    theLocalTargetDictionary = GameManager.FriendShips;
+                FindBeamTarget(theLocalTargetDictionary);
+
+                //if (beamTargetTransform == null)
+                //{
+                //    Destroy(gameObject);
+                //}
+            }
 
         }
         private void Update()
         {
+            if (beamObject == null)
+                beamTargetTransform = null;
+    
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
@@ -102,14 +126,31 @@ namespace Assets.Script
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                GameObject _tempBeam = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                _tempBeam.layer = gameObject.layer + 10;
-                _tempBeam.tag = gameObject.name.ToUpper();
-                _tempBeam.AddComponent<AudioSource>().playOnAwake = false;
-                _tempBeam.AddComponent<AudioSource>().clip = clipBeamWeapon;
-                theNextSource = _tempBeam.GetComponent<AudioSource>();
+                GameObject beamObject = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                FindBeamTarget(theLocalTargetDictionary);
+                linePositions[0] = this.transform.position + (transform.right * 50) + (transform.forward *50);
+                linePositions[1] = beamTargetTransform.position + (transform.right * 50) - (transform.forward *50);
+                //beamObject = _tempBeam;
+                //_tempBeam.layer = gameObject.layer + 10;
+                beamObject.tag = gameObject.name.ToUpper();
+                
+                var theLine = beamObject.GetComponent<LineRenderer>();
+                theLine.SetVertexCount(2);
+                theLine.SetWidth(50f, 50f);
+                theLine.SetPosition(0, linePositions[0]);
+                theLine.SetPosition(1, linePositions[1]);
+                var meshCollider = theLine.GetComponent<MeshCollider>();
+                Mesh mesh = new Mesh();
+                theLine.BakeMesh(mesh, true);
+                meshCollider.sharedMesh = mesh;
+                meshCollider.isTrigger = true;                
+                
+                beamObject.AddComponent<AudioSource>().playOnAwake = false;
+                beamObject.AddComponent<AudioSource>().clip = clipBeamWeapon;
+                theNextSource = beamObject.GetComponent<AudioSource>();
                 theNextSource.PlayOneShot(clipBeamWeapon);
-                Destroy(_tempBeam, 0.65f);
+                Destroy(beamObject, 0.65f);
+                OnTriggerStay(meshCollider);
             }
         }
         private void FixedUpdate()
@@ -117,9 +158,43 @@ namespace Assets.Script
             if (_shieldsCurrentHealth < 1)
                 shieldsAreUp = false;
         }
+        
+        public void OnTriggerStay(Collider other)
+        {
+            Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, transform.forward);
+            string beamTagNameOfShip = other.gameObject.tag; // collider to object...
+            string beamGameObjectName = other.gameObject.name;
+            if (beamGameObjectName.Contains("BEAM"))
+                _isTorpedo = false;
+
+            if (StaticStuff._shipDataDictionary.TryGetValue(beamTagNameOfShip, out int[] _result))
+            {
+                if (!_isTorpedo)
+                    _beamDamage = _result[3];
+            }
+            if (!_isTorpedo && _beamDamage > 0 && beamTargetTransform != null)
+            {
+                switch (shieldsAreUp)
+                {
+                    case true:
+                        var positionOf = beamTargetTransform.position; // traget ship origin
+                        _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
+                        Destroy(_shields, 2.1f);
+                        ShieldsTakeDagame(_beamDamage);
+                        _beamDamage = 0;
+                        break;
+                    case false:
+                        HullTakeDamage(_beamDamage);
+                        _beamDamage = 0;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
         public void OnCollisionEnter(Collision collision)
         {
-            var theOriginOf = transform.position;
+            var theOriginOf = transform.position; // for explosion below
             ContactPoint contact = collision.contacts[0];
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, contact.normal);
             Vector3 positionOf = contact.point;
@@ -132,8 +207,8 @@ namespace Assets.Script
             {
                 if (_isTorpedo)
                 _torpedoDamage = _result[2];
-                else
-                _beamDamage = _result[3]; 
+                //else
+                //_beamDamage = _result[3]; 
             }
             if (_isTorpedo && _torpedoDamage > 0)
             {
@@ -155,32 +230,29 @@ namespace Assets.Script
                         break;
                 }
             }
-            if (!_isTorpedo && _beamDamage > 0)
-            {
-                switch (shieldsAreUp)
-                {
-                    case true:
-                        //theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
-                        //positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
-                        //_shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                        //Destroy(_shields, 2.1f);
-                        ShieldsTakeDagame(_beamDamage);
-                        _beamDamage = 0;
-                        break;
-                    case false:
-                        HullTakeDamage(_beamDamage);
-                        _beamDamage = 0;
-                        break;
-                    default:
-                        break;
-                }
-            }
             GameObject explo = Instantiate(explosionPrefab, theOriginOf, Quaternion.identity) as GameObject;
             explo.AddComponent<AudioSource>().playOnAwake = false;
             explo.AddComponent<AudioSource>().clip = clipExplodTorpedo;
             theSource = explo.GetComponent<AudioSource>();
             theSource.PlayOneShot(clipExplodTorpedo);
             Destroy(explo, 2f);
+        }
+        public void FindBeamTarget(Dictionary<int, GameObject> theTargets)
+        {
+            var distance = Mathf.Infinity;
+
+            foreach (var possibleTarget in theTargets.Values)
+            {
+                if (possibleTarget != null)
+                {
+                    diff = (transform.position - possibleTarget.transform.position).sqrMagnitude;
+                    if (diff < distance)
+                    {
+                        distance = diff;
+                        beamTargetTransform = possibleTarget.transform;
+                    }
+                }
+            }
         }
         void Regenerate()
         {
@@ -209,6 +281,12 @@ namespace Assets.Script
             {
                 Destroy(transform.gameObject);
                 Debug.Log("Ship destroid");
+                GameObject warpCore = Instantiate(_warpCoreBreach, transform.position, Quaternion.identity) as GameObject;
+                warpCore.AddComponent<AudioSource>().playOnAwake = false;
+                warpCore.AddComponent<AudioSource>().clip = clipExplodTorpedo;
+                theSource = warpCore.GetComponent<AudioSource>();
+                theSource.PlayOneShot(clipExplodTorpedo);
+                Destroy(warpCore, 1.5f);
             }
         }
  
