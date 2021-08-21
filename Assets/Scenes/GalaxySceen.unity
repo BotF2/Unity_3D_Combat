@@ -1780,6 +1780,7 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1898,6 +1899,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a3aa806f2e9a5478d62a5de858e02b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546f2d943293ccf4a9ab82088af3b828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awesomeShader: {fileID: -6465566751694194690, guid: 976e8a07e976ddc468b45557462b80d2, type: 3}
 --- !u!1 &973597407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,8 +2220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friend_0: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
-  enemy_0: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
+  Friend_0: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
+  Enemy_0: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
   Friend_YO_Z0: {fileID: 1677149830}
   Friend_YO_Z1: {fileID: 1495022662}
   Friend_YO_Z2: {fileID: 1980388219}
@@ -2233,7 +2247,7 @@ MonoBehaviour:
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 1358903930982077462, guid: 3cfdad2c45b391e4a89b77ba0a5a783b, type: 3}
-  Kling_Destroyer_i: {fileID: 0}
+  Kling_Destroyer_i: {fileID: 4118301941742209220, guid: cc1e4c322ccea574c8846590f5ec0d36, type: 3}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 960271130701890872, guid: a83ec879888398b408291ab09a821cf3, type: 3}
@@ -2245,7 +2259,7 @@ MonoBehaviour:
   Card_Destroyer_i: {fileID: 0}
   Card_Destroyer_ii: {fileID: 0}
   Card_Cruiser_ii: {fileID: 0}
-  Card_Scout_i: {fileID: 0}
+  Card_Scout_i: {fileID: 3951447395639419369, guid: a18c48fd87dbe11449f228484c8a8011, type: 3}
   Card_Scout_ii: {fileID: 0}
   Dom_Destroyer_i: {fileID: 0}
   Dom_Destroyer_ii: {fileID: 0}
@@ -2947,9 +2961,11 @@ MonoBehaviour:
   gameManager: {fileID: 1187732007}
   _shieldsMaxHealth: 0
   _hullHealth: 0
+  _torpedoDamage: 0
   _beamDamage: 0
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 0}
+  _ringExplosion: {fileID: 0}
   _layer: 0
   torpedoPrefab: {fileID: 0}
   beamPrefab: {fileID: 0}
@@ -2958,6 +2974,7 @@ MonoBehaviour:
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   clipBeamWeapon: {fileID: 8300000, guid: f49843bb00c25a548a83c9350876fc91, type: 3}
+  clipWarpCoreBreach: {fileID: 0}
 --- !u!114 &1670698545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2970,8 +2987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  friend_0: {fileID: 0}
-  enemy_0: {fileID: 0}
+  Friend_0: {fileID: 0}
+  Enemy_0: {fileID: 0}
   Friend_YO_Z0: {fileID: 0}
   Friend_YO_Z1: {fileID: 0}
   Friend_YO_Z2: {fileID: 0}

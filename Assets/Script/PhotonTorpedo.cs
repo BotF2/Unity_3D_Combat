@@ -6,31 +6,24 @@ using UnityEngine;
 public class PhotonTorpedo : MonoBehaviour
 {
     public GameManager gameManager;
-    public float speed =100f;
-    public float turnRate = 0.1f;
+    public float speed =1000f;
+    public float turnRate = 1f;
     private Rigidbody homingTorpedo;
     //public float fuseDelay = 10f;
     //public GameObject torpedo;
     private Transform target;
     private Dictionary<int, GameObject> theLocalTargetDictionary;
     private float diff = 0;
+
     //private AudioSource theSource;
     //public AudioClip clipTorpedoFire;
 
     private void Start()
     {
-
-    }
-    private void Awake()
-    {
-        if (GameManager.FriendShips.Count >1)
+        if (GameManager.FriendShips.Count > 0)
         {
-            //gameObject.AddComponent<AudioSource>().playOnAwake = false;
-            //gameObject.AddComponent<AudioSource>().clip = clipTorpedoFire;
-            //theSource = gameObject.GetComponent<AudioSource>();
-            //theSource.PlayOneShot(clipTorpedoFire);
-            string whoTorpedo = gameObject.name.Substring(0, 3); 
-            string friendShips = GameManager.friendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
+            string whoTorpedo = gameObject.name.Substring(0, 3);
+            string friendShips = GameManager.FriendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
             if (whoTorpedo == friendShips)
                 theLocalTargetDictionary = GameManager.EnemyShips;
             else
@@ -46,6 +39,27 @@ public class PhotonTorpedo : MonoBehaviour
             }
         }
     }
+    private void Awake()
+    {
+        //if (GameManager.FriendShips.Count >1)
+        //{
+        //    string whoTorpedo = gameObject.name.Substring(0, 3); 
+        //    string friendShips = GameManager.friendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
+        //    if (whoTorpedo == friendShips)
+        //        theLocalTargetDictionary = GameManager.EnemyShips;
+        //    else
+        //        theLocalTargetDictionary = GameManager.FriendShips;
+        //    homingTorpedo = transform.GetComponent<Rigidbody>();
+        //    if (homingTorpedo != null)
+        //    {
+        //        FindTargetNearTorpedo(theLocalTargetDictionary);
+        //    }
+        //    if (target == null)
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
+    }
     private void FixedUpdate()
     {
         if (target != null && homingTorpedo != null)
@@ -60,6 +74,10 @@ public class PhotonTorpedo : MonoBehaviour
             var targetRotation = Quaternion.LookRotation(target.position - transform.position);
             homingTorpedo.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
             transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
+        }
+        if (target == null)
+        {
+            Destroy(gameObject);
         }
 
     }

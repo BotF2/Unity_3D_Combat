@@ -11,10 +11,10 @@ namespace Assets.Script
         public static Dictionary<int, object> _friendGameObjectDictionary;
         public static Dictionary<int, object> _enemyGameObjectDictionary;
 
-        public void LoadStaticShipData(Dictionary<string, int[]> dataDictionary)
-        {
-            _shipDataDictionary = dataDictionary;
-        }
+        //public void LoadStaticShipData(Dictionary<string, int[]> dataDictionary)
+        //{
+        //    _shipDataDictionary = dataDictionary;
+        //}
         //public static void LoadStaticFriendDictionary(Dictionary<int, object> friendDictionary)
         //{
         //    _friendGameObjectDictionary = friendDictionary;

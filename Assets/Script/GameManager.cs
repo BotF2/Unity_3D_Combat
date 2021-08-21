@@ -43,11 +43,11 @@ namespace Assets.Script
     {
         private float shipScale = 7000f;
         private char separator = ';';
-        public Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>();
+        public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
 
-        public GameObject friend_0;  // prefab empty gameobjects for the grid
-        public GameObject enemy_0;
-        public static GameObject dummy;
+        public GameObject Friend_0;  // prefab empty gameobjects for the grid
+        public GameObject Enemy_0;
+        //public static GameObject dummy;
 
         #region the grid of empties
         public GameObject Friend_YO_Z0; // warp animation empties
@@ -109,10 +109,10 @@ namespace Assets.Script
         #endregion
 
         // ToDo created this in galactic game level from combat ships and stations in the combat sector
-        public static string[] friendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
-        public static string[] enemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
-        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>{ { 500, dummy } };
-        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject> { { 500, dummy } };
+        public static string[] FriendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
+        public static string[] EnemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // { { 500, Friend_0 } };
+        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();  // { { 500, Enemy_0 } };
 
         private int friendShipLayer;
         private int enemyShipLayer;
@@ -140,7 +140,8 @@ namespace Assets.Script
         }
         private void Awake()
         {
-            Instance = this; // static reference to single GameManager           
+            Instance = this; // static reference to single GameManager
+            //LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
         }
 
         // Start is called before the first frame update
@@ -148,166 +149,6 @@ namespace Assets.Script
         {
             SwitchtState(State.MENU);
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
-
-            List<GameObject> friendEmpties = new List<GameObject>()
-                {Friend_YO_Z0,Friend_YO_Z1, Friend_YO_Z2, Friend_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2};
-            List<GameObject> enemyEmpties = new List<GameObject>()
-                {Enemy_Y0_Z0, Enemy_Y0_Z1, Enemy_Y0_Z2, Enemy_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2};
-
-            Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
-            {
-                { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
-                { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
-                { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
-                { "KLING_CRUISER_II", Kling_Cruiser_ii }, //{ "KLING_DESTROYER_II", Kling_Destroyer_ii },
-                { "KLING_SCOUT_II", Kling_Scout_ii }
-            };
-
-            # region load grids
-            int yFactor = 3000;
-            int zFactor = 3500;
-            int xFactorFriend = -3000;
-            friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_II", "FED_DESTROYER_II", "FED_DESTROYER_II" };
-            List<GameObject> emptyFriendMarkers = new List<GameObject>() { friend_0 };
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity); 
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 3; j < 6; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 6; j < 9; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 9; j < 12; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 12; j < 15; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 15; j < 18; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 18; j < 21; j++)
-                {
-                    GameObject _tempFriend = Instantiate(friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-            }
-            emptyFriendMarkers.RemoveAt(0);
-            int xFactor = 10000;
-            enemyArray = new string[] { "KLING_CRUISER_II", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_SCOUT_II" };
-            List<GameObject> emptyEnemyMarkers = new List<GameObject>() { enemy_0 };
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 3; j < 6; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 6; j < 9; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 9; j < 12; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 12; j < 15; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 15; j < 18; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 18; j < 21; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }              
-            }
-            emptyEnemyMarkers.RemoveAt(0);
-            #endregion
-
-            // Get ship layers
-            string readFriendName = friendArray[0].ToUpper();
-            string[] _collFriend = readFriendName.Split('_');
-            SetShipLayer(_collFriend[0], FriendOrFoe.friend);
-
-            string readEnemyName = enemyArray[0].ToUpper();
-            string[] _collEnemy = readEnemyName.Split('_');
-            SetShipLayer(_collEnemy[0], FriendOrFoe.enemy);
-            int _countFriends = 0;
-            //instantiate prefab ships from friendArray onto as may emptyFriendMarkers using the prefab dictionary
-            for (int i = 0; i < friendArray.Count(); i++)
-            {
-                GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
-                _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-                _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
-                //var rend = _tempPrefabFriend.GetComponent<Renderer>();
-                //rend.enabled = false;
-                //_tempPrefabFriend.transform.position = new Vector3(emptyFriendMarkers[i].transform.position.x, emptyFriendMarkers[i].transform.position.y, emptyFriendMarkers[i].transform.position.z);
-                //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
-                emptyFriendMarkers[i].transform.SetParent(Friend_YO_Z0.transform, true);
-       
-                Ship.SetLayerRecursively(Friend_YO_Z0, friendShipLayer);
-
-                //_tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-                FriendShips.Add(_countFriends, _tempPrefabFriend);
-                _countFriends += 1;
-            }
-            //StaticStuff.LoadStaticFriendDictionary(FriendShips);
-            int _countEnemies = 0;
-            for (int i = 0; i < enemyArray.Count(); i++)
-            {
-
-                GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
-                _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-                _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
-               //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
-                emptyEnemyMarkers[i].transform.SetParent(Enemy_Y0_Z0.transform, true);
-                Ship.SetLayerRecursively(Enemy_Y0_Z0, enemyShipLayer);
-                EnemyShips.Add(_countEnemies, _tempPrefabEnemy);
-                _countEnemies += 1;
-            }
-            //StaticStuff.LoadStaticEnemyDictionary(EnemyShips);
         }
 
         public void SwitchtState(State newState, float delay = 0)
@@ -519,34 +360,145 @@ namespace Assets.Script
                     break;
             }
         }
-        //public class ShipData
-        //{
-        //    string A_INDEX;
-        //    //string Key;
-        //    int Hull;
-        //    int Shield;
-        //    int TorpedoDamage;
-        //    int BeamDamage;
 
-        //    public ShipData(
-        //            string a_index
-        //           // , string key
-        //            , int hull
-        //            , int shield
-        //            , int torpedoDamage
-        //            , int beamDamaga
-        //            )
-        //    {
-        //        A_INDEX = a_index;
-        //        //Key = key;
-        //        Hull = hull;
-        //        Shield = shield;
-        //        TorpedoDamage = torpedoDamage;
-        //        BeamDamage = beamDamaga;
-        //    }
-        //}
         public void LoadShipData(string filename) // List<sting>
         {
+            List<GameObject> friendEmpties = new List<GameObject>()
+                {Friend_YO_Z0,Friend_YO_Z1, Friend_YO_Z2, Friend_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2};
+            List<GameObject> enemyEmpties = new List<GameObject>()
+                {Enemy_Y0_Z0, Enemy_Y0_Z1, Enemy_Y0_Z2, Enemy_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2};
+
+            Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                //{ "Friend_0", friend_0 },
+                //{ "Enemy_0", enemy_0},
+                { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
+                { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
+                { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+                { "KLING_DESTROYER_I", Kling_Destroyer_i},
+                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
+                { "CARD_SCOUT_I", Card_Scout_i }
+            };
+            string[] _friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_II", "FED_DESTROYER_II", "FED_DESTROYER_II" };
+            FriendArray = _friendArray;
+            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II"};
+            EnemyArray = _enemyArray;
+
+            # region load grids
+            int yFactor = 3000;
+            int zFactor = 3500;
+            int xFactorFriend = -3000;
+
+            List<GameObject> emptyFriendMarkers = new List<GameObject>() { Friend_0 };
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 3; j < 6; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 6; j < 9; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 9; j < 12; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 12; j < 15; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 15; j < 18; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+                for (int j = 18; j < 21; j++)
+                {
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempFriend.transform.Rotate(0, 90, 0);
+                    emptyFriendMarkers.Add(_tempFriend);
+                }
+            }
+            emptyFriendMarkers.RemoveAt(0);
+            int xFactor = 10000;
+
+            List<GameObject> emptyEnemyMarkers = new List<GameObject>() { Enemy_0 };
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 3; j < 6; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 6; j < 9; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 9; j < 12; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 12; j < 15; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 15; j < 18; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+                for (int j = 18; j < 21; j++)
+                {
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    _tempEnemy.transform.Rotate(0, -90, 0);
+                    emptyEnemyMarkers.Add(_tempEnemy);
+                }
+            }
+            emptyEnemyMarkers.RemoveAt(0);
+            #endregion
+
+            // Do ship layers
+            string readFriendName = _friendArray[0].ToUpper();
+            string[] _collFriend = readFriendName.Split('_');
+            SetShipLayer(_collFriend[0], FriendOrFoe.friend);
+
+            string readEnemyName = _enemyArray[0].ToUpper();
+            string[] _collEnemy = readEnemyName.Split('_');
+            SetShipLayer(_collEnemy[0], FriendOrFoe.enemy);
+
+            Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>(); 
+
+            #region Read ShipData.txt 
 
             var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
@@ -585,15 +537,74 @@ namespace Assets.Script
                         _ = int.TryParse(coll[2], out int currentValueTwo);
                         _ = int.TryParse(coll[3], out int currentValueThree);
                         _ = int.TryParse(coll[4], out int currentValueFour);
-                        int[] shipDataArray = new int[] {currentValueOne, currentValueTwo, currentValueThree, currentValueFour};
+                        int[] shipDataArray = new int[] { currentValueOne, currentValueTwo, currentValueThree, currentValueFour };
 
                         _shipDataDictionary.Add(coll[0].ToString(), shipDataArray);
                         //_shipInts.Clear();
                     }
                 }
+
                 reader.Close();
-                StaticStuff staticStuffToLoad = new StaticStuff();
-                staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+                ShipDataDictionary = _shipDataDictionary;
+                //StaticStuff staticStuffToLoad = new StaticStuff();
+                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+                #endregion
+
+                //instantiate prefab ships from friendArray onto as may emptyFriendMarkers using the prefab dictionary
+                Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
+                int _countFriends = 0;
+                for (int i = 0; i < _friendArray.Count(); i++)
+                {
+                    GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
+                    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+                    _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
+
+                    _friendsLocal.Add(_countFriends, _tempPrefabFriend);
+                    //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
+                    emptyFriendMarkers[i].transform.SetParent(Friend_YO_Z0.transform, true);
+                    Ship.SetLayerRecursively(Friend_YO_Z0, friendShipLayer);          
+
+
+                    if (_shipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
+                    {
+                        _tempPrefabFriend.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
+                        _tempPrefabFriend.GetComponent<Ship>()._hullHealth = _result[1];
+                        _tempPrefabFriend.GetComponent<Ship>()._torpedoDamage = _result[2];
+                        _tempPrefabFriend.GetComponent<Ship>()._beamDamage = _result[3];
+                        //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
+                        //_beamPower = _result[3];
+                    }
+                    
+                    _countFriends += 1;
+                }
+                FriendShips = _friendsLocal;
+                //StaticStuff.LoadStaticFriendDictionary(FriendShips);
+                Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
+                int _countEnemies = 0;
+                for (int i = 0; i < _enemyArray.Count(); i++)
+                {
+
+                    GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
+                    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+                    _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
+                    _enemysLocal.Add(_countEnemies, _tempPrefabEnemy);
+                    //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
+                    emptyEnemyMarkers[i].transform.SetParent(Enemy_Y0_Z0.transform, true);
+                    Ship.SetLayerRecursively(Enemy_Y0_Z0, enemyShipLayer);
+
+                    if (_shipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
+                    {
+                        _tempPrefabEnemy.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
+                        _tempPrefabEnemy.GetComponent<Ship>()._hullHealth = _result[1];
+                        _tempPrefabEnemy.GetComponent<Ship>()._torpedoDamage = _result[2];
+                        _tempPrefabEnemy.GetComponent<Ship>()._beamDamage = _result[3];
+                        //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
+                        //_beamPower = _result[3];
+                    }                  
+                    _countEnemies += 1;
+                }
+                EnemyShips = _enemysLocal;
+                //StaticStuff.LoadStaticEnemyDictionary(EnemyShips); 
             }
         }
     }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6748887630460859747}
   - component: {fileID: 2697268018878888128}
   m_Layer: 12
-  m_Name: Rom_Cruiser_ii
+  m_Name: ROM_CRUISER_II
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,16 +78,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  _shieldsMaxHealth: 0
-  _hullHealth: 0
+  _shieldsMaxHealth: 55
+  _hullHealth: 33
+  _torpedoDamage: 30
+  _beamDamage: 30
+  shieldsAreUp: 0
+  _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
+  _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
   _layer: 0
-  weaponPrefab: {fileID: 0}
-  shieldPrefab: {fileID: 0}
-  explosionPrefab: {fileID: 0}
-  clipTorpedoFire: {fileID: 0}
-  clipExplodTorpedo: {fileID: 0}
-  _hullHealthImage: {fileID: 0}
-  _warpCoreBreach: {fileID: 0}
+  torpedoPrefab: {fileID: 3912758670790259718, guid: cc2c0058e724b7b4e9de90526d3c4bff, type: 3}
+  beamPrefab: {fileID: 2346474577054298038, guid: 162f3ab89e8dd804e888704c3f3c9683, type: 3}
+  shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
+  explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
+  clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
+  clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
+  clipBeamWeapon: {fileID: 8300000, guid: bfc1f0dd48286af4a816d16b95e9e5e6, type: 3}
+  clipWarpCoreBreach: {fileID: 8300000, guid: 5b2fc9918644d294b804a5f5f29a1681, type: 3}
 --- !u!114 &2697268018878888128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipScale: 700
   friend_0: {fileID: 0}
   enemy_0: {fileID: 0}
   Friend_YO_Z0: {fileID: 0}
@@ -151,8 +156,6 @@ MonoBehaviour:
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
   Borg_Scout_i: {fileID: 0}
-  friendArray: []
-  enemyArray: []
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}
