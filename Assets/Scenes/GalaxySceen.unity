@@ -2222,9 +2222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Friend_0: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
   Enemy_0: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
-  Friend_YO_Z0: {fileID: 1677149830}
-  Friend_YO_Z1: {fileID: 1495022662}
-  Friend_YO_Z2: {fileID: 1980388219}
+  Friend_Y0_Z0: {fileID: 1677149830}
+  Friend_Y0_Z1: {fileID: 1495022662}
+  Friend_Y0_Z2: {fileID: 1980388219}
   Friend_Y1_Z0: {fileID: 583665168}
   Friend_Y1_Z1: {fileID: 813123045}
   Friend_Y1_Z2: {fileID: 2095955309}
@@ -2234,8 +2234,22 @@ MonoBehaviour:
   Enemy_Y1_Z0: {fileID: 856452876}
   Enemy_Y1_Z1: {fileID: 908344352}
   Enemy_Y1_Z2: {fileID: 1451165531}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 7708513692413468688, guid: a18c48fd87dbe11449f228484c8a8011, type: 3}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
   Fed_Cruiser_ii: {fileID: 4674614209567743108, guid: f866647dde5655a4da390e0da5d128bf, type: 3}
-  Fed_Cruiser_iii: {fileID: 3295520868036682365, guid: dce5c86a204b9154e83586e133047353, type: 3}
+  Fed_Cruiser_iii: {fileID: 2056092288315165191, guid: dce5c86a204b9154e83586e133047353, type: 3}
   Fed_lt_Cruiser_iv: {fileID: 0}
   Fed_hvy_Cruiser_iv: {fileID: 0}
   Fed_Destroyer_i: {fileID: 427735471092981353, guid: 32813324a59a1174d82f266ada40da31, type: 3}
@@ -2253,23 +2267,9 @@ MonoBehaviour:
   Kling_Scout_ii: {fileID: 960271130701890872, guid: a83ec879888398b408291ab09a821cf3, type: 3}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
-  Rom_Cruiser_ii: {fileID: 0}
+  Rom_Cruiser_iii: {fileID: 253296048004377201, guid: 6ba081f6cd88212409ca536650a5ef34, type: 3}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
-  Card_Destroyer_i: {fileID: 0}
-  Card_Destroyer_ii: {fileID: 0}
-  Card_Cruiser_ii: {fileID: 0}
-  Card_Scout_i: {fileID: 3951447395639419369, guid: a18c48fd87dbe11449f228484c8a8011, type: 3}
-  Card_Scout_ii: {fileID: 0}
-  Dom_Destroyer_i: {fileID: 0}
-  Dom_Destroyer_ii: {fileID: 0}
-  Dom_Cruiser_ii: {fileID: 0}
-  Dom_Scout_i: {fileID: 0}
-  Dom_Scout_ii: {fileID: 0}
-  Borg_Destroyer_i: {fileID: 0}
-  Borg_Destroyer_ii: {fileID: 0}
-  Borg_Cube_ii: {fileID: 0}
-  Borg_Scout_i: {fileID: 0}
   panelMenu: {fileID: 448248054}
   panelPlay: {fileID: 1107062860}
   panelCompleted: {fileID: 798439246}
@@ -2989,9 +2989,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
-  Friend_YO_Z0: {fileID: 0}
-  Friend_YO_Z1: {fileID: 0}
-  Friend_YO_Z2: {fileID: 0}
+  Friend_Y0_Z0: {fileID: 0}
+  Friend_Y0_Z1: {fileID: 0}
+  Friend_Y0_Z2: {fileID: 0}
   Friend_Y1_Z0: {fileID: 0}
   Friend_Y1_Z1: {fileID: 0}
   Friend_Y1_Z2: {fileID: 0}
@@ -3001,6 +3001,20 @@ MonoBehaviour:
   Enemy_Y1_Z0: {fileID: 0}
   Enemy_Y1_Z1: {fileID: 0}
   Enemy_Y1_Z2: {fileID: 0}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 0}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
   Fed_Cruiser_ii: {fileID: 0}
   Fed_Cruiser_iii: {fileID: 0}
   Fed_lt_Cruiser_iv: {fileID: 0}
@@ -3020,23 +3034,9 @@ MonoBehaviour:
   Kling_Scout_ii: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
-  Rom_Cruiser_ii: {fileID: 0}
+  Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
-  Card_Destroyer_i: {fileID: 0}
-  Card_Destroyer_ii: {fileID: 0}
-  Card_Cruiser_ii: {fileID: 0}
-  Card_Scout_i: {fileID: 0}
-  Card_Scout_ii: {fileID: 0}
-  Dom_Destroyer_i: {fileID: 0}
-  Dom_Destroyer_ii: {fileID: 0}
-  Dom_Cruiser_ii: {fileID: 0}
-  Dom_Scout_i: {fileID: 0}
-  Dom_Scout_ii: {fileID: 0}
-  Borg_Destroyer_i: {fileID: 0}
-  Borg_Destroyer_ii: {fileID: 0}
-  Borg_Cube_ii: {fileID: 0}
-  Borg_Scout_i: {fileID: 0}
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}

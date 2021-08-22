@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2235945994531336940}
   - component: {fileID: 8931617406694999671}
   - component: {fileID: 652417093887238716}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Sprit Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 6891482968316439661}
   - component: {fileID: 5419435341342294807}
   - component: {fileID: 520533934551633621}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: BORG_TORPEDO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 5778689254919643575}
   - component: {fileID: 4662622485256218328}
   - component: {fileID: 1997965339392896954}
-  m_Layer: 20
+  m_Layer: 26
   m_Name: Sprit Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}

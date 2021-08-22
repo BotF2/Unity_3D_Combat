@@ -165,29 +165,22 @@ namespace Assets.Script
         
         public void OnTriggerStay(Collider other) // beams
         {
-           
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, transform.forward);
-            string beamFiringShip = gameObject.name.ToUpper();//other.gameObject.tag; // collider to object...
-
-           // string targetShipTransform,Name = beamTargetTransform.name; //other.gameObject.name;
-            //if (beamGameObjectName.Contains("BEAM"))
-            //    _isTorpedo = false;
+            string beamFiringShip = gameObject.name.ToUpper();
 
             if (GameManager.ShipDataDictionary.TryGetValue(beamFiringShip, out int[] _result))
             {
-                //if (!_isTorpedo)
-                    _beamDamage = _result[3];
+                _beamDamage = _result[3];
             }
-            if ( _beamDamage > 0 && beamTargetTransform != null) //!_isTorpedo && 
+            if ( _beamDamage > 0 && beamTargetTransform != null)
             {
-                Ship target = beamTargetTransform.GetComponent<Ship>();
+                Ship target = beamTargetTransform.GetComponent<Ship>(); // get the targeted Ship
                 switch (target.shieldsAreUp)
                 {
                     case true:
                         var positionOf = beamTargetTransform.position; // traget ship origin
                         _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                        Destroy(_shields, 2.1f);
-                        
+                        Destroy(_shields, 2.1f);                      
                         target.ShieldsTakeDagame(_beamDamage);
                         _beamDamage = 0;
                         break;

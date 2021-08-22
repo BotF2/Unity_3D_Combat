@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1096217897838148553}
   - component: {fileID: 5245608409125339525}
   - component: {fileID: 8924130813254111792}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: DOM_TORPEDO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 2575932417151509114}
   - component: {fileID: 1971490970727622050}
   - component: {fileID: 8330379889661620516}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: Sprit Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 2756303800128335321}
   - component: {fileID: 7065753856102304073}
   - component: {fileID: 1399020604622454210}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: Sprit Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}

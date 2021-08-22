@@ -50,9 +50,9 @@ namespace Assets.Script
         //public static GameObject dummy;
 
         #region the grid of empties
-        public GameObject Friend_YO_Z0; // warp animation empties
-        public GameObject Friend_YO_Z1;
-        public GameObject Friend_YO_Z2;
+        public GameObject Friend_Y0_Z0; // warp animation empties
+        public GameObject Friend_Y0_Z1;
+        public GameObject Friend_Y0_Z2;
         public GameObject Friend_Y1_Z0;
         public GameObject Friend_Y1_Z1;
         public GameObject Friend_Y1_Z2;
@@ -65,7 +65,24 @@ namespace Assets.Script
         #endregion
 
         #region prefab ships and stations
-        public GameObject Fed_Cruiser_ii; // prefab ships
+        public GameObject Borg_Destroyer_i; // prefab ships
+        public GameObject Borg_Destroyer_ii;
+        public GameObject Borg_Cube_ii;
+        public GameObject Borg_Scout_i;
+
+        public GameObject Card_Destroyer_i;
+        public GameObject Card_Destroyer_ii;
+        public GameObject Card_Cruiser_ii;
+        public GameObject Card_Scout_i;
+        public GameObject Card_Scout_ii;
+
+        public GameObject Dom_Destroyer_i;
+        public GameObject Dom_Destroyer_ii;
+        public GameObject Dom_Cruiser_ii;
+        public GameObject Dom_Scout_i;
+        public GameObject Dom_Scout_ii;
+
+        public GameObject Fed_Cruiser_ii;
         public GameObject Fed_Cruiser_iii;
         public GameObject Fed_lt_Cruiser_iv;
         public GameObject Fed_hvy_Cruiser_iv;
@@ -86,26 +103,10 @@ namespace Assets.Script
 
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
-        public GameObject Rom_Cruiser_ii;
+        public GameObject Rom_Cruiser_iii;
         public GameObject Rom_Scout_i;
         public GameObject Rom_Scout_ii;
 
-        public GameObject Card_Destroyer_i;
-        public GameObject Card_Destroyer_ii;
-        public GameObject Card_Cruiser_ii;
-        public GameObject Card_Scout_i;
-        public GameObject Card_Scout_ii;
-
-        public GameObject Dom_Destroyer_i;
-        public GameObject Dom_Destroyer_ii;
-        public GameObject Dom_Cruiser_ii;
-        public GameObject Dom_Scout_i;
-        public GameObject Dom_Scout_ii;
-
-        public GameObject Borg_Destroyer_i;
-        public GameObject Borg_Destroyer_ii;
-        public GameObject Borg_Cube_ii;
-        public GameObject Borg_Scout_i;
         #endregion
 
         // ToDo created this in galactic game level from combat ships and stations in the combat sector
@@ -167,7 +168,6 @@ namespace Assets.Script
             BeginState(newState);
             _isSwitchingState = false;
         }
-
 
         void BeginState(State newState)
         {
@@ -363,28 +363,30 @@ namespace Assets.Script
 
         public void LoadShipData(string filename) // List<sting>
         {
-            List<GameObject> friendEmpties = new List<GameObject>()
-                {Friend_YO_Z0,Friend_YO_Z1, Friend_YO_Z2, Friend_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2};
-            List<GameObject> enemyEmpties = new List<GameObject>()
+            List<GameObject> friendAnimationEmpties = new List<GameObject>()
+                {Friend_Y0_Z0, Friend_Y0_Z1, Friend_Y0_Z2, Friend_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2};
+            List<GameObject> enemyAnimationEmpties = new List<GameObject>()
                 {Enemy_Y0_Z0, Enemy_Y0_Z1, Enemy_Y0_Z2, Enemy_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2};
 
             Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                //{ "Friend_0", friend_0 },
-                //{ "Enemy_0", enemy_0},
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
                 { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
-                { "CARD_SCOUT_I", Card_Scout_i }
+                { "CARD_SCOUT_I", Card_Scout_i },
+                { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            string[] _friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_II", "FED_DESTROYER_II", "FED_DESTROYER_II" };
+            #region Ships to load for Combat
+            string[] _friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
             FriendArray = _friendArray;
-            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II"};
+            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II", "ROM_CRUISER_III" };
             EnemyArray = _enemyArray;
+            #endregion
 
-            # region load grids
+
+            #region load position grids
             int yFactor = 3000;
             int zFactor = 3500;
             int xFactorFriend = -3000;
@@ -550,20 +552,19 @@ namespace Assets.Script
                 //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
                 #endregion
 
-                //instantiate prefab ships from friendArray onto as may emptyFriendMarkers using the prefab dictionary
+                //instantiate prefab ships from friendArray onto as many emptyFriendMarkers from the prefab dictionary for the FriendDictionary 
                 Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
-                int _countFriends = 0;
+
                 for (int i = 0; i < _friendArray.Count(); i++)
                 {
                     GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
                     _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
 
-                    _friendsLocal.Add(_countFriends, _tempPrefabFriend);
+                    _friendsLocal.Add(i, _tempPrefabFriend);
                     //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
-                    emptyFriendMarkers[i].transform.SetParent(Friend_YO_Z0.transform, true);
-                    Ship.SetLayerRecursively(Friend_YO_Z0, friendShipLayer);          
-
+                    emptyFriendMarkers[i].transform.SetParent(friendAnimationEmpties[i].transform, true);
+                    Ship.SetLayerRecursively(friendAnimationEmpties[i], friendShipLayer);          
 
                     if (_shipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
                     {
@@ -573,24 +574,22 @@ namespace Assets.Script
                         _tempPrefabFriend.GetComponent<Ship>()._beamDamage = _result[3];
                         //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
                         //_beamPower = _result[3];
-                    }
-                    
-                    _countFriends += 1;
+                    }                  
                 }
                 FriendShips = _friendsLocal;
                 //StaticStuff.LoadStaticFriendDictionary(FriendShips);
                 Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
-                int _countEnemies = 0;
+
                 for (int i = 0; i < _enemyArray.Count(); i++)
                 {
 
                     GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
                     _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
-                    _enemysLocal.Add(_countEnemies, _tempPrefabEnemy);
+                    _enemysLocal.Add(i, _tempPrefabEnemy);
                     //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
-                    emptyEnemyMarkers[i].transform.SetParent(Enemy_Y0_Z0.transform, true);
-                    Ship.SetLayerRecursively(Enemy_Y0_Z0, enemyShipLayer);
+                    emptyEnemyMarkers[i].transform.SetParent(enemyAnimationEmpties[i].transform, true);
+                    Ship.SetLayerRecursively(enemyAnimationEmpties[i], enemyShipLayer);
 
                     if (_shipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
                     {
@@ -601,7 +600,6 @@ namespace Assets.Script
                         //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
                         //_beamPower = _result[3];
                     }                  
-                    _countEnemies += 1;
                 }
                 EnemyShips = _enemysLocal;
                 //StaticStuff.LoadStaticEnemyDictionary(EnemyShips); 

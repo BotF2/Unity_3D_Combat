@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 657197566057240710}
   - component: {fileID: 300567087600802538}
   - component: {fileID: 635661586806044844}
-  m_Layer: 20
+  m_Layer: 23
   m_Name: Sprit Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4815,7 +4815,7 @@ GameObject:
   - component: {fileID: 3331430965243797469}
   - component: {fileID: 3291271253586337737}
   - component: {fileID: 1966095903877117005}
-  m_Layer: 20
+  m_Layer: 23
   m_Name: Sprit Render
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4911,7 +4911,7 @@ GameObject:
   - component: {fileID: 2331345771848361024}
   - component: {fileID: 4479868334223173631}
   - component: {fileID: 5269112029787216766}
-  m_Layer: 20
+  m_Layer: 23
   m_Name: KLING_TORPEDO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
