@@ -1,3 +1,4 @@
+using Assets.Script;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,34 +14,9 @@ namespace Assets.Script
         friend,
         enemy
     }
-    //public class ShipData
-    //{
-    //    public string A_INDEX;
-    //    public string Key;
-    //    public int Hull;
-    //    public int Shield;
-    //    public int TorpedoDamage;
-    //    public int BeamDamage;
-
-    //    public ShipData(
-    //            string a_index
-    //            , string key
-    //            , int hull
-    //            , int shield
-    //            , int torpedoDamage
-    //            , int beamDamaga
-    //            )
-    //    {
-    //        A_INDEX = a_index;
-    //        Key = key;
-    //        Hull = hull;
-    //        Shield = shield;
-    //        TorpedoDamage = torpedoDamage;
-    //        BeamDamage = beamDamaga;
-    //    }
-    //}
     public class GameManager : MonoBehaviour
     {
+        public CameraMultiTarget cameraMultiTarget;
         private float shipScale = 7000f;
         private char separator = ';';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
@@ -103,6 +79,7 @@ namespace Assets.Script
 
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
+        public GameObject Rom_Cruiser_ii;
         public GameObject Rom_Cruiser_iii;
         public GameObject Rom_Scout_i;
         public GameObject Rom_Scout_ii;
@@ -310,14 +287,6 @@ namespace Assets.Script
                     break;
             }
         }
-        // will give the child the same location, rotation and scale as the parent
-        //public static void SetParent(this Transform child, Transform parent)
-        //{
-        //    child.parent = parent;
-        //    child.localPosition = Vector3.zero;
-        //    child.localRotation = Quaternion.identity;
-        //    child.localScale = Vector3.one;
-        //}
         private void SetRandomWarp(GameObject child, List<GameObject> warpEmpties)
         {
 
@@ -376,12 +345,13 @@ namespace Assets.Script
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
                 { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
                 { "CARD_SCOUT_I", Card_Scout_i },
+                { "ROM_CRUISER_II", Rom_Cruiser_ii },
                 { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
             #region Ships to load for Combat
             string[] _friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
             FriendArray = _friendArray;
-            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II", "ROM_CRUISER_III" };
+            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II", "ROM_CRUISER_II" }; //"ROM_CRUISER_III",
             EnemyArray = _enemyArray;
             #endregion
 
@@ -392,100 +362,39 @@ namespace Assets.Script
             int xFactorFriend = -3000;
 
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { Friend_0 };
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 21; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 3; j < 6; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 6; j < 9; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 9; j < 12; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 12; j < 15; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 15; j < 18; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempFriend.transform.Rotate(0, 90, 0);
-                    emptyFriendMarkers.Add(_tempFriend);
-                }
-                for (int j = 18; j < 21; j++)
-                {
-                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, i * yFactor, j * zFactor), Quaternion.identity);
+                    GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, j * yFactor, i * zFactor), Quaternion.identity);
                     _tempFriend.transform.Rotate(0, 90, 0);
                     emptyFriendMarkers.Add(_tempFriend);
                 }
             }
+            //for (int i = 3; i < 6; i++)
+            //{ 
+            //    for (int j = 3; j < 6; j++)
+            //    {
+            //        GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, j * yFactor, i * zFactor), Quaternion.identity);
+            //        _tempFriend.transform.Rotate(0, 90, 0);
+            //        emptyFriendMarkers.Add(_tempFriend);
+            //    }
+            //}
+
             emptyFriendMarkers.RemoveAt(0);
             int xFactor = 10000;
 
             List<GameObject> emptyEnemyMarkers = new List<GameObject>() { Enemy_0 };
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 21; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 3; j < 6; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 6; j < 9; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 9; j < 12; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 12; j < 15; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 15; j < 18; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
-                    _tempEnemy.transform.Rotate(0, -90, 0);
-                    emptyEnemyMarkers.Add(_tempEnemy);
-                }
-                for (int j = 18; j < 21; j++)
-                {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, i * yFactor, j * zFactor), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, j * yFactor, i * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
             }
+
             emptyEnemyMarkers.RemoveAt(0);
             #endregion
 
@@ -507,7 +416,7 @@ namespace Assets.Script
             var _dataPoints = new List<string>();
             using (var reader = new StreamReader(file))
             {
-                //Note1("string", int, int, int, int, "---------------  reading __to_PLZ_DB.txt (from file)");
+                //Note1("string", int, int, int, int, int"---------------  reading __to_PLZ_DB.txt (from file)");
                 //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
                 //Console.WriteLine(infotext);
 
@@ -521,25 +430,13 @@ namespace Assets.Script
                     if (line.Length > 0)
                     {
                         var coll = line.Split(separator);
-                        //_ = int.TryParse(coll[1], out int currentValueOne);
-                        //_ = int.TryParse(coll[2], out int currentValueTwo);
-                        //_ = int.TryParse(coll[3], out int currentValueThree);
-                        //_ = int.TryParse(coll[4], out int currentValueFour);
-                        //ShipData shipDataNew = new ShipData(
-                        //  coll[0]
-                        //  //,coll[0]
-                        //  , currentValueOne
-                        //  , currentValueTwo
-                        //  , currentValueThree
-                        //  , currentValueFour
-                        //  );
-                        //shipDataList.Add(shipDataNew);
 
                         _ = int.TryParse(coll[1], out int currentValueOne);
                         _ = int.TryParse(coll[2], out int currentValueTwo);
                         _ = int.TryParse(coll[3], out int currentValueThree);
                         _ = int.TryParse(coll[4], out int currentValueFour);
-                        int[] shipDataArray = new int[] { currentValueOne, currentValueTwo, currentValueThree, currentValueFour };
+                        _ = int.TryParse(coll[5], out int currentValueFive);
+                        int[] shipDataArray = new int[] { currentValueOne, currentValueTwo, currentValueThree, currentValueFour, currentValueFive };
 
                         _shipDataDictionary.Add(coll[0].ToString(), shipDataArray);
                         //_shipInts.Clear();
@@ -554,13 +451,14 @@ namespace Assets.Script
 
                 //instantiate prefab ships from friendArray onto as many emptyFriendMarkers from the prefab dictionary for the FriendDictionary 
                 Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
-
+                var cameraTargets = new List<GameObject>();
                 for (int i = 0; i < _friendArray.Count(); i++)
                 {
                     GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
                     _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
-
+                   cameraTargets.Add(_tempPrefabFriend);
+                    //cameraMultiTarget.SetTargets(_tempPrefabFriend.ToArray());
                     _friendsLocal.Add(i, _tempPrefabFriend);
                     //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
                     emptyFriendMarkers[i].transform.SetParent(friendAnimationEmpties[i].transform, true);
@@ -569,11 +467,10 @@ namespace Assets.Script
                     if (_shipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
                     {
                         _tempPrefabFriend.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
-                        _tempPrefabFriend.GetComponent<Ship>()._hullHealth = _result[1];
+                        _tempPrefabFriend.GetComponent<Ship>()._hullMaxHealth = _result[1];
                         _tempPrefabFriend.GetComponent<Ship>()._torpedoDamage = _result[2];
                         _tempPrefabFriend.GetComponent<Ship>()._beamDamage = _result[3];
-                        //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
-                        //_beamPower = _result[3];
+                        _tempPrefabFriend.GetComponent<Ship>()._cost = _result[4];
                     }                  
                 }
                 FriendShips = _friendsLocal;
@@ -586,6 +483,7 @@ namespace Assets.Script
                     GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
                     _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
+                    cameraTargets.Add(_tempPrefabEnemy);
                     _enemysLocal.Add(i, _tempPrefabEnemy);
                     //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
                     emptyEnemyMarkers[i].transform.SetParent(enemyAnimationEmpties[i].transform, true);
@@ -594,16 +492,22 @@ namespace Assets.Script
                     if (_shipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
                     {
                         _tempPrefabEnemy.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
-                        _tempPrefabEnemy.GetComponent<Ship>()._hullHealth = _result[1];
+                        _tempPrefabEnemy.GetComponent<Ship>()._hullMaxHealth = _result[1];
                         _tempPrefabEnemy.GetComponent<Ship>()._torpedoDamage = _result[2];
                         _tempPrefabEnemy.GetComponent<Ship>()._beamDamage = _result[3];
-                        //_torpedoWarhead = _result[2]; // Do we ever need to know the warhead loaded on the ship object? we get torpedo damage from incoming weapon / dictionary
-                        //_beamPower = _result[3];
+                        _tempPrefabEnemy.GetComponent<Ship>()._cost = _result[4];
                     }                  
                 }
                 EnemyShips = _enemysLocal;
+                cameraMultiTarget.SetTargets(cameraTargets.ToArray());
                 //StaticStuff.LoadStaticEnemyDictionary(EnemyShips); 
             }
         }
+        //private GameObject CreateTarget()
+        //{
+        //    GameObject target = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        //    target.transform.position = UnityEngine.Random.insideUnitSphere * 10f;
+        //    return target;
+        //}
     }
 }

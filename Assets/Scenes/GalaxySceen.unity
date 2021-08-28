@@ -1780,7 +1780,6 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194231}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1819,7 +1818,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 100
+  near clip plane: 1
   far clip plane: 100000000
   field of view: 26.991467
   orthographic: 0
@@ -1847,7 +1846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.065719835, y: 0.67371833, z: -0.05138425, w: 0.7342645}
-  m_LocalPosition: {x: -18439, y: 5574.4707, z: 2746.8425}
+  m_LocalPosition: {x: -18286, y: 5508, z: 2746.8425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 899714681}
@@ -1879,7 +1878,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 1
   m_Antialiasing: 2
-  m_AntialiasingQuality: 1
+  m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
   m_ClearDepth: 1
@@ -1896,22 +1895,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a3aa806f2e9a5478d62a5de858e02b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e863d8a08e474307802eaf34f998943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &963194231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 546f2d943293ccf4a9ab82088af3b828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  awesomeShader: {fileID: -6465566751694194690, guid: 976e8a07e976ddc468b45557462b80d2, type: 3}
+  Pitch: 0
+  Yaw: 0
+  Roll: 0
+  PaddingLeft: 0
+  PaddingRight: 0
+  PaddingUp: 0
+  PaddingDown: 0
+  MoveSmoothTime: 0.19
 --- !u!1 &973597407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,6 +2214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMultiTarget: {fileID: 963194230}
   Friend_0: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
   Enemy_0: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
   Friend_Y0_Z0: {fileID: 1677149830}
@@ -2252,8 +2247,8 @@ MonoBehaviour:
   Fed_Cruiser_iii: {fileID: 2056092288315165191, guid: dce5c86a204b9154e83586e133047353, type: 3}
   Fed_lt_Cruiser_iv: {fileID: 0}
   Fed_hvy_Cruiser_iv: {fileID: 0}
-  Fed_Destroyer_i: {fileID: 427735471092981353, guid: 32813324a59a1174d82f266ada40da31, type: 3}
-  Fed_Destroyer_ii: {fileID: 7286169461284762676, guid: f3bd04382e37b794dae68a8a411c3f97, type: 3}
+  Fed_Destroyer_i: {fileID: 3660467789958840965, guid: 32813324a59a1174d82f266ada40da31, type: 3}
+  Fed_Destroyer_ii: {fileID: 8040235460673620788, guid: 5fd6538063636664eb56f1e72324eb70, type: 3}
   Fed_Destroyer_iii: {fileID: 0}
   Fed_Destroyer_iv: {fileID: 0}
   Fed_Scout_i: {fileID: 0}
@@ -2267,7 +2262,8 @@ MonoBehaviour:
   Kling_Scout_ii: {fileID: 960271130701890872, guid: a83ec879888398b408291ab09a821cf3, type: 3}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
-  Rom_Cruiser_iii: {fileID: 253296048004377201, guid: 6ba081f6cd88212409ca536650a5ef34, type: 3}
+  Rom_Cruiser_ii: {fileID: 6474706349711357221, guid: 72d8a1154b291bd4890a81ac90939553, type: 3}
+  Rom_Cruiser_iii: {fileID: 2098590343800204038, guid: 6ba081f6cd88212409ca536650a5ef34, type: 3}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   panelMenu: {fileID: 448248054}
@@ -2557,7 +2553,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2597,15 +2593,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 99999
-  field of view: 60
+  near clip plane: 1
+  far clip plane: 100000000
+  field of view: 26.99147
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2960,9 +2956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
   _shieldsMaxHealth: 0
-  _hullHealth: 0
+  _hullMaxHealth: 0
   _torpedoDamage: 0
   _beamDamage: 0
+  _cost: 0
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 0}
   _ringExplosion: {fileID: 0}
@@ -2987,6 +2984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMultiTarget: {fileID: 0}
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
   Friend_Y0_Z0: {fileID: 0}
@@ -3034,6 +3032,7 @@ MonoBehaviour:
   Kling_Scout_ii: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
+  Rom_Cruiser_ii: {fileID: 0}
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}

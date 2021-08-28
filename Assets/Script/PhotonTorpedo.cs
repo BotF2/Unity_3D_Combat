@@ -15,8 +15,6 @@ public class PhotonTorpedo : MonoBehaviour
     private Dictionary<int, GameObject> theLocalTargetDictionary;
     private float diff = 0;
 
-    //private AudioSource theSource;
-    //public AudioClip clipTorpedoFire;
 
     private void Start()
     {
@@ -41,24 +39,7 @@ public class PhotonTorpedo : MonoBehaviour
     }
     private void Awake()
     {
-        //if (GameManager.FriendShips.Count >1)
-        //{
-        //    string whoTorpedo = gameObject.name.Substring(0, 3); 
-        //    string friendShips = GameManager.friendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
-        //    if (whoTorpedo == friendShips)
-        //        theLocalTargetDictionary = GameManager.EnemyShips;
-        //    else
-        //        theLocalTargetDictionary = GameManager.FriendShips;
-        //    homingTorpedo = transform.GetComponent<Rigidbody>();
-        //    if (homingTorpedo != null)
-        //    {
-        //        FindTargetNearTorpedo(theLocalTargetDictionary);
-        //    }
-        //    if (target == null)
-        //    {
-        //        Destroy(gameObject);
-        //    }
-        //}
+
     }
     private void FixedUpdate()
     {
@@ -90,17 +71,6 @@ public class PhotonTorpedo : MonoBehaviour
     {
         Destroy(this.gameObject); // kill weapon gameobject holding speed script
     }
-    //public void GetTargetDictionaries()
-    //{
-    //    foreach(var keyValuePairFriend in GameManager.FriendShips)
-    //    {
-    //        _friendGameObjectDictionary.Add(keyValuePairFriend.Key, keyValuePairFriend.Value);
-    //    }
-    //    foreach (var keyValuePairEnemy in GameManager.EnemyShips)
-    //    {
-    //        _enemyGameObjectDictionary.Add(keyValuePairEnemy.Key, keyValuePairEnemy.Value);
-    //    }
-    //}
     public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
     {
         var distance = Mathf.Infinity;
@@ -117,8 +87,4 @@ public class PhotonTorpedo : MonoBehaviour
             }
         }        
     }
-    //internal static void ToLocal(ref Vector3 worldVector, ref Quaternion worldRotation, out Vector3 localVector)
-    //{
-    //    localVector = Quaternion.Inverse(worldRotation) * worldVector;
-    //}
 }
