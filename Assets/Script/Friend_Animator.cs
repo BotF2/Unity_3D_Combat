@@ -34,7 +34,7 @@ namespace Assets.Script
         }
         public void PlayWarp() // called in animation - warp
         {
-            warpAudioSource_0.volume = 0.1f;
+            warpAudioSource_0.volume = 1f;
             warpAudioSource_0.Play();
             //warpAudioSource_0.volume = 0.1f;
             //warpAudioSource_0.Play();

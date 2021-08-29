@@ -6,6 +6,7 @@ namespace Assets.Script
 {
 	public class CameraMultiTarget : MonoBehaviour
 	{
+		public GameManager gameManager;
 		public float Pitch;
 		public float Yaw;
 		public float Roll;
@@ -30,11 +31,7 @@ namespace Assets.Script
 
 		private void Awake()
 		{
-			var theObject = gameObject;
             _camera = gameObject.GetComponent<Camera>();
-            //if (_camera == null)
-            //    _camera = _mainCamera;
-
             _debugProjection = DebugProjection.ROTATED;
 		}
 
@@ -42,7 +39,8 @@ namespace Assets.Script
 		{
 			if (_targets.Length == 0)
 				return;
-
+			if (gameManager._statePassedInit == false)
+				return;
 			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
 
 			Vector3 velocity = Vector3.zero;
@@ -64,9 +62,9 @@ namespace Assets.Script
 			float projectionPlaneZ = furthestPointDistanceFromCamera + 3f;
 
 			ProjectionHits viewProjectionLeftAndRightEdgeHits =
-				ViewProjectionEdgeHits(targetsRotatedToCameraIdentity, ProjectionEdgeHits.LEFT_RIGHT, projectionPlaneZ, halfHorizontalFovRad).AddPadding(PaddingRight +1000, PaddingLeft +1000);
+				ViewProjectionEdgeHits(targetsRotatedToCameraIdentity, ProjectionEdgeHits.LEFT_RIGHT, projectionPlaneZ, halfHorizontalFovRad).AddPadding(PaddingRight +2100, PaddingLeft +2100);
 			ProjectionHits viewProjectionTopAndBottomEdgeHits =
-				ViewProjectionEdgeHits(targetsRotatedToCameraIdentity, ProjectionEdgeHits.TOP_BOTTOM, projectionPlaneZ, halfVerticalFovRad).AddPadding(PaddingUp +1000, PaddingDown +1000);
+				ViewProjectionEdgeHits(targetsRotatedToCameraIdentity, ProjectionEdgeHits.TOP_BOTTOM, projectionPlaneZ, halfVerticalFovRad).AddPadding(PaddingUp +2000, PaddingDown +2000);
 
 			var requiredCameraPerpedicularDistanceFromProjectionPlane =
 				Mathf.Max(

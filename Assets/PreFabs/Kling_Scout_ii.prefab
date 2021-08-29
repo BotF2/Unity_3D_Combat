@@ -49,9 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   _shieldsMaxHealth: 30
-  _hullHealth: 14
+  _hullMaxHealth: 0
   _torpedoDamage: 16
   _beamDamage: 16
+  _cost: 0
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
@@ -63,7 +64,7 @@ MonoBehaviour:
   clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
   clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
   clipBeamWeapon: {fileID: 8300000, guid: 31c25b0f5bc17074fb0fb266b8c84ecc, type: 3}
-  clipWarpCoreBreach: {fileID: 8300000, guid: 5b2fc9918644d294b804a5f5f29a1681, type: 3}
+  clipWarpCoreBreach: {fileID: 8300000, guid: e954b04650179c84f88bbb5f4e1625d4, type: 3}
 --- !u!54 &2461289292751682648
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -106,11 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraMultiTarget: {fileID: 0}
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
-  Friend_YO_Z0: {fileID: 0}
-  Friend_YO_Z1: {fileID: 0}
-  Friend_YO_Z2: {fileID: 0}
+  Friend_Y0_Z0: {fileID: 0}
+  Friend_Y0_Z1: {fileID: 0}
+  Friend_Y0_Z2: {fileID: 0}
   Friend_Y1_Z0: {fileID: 0}
   Friend_Y1_Z1: {fileID: 0}
   Friend_Y1_Z2: {fileID: 0}
@@ -120,6 +122,20 @@ MonoBehaviour:
   Enemy_Y1_Z0: {fileID: 0}
   Enemy_Y1_Z1: {fileID: 0}
   Enemy_Y1_Z2: {fileID: 0}
+  Borg_Destroyer_i: {fileID: 0}
+  Borg_Destroyer_ii: {fileID: 0}
+  Borg_Cube_ii: {fileID: 0}
+  Borg_Scout_i: {fileID: 0}
+  Card_Destroyer_i: {fileID: 0}
+  Card_Destroyer_ii: {fileID: 0}
+  Card_Cruiser_ii: {fileID: 0}
+  Card_Scout_i: {fileID: 0}
+  Card_Scout_ii: {fileID: 0}
+  Dom_Destroyer_i: {fileID: 0}
+  Dom_Destroyer_ii: {fileID: 0}
+  Dom_Cruiser_ii: {fileID: 0}
+  Dom_Scout_i: {fileID: 0}
+  Dom_Scout_ii: {fileID: 0}
   Fed_Cruiser_ii: {fileID: 0}
   Fed_Cruiser_iii: {fileID: 0}
   Fed_lt_Cruiser_iv: {fileID: 0}
@@ -140,22 +156,9 @@ MonoBehaviour:
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
+  Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
-  Card_Destroyer_i: {fileID: 0}
-  Card_Destroyer_ii: {fileID: 0}
-  Card_Cruiser_ii: {fileID: 0}
-  Card_Scout_i: {fileID: 0}
-  Card_Scout_ii: {fileID: 0}
-  Dom_Destroyer_i: {fileID: 0}
-  Dom_Destroyer_ii: {fileID: 0}
-  Dom_Cruiser_ii: {fileID: 0}
-  Dom_Scout_i: {fileID: 0}
-  Dom_Scout_ii: {fileID: 0}
-  Borg_Destroyer_i: {fileID: 0}
-  Borg_Destroyer_ii: {fileID: 0}
-  Borg_Cube_ii: {fileID: 0}
-  Borg_Scout_i: {fileID: 0}
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}

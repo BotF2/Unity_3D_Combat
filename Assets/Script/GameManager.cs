@@ -109,7 +109,7 @@ namespace Assets.Script
         private State _state;
         bool _isSwitchingState;
 
-        private bool _statePassedInit = false;
+        public bool _statePassedInit = false;
         public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
 
         public void PlayClicked()
@@ -157,10 +157,11 @@ namespace Assets.Script
                 case State.INIT:
                     panelPlay.SetActive(true);
                     //Score = 0;
-                    _statePassedInit = true;
+                   // _statePassedInit = true;
                     SwitchtState(State.LOADNEXT);
                     break;
                 case State.PLAY:
+                    _statePassedInit = true;
                     break;
                 case State.COMPLETED:
                     panelPlay.SetActive(true);
@@ -359,7 +360,7 @@ namespace Assets.Script
             #region load position grids
             int yFactor = 3000;
             int zFactor = 3500;
-            int xFactorFriend = -3000;
+            int xFactorFriend = -3500;
 
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { Friend_0 };
             for (int i = 0; i < 21; i++)
@@ -371,25 +372,16 @@ namespace Assets.Script
                     emptyFriendMarkers.Add(_tempFriend);
                 }
             }
-            //for (int i = 3; i < 6; i++)
-            //{ 
-            //    for (int j = 3; j < 6; j++)
-            //    {
-            //        GameObject _tempFriend = Instantiate(Friend_0, new Vector3(xFactorFriend, j * yFactor, i * zFactor), Quaternion.identity);
-            //        _tempFriend.transform.Rotate(0, 90, 0);
-            //        emptyFriendMarkers.Add(_tempFriend);
-            //    }
-            //}
 
             emptyFriendMarkers.RemoveAt(0);
-            int xFactor = 10000;
+            int xFactorEnemmy = 4500;
 
             List<GameObject> emptyEnemyMarkers = new List<GameObject>() { Enemy_0 };
             for (int i = 0; i < 21; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactor, j * yFactor, i * zFactor), Quaternion.identity);
+                    GameObject _tempEnemy = Instantiate(Enemy_0, new Vector3(xFactorEnemmy, j * yFactor, i * zFactor), Quaternion.identity);
                     _tempEnemy.transform.Rotate(0, -90, 0);
                     emptyEnemyMarkers.Add(_tempEnemy);
                 }
