@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8040235460673620791}
   m_Layer: 10
   m_Name: FED_DESTROYER_II
-  m_TagString: Untagged
+  m_TagString: FED_DESTROYER_II(CLONE)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,8 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMultiTarget: {fileID: 0}
+  rotationSpeed: 0
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
+  yFactor: 3000
+  zFactor: 3500
+  xFactorFriend: -3500
+  xFactorEnemmy: 4500
   Friend_Y0_Z0: {fileID: 0}
   Friend_Y0_Z1: {fileID: 0}
   Friend_Y0_Z2: {fileID: 0}
@@ -159,10 +164,13 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  friends: 0
+  enemies: 0
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}
   panelGameOver: {fileID: 0}
+  _statePassedInit: 0
 --- !u!1001 &8233916738052606453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}
       propertyPath: m_Name
       value: FED_DESTROYER_II
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}

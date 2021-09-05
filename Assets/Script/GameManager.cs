@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 //using UnityEngine.UI;
 
@@ -17,13 +18,19 @@ namespace Assets.Script
     public class GameManager : MonoBehaviour
     {
         public CameraMultiTarget cameraMultiTarget;
+        //[SerializeField]
+        //public float viewCombatSpeed;
+        //public float rotation;       
         private float shipScale = 7000f;
         private char separator = ';';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
 
         public GameObject Friend_0;  // prefab empty gameobjects for the grid
         public GameObject Enemy_0;
-        //public static GameObject dummy;
+        public int yFactor = 3000; // segments in grid of empties
+        public int zFactor = 3500;
+        public int xFactorFriend = -3500; // x value of friend side grid world location
+        public int xFactorEnemmy = 4500;
 
         #region the grid of empties
         public GameObject Friend_Y0_Z0; // warp animation empties
@@ -89,6 +96,8 @@ namespace Assets.Script
         // ToDo created this in galactic game level from combat ships and stations in the combat sector
         public static string[] FriendArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
         public static string[] EnemyArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+        public int friends;
+        public int enemies;
         public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // { { 500, Friend_0 } };
         public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();  // { { 500, Enemy_0 } };
 
@@ -119,7 +128,6 @@ namespace Assets.Script
         private void Awake()
         {
             Instance = this; // static reference to single GameManager
-            //LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
         }
 
         // Start is called before the first frame update
@@ -352,15 +360,15 @@ namespace Assets.Script
             #region Ships to load for Combat
             string[] _friendArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
             FriendArray = _friendArray;
-            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II", "ROM_CRUISER_II" }; //"ROM_CRUISER_III",
+            string[] _enemyArray = new string[] { "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_DESTROYER_I", "KLING_SCOUT_II", "ROM_CRUISER_III" }; //"ROM_CRUISER_III",
             EnemyArray = _enemyArray;
             #endregion
 
 
             #region load position grids
-            int yFactor = 3000;
-            int zFactor = 3500;
-            int xFactorFriend = -3500;
+            //int yFactor = 3000;
+            //int zFactor = 3500;
+            //int xFactorFriend = -3500;
 
             List<GameObject> emptyFriendMarkers = new List<GameObject>() { Friend_0 };
             for (int i = 0; i < 21; i++)
@@ -374,7 +382,7 @@ namespace Assets.Script
             }
 
             emptyFriendMarkers.RemoveAt(0);
-            int xFactorEnemmy = 4500;
+            //int xFactorEnemmy = 4500;
 
             List<GameObject> emptyEnemyMarkers = new List<GameObject>() { Enemy_0 };
             for (int i = 0; i < 21; i++)
@@ -446,13 +454,14 @@ namespace Assets.Script
                 var cameraTargets = new List<GameObject>();
                 for (int i = 0; i < _friendArray.Count(); i++)
                 {
+
                     GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendArray[i]], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
+                    GameObject newDummyTarget = (GameObject)Instantiate(emptyFriendMarkers[i], emptyFriendMarkers[i].transform.position, emptyFriendMarkers[i].transform.rotation);
+                    newDummyTarget.transform.SetParent(emptyFriendMarkers[i].transform, true);
+                    cameraTargets.Add(newDummyTarget);
                     _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabFriend.transform.SetParent(emptyFriendMarkers[i].transform, true);
-                   cameraTargets.Add(_tempPrefabFriend);
-                    //cameraMultiTarget.SetTargets(_tempPrefabFriend.ToArray());
                     _friendsLocal.Add(i, _tempPrefabFriend);
-                    //SetRandomWarp(emptyFriendMarkers[i], friendEmpties);
                     emptyFriendMarkers[i].transform.SetParent(friendAnimationEmpties[i].transform, true);
                     Ship.SetLayerRecursively(friendAnimationEmpties[i], friendShipLayer);          
 
@@ -473,11 +482,12 @@ namespace Assets.Script
                 {
 
                     GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyArray[i]], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
+                    GameObject newDummyTarget = (GameObject)Instantiate(emptyEnemyMarkers[i], emptyEnemyMarkers[i].transform.position, emptyEnemyMarkers[i].transform.rotation);
+                    newDummyTarget.transform.SetParent(emptyEnemyMarkers[i].transform, true);
+                    cameraTargets.Add(newDummyTarget);
                     _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     _tempPrefabEnemy.transform.SetParent(emptyEnemyMarkers[i].transform, true);
-                    cameraTargets.Add(_tempPrefabEnemy);
                     _enemysLocal.Add(i, _tempPrefabEnemy);
-                    //SetRandomWarp(emptyEnemyMarkers[i], enemyEmpties);
                     emptyEnemyMarkers[i].transform.SetParent(enemyAnimationEmpties[i].transform, true);
                     Ship.SetLayerRecursively(enemyAnimationEmpties[i], enemyShipLayer);
 
@@ -492,14 +502,11 @@ namespace Assets.Script
                 }
                 EnemyShips = _enemysLocal;
                 cameraMultiTarget.SetTargets(cameraTargets.ToArray());
+                friends = FriendArray.Count();
+                enemies = EnemyArray.Count();
+                //rotateCombat.LocateCenterOfCombat();
                 //StaticStuff.LoadStaticEnemyDictionary(EnemyShips); 
             }
         }
-        //private GameObject CreateTarget()
-        //{
-        //    GameObject target = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-        //    target.transform.position = UnityEngine.Random.insideUnitSphere * 10f;
-        //    return target;
-        //}
     }
 }

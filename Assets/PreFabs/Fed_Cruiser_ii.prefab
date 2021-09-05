@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1844671466727725497}
   m_Layer: 10
   m_Name: FED_CRUISER_II
-  m_TagString: Untagged
+  m_TagString: FED_CRUISER_II(CLONE)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,8 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMultiTarget: {fileID: 0}
+  rotationSpeed: 0
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
+  yFactor: 3000
+  zFactor: 3500
+  xFactorFriend: -3500
+  xFactorEnemmy: 4500
   Friend_Y0_Z0: {fileID: 0}
   Friend_Y0_Z1: {fileID: 0}
   Friend_Y0_Z2: {fileID: 0}
@@ -159,10 +164,13 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  friends: 0
+  enemies: 0
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}
   panelGameOver: {fileID: 0}
+  _statePassedInit: 0
 --- !u!1 &4905910853404244440
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +230,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7069643062411393581, guid: a56de62bfe062be4c9947cd9c2fca1af, type: 3}
+  - {fileID: 2100000, guid: 7958bc0bd3a673c49888be9ba0a0e230, type: 2}
+  - {fileID: -2886305012607977148, guid: a56de62bfe062be4c9947cd9c2fca1af, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

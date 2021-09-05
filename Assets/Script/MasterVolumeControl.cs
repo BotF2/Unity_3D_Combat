@@ -9,13 +9,13 @@ namespace Assets.Script
     {
         [Range(0.0f, 1.0f)]
         [SerializeField]
-
         public Slider slider;
 
-        // Update is called once per frame
         void Update()
         {
             AudioListener.volume = slider.value;
+            slider.value = 0.5f;
+
         }
     }
 }

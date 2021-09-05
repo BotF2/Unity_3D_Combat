@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1925599905612047464}
   m_Layer: 14
   m_Name: CARD_SCOUT_I
-  m_TagString: Untagged
+  m_TagString: CARD_SCOUT_I
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
-  _layer: 0
+  _layer: 14
   torpedoPrefab: {fileID: 415201065488554502, guid: 4a8748064f7ffc14386b869a8c85273c, type: 3}
   beamPrefab: {fileID: 4536739393464978480, guid: e80467a06758fb54faf1a973b8d75d29, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
@@ -108,8 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMultiTarget: {fileID: 0}
+  rotationSpeed: 0
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
+  yFactor: 3000
+  zFactor: 3500
+  xFactorFriend: -3500
+  xFactorEnemmy: 4500
   Friend_Y0_Z0: {fileID: 0}
   Friend_Y0_Z1: {fileID: 0}
   Friend_Y0_Z2: {fileID: 0}
@@ -159,10 +164,13 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  friends: 0
+  enemies: 0
   panelMenu: {fileID: 0}
   panelPlay: {fileID: 0}
   panelCompleted: {fileID: 0}
   panelGameOver: {fileID: 0}
+  _statePassedInit: 0
 --- !u!1001 &7651250298393361884
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,9 +15,9 @@ namespace Assets.Script
 		public float PaddingUp;
 		public float PaddingDown;
 		public float MoveSmoothTime = 0.19f;
+		public float speed;
 
 		private Camera _camera;
-		//public Camera _mainCamera;
 		private GameObject[] _targets = new GameObject[0];
 		private DebugProjection _debugProjection;
 
@@ -26,20 +26,20 @@ namespace Assets.Script
 
 		public void SetTargets(GameObject[] targets)
 		{
-			_targets = targets;
+			_targets = targets; // empty dummy gameObjects as targets located where 3D ships warp in.
 		}
 
 		private void Awake()
 		{
             _camera = gameObject.GetComponent<Camera>();
-            _debugProjection = DebugProjection.ROTATED;
+            _debugProjection = DebugProjection.ROTATED;     
 		}
 
 		private void LateUpdate()
 		{
 			if (_targets.Length == 0)
 				return;
-			if (gameManager._statePassedInit == false)
+			if (gameManager.StatePassedInit == false)
 				return;
 			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
 

@@ -29,6 +29,9 @@ TagManager:
   - FED_LT_CRUISER_IV(CLONE)
   - FED_HVY_CRUISER_IV(CLONE)
   - KLING_SCOUT_II(CLONE)
+  - ROM_CRUISER_III
+  - ROM_CRUISER_II
+  - CARD_SCOUT_I
   layers:
   - Default
   - TransparentFX
@@ -58,8 +61,8 @@ TagManager:
   - DomTorpedo
   - BorgTorpedo
   - 
-  - 
-  - 
+  - PostPorcessing
+  - SkyboxOnly
   - 
   - 
   m_SortingLayers:
