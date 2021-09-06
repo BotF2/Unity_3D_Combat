@@ -7,15 +7,16 @@ namespace Assets.Script
 {
     public class MasterVolumeControl : MonoBehaviour
     {
-        [Range(0.0f, 1.0f)]
-        [SerializeField]
         public Slider slider;
+        private void Start()
+        {
+            transform.GetComponentInChildren<AudioListener>().enabled = true;
+            slider.value = 0.5f;
+        }
 
         void Update()
         {
             AudioListener.volume = slider.value;
-            slider.value = 0.5f;
-
         }
     }
 }

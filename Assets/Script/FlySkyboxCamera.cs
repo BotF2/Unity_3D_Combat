@@ -9,7 +9,7 @@ namespace Assets.Script
         public GameManager gameManager;
        // public MouseLook mouseLook;
         public float mouseSensitivity = 1f;
-        public float skyboxFactor = 40;
+        public float skyboxFactor = 10;
         private float xRotation = 0f;
         private float yRotation = 0f;
 
