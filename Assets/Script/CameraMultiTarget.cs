@@ -41,6 +41,7 @@ namespace Assets.Script
 				return;
 			if (gameManager.StatePassedInit == false)
 				return;
+
 			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
 
 			Vector3 velocity = Vector3.zero;

@@ -1429,7 +1429,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -5.412, y: -53.411, z: -22.268}
 --- !u!1 &705809155
 GameObject:
@@ -1522,7 +1522,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -216.483, y: -125.66699, z: 0}
 --- !u!1 &717740364
 GameObject:
@@ -1615,7 +1615,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -45.503, y: 1.918, z: 44.066}
 --- !u!1 &798439246
 GameObject:
@@ -2128,6 +2128,7 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194234}
   - component: {fileID: 963194233}
+  - component: {fileID: 963194232}
   m_Layer: 28
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2268,6 +2269,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 546406687}
+--- !u!114 &963194232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5681909153b4e3640945530cf8f3dbf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &963194233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3144,7 +3157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!45 &1234502402
 Skybox:
@@ -3567,7 +3580,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 2.089, y: -175.716, z: -157.27}
 --- !u!1 &1451165531 stripped
 GameObject:
