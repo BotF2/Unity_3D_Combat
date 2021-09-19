@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3432144888168841308}
   - component: {fileID: 3432144888168841309}
   - component: {fileID: 3432144888168841304}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Borg_Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

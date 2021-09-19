@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PhotonTorpedo : MonoBehaviour
 {
-    public GameManager gameManager;
+    //public GameManager gameManager;
     public float speed =1000f;
     public float turnRate = 1f;
     private Rigidbody homingTorpedo;
@@ -21,7 +21,7 @@ public class PhotonTorpedo : MonoBehaviour
         if (GameManager.FriendShips.Count > 0)
         {
             string whoTorpedo = gameObject.name.Substring(0, 3);
-            string friendShips = GameManager.FriendArray[1].Substring(0, 3); // first one can be a dummy so go with [1]
+            string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one can be a dummy so go with [1], think this does not happen now
             if (whoTorpedo == friendShips)
                 theLocalTargetDictionary = GameManager.EnemyShips;
             else
@@ -45,12 +45,8 @@ public class PhotonTorpedo : MonoBehaviour
     {
         if (target != null && homingTorpedo != null)
         {
-            var forward = transform.forward;
-            var quaternion = Quaternion.identity;
-            //Vector3 localDirection = new Vector3();
-            //ToLocal(ref forward, ref quaternion, out localDirection);
-            //homingTorpedo.velocity = localDirection * speed;
-            //homingTorpedo.velocity = transform.TransformDirection(Vector3.forward)  ; // get the local forward
+            //var forward = transform.forward;
+            //var quaternion = Quaternion.identity;
             
             var targetRotation = Quaternion.LookRotation(target.position - transform.position);
             homingTorpedo.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));

@@ -22,22 +22,20 @@ namespace Assets.Script
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        //public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits
         public int _beamDamage;
         public int _cost;
-        private bool _isFriend;
-        private Rigidbody rigidbody;
-        //public GameObject emptyPrefabTarget;
-        private Transform _farTarget;
-        private Transform _target;
-        public float offSet = 11000f;
-        private float turnRate = 1f;
+        public int _seperationOfSides = 11000;
+        private Rigidbody _rigidbody;
+        private GameObject farSideTarget;
+        public float turnRate = 1f;
+        private GameObject travelTargetClone;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
-        private float _speedBooster = 6000f;
+        private float _speedBooster = 60000f; // 6000f;
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
         public bool shieldsAreUp;
@@ -65,7 +63,6 @@ namespace Assets.Script
         public AudioClip clipExplodTorpedo;
         public AudioClip clipBeamWeapon;
         public AudioClip clipWarpCoreBreach;
-
        // private Renderer rend; // not working 
   
         // public Material _hitMaterial;
@@ -74,7 +71,12 @@ namespace Assets.Script
         //Renderer _renderer;
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            _rigidbody = GetComponent<Rigidbody>();
+            //farSideTarget = new GameObject();
+            //bool friend = GameManager.FriendShips.ContainsValue(gameObject);
+            //if (!friend)
+            //    _seperationOfSides = -11000;
+            //travelTargetClone = Instantiate(farSideTarget, new Vector3(transform.position.x + _seperationOfSides, transform.position.y, transform.position.z), Quaternion.identity);
         }
         void Start()
         {
@@ -84,58 +86,33 @@ namespace Assets.Script
             //_shields.SetActive(true);
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
-            if (gameObject.name.ToString().ToUpper() != "SHIP")
+            if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
             {
-                Transform _target = gameObject.GetComponentInParent(typeof(Transform)) as Transform;
-                _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-                if (!_isFriend)
-                    offSet *= -1f;
-                float farTargetX = _target.position.x + offSet;
-                GameObject _farObject = Instantiate(new GameObject(), new Vector3(farTargetX, _target.position.y, _target.position.z), Quaternion.identity);
-                _farTarget = _farObject.transform;
-                _farObject.transform.SetParent(gameObject.GetComponentInParent(typeof(Transform)) as Transform, true);
+                string whoTorpedo = gameObject.name.Substring(0, 3);
+                string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one might be a dummy so go with [1]
+                if (whoTorpedo == friendShips)
+                    theLocalTargetDictionary = GameManager.EnemyShips;
+                else
+                    theLocalTargetDictionary = GameManager.FriendShips;
+                FindBeamTarget(theLocalTargetDictionary);
+
             }
-
-            //if (gameObject.name != "Ship")
-            //{
-
-            //    _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-            //    if (!_isFriend)
-            //        offSet *= -1f;
-            //    float fartraget = transform.position.x + offSet;
-            //    farTarget = Instantiate(emptyPrefabTarget, new Vector3(fartraget, transform.position.y, transform.position.z), Quaternion.identity);
-            //    //var targetRotation = Quaternion.LookRotation(farTarget.transform.position - transform.position);
-            //    //rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
-            //}
+            //bool friend = GameManager.FriendShips.ContainsValue(gameObject);
+            //if (!friend)
+            //    _seperationOfSides = -11000;
+            //travelTargetClone = Instantiate(farSideTarget, new Vector3(transform.position.x + _seperationOfSides, transform.position.y, transform.position.z), Quaternion.identity);
 
         }
         private void Update()
         {
-            if (GameManager.Instance._statePasedInit)
+            if (gameManager != null && gameManager.StatePassedInit == true)
             {
-                rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
-                // ToDo: travel between targets here
-
-                //var target = GameManager.Instance.GetShipTravelTarget(gameObject);
-                //Vector3 originalShipRotation = this.transform.rotation.eulerAngles;
-                //Vector3 targetDir = _farTarget.position - transform.position;
-                //float step = turnRate * Time.deltaTime;
-                //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-                //var targetRotation = Quaternion.LookRotation(_farTarget.position - transform.position);
-                //var temp = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate);
-                //rigidbody.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate);
-
-                if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
-                {
-                    string whoTorpedo = gameObject.name.Substring(0, 3);
-                    string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one might be a dummy so go with [1]
-                    if (whoTorpedo == friendShips)
-                        theLocalTargetDictionary = GameManager.EnemyShips;
-                    else
-                        theLocalTargetDictionary = GameManager.FriendShips;
-                    FindBeamTarget(theLocalTargetDictionary);
-                }
-
+                _rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
+                //var forward = transform.forward;
+                //var quaternion = Quaternion.identity;
+                                
+                //var targetRotation = Quaternion.LookRotation(travelTargetClone.transform.position - transform.position);
+                //_rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
                 if (beamObject == null)
                     beamTargetTransform = null;
 

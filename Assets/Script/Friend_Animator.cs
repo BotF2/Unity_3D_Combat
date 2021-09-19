@@ -26,7 +26,7 @@ namespace Assets.Script
         // Update is called once per frame
         void Update()
         {
-            if (GameManager.Instance.StatePassedInit) // lets warp animation run
+            if (GameManager.Instance._statePasedInit) // lets warp animation run
             {
                 anim.SetBool("_doingInit_0", true);
                 

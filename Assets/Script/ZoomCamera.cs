@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZoomCamera : MonoBehaviour
+namespace Assets.Script
 {
-    // Update is called once per frame
-    void Update()
+    public class ZoomCamera : MonoBehaviour
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && GetComponent<Camera>().fieldOfView > 12 )
+        //public GameManager gameManager;
+        void Update()
         {
-            GetComponent<Camera>().fieldOfView--;
-        }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0 && GetComponent<Camera>().fieldOfView < 40)
-        {
-            GetComponent<Camera>().fieldOfView++;
+            if (GameManager.Instance._statePasedInit)
+            {
+                if (Input.GetAxis("Mouse ScrollWheel") > 0 && GetComponent<Camera>().fieldOfView > 12)
+                {
+                    GetComponent<Camera>().fieldOfView--;
+                }
+                if (Input.GetAxis("Mouse ScrollWheel") < 0 && GetComponent<Camera>().fieldOfView < 40)
+                {
+                    GetComponent<Camera>().fieldOfView++;
+                }
+            }
         }
     }
 }
