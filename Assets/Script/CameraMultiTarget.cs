@@ -1,22 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Script
 {
 	public class CameraMultiTarget : MonoBehaviour
 	{
-		//public GameManager gameManager;
 		public float Pitch;
 		public float Yaw;
 		public float Roll;
-		//public float PaddingLeft = 0;
-		//public float PaddingRight = 0;
-		//public float PaddingUp = 0;
-		//public float PaddingDown = 0;
+		private Vector3 _cameraOffSet;
+		public float _targetTimer = 6f;
+		private float _autoTimer = 7f;
+		private bool _didNotGetTargetYet = true;
+		public GameObject _cameraTarget;
 		public float MoveSmoothTime = 0.19f;
-		public float speed;
-
+		public bool _lookAtTarget = true;
+		public bool _rotateAroundTarget = true;
+		public float _mouseRotationSpeed = 5.0f;
+		public bool turningPositiveX = true;
+		public bool turningPositiveY = true;
 		private Camera _camera;
 		private GameObject[] _targets = new GameObject[0];
 		private DebugProjection _debugProjection;
@@ -24,31 +28,108 @@ namespace Assets.Script
 		enum DebugProjection { DISABLE, IDENTITY, ROTATED }
 		enum ProjectionEdgeHits { TOP_BOTTOM, LEFT_RIGHT }
 
-		public void SetTargets(GameObject[] targets)
-		{
-			_targets = targets; // empty dummy gameObjects as targets located where 3D ships warp in.
-		}
+		//public void SetTargets(GameObject[] targets)
+		//{
+		//	_targets = targets; // empty dummy gameObjects as targets located where 3D ships warp in.
+		//}
 
 		private void Awake()
 		{
             _camera = gameObject.GetComponent<Camera>();
-            _debugProjection = DebugProjection.ROTATED;     
+            _debugProjection = DebugProjection.ROTATED;
+			_targetTimer = 6f;
 		}
 
 		private void LateUpdate()
 		{
 			if (_targets.Length == 0)
 				return;
-			if (GameManager.Instance._statePasedInit == false)
+			if (_targetTimer < 0f && GameManager.Instance._statePasedInit)
+			{
+				_rotateAroundTarget = true; //  do we need this??
+				if (_didNotGetTargetYet)
+				{
+                    Quaternion targetRotation = gameObject.transform.rotation;
+                    Vector3 meanVector = Vector3.zero;
+                    foreach (GameObject target in _targets)
+                    {
+						meanVector += target.transform.position;
+                    }
+					meanVector = (meanVector / _targets.Count()); // average location for center point
+					_cameraTarget = (GameObject)Instantiate(new GameObject(), meanVector, targetRotation);
+					_didNotGetTargetYet = false;
+					_cameraOffSet = gameObject.transform.position - _cameraTarget.transform.position;
+				}
+
+				if (Input.GetKey("space")) // use GetKey for holding key down, GetKeyDown() is for one frame of pressed
+				{
+					Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
+					_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
+					Vector3 newPositionX = _cameraTarget.transform.position + _cameraOffSet;
+					gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
+					Quaternion cameraTurnAngleY = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * _mouseRotationSpeed, Vector3.right);
+					_cameraOffSet = cameraTurnAngleY * _cameraOffSet;
+					Vector3 newPositionY = _cameraTarget.transform.position + _cameraOffSet;
+					gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionY, MoveSmoothTime);
+				}
+				else
+                {
+					float xRotation = 0.015f;
+					float yRotation = 0.01f;
+					
+					if (turningPositiveX)
+					{
+						if (_autoTimer <= 0)
+						{
+							turningPositiveX = false;
+							_autoTimer = 14;
+
+						}
+						AutoRotation(xRotation, Vector3.up);
+						AutoRotation(yRotation, Vector3.right);
+					}
+					else if (!turningPositiveX)
+					{
+						if (_autoTimer <= 0)
+						{
+							turningPositiveX = true;
+							_autoTimer = 14;
+						}
+						AutoRotation(-xRotation, Vector3.up);
+						AutoRotation(-yRotation, Vector3.right);
+					}
+					_autoTimer -= Time.deltaTime;
+
+				}
+				if (_lookAtTarget || _rotateAroundTarget)
+				{
+					gameObject.transform.LookAt(_cameraTarget.transform);
+				}
+				
+			}
+			else if (GameManager.Instance._statePasedInit && _targetTimer > 0f)
+			{
+				_targetTimer -= Time.deltaTime;
+				var targetPositionAndRotation = TargetPositionAndRotation(_targets);
+				Vector3 velocity = Vector3.zero;
+				gameObject.transform.position = Vector3.SmoothDamp(transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
+				gameObject.transform.rotation = targetPositionAndRotation.Rotation;
+			}
+			else
 				return;
-
-			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
-
-			Vector3 velocity = Vector3.zero;
-			gameObject.transform.position = Vector3.SmoothDamp(transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
-			gameObject.transform.rotation = targetPositionAndRotation.Rotation;
 		}
 
+		public void SetTargets(GameObject[] targets)
+		{
+			_targets = targets; // empty dummy gameObjects as targets located where 3D ships warp in.
+		}
+		private void AutoRotation(float xRotating, Vector3 direction)
+        {
+			Quaternion cameraTurnAngleX = Quaternion.AngleAxis(xRotating * _mouseRotationSpeed, direction);
+			_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
+			Vector3 newPositionX = _cameraTarget.transform.position + _cameraOffSet;
+			gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
+		}
 		PositionAndRotation TargetPositionAndRotation(GameObject[] targets)
 		{
 			float halfVerticalFovRad = (_camera.fieldOfView * Mathf.Deg2Rad) / 2f;

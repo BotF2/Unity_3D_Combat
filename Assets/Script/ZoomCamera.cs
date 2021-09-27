@@ -5,8 +5,14 @@ using UnityEngine;
 namespace Assets.Script
 {
     public class ZoomCamera : MonoBehaviour
+
     {
+        float drift = 20f;
         //public GameManager gameManager;
+        //private void Start()
+        //{
+        //    GetComponent<Camera>().fieldOfView = 17f;
+        //}
         void Update()
         {
             if (GameManager.Instance._statePasedInit)
@@ -20,6 +26,22 @@ namespace Assets.Script
                     GetComponent<Camera>().fieldOfView++;
                 }
             }
+            //else
+            //{
+            //    bool backAndForth = true;
+            //    if (backAndForth)
+            //    {
+            //        GetComponent<Camera>().fieldOfView += drift;
+            //        backAndForth = false;
+            //    }
+            //    else
+            //    {
+            //        GetComponent<Camera>().fieldOfView -= drift;
+            //        backAndForth = true;
+            //    }
+
+            //}
+                
         }
     }
 }

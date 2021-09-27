@@ -19,10 +19,19 @@ namespace Assets.Script
     //    Dom,
     //    Borg
     //}
+    public enum Orders
+    {
+        Engage,
+        Formation,
+        Retreat,
+        ProtectTransports,
+        Rush,
+        AttackTransports  
+    }
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        //public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits
@@ -30,11 +39,18 @@ namespace Assets.Script
         public int _cost;
         private bool _isFriend;
         private Rigidbody rigidbody;
-        //public GameObject emptyPrefabTarget;
+        //private Dictionary<GameObject, GameObject[]> _shipsNearTargets = new Dictionary<GameObject, GameObject[]>();
+        //private Dictionary<GameObject, GameObject> _enemyTargets = new Dictionary<GameObject, GameObject>();
+        private GameObject shipGameObject;
         private Transform _farTarget;
-        private Transform _target;
-        public float offSet = 11000f;
+        private Transform _nearTarget;
+        private Transform _currentTarget;
+        //public float friendAnimationOffset = 1845f;
+        //public float enemyAnimationOffset = -3000f;
+        private bool isFarTargetSet = false;
+        public float combatAreaOffset = -5000f;
         private float turnRate = 1f;
+        private float notSoFast = 70f;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
         private float _speedBooster = 6000f;
@@ -66,8 +82,8 @@ namespace Assets.Script
         public AudioClip clipBeamWeapon;
         public AudioClip clipWarpCoreBreach;
 
-       // private Renderer rend; // not working 
-  
+        // private Renderer rend; // not working 
+
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
         //Material _orgMaterial;
@@ -81,33 +97,27 @@ namespace Assets.Script
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
+            _isFriend = GameManager.Instance.AreWeFriends(gameObject);
+            if (_isFriend)
+                combatAreaOffset *= -1;
             //_shields.SetActive(true);
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
-            if (gameObject.name.ToString().ToUpper() != "SHIP")
-            {
-                Transform _target = gameObject.GetComponentInParent(typeof(Transform)) as Transform;
-                _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-                if (!_isFriend)
-                    offSet *= -1f;
-                float farTargetX = _target.position.x + offSet;
-                GameObject _farObject = Instantiate(new GameObject(), new Vector3(farTargetX, _target.position.y, _target.position.z), Quaternion.identity);
-                _farTarget = _farObject.transform;
-                _farObject.transform.SetParent(gameObject.GetComponentInParent(typeof(Transform)) as Transform, true);
-            }
 
-            //if (gameObject.name != "Ship")
+            // set _nearTarget
+
+            //GameObject value = new GameObject();
+            ////Transform newTransfrom = farty .transform;
+            //var dictionary = gameManager.GetShipTravelTargets();
+            shipGameObject = gameObject;
+            //if (dictionary.TryGetValue(this.gameObject, out value))
             //{
-
-            //    _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-            //    if (!_isFriend)
-            //        offSet *= -1f;
-            //    float fartraget = transform.position.x + offSet;
-            //    farTarget = Instantiate(emptyPrefabTarget, new Vector3(fartraget, transform.position.y, transform.position.z), Quaternion.identity);
-            //    //var targetRotation = Quaternion.LookRotation(farTarget.transform.position - transform.position);
-            //    //rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
+            //    _nearTarget = value;
             //}
 
+            //GameObject _farObject = Instantiate(new GameObject(), new Vector3(_nearTarget.transform.position.x + combatAreaOffset, _nearTarget.transform.position.y, _nearTarget.transform.position.z), Quaternion.identity);
+            //_farTarget = _farObject.transform;
+            //_currentTarget = _farTarget;
         }
         private void Update()
         {
@@ -115,15 +125,37 @@ namespace Assets.Script
             {
                 rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
                 // ToDo: travel between targets here
+                if (!isFarTargetSet)
+                {
+                    GameObject fart = new GameObject();
+                    var farty = new GameObject[] { fart, fart };
+                    //Transform value = fart.transform;
+                    var dictionary = GameManager.Instance.GetShipTravelTargets();
 
-                //var target = GameManager.Instance.GetShipTravelTarget(gameObject);
-                //Vector3 originalShipRotation = this.transform.rotation.eulerAngles;
-                //Vector3 targetDir = _farTarget.position - transform.position;
-                //float step = turnRate * Time.deltaTime;
-                //Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0f);
-                //var targetRotation = Quaternion.LookRotation(_farTarget.position - transform.position);
-                //var temp = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate);
-                //rigidbody.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate);
+                    if (dictionary.TryGetValue(shipGameObject, out farty))
+                    {
+                        _nearTarget = farty[0].transform;
+                        _farTarget = farty[1].transform;
+                    }
+                    //GameObject _farObject = Instantiate(new GameObject(), new Vector3(_nearTarget.position.x + combatAreaOffset, _nearTarget.position.y, _nearTarget.position.z), Quaternion.identity);
+                    //_farTarget = _farObject.transform;
+                    _currentTarget = _farTarget;
+                    isFarTargetSet = true;
+                }
+                notSoFast -= Time.deltaTime;
+                if ((this._currentTarget.position.x - shipGameObject.transform.position.x) < 100 && notSoFast < 0)
+                {               
+                    if (notSoFast < 0)
+                        notSoFast = 70f;
+                    if (_currentTarget == _farTarget)
+                        _currentTarget = _nearTarget;
+                    else if (_currentTarget == _nearTarget)
+                        _currentTarget = _farTarget;
+                }
+
+                var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
+                rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
+               // transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
 
                 if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
                 {
@@ -324,7 +356,15 @@ namespace Assets.Script
                 Destroy(shieldPrefab);
             }
         }
- 
+
+        //public void SetNearTargets(Dictionary<GameObject, Transform> nearTargets)
+        //{
+        //    _shipsNearTargets = nearTargets; // empty dummy gameObjects as targets located where 3D ships warp in.
+        //}
+        //public void SetEnemyTargets(GameObject[] targets)
+        //{
+        //    _enemyTargets = targets; // empty dummy gameObjects as targets located where 3D ships warp in.
+        //}
         public static void SetLayerRecursively(GameObject obj, int newLayer)
         {
           if (null == obj)

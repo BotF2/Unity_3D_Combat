@@ -15,6 +15,11 @@ namespace Assets.Script
         friend,
         enemy
     }
+    public enum NearOrFar
+    {
+        Near,
+        Far
+    }
     public enum ShipType
     {
         Scout,
@@ -26,8 +31,9 @@ namespace Assets.Script
     }
     public class GameManager : MonoBehaviour
     {
+        public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
-        private float shipScale = 7000f;
+        private float shipScale = 5000f;
         private char separator = ';';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
 
@@ -35,8 +41,10 @@ namespace Assets.Script
         public GameObject Enemy_0;
         public int yFactor = 3000; // gap in grid between empties on y axis
         public int zFactor = 3000;
-        public int offsetScreenLeft = -5500; // off screen - value of x axis for friend grid world location
-        public int offsetScreenRight = 5500;
+        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
+        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
+        public int offsetEnemyRight = 5500; // start here
+        public int offsetEnemyLeft = -5800; 
 
         #region the empties for animation
 
@@ -125,19 +133,28 @@ namespace Assets.Script
         //public GameObject[] levels;
 
         private GameObject[] _friendScouts;
+        private GameObject[] _friendFarScouts;
         private GameObject[] _friendDestroyer;
+        private GameObject[] _friendFarDestroyer;
         private GameObject[] _friendCapital;
+        private GameObject[] _friendFarCapital;
         private GameObject[] _friendColony;
+        private GameObject[] _friendFarColony;
 
         private GameObject[] _enemyScouts;
+        private GameObject[] _enemyFarScouts;
         private GameObject[] _enemyDestroyer;
+        private GameObject[] _enemyFarDestroyer;
         private GameObject[] _enemyCapital;
+        private GameObject[] _enemyFarCapital;
         private GameObject[] _enemyColony;
+        private GameObject[] _enemyFarColony;
+        public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { MENU, INIT, PLAY, COMPLETED, LOADNEXT, GAMEOVER };
+        public enum State { MAIN_MENU, MAIN_INIT, GALACTIC_PLAY, MENU, INIT, PLAY_3D, COMPLETED, LOADNEXT, GAMEOVER };
         private State _state;
 
         private int _level;
@@ -200,7 +217,7 @@ namespace Assets.Script
                     _statePasedInit = true;
                     SwitchtState(State.LOADNEXT);
                     break;
-                case State.PLAY:
+                case State.PLAY_3D:
                     _statePasedInit = true;
                     break;
                 case State.COMPLETED:
@@ -209,7 +226,7 @@ namespace Assets.Script
                     break;
                 case State.LOADNEXT:
                     // no levels to load
-                    SwitchtState(State.PLAY);
+                    SwitchtState(State.PLAY_3D);
                     break;
                 case State.GAMEOVER:
                     panelGameOver.SetActive(true);
@@ -229,7 +246,7 @@ namespace Assets.Script
                 case State.INIT:
                     _statePasedInit = true;
                     break;
-                case State.PLAY:
+                case State.PLAY_3D:
                     _statePasedInit = true;
                     break;
                 case State.COMPLETED:
@@ -252,7 +269,7 @@ namespace Assets.Script
                     break;
                 case State.INIT:
                     break;
-                case State.PLAY:
+                case State.PLAY_3D:
                     break;
                 case State.COMPLETED:
                     panelCompleted.SetActive(false);
@@ -365,7 +382,7 @@ namespace Assets.Script
             }
             return animationEmpties[shipTypeIncrement + enemyIncrement];
         }
-        private GameObject[] GetRoeByShipType(string shipName, FriendOrFoe side)
+        private GameObject[] GetRoeByShipType(string shipName, FriendOrFoe side, NearOrFar nearOrFar)
         {
             string[] _nameParts = shipName.ToUpper().Split('_');
             string shipType = _nameParts[1];
@@ -373,33 +390,45 @@ namespace Assets.Script
             {
                 case "SCOUT":
                     if (side == FriendOrFoe.friend)
-                        return _friendScouts;
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            return _friendScouts;
+                        else return _friendFarScouts;
+                    else if (nearOrFar == NearOrFar.Near)
                         return _enemyScouts;
+                    else return _enemyFarScouts;
                 case "DESTROYER":
                     if (side == FriendOrFoe.friend)
-                        return _friendDestroyer;
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            return _friendDestroyer;
+                        else return _friendFarDestroyer;
+                    else if (nearOrFar == NearOrFar.Near)
                         return _enemyDestroyer;
+                    else return _enemyFarDestroyer;
                 case "CRUISER":
                 case "LT-CRUISER":
                 case "HVY-CRISER":
                     if (side == FriendOrFoe.friend)
-                        return _friendCapital;
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            return _friendCapital;
+                        else return _friendFarCapital;
+                    else if (nearOrFar == NearOrFar.Near)
                         return _enemyCapital;
+                    else return _enemyFarCapital;
                 //case "COLONY":
                 //    return ShipType.Colony;
                 //case "more ship types here":
                 default:
                     if (side == FriendOrFoe.friend)
-                        return _friendScouts;
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            return _friendScouts;
+                        else return _friendFarScouts;
+                    else if (nearOrFar == NearOrFar.Near)
                         return _enemyScouts;
+                    else return _enemyFarScouts;
             }
 
         }
-        private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side)
+        private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
         {
             string[] _nameParts = shipName.ToUpper().Split('_');
             string shipType = _nameParts[1];
@@ -407,23 +436,32 @@ namespace Assets.Script
             {
                 case "SCOUT":
                     if (side == FriendOrFoe.friend)
-                        _friendScouts = shortList.ToArray();
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            _friendScouts = shortList.ToArray();
+                        else _friendFarScouts = shortList.ToArray();
+                    else if (nearOrFar == NearOrFar.Near)
                         _enemyScouts = shortList.ToArray();
+                    else _enemyFarScouts = shortList.ToArray();
                     break;
                 case "DESTROYER":
                     if (side == FriendOrFoe.friend)
-                        _friendDestroyer = shortList.ToArray();
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            _friendDestroyer = shortList.ToArray();
+                        else _friendFarDestroyer = shortList.ToArray();
+                    else if (nearOrFar == NearOrFar.Near)
                         _enemyDestroyer = shortList.ToArray();
+                    else _enemyFarDestroyer = shortList.ToArray();
                     break;
                 case "CRUISER":
                 case "LT-CRUISER":
                 case "HVY-CRISER":
                     if (side == FriendOrFoe.friend)
-                        _friendCapital = shortList.ToArray();
-                    else
+                        if (nearOrFar == NearOrFar.Near)
+                            _friendCapital = shortList.ToArray();
+                        else _friendFarCapital = shortList.ToArray();
+                    else if (nearOrFar == NearOrFar.Near)
                         _enemyCapital = shortList.ToArray();
+                    else _enemyFarCapital = shortList.ToArray();
                     break;
                 //case "COLONY":
                 //    return ShipType.Colony;
@@ -483,74 +521,119 @@ namespace Assets.Script
             //int xFactorFriend = -3500;
 
             #region Grid roes for Friends
-            GameObject _scoutOneFriend = Instantiate(Friend_0, new Vector3(offsetScreenLeft, 0, 0), Quaternion.identity);
-            RotateFriend(_scoutOneFriend);
-            List<GameObject> emptyFriendScouts = new List<GameObject>() { _scoutOneFriend };
+            GameObject _scoutNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, 0), Quaternion.identity);
+            RotateFriend(_scoutNearFriend);
+            List<GameObject> emptyFriendScouts = new List<GameObject>() { _scoutNearFriend };
+            GameObject _scoutFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, 0), Quaternion.identity);
+            //RotateFriend(_scoutFarFriend);
+            List<GameObject> emptyFriendFarScouts = new List<GameObject>() { _scoutFarFriend };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempScout = Instantiate(Friend_0, new Vector3(offsetScreenLeft, 0, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempScout);
-                emptyFriendScouts.Add(_tempScout); // list of friend scouts 
+                GameObject _tempStartScout = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, zFactor * i), Quaternion.identity);
+                RotateFriend(_tempStartScout);
+                emptyFriendScouts.Add(_tempStartScout); // add to list of friend empty the next scout start points 
+                GameObject _tempFarScout = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, zFactor * i), Quaternion.identity);
+               //   RotateFriend(_tempFarScout);
+                emptyFriendFarScouts.Add(_tempFarScout); // add to list of friend empty the next scout FAR points 
             }
             _friendScouts = emptyFriendScouts.ToArray();
+            _friendFarScouts = emptyFriendFarScouts.ToArray();
 
-            GameObject _capitalOneFriend = Instantiate(Friend_0, new Vector3(offsetScreenLeft, yFactor * 1, 0), Quaternion.identity);
-            RotateFriend(_capitalOneFriend);
-            List<GameObject> emptyFriendCapital = new List<GameObject>() { _capitalOneFriend };
+            GameObject _capitalNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, 0), Quaternion.identity);
+            RotateFriend(_capitalNearFriend);
+            List<GameObject> emptyFriendCapital = new List<GameObject>() { _capitalNearFriend };
+            GameObject _capitalFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, 0), Quaternion.identity);
+            //RotateFriend(_capitalFarFriend);
+            List<GameObject> emptyFriendFarCapital = new List<GameObject>() { _capitalFarFriend };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempCapital = Instantiate(Friend_0, new Vector3(offsetScreenLeft, yFactor * 1, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempCapital);
-                emptyFriendCapital.Add(_tempCapital); // list of friend scouts
+                GameObject _tempStartCapital = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, zFactor * i), Quaternion.identity);
+                RotateFriend(_tempStartCapital);
+                emptyFriendCapital.Add(_tempStartCapital); // list of friend empty capital start points
+                GameObject _tempFarCapital = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, zFactor * i), Quaternion.identity);
+                //RotateFriend(_tempFarCapital);
+                emptyFriendFarCapital.Add(_tempFarCapital); 
             }
             _friendCapital = emptyFriendCapital.ToArray();
+            _friendFarCapital = emptyFriendFarCapital.ToArray();
 
-            GameObject _destroyerOneFriend = Instantiate(Friend_0, new Vector3(offsetScreenLeft, yFactor * 2, 0), Quaternion.identity);
-            RotateFriend(_destroyerOneFriend);
-            List<GameObject> emptyFriendDestroyers = new List<GameObject>() { _destroyerOneFriend };
+            GameObject _destroyerNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, 0), Quaternion.identity);
+            RotateFriend(_destroyerNearFriend);
+            List<GameObject> emptyFriendDestroyers = new List<GameObject>() { _destroyerNearFriend };
+            GameObject _destroyerFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, 0), Quaternion.identity);
+            //RotateFriend(_destroyerFarFriend);
+            List<GameObject> emptyFriendFarDestroyers = new List<GameObject>() { _destroyerFarFriend };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempDestroyers = Instantiate(Friend_0, new Vector3(offsetScreenLeft, yFactor * 2, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempDestroyers);
-                emptyFriendDestroyers.Add(_tempDestroyers); // list of friend scouts
+                GameObject _tempStartDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, zFactor * i), Quaternion.identity);
+                RotateFriend(_tempStartDestroyers);
+                emptyFriendDestroyers.Add(_tempStartDestroyers); // list of friend empty destroyer start point
+                GameObject _tempFarDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, zFactor * i), Quaternion.identity);
+                //RotateFriend(_tempFarDestroyers);
+                emptyFriendFarDestroyers.Add(_tempFarDestroyers); // list of friend empty destroyer start point
             }
             _friendDestroyer = emptyFriendDestroyers.ToArray();
+            _friendFarDestroyer = emptyFriendFarDestroyers.ToArray();
             #endregion
 
             #region Grid roes for Enemies
 
-            GameObject _scoutOneEnemy = Instantiate(Enemy_0, new Vector3(offsetScreenRight, yFactor * 0, 1500), Quaternion.identity);
-            RotateEnemy(_scoutOneEnemy);
-            List<GameObject> emptyEnemyScouts = new List<GameObject>() { _scoutOneEnemy };
+            GameObject _scoutNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 0, 1500), Quaternion.identity);
+            RotateEnemy(_scoutNearEnemy);
+            List<GameObject> emptyEnemyScouts = new List<GameObject>() { _scoutNearEnemy };
+            GameObject _scoutFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 0, 1500), Quaternion.identity);
+            //RotateEnemy(_scoutFarEnemy);
+            List<GameObject> emptyEnemyFarScouts = new List<GameObject>() { _scoutFarEnemy };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempScout = Instantiate(Enemy_0, new Vector3(offsetScreenRight, 0, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempScout);
-                emptyEnemyScouts.Add(_tempScout);
-            }
+                GameObject _tempNearScout = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, 0, (zFactor * i + 1500)), Quaternion.identity);
+                RotateEnemy(_tempNearScout);
+                emptyEnemyScouts.Add(_tempNearScout);
+                GameObject _tempFarScout = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, 0, (zFactor * i + 1500)), Quaternion.identity);
+                //RotateEnemy(_tempFarScout);
+                emptyEnemyFarScouts.Add(_tempFarScout);
+            } 
             _enemyScouts = emptyEnemyScouts.ToArray();
+            _enemyFarScouts = emptyEnemyFarScouts.ToArray();
 
-            GameObject _capitalOneEnemy = Instantiate(Enemy_0, new Vector3(offsetScreenRight, yFactor * 1, 1500), Quaternion.identity);
-            RotateEnemy(_capitalOneEnemy);
-            List<GameObject> emptyEnemyCapital = new List<GameObject>() { _capitalOneEnemy };
+            GameObject _capitalNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, 1500), Quaternion.identity);
+            RotateEnemy(_capitalNearEnemy);
+            List<GameObject> emptyEnemyCapital = new List<GameObject>() { _capitalNearEnemy };
+            GameObject _capitalFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, 1500), Quaternion.identity);
+            //RotateEnemy(_capitalFarEnemy);
+            List<GameObject> emptyEnemyFarCapital = new List<GameObject>() { _capitalFarEnemy };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempCapital = Instantiate(Enemy_0, new Vector3(offsetScreenRight, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempCapital);
-                emptyEnemyCapital.Add(_tempCapital);
+                GameObject _tempNearCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
+                RotateEnemy(_tempNearCapital);
+                emptyEnemyCapital.Add(_tempNearCapital);
+                GameObject _tempFarCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
+                //RotateEnemy(_tempFarCapital);
+                emptyEnemyFarCapital.Add(_tempFarCapital);
+
             }
             _enemyCapital = emptyEnemyCapital.ToArray();
+            _enemyFarCapital = emptyEnemyFarCapital.ToArray();
 
-            GameObject _destroyerOneEnemy = Instantiate(Enemy_0, new Vector3(offsetScreenRight, yFactor * 2, 1500), Quaternion.identity);
-            RotateEnemy(_destroyerOneEnemy);
-            List<GameObject> emptyEnemyDestroyers = new List<GameObject>() { _destroyerOneEnemy };
+            GameObject _destroyerNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, 1500), Quaternion.identity);
+            RotateEnemy(_destroyerNearEnemy);
+            List<GameObject> emptyEnemyDestroyers = new List<GameObject>() { _destroyerNearEnemy };
+            GameObject _destroyerFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, 1500), Quaternion.identity);
+            //RotateEnemy(_destroyerFarEnemy);
+            List<GameObject> emptyEnemyFarDestroyers = new List<GameObject>() { _destroyerFarEnemy };
             for (int i = 1; i < 21; i++)
             {
-                GameObject _tempDestroyers = Instantiate(Enemy_0, new Vector3(offsetScreenRight, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempDestroyers);
-                emptyEnemyDestroyers.Add(_tempDestroyers);
+                GameObject _tempNearDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
+                RotateEnemy(_tempNearDestroyers);
+                emptyEnemyDestroyers.Add(_tempNearDestroyers);
+                GameObject _tempFarDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
+               // RotateEnemy(_tempFarDestroyers);
+                emptyEnemyFarDestroyers.Add(_tempFarDestroyers);
+
             }
             _enemyDestroyer = emptyEnemyDestroyers.ToArray();
+            _enemyFarDestroyer = emptyEnemyFarDestroyers.ToArray();
+            
 
             #endregion
 
@@ -610,13 +693,20 @@ namespace Assets.Script
             //instantiate prefab ships using friendNameArray to prefab Dictionary onto as many empties in grids 
             Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
             var cameraTargets = new List<GameObject>();
+            //var friendNearTargets = new List<GameObject>();
+            Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
 
             for (int i = 0; i < _friendNameArray.Count(); i++)
             {
-                GameObject[] resetFriendArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend);
-  
+                GameObject[] resetFriendArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Near);  
                 GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendNameArray[i]], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
                 GameObject newEmptyCameraTarget = (GameObject)Instantiate(resetFriendArray[0], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+                GameObject[] resetFriendFarArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Far);
+               // GameObject newEmptyFriendFarTarget = (GameObject)Instantiate(resetFriendFarArray[0], resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+                GameObject noAnimationNearFTarget = (GameObject)Instantiate( new GameObject(), resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+                GameObject noAnimationFarFTarget = (GameObject)Instantiate(new GameObject(), resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+                localShipTargetDictionary.Add(_tempPrefabFriend, new GameObject[] { noAnimationNearFTarget, noAnimationFarFTarget });
+
                 newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
                 cameraTargets.Add(newEmptyCameraTarget);
                 _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
@@ -626,8 +716,11 @@ namespace Assets.Script
                 resetFriendArray[0].transform.SetParent(animationEmtpy.transform, true);
 
                 List<GameObject> resetingAList = resetFriendArray.ToList();
+                List<GameObject> resetingFarList = resetFriendFarArray.ToList();
                 resetingAList.Remove(resetingAList[0]);
-                UpdateTheArrays(_friendNameArray[i], resetingAList, FriendOrFoe.friend); // rebuild Array Lists
+                resetingFarList.Remove(resetingFarList[0]);
+                UpdateTheArrays(_friendNameArray[i], resetingAList, FriendOrFoe.friend, NearOrFar.Near); // rebuild Array Lists
+                UpdateTheArrays(_friendNameArray[i], resetingFarList, FriendOrFoe.friend, NearOrFar.Far); // rebuild Array Lists
 
                 Ship.SetLayerRecursively(animationEmtpy, friendShipLayer);
 
@@ -641,17 +734,25 @@ namespace Assets.Script
                 }
             }
             FriendShips = _friendsLocal;
+            //ship.SetFriendTargets(friendTargetDictionary);
+
             #endregion
 
             #region Instantiate Prefab Enemy Ships
             Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
+            //var enemyNearTargets = new List<GameObject>();
 
             for (int i = 0; i < _enemyNameArray.Count(); i++)
                {
-                GameObject[] resetEnemyArray = GetRoeByShipType(_enemyNameArray[i], FriendOrFoe.enemy);
-
+                GameObject[] resetEnemyArray = GetRoeByShipType(_enemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Near);
                 GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyNameArray[i]], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
                 GameObject anEmptyCameraTarget = (GameObject)Instantiate(resetEnemyArray[0], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+                GameObject[] resetEnemyFarArray = GetRoeByShipType(_enemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Far);
+               // GameObject newEmptyEnemyFarTarget = (GameObject)Instantiate(resetEnemyFarArray[0], resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+                GameObject noAnimationNearETarget = (GameObject)Instantiate(new GameObject(), resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+                GameObject noAnimationFarETarget = (GameObject)Instantiate(new GameObject(), resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+                localShipTargetDictionary.Add(_tempPrefabEnemy, new GameObject[] { noAnimationNearETarget, noAnimationFarETarget  });
+
                 anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
                 cameraTargets.Add(anEmptyCameraTarget);
                 _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
@@ -661,8 +762,11 @@ namespace Assets.Script
                 resetEnemyArray[0].transform.SetParent(animationEmtpy.transform, true);
 
                 List<GameObject> resetingList = resetEnemyArray.ToList();
+                List<GameObject> resetingFarList = resetEnemyFarArray.ToList();
                 resetingList.Remove(resetingList[0]);
-                UpdateTheArrays(_enemyNameArray[i], resetingList, FriendOrFoe.enemy);
+                resetingFarList.Remove(resetingFarList[0]);
+                UpdateTheArrays(_enemyNameArray[i], resetingList, FriendOrFoe.enemy, NearOrFar.Near);
+                UpdateTheArrays(_enemyNameArray[i], resetingFarList, FriendOrFoe.enemy, NearOrFar.Far);
 
                 Ship.SetLayerRecursively(animationEmtpy, enemyShipLayer);
 
@@ -676,13 +780,20 @@ namespace Assets.Script
                 }
             }
             EnemyShips = _enemysLocal;
+            _shipTargetDictionary = localShipTargetDictionary;
+
             #endregion
 
             cameraMultiTarget.SetTargets(cameraTargets.ToArray());
+
             friends = FriendNameArray.Count();
             enemies = EnemyNameArray.Count();
-            //rotateCombat.LocateCenterOfCombat();
+      
             //StaticStuff.LoadStaticEnemyDictionary(EnemyShips);   
+        }
+        public Dictionary<GameObject,GameObject[]> GetShipTravelTargets()
+        {
+            return _shipTargetDictionary;
         }
     }
 }
