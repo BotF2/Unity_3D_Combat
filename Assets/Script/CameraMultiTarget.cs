@@ -44,7 +44,7 @@ namespace Assets.Script
 		{
 			if (_targets.Length == 0)
 				return;
-			if (_targetTimer < 0f && GameManager.Instance._statePasedInit)
+			if (_targetTimer < 0f && GameManager.Instance._statePassedInit)
 			{
 				_rotateAroundTarget = true; //  do we need this??
 				if (_didNotGetTargetYet)
@@ -107,7 +107,7 @@ namespace Assets.Script
 				}
 				
 			}
-			else if (GameManager.Instance._statePasedInit && _targetTimer > 0f)
+			else if (GameManager.Instance._statePassedInit && _targetTimer > 0f)
 			{
 				_targetTimer -= Time.deltaTime;
 				var targetPositionAndRotation = TargetPositionAndRotation(_targets);

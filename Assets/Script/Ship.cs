@@ -39,21 +39,17 @@ namespace Assets.Script
         public int _cost;
         private bool _isFriend;
         private Rigidbody rigidbody;
-        //private Dictionary<GameObject, GameObject[]> _shipsNearTargets = new Dictionary<GameObject, GameObject[]>();
-        //private Dictionary<GameObject, GameObject> _enemyTargets = new Dictionary<GameObject, GameObject>();
         private GameObject shipGameObject;
         private Transform _farTarget;
         private Transform _nearTarget;
         private Transform _currentTarget;
-        //public float friendAnimationOffset = 1845f;
-        //public float enemyAnimationOffset = -3000f;
         private bool isFarTargetSet = false;
         public float combatAreaOffset = -5000f;
         private float turnRate = 1f;
-        private float notSoFast = 70f;
+        private bool lockTurn = true;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
-        private float _speedBooster = 6000f;
+        private float _speedBooster = 15000f;
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
         public bool shieldsAreUp;
@@ -104,24 +100,12 @@ namespace Assets.Script
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
 
-            // set _nearTarget
-
-            //GameObject value = new GameObject();
-            ////Transform newTransfrom = farty .transform;
-            //var dictionary = gameManager.GetShipTravelTargets();
             shipGameObject = gameObject;
-            //if (dictionary.TryGetValue(this.gameObject, out value))
-            //{
-            //    _nearTarget = value;
-            //}
 
-            //GameObject _farObject = Instantiate(new GameObject(), new Vector3(_nearTarget.transform.position.x + combatAreaOffset, _nearTarget.transform.position.y, _nearTarget.transform.position.z), Quaternion.identity);
-            //_farTarget = _farObject.transform;
-            //_currentTarget = _farTarget;
         }
         private void Update()
         {
-            if (GameManager.Instance._statePasedInit)
+            if (GameManager.Instance._statePassedInit)
             {
                 rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
                 // ToDo: travel between targets here
@@ -137,20 +121,28 @@ namespace Assets.Script
                         _nearTarget = farty[0].transform;
                         _farTarget = farty[1].transform;
                     }
-                    //GameObject _farObject = Instantiate(new GameObject(), new Vector3(_nearTarget.position.x + combatAreaOffset, _nearTarget.position.y, _nearTarget.position.z), Quaternion.identity);
-                    //_farTarget = _farObject.transform;
                     _currentTarget = _farTarget;
                     isFarTargetSet = true;
                 }
-                notSoFast -= Time.deltaTime;
-                if ((this._currentTarget.position.x - shipGameObject.transform.position.x) < 100 && notSoFast < 0)
-                {               
-                    if (notSoFast < 0)
-                        notSoFast = 70f;
+
+                if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
+                    lockTurn = false;
+
+                int leftRight = 1;
+                if (_currentTarget.position.x < 0)
+                    leftRight = -1;
+                if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
+                {
                     if (_currentTarget == _farTarget)
+                    {
                         _currentTarget = _nearTarget;
+                        lockTurn = true;
+                    }
                     else if (_currentTarget == _nearTarget)
+                    {
                         _currentTarget = _farTarget;
+                        lockTurn = true;
+                    }
                 }
 
                 var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);

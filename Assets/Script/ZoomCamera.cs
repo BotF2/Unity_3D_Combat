@@ -15,7 +15,7 @@ namespace Assets.Script
         //}
         void Update()
         {
-            if (GameManager.Instance._statePasedInit)
+            if (GameManager.Instance._statePassedInit)
             {
                 if (Input.GetAxis("Mouse ScrollWheel") > 0 && GetComponent<Camera>().fieldOfView > 12)
                 {

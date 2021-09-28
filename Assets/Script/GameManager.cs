@@ -167,7 +167,7 @@ namespace Assets.Script
 
         bool _isSwitchingState;
 
-        public bool _statePasedInit = false;
+        public bool _statePassedInit = false;
        // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
 
         public void PlayClicked()
@@ -214,11 +214,11 @@ namespace Assets.Script
                 case State.INIT:
                     panelPlay.SetActive(true);
                     //Score = 0;
-                    _statePasedInit = true;
+                    _statePassedInit = true;
                     SwitchtState(State.LOADNEXT);
                     break;
                 case State.PLAY_3D:
-                    _statePasedInit = true;
+                    _statePassedInit = true;
                     break;
                 case State.COMPLETED:
                     panelPlay.SetActive(true);
@@ -244,17 +244,17 @@ namespace Assets.Script
                 case State.MENU:
                     break;
                 case State.INIT:
-                    _statePasedInit = true;
+                    _statePassedInit = true;
                     break;
                 case State.PLAY_3D:
-                    _statePasedInit = true;
+                    _statePassedInit = true;
                     break;
                 case State.COMPLETED:
                     break;
                 case State.LOADNEXT:
                     break;
                 case State.GAMEOVER:
-                    _statePasedInit = false;
+                    _statePassedInit = false;
                     break;
                 default:
                     break;

@@ -13,7 +13,7 @@ public class Switch : MonoBehaviour
     //ToDo create empty gameobject and attach this script to it, drop cameras into public slots.
     void Update()
     {
-        if (GameManager.Instance._statePasedInit)
+        if (GameManager.Instance._statePassedInit)
         {
             camera_UI.SetActive(true);
             camera_MainMenu.SetActive(false);
