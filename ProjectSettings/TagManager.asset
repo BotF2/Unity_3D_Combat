@@ -31,6 +31,8 @@ TagManager:
   - KLING_SCOUT_II(CLONE)
   - ROM_CRUISER_III
   - ROM_CRUISER_II
+  - ROM_SCOUT_III(CLONE)
+  - CARD_SCOUT_I(CLONE)
   - CARD_SCOUT_I
   layers:
   - Default

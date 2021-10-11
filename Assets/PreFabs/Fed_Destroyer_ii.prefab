@@ -53,6 +53,7 @@ MonoBehaviour:
   _torpedoDamage: 20
   _beamDamage: 20
   _cost: 0
+  combatAreaOffset: -5000
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
@@ -107,26 +108,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
-  rotationSpeed: 0
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
-  xFactorFriend: -3500
-  xFactorEnemmy: 4500
-  Friend_Y0_Z0: {fileID: 0}
-  Friend_Y0_Z1: {fileID: 0}
-  Friend_Y0_Z2: {fileID: 0}
-  Friend_Y1_Z0: {fileID: 0}
-  Friend_Y1_Z1: {fileID: 0}
-  Friend_Y1_Z2: {fileID: 0}
-  Enemy_Y0_Z0: {fileID: 0}
-  Enemy_Y0_Z1: {fileID: 0}
-  Enemy_Y0_Z2: {fileID: 0}
-  Enemy_Y1_Z0: {fileID: 0}
-  Enemy_Y1_Z1: {fileID: 0}
-  Enemy_Y1_Z2: {fileID: 0}
+  offsetFriendLeft: -5500
+  offsetFriendRight: 5800
+  offsetEnemyRight: 5500
+  offsetEnemyLeft: -5800
+  animationEmpties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Borg_Destroyer_i: {fileID: 0}
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
@@ -164,13 +168,30 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  Rom_Scout_iii: {fileID: 0}
+  FriendScout_Y0_Z0: {fileID: 0}
+  FriendDestroyer_Y0_Z1: {fileID: 0}
+  FriendCapital_Y0_Z2: {fileID: 0}
+  FriendColony_Y1_Z0: {fileID: 0}
+  Friend_Y1_Z1: {fileID: 0}
+  Friend_Y1_Z2: {fileID: 0}
+  EnemyScout_Y0_Z0: {fileID: 0}
+  EnemyDestroyer_Y0_Z1: {fileID: 0}
+  EnemyCapital_Y0_Z2: {fileID: 0}
+  EnemyColony_Y1_Z0: {fileID: 0}
+  Enemy_Y1_Z1: {fileID: 0}
+  Enemy_Y1_Z2: {fileID: 0}
   friends: 0
   enemies: 0
-  panelMenu: {fileID: 0}
-  panelPlay: {fileID: 0}
-  panelCompleted: {fileID: 0}
+  panelMain_Menu: {fileID: 0}
+  panelGalactic_Play: {fileID: 0}
+  panelGalactic_Completed: {fileID: 0}
+  panelCombat_Menu: {fileID: 0}
+  panelCombat_Play: {fileID: 0}
+  panelCombat_Completed: {fileID: 0}
   panelGameOver: {fileID: 0}
   _statePassedInit: 0
+  _statePassedMain_Init: 0
 --- !u!1001 &8233916738052606453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,6 +250,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}
+      propertyPath: m_TagString
+      value: FED_DESTROYER_II(CLONE)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1795fc9dcae56194495aa8875484bb15, type: 3}

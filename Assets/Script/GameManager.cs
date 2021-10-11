@@ -6,10 +6,29 @@ using System.IO;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using MLAPI;
+using UnityEngine.UI;
 //using UnityEngine.UI;
 
 namespace Assets.Script
 {
+    public enum Civilization
+    {
+        Fed,
+        Terran,
+        Rom,
+        Kling,
+        Card,
+        Dom,
+        Borg
+    }
+    public enum TechLevel
+    {
+        Early,
+        Developed,
+        Advanced,
+        Supreme,
+    }
     public enum FriendOrFoe
     {
         friend,
@@ -29,7 +48,7 @@ namespace Assets.Script
         SomethingElse,
         OneMore
     }
-    public class GameManager : MonoBehaviour
+    public class GameManager : NetworkBehaviour
     {
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
@@ -126,12 +145,6 @@ namespace Assets.Script
         private int friendShipLayer;
         private int enemyShipLayer;
 
-        public GameObject panelMenu;
-        public GameObject panelPlay;
-        public GameObject panelCompleted;
-        public GameObject panelGameOver;
-        //public GameObject[] levels;
-
         private GameObject[] _friendScouts;
         private GameObject[] _friendFarScouts;
         private GameObject[] _friendDestroyer;
@@ -153,8 +166,20 @@ namespace Assets.Script
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
+        public GameObject panelLobby_Menu;
+        // public GameObject panelLobby_Init; // no init gameobjects
+        public GameObject panelMain_Menu;
+        public GameObject panelGalactic_Play;
+        public GameObject panelGalactic_Completed;
+        public GameObject panelCombat_Menu;
+        public GameObject panelCombat_Play;
+        public GameObject panelCombat_Completed;
+        public GameObject panelGameOver;
+        //public GameObject[] levels;
+
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { MAIN_MENU, MAIN_INIT, GALACTIC_PLAY, MENU, INIT, PLAY_3D, COMPLETED, LOADNEXT, GAMEOVER };
+        public enum State { LOBBY_MENU, LOBBY_INIT, MAIN_MENU, MAIN_INIT, GALACTIC_PLAY, GALACTIC_COMPLETED,
+            COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER }; //LOADNEXT,
         private State _state;
 
         private int _level;
@@ -165,24 +190,59 @@ namespace Assets.Script
             set { _level = value; }
         }
 
-        bool _isSwitchingState;
+        bool _isSwitchingState = false;
 
-        public bool _statePassedInit = false;
-       // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
+        public bool _statePassedInit = false; // COMBAT INIT
+        public bool _statePassedLobbyInit = false;
+        // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
+        public bool _statePassedMain_Init = false;
 
-        public void PlayClicked()
+        public void BackToLobbyClick()  // from Main Menu
         {
-            SwitchtState(State.INIT);
+            SwitchtState(State.LOBBY_MENU);
         }
+
+        public void LeaveLobbyClicked() // go to main menu
+        {
+            SwitchtState(State.LOBBY_INIT);
+        }
+        public void GalaxyPlayClicked()
+        {
+            //if (IsHost) // if (IsLocalPlayer)
+            //{ 
+            SwitchtState(State.MAIN_INIT);
+            // ToDo: get Empire and techlevel from MainMenu
+            //}
+        }
+        public void EndGalacticPlayClicked()
+        {
+            //if (IsHost) // if (IsLocalPlayer)
+            //{ 
+            SwitchtState(State.GALACTIC_COMPLETED);
+            //}
+        }
+
+        public void CombatPlayClicked()
+        {
+            //if (IsHost) // if (IsLocalPlayer)
+            //{ 
+                SwitchtState(State.COMBAT_INIT);
+            //}
+        }
+
         private void Awake()
         {
             Instance = this; // static reference to single GameManager
         }
 
-        // Start is called before the first frame update
+
         void Start()
         {
-            SwitchtState(State.MENU);
+            SwitchtState(State.LOBBY_MENU);
+            if (SaveManager.hasLoaded)
+            {
+               // get respons with locations... SaveManager.activeSave.(somethings here from save data)
+            }
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
         }
 
@@ -192,14 +252,15 @@ namespace Assets.Script
             Instance = this;
             EndState();
             BeginState(newState);
+            _isSwitchingState = false;
         }
         IEnumerator SwitchDelay(State newState, float delay)
         {
             _isSwitchingState = true;
             yield return new WaitForSeconds(delay);
-            EndState();
+            //EndState();
             _state = newState;
-            BeginState(newState);
+            //BeginState(newState);
             _isSwitchingState = false;
         }
 
@@ -207,27 +268,52 @@ namespace Assets.Script
         {
             switch (newState)
             {
-                case State.MENU:
+                case State.LOBBY_MENU:
+                    panelMain_Menu.SetActive(false); // turn off if returning to lobby
+                    panelLobby_Menu.SetActive(true);
+                    break;
+                case State.LOBBY_INIT:
+                    panelMain_Menu.SetActive(true);
+                    SwitchtState(State.MAIN_MENU);
+                    _statePassedLobbyInit = true;
+                    break;
+                case State.MAIN_MENU:
+                    break;
+                case State.MAIN_INIT:
+                    panelGalactic_Play.SetActive(true);
+                    _statePassedMain_Init = true;
+                    SwitchtState(State.GALACTIC_PLAY);
+                    break;
+                case State.GALACTIC_PLAY:
+                    _statePassedMain_Init = true;
+                    break;
+                case State.GALACTIC_COMPLETED:
+                    panelCombat_Menu.SetActive(true);
+                    //panelCombat_Completed.SetActive(true);
+                    SwitchtState(State.COMBAT_MENU);
+                    break;
+                case State.COMBAT_MENU:
                     //panelPlay.SetActive(false);
-                    panelMenu.SetActive(true);
+                    panelCombat_Menu.SetActive(true);
                     break;
-                case State.INIT:
-                    panelPlay.SetActive(true);
-                    //Score = 0;
+                case State.COMBAT_INIT:
+                    panelCombat_Play.SetActive(true);
                     _statePassedInit = true;
-                    SwitchtState(State.LOADNEXT);
+                    SwitchtState(State.COMBAT_PLAY);
                     break;
-                case State.PLAY_3D:
+                case State.COMBAT_PLAY:
                     _statePassedInit = true;
                     break;
-                case State.COMPLETED:
-                    panelPlay.SetActive(true);
-                    panelCompleted.SetActive(true);
+                case State.COMBAT_COMPLETED:
+                   // panelCombat_Play.SetActive(true);
+                    panelCombat_Completed.SetActive(true);
+                    // ToDo: code here to go back to galaxy
+                    SwitchtState(State.GAMEOVER);
                     break;
-                case State.LOADNEXT:
-                    // no levels to load
-                    SwitchtState(State.PLAY_3D);
-                    break;
+                //case State.LOADNEXT: // was for load levels
+                //    // no levels to load
+                //    SwitchtState(State.COMBAT_PLAY);
+                //    break;
                 case State.GAMEOVER:
                     panelGameOver.SetActive(true);
                     break;
@@ -241,18 +327,37 @@ namespace Assets.Script
         {
             switch (_state)
             {
-                case State.MENU:
+                case State.LOBBY_MENU:
                     break;
-                case State.INIT:
+                case State.LOBBY_INIT:
+                    break;
+                case State.MAIN_MENU:
+                    break;
+                case State.MAIN_INIT:
+                    _statePassedMain_Init = true;
+                    break;
+                case State.GALACTIC_PLAY:
+                    _statePassedMain_Init = true;
+                    break;
+                case State.GALACTIC_COMPLETED:
+                    break;
+                case State.COMBAT_MENU:
+                    // ToDo: end combat
+                    //if (enemies are == 0 || friends are == 0)
+                    //    {
+                    //    End Combat
+                    //}
+                    break;
+                case State.COMBAT_INIT:
                     _statePassedInit = true;
                     break;
-                case State.PLAY_3D:
+                case State.COMBAT_PLAY:
                     _statePassedInit = true;
                     break;
-                case State.COMPLETED:
+                case State.COMBAT_COMPLETED:
                     break;
-                case State.LOADNEXT:
-                    break;
+                //case State.LOADNEXT:
+                //    break;
                 case State.GAMEOVER:
                     _statePassedInit = false;
                     break;
@@ -264,20 +369,41 @@ namespace Assets.Script
         {
             switch (_state)
             {
-                case State.MENU:
-                    panelMenu.SetActive(false);                   
+                case State.LOBBY_MENU:
+                    panelLobby_Menu.SetActive(false);
                     break;
-                case State.INIT:
+                case State.LOBBY_INIT: // no init panles to turn off
                     break;
-                case State.PLAY_3D:
+                case State.MAIN_MENU:
+                    panelMain_Menu.SetActive(false);
                     break;
-                case State.COMPLETED:
-                    panelCompleted.SetActive(false);
+                case State.MAIN_INIT:
                     break;
-                case State.LOADNEXT:
+                case State.GALACTIC_PLAY:
+                    panelGalactic_Play.SetActive(false);
                     break;
+                case State.GALACTIC_COMPLETED:
+                    panelGalactic_Play.SetActive(false);
+                    panelGalactic_Completed.SetActive(false);
+                    break;
+                case State.COMBAT_MENU:
+                   // panelGalactic_Play.SetActive(false);
+                    panelCombat_Menu.SetActive(false);                   
+                    break;
+                case State.COMBAT_INIT:
+                    panelCombat_Menu.SetActive(false);
+                   // panelGalactic_Completed.SetActive(false);
+                    break;
+                case State.COMBAT_PLAY:
+                    panelCombat_Play.SetActive(false);
+                    break;
+                case State.COMBAT_COMPLETED:
+                    panelCombat_Completed.SetActive(false);
+                    break;
+                //case State.LOADNEXT:
+                //    break;
                 case State.GAMEOVER:
-                    panelPlay.SetActive(false);
+                   // panelCombat_Play.SetActive(false); // ToDo: get Combat to return to Galactic on Combat_Completed
                     panelGameOver.SetActive(false);
                     break;
                 default:

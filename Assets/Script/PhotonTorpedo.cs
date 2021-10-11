@@ -3,84 +3,88 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhotonTorpedo : MonoBehaviour
+namespace Assets.Script
 {
-    //public GameManager gameManager;
-    public float speed =1000f;
-    public float turnRate = 1f;
-    private Rigidbody homingTorpedo;
-    //public float fuseDelay = 10f;
-    //public GameObject torpedo;
-    private Transform target;
-    private Dictionary<int, GameObject> theLocalTargetDictionary;
-    private float diff = 0;
-
-
-    private void Start()
+    public class PhotonTorpedo : MonoBehaviour
     {
-        if (GameManager.FriendShips.Count > 0)
+        //public GameManager gameManager;
+        public float speed = 1000f;
+        public float turnRate = 1f;
+        private Rigidbody homingTorpedo;
+        //public float fuseDelay = 10f;
+        //public GameObject torpedo;
+        private Transform target;
+        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private float diff = 0;
+
+
+        private void Start()
         {
-            string whoTorpedo = gameObject.name.Substring(0, 3);
-            string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one can be a dummy so go with [1], think this does not happen now
-            if (whoTorpedo == friendShips)
-                theLocalTargetDictionary = GameManager.EnemyShips;
-            else
-                theLocalTargetDictionary = GameManager.FriendShips;
-            homingTorpedo = transform.GetComponent<Rigidbody>();
-            if (homingTorpedo != null)
+            if (GameManager.FriendShips.Count > 0)
             {
-                FindTargetNearTorpedo(theLocalTargetDictionary);
+                string whoTorpedo = gameObject.name.Substring(0, 3);
+                string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one can be a dummy so go with [1], think this does not happen now
+                if (whoTorpedo == friendShips)
+                    theLocalTargetDictionary = GameManager.EnemyShips;
+                else
+                    theLocalTargetDictionary = GameManager.FriendShips;
+                homingTorpedo = transform.GetComponent<Rigidbody>();
+                if (homingTorpedo != null)
+                {
+                    FindTargetNearTorpedo(theLocalTargetDictionary);
+                }
+                if (target == null)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        private void Awake()
+        {
+
+        }
+        private void FixedUpdate()
+        {
+            if (target != null && homingTorpedo != null)
+            {
+                //var forward = transform.forward;
+                //var quaternion = Quaternion.identity;
+
+                var targetRotation = Quaternion.LookRotation(target.position - transform.position);
+                homingTorpedo.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
+                transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
             }
             if (target == null)
             {
                 Destroy(gameObject);
             }
-        }
-    }
-    private void Awake()
-    {
 
-    }
-    private void FixedUpdate()
-    {
-        if (target != null && homingTorpedo != null)
-        {
-            //var forward = transform.forward;
-            //var quaternion = Quaternion.identity;
-            
-            var targetRotation = Quaternion.LookRotation(target.position - transform.position);
-            homingTorpedo.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
-            transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
         }
-        if (target == null)
+        private void Update()
         {
-            Destroy(gameObject);
+            //if (homingTorpedo != null)
+            //    transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
         }
-
-    }
-    private void Update()
-    {
-        //if (homingTorpedo != null)
-        //    transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
-    }
-    public void OnCollisionEnter(Collision collision)
-    {
-        Destroy(this.gameObject); // kill weapon gameobject holding speed script
-    }
-    public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
-    {
-        var distance = Mathf.Infinity;
-        foreach (var possibleTarget in theTargets.Values)
+        public void OnCollisionEnter(Collision collision)
         {
-            if (possibleTarget != null)
+            Destroy(this.gameObject); // kill weapon gameobject holding speed script
+        }
+        public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
+        {
+            var distance = Mathf.Infinity;
+            foreach (var possibleTarget in theTargets.Values)
             {
-                diff = (transform.position - possibleTarget.transform.position).sqrMagnitude;
-                if (diff < distance)
+                if (possibleTarget != null)
                 {
-                    distance = diff;
-                    target = possibleTarget.transform;
+                    diff = (transform.position - possibleTarget.transform.position).sqrMagnitude;
+                    if (diff < distance)
+                    {
+                        distance = diff;
+                        target = possibleTarget.transform;
+                    }
                 }
             }
-        }        
+        }
     }
 }
+

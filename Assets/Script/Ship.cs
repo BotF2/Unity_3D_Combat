@@ -9,16 +9,6 @@ using System.Linq;
 
 namespace Assets.Script
 {
-    //public enum Civilization
-    //{
-    //    Fed,
-    //    Terran,
-    //    Rom,
-    //    Kling,
-    //    Card,
-    //    Dom,
-    //    Borg
-    //}
     public enum Orders
     {
         Engage,
@@ -108,7 +98,7 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedInit)
             {
                 rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
-                // ToDo: travel between targets here
+                #region travel between targets here
                 if (!isFarTargetSet)
                 {
                     GameObject fart = new GameObject();
@@ -124,7 +114,8 @@ namespace Assets.Script
                     _currentTarget = _farTarget;
                     isFarTargetSet = true;
                 }
-
+                #endregion
+                #region Alernate near and far targets
                 if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
                     lockTurn = false;
 
@@ -144,7 +135,8 @@ namespace Assets.Script
                         lockTurn = true;
                     }
                 }
-
+                #endregion
+                #region turn to target
                 var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
                 rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
                // transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
@@ -159,7 +151,7 @@ namespace Assets.Script
                         theLocalTargetDictionary = GameManager.FriendShips;
                     FindBeamTarget(theLocalTargetDictionary);
                 }
-
+                #endregion 
                 if (beamObject == null)
                     beamTargetTransform = null;
 

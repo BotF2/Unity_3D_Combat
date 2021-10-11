@@ -5,38 +5,41 @@ using TMPro;
 using Assets.Script;
 using System;
 
-public class SpacebarForRotate : MonoBehaviour
+namespace Assets.Script
 {
-    public float dealySeconds = 6f;
-    //public float resetTimer = 6f;
-
-    public TMP_Text spacebarRotate;
-    private bool reset = true;
-    void Start()
+    public class SpacebarForRotate : MonoBehaviour
     {
-        spacebarRotate.text = "Red Alert";
-    }
-    void Update()
-    {
+        public float dealySeconds = 6f;
+        //public float resetTimer = 6f;
 
-        if (reset)
+        public TMP_Text spacebarRotate;
+        private bool reset = true;
+        void Start()
         {
-            dealySeconds -= Time.deltaTime;
-            if (dealySeconds <= 3 && dealySeconds > -2)
+            spacebarRotate.text = "Red Alert";
+        }
+        void Update()
+        {
+
+            if (reset)
             {
-                spacebarRotate.text = "Hold down the spacebar to rotate with mouse";
+                dealySeconds -= Time.deltaTime;
+                if (dealySeconds <= 3 && dealySeconds > -2)
+                {
+                    spacebarRotate.text = "Hold down the spacebar to rotate with mouse";
+                }
+                else if (dealySeconds > 3)
+                {
+                    spacebarRotate.text = "Red Alert";
+                }
+                else
+                {
+                    spacebarRotate.text = "Red Alert";
+                    reset = false;
+                }
             }
-            else if (dealySeconds > 3)
-            {
-                spacebarRotate.text = "Red Alert";
-            }
-            else
-            {
-                spacebarRotate.text = "Red Alert";
-                reset = false;
-            }
+
         }
 
     }
-
 }
