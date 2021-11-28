@@ -12,8 +12,7 @@ using UnityEngine.UI;
 
 namespace Assets.Script
 {
-    public enum Civilization
-    {
+    public enum Civilization    {
         Fed,
         Terran,
         Rom,
@@ -21,6 +20,16 @@ namespace Assets.Script
         Card,
         Dom,
         Borg
+    }
+    public enum HomeSystem
+    {
+        SOL,
+        TERRA,
+        ROMULUS,
+        KRONOS,
+        CARDASSIA,
+        OMARIAN_NEBULA,
+        DELTA_PRIME
     }
     public enum TechLevel
     {
@@ -44,34 +53,59 @@ namespace Assets.Script
         Scout,
         Destroyer,
         Capital,
+        Transport,
         Colony,
-        SomethingElse,
         OneMore
+    }
+    public enum Orders
+    {
+        Engage,
+        Formation,
+        Retreat,
+        ProtectTransports,
+        Rush,
+        AttackTransports
     }
     public class GameManager : NetworkBehaviour
     {
+        public bool _weAreFriend = false;
+        public static bool _isSinglePlayer = true;
+        public Civilization _localPlayer;
+        public Civilization _hostPlayer;
+        public Civilization _cliantZero;
+        public Civilization _cliantOne;
+        public Civilization _cliantTwo;
+        public Civilization _cliantThree;
+        public Civilization _cliantFour;
+        public Civilization _cliantFive;   
+        public static TechLevel _techLevel;
+        public Orders _combatOrder;
+        private GameObject[] _cameraTargets;
+        public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
+
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
-        private float shipScale = 5000f;
-        private char separator = ';';
+        public InstantiateCombatShips instantiateCombatShips;
+        public ActOnCombatOrder actOnCombatOrder;
+       // public ZoomCamera zoomCamera;
+        public float shipScale = 2000f;
+        private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
+        public GameObject animFriend1;
+        public GameObject animFriend2;
+        public GameObject animFriend3;
+        public GameObject animEnemy1;
+        public GameObject animEnemy2;
+        public GameObject animEnemy3;
 
-        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
-        public GameObject Enemy_0;
+        public static GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        public static GameObject Enemy_0;
         public int yFactor = 3000; // gap in grid between empties on y axis
         public int zFactor = 3000;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
         public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
         public int offsetEnemyRight = 5500; // start here
-        public int offsetEnemyLeft = -5800; 
-
-        #region the empties for animation
-
-        public GameObject[] animationEmpties = new GameObject[12]; // { FriendScout_Y0_Z0, 
-                                                                   //    FriendDestroyer_Y0_Z1, FriendCapitalShip_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2, 
-                                                                   //    EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
-                                                                   // Unity does not like c# lists
-        #endregion
+        public int offsetEnemyLeft = -5800;
 
         #region prefab ships and stations
         public GameObject Borg_Destroyer_i; // prefab ships
@@ -93,8 +127,8 @@ namespace Assets.Script
 
         public GameObject Fed_Cruiser_ii;
         public GameObject Fed_Cruiser_iii;
-        public GameObject Fed_lt_Cruiser_iv;
-        public GameObject Fed_hvy_Cruiser_iv;
+        public GameObject Fed_LtCruiser_iv;
+        public GameObject Fed_HvyCruiser_iv;
         public GameObject Fed_Destroyer_i;
         public GameObject Fed_Destroyer_ii;
         public GameObject Fed_Destroyer_iii;
@@ -117,34 +151,47 @@ namespace Assets.Script
         public GameObject Rom_Scout_i;
         public GameObject Rom_Scout_ii;
         public GameObject Rom_Scout_iii;
+
+        public static Dictionary<string, GameObject> PrefabDitionary;
         #endregion
 
-        #region Animation empties by ship type
-        public GameObject FriendScout_Y0_Z0;
-        public GameObject FriendDestroyer_Y0_Z1;
-        public GameObject FriendCapital_Y0_Z2;
-        public GameObject FriendColony_Y1_Z0;
-        public GameObject Friend_Y1_Z1;
-        public GameObject Friend_Y1_Z2;
-        public GameObject EnemyScout_Y0_Z0;
-        public GameObject EnemyDestroyer_Y0_Z1;
-        public GameObject EnemyCapital_Y0_Z2;
-        public GameObject EnemyColony_Y1_Z0;
-        public GameObject Enemy_Y1_Z1;
-        public GameObject Enemy_Y1_Z2;
+        #region Animation empties by ship type Now from ActOnCombatOrder.cs?
+        //public GameObject FriendScout_Y0_Z0;
+        //public GameObject FriendDestroyer_Y0_Z1;
+        //public GameObject FriendCapital_Y0_Z2;
+        //public GameObject FriendColony_Y1_Z0;
+        //public GameObject Friend_Y1_Z1;
+        //public GameObject Friend_Y1_Z2;
+        //public GameObject EnemyScout_Y0_Z0;
+        //public GameObject EnemyDestroyer_Y0_Z1;
+        //public GameObject EnemyCapital_Y0_Z2;
+        //public GameObject EnemyColony_Y1_Z0;
+        //public GameObject Enemy_Y1_Z1;
+        //public GameObject Enemy_Y1_Z2;
+
+        public GameObject[] animationEmpties = new GameObject[12]; // Populated in Unity Hierarchy under Combat for animation empty objexts
+                                                                   // { FriendScout_Y0_Z0, 
+                                                                   //    FriendDestroyer_Y0_Z1, FriendCapitalShip_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2, 
+                                                                   //    EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
+                                                                   // Unity does not like c# lists
         #endregion
 
-        // ToDo created this in galactic game level from combat ships and stations in the combat sector
-        public static string[] FriendNameArray; // = new string[] { "Fed_Cruiser_ii", "Fed_Cruiser_ii", "Fed_Destroyer_ii" };
-        public static string[] EnemyNameArray; //= new string[] { "Kling_Cruiser_ii", "Kling_Cruiser_ii", "Kling_Scout_ii", "Kling_Scout_ii" };
+        public static List<string> StartGameObjectNames = new List<string>();
+        public static Dictionary<int, GameObject> CurrentGameObjects = new Dictionary<int, GameObject>(); // not used yet
+
+        //ToDo: move all these to combatEngine class?
+        public static string[] FriendNameArray; // For current Combat ****
+        public static string[] EnemyNameArray; 
         public int friends;
         public int enemies;
-        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // { { 500, Friend_0 } };
-        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();  // { { 500, Enemy_0 } };
+        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // updated to current combat
+        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();
+        //public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
         private int friendShipLayer;
         private int enemyShipLayer;
 
+        #region travel points as game object
         private GameObject[] _friendScouts;
         private GameObject[] _friendFarScouts;
         private GameObject[] _friendDestroyer;
@@ -162,7 +209,8 @@ namespace Assets.Script
         private GameObject[] _enemyFarCapital;
         private GameObject[] _enemyColony;
         private GameObject[] _enemyFarColony;
-        public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;
+        public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;  // key ship gameObject, value target gameObject (problem, is loaded inside LoadCombat()
+        #endregion
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
@@ -192,25 +240,63 @@ namespace Assets.Script
 
         bool _isSwitchingState = false;
 
-        public bool _statePassedInit = false; // COMBAT INIT
         public bool _statePassedLobbyInit = false;
         // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
         public bool _statePassedMain_Init = false;
+        public bool _statePassedCombatInit = false; // COMBAT INIT
+        public bool _statePassedCombatPlay = false;
+
+        private void Awake()
+        {
+            Instance = this; // static reference to single GameManager
+        }
+
+
+        void Start()
+        {
+            SwitchtState(State.LOBBY_MENU);
+            if (SaveManager.hasLoaded)
+            {
+                // get respons with locations... SaveManager.activeSave.(somethings here from save data)
+            }
+            LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt"); // populate prefabs
+                                                                                        // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
+            LoadPrefabs();
+            _techLevel = TechLevel.Early;
+            _localPlayer = Civilization.Fed;
+            if (_isSinglePlayer)
+                _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
+
+            // *** moving load Combat ships to BeginState newState CombatMenu CombatInit that turns true on entering combat in galaxy view.
+
+            //StarterGalaxyObjects(); // GNDN ToDo: move to Main_Init in pre for galaxy play
+
+           // LoadCombatData();
+        }
 
         public void BackToLobbyClick()  // from Main Menu
         {
             SwitchtState(State.LOBBY_MENU);
         }
 
-        public void LeaveLobbyClicked() // go to main menu
+        public void SinglePlayerLobbyClicked() // go to main menu
         {
             SwitchtState(State.LOBBY_INIT);
+            _isSinglePlayer = true;
+        }
+        public void MultiPlayerLobbyClicked() // go to main menu
+        {
+            SwitchtState(State.LOBBY_INIT);
+            _isSinglePlayer = false;
+            //ToDo: network manager here IsHost IsLocalPlayer or in BeginState??
         }
         public void GalaxyPlayClicked()
         {
             //if (IsHost) // if (IsLocalPlayer)
             //{ 
             SwitchtState(State.MAIN_INIT);
+            //LoadGameObjects();
             // ToDo: get Empire and techlevel from MainMenu
             //}
         }
@@ -226,24 +312,8 @@ namespace Assets.Script
         {
             //if (IsHost) // if (IsLocalPlayer)
             //{ 
-                SwitchtState(State.COMBAT_INIT);
+            SwitchtState(State.COMBAT_INIT);
             //}
-        }
-
-        private void Awake()
-        {
-            Instance = this; // static reference to single GameManager
-        }
-
-
-        void Start()
-        {
-            SwitchtState(State.LOBBY_MENU);
-            if (SaveManager.hasLoaded)
-            {
-               // get respons with locations... SaveManager.activeSave.(somethings here from save data)
-            }
-            LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt");
         }
 
         public void SwitchtState(State newState, float delay = 0)
@@ -271,15 +341,59 @@ namespace Assets.Script
                 case State.LOBBY_MENU:
                     panelMain_Menu.SetActive(false); // turn off if returning to lobby
                     panelLobby_Menu.SetActive(true);
+
                     break;
                 case State.LOBBY_INIT:
                     panelMain_Menu.SetActive(true);
                     SwitchtState(State.MAIN_MENU);
                     _statePassedLobbyInit = true;
+                    switch (_isSinglePlayer) // we set this bool in the singlePlayerLobby and multipPlayerLobby buttons above so do we need this for something else??
+                    {
+                        case true: //Do something here??
+                            break;
+                        case false:
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case State.MAIN_MENU:
                     break;
                 case State.MAIN_INIT:
+                    switch (_techLevel) // is set in TechSelection.cs for GameManager._techLevel
+                    {
+                        case TechLevel.Early: //Do something here??
+                            break;
+                        case TechLevel.Developed:
+                            break;
+                        case TechLevel.Advanced:
+                            break;
+                        case TechLevel.Supreme:
+                            break;
+             
+                        default:
+                            break;
+                    }
+                    switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
+                    {
+                        case Civilization.Fed: // do something about multiplayer and civs here??
+                            break;
+                        case Civilization.Terran:
+                            break;
+                        case Civilization.Rom:
+                            break;
+                        case Civilization.Kling:
+                            break;
+                        case Civilization.Card:
+                            break;
+                        case Civilization.Dom:
+                            break;
+                        case Civilization.Borg:
+                            break;
+                        default:
+                            break;
+                    }
+                    panelMain_Menu.SetActive(false);
                     panelGalactic_Play.SetActive(true);
                     _statePassedMain_Init = true;
                     SwitchtState(State.GALACTIC_PLAY);
@@ -288,24 +402,36 @@ namespace Assets.Script
                     _statePassedMain_Init = true;
                     break;
                 case State.GALACTIC_COMPLETED:
+                    panelGalactic_Play.SetActive(false);
                     panelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
                     SwitchtState(State.COMBAT_MENU);
                     break;
                 case State.COMBAT_MENU:
-                    //panelPlay.SetActive(false);
                     panelCombat_Menu.SetActive(true);
+                    //_statePassedInit = true;
+                    LoadFriendAndEnemyNames(); // for combat
+                    // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
+
                     break;
                 case State.COMBAT_INIT:
+                    //LoadCombatData();
+                    instantiateCombatShips.PreCombatSetup(FriendNameArray, EnemyNameArray); //, true);
+                    //_statePassedCombatInit = true; // animation... can now run 
+                    SetDummyCameraTargets(); // turn on multiCamera
+                    DropOutOfWarp(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
+                    _statePassedCombatInit = true;
+                    panelCombat_Menu.SetActive(false);
                     panelCombat_Play.SetActive(true);
-                    _statePassedInit = true;
                     SwitchtState(State.COMBAT_PLAY);
+
                     break;
                 case State.COMBAT_PLAY:
-                    _statePassedInit = true;
+                    _statePassedCombatPlay = true; // try to freeze motion after animation of warp
+
                     break;
                 case State.COMBAT_COMPLETED:
-                   // panelCombat_Play.SetActive(true);
+                    // panelCombat_Play.SetActive(true);
                     panelCombat_Completed.SetActive(true);
                     // ToDo: code here to go back to galaxy
                     SwitchtState(State.GAMEOVER);
@@ -315,7 +441,7 @@ namespace Assets.Script
                 //    SwitchtState(State.COMBAT_PLAY);
                 //    break;
                 case State.GAMEOVER:
-                    panelGameOver.SetActive(true);
+                    panelGameOver.SetActive(true);                  
                     break;
                 default:
                     break;
@@ -325,6 +451,7 @@ namespace Assets.Script
         // Update is called once per frame
         void Update()
         {
+            //zoomCamera.CheckUpdateZoom();
             switch (_state)
             {
                 case State.LOBBY_MENU:
@@ -349,17 +476,17 @@ namespace Assets.Script
                     //}
                     break;
                 case State.COMBAT_INIT:
-                    _statePassedInit = true;
+                   // _statePassedInit = true;
                     break;
                 case State.COMBAT_PLAY:
-                    _statePassedInit = true;
+                   // _statePassedInit = true;
                     break;
                 case State.COMBAT_COMPLETED:
                     break;
                 //case State.LOADNEXT:
                 //    break;
                 case State.GAMEOVER:
-                    _statePassedInit = false;
+                   // _statePassedInit = false;
                     break;
                 default:
                     break;
@@ -387,12 +514,12 @@ namespace Assets.Script
                     panelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_MENU:
-                   // panelGalactic_Play.SetActive(false);
-                    panelCombat_Menu.SetActive(false);                   
+                    // panelGalactic_Play.SetActive(false);
+                    panelCombat_Menu.SetActive(false);
                     break;
                 case State.COMBAT_INIT:
                     panelCombat_Menu.SetActive(false);
-                   // panelGalactic_Completed.SetActive(false);
+                    // panelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_PLAY:
                     panelCombat_Play.SetActive(false);
@@ -403,20 +530,34 @@ namespace Assets.Script
                 //case State.LOADNEXT:
                 //    break;
                 case State.GAMEOVER:
-                   // panelCombat_Play.SetActive(false); // ToDo: get Combat to return to Galactic on Combat_Completed
+                    // panelCombat_Play.SetActive(false); // ToDo: get Combat to return to Galactic on Combat_Completed
                     panelGameOver.SetActive(false);
                     break;
                 default:
                     break;
             }
         }
-        public void SetShipLayer(string civ, FriendOrFoe who)
+        public void SetDummyCameraTargets()
         {
+            _cameraTargets = instantiateCombatShips.GetCameraTargets().ToArray(); // array for CameraMultiTarget
+            cameraMultiTarget.SetTargets(_cameraTargets); // start multiCamera - main camers before warp in of ships
+        }
+        public void ProvidCombatShips(Dictionary<int, GameObject> combatFriends, Dictionary<int, GameObject> combatEnemies)
+        {
+            FriendShips = combatFriends;
+            EnemyShips = combatEnemies;
+        }
+        //public void ProvidCombatShips(Dictionary<int, GameObject> combatObjects)
+        //{
+        //    CombatObjects = CombatObjects;
+        //}
+        public void SetShipLayer(string civ, bool isFriend)
+          {
             switch (civ)
             {
                 case "FED":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 10;
                         else
                             enemyShipLayer = 10;
@@ -424,7 +565,7 @@ namespace Assets.Script
                     }
                 case "TERRAN":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 11;
                         else
                             enemyShipLayer = 11;
@@ -432,7 +573,7 @@ namespace Assets.Script
                     }
                 case "ROM":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 12;
                         else
                             enemyShipLayer = 12;
@@ -440,7 +581,7 @@ namespace Assets.Script
                     }
                 case "KLING":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 13;
                         else
                             enemyShipLayer = 13;
@@ -448,7 +589,7 @@ namespace Assets.Script
                     }
                 case "CARD":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 14;
                         else
                             enemyShipLayer = 14;
@@ -456,7 +597,7 @@ namespace Assets.Script
                     }
                 case "DOM":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 15;
                         else
                             enemyShipLayer = 15;
@@ -464,7 +605,7 @@ namespace Assets.Script
                     }
                 case "BORG":
                     {
-                        if (who == FriendOrFoe.friend)
+                        if (isFriend)
                             friendShipLayer = 16;
                         else
                             enemyShipLayer = 16;
@@ -472,6 +613,51 @@ namespace Assets.Script
                     }
                 default:
                     break;
+            }
+        }
+
+        public int SetShipLayer(string civ)
+        {
+            switch (civ)
+            {
+                case "FED":
+                    {
+                        return 10;
+
+                    }
+                case "TERRAN":
+                    {
+                        return 11;
+
+                    }
+                case "ROM":
+                    {
+                        return 12;
+
+                    }
+                case "KLING":
+                    {
+                        return 13;
+
+                    }
+                case "CARD":
+                    {
+                        return 14;
+
+                    }
+                case "DOM":
+                    {
+                        return 15;
+
+                    }
+                case "BORG":
+                    {
+                        return 16;
+
+                    }
+                default:
+                    return 10;
+
             }
         }
 
@@ -595,7 +781,7 @@ namespace Assets.Script
                 default:
                     break;
             }
-        }   
+        }
 
         private void RotateFriend(GameObject who)
         {
@@ -615,15 +801,65 @@ namespace Assets.Script
         {
             return aShip.transform;
         }
-
-        public void LoadShipData(string filename) // List<sting>
+        public void LoadFriendAndEnemyNames()
         {
-            GameObject[] localAnimationEmpties = new GameObject[12] { FriendScout_Y0_Z0,
-            FriendDestroyer_Y0_Z1, FriendCapital_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2,
-            EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
-            animationEmpties = localAnimationEmpties;
+            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
+            FriendNameArray = _friendNameArray;
+            string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
+                "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
+            EnemyNameArray = _enemyNameArray;
+        }
 
-            Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+        #region Read Tech era in TechSelection.cs (Ship)GameObjectData.txt
+        public void LoadStartGameObjectNames(string filename) //****  from TechSelection.cs ToDo: read for selected tech level
+        {
+            List<string> _startGameObjectNames = new List<string>();
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+
+                        string currentValueZero = coll[0];
+
+                        string[] shipDataArray = new string[] { currentValueZero };
+
+                        _startGameObjectNames.Add(coll[0].ToString().ToUpper());
+                    }
+                }
+
+                reader.Close();
+                StartGameObjectNames = _startGameObjectNames;
+            }
+        }
+        public void LoadPrefabs()
+        {
+            // Do this in InstantiateCombatShips.cs
+            //foreach (string name in StartGameObjectNames)
+            //{
+            //    string[] collObjectName = name.ToUpper().Split('_');
+            //    int _shipLayer = 10;
+            //    if (collObjectName[1] == "SCOUT" || collObjectName[1] == "DESTROYER" || collObjectName[1] == "CRUISER" ||
+            //        collObjectName[1] == "LT_CRUISER" || collObjectName[1] == "HVY_CRUISER" || collObjectName[1] == "TRANSPORT")
+            //        _shipLayer = SetShipLayer(collObjectName[0]);
+            //}
+
+            //ToDo: build all prefabs needed for game and laod here in place of tempPrefabDitionary
+            //foreach (var item in StartGameObjectNames)
+            //{
+            //    prefabDitionary.Add(item, name of prefab here)
+            //}
+            Dictionary<string, GameObject> tempPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
@@ -634,12 +870,174 @@ namespace Assets.Script
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
+            PrefabDitionary = tempPrefabDitionary;
+        }
+        public void StarterGalaxyObjects()
+        {
+            #region Instantiate Prefab GameObjects
+
+            //Dictionary<int, GameObject> _starterLocal = new Dictionary<int, GameObject>();
+            //// Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
+            ////Dictionary<string, int[]> tempshipDataDictionary = new Dictionary<string, int[]>();
+            //for (int i = 0; i < StartGameObjectNames.Count(); i++)
+            //{
+            //    //GameObject[] resetFriendArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Near);
+            //    GameObject _tempPrefab = (GameObject)Instantiate(PrefabDitionary[StartGameObjectNames[i]], HomeSystemTrans(StartGameObjectNames[i]), Quaternion.identity);
+
+            //    _tempPrefab.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _starterLocal.Add(i, _tempPrefab);
+            //    if (ShipDataDictionary.TryGetValue(StartGameObjectNames[i].ToUpper(), out int[] _result))
+            //    {
+            //        _tempPrefab.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
+            //        _tempPrefab.GetComponent<Ship>()._hullMaxHealth = _result[1];
+            //        _tempPrefab.GetComponent<Ship>()._torpedoDamage = _result[2];
+            //        _tempPrefab.GetComponent<Ship>()._beamDamage = _result[3];
+            //        _tempPrefab.GetComponent<Ship>()._cost = _result[4];
+            //    }
+            //}
+            //CurrentGameObjects = _starterLocal;
+            #endregion
+        }
+        #endregion
+        public void LoadShipData(string filename)
+        {
+            #region Read ShipData.txt 
+
+            Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>();
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+                //Note1("string", int, int, int, int, int"---------------  reading __to_PLZ_DB.txt (from file)");
+                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
+                //Console.WriteLine(infotext);
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+                    //int[] _shipInts = new int[4];
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+
+                        _ = int.TryParse(coll[2], out int currentValueOne);
+                        _ = int.TryParse(coll[4], out int currentValueTwo);
+                        _ = int.TryParse(coll[6], out int currentValueThree);
+                        _ = int.TryParse(coll[8], out int currentValueFour);
+                        _ = int.TryParse(coll[10], out int currentValueFive);
+                        int[] shipDataArray = new int[] { currentValueOne, currentValueTwo, currentValueThree, currentValueFour, currentValueFive };
+
+                        _shipDataDictionary.Add(coll[0].ToString(), shipDataArray);
+                        //_shipInts.Clear();
+                    }
+                }
+
+                reader.Close();
+                ShipDataDictionary = _shipDataDictionary;
+                //StaticStuff staticStuffToLoad = new StaticStuff();
+                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+            }
+            #endregion
+        }
+        public void DropOutOfWarp( Dictionary<int, GameObject> daFriends, Dictionary<int, GameObject> daEnemies) // Orders order,
+        {
+            FriendShips = daFriends;
+            EnemyShips = daEnemies;
+
+            foreach (var item in daEnemies)
+            {
+                CombatObjects.Add(item.Key, item.Value);
+            }
+            foreach (var item in daFriends)
+            {
+                CombatObjects.Add(item.Key, item.Value);
+            }
+            foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
+            {
+
+                if (FriendShips.ContainsValue(daShip.Value))
+                {
+                    int choseWarp = UnityEngine.Random.Range(0, 3);
+                    switch (choseWarp)
+                    {
+                        case 0:
+                            animFriend1.layer = daShip.Value.layer; 
+                            daShip.Value.transform.SetParent(animFriend1.transform, true);
+                            break;
+                        case 1:
+                            animFriend2.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animFriend2.transform, true);
+                            break;
+                        case 2:
+                            animFriend3.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animFriend3.transform, true);
+                            break;
+                        default:
+                            animFriend1.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animFriend1.transform, true);
+                            break;
+                    }
+                }
+                if (EnemyShips.ContainsValue(daShip.Value))
+                {
+                    int choseWarp = UnityEngine.Random.Range(0, 3);
+                    switch (choseWarp)
+                    {
+                        case 0:
+                            animEnemy1.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animEnemy1.transform, true);
+                            break;
+                        case 1:
+                            animEnemy2.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animEnemy2.transform, true);
+                            break;
+                        case 2:
+                            animEnemy3.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animEnemy3.transform, true);
+                            break;
+                        default:
+                            animEnemy1.layer = daShip.Value.layer;
+                            daShip.Value.transform.SetParent(animEnemy1.transform, true);
+                            break;
+                    }
+                }
+            }
+        }
+
+        public void LoadCombatData() //(string filename) // List<sting>
+        {
+            // ToDo: relocate to combat class
+            //GameObject[] localAnimationEmpties = new GameObject[12] { FriendScout_Y0_Z0,
+            //FriendDestroyer_Y0_Z1, FriendCapital_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2,
+            //EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
+            //var something = animationEmpties; // = localAnimationEmpties;
+
+            //Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            //{
+            //    { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
+            //    { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
+            //    { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+            //    { "KLING_DESTROYER_I", Kling_Destroyer_i},
+            //    { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
+            //    { "CARD_SCOUT_I", Card_Scout_i },
+            //    { "ROM_SCOUT_III", Rom_Scout_iii },
+            //    { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
+            //};
+            //#region Ships to load for game
+            //string[] _gameShipsNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I",
+            //    "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" };
+            //#endregion
             #region Ships to load for Combat
 
-            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
-            FriendNameArray = _friendNameArray;
-            string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
-            EnemyNameArray = _enemyNameArray;
+            //string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
+            //FriendNameArray = _friendNameArray;
+            //string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
+            //    "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
+            //EnemyNameArray = _enemyNameArray;
             #endregion
 
             //int yFactor = 3000;
@@ -659,7 +1057,7 @@ namespace Assets.Script
                 RotateFriend(_tempStartScout);
                 emptyFriendScouts.Add(_tempStartScout); // add to list of friend empty the next scout start points 
                 GameObject _tempFarScout = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, zFactor * i), Quaternion.identity);
-               //   RotateFriend(_tempFarScout);
+                //   RotateFriend(_tempFarScout);
                 emptyFriendFarScouts.Add(_tempFarScout); // add to list of friend empty the next scout FAR points 
             }
             _friendScouts = emptyFriendScouts.ToArray();
@@ -678,7 +1076,7 @@ namespace Assets.Script
                 emptyFriendCapital.Add(_tempStartCapital); // list of friend empty capital start points
                 GameObject _tempFarCapital = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, zFactor * i), Quaternion.identity);
                 //RotateFriend(_tempFarCapital);
-                emptyFriendFarCapital.Add(_tempFarCapital); 
+                emptyFriendFarCapital.Add(_tempFarCapital);
             }
             _friendCapital = emptyFriendCapital.ToArray();
             _friendFarCapital = emptyFriendFarCapital.ToArray();
@@ -718,7 +1116,7 @@ namespace Assets.Script
                 GameObject _tempFarScout = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, 0, (zFactor * i + 1500)), Quaternion.identity);
                 //RotateEnemy(_tempFarScout);
                 emptyEnemyFarScouts.Add(_tempFarScout);
-            } 
+            }
             _enemyScouts = emptyEnemyScouts.ToArray();
             _enemyFarScouts = emptyEnemyFarScouts.ToArray();
 
@@ -753,67 +1151,23 @@ namespace Assets.Script
                 RotateEnemy(_tempNearDestroyers);
                 emptyEnemyDestroyers.Add(_tempNearDestroyers);
                 GameObject _tempFarDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
-               // RotateEnemy(_tempFarDestroyers);
+                // RotateEnemy(_tempFarDestroyers);
                 emptyEnemyFarDestroyers.Add(_tempFarDestroyers);
 
             }
             _enemyDestroyer = emptyEnemyDestroyers.ToArray();
             _enemyFarDestroyer = emptyEnemyFarDestroyers.ToArray();
-            
 
             #endregion
 
             // Do ship layers
-            string readFriendName = _friendNameArray[0].ToUpper();
+            string readFriendName = FriendNameArray[0].ToUpper();
             string[] _collFriend = readFriendName.Split('_');
-            SetShipLayer(_collFriend[0], FriendOrFoe.friend);
+            SetShipLayer(_collFriend[0], true);
 
-            string readEnemyName = _enemyNameArray[0].ToUpper();
+            string readEnemyName = EnemyNameArray[0].ToUpper();
             string[] _collEnemy = readEnemyName.Split('_');
-            SetShipLayer(_collEnemy[0], FriendOrFoe.enemy);
-
-            Dictionary<string, int[]> _shipDataDictionary = new Dictionary<string, int[]>();
-
-            #region Read ShipData.txt 
-
-            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
-
-            var _dataPoints = new List<string>();
-            using (var reader = new StreamReader(file))
-            {
-                //Note1("string", int, int, int, int, int"---------------  reading __to_PLZ_DB.txt (from file)");
-                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-                //Console.WriteLine(infotext);
-
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        continue;
-                    _dataPoints.Add(line.Trim());
-                    //int[] _shipInts = new int[4];
-                    if (line.Length > 0)
-                    {
-                        var coll = line.Split(separator);
-
-                        _ = int.TryParse(coll[1], out int currentValueOne);
-                        _ = int.TryParse(coll[2], out int currentValueTwo);
-                        _ = int.TryParse(coll[3], out int currentValueThree);
-                        _ = int.TryParse(coll[4], out int currentValueFour);
-                        _ = int.TryParse(coll[5], out int currentValueFive);
-                        int[] shipDataArray = new int[] { currentValueOne, currentValueTwo, currentValueThree, currentValueFour, currentValueFive };
-
-                        _shipDataDictionary.Add(coll[0].ToString(), shipDataArray);
-                        //_shipInts.Clear();
-                    }
-                }
-
-                reader.Close();
-                ShipDataDictionary = _shipDataDictionary;
-                //StaticStuff staticStuffToLoad = new StaticStuff();
-                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
-            }
-            #endregion
+            SetShipLayer(_collEnemy[0], false);
 
             #region Instantiate Prefab Friend Ships
             //instantiate prefab ships using friendNameArray to prefab Dictionary onto as many empties in grids 
@@ -822,16 +1176,16 @@ namespace Assets.Script
             //var friendNearTargets = new List<GameObject>();
             Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
 
-            for (int i = 0; i < _friendNameArray.Count(); i++)
+            for (int i = 0; i < FriendNameArray.Count(); i++)
             {
-                GameObject[] resetFriendArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Near);  
-                GameObject _tempPrefabFriend = (GameObject)Instantiate(prefabDitionary[_friendNameArray[i]], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+                GameObject[] resetFriendArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Near); //use the current first empty from the correct side and roe by ship type
+                GameObject _tempPrefabFriend = (GameObject)Instantiate(PrefabDitionary[FriendNameArray[i]], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
                 GameObject newEmptyCameraTarget = (GameObject)Instantiate(resetFriendArray[0], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
-                GameObject[] resetFriendFarArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Far);
-               // GameObject newEmptyFriendFarTarget = (GameObject)Instantiate(resetFriendFarArray[0], resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
-                GameObject noAnimationNearFTarget = (GameObject)Instantiate( new GameObject(), resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
-                GameObject noAnimationFarFTarget = (GameObject)Instantiate(new GameObject(), resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
-                localShipTargetDictionary.Add(_tempPrefabFriend, new GameObject[] { noAnimationNearFTarget, noAnimationFarFTarget });
+                GameObject[] resetFriendFarArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Far);
+                GameObject newEmptyFriendFarTarget = (GameObject)Instantiate(resetFriendFarArray[0], resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+                GameObject animationNearFTarget = (GameObject)Instantiate(new GameObject(), resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+                GameObject animationFarFTarget = (GameObject)Instantiate(new GameObject(), resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+                localShipTargetDictionary.Add(_tempPrefabFriend, new GameObject[] { animationNearFTarget, animationFarFTarget });
 
                 newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
                 cameraTargets.Add(newEmptyCameraTarget);
@@ -845,12 +1199,12 @@ namespace Assets.Script
                 List<GameObject> resetingFarList = resetFriendFarArray.ToList();
                 resetingAList.Remove(resetingAList[0]);
                 resetingFarList.Remove(resetingFarList[0]);
-                UpdateTheArrays(_friendNameArray[i], resetingAList, FriendOrFoe.friend, NearOrFar.Near); // rebuild Array Lists
-                UpdateTheArrays(_friendNameArray[i], resetingFarList, FriendOrFoe.friend, NearOrFar.Far); // rebuild Array Lists
+                UpdateTheArrays(FriendNameArray[i], resetingAList, FriendOrFoe.friend, NearOrFar.Near); // rebuild Array Lists
+                UpdateTheArrays(FriendNameArray[i], resetingFarList, FriendOrFoe.friend, NearOrFar.Far); // rebuild Array Lists
 
                 Ship.SetLayerRecursively(animationEmtpy, friendShipLayer);
 
-                if (_shipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
+                if (ShipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
                 {
                     _tempPrefabFriend.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
                     _tempPrefabFriend.GetComponent<Ship>()._hullMaxHealth = _result[1];
@@ -868,16 +1222,16 @@ namespace Assets.Script
             Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
             //var enemyNearTargets = new List<GameObject>();
 
-            for (int i = 0; i < _enemyNameArray.Count(); i++)
-               {
-                GameObject[] resetEnemyArray = GetRoeByShipType(_enemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Near);
-                GameObject _tempPrefabEnemy = (GameObject)Instantiate(prefabDitionary[_enemyNameArray[i]], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+            for (int i = 0; i < EnemyNameArray.Count(); i++)
+            {
+                GameObject[] resetEnemyArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Near);
+                GameObject _tempPrefabEnemy = (GameObject)Instantiate(PrefabDitionary[EnemyNameArray[i]], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
                 GameObject anEmptyCameraTarget = (GameObject)Instantiate(resetEnemyArray[0], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
-                GameObject[] resetEnemyFarArray = GetRoeByShipType(_enemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Far);
-               // GameObject newEmptyEnemyFarTarget = (GameObject)Instantiate(resetEnemyFarArray[0], resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
-                GameObject noAnimationNearETarget = (GameObject)Instantiate(new GameObject(), resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
-                GameObject noAnimationFarETarget = (GameObject)Instantiate(new GameObject(), resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
-                localShipTargetDictionary.Add(_tempPrefabEnemy, new GameObject[] { noAnimationNearETarget, noAnimationFarETarget  });
+                GameObject[] resetEnemyFarArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Far);
+                GameObject newEmptyEnemyFarTarget = (GameObject)Instantiate(resetEnemyFarArray[0], resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+                GameObject animationNearETarget = (GameObject)Instantiate(new GameObject(), resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+                GameObject animationFarETarget = (GameObject)Instantiate(new GameObject(), resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+                localShipTargetDictionary.Add(_tempPrefabEnemy, new GameObject[] { animationNearETarget, animationFarETarget });
 
                 anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
                 cameraTargets.Add(anEmptyCameraTarget);
@@ -891,12 +1245,12 @@ namespace Assets.Script
                 List<GameObject> resetingFarList = resetEnemyFarArray.ToList();
                 resetingList.Remove(resetingList[0]);
                 resetingFarList.Remove(resetingFarList[0]);
-                UpdateTheArrays(_enemyNameArray[i], resetingList, FriendOrFoe.enemy, NearOrFar.Near);
-                UpdateTheArrays(_enemyNameArray[i], resetingFarList, FriendOrFoe.enemy, NearOrFar.Far);
+                UpdateTheArrays(EnemyNameArray[i], resetingList, FriendOrFoe.enemy, NearOrFar.Near);
+                UpdateTheArrays(EnemyNameArray[i], resetingFarList, FriendOrFoe.enemy, NearOrFar.Far);
 
                 Ship.SetLayerRecursively(animationEmtpy, enemyShipLayer);
 
-                if (_shipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
+                if (ShipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
                 {
                     _tempPrefabEnemy.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
                     _tempPrefabEnemy.GetComponent<Ship>()._hullMaxHealth = _result[1];
@@ -914,12 +1268,39 @@ namespace Assets.Script
 
             friends = FriendNameArray.Count();
             enemies = EnemyNameArray.Count();
-      
+
             //StaticStuff.LoadStaticEnemyDictionary(EnemyShips);   
         }
-        public Dictionary<GameObject,GameObject[]> GetShipTravelTargets()
+        public Dictionary<GameObject, GameObject[]> GetShipTravelTargets()
         {
             return _shipTargetDictionary;
         }
+        private Vector3 HomeSystemTrans(string objectName)
+        {
+            //ToDo: where is everyone?
+            var coll = objectName.Split(separator);
+
+            string currentValueZero = coll[0].ToUpper();
+            switch (currentValueZero)
+            {
+                case "SOL":
+                    return new Vector3(0, 0, 0);    
+                case "TERRA":
+                    return new Vector3(0, 0, 1);
+                case "ROMULUS":
+                    return new Vector3(0, 0, 2);
+                case "KRONOS":
+                    return new Vector3(0, 0, 3);
+                case "CARDASSIA":
+                    return new Vector3(0, 0, 4);
+                case "OMARIAN":
+                    return new Vector3(0, 0, 5);
+                case "UNIMATRIX":
+                    return new Vector3(0, 0, 6);
+                default:
+                    return new Vector3(0, 0, 07);
+            }
+        }
+    
     }
 }

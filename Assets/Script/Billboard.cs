@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Script
+namespace Assets.Script 
 {
-
     public class Billboard : MonoBehaviour
     {
         // use on torpedo sprit

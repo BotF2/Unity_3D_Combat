@@ -36,30 +36,38 @@ namespace Assets.Script
             _activeTechToggle = TechLevelGroup.ActiveToggles().ToArray().FirstOrDefault();
             ActiveToggle();
         }
-        public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
-        {
-            Toggle techToggle = _activeTechToggle;
-            Debug.Log(techToggle.name + " _ ");
-        }
+        //public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
+        //{
+        //    Toggle techToggle = _activeTechToggle;
+        //    Debug.Log(techToggle.name + " _ ");
+        //}
         public void ActiveToggle()
         {
             switch (_activeTechToggle.name.ToUpper())
             {
                 case "TOGGLE_SUPREME":
-                    Early = _activeTechToggle;
+                    Supreme = _activeTechToggle;
+                    GameManager._techLevel = TechLevel.Supreme;
+                    GameManager.Instance.LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"SupremeGameObjectsData.txt");
                     Debug.Log("Active Fed.");
                     break;
                 case "TOGGLE_ADVANCED":
                     Debug.Log("Active Kling.");
-                    Developed = _activeTechToggle;
+                    Advanced = _activeTechToggle;
+                    GameManager._techLevel = TechLevel.Advanced;
+                    GameManager.Instance.LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt");// "AdvancedGameObjectData.txt");
                     break;
                 case "TOGGLE_DEVELOPED":
                     Debug.Log("Active Rom.");
-                    Advanced = _activeTechToggle;
+                    Developed = _activeTechToggle;
+                    GameManager._techLevel = TechLevel.Developed;
+                    GameManager.Instance.LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"DevelopedGameObjectsData.txt");
                     break;
                 case "TOGGLE_EARLY":
                     Debug.Log("Active Card.");
-                    Supreme = _activeTechToggle;
+                    Early = _activeTechToggle;
+                    GameManager._techLevel = TechLevel.Early;
+                    GameManager.Instance.LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
                     break;
                 default:
                     break;

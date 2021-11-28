@@ -40,38 +40,45 @@ namespace Assets.Script
             _activeToggle = CivilizationGroup.ActiveToggles().ToArray().FirstOrDefault();
             ActiveToggle();
         }
-        public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
-        {
-            Toggle toggle = _activeToggle;
-            Debug.Log(toggle.name + " _ ");
-        }
+        //public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
+        //{
+        //    //GameManager.Instance._localPlayer = _
+        //    Toggle toggle = _activeToggle;
+        //    Debug.Log(toggle.name + " _ ");
+        //}
         public void ActiveToggle()
         {
             switch (_activeToggle.name.ToUpper())
             {
                 case "TOGGLE_FED":
                     Fed = _activeToggle;
+                    GameManager.Instance._localPlayer = Civilization.Fed;
                     Debug.Log("Active Fed.");
                     break;
                 case "TOGGLE_KLING":
                     Debug.Log("Active Kling.");
+                    GameManager.Instance._localPlayer = Civilization.Kling;
                     Kling = _activeToggle;
                     break;
                 case "TOGGLE_ROM":
                     Debug.Log("Active Rom.");
                     Rom = _activeToggle;
+                    GameManager.Instance._localPlayer = Civilization.Rom;
                     break;
                 case "TOGGLE_CARD":
                     Debug.Log("Active Card.");
                     Card = _activeToggle;
+                    GameManager.Instance._localPlayer = Civilization.Card;
                     break;
                 case "TOGGLE_DOM":
                     Debug.Log("Active Dom.");
                     Dom = _activeToggle;
+                    GameManager.Instance._localPlayer = Civilization.Dom;
                     break;
                 case "TOGGLE_BORG":
                     Debug.Log("Active Borg.");
                     Borg = _activeToggle;
+                    GameManager.Instance._localPlayer = Civilization.Borg;
                     break;
                 default:
                     break;

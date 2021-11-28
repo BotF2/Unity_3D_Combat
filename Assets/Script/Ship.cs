@@ -9,19 +9,11 @@ using System.Linq;
 
 namespace Assets.Script
 {
-    public enum Orders
-    {
-        Engage,
-        Formation,
-        Retreat,
-        ProtectTransports,
-        Rush,
-        AttackTransports  
-    }
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public Civilization civilization;
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits
@@ -34,12 +26,13 @@ namespace Assets.Script
         private Transform _nearTarget;
         private Transform _currentTarget;
         private bool isFarTargetSet = false;
-        public float combatAreaOffset = -5000f;
+       // public float combatAreaOffset = -5000f;
         private float turnRate = 1f;
         private bool lockTurn = true;
         private int _shieldsCurrentHealth;
         private float _shieldsRegeneratRate = 4f; // of Shields
         private float _speedBooster = 15000f;
+       // public bool allStop = false;
         private int _sheildsRegenerateAmount = 1;
         private GameObject _shields;
         public bool shieldsAreUp;
@@ -80,12 +73,13 @@ namespace Assets.Script
         }
         void Start()
         {
+              //_whoIAm = MyCivilization(this.name);
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
             _isFriend = GameManager.Instance.AreWeFriends(gameObject);
             if (_isFriend)
-                combatAreaOffset *= -1;
+               // combatAreaOffset *= -1;
             //_shields.SetActive(true);
             //_renderer = GetComponent<Renderer>();
             //_orgMaterial = _renderer.sharedMaterial;
@@ -94,52 +88,57 @@ namespace Assets.Script
 
         }
         private void Update()
-        {
-            if (GameManager.Instance._statePassedInit)
+        { // Move
+            if (GameManager.Instance._statePassedCombatInit)
             {
-                rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
+                //rigidbody.velocity = Vector3.zero;
+                //rigidbody.angularVelocity = Vector3.zero;
+
+
+                //rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
                 #region travel between targets here
-                if (!isFarTargetSet)
-                {
-                    GameObject fart = new GameObject();
-                    var farty = new GameObject[] { fart, fart };
-                    //Transform value = fart.transform;
-                    var dictionary = GameManager.Instance.GetShipTravelTargets();
+                //if (!isFarTargetSet)
+                //{
+                //    GameObject fart = new GameObject();
+                //    GameObject[] farty = new GameObject[] { fart, fart };
+                //    //Transform value = fart.transform;
+                //    var dictionary = GameManager.Instance.GetShipTravelTargets();
 
-                    if (dictionary.TryGetValue(shipGameObject, out farty))
-                    {
-                        _nearTarget = farty[0].transform;
-                        _farTarget = farty[1].transform;
-                    }
-                    _currentTarget = _farTarget;
-                    isFarTargetSet = true;
-                }
-                #endregion
-                #region Alernate near and far targets
-                if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
-                    lockTurn = false;
+                //    if (dictionary.TryGetValue(shipGameObject, out farty))
+                //    {
+                //        _nearTarget = farty[0].transform;
+                //        _farTarget = farty[1].transform;
+                //    }
+                //    _currentTarget = _farTarget;
+                //    isFarTargetSet = true;
+                //}
+                //#endregion
+                //#region Alernate near and far targets
+                //if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
+                //    lockTurn = false;
 
-                int leftRight = 1;
-                if (_currentTarget.position.x < 0)
-                    leftRight = -1;
-                if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
-                {
-                    if (_currentTarget == _farTarget)
-                    {
-                        _currentTarget = _nearTarget;
-                        lockTurn = true;
-                    }
-                    else if (_currentTarget == _nearTarget)
-                    {
-                        _currentTarget = _farTarget;
-                        lockTurn = true;
-                    }
-                }
+                //int leftRight = 1;
+                //if (_currentTarget.position.x < 0)
+                //    leftRight = -1;
+                //if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
+                //{
+                //    if (_currentTarget == _farTarget)
+                //    {
+                //        _currentTarget = _nearTarget;
+                //        lockTurn = true;
+                //    }
+                //    else if (_currentTarget == _nearTarget)
+                //    {
+                //        _currentTarget = _farTarget;
+                //        lockTurn = true;
+                //    }
+                //}
                 #endregion
                 #region turn to target
-                var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
-                rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
-               // transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
+                //var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
+                //rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
+                ////transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
+                #endregion
 
                 if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
                 {
@@ -151,7 +150,7 @@ namespace Assets.Script
                         theLocalTargetDictionary = GameManager.FriendShips;
                     FindBeamTarget(theLocalTargetDictionary);
                 }
-                #endregion 
+ 
                 if (beamObject == null)
                     beamTargetTransform = null;
 
@@ -201,7 +200,7 @@ namespace Assets.Script
             if (_shieldsCurrentHealth < 1)
                 shieldsAreUp = false;
         }
-        
+
         public void OnTriggerStay(Collider other) // beams
         {
             Quaternion rotationOf = Quaternion.FromToRotation(Vector3.down, transform.forward);
@@ -211,7 +210,7 @@ namespace Assets.Script
             {
                 _beamDamage = _result[3];
             }
-            if ( _beamDamage > 0 && beamTargetTransform != null)
+            if (_beamDamage > 0 && beamTargetTransform != null)
             {
                 Ship target = beamTargetTransform.GetComponent<Ship>(); // get the targeted Ship
                 switch (target.shieldsAreUp)
@@ -219,7 +218,7 @@ namespace Assets.Script
                     case true:
                         var positionOf = beamTargetTransform.position; // traget ship origin
                         _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                        Destroy(_shields, 2.1f);                      
+                        Destroy(_shields, 2.1f);
                         target.ShieldsTakeDagame(_beamDamage);
                         _beamDamage = 0;
                         break;
@@ -232,8 +231,8 @@ namespace Assets.Script
                 }
             }
             Destroy(other.gameObject, 1f);
-        } 
-        public void OnCollisionEnter(Collision collision) 
+        }
+        public void OnCollisionEnter(Collision collision)
         {
             string nameOfImpactor = collision.gameObject.name;
             string[] _nameParts = nameOfImpactor.ToUpper().Split('_');
@@ -327,7 +326,29 @@ namespace Assets.Script
             Debug.Log("Hull took damage");
             if (_hullMaxHealth < 1)
             {
-                Destroy(transform.gameObject, 0.2f);               
+                Destroy(transform.gameObject, 0.2f);
+                if (GameManager.FriendNameArray.Contains(gameObject.name))
+                {
+                    var newList = GameManager.FriendNameArray.ToList();
+                    newList.Remove(gameObject.name);
+                    GameManager.FriendNameArray = newList.ToArray();
+                    if (GameManager.FriendShips.ContainsValue(gameObject))
+                    {
+                        var someKeyAndShip = GameManager.FriendShips.FirstOrDefault(o => o.Value == gameObject);
+                        GameManager.FriendShips.Remove(someKeyAndShip.Key);
+                    }
+                }
+                else if (GameManager.EnemyNameArray.Contains(gameObject.name))
+                {
+                    var newList = GameManager.EnemyNameArray.ToList();
+                    newList.Remove(gameObject.name);
+                    GameManager.EnemyNameArray = newList.ToArray();
+                    if (GameManager.EnemyShips.ContainsValue(gameObject))
+                    {
+                        var otherKeyAndShip = GameManager.EnemyShips.FirstOrDefault(o => o.Value == gameObject);
+                        GameManager.EnemyShips.Remove(otherKeyAndShip.Key);
+                    }
+                }
                 Debug.Log("Ship destroid");
                 GameObject ringExplosion = Instantiate(_ringExplosion, transform.position, Quaternion.LookRotation(transform.up)) as GameObject;
                 ringExplosion.AddComponent<AudioSource>().playOnAwake = false;
@@ -351,21 +372,88 @@ namespace Assets.Script
         //}
         public static void SetLayerRecursively(GameObject obj, int newLayer)
         {
-          if (null == obj)
+            if (null == obj)
             {
                 return;
             }
 
             obj.layer = newLayer;
 
-            foreach(Transform child in obj.transform)
+            foreach (Transform child in obj.transform)
             {
-                if(null == child)
+                if (null == child)
                 {
                     continue;
                 }
                 SetLayerRecursively(child.gameObject, newLayer);
             }
         }
+        //public static Civilization MyCivilization(string who)
+        //{
+        //    //string readFriendName = _friendNameArray[0].ToUpper();
+        //    //string[] _collFriend = readFriendName.Split('_');
+        //    //SetShipLayer(_collFriend[0], FriendOrFoe.friend);
+        //    //switch (who)
+        //    //{
+        //    //    case "FED":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 10;
+        //    //            else
+        //    //                enemyShipLayer = 10;
+        //    //            break;
+        //    //        }
+        //    //    case "TERRAN":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 11;
+        //    //            else
+        //    //                enemyShipLayer = 11;
+        //    //            break;
+        //    //        }
+        //    //    case "ROM":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 12;
+        //    //            else
+        //    //                enemyShipLayer = 12;
+        //    //            break;
+        //    //        }
+        //    //    case "KLING":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 13;
+        //    //            else
+        //    //                enemyShipLayer = 13;
+        //    //            break;
+        //    //        }
+        //    //    case "CARD":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 14;
+        //    //            else
+        //    //                enemyShipLayer = 14;
+        //    //            break;
+        //    //        }
+        //    //    case "DOM":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 15;
+        //    //            else
+        //    //                enemyShipLayer = 15;
+        //    //            break;
+        //    //        }
+        //    //    case "BORG":
+        //    //        {
+        //    //            if (who == FriendOrFoe.friend)
+        //    //                friendShipLayer = 16;
+        //    //            else
+        //    //                enemyShipLayer = 16;
+        //    //            break;
+        //    //        }
+        //    //    default:
+        //    //        break;
+        //    //}
+        //}
     }
 }

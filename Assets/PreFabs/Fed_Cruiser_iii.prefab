@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  civilization: 0
   _shieldsMaxHealth: 66
   _hullMaxHealth: 0
   _torpedoDamage: 40
@@ -91,10 +92,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.1526599
-  m_Height: 0.46027666
+  m_Radius: 0.113919504
+  m_Height: 0.35480654
   m_Direction: 2
-  m_Center: {x: 0.00004541874, y: -0.0054405034, z: -0.22800276}
+  m_Center: {x: -0.000017978251, y: -0.005440481, z: -0.1752677}
 --- !u!114 &4521624401308703123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,26 +108,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weAreFriend: 0
+  _localPlayer: 0
+  _hostPlayer: 0
+  _cliantZero: 0
+  _cliantOne: 0
+  _cliantTwo: 0
+  _cliantThree: 0
+  _cliantFour: 0
+  _cliantFive: 0
+  _combatOrder: 0
+  ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
-  rotationSpeed: 0
-  Friend_0: {fileID: 0}
-  Enemy_0: {fileID: 0}
+  instantiateCombatShips: {fileID: 0}
+  actOnCombatOrder: {fileID: 0}
+  shipScale: 2000
+  animFriend1: {fileID: 0}
+  animFriend2: {fileID: 0}
+  animFriend3: {fileID: 0}
+  animEnemy1: {fileID: 0}
+  animEnemy2: {fileID: 0}
+  animEnemy3: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
-  xFactorFriend: -3500
-  xFactorEnemmy: 4500
-  Friend_Y0_Z0: {fileID: 0}
-  Friend_Y0_Z1: {fileID: 0}
-  Friend_Y0_Z2: {fileID: 0}
-  Friend_Y1_Z0: {fileID: 0}
-  Friend_Y1_Z1: {fileID: 0}
-  Friend_Y1_Z2: {fileID: 0}
-  Enemy_Y0_Z0: {fileID: 0}
-  Enemy_Y0_Z1: {fileID: 0}
-  Enemy_Y0_Z2: {fileID: 0}
-  Enemy_Y1_Z0: {fileID: 0}
-  Enemy_Y1_Z1: {fileID: 0}
-  Enemy_Y1_Z2: {fileID: 0}
+  offsetFriendLeft: -5500
+  offsetFriendRight: 5800
+  offsetEnemyRight: 5500
+  offsetEnemyLeft: -5800
   Borg_Destroyer_i: {fileID: 0}
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
@@ -143,8 +151,8 @@ MonoBehaviour:
   Dom_Scout_ii: {fileID: 0}
   Fed_Cruiser_ii: {fileID: 0}
   Fed_Cruiser_iii: {fileID: 0}
-  Fed_lt_Cruiser_iv: {fileID: 0}
-  Fed_hvy_Cruiser_iv: {fileID: 0}
+  Fed_LtCruiser_iv: {fileID: 0}
+  Fed_HvyCruiser_iv: {fileID: 0}
   Fed_Destroyer_i: {fileID: 0}
   Fed_Destroyer_ii: {fileID: 0}
   Fed_Destroyer_iii: {fileID: 0}
@@ -164,13 +172,33 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  Rom_Scout_iii: {fileID: 0}
+  animationEmpties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   friends: 0
   enemies: 0
-  panelMenu: {fileID: 0}
-  panelPlay: {fileID: 0}
-  panelCompleted: {fileID: 0}
+  panelLobby_Menu: {fileID: 0}
+  panelMain_Menu: {fileID: 0}
+  panelGalactic_Play: {fileID: 0}
+  panelGalactic_Completed: {fileID: 0}
+  panelCombat_Menu: {fileID: 0}
+  panelCombat_Play: {fileID: 0}
+  panelCombat_Completed: {fileID: 0}
   panelGameOver: {fileID: 0}
-  _statePassedInit: 0
+  _statePassedLobbyInit: 0
+  _statePassedMain_Init: 0
+  _statePassedCombatInit: 0
 --- !u!1001 &4102102167558064397
 PrefabInstance:
   m_ObjectHideFlags: 0

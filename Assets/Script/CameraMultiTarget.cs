@@ -11,7 +11,7 @@ namespace Assets.Script
 		public float Yaw;
 		public float Roll;
 		private Vector3 _cameraOffSet;
-		public float _targetTimer = 6f;
+		public float _targetTimer = 0.5f;
 		private float _autoTimer = 7f;
 		private bool _didNotGetTargetYet = true;
 		public GameObject _cameraTarget;
@@ -24,6 +24,7 @@ namespace Assets.Script
 		private Camera _camera;
 		private GameObject[] _targets = new GameObject[0];
 		private DebugProjection _debugProjection;
+		//public Camera _shipCamera;
 
 		enum DebugProjection { DISABLE, IDENTITY, ROTATED }
 		enum ProjectionEdgeHits { TOP_BOTTOM, LEFT_RIGHT }
@@ -37,14 +38,15 @@ namespace Assets.Script
 		{
             _camera = gameObject.GetComponent<Camera>();
             _debugProjection = DebugProjection.ROTATED;
-			_targetTimer = 6f;
+			_targetTimer = 0.5f;
 		}
 
 		private void LateUpdate()
 		{
+			// ToDo: get a combat updater to reset _targets GameObject Array as ships are distroyed!!!
 			if (_targets.Length == 0)
 				return;
-			if (_targetTimer < 0f && GameManager.Instance._statePassedInit)
+			if (true) // ( GameManager.Instance._statePassedCombatInit) //_targetTimer < 0f)
 			{
 				_rotateAroundTarget = true; //  do we need this??
 				if (_didNotGetTargetYet)
@@ -74,8 +76,8 @@ namespace Assets.Script
 				}
 				else
                 {
-					float xRotation = 0.015f;
-					float yRotation = 0.01f;
+					float xRotation = 0.01f;
+					float yRotation = 0.005f;
 					
 					if (turningPositiveX)
 					{
@@ -101,13 +103,14 @@ namespace Assets.Script
 					_autoTimer -= Time.deltaTime;
 
 				}
-				if (_lookAtTarget || _rotateAroundTarget)
+
+                if (_lookAtTarget || _rotateAroundTarget)
 				{
 					gameObject.transform.LookAt(_cameraTarget.transform);
 				}
 				
 			}
-			else if (GameManager.Instance._statePassedInit && _targetTimer > 0f)
+			else if (GameManager.Instance._statePassedCombatInit && _targetTimer > 0f)
 			{
 				_targetTimer -= Time.deltaTime;
 				var targetPositionAndRotation = TargetPositionAndRotation(_targets);
