@@ -10,8 +10,9 @@ namespace Assets.Script
     {
 
         Toggle _activeToggle;
-        public Toggle Engage, Rush, Retreat, Formation, Transports;
+        public Toggle Engage, Rush, Retreat, Formation, ProtectTransports, TargetTransports;
         ToggleGroup CombatGroup;
+        //private Orders _combatOrder;
 
         private void Awake()
         {
@@ -19,7 +20,8 @@ namespace Assets.Script
             Rush.isOn = false;
             Retreat.isOn = false;
             Formation.isOn = false;
-            Transports.isOn = false;
+            ProtectTransports.isOn = false;
+            TargetTransports.isOn = false;
         }
         private void Start()
         {
@@ -31,18 +33,14 @@ namespace Assets.Script
             Rush.isOn = false;
             Retreat.isOn = false;
             Formation.isOn = false;
-            Transports.isOn = false;
+            ProtectTransports.isOn = false;
+            TargetTransports.isOn = false;
         }
         private void Update()
         {
             _activeToggle = CombatGroup.ActiveToggles().ToArray().FirstOrDefault();
             ActiveToggle();
         }
-        //public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
-        //{
-        //    Toggle toggle = _activeToggle;
-        //    Debug.Log(toggle.name + " _ ");
-        //}
         public void ActiveToggle()
         {
             switch (_activeToggle.name.ToUpper())
@@ -67,10 +65,15 @@ namespace Assets.Script
                     Formation = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.Formation;
                     break;
-                case "TOGGLE_TRANSPORTS":
-                    Debug.Log("Active Transports.");
-                    Transports = _activeToggle;
-                    GameManager.Instance._combatOrder = Orders.AttackTransports;
+                case "TOGGLE_PROTECT_TRANSPORTS":
+                    Debug.Log("Active Protect Transports.");
+                    ProtectTransports = _activeToggle;
+                    GameManager.Instance._combatOrder = Orders.ProtectTransports;
+                    break;
+                case "TOGGLE_ATTACK_TRANSPORTS":
+                    Debug.Log("Active Target Transports.");
+                    TargetTransports = _activeToggle;
+                    GameManager.Instance._combatOrder = Orders.TargetTransports;
                     break;
                 default:
                     break;

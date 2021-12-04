@@ -60,11 +60,11 @@ namespace Assets.Script
     public enum Orders
     {
         Engage,
-        Formation,
-        Retreat,
-        ProtectTransports,
         Rush,
-        AttackTransports
+        Retreat,
+        Formation,
+        ProtectTransports,
+        TargetTransports
     }
     public class GameManager : NetworkBehaviour
     {
@@ -87,8 +87,10 @@ namespace Assets.Script
         public CameraMultiTarget cameraMultiTarget;
         public InstantiateCombatShips instantiateCombatShips;
         public ActOnCombatOrder actOnCombatOrder;
-       // public ZoomCamera zoomCamera;
-        public float shipScale = 2000f;
+        public ZoomCamera zoomCamera;
+        public CombatOrderSelection combatOrderSelection;
+
+        public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
         public GameObject animFriend1;
@@ -100,7 +102,7 @@ namespace Assets.Script
 
         public static GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
         public static GameObject Enemy_0;
-        public int yFactor = 3000; // gap in grid between empties on y axis
+        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
         public int zFactor = 3000;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
         public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
@@ -243,6 +245,7 @@ namespace Assets.Script
         public bool _statePassedLobbyInit = false;
         // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
         public bool _statePassedMain_Init = false;
+        public bool _statePassedCombatMenu_Init = false;
         public bool _statePassedCombatInit = false; // COMBAT INIT
         public bool _statePassedCombatPlay = false;
 
@@ -411,30 +414,38 @@ namespace Assets.Script
                     panelCombat_Menu.SetActive(true);
                     //_statePassedInit = true;
                     LoadFriendAndEnemyNames(); // for combat
+                    //combatOrderSelection.ImplementCombatOrder();
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
-
                     break;
                 case State.COMBAT_INIT:
-                    //LoadCombatData();
+                    _statePassedCombatMenu_Init = true;
+                    actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
                     instantiateCombatShips.PreCombatSetup(FriendNameArray, EnemyNameArray); //, true);
-                    //_statePassedCombatInit = true; // animation... can now run 
-                    SetDummyCameraTargets(); // turn on multiCamera
-                    DropOutOfWarp(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
-                    _statePassedCombatInit = true;
+                    //_statePassedCombatInit = true; 
+                    SetDummyCameraTargets(); // turn on multiCamera                   
+                    zoomCamera.ZoomIn();
+                    _statePassedCombatInit = true; // animation... can now run 
                     panelCombat_Menu.SetActive(false);
+                    DropOutOfWarp(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
+
                     panelCombat_Play.SetActive(true);
                     SwitchtState(State.COMBAT_PLAY);
-
                     break;
                 case State.COMBAT_PLAY:
-                    _statePassedCombatPlay = true; // try to freeze motion after animation of warp
-
+                    _statePassedCombatPlay = true; 
                     break;
                 case State.COMBAT_COMPLETED:
                     // panelCombat_Play.SetActive(true);
                     panelCombat_Completed.SetActive(true);
-                    // ToDo: code here to go back to galaxy
-                    SwitchtState(State.GAMEOVER);
+                    if (false)// requirments for game over here
+                        SwitchtState(State.GAMEOVER);
+                    else
+                    {
+                        SwitchtState(State.GALACTIC_PLAY);
+                        _statePassedCombatInit = false;
+                        _statePassedCombatMenu_Init = false;
+                        zoomCamera.TurnOfZoomerUpdate();
+                    }
                     break;
                 //case State.LOADNEXT: // was for load levels
                 //    // no levels to load
@@ -803,7 +814,7 @@ namespace Assets.Script
         }
         public void LoadFriendAndEnemyNames()
         {
-            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
+            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I", "FED_SCOUT_II" };
             FriendNameArray = _friendNameArray;
             string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
                 "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
@@ -861,7 +872,7 @@ namespace Assets.Script
             //}
             Dictionary<string, GameObject> tempPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
+                { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
@@ -984,6 +995,8 @@ namespace Assets.Script
                 }
                 if (EnemyShips.ContainsValue(daShip.Value))
                 {
+                    //animEnemy1.layer = daShip.Value.layer;
+                    //daShip.Value.transform.SetParent(animEnemy1.transform, true);
                     int choseWarp = UnityEngine.Random.Range(0, 3);
                     switch (choseWarp)
                     {

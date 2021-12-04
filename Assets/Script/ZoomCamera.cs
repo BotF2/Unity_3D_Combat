@@ -9,33 +9,50 @@ namespace Assets.Script
     {
         public Camera _shipCamera;
         public CameraMultiTarget cameraMultiTarget;
-        //public float defaultFOV = 18;
-        //float drift = 20f;
-        //public GameManager gameManager;
-        //private void Start()
-        //{
-        //    GetComponent<Camera>().fieldOfView = 18f;
-        //}
+        bool _startZoomerUpdate = false;
+        bool _doneWithWideAngle = false;
+        float _startTimer = 0;
 
         void Update()
         {
-            if (cameraMultiTarget._rotateAroundTarget)
+            if (_startZoomerUpdate)
             {
-                if (Input.mouseScrollDelta == Vector2.zero)
-                    return;
-                else//GameManager.Instance._statePassedCombatInit)
-                {
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView > 20)
+                    _shipCamera.fieldOfView = _shipCamera.fieldOfView - (Time.time - _startTimer) / 5;
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView <= 20)
+                    _doneWithWideAngle = true;
 
-                    if (Input.mouseScrollDelta.y > 0 && _shipCamera.fieldOfView > 10) //GetAxis("Mouse ScrollWheel") 
+                if (_doneWithWideAngle && cameraMultiTarget._rotateAroundTarget)
+                {
+                    if (Input.mouseScrollDelta == Vector2.zero)
+                        return;
+                    else//GameManager.Instance._statePassedCombatInit)
                     {
-                        _shipCamera.fieldOfView--;
-                    }
-                    if (Input.mouseScrollDelta.y < 0 && _shipCamera.fieldOfView < 30) //.GetAxis("Mouse ScrollWheel") < 0 
-                    {
-                        _shipCamera.fieldOfView++;
+
+                        if (Input.mouseScrollDelta.y > 0 && _shipCamera.fieldOfView > 10) //GetAxis("Mouse ScrollWheel") 
+                        {
+                            _shipCamera.fieldOfView--;
+                        }
+                        if (Input.mouseScrollDelta.y < 0 && _shipCamera.fieldOfView < 30) //.GetAxis("Mouse ScrollWheel") < 0 
+                        {
+                            _shipCamera.fieldOfView++;
+                        }
                     }
                 }
             }
+        }
+        public void ZoomIn()
+        {
+            _doneWithWideAngle = false;
+            _startZoomerUpdate = true;
+            _shipCamera.fieldOfView = 80;
+            _startTimer = Time.time;
+        }
+        public void TurnOfZoomerUpdate()
+        {
+            _startZoomerUpdate = false;
+            _doneWithWideAngle = false;
+        }
             //if (GameManager.Instance._statePassedCombatInit)
             //{
             //    if (Input.GetKeyDown("o"))  ///GetAxis("Mouse ScrollWheel") > 0 && camera.fieldOfView > 12)
@@ -58,7 +75,7 @@ namespace Assets.Script
             //        GetComponent<Camera>().fieldOfView++;
             //    }
             //}   
-        }
+        
         
     }
 }

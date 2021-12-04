@@ -21,12 +21,13 @@ namespace Assets.Script
         }
         public void OnExitClicked()
         {
-            if (UnityEditor.EditorApplication.isPlaying) 
-            {
-                UnityEditor.EditorApplication.isPlaying = false;
-            }
-            else
-            Application.Quit(); // does not work while in Unity editor, must build and run the .exe
+            //******* UnityEditor - EditorApplication not accessible during build ****
+            //if (UnityEditor.EditorApplication.isPlaying) 
+            //{
+            //    UnityEditor.EditorApplication.isPlaying = false;
+            //}
+            //else
+            //Application.Quit(); // does not work while in Unity editor, must build and run the .exe
         }
         //public void OnSettingsClicked()
         //{
