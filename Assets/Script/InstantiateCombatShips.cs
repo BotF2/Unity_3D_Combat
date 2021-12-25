@@ -9,6 +9,13 @@ namespace Assets.Script
         public List<GameObject> combatShips;
         public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
         public GameObject Enemy_0;
+        public GameObject cameraEmpty;
+        public GameObject animFriend1;
+        public GameObject animFriend2;
+        public GameObject animFriend3;
+        public GameObject animEnemy1;
+        public GameObject animEnemy2;
+        public GameObject animEnemy3;
         public int ySeparator = 100; // gap in grid between ships on y axis
         public int zSeparator = 100;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
@@ -25,7 +32,6 @@ namespace Assets.Script
         public int _enemyDestroyerShips = 0;
         public int _enemyCapitalShips = 0;
         public int _enemyUtilityShips = 0;
-        public GameObject cameraEmpty;
         public List<GameObject> cameraTargetList; // do not send directly to CameraMultiTarget, send to GameManager first
 
 
@@ -190,10 +196,10 @@ namespace Assets.Script
                     }
                     
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                    GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
+                    ParentToAnimation(ship, aCameraTarget);
 
-                    GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xCameraEmpty, yLocation, zLocation), Quaternion.identity); // camera target where ships are
-
-                    ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
+                            ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
                         transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     ship.transform.Rotate(0, rotationOnY, 0);
 
@@ -327,7 +333,7 @@ namespace Assets.Script
                     }
 
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
-                    GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xCameraEmpty, yLocation, zLocation), Quaternion.identity); // camera target where ships are
+                    GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
 
 
                     ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
@@ -455,6 +461,80 @@ namespace Assets.Script
         public List<GameObject> GetCameraTargets()
         {
             return cameraTargetList;
+        }
+        public void ParentToAnimation(GameObject ship, GameObject cameraEmpty) // Orders order,
+        {
+            //FriendShips = daFriends;
+            //EnemyShips = daEnemies;
+
+            //foreach (var item in daEnemies)
+            //{
+            //    CombatObjects.Add(item.Key, item.Value);
+            //}
+            //foreach (var item in daFriends)
+            //{
+            //    CombatObjects.Add(item.Key, item.Value);
+            //}
+            //foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
+            //{
+            cameraEmpty.layer = ship.layer;
+            cameraEmpty.transform.SetParent(ship.transform, false);
+            if (ship.transform.position.x < 0)
+            {
+                int choseWarp = UnityEngine.Random.Range(0, 3);
+                switch (choseWarp)
+                {
+                    case 0:
+                        animFriend1.layer = ship.layer;
+                        ship.transform.SetParent(animFriend1.transform, true);
+                        // cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        break;
+                    case 1:
+                        animFriend2.layer = ship.layer;
+                        ship.transform.SetParent(animFriend2.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend2.transform, true);
+                        break;
+                    case 2:
+                        animFriend3.layer = ship.layer;
+                        ship.transform.SetParent(animFriend3.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend3.transform, true);
+                        break;
+                    default:
+                        animFriend1.layer = ship.layer;
+                        ship.transform.SetParent(animFriend1.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        break;
+                }
+            }
+            else
+            {
+                //animEnemy1.layer = ship.Value.layer;
+                //ship.Value.transform.SetParent(animEnemy1.transform, true);
+                int choseWarp = UnityEngine.Random.Range(0, 3);
+                switch (choseWarp)
+                {
+                    case 0:
+                        animEnemy1.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy1.transform, true);
+                        //cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        break;
+                    case 1:
+                        animEnemy2.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy2.transform, true);
+                        //cameraEmpty.transform.SetParent(animEnemy2.transform, true);
+                        break;
+                    case 2:
+                        animEnemy3.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy3.transform, true);
+                        // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
+                        break;
+                    default:
+                        animEnemy1.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy1.transform, true);
+                        // cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        break;
+                }
+            }
         }
     }
 }

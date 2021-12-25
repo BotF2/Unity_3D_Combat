@@ -426,7 +426,7 @@ namespace Assets.Script
                     zoomCamera.ZoomIn();
                     _statePassedCombatInit = true; // animation... can now run 
                     panelCombat_Menu.SetActive(false);
-                    DropOutOfWarp(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
+                    //ParentToAnimation(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
 
                     panelCombat_Play.SetActive(true);
                     SwitchtState(State.COMBAT_PLAY);
@@ -954,69 +954,77 @@ namespace Assets.Script
             }
             #endregion
         }
-        public void DropOutOfWarp( Dictionary<int, GameObject> daFriends, Dictionary<int, GameObject> daEnemies) // Orders order,
+        public void ParentToAnimation(GameObject ship, GameObject cameraEmpty) // Orders order,
         {
-            FriendShips = daFriends;
-            EnemyShips = daEnemies;
+            //FriendShips = daFriends;
+            //EnemyShips = daEnemies;
 
-            foreach (var item in daEnemies)
-            {
-                CombatObjects.Add(item.Key, item.Value);
-            }
-            foreach (var item in daFriends)
-            {
-                CombatObjects.Add(item.Key, item.Value);
-            }
-            foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
-            {
-
-                if (FriendShips.ContainsValue(daShip.Value))
+            //foreach (var item in daEnemies)
+            //{
+            //    CombatObjects.Add(item.Key, item.Value);
+            //}
+            //foreach (var item in daFriends)
+            //{
+            //    CombatObjects.Add(item.Key, item.Value);
+            //}
+            //foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
+            //{
+            cameraEmpty.layer = ship.layer;
+            cameraEmpty.transform.SetParent(ship.transform, false);
+            if (ship.transform.position.x < 0)
                 {
-                    int choseWarp = UnityEngine.Random.Range(0, 3);
-                    switch (choseWarp)
-                    {
-                        case 0:
-                            animFriend1.layer = daShip.Value.layer; 
-                            daShip.Value.transform.SetParent(animFriend1.transform, true);
-                            break;
-                        case 1:
-                            animFriend2.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animFriend2.transform, true);
-                            break;
-                        case 2:
-                            animFriend3.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animFriend3.transform, true);
-                            break;
-                        default:
-                            animFriend1.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animFriend1.transform, true);
-                            break;
-                    }
+                int choseWarp = UnityEngine.Random.Range(0, 3);
+                switch (choseWarp)
+                {
+                    case 0:
+                        animFriend1.layer = ship.layer;
+                        ship.transform.SetParent(animFriend1.transform, true);
+                       // cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        break;
+                    case 1:
+                        animFriend2.layer = ship.layer;
+                        ship.transform.SetParent(animFriend2.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend2.transform, true);
+                        break;
+                    case 2:
+                        animFriend3.layer = ship.layer;
+                        ship.transform.SetParent(animFriend3.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend3.transform, true);
+                        break;
+                    default:
+                        animFriend1.layer = ship.layer;
+                        ship.transform.SetParent(animFriend1.transform, true);
+                        //cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        break;
                 }
-                if (EnemyShips.ContainsValue(daShip.Value))
+            }
+            else
+            {
+                //animEnemy1.layer = ship.Value.layer;
+                //ship.Value.transform.SetParent(animEnemy1.transform, true);
+                int choseWarp = UnityEngine.Random.Range(0, 3);
+                switch (choseWarp)
                 {
-                    //animEnemy1.layer = daShip.Value.layer;
-                    //daShip.Value.transform.SetParent(animEnemy1.transform, true);
-                    int choseWarp = UnityEngine.Random.Range(0, 3);
-                    switch (choseWarp)
-                    {
-                        case 0:
-                            animEnemy1.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animEnemy1.transform, true);
-                            break;
-                        case 1:
-                            animEnemy2.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animEnemy2.transform, true);
-                            break;
-                        case 2:
-                            animEnemy3.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animEnemy3.transform, true);
-                            break;
-                        default:
-                            animEnemy1.layer = daShip.Value.layer;
-                            daShip.Value.transform.SetParent(animEnemy1.transform, true);
-                            break;
-                    }
+                    case 0:
+                        animEnemy1.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy1.transform, true);
+                        //cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        break;
+                    case 1:
+                        animEnemy2.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy2.transform, true);
+                        //cameraEmpty.transform.SetParent(animEnemy2.transform, true);
+                        break;
+                    case 2:
+                        animEnemy3.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy3.transform, true);
+                       // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
+                        break;
+                    default:
+                        animEnemy1.layer = ship.layer;
+                        ship.transform.SetParent(animEnemy1.transform, true);
+                       // cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        break;
                 }
             }
         }

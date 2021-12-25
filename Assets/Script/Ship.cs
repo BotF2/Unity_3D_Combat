@@ -93,7 +93,7 @@ namespace Assets.Script
             {
                 //rigidbody.velocity = Vector3.zero;
                 //rigidbody.angularVelocity = Vector3.zero;
-
+                // ToDo: update to put physics movement on parent of ship so camera empty gets it too
 
                 //rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
                 #region travel between targets here
@@ -230,7 +230,17 @@ namespace Assets.Script
                         break;
                 }
             }
-            Destroy(other.gameObject, 1f);
+            GameObject hitShip = other.GetComponent<GameObject>(); // will this work???
+            other.transform.parent = null;
+            for (var i = hitShip.transform.childCount - 1; i >= 0; i--)
+            {
+                // objectA is not the attached GameObject, so you can do all your checks with it.
+                var objectA = hitShip.transform.GetChild(i);
+                objectA.transform.parent = null;
+                // Optionally destroy the objectA if not longer needed
+            }
+            Destroy(hitShip, 1f);
+           // Destroy(other.gameObject, 1f);
         }
         public void OnCollisionEnter(Collision collision)
         {
