@@ -5058,6 +5058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatShips: []
+  Friend_0: {fileID: 1007481784}
+  Enemy_0: {fileID: 881469825}
   ySeparator: 25
   zSeparator: 50
   offsetFriendLeft: -5500
@@ -5070,7 +5072,7 @@ MonoBehaviour:
   _enemyDestroyerShips: 0
   _enemyCapitalShips: 0
   _enemyUtilityShips: 0
-  cameraEmpty: {fileID: 1007481784}
+  cameraEmpty: {fileID: 0}
   cameraTargetList: []
 --- !u!4 &670529374
 Transform:
@@ -7086,6 +7088,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876152722}
   m_CullTransparentMesh: 1
+--- !u!1 &881469825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
+  m_PrefabInstance: {fileID: 1088614475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &887684480
 GameObject:
   m_ObjectHideFlags: 0
@@ -8328,7 +8335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394787729860895100, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5394787729860895100, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9559,7 +9566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1155550792006857361, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1155550792006857361, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10704,7 +10711,7 @@ MonoBehaviour:
   instantiateCombatShips: {fileID: 670529373}
   actOnCombatOrder: {fileID: 330116306}
   zoomCamera: {fileID: 1788582308}
-  combatOrderSelection: {fileID: 0}
+  combatOrderSelection: {fileID: 932392496}
   shipScale: 2000
   animFriend1: {fileID: 677462504803926597}
   animFriend2: {fileID: 677462504759600023}

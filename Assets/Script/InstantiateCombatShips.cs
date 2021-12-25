@@ -7,6 +7,8 @@ namespace Assets.Script
     public class InstantiateCombatShips : MonoBehaviour
     {
         public List<GameObject> combatShips;
+        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        public GameObject Enemy_0;
         public int ySeparator = 100; // gap in grid between ships on y axis
         public int zSeparator = 100;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
@@ -14,7 +16,7 @@ namespace Assets.Script
         public int offsetEnemyRight = 5500; // start here
                                             // public int offsetEnemyLeft = -5800;
 
-        // ****** Use a running count of ships by to for ship starting locaitons
+        // ****** Use a running count of ships by - for ship starting locaitons
         public int _friendScoutShips = 0;
         public int _friendDestroyerShips = 0;
         public int _friendCapitalShips = 0;
@@ -42,7 +44,7 @@ namespace Assets.Script
                 preCombatShipNames.Add(item);
             }
             var cameraTargets = new List<GameObject>();
-            int xOffsetLeftRight;
+            int xOffsetLeftRight = 0;
             int xCameraEmpty = 0; // 0 for left side friends and 300 for right side enemies
             int xLocation = 0;
             int yLocation = 0;
@@ -51,10 +53,7 @@ namespace Assets.Script
             int rotationOnY;
             bool isFriend;
 
-            //switch (GameManager.Instance._combatOrder)
-            //{
-            //case Orders.Engage:
-            //    { 
+
             #region sort to get data for instantiating a ship
             List<GameObject> tempList = new List<GameObject>();
             for (int i = 0; i < preCombatShipNames.Count; i++)
@@ -63,14 +62,14 @@ namespace Assets.Script
                 if (preCombatFriends.Contains(preCombatShipNames[i]))
                 {
                     xOffsetLeftRight = offsetFriendLeft;
-                    emptyPrefab = GameManager.Friend_0;
+                    emptyPrefab = Friend_0;
                     rotationOnY = 90;
                     isFriend = true;
                 }
                 else
                 {
                     xOffsetLeftRight = offsetEnemyRight;
-                    emptyPrefab = GameManager.Enemy_0;
+                    emptyPrefab = Enemy_0;
                     rotationOnY = -90;
                     isFriend = false;
                 }
@@ -118,7 +117,8 @@ namespace Assets.Script
                                 break;
                             case "TRANSPORT":
                             case "COLONY":
-                                xLocation = xOffsetLeftRight - zSeparator;
+                            case "CONSTRUCTION":
+                                        xLocation = xOffsetLeftRight - zSeparator;
                                 yLocation = yCapital;
                                 if (_friendUtilityShips % 2 == 0)
                                     yLocation = yLocation + ySeparator;
@@ -172,7 +172,8 @@ namespace Assets.Script
                                 break;
                             case "TRANSPORT":
                             case "COLONY":
-                                xLocation = xOffsetLeftRight + ySeparator;
+                            case "CONSTRUCTION":
+                                        xLocation = xOffsetLeftRight + ySeparator;
                                 yLocation = yCapital;
                                 if (_enemyUtilityShips % 2 == 0)
                                     yLocation = yLocation + ySeparator;
@@ -189,6 +190,7 @@ namespace Assets.Script
                     }
                     
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+
                     GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xCameraEmpty, yLocation, zLocation), Quaternion.identity); // camera target where ships are
 
                     ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
@@ -252,7 +254,8 @@ namespace Assets.Script
                                 break;
                             case "TRANSPORT":
                             case "COLONY":
-                                xLocation = xOffsetLeftRight - zSeparator;
+                            case "CONSTRUCTION":
+                                        xLocation = xOffsetLeftRight - zSeparator;
                                 yLocation = yCapital;
                                 if (_friendUtilityShips % 2 == 0)
                                     yLocation = yLocation + ySeparator;
@@ -306,7 +309,8 @@ namespace Assets.Script
                                 break;
                             case "TRANSPORT":
                             case "COLONY":
-                                xLocation = xOffsetLeftRight + ySeparator;
+                            case "CONSTRUCTION":
+                                        xLocation = xOffsetLeftRight + ySeparator;
                                 yLocation = yCapital;
                                 if (_enemyUtilityShips % 2 == 0)
                                     yLocation = yLocation + ySeparator;
@@ -324,6 +328,7 @@ namespace Assets.Script
 
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                     GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xCameraEmpty, yLocation, zLocation), Quaternion.identity); // camera target where ships are
+
 
                     ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
                         transform.localScale.y * shipScale, transform.localScale.z * shipScale);
