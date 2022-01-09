@@ -7,8 +7,9 @@ namespace Assets.Script
     public class InstantiateCombatShips : MonoBehaviour
     {
         public List<GameObject> combatShips;
-        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
-        public GameObject Enemy_0;
+        //public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        //public GameObject Enemy_0;
+        public bool _isFriend;
         public GameObject cameraEmpty;
         public GameObject animFriend1;
         public GameObject animFriend2;
@@ -16,177 +17,130 @@ namespace Assets.Script
         public GameObject animEnemy1;
         public GameObject animEnemy2;
         public GameObject animEnemy3;
-        public int ySeparator = 100; // gap in grid between ships on y axis
-        public int zSeparator = 100;
-        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
+        int ySeparator = 40; // gap in grid between ships on y axis
+        int zSeparator = 100;
+       // public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
                                              // public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
-        public int offsetEnemyRight = 5500; // start here
+        //public int offsetEnemyRight = 5500; // start here
                                             // public int offsetEnemyLeft = -5800;
 
         // ****** Use a running count of ships by - for ship starting locaitons
-        public int _friendScoutShips = 0;
-        public int _friendDestroyerShips = 0;
-        public int _friendCapitalShips = 0;
-        public int _friendUtilityShips = 0;
-        public int _enemyScoutShips = 0;
-        public int _enemyDestroyerShips = 0;
-        public int _enemyCapitalShips = 0;
-        public int _enemyUtilityShips = 0;
-        public List<GameObject> cameraTargetList; // do not send directly to CameraMultiTarget, send to GameManager first
+        int _ScoutShips = 0;
+        int _DestroyerShips = 0;
+        int _CapitalShips = 0;
+        int _UtilityShips = 0;
+        int zLocation = 0;
+        int _zScoutDepth = 0;
+        int _zDestroyerDepth = 0;
+        int _zCapitalDepth = 0;
+        int _zUtilityDepth = 0;
+        bool firstTimeNotFriend = false;
+        //public int _enemyScoutShips = 0;
+        //public int _enemyDestroyerShips = 0;
+        //public int _enemyCapitalShips = 0;
+        //public int _enemyUtilityShips = 0;
+        public List<GameObject> CameraTargetList; // do not send directly to CameraMultiTarget, send to GameManager first
 
 
-        public void PreCombatSetup(string[] preCombatFriends, string[] preCombatEnemies) //, bool weAreFriend)
-        // The preCombatFriends is the list of friend combatents that will come from galaxy screen incoming combat data
+        public void PreCombatSetup(string[] preCombatShips, bool _isFriend) // string[] preCombatEnemies) //, bool weAreFriend)
+        // The preCombatShips is one side of the list of combatents that will come from galaxy screen incoming combat data
 
         {
+
             int yScout = 180; // ship types gap roes up
             int yCapital = 90;
             int yDestroyer = 0;
             float shipScale = 100f;
 
-            List<string> preCombatShipNames = preCombatFriends.ToList(); // local list of ships for this combat instance
-            foreach (var item in preCombatEnemies.ToList())
-            {
-                preCombatShipNames.Add(item);
-            }
-            var cameraTargets = new List<GameObject>();
-            int xOffsetLeftRight = 0;
-            int xCameraEmpty = 0; // 0 for left side friends and 300 for right side enemies
-            int xLocation = 0;
-            int yLocation = 0;
-            int zLocation = 0;
-            GameObject emptyPrefab;
-            int rotationOnY;
-            bool isFriend;
+            List<string> preCombatShipNames = preCombatShips.ToList();
+            // local list of ships for this combat instance
+            //foreach (var item in preCombatEnemies.ToList())
+            //{
+            //    preCombatShipNames.Add(item);
+            //}
+            // int xCameraEmpty = 0; // 0 for left side friends and 300 for right side enemies
 
+            var cameraTargets = new List<GameObject>();
 
             #region sort to get data for instantiating a ship
-            List<GameObject> tempList = new List<GameObject>();
+            //List<GameObject> tempList = new List<GameObject>();
             for (int i = 0; i < preCombatShipNames.Count; i++)
             {
-                string[] _nameArray = preCombatShipNames[i].Split('_');
-                if (preCombatFriends.Contains(preCombatShipNames[i]))
+
+                int xLocation = -5500;
+                int yLocation = 0;
+                int rotationOnY = 90;
+
+                if (!_isFriend)
                 {
-                    xOffsetLeftRight = offsetFriendLeft;
-                    emptyPrefab = Friend_0;
-                    rotationOnY = 90;
-                    isFriend = true;
-                }
-                else
-                {
-                    xOffsetLeftRight = offsetEnemyRight;
-                    emptyPrefab = Enemy_0;
+                    xLocation = 5500;
                     rotationOnY = -90;
-                    isFriend = false;
                 }
-                // need y and z location for each ship and x for camera empties set by left 0, right 300
+                string[] _nameArray = preCombatShipNames[i].Split('_');
+
                 switch (GameManager.Instance._combatOrder)
                 {
+                #region Engage Region
                 case Orders.Engage:
-            #region Engage Region
                 {
-                    if (isFriend) //friendOrFoe == FriendOrFoe.friend)
+                    if (true) //_isFriend) 
                     {
-                        xCameraEmpty = 0;
                         switch (_nameArray[1].ToUpper())
                         {
                             case "SCOUT":
-                                xLocation = xOffsetLeftRight;
+                                //xLocation = xOffsetLeftRight;
                                 yLocation = yScout;
-                                if (_friendScoutShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-                                int zScoutLocal = _friendScoutShips / 2;
-                                zLocation = zSeparator * zScoutLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
+                                if (_ScoutShips % 2 == 0)
+                                {
+                                    yLocation += ySeparator;
+                                    zLocation = zSeparator * _zScoutDepth;
+                                    _zScoutDepth++;
+                                }
+
+                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
                                 break;
                             case "DESTROYER":
-                                xLocation = xOffsetLeftRight;
+                                //xLocation = xOffsetLeftRight;
                                 yLocation = yDestroyer;
-                                if (_friendDestroyerShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
+                                if (_DestroyerShips % 2 == 0)
+                                {
+                                    yLocation += ySeparator;
+                                    zLocation = zSeparator * _zDestroyerDepth;
+                                    _zDestroyerDepth++;
+                                }
 
-                                int zDestroyerLocal = _friendDestroyerShips / 2;
-                                zLocation = zSeparator * zDestroyerLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
+                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
                                 break;
                             case "CRUISER":
                             case "LTCRUISER":
                             case "HVYCRUISER":
-                                xLocation = xOffsetLeftRight;
+                                //xLocation = xOffsetLeftRight;
                                 yLocation = yCapital;
-                                if (_friendCapitalShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
+                                if (_CapitalShips % 2 == 0)
+                                {
+                                    yLocation += ySeparator;
+                                    zLocation = zSeparator * _zCapitalDepth;
+                                    _zCapitalDepth++;
+                                }
 
-                                int zCapitalLocal = _friendCapitalShips / 2;
-                                zLocation = zSeparator * zCapitalLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
+                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
                                 break;
                             case "TRANSPORT":
                             case "COLONY":
                             case "CONSTRUCTION":
-                                        xLocation = xOffsetLeftRight - zSeparator;
+                                if (_isFriend)
+                                    xLocation -= zSeparator;
+                                else
+                                    xLocation += zSeparator;
                                 yLocation = yCapital;
-                                if (_friendUtilityShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
+                                if (_UtilityShips % 2 == 0)
+                                {
+                                    yLocation += ySeparator;
+                                    zLocation = zSeparator * _zUtilityDepth;
+                                    _zUtilityDepth++;
+                                }
 
-                                int zUtilityLocal = _friendDestroyerShips / 2;
-                                zLocation = zSeparator * zUtilityLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "ONEMORE":
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        xCameraEmpty = 300;
-                        switch (_nameArray[1].ToUpper())
-                        {
-                            case "SCOUT":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yScout;
-                                if (_enemyScoutShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zScoutLocal = _enemyScoutShips / 2;
-                                zLocation = zSeparator * zScoutLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "DESTROYER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yDestroyer;
-                                if (_enemyDestroyerShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zDestroyerLocal = _enemyDestroyerShips / 2;
-                                zLocation = zSeparator * zDestroyerLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "CRUISER":
-                            case "LTCRUISER":
-                            case "HVYCRUISER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yCapital;
-                                if (_enemyCapitalShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zCapitalLocal = _enemyCapitalShips / 2;
-                                zLocation = zSeparator * zCapitalLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "TRANSPORT":
-                            case "COLONY":
-                            case "CONSTRUCTION":
-                                        xLocation = xOffsetLeftRight + ySeparator;
-                                yLocation = yCapital;
-                                if (_enemyUtilityShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zUtilityLocal = _enemyDestroyerShips / 2;
-                                zLocation = zSeparator * zUtilityLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
+                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
                                 break;
                             case "ONEMORE":
                                 break;
@@ -197,12 +151,11 @@ namespace Assets.Script
                     
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                     GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
-                    ParentToAnimation(ship, aCameraTarget);
-
-                            ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
-                        transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+                    ship.transform.localScale = new Vector3(transform.localScale.x * shipScale,
+                            transform.localScale.y * shipScale, transform.localScale.z * shipScale);
                     ship.transform.Rotate(0, rotationOnY, 0);
-
+                    ParentToAnimation(ship, aCameraTarget, _isFriend);
+                    
                     if (GameManager.ShipDataDictionary.TryGetValue(ship.name.ToUpper(), out int[] _result))
                     {
                         ship.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
@@ -211,127 +164,20 @@ namespace Assets.Script
                         ship.GetComponent<Ship>()._beamDamage = _result[3];
                         ship.GetComponent<Ship>()._cost = _result[4];
                     }
-                    GameManager.Instance.SetShipLayer(_nameArray[0], isFriend); // informs GameManager of layer
-                    ship.layer = GameManager.Instance.SetShipLayer(_nameArray[0]); // sets ship layer
+                    GameManager.Instance.SetShipLayer(_nameArray[0]); // informs GameManager of layer
+                    ship.layer = GameManager.Instance.SetShipLayer(_nameArray[0].ToUpper()); // sets ship layer
 
                     combatShips.Add(ship);
-                    cameraTargetList.Add(aCameraTarget);
-                }
+                    cameraTargets.Add(aCameraTarget);
                     break;
+                }
+
          #endregion Engage Region
+
                 case Orders.Rush:
             #region Rush Region
                 {
-                    if (isFriend) //friendOrFoe == FriendOrFoe.friend)
-                    {
-                        xCameraEmpty = 0;
-                        switch (_nameArray[1].ToUpper())
-                        {
-                            case "SCOUT":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yScout;
-                                if (_friendScoutShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-                                int zScoutLocal = _friendScoutShips / 2;
-                                zLocation = zSeparator * zScoutLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "DESTROYER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yDestroyer;
-                                if (_friendDestroyerShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zDestroyerLocal = _friendDestroyerShips / 2;
-                                zLocation = zSeparator * zDestroyerLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "CRUISER":
-                            case "LTCRUISER":
-                            case "HVYCRUISER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yCapital;
-                                if (_friendCapitalShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zCapitalLocal = _friendCapitalShips / 2;
-                                zLocation = zSeparator * zCapitalLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "TRANSPORT":
-                            case "COLONY":
-                            case "CONSTRUCTION":
-                                        xLocation = xOffsetLeftRight - zSeparator;
-                                yLocation = yCapital;
-                                if (_friendUtilityShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zUtilityLocal = _friendDestroyerShips / 2;
-                                zLocation = zSeparator * zUtilityLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "ONEMORE":
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        xCameraEmpty = 300;
-                        switch (_nameArray[1].ToUpper())
-                        {
-                            case "SCOUT":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yScout;
-                                if (_enemyScoutShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zScoutLocal = _enemyScoutShips / 2;
-                                zLocation = zSeparator * zScoutLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "DESTROYER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yDestroyer;
-                                if (_enemyDestroyerShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zDestroyerLocal = _enemyDestroyerShips / 2;
-                                zLocation = zSeparator * zDestroyerLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "CRUISER":
-                            case "LTCRUISER":
-                            case "HVYCRUISER":
-                                xLocation = xOffsetLeftRight;
-                                yLocation = yCapital;
-                                if (_enemyCapitalShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zCapitalLocal = _enemyCapitalShips / 2;
-                                zLocation = zSeparator * zCapitalLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "TRANSPORT":
-                            case "COLONY":
-                            case "CONSTRUCTION":
-                                        xLocation = xOffsetLeftRight + ySeparator;
-                                yLocation = yCapital;
-                                if (_enemyUtilityShips % 2 == 0)
-                                    yLocation = yLocation + ySeparator;
-
-                                int zUtilityLocal = _enemyDestroyerShips / 2;
-                                zLocation = zSeparator * zUtilityLocal;
-                                SetShipCounts(_nameArray[1], isFriend);
-                                break;
-                            case "ONEMORE":
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-
+                    
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                     GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
 
@@ -348,13 +194,13 @@ namespace Assets.Script
                         ship.GetComponent<Ship>()._beamDamage = _result[3];
                         ship.GetComponent<Ship>()._cost = _result[4];
                     }
-                    GameManager.Instance.SetShipLayer(_nameArray[0], isFriend); // informs GameManager of layer
+                    GameManager.Instance.SetShipLayer(_nameArray[0]); // informs GameManager of layer
                     ship.layer = GameManager.Instance.SetShipLayer(_nameArray[0]); // sets ship layer
 
                     combatShips.Add(ship);
-                    cameraTargetList.Add(aCameraTarget);
-                }
+                    cameraTargets.Add(aCameraTarget);
                     break;
+                }
                 #endregion Rush Region
                 case Orders.Retreat:
             #region Retreat Region
@@ -389,41 +235,51 @@ namespace Assets.Script
                 }
 
             }
-
+            CameraTargetList.AddRange(cameraTargets);
             Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();
             Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();
             for (int j = 0; j < combatShips.Count; j++)
             {
-                if (preCombatFriends.Contains(combatShips[j].name.Replace("(Clone)", "")))
+                if (preCombatShips.Contains(combatShips[j].name.Replace("(Clone)", "")))
                 {
                     FriendShips.Add(j, combatShips[j]);
                 }
                 else EnemyShips.Add(j, combatShips[j]);
             }
-            GameManager.Instance.ProvidCombatShips(FriendShips, EnemyShips);
+            GameManager.Instance.ProvideCombatShips(FriendShips, EnemyShips);
 
             #endregion
         }
         private void SetShipCounts(string shipType, bool isFriend)
         {
-            if (isFriend)
+
+            if (!isFriend && !firstTimeNotFriend)
+            {
+                firstTimeNotFriend = true;
+                _ScoutShips = 0;
+                _DestroyerShips = 0;
+                _CapitalShips = 0;
+                _UtilityShips = 0;
+            }
+
+            if (true) //isFriend)
             {
                 switch (shipType)
                 {
                     case "SCOUT":
-                        _friendScoutShips++;
+                        _ScoutShips++;
                         break;
                     case "DESTROYER":
-                        _friendDestroyerShips++;
+                        _DestroyerShips++;
                         break;
                     case "CRUISER":
                     case "LTCRUISER":
                     case "HVYCRUISER":
-                        _friendCapitalShips++;
+                        _CapitalShips++;
                         break;
                     case "TRANSPORT":
                     case "COLONY":
-                        _friendUtilityShips++;
+                        _UtilityShips++;
                         break;
                     case "ONEMORE":
                         break;
@@ -431,107 +287,93 @@ namespace Assets.Script
                         break;
                 }
             }
-            else
-            {
-                switch (shipType)
-                {
-                    case "SCOUT":
-                        _enemyScoutShips++;
-                        break;
-                    case "DESTROYER":
-                        _enemyDestroyerShips++;
-                        break;
-                    case "CRUISER":
-                    case "LTCRUISER":
-                    case "HVYCRUISER":
-                        _enemyCapitalShips++;
-                        break;
-                    case "TRANSPORT":
-                    case "COLONY":
-                        _enemyUtilityShips++;
-                        break;
-                    case "ONEMORE":
-                        break;
-                    default:
-                        break;
-                }
-            }
+            //else
+            //{
+            //    switch (shipType)
+            //    {
+            //        case "SCOUT":
+            //            _enemyScoutShips++;
+            //            break;
+            //        case "DESTROYER":
+            //            _enemyDestroyerShips++;
+            //            break;
+            //        case "CRUISER":
+            //        case "LTCRUISER":
+            //        case "HVYCRUISER":
+            //            _enemyCapitalShips++;
+            //            break;
+            //        case "TRANSPORT":
+            //        case "COLONY":
+            //            _enemyUtilityShips++;
+            //            break;
+            //        case "ONEMORE":
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
 
         }
         public List<GameObject> GetCameraTargets()
         {
-            return cameraTargetList;
+            return CameraTargetList;
         }
-        public void ParentToAnimation(GameObject ship, GameObject cameraEmpty) // Orders order,
+        public void ParentToAnimation(GameObject ship, GameObject cameraEmpty, bool _aFriend) // Orders order,
         {
-            //FriendShips = daFriends;
-            //EnemyShips = daEnemies;
-
-            //foreach (var item in daEnemies)
-            //{
-            //    CombatObjects.Add(item.Key, item.Value);
-            //}
-            //foreach (var item in daFriends)
-            //{
-            //    CombatObjects.Add(item.Key, item.Value);
-            //}
-            //foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
-            //{
             cameraEmpty.layer = ship.layer;
-            cameraEmpty.transform.SetParent(ship.transform, false);
-            if (ship.transform.position.x < 0)
+            //cameraEmpty.transform.SetParent(ship.transform, false); // ship is parent to cameraEmpty and animFriend or animEnemy set as parent of ship below
+            if (_aFriend)
             {
-                int choseWarp = UnityEngine.Random.Range(0, 3);
-                switch (choseWarp)
+                int choseWarp1 = Random.Range(0, 3);
+                switch (choseWarp1)
                 {
                     case 0:
                         animFriend1.layer = ship.layer;
                         ship.transform.SetParent(animFriend1.transform, true);
-                        // cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        cameraEmpty.transform.SetParent(animFriend1.transform, true);
                         break;
                     case 1:
                         animFriend2.layer = ship.layer;
                         ship.transform.SetParent(animFriend2.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend2.transform, true);
+                        cameraEmpty.transform.SetParent(animFriend2.transform, true);
                         break;
                     case 2:
                         animFriend3.layer = ship.layer;
                         ship.transform.SetParent(animFriend3.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend3.transform, true);
+                        cameraEmpty.transform.SetParent(animFriend3.transform, true);
                         break;
                     default:
                         animFriend1.layer = ship.layer;
                         ship.transform.SetParent(animFriend1.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                        cameraEmpty.transform.SetParent(animFriend1.transform, true);
                         break;
                 }
             }
             else
             {
-                //animEnemy1.layer = ship.Value.layer;
-                //ship.Value.transform.SetParent(animEnemy1.transform, true);
-                int choseWarp = UnityEngine.Random.Range(0, 3);
-                switch (choseWarp)
+
+                int choseWarp2 = Random.Range(0, 3);
+                switch (choseWarp2)
                 {
                     case 0:
                         animEnemy1.layer = ship.layer;
                         ship.transform.SetParent(animEnemy1.transform, true);
-                        //cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        cameraEmpty.transform.SetParent(animEnemy1.transform, true);
                         break;
                     case 1:
                         animEnemy2.layer = ship.layer;
                         ship.transform.SetParent(animEnemy2.transform, true);
-                        //cameraEmpty.transform.SetParent(animEnemy2.transform, true);
+                        cameraEmpty.transform.SetParent(animEnemy2.transform, true);
                         break;
                     case 2:
                         animEnemy3.layer = ship.layer;
                         ship.transform.SetParent(animEnemy3.transform, true);
-                        // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
+                        cameraEmpty.transform.SetParent(animEnemy3.transform, true);
                         break;
                     default:
                         animEnemy1.layer = ship.layer;
                         ship.transform.SetParent(animEnemy1.transform, true);
-                        // cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                        cameraEmpty.transform.SetParent(animEnemy1.transform, true);
                         break;
                 }
             }

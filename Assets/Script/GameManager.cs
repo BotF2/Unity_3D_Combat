@@ -80,7 +80,7 @@ namespace Assets.Script
         public Civilization _cliantFive;   
         public static TechLevel _techLevel;
         public Orders _combatOrder;
-        private GameObject[] _cameraTargets;
+
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
         public Ship ship;
@@ -100,8 +100,9 @@ namespace Assets.Script
         public GameObject animEnemy2;
         public GameObject animEnemy3;
 
-        public static GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
-        public static GameObject Enemy_0;
+        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        public GameObject Enemy_0;
+        private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
         public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
         public int zFactor = 3000;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
@@ -183,12 +184,12 @@ namespace Assets.Script
 
         //ToDo: move all these to combatEngine class?
         public static string[] FriendNameArray; // For current Combat ****
-        public static string[] EnemyNameArray; 
+        public static string[] EnemyNameArray;
+
         public int friends;
         public int enemies;
         public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // updated to current combat
         public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();
-        //public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
         private int friendShipLayer;
         private int enemyShipLayer;
@@ -420,14 +421,14 @@ namespace Assets.Script
                 case State.COMBAT_INIT:
                     _statePassedCombatMenu_Init = true;
                     actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
-                    instantiateCombatShips.PreCombatSetup(FriendNameArray, EnemyNameArray); //, true);
-                    //_statePassedCombatInit = true; 
-                    SetDummyCameraTargets(); // turn on multiCamera                   
-                    zoomCamera.ZoomIn();
-                    _statePassedCombatInit = true; // animation... can now run 
-                    panelCombat_Menu.SetActive(false);
-                    //ParentToAnimation(FriendShips, EnemyShips); // _combatOrder, _combatOrder set in toggle by CombatOrderSelection.cs
 
+                    instantiateCombatShips.PreCombatSetup(FriendNameArray, true);
+                    instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
+                    _statePassedCombatInit = true;
+                    SetDummyCameraTargets();
+                    zoomCamera.ZoomIn(); 
+                    panelCombat_Menu.SetActive(false);
+                    
                     panelCombat_Play.SetActive(true);
                     SwitchtState(State.COMBAT_PLAY);
                     break;
@@ -487,7 +488,9 @@ namespace Assets.Script
                     //}
                     break;
                 case State.COMBAT_INIT:
-                   // _statePassedInit = true;
+                    //if (F_Animator3.)
+                    //instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
+                    //_statePassedCombatInitRight = true;
                     break;
                 case State.COMBAT_PLAY:
                    // _statePassedInit = true;
@@ -549,82 +552,19 @@ namespace Assets.Script
             }
         }
         public void SetDummyCameraTargets()
-        {
-            _cameraTargets = instantiateCombatShips.GetCameraTargets().ToArray(); // array for CameraMultiTarget
-            cameraMultiTarget.SetTargets(_cameraTargets); // start multiCamera - main camers before warp in of ships
+         {
+            List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0};
+           
+            var multiTargets = instantiateCombatShips.GetCameraTargets(); // array for CameraMultiTarget
+            if (multiTargets.Count() > 0)
+                _cameraTargets = multiTargets;
+          
+            cameraMultiTarget.SetTargets(_cameraTargets.ToArray()); // start multiCamera - main camers before warp in of ships
         }
-        public void ProvidCombatShips(Dictionary<int, GameObject> combatFriends, Dictionary<int, GameObject> combatEnemies)
+        public void ProvideCombatShips(Dictionary<int, GameObject> combatFriends, Dictionary<int, GameObject> combatEnemies)
         {
             FriendShips = combatFriends;
             EnemyShips = combatEnemies;
-        }
-        //public void ProvidCombatShips(Dictionary<int, GameObject> combatObjects)
-        //{
-        //    CombatObjects = CombatObjects;
-        //}
-        public void SetShipLayer(string civ, bool isFriend)
-          {
-            switch (civ)
-            {
-                case "FED":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 10;
-                        else
-                            enemyShipLayer = 10;
-                        break;
-                    }
-                case "TERRAN":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 11;
-                        else
-                            enemyShipLayer = 11;
-                        break;
-                    }
-                case "ROM":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 12;
-                        else
-                            enemyShipLayer = 12;
-                        break;
-                    }
-                case "KLING":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 13;
-                        else
-                            enemyShipLayer = 13;
-                        break;
-                    }
-                case "CARD":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 14;
-                        else
-                            enemyShipLayer = 14;
-                        break;
-                    }
-                case "DOM":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 15;
-                        else
-                            enemyShipLayer = 15;
-                        break;
-                    }
-                case "BORG":
-                    {
-                        if (isFriend)
-                            friendShipLayer = 16;
-                        else
-                            enemyShipLayer = 16;
-                        break;
-                    }
-                default:
-                    break;
-            }
         }
 
         public int SetShipLayer(string civ)
@@ -749,7 +689,6 @@ namespace Assets.Script
                         return _enemyScouts;
                     else return _enemyFarScouts;
             }
-
         }
         private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
         {
@@ -956,19 +895,6 @@ namespace Assets.Script
         }
         public void ParentToAnimation(GameObject ship, GameObject cameraEmpty) // Orders order,
         {
-            //FriendShips = daFriends;
-            //EnemyShips = daEnemies;
-
-            //foreach (var item in daEnemies)
-            //{
-            //    CombatObjects.Add(item.Key, item.Value);
-            //}
-            //foreach (var item in daFriends)
-            //{
-            //    CombatObjects.Add(item.Key, item.Value);
-            //}
-            //foreach (KeyValuePair<int, GameObject> daShip in CombatObjects)
-            //{
             cameraEmpty.layer = ship.layer;
             cameraEmpty.transform.SetParent(ship.transform, false);
             if (ship.transform.position.x < 0)
@@ -1000,8 +926,6 @@ namespace Assets.Script
             }
             else
             {
-                //animEnemy1.layer = ship.Value.layer;
-                //ship.Value.transform.SetParent(animEnemy1.transform, true);
                 int choseWarp = UnityEngine.Random.Range(0, 3);
                 switch (choseWarp)
                 {
@@ -1031,271 +955,272 @@ namespace Assets.Script
 
         public void LoadCombatData() //(string filename) // List<sting>
         {
-            // ToDo: relocate to combat class
-            //GameObject[] localAnimationEmpties = new GameObject[12] { FriendScout_Y0_Z0,
-            //FriendDestroyer_Y0_Z1, FriendCapital_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2,
-            //EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
-            //var something = animationEmpties; // = localAnimationEmpties;
+            //// ToDo: relocate to combat class
+            ////GameObject[] localAnimationEmpties = new GameObject[12] { FriendScout_Y0_Z0,
+            ////FriendDestroyer_Y0_Z1, FriendCapital_Y0_Z2, FriendColony_Y1_Z0, Friend_Y1_Z1, Friend_Y1_Z2,
+            ////EnemyScout_Y0_Z0, EnemyDestroyer_Y0_Z1, EnemyCapital_Y0_Z2, EnemyColony_Y1_Z0, Enemy_Y1_Z1, Enemy_Y1_Z2 };
+            ////var something = animationEmpties; // = localAnimationEmpties;
 
-            //Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
-            //{
-            //    { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
-            //    { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
-            //    { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
-            //    { "KLING_DESTROYER_I", Kling_Destroyer_i},
-            //    { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
-            //    { "CARD_SCOUT_I", Card_Scout_i },
-            //    { "ROM_SCOUT_III", Rom_Scout_iii },
-            //    { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
-            //};
-            //#region Ships to load for game
-            //string[] _gameShipsNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I",
-            //    "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" };
+            ////Dictionary<string, GameObject> prefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            ////{
+            ////    { "FED_DESTROYER_I", Fed_Destroyer_i }, //{ "FED_SCOUT_I", Fed_Scout_i },
+            ////    { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
+            ////    { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+            ////    { "KLING_DESTROYER_I", Kling_Destroyer_i},
+            ////    { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
+            ////    { "CARD_SCOUT_I", Card_Scout_i },
+            ////    { "ROM_SCOUT_III", Rom_Scout_iii },
+            ////    { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
+            ////};
+            ////#region Ships to load for game
+            ////string[] _gameShipsNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I",
+            ////    "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" };
+            ////#endregion
+            //#region Ships to load for Combat
+
+            ////string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
+            ////FriendNameArray = _friendNameArray;
+            ////string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
+            ////    "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
+            ////EnemyNameArray = _enemyNameArray;
             //#endregion
-            #region Ships to load for Combat
 
-            //string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I" };
-            //FriendNameArray = _friendNameArray;
-            //string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
-            //    "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
-            //EnemyNameArray = _enemyNameArray;
-            #endregion
+            ////int yFactor = 3000;
+            ////int zFactor = 3500;
+            ////int xFactorFriend = -3500;
 
-            //int yFactor = 3000;
-            //int zFactor = 3500;
-            //int xFactorFriend = -3500;
+            //#region Grid roes for Friends
+            //GameObject _scoutNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, 0), Quaternion.identity);
+            //RotateFriend(_scoutNearFriend);
+            //List<GameObject> emptyFriendScouts = new List<GameObject>() { _scoutNearFriend };
+            //GameObject _scoutFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, 0), Quaternion.identity);
+            ////RotateFriend(_scoutFarFriend);
+            //List<GameObject> emptyFriendFarScouts = new List<GameObject>() { _scoutFarFriend };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempStartScout = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, zFactor * i), Quaternion.identity);
+            //    RotateFriend(_tempStartScout);
+            //    emptyFriendScouts.Add(_tempStartScout); // add to list of friend empty the next scout start points 
+            //    GameObject _tempFarScout = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, zFactor * i), Quaternion.identity);
+            //    //   RotateFriend(_tempFarScout);
+            //    emptyFriendFarScouts.Add(_tempFarScout); // add to list of friend empty the next scout FAR points 
+            //}
+            //_friendScouts = emptyFriendScouts.ToArray();
+            //_friendFarScouts = emptyFriendFarScouts.ToArray();
 
-            #region Grid roes for Friends
-            GameObject _scoutNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, 0), Quaternion.identity);
-            RotateFriend(_scoutNearFriend);
-            List<GameObject> emptyFriendScouts = new List<GameObject>() { _scoutNearFriend };
-            GameObject _scoutFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, 0), Quaternion.identity);
-            //RotateFriend(_scoutFarFriend);
-            List<GameObject> emptyFriendFarScouts = new List<GameObject>() { _scoutFarFriend };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempStartScout = Instantiate(Friend_0, new Vector3(offsetFriendLeft, 0, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempStartScout);
-                emptyFriendScouts.Add(_tempStartScout); // add to list of friend empty the next scout start points 
-                GameObject _tempFarScout = Instantiate(Friend_0, new Vector3(offsetFriendRight, 0, zFactor * i), Quaternion.identity);
-                //   RotateFriend(_tempFarScout);
-                emptyFriendFarScouts.Add(_tempFarScout); // add to list of friend empty the next scout FAR points 
-            }
-            _friendScouts = emptyFriendScouts.ToArray();
-            _friendFarScouts = emptyFriendFarScouts.ToArray();
+            //GameObject _capitalNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, 0), Quaternion.identity);
+            //RotateFriend(_capitalNearFriend);
+            //List<GameObject> emptyFriendCapital = new List<GameObject>() { _capitalNearFriend };
+            //GameObject _capitalFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, 0), Quaternion.identity);
+            ////RotateFriend(_capitalFarFriend);
+            //List<GameObject> emptyFriendFarCapital = new List<GameObject>() { _capitalFarFriend };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempStartCapital = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, zFactor * i), Quaternion.identity);
+            //    RotateFriend(_tempStartCapital);
+            //    emptyFriendCapital.Add(_tempStartCapital); // list of friend empty capital start points
+            //    GameObject _tempFarCapital = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, zFactor * i), Quaternion.identity);
+            //    //RotateFriend(_tempFarCapital);
+            //    emptyFriendFarCapital.Add(_tempFarCapital);
+            //}
+            //_friendCapital = emptyFriendCapital.ToArray();
+            //_friendFarCapital = emptyFriendFarCapital.ToArray();
 
-            GameObject _capitalNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, 0), Quaternion.identity);
-            RotateFriend(_capitalNearFriend);
-            List<GameObject> emptyFriendCapital = new List<GameObject>() { _capitalNearFriend };
-            GameObject _capitalFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, 0), Quaternion.identity);
-            //RotateFriend(_capitalFarFriend);
-            List<GameObject> emptyFriendFarCapital = new List<GameObject>() { _capitalFarFriend };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempStartCapital = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 1, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempStartCapital);
-                emptyFriendCapital.Add(_tempStartCapital); // list of friend empty capital start points
-                GameObject _tempFarCapital = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 1, zFactor * i), Quaternion.identity);
-                //RotateFriend(_tempFarCapital);
-                emptyFriendFarCapital.Add(_tempFarCapital);
-            }
-            _friendCapital = emptyFriendCapital.ToArray();
-            _friendFarCapital = emptyFriendFarCapital.ToArray();
+            //GameObject _destroyerNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, 0), Quaternion.identity);
+            //RotateFriend(_destroyerNearFriend);
+            //List<GameObject> emptyFriendDestroyers = new List<GameObject>() { _destroyerNearFriend };
+            //GameObject _destroyerFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, 0), Quaternion.identity);
+            ////RotateFriend(_destroyerFarFriend);
+            //List<GameObject> emptyFriendFarDestroyers = new List<GameObject>() { _destroyerFarFriend };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempStartDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, zFactor * i), Quaternion.identity);
+            //    RotateFriend(_tempStartDestroyers);
+            //    emptyFriendDestroyers.Add(_tempStartDestroyers); // list of friend empty destroyer start point
+            //    GameObject _tempFarDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, zFactor * i), Quaternion.identity);
+            //    //RotateFriend(_tempFarDestroyers);
+            //    emptyFriendFarDestroyers.Add(_tempFarDestroyers); // list of friend empty destroyer start point
+            //}
+            //_friendDestroyer = emptyFriendDestroyers.ToArray();
+            //_friendFarDestroyer = emptyFriendFarDestroyers.ToArray();
+            //#endregion
 
-            GameObject _destroyerNearFriend = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, 0), Quaternion.identity);
-            RotateFriend(_destroyerNearFriend);
-            List<GameObject> emptyFriendDestroyers = new List<GameObject>() { _destroyerNearFriend };
-            GameObject _destroyerFarFriend = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, 0), Quaternion.identity);
-            //RotateFriend(_destroyerFarFriend);
-            List<GameObject> emptyFriendFarDestroyers = new List<GameObject>() { _destroyerFarFriend };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempStartDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendLeft, yFactor * 2, zFactor * i), Quaternion.identity);
-                RotateFriend(_tempStartDestroyers);
-                emptyFriendDestroyers.Add(_tempStartDestroyers); // list of friend empty destroyer start point
-                GameObject _tempFarDestroyers = Instantiate(Friend_0, new Vector3(offsetFriendRight, yFactor * 2, zFactor * i), Quaternion.identity);
-                //RotateFriend(_tempFarDestroyers);
-                emptyFriendFarDestroyers.Add(_tempFarDestroyers); // list of friend empty destroyer start point
-            }
-            _friendDestroyer = emptyFriendDestroyers.ToArray();
-            _friendFarDestroyer = emptyFriendFarDestroyers.ToArray();
-            #endregion
+            //#region Grid roes for Enemies
 
-            #region Grid roes for Enemies
+            //GameObject _scoutNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 0, 1500), Quaternion.identity);
+            //RotateEnemy(_scoutNearEnemy);
+            //List<GameObject> emptyEnemyScouts = new List<GameObject>() { _scoutNearEnemy };
+            //GameObject _scoutFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 0, 1500), Quaternion.identity);
+            ////RotateEnemy(_scoutFarEnemy);
+            //List<GameObject> emptyEnemyFarScouts = new List<GameObject>() { _scoutFarEnemy };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempNearScout = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, 0, (zFactor * i + 1500)), Quaternion.identity);
+            //    RotateEnemy(_tempNearScout);
+            //    emptyEnemyScouts.Add(_tempNearScout);
+            //    GameObject _tempFarScout = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, 0, (zFactor * i + 1500)), Quaternion.identity);
+            //    //RotateEnemy(_tempFarScout);
+            //    emptyEnemyFarScouts.Add(_tempFarScout);
+            //}
+            //_enemyScouts = emptyEnemyScouts.ToArray();
+            //_enemyFarScouts = emptyEnemyFarScouts.ToArray();
 
-            GameObject _scoutNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 0, 1500), Quaternion.identity);
-            RotateEnemy(_scoutNearEnemy);
-            List<GameObject> emptyEnemyScouts = new List<GameObject>() { _scoutNearEnemy };
-            GameObject _scoutFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 0, 1500), Quaternion.identity);
-            //RotateEnemy(_scoutFarEnemy);
-            List<GameObject> emptyEnemyFarScouts = new List<GameObject>() { _scoutFarEnemy };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempNearScout = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, 0, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempNearScout);
-                emptyEnemyScouts.Add(_tempNearScout);
-                GameObject _tempFarScout = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, 0, (zFactor * i + 1500)), Quaternion.identity);
-                //RotateEnemy(_tempFarScout);
-                emptyEnemyFarScouts.Add(_tempFarScout);
-            }
-            _enemyScouts = emptyEnemyScouts.ToArray();
-            _enemyFarScouts = emptyEnemyFarScouts.ToArray();
+            //GameObject _capitalNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, 1500), Quaternion.identity);
+            //RotateEnemy(_capitalNearEnemy);
+            //List<GameObject> emptyEnemyCapital = new List<GameObject>() { _capitalNearEnemy };
+            //GameObject _capitalFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, 1500), Quaternion.identity);
+            ////RotateEnemy(_capitalFarEnemy);
+            //List<GameObject> emptyEnemyFarCapital = new List<GameObject>() { _capitalFarEnemy };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempNearCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
+            //    RotateEnemy(_tempNearCapital);
+            //    emptyEnemyCapital.Add(_tempNearCapital);
+            //    GameObject _tempFarCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
+            //    //RotateEnemy(_tempFarCapital);
+            //    emptyEnemyFarCapital.Add(_tempFarCapital);
 
-            GameObject _capitalNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, 1500), Quaternion.identity);
-            RotateEnemy(_capitalNearEnemy);
-            List<GameObject> emptyEnemyCapital = new List<GameObject>() { _capitalNearEnemy };
-            GameObject _capitalFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, 1500), Quaternion.identity);
-            //RotateEnemy(_capitalFarEnemy);
-            List<GameObject> emptyEnemyFarCapital = new List<GameObject>() { _capitalFarEnemy };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempNearCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempNearCapital);
-                emptyEnemyCapital.Add(_tempNearCapital);
-                GameObject _tempFarCapital = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 1, (zFactor * i + 1500)), Quaternion.identity);
-                //RotateEnemy(_tempFarCapital);
-                emptyEnemyFarCapital.Add(_tempFarCapital);
+            //}
+            //_enemyCapital = emptyEnemyCapital.ToArray();
+            //_enemyFarCapital = emptyEnemyFarCapital.ToArray();
 
-            }
-            _enemyCapital = emptyEnemyCapital.ToArray();
-            _enemyFarCapital = emptyEnemyFarCapital.ToArray();
+            //GameObject _destroyerNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, 1500), Quaternion.identity);
+            //RotateEnemy(_destroyerNearEnemy);
+            //List<GameObject> emptyEnemyDestroyers = new List<GameObject>() { _destroyerNearEnemy };
+            //GameObject _destroyerFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, 1500), Quaternion.identity);
+            ////RotateEnemy(_destroyerFarEnemy);
+            //List<GameObject> emptyEnemyFarDestroyers = new List<GameObject>() { _destroyerFarEnemy };
+            //for (int i = 1; i < 21; i++)
+            //{
+            //    GameObject _tempNearDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
+            //    RotateEnemy(_tempNearDestroyers);
+            //    emptyEnemyDestroyers.Add(_tempNearDestroyers);
+            //    GameObject _tempFarDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
+            //    // RotateEnemy(_tempFarDestroyers);
+            //    emptyEnemyFarDestroyers.Add(_tempFarDestroyers);
 
-            GameObject _destroyerNearEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, 1500), Quaternion.identity);
-            RotateEnemy(_destroyerNearEnemy);
-            List<GameObject> emptyEnemyDestroyers = new List<GameObject>() { _destroyerNearEnemy };
-            GameObject _destroyerFarEnemy = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, 1500), Quaternion.identity);
-            //RotateEnemy(_destroyerFarEnemy);
-            List<GameObject> emptyEnemyFarDestroyers = new List<GameObject>() { _destroyerFarEnemy };
-            for (int i = 1; i < 21; i++)
-            {
-                GameObject _tempNearDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyRight, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
-                RotateEnemy(_tempNearDestroyers);
-                emptyEnemyDestroyers.Add(_tempNearDestroyers);
-                GameObject _tempFarDestroyers = Instantiate(Enemy_0, new Vector3(offsetEnemyLeft, yFactor * 2, (zFactor * i + 1500)), Quaternion.identity);
-                // RotateEnemy(_tempFarDestroyers);
-                emptyEnemyFarDestroyers.Add(_tempFarDestroyers);
+            //}
+            //_enemyDestroyer = emptyEnemyDestroyers.ToArray();
+            //_enemyFarDestroyer = emptyEnemyFarDestroyers.ToArray();
 
-            }
-            _enemyDestroyer = emptyEnemyDestroyers.ToArray();
-            _enemyFarDestroyer = emptyEnemyFarDestroyers.ToArray();
+            //#endregion
 
-            #endregion
+            //// Do ship layers
+            //string readFriendName = FriendNameArray[0].ToUpper();
+            //string[] _collFriend = readFriendName.Split('_');
+            //SetShipLayer(_collFriend[0], true);
 
-            // Do ship layers
-            string readFriendName = FriendNameArray[0].ToUpper();
-            string[] _collFriend = readFriendName.Split('_');
-            SetShipLayer(_collFriend[0], true);
+            //string readEnemyName = EnemyNameArray[0].ToUpper();
+            //string[] _collEnemy = readEnemyName.Split('_');
+            //SetShipLayer(_collEnemy[0], false);
 
-            string readEnemyName = EnemyNameArray[0].ToUpper();
-            string[] _collEnemy = readEnemyName.Split('_');
-            SetShipLayer(_collEnemy[0], false);
+            //#region Instantiate Prefab Friend Ships
+            ////instantiate prefab ships using friendNameArray to prefab Dictionary onto as many empties in grids 
+            //Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
+            //var cameraTargets = new List<GameObject>();
+            ////var friendNearTargets = new List<GameObject>();
+            //Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
 
-            #region Instantiate Prefab Friend Ships
-            //instantiate prefab ships using friendNameArray to prefab Dictionary onto as many empties in grids 
-            Dictionary<int, GameObject> _friendsLocal = new Dictionary<int, GameObject>();
-            var cameraTargets = new List<GameObject>();
-            //var friendNearTargets = new List<GameObject>();
-            Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
+            //for (int i = 0; i < FriendNameArray.Count(); i++)
+            //{
+            //    GameObject[] resetFriendArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Near); //use the current first empty from the correct side and roe by ship type
+            //    GameObject _tempPrefabFriend = (GameObject)Instantiate(PrefabDitionary[FriendNameArray[i]], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+            //    GameObject newEmptyCameraTarget = (GameObject)Instantiate(resetFriendArray[0], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+            //    GameObject[] resetFriendFarArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Far);
+            //    GameObject newEmptyFriendFarTarget = (GameObject)Instantiate(resetFriendFarArray[0], resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+            //    GameObject animationNearFTarget = (GameObject)Instantiate(new GameObject(), resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
+            //    GameObject animationFarFTarget = (GameObject)Instantiate(new GameObject(), resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
+            //    localShipTargetDictionary.Add(_tempPrefabFriend, new GameObject[] { animationNearFTarget, animationFarFTarget });
 
-            for (int i = 0; i < FriendNameArray.Count(); i++)
-            {
-                GameObject[] resetFriendArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Near); //use the current first empty from the correct side and roe by ship type
-                GameObject _tempPrefabFriend = (GameObject)Instantiate(PrefabDitionary[FriendNameArray[i]], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
-                GameObject newEmptyCameraTarget = (GameObject)Instantiate(resetFriendArray[0], resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
-                GameObject[] resetFriendFarArray = GetRoeByShipType(FriendNameArray[i], FriendOrFoe.friend, NearOrFar.Far);
-                GameObject newEmptyFriendFarTarget = (GameObject)Instantiate(resetFriendFarArray[0], resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
-                GameObject animationNearFTarget = (GameObject)Instantiate(new GameObject(), resetFriendArray[0].transform.position, resetFriendArray[0].transform.rotation);
-                GameObject animationFarFTarget = (GameObject)Instantiate(new GameObject(), resetFriendFarArray[0].transform.position, resetFriendFarArray[0].transform.rotation);
-                localShipTargetDictionary.Add(_tempPrefabFriend, new GameObject[] { animationNearFTarget, animationFarFTarget });
+            //    newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
+            //    cameraTargets.Add(newEmptyCameraTarget);
+            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabFriend.transform.SetParent(resetFriendArray[0].transform, true);
+            //    _friendsLocal.Add(i, _tempPrefabFriend);
+            //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabFriend, FriendOrFoe.friend);
+            //    resetFriendArray[0].transform.SetParent(animationEmtpy.transform, true);
 
-                newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
-                cameraTargets.Add(newEmptyCameraTarget);
-                _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-                _tempPrefabFriend.transform.SetParent(resetFriendArray[0].transform, true);
-                _friendsLocal.Add(i, _tempPrefabFriend);
-                GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabFriend, FriendOrFoe.friend);
-                resetFriendArray[0].transform.SetParent(animationEmtpy.transform, true);
+            //    List<GameObject> resetingAList = resetFriendArray.ToList();
+            //    List<GameObject> resetingFarList = resetFriendFarArray.ToList();
+            //    resetingAList.Remove(resetingAList[0]);
+            //    resetingFarList.Remove(resetingFarList[0]);
+            //    UpdateTheArrays(FriendNameArray[i], resetingAList, FriendOrFoe.friend, NearOrFar.Near); // rebuild Array Lists
+            //    UpdateTheArrays(FriendNameArray[i], resetingFarList, FriendOrFoe.friend, NearOrFar.Far); // rebuild Array Lists
 
-                List<GameObject> resetingAList = resetFriendArray.ToList();
-                List<GameObject> resetingFarList = resetFriendFarArray.ToList();
-                resetingAList.Remove(resetingAList[0]);
-                resetingFarList.Remove(resetingFarList[0]);
-                UpdateTheArrays(FriendNameArray[i], resetingAList, FriendOrFoe.friend, NearOrFar.Near); // rebuild Array Lists
-                UpdateTheArrays(FriendNameArray[i], resetingFarList, FriendOrFoe.friend, NearOrFar.Far); // rebuild Array Lists
+            //    Ship.SetLayerRecursively(animationEmtpy, friendShipLayer);
 
-                Ship.SetLayerRecursively(animationEmtpy, friendShipLayer);
+            //    if (ShipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
+            //    {
+            //        _tempPrefabFriend.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
+            //        _tempPrefabFriend.GetComponent<Ship>()._hullMaxHealth = _result[1];
+            //        _tempPrefabFriend.GetComponent<Ship>()._torpedoDamage = _result[2];
+            //        _tempPrefabFriend.GetComponent<Ship>()._beamDamage = _result[3];
+            //        _tempPrefabFriend.GetComponent<Ship>()._cost = _result[4];
+            //    }
+            //}
+            //FriendShips = _friendsLocal;
+            ////ship.SetFriendTargets(friendTargetDictionary);
 
-                if (ShipDataDictionary.TryGetValue(_tempPrefabFriend.name.ToUpper(), out int[] _result))
-                {
-                    _tempPrefabFriend.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
-                    _tempPrefabFriend.GetComponent<Ship>()._hullMaxHealth = _result[1];
-                    _tempPrefabFriend.GetComponent<Ship>()._torpedoDamage = _result[2];
-                    _tempPrefabFriend.GetComponent<Ship>()._beamDamage = _result[3];
-                    _tempPrefabFriend.GetComponent<Ship>()._cost = _result[4];
-                }
-            }
-            FriendShips = _friendsLocal;
-            //ship.SetFriendTargets(friendTargetDictionary);
+            //#endregion
 
-            #endregion
+            //#region Instantiate Prefab Enemy Ships
+            //Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
+            ////var enemyNearTargets = new List<GameObject>();
 
-            #region Instantiate Prefab Enemy Ships
-            Dictionary<int, GameObject> _enemysLocal = new Dictionary<int, GameObject>();
-            //var enemyNearTargets = new List<GameObject>();
+            //for (int i = 0; i < EnemyNameArray.Count(); i++)
+            //{
+            //    GameObject[] resetEnemyArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Near);
+            //    GameObject _tempPrefabEnemy = (GameObject)Instantiate(PrefabDitionary[EnemyNameArray[i]], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+            //    GameObject anEmptyCameraTarget = (GameObject)Instantiate(resetEnemyArray[0], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+            //    GameObject[] resetEnemyFarArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Far);
+            //    GameObject newEmptyEnemyFarTarget = (GameObject)Instantiate(resetEnemyFarArray[0], resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+            //    GameObject animationNearETarget = (GameObject)Instantiate(new GameObject(), resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
+            //    GameObject animationFarETarget = (GameObject)Instantiate(new GameObject(), resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
+            //    localShipTargetDictionary.Add(_tempPrefabEnemy, new GameObject[] { animationNearETarget, animationFarETarget });
 
-            for (int i = 0; i < EnemyNameArray.Count(); i++)
-            {
-                GameObject[] resetEnemyArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Near);
-                GameObject _tempPrefabEnemy = (GameObject)Instantiate(PrefabDitionary[EnemyNameArray[i]], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
-                GameObject anEmptyCameraTarget = (GameObject)Instantiate(resetEnemyArray[0], resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
-                GameObject[] resetEnemyFarArray = GetRoeByShipType(EnemyNameArray[i], FriendOrFoe.enemy, NearOrFar.Far);
-                GameObject newEmptyEnemyFarTarget = (GameObject)Instantiate(resetEnemyFarArray[0], resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
-                GameObject animationNearETarget = (GameObject)Instantiate(new GameObject(), resetEnemyArray[0].transform.position, resetEnemyArray[0].transform.rotation);
-                GameObject animationFarETarget = (GameObject)Instantiate(new GameObject(), resetEnemyFarArray[0].transform.position, resetEnemyFarArray[0].transform.rotation);
-                localShipTargetDictionary.Add(_tempPrefabEnemy, new GameObject[] { animationNearETarget, animationFarETarget });
+            //    anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
+            //    cameraTargets.Add(anEmptyCameraTarget);
+            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabEnemy.transform.SetParent(resetEnemyArray[0].transform, true);
+            //    _enemysLocal.Add(i, _tempPrefabEnemy);
+            //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabEnemy, FriendOrFoe.enemy);
+            //    resetEnemyArray[0].transform.SetParent(animationEmtpy.transform, true);
 
-                anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
-                cameraTargets.Add(anEmptyCameraTarget);
-                _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-                _tempPrefabEnemy.transform.SetParent(resetEnemyArray[0].transform, true);
-                _enemysLocal.Add(i, _tempPrefabEnemy);
-                GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabEnemy, FriendOrFoe.enemy);
-                resetEnemyArray[0].transform.SetParent(animationEmtpy.transform, true);
+            //    List<GameObject> resetingList = resetEnemyArray.ToList();
+            //    List<GameObject> resetingFarList = resetEnemyFarArray.ToList();
+            //    resetingList.Remove(resetingList[0]);
+            //    resetingFarList.Remove(resetingFarList[0]);
+            //    UpdateTheArrays(EnemyNameArray[i], resetingList, FriendOrFoe.enemy, NearOrFar.Near);
+            //    UpdateTheArrays(EnemyNameArray[i], resetingFarList, FriendOrFoe.enemy, NearOrFar.Far);
 
-                List<GameObject> resetingList = resetEnemyArray.ToList();
-                List<GameObject> resetingFarList = resetEnemyFarArray.ToList();
-                resetingList.Remove(resetingList[0]);
-                resetingFarList.Remove(resetingFarList[0]);
-                UpdateTheArrays(EnemyNameArray[i], resetingList, FriendOrFoe.enemy, NearOrFar.Near);
-                UpdateTheArrays(EnemyNameArray[i], resetingFarList, FriendOrFoe.enemy, NearOrFar.Far);
+            //    Ship.SetLayerRecursively(animationEmtpy, enemyShipLayer);
 
-                Ship.SetLayerRecursively(animationEmtpy, enemyShipLayer);
+            //    if (ShipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
+            //    {
+            //        _tempPrefabEnemy.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
+            //        _tempPrefabEnemy.GetComponent<Ship>()._hullMaxHealth = _result[1];
+            //        _tempPrefabEnemy.GetComponent<Ship>()._torpedoDamage = _result[2];
+            //        _tempPrefabEnemy.GetComponent<Ship>()._beamDamage = _result[3];
+            //        _tempPrefabEnemy.GetComponent<Ship>()._cost = _result[4];
+            //    }
+            //}
+            //EnemyShips = _enemysLocal;
+            //_shipTargetDictionary = localShipTargetDictionary;
 
-                if (ShipDataDictionary.TryGetValue(_tempPrefabEnemy.name.ToUpper(), out int[] _result))
-                {
-                    _tempPrefabEnemy.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
-                    _tempPrefabEnemy.GetComponent<Ship>()._hullMaxHealth = _result[1];
-                    _tempPrefabEnemy.GetComponent<Ship>()._torpedoDamage = _result[2];
-                    _tempPrefabEnemy.GetComponent<Ship>()._beamDamage = _result[3];
-                    _tempPrefabEnemy.GetComponent<Ship>()._cost = _result[4];
-                }
-            }
-            EnemyShips = _enemysLocal;
-            _shipTargetDictionary = localShipTargetDictionary;
+            //#endregion
 
-            #endregion
+            //cameraMultiTarget.SetTargets(cameraTargets.ToArray());
 
-            cameraMultiTarget.SetTargets(cameraTargets.ToArray());
+            //friends = FriendNameArray.Count();
+            //enemies = EnemyNameArray.Count();
 
-            friends = FriendNameArray.Count();
-            enemies = EnemyNameArray.Count();
-
-            //StaticStuff.LoadStaticEnemyDictionary(EnemyShips);   
+            ////StaticStuff.LoadStaticEnemyDictionary(EnemyShips);   
         }
         public Dictionary<GameObject, GameObject[]> GetShipTravelTargets()
         {
             return _shipTargetDictionary;
         }
+
         private Vector3 HomeSystemTrans(string objectName)
         {
             //ToDo: where is everyone?

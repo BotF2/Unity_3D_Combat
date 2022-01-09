@@ -26,16 +26,22 @@ namespace Assets.Script
         void Update()
         {
             if (GameManager.Instance._statePassedCombatInit)
-                anim.SetBool("FriendWarp1", true); ;
+            {
+                anim.SetBool("FriendWarp1", true);
+                PlayWarp();
+            }
             // lets warp animation run
-            if (GameManager.Instance._statePassedCombatPlay)
-                anim.SetBool("FriendStop1", true);
+            //if (GameManager.Instance._statePassedCombatPlay)
+            //    anim.SetBool("FriendStop1", true);
         }
 
         public void PlayWarp() // called in animation - warps by event to function PlayWarp()
         {
-            warpAudioSource_0.volume = 1f;
-            warpAudioSource_0.Play();
+            if (GameManager.Instance._statePassedCombatInit)
+            {
+                warpAudioSource_0.volume = 1f;
+                warpAudioSource_0.Play();
+            }
         }
     }
 }

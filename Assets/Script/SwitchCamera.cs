@@ -15,7 +15,7 @@ namespace Assets.Script
         //ToDo create empty gameobject and attach this script to it, drop cameras into public slots.
         void Update()
         {
-            if (GameManager.Instance._statePassedCombatInit)
+            if (GameManager.Instance._statePassedCombatInit) // || GameManager.Instance._statePassedCombatInitLeft)
             {
                 camera_UI.SetActive(true);
                 camera_MainMenu.SetActive(false);

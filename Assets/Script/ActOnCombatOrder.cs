@@ -124,6 +124,7 @@ namespace Assets.Script
             {
                 case Orders.Engage:
                     EngageOrder();
+                    // currently using InstantiateCombatShips to setup ship entry by order then this section will be for during combat running
                     break;
                 case Orders.Rush:
                     RushOrder();

@@ -89,7 +89,7 @@ namespace Assets.Script
         }
         private void Update()
         { // Move
-            if (GameManager.Instance._statePassedCombatInit)
+            if (GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
             {
                 //rigidbody.velocity = Vector3.zero;
                 //rigidbody.angularVelocity = Vector3.zero;
@@ -230,14 +230,14 @@ namespace Assets.Script
                         break;
                 }
             }
-            GameObject hitShip = other.GetComponent<GameObject>(); // will this work???
-            other.transform.parent = null;
-            for (var i = hitShip.transform.childCount - 1; i >= 0; i--)
+            GameObject hitShip = other.gameObject; //= other.GetComponent<GameObject>(); // *******will this work???
+            hitShip.transform.parent = null; // save parent anim of ship from distroy by removing parent
+            for (var i = hitShip.transform.childCount - 1; i >= 0; i--) // save children of ship by removing child's parent
             {
                 // objectA is not the attached GameObject, so you can do all your checks with it.
                 var objectA = hitShip.transform.GetChild(i);
                 objectA.transform.parent = null;
-                // Optionally destroy the objectA if not longer needed
+                // remove parent ship from child cameraEmpty to save it save CameraMultiTarget function
             }
             Destroy(hitShip, 1f);
            // Destroy(other.gameObject, 1f);

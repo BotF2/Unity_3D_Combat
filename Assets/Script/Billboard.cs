@@ -9,8 +9,7 @@ namespace Assets.Script
         // use on torpedo sprit
         private Camera theCam;
         private float rotate = 1f;
-        // public bool holdStaticBuillboard;
-        // Start is called before the first frame update
+
         void Start()
         {
             theCam = Camera.main; // only find it once

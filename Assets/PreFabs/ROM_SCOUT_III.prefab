@@ -47,29 +47,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weAreFriend: 0
+  _localPlayer: 0
+  _hostPlayer: 0
+  _cliantZero: 0
+  _cliantOne: 0
+  _cliantTwo: 0
+  _cliantThree: 0
+  _cliantFour: 0
+  _cliantFive: 0
+  _combatOrder: 0
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
-  Friend_0: {fileID: 0}
-  Enemy_0: {fileID: 0}
+  instantiateCombatShips: {fileID: 0}
+  actOnCombatOrder: {fileID: 0}
+  zoomCamera: {fileID: 0}
+  combatOrderSelection: {fileID: 0}
+  shipScale: 2000
+  animFriend1: {fileID: 0}
+  animFriend2: {fileID: 0}
+  animFriend3: {fileID: 0}
+  animEnemy1: {fileID: 0}
+  animEnemy2: {fileID: 0}
+  animEnemy3: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
   offsetFriendLeft: -5500
   offsetFriendRight: 5800
   offsetEnemyRight: 5500
   offsetEnemyLeft: -5800
-  animationEmpties:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Borg_Destroyer_i: {fileID: 0}
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
@@ -86,8 +92,8 @@ MonoBehaviour:
   Dom_Scout_ii: {fileID: 0}
   Fed_Cruiser_ii: {fileID: 0}
   Fed_Cruiser_iii: {fileID: 0}
-  Fed_lt_Cruiser_iv: {fileID: 0}
-  Fed_hvy_Cruiser_iv: {fileID: 0}
+  Fed_LtCruiser_iv: {fileID: 0}
+  Fed_HvyCruiser_iv: {fileID: 0}
   Fed_Destroyer_i: {fileID: 0}
   Fed_Destroyer_ii: {fileID: 0}
   Fed_Destroyer_iii: {fileID: 0}
@@ -108,20 +114,22 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
-  FriendScout_Y0_Z0: {fileID: 0}
-  FriendDestroyer_Y0_Z1: {fileID: 0}
-  FriendCapital_Y0_Z2: {fileID: 0}
-  FriendColony_Y1_Z0: {fileID: 0}
-  Friend_Y1_Z1: {fileID: 0}
-  Friend_Y1_Z2: {fileID: 0}
-  EnemyScout_Y0_Z0: {fileID: 0}
-  EnemyDestroyer_Y0_Z1: {fileID: 0}
-  EnemyCapital_Y0_Z2: {fileID: 0}
-  EnemyColony_Y1_Z0: {fileID: 0}
-  Enemy_Y1_Z1: {fileID: 0}
-  Enemy_Y1_Z2: {fileID: 0}
+  animationEmpties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   friends: 0
   enemies: 0
+  panelLobby_Menu: {fileID: 0}
   panelMain_Menu: {fileID: 0}
   panelGalactic_Play: {fileID: 0}
   panelGalactic_Completed: {fileID: 0}
@@ -129,8 +137,12 @@ MonoBehaviour:
   panelCombat_Play: {fileID: 0}
   panelCombat_Completed: {fileID: 0}
   panelGameOver: {fileID: 0}
-  _statePassedInit: 0
+  _statePassedLobbyInit: 0
   _statePassedMain_Init: 0
+  _statePassedCombatMenu_Init: 0
+  _statePassedCombatInitLeft: 0
+  _statePassedCombatInitRight: 0
+  _statePassedCombatPlay: 0
 --- !u!114 &2840962437755444898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,12 +156,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  civilization: 0
   _shieldsMaxHealth: 0
   _hullMaxHealth: 0
   _torpedoDamage: 0
   _beamDamage: 0
   _cost: 0
-  combatAreaOffset: -5000
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
@@ -188,10 +200,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.039492756
+  m_Radius: 0.037175886
   m_Height: 0.09110884
   m_Direction: 2
-  m_Center: {x: 0.0016565025, y: 0, z: -0.045390025}
+  m_Center: {x: 0.000026114285, y: 0, z: -0.045390025}
 --- !u!1 &7415202241907529047
 GameObject:
   m_ObjectHideFlags: 0
