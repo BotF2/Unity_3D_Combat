@@ -26,7 +26,7 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("EnemyWarp3", true);
-                PlayWarp();
+               //PlayWarp();
             }
             // lets warp animation run
             //if (GameManager.Instance._statePassedCombatPlay)

@@ -28,7 +28,7 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("FriendWarp2", true);// lets warp animation run
-                PlayWarp();
+               // PlayWarp();
             }
             //if (GameManager.Instance._statePassedCombatPlay)
             //    anim.SetBool("FriendStop2", true);

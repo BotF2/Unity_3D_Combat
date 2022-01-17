@@ -10,7 +10,7 @@ namespace Assets.Script
     {
         public Animator anim;
         public AudioSource warpAudioSource_0;
-
+        public static bool endOfEnemyWarp = false;
         void Start()
         {
             anim = GetComponent<Animator>();
@@ -22,6 +22,7 @@ namespace Assets.Script
             {
                 anim.SetBool("EnemyWarp1", true);
                 PlayWarp();
+                //EndOfEnemyWarp();
             }
             // lets warp animation run
             //if (GameManager.Instance._statePassedCombatPlay)
@@ -36,5 +37,9 @@ namespace Assets.Script
                 warpAudioSource_0.Play();
             }
         }
+        //public void EndOfEnemyWarp()
+        //{
+        //    endOfEnemyWarp = true; // run on autorotate and spacebar rotate
+        //}
     }
 }

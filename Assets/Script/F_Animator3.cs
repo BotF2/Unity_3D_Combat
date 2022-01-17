@@ -10,7 +10,7 @@ namespace Assets.Script
     {
         public Animator anim;
         public AudioSource warpAudioSource_0;
-        //public bool endOfFriendWarp = false;
+        public static bool endOfFriendWarp = false;
 
         private void Awake()
         {
@@ -42,10 +42,10 @@ namespace Assets.Script
                 warpAudioSource_0.Play();
             }
         }
-        public void EndOfFiendWarp()
-        {
-            //endOfFriendWarp = true;
-           // GameManager.Instance.TurnOnRightSide();
-        }
+        //public void EndOfFiendWarp()
+        //{
+        //    endOfFriendWarp = true; // run on autorotate and spacebar rotate
+        //   // GameManager.Instance.TurnOnRightSide();
+        //}
     }
 }

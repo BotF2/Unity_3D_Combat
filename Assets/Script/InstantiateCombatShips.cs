@@ -62,7 +62,7 @@ namespace Assets.Script
 
             var cameraTargets = new List<GameObject>();
 
-            #region sort to get data for instantiating a ship
+              #region sort to get data for instantiating a ship
             //List<GameObject> tempList = new List<GameObject>();
             for (int i = 0; i < preCombatShipNames.Count; i++)
             {
@@ -83,70 +83,67 @@ namespace Assets.Script
                 #region Engage Region
                 case Orders.Engage:
                 {
-                    if (true) //_isFriend) 
+                    switch (_nameArray[1].ToUpper())
                     {
-                        switch (_nameArray[1].ToUpper())
-                        {
-                            case "SCOUT":
-                                //xLocation = xOffsetLeftRight;
-                                yLocation = yScout;
-                                if (_ScoutShips % 2 == 0)
-                                {
-                                    yLocation += ySeparator;
-                                    zLocation = zSeparator * _zScoutDepth;
-                                    _zScoutDepth++;
-                                }
+                        case "SCOUT":
+                            //xLocation = xOffsetLeftRight;
+                            yLocation = yScout;
+                            if (_ScoutShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zScoutDepth;
+                                _zScoutDepth++;
+                            }
 
-                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
-                                break;
-                            case "DESTROYER":
-                                //xLocation = xOffsetLeftRight;
-                                yLocation = yDestroyer;
-                                if (_DestroyerShips % 2 == 0)
-                                {
-                                    yLocation += ySeparator;
-                                    zLocation = zSeparator * _zDestroyerDepth;
-                                    _zDestroyerDepth++;
-                                }
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "DESTROYER":
+                            //xLocation = xOffsetLeftRight;
+                            yLocation = yDestroyer;
+                            if (_DestroyerShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zDestroyerDepth;
+                                _zDestroyerDepth++;
+                            }
 
-                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
-                                break;
-                            case "CRUISER":
-                            case "LTCRUISER":
-                            case "HVYCRUISER":
-                                //xLocation = xOffsetLeftRight;
-                                yLocation = yCapital;
-                                if (_CapitalShips % 2 == 0)
-                                {
-                                    yLocation += ySeparator;
-                                    zLocation = zSeparator * _zCapitalDepth;
-                                    _zCapitalDepth++;
-                                }
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "CRUISER":
+                        case "LTCRUISER":
+                        case "HVYCRUISER":
+                            //xLocation = xOffsetLeftRight;
+                            yLocation = yCapital;
+                            if (_CapitalShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zCapitalDepth;
+                                _zCapitalDepth++;
+                            }
 
-                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
-                                break;
-                            case "TRANSPORT":
-                            case "COLONY":
-                            case "CONSTRUCTION":
-                                if (_isFriend)
-                                    xLocation -= zSeparator;
-                                else
-                                    xLocation += zSeparator;
-                                yLocation = yCapital;
-                                if (_UtilityShips % 2 == 0)
-                                {
-                                    yLocation += ySeparator;
-                                    zLocation = zSeparator * _zUtilityDepth;
-                                    _zUtilityDepth++;
-                                }
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "TRANSPORT":
+                        case "COLONY":
+                        case "CONSTRUCTION":
+                            if (_isFriend)
+                                xLocation -= zSeparator;
+                            else
+                                xLocation += zSeparator;
+                            yLocation = yCapital;
+                            if (_UtilityShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zUtilityDepth;
+                                _zUtilityDepth++;
+                            }
 
-                                SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
-                                break;
-                            case "ONEMORE":
-                                break;
-                            default:
-                                break;
-                        }
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "ONEMORE":
+                            break;
+                        default:
+                            break;
                     }
                     
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);

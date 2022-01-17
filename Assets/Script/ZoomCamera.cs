@@ -22,7 +22,7 @@ namespace Assets.Script
                 if (!_doneWithWideAngle && _shipCamera.fieldOfView <= 20)
                     _doneWithWideAngle = true;
 
-                if (_doneWithWideAngle && cameraMultiTarget._rotateAroundTarget)
+                if (_doneWithWideAngle) // && cameraMultiTarget._rotateAroundTarget)
                 {
                     if (Input.mouseScrollDelta == Vector2.zero)
                         return;
@@ -45,7 +45,7 @@ namespace Assets.Script
         {
             _doneWithWideAngle = false;
             _startZoomerUpdate = true;
-            _shipCamera.fieldOfView = 80;
+            _shipCamera.fieldOfView = 60;
             _startTimer = Time.time;
         }
         public void TurnOfZoomerUpdate()

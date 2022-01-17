@@ -13,25 +13,32 @@ namespace Assets.Script
 		public float Roll;
 		public float PaddingLeft = 210f;
 		public float PaddingRight = 210f;
-		public float PaddingUp = 200f;
-		public float PaddingDown = 200f;
+		public float PaddingUp = 210f;
+		public float PaddingDown = 210f;
 		public float MoveSmoothTime = 0.19f;
 		private Camera _camera;
+		public Camera _shipCamera;
+		private float _shipCameraFieldOfView;
 		public GameObject _cameraHolder;
 		private GameObject[] _targets = new GameObject[0];
 		private DebugProjection _debugProjection;
 
 		#region added to cameraMuliTararget
-		private bool _didNotGetTargetYet = true;
+		public F_Animator3 f_animator3;
+		public E_Animator1 e_animator1;
 		private Vector3 _cameraOffSet;
-		public float _targetTimer = 0.5f;
-		private float _autoTimer = 7f;
-		public GameObject _cameraTarget;
-		public bool _lookAtTarget = true;
-		public bool _rotateAroundTarget = true;
+		public float _warpInTimer = 5f;
+		private bool _warpingIn = true;
+		private bool _spaceKey = false;
+		private bool _alreadyAutoRotated = false;
+		private bool _firstTimeMouseRotate = true;
+		private bool _normalizeFieldOfView = false;
+		private float _autoRotationTimer = 5f;
+		private float _rotationDirectionTimer = 2f;
+		public Vector3 _cameraTarget;
 		public float _mouseRotationSpeed = 5.0f;
 		public bool turningPositiveX = true;
-		public bool turningPositiveY = true;
+		//public bool turningPositiveY = true;
 		public float RotateSmoothTime = 0.1f;
 		private float AngularVelocity = 0.0f;
 		#endregion
@@ -41,146 +48,131 @@ namespace Assets.Script
 
         public void SetTargets(GameObject[] targets)
         {
-            _targets = targets; // 2 empty dummy gameObjects as targets located where 3D ships warp in.
+			_targets = targets;
         }
 
         private void Awake()
 		{
-			_camera = Camera.main;
+			_camera = Camera.main; // give gameObject(camera) and unity Camera.main the same position and rotation at end of LateUpdate
 			
             //_camera = gameObject.GetComponent<Camera>(); // not working
             _debugProjection = DebugProjection.ROTATED;
-			//_targetTimer = 0.5f; // now set as a field above and not part of cameraMultiTarget
-			//_cameraTarget = 
+			_shipCameraFieldOfView = _shipCamera.fieldOfView;
 		}
 
 		private void LateUpdate()
 		{
-            // ToDo: get a combat updater to reset _targets GameObject Array as ships are distroyed!!!
             if (_targets.Length == 0)
             {
                 return;
             }
+			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
 
-            var targetPositionAndRotation = TargetPositionAndRotation(_targets); // *** see new location for these lines code in below region
-			Vector3 velocity = Vector3.zero;
-			
-			if (Input.GetKey("space")) // use GetKey for holding key down, GetKeyDown() is for one frame of pressed
+			if (Input.GetKey("space") && !_warpingIn)
 			{
-				Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
-				_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
-				Vector3 newPositionX = _cameraTarget.transform.position + _cameraOffSet;
-				gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
-				Quaternion cameraTurnAngleY = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * _mouseRotationSpeed, Vector3.right);
-				_cameraOffSet = cameraTurnAngleY * _cameraOffSet;
-				Vector3 newPositionY = _cameraTarget.transform.position + _cameraOffSet;
-				gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionY, MoveSmoothTime);
-				gameObject.transform.LookAt(_cameraTarget.transform);
+				_spaceKey = true;
+				_autoRotationTimer = 5.0f;
+			}
+			else if(!_warpingIn)
+            {
+				_spaceKey = false;
 
-				// ToDo: get a value for _cameraTarget.transform.position.z based on the number of ship columns deep into screen
+            }
+			Vector3 velocity = Vector3.zero;
+			if (_warpingIn || !_spaceKey)
+			{
+				if (_autoRotationTimer > 0)
+				{
+
+					if ( _autoRotationTimer < 4.5f)
+					{
+						if (_alreadyAutoRotated && _autoRotationTimer > 2.5f && !_normalizeFieldOfView) // && _autoRotationTimer < 4.5f)
+                        {
+							_shipCamera.fieldOfView = _shipCamera.fieldOfView - 0.05f;
+						}
+						if (_autoRotationTimer < 2.5f)
+							_normalizeFieldOfView = true;
+                        if (_normalizeFieldOfView)
+                        {
+							// normalize shipcamera field of view
+                            if (_shipCamera.fieldOfView <= _shipCameraFieldOfView + 0.5f)
+                            {
+                                _shipCamera.fieldOfView += 0.05f;
+                            }
+                            else if (_shipCamera.fieldOfView > _shipCameraFieldOfView - 0.5f)
+                            {
+                                _shipCamera.fieldOfView -= 0.05f;
+                            }
+							if (_autoRotationTimer < 1f)
+								_normalizeFieldOfView = false;
+                        }
+			
+                    }
+					
+					_cameraOffSet = gameObject.transform.position - _cameraTarget;
+					gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
+
+					var target_rot = Quaternion.LookRotation(_cameraTarget - gameObject.transform.position); //_cameraTarget.transform.position
+					var delta = Quaternion.Angle(gameObject.transform.rotation, target_rot);
+					if (delta > 0.0f)
+					{
+						var t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
+						t = 0.95f - t / delta;
+						gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, target_rot, t);
+					}
+					if (_warpInTimer <= 0.0f)
+						_warpingIn = false;
+					else _warpInTimer -= Time.deltaTime;
+					if (!_warpingIn && !_spaceKey)
+					{
+						_autoRotationTimer -= Time.deltaTime;
+					}
+				}
+                else
+                {
+					// autoratation code
+					_firstTimeMouseRotate = true;
+					_alreadyAutoRotated = true;
+
+					float xRotation = 0.05f;
+					float yRotation = 0.1f;
+					if (_rotationDirectionTimer < 1f)
+					{
+						_shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.1f;
+					}
+                    if (_rotationDirectionTimer <= 0)
+						{
+							_rotationDirectionTimer = 2f;
+							_autoRotationTimer = 5f;
+						}
+						AutoRotation(xRotation, Vector3.right);
+
+					_rotationDirectionTimer -= Time.deltaTime;
+					gameObject.transform.LookAt(_cameraTarget);
+				}
 
 			}
 			else
 			{
-				gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
-
-				var target_rot = Quaternion.LookRotation(_cameraTarget.transform.position - gameObject.transform.position); 
-				var delta = Quaternion.Angle(gameObject.transform.rotation, target_rot);
-				if (delta > 0.0f)
-                {
-					var t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
-					t = 1.0f - t / delta;
-					gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, target_rot, t);
+				// this 'else' is spacebar key is down so rotate with mouse
+				_normalizeFieldOfView = true;
+				Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
+				_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
+				Vector3 newPositionX = _cameraTarget + _cameraOffSet;
+				gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
+				Quaternion cameraTurnAngleY = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * _mouseRotationSpeed, Vector3.right);
+				_cameraOffSet = cameraTurnAngleY * _cameraOffSet;
+				Vector3 newPositionY = _cameraTarget + _cameraOffSet;
+				gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionY, MoveSmoothTime);
+				gameObject.transform.LookAt(_cameraTarget);
+				if (_firstTimeMouseRotate)
+				{
+					_autoRotationTimer = 5f;
+					_firstTimeMouseRotate = false;
                 }
-			}	
-
-
-			//_camera.transform.position = gameObject.transform.position;
-			//_camera.transform.rotation = gameObject.transform.rotation;
-
-            #region RotateAroundTarget Also added to cameraMultiTarget
-
-
-
-            //       if (true) // ( GameManager.Instance._statePassedCombatInit) //_targetTimer < 0f)
-            //       {
-            //           _rotateAroundTarget = true; //  do we need this??
-            //           if (_didNotGetTargetYet)
-            //           {
-            //Quaternion targetRotation = gameObject.transform.rotation;
-			//Vector3 meanVector = _cameraTarget.transform.position;// new Vector3(150, 110, 50);//Vector3.zero;
-                                                           //foreach (GameObject target in _targets)
-                                                           //{
-                                                           //    meanVector += target.transform.position;
-                                                           //}
-                                                           //meanVector = (meanVector / _targets.Count()); // average location for center point
-            //_cameraTarget = (GameObject)Instantiate(new GameObject(), meanVector, targetRotation);
-            //_didNotGetTargetYet = false;
-           // _cameraOffSet = gameObject.transform.position - _cameraTarget.transform.position;
-            //           }
-
-   //         if (Input.GetKey("space")) // use GetKey for holding key down, GetKeyDown() is for one frame of pressed
-   //         {
-   //             Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
-   //             _cameraOffSet = cameraTurnAngleX * _cameraOffSet;
-   //             Vector3 newPositionX = _cameraTarget.transform.position + _cameraOffSet;
-   //             gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
-   //             Quaternion cameraTurnAngleY = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * _mouseRotationSpeed, Vector3.right);
-   //             _cameraOffSet = cameraTurnAngleY * _cameraOffSet;
-   //             Vector3 newPositionY = _cameraTarget.transform.position + _cameraOffSet;
-   //             gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionY, MoveSmoothTime);
-			//	gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
-			//}
-   //         else
-   //         {
-                //float xRotation = 0.01f;
-                //float yRotation = 0.005f;
-
-                //if (turningPositiveX)
-                //{
-                //    if (_autoTimer <= 0)
-                //    {
-                //        turningPositiveX = false;
-                //        _autoTimer = 14;
-
-                //    }
-                //    AutoRotation(xRotation, Vector3.up);
-                //    AutoRotation(yRotation, Vector3.right);
-                //}
-                //else if (!turningPositiveX)
-                //{
-                //    if (_autoTimer <= 0)
-                //    {
-                //        turningPositiveX = true;
-                //        _autoTimer = 14;
-                //    }
-                //    AutoRotation(-xRotation, Vector3.up);
-                //    AutoRotation(-yRotation, Vector3.right);
-                //}
-                //_autoTimer -= Time.deltaTime;
-
-            //}
-
-            //           if (_lookAtTarget || _rotateAroundTarget)
-            //           {
-           // gameObject.transform.LookAt(_cameraTarget.transform);
-            //           }
-
-            //       }
-            //       else if (GameManager.Instance._statePassedCombatInit && _targetTimer > 0f)
-            //       {
-            //           _targetTimer -= Time.deltaTime;
-            //           //var targetPositionAndRotation = TargetPositionAndRotation(_targets);
-            //           //Vector3 velocity = Vector3.zero;
-            //gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
-            //           //gameObject.transform.rotation = targetPositionAndRotation.Rotation;
-            //       }
-            //       else
-            //           return;
-            _camera.transform.position = gameObject.transform.position;
+			}
+			_camera.transform.position = gameObject.transform.position;
 			_camera.transform.rotation = gameObject.transform.rotation;
-			_targetTimer -= Time.deltaTime;
-			#endregion
 		}
 
         // Added method for from Rotation around target
@@ -189,12 +181,13 @@ namespace Assets.Script
         {
             Quaternion cameraTurnAngleX = Quaternion.AngleAxis(xRotating * _mouseRotationSpeed, direction);
             _cameraOffSet = cameraTurnAngleX * _cameraOffSet;
-            Vector3 newPositionX = _cameraTarget.transform.position + _cameraOffSet;
+            Vector3 newPositionX = _cameraTarget + _cameraOffSet;
 			gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
         }
         #endregion
         PositionAndRotation TargetPositionAndRotation(GameObject[] targets)
 		{
+			_cameraTarget = calculateCentroid(targets);
 			float halfVerticalFovRad = (_camera.fieldOfView * Mathf.Deg2Rad) / 2f;
 			float halfHorizontalFovRad = Mathf.Atan(Mathf.Tan(halfVerticalFovRad) * _camera.aspect);
 
@@ -321,6 +314,20 @@ namespace Assets.Script
 		{
 			Quaternion rotation = _debugProjection == DebugProjection.IDENTITY ? Quaternion.identity : gameObject.transform.rotation;
 			Debug.DrawRay(rotation * start, rotation * direction, color);
+		}
+
+		public Vector3 calculateCentroid(GameObject[] centerPoints)
+		{
+			var centroid = new Vector3(0, 0, 0);
+			var numPoints = centerPoints.Count();
+			foreach (var point in centerPoints)
+			{
+				centroid += point.transform.position;
+			}
+
+			centroid /= numPoints;
+
+			return centroid;
 		}
 	}
 }
