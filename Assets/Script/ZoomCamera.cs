@@ -28,7 +28,12 @@ namespace Assets.Script
                         return;
                     else//GameManager.Instance._statePassedCombatInit)
                     {
-
+                        bool turnOffNormalize = false;
+                        if (cameraMultiTarget._normalizeFieldOfView)
+                        {
+                            cameraMultiTarget._normalizeFieldOfView = false;
+                            turnOffNormalize = true;
+                        }
                         if (Input.mouseScrollDelta.y > 0 && _shipCamera.fieldOfView > 10) //GetAxis("Mouse ScrollWheel") 
                         {
                             _shipCamera.fieldOfView--;
@@ -37,6 +42,12 @@ namespace Assets.Script
                         {
                             _shipCamera.fieldOfView++;
                         }
+                        if (turnOffNormalize)
+                        {
+                            cameraMultiTarget._normalizeFieldOfView = true;
+                            turnOffNormalize = false;
+                        }
+
                     }
                 }
             }
@@ -52,30 +63,7 @@ namespace Assets.Script
         {
             _startZoomerUpdate = false;
             _doneWithWideAngle = false;
-        }
-            //if (GameManager.Instance._statePassedCombatInit)
-            //{
-            //    if (Input.GetKeyDown("o"))  ///GetAxis("Mouse ScrollWheel") > 0 && camera.fieldOfView > 12)
-            //    {
-            //        camera.fieldOfView--;
-            //    }
-            //    if (Input.GetKeyDown("p"))//GetAxis("Mouse ScrollWheel") < 0 && camera.fieldOfView < 40)
-            //    {
-            //        camera.fieldOfView++;
-            //    }
-            //}
-            //if (GameManager.Instance._statePassedCombatInit)
-            //{
-            //    if (Input.GetAxis("Mouse ScrollWheel") > 0 && GetComponent<Camera>().fieldOfView > 12)
-            //    {
-            //        GetComponent<Camera>().fieldOfView--;
-            //    }
-            //    if (Input.GetAxis("Mouse ScrollWheel") < 0 && GetComponent<Camera>().fieldOfView < 40)
-            //    {
-            //        GetComponent<Camera>().fieldOfView++;
-            //    }
-            //}   
-        
-        
+        }         
+      
     }
 }

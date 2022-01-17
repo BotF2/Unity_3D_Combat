@@ -32,7 +32,7 @@ namespace Assets.Script
 		private bool _spaceKey = false;
 		private bool _alreadyAutoRotated = false;
 		private bool _firstTimeMouseRotate = true;
-		private bool _normalizeFieldOfView = false;
+		public bool _normalizeFieldOfView = false;
 		private float _autoRotationTimer = 5f;
 		private float _rotationDirectionTimer = 2f;
 		public Vector3 _cameraTarget;
@@ -83,10 +83,9 @@ namespace Assets.Script
 			{
 				if (_autoRotationTimer > 0)
 				{
-
 					if ( _autoRotationTimer < 4.5f)
 					{
-						if (_alreadyAutoRotated && _autoRotationTimer > 2.5f && !_normalizeFieldOfView) // && _autoRotationTimer < 4.5f)
+						if (_alreadyAutoRotated && _autoRotationTimer > 2.5f && !_normalizeFieldOfView) 
                         {
 							_shipCamera.fieldOfView = _shipCamera.fieldOfView - 0.05f;
 						}
@@ -105,8 +104,7 @@ namespace Assets.Script
                             }
 							if (_autoRotationTimer < 1f)
 								_normalizeFieldOfView = false;
-                        }
-			
+                        }			
                     }
 					
 					_cameraOffSet = gameObject.transform.position - _cameraTarget;
@@ -117,7 +115,7 @@ namespace Assets.Script
 					if (delta > 0.0f)
 					{
 						var t = Mathf.SmoothDampAngle(delta, 0.0f, ref AngularVelocity, RotateSmoothTime);
-						t = 0.95f - t / delta;
+						t = 1f - t / delta;
 						gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, target_rot, t);
 					}
 					if (_warpInTimer <= 0.0f)
@@ -136,9 +134,9 @@ namespace Assets.Script
 
 					float xRotation = 0.05f;
 					float yRotation = 0.1f;
-					if (_rotationDirectionTimer < 1f)
+					if (_rotationDirectionTimer < 2f)
 					{
-						_shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.1f;
+						_shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.05f;
 					}
                     if (_rotationDirectionTimer <= 0)
 						{
@@ -148,9 +146,8 @@ namespace Assets.Script
 						AutoRotation(xRotation, Vector3.right);
 
 					_rotationDirectionTimer -= Time.deltaTime;
-					gameObject.transform.LookAt(_cameraTarget);
+					gameObject.transform.LookAt(_cameraTarget);					
 				}
-
 			}
 			else
 			{
@@ -183,7 +180,7 @@ namespace Assets.Script
             _cameraOffSet = cameraTurnAngleX * _cameraOffSet;
             Vector3 newPositionX = _cameraTarget + _cameraOffSet;
 			gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
-        }
+		}
         #endregion
         PositionAndRotation TargetPositionAndRotation(GameObject[] targets)
 		{
