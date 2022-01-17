@@ -6,9 +6,17 @@ using UnityEngine.UI;
 
 namespace Assets.Script
 {
+	enum TurnDirection
+	{
+		up,
+		right,
+		down,
+		left
+	}
+
 	public class CameraMultiTarget : MonoBehaviour
 	{
-		public float Pitch;
+        public float Pitch;
 		public float Yaw;
 		public float Roll;
 		public float PaddingLeft = 210f;
@@ -37,8 +45,8 @@ namespace Assets.Script
 		private float _rotationDirectionTimer = 2f;
 		public Vector3 _cameraTarget;
 		public float _mouseRotationSpeed = 5.0f;
-		public bool turningPositiveX = true;
-		//public bool turningPositiveY = true;
+		private TurnDirection _turnDirection { get; set; } = TurnDirection.left;
+		private Vector3 _axisOfRotation;
 		public float RotateSmoothTime = 0.1f;
 		private float AngularVelocity = 0.0f;
 		#endregion
@@ -53,8 +61,7 @@ namespace Assets.Script
 
         private void Awake()
 		{
-			_camera = Camera.main; // give gameObject(camera) and unity Camera.main the same position and rotation at end of LateUpdate
-			
+			_camera = Camera.main; // give gameObject(camera) and unity Camera.main the same position and rotation at end of LateUpdate		
             //_camera = gameObject.GetComponent<Camera>(); // not working
             _debugProjection = DebugProjection.ROTATED;
 			_shipCameraFieldOfView = _shipCamera.fieldOfView;
@@ -124,6 +131,10 @@ namespace Assets.Script
 					if (!_warpingIn && !_spaceKey)
 					{
 						_autoRotationTimer -= Time.deltaTime;
+						if (_autoRotationTimer <= 0.0f)
+							if (_turnDirection != TurnDirection.left)
+								_turnDirection++;
+							else _turnDirection = TurnDirection.up;
 					}
 				}
                 else
@@ -131,21 +142,36 @@ namespace Assets.Script
 					// autoratation code
 					_firstTimeMouseRotate = true;
 					_alreadyAutoRotated = true;
+					float Rotation = 0.05f;
 
-					float xRotation = 0.05f;
-					float yRotation = 0.1f;
-					if (_rotationDirectionTimer < 2f)
-					{
-						_shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.05f;
-					}
+                    if (_rotationDirectionTimer < 2f)
+                    {
+                        _shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.05f;
+                    }
                     if (_rotationDirectionTimer <= 0)
-						{
-							_rotationDirectionTimer = 2f;
-							_autoRotationTimer = 5f;
-						}
-						AutoRotation(xRotation, Vector3.right);
-
-					_rotationDirectionTimer -= Time.deltaTime;
+                    {
+                        _rotationDirectionTimer = 2f;
+                        _autoRotationTimer = 5f;
+                    }
+                    switch (_turnDirection)
+                    {
+                        case TurnDirection.up:
+							_axisOfRotation = Vector3.right;
+                            break;
+                        case TurnDirection.right:
+							_axisOfRotation = Vector3.down;
+                            break;
+                        case TurnDirection.down:
+							_axisOfRotation = Vector3.left;
+                            break;
+                        case TurnDirection.left:
+							_axisOfRotation = Vector3.up;
+                            break;
+                        default:
+                            break;
+                    }
+                    AutoRotation(Rotation, _axisOfRotation);
+                    _rotationDirectionTimer -= Time.deltaTime;
 					gameObject.transform.LookAt(_cameraTarget);					
 				}
 			}
@@ -174,9 +200,9 @@ namespace Assets.Script
 
         // Added method for from Rotation around target
         #region Auto Rotation around average target
-        private void AutoRotation(float xRotating, Vector3 direction)
-        {
-            Quaternion cameraTurnAngleX = Quaternion.AngleAxis(xRotating * _mouseRotationSpeed, direction);
+        private void AutoRotation(float Rotating, Vector3 direction)
+		{
+			Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Rotating * _mouseRotationSpeed, direction);
             _cameraOffSet = cameraTurnAngleX * _cameraOffSet;
             Vector3 newPositionX = _cameraTarget + _cameraOffSet;
 			gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
