@@ -49,6 +49,7 @@ namespace Assets.Script
 		private Vector3 _axisOfRotation;
 		public float RotateSmoothTime = 0.1f;
 		private float AngularVelocity = 0.0f;
+		//bool _fieldOfViewOK;
 		#endregion
 
 		enum DebugProjection { DISABLE, IDENTITY, ROTATED }
@@ -67,7 +68,7 @@ namespace Assets.Script
 			_shipCameraFieldOfView = _shipCamera.fieldOfView;
 		}
 
-		private void LateUpdate()
+        private void LateUpdate()
 		{
             if (_targets.Length == 0)
             {
@@ -83,35 +84,17 @@ namespace Assets.Script
 			else if(!_warpingIn)
             {
 				_spaceKey = false;
-
             }
 			Vector3 velocity = Vector3.zero;
+
 			if (_warpingIn || !_spaceKey)
 			{
+				_normalizeFieldOfView = true;
 				if (_autoRotationTimer > 0)
 				{
 					if ( _autoRotationTimer < 4.5f)
 					{
-						if (_alreadyAutoRotated && _autoRotationTimer > 2.5f && !_normalizeFieldOfView) 
-                        {
-							_shipCamera.fieldOfView = _shipCamera.fieldOfView - 0.05f;
-						}
-						if (_autoRotationTimer < 2.5f)
-							_normalizeFieldOfView = true;
-                        if (_normalizeFieldOfView)
-                        {
-							// normalize shipcamera field of view
-                            if (_shipCamera.fieldOfView <= _shipCameraFieldOfView + 0.5f)
-                            {
-                                _shipCamera.fieldOfView += 0.05f;
-                            }
-                            else if (_shipCamera.fieldOfView > _shipCameraFieldOfView - 0.5f)
-                            {
-                                _shipCamera.fieldOfView -= 0.05f;
-                            }
-							if (_autoRotationTimer < 1f)
-								_normalizeFieldOfView = false;
-                        }			
+						NormalizFieldOfView();		
                     }
 					
 					_cameraOffSet = gameObject.transform.position - _cameraTarget;
@@ -146,8 +129,8 @@ namespace Assets.Script
 
                     if (_rotationDirectionTimer < 2f)
                     {
-                        _shipCamera.fieldOfView = _shipCamera.fieldOfView + 0.05f;
-                    }
+						NormalizFieldOfView();
+					}
                     if (_rotationDirectionTimer <= 0)
                     {
                         _rotationDirectionTimer = 2f;
@@ -178,7 +161,7 @@ namespace Assets.Script
 			else
 			{
 				// this 'else' is spacebar key is down so rotate with mouse
-				_normalizeFieldOfView = true;
+				_normalizeFieldOfView = false;
 				Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
 				_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
 				Vector3 newPositionX = _cameraTarget + _cameraOffSet;
@@ -208,6 +191,21 @@ namespace Assets.Script
 			gameObject.transform.position = Vector3.Slerp(gameObject.transform.position, newPositionX, MoveSmoothTime);
 		}
         #endregion
+		private void NormalizFieldOfView()
+        {
+			// ..normalize shipcamera field of view
+			if (_shipCamera.fieldOfView >= _shipCameraFieldOfView + 0.5f || _shipCamera.fieldOfView <= _shipCameraFieldOfView - 0.5f)   //_autoRotationTimer < 1.5f)
+			{
+				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView) //&& !_fieldOfViewOK)
+				{
+					_shipCamera.fieldOfView += 0.1f;
+				}
+				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView) // && !_fieldOfViewOK)
+				{
+					_shipCamera.fieldOfView -= 0.08f;
+				}
+			}
+		}
         PositionAndRotation TargetPositionAndRotation(GameObject[] targets)
 		{
 			_cameraTarget = calculateCentroid(targets);

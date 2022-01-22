@@ -24,21 +24,19 @@ namespace Assets.Script
         //public int offsetEnemyRight = 5500; // start here
                                             // public int offsetEnemyLeft = -5800;
 
-        // ****** Use a running count of ships by - for ship starting locaitons
+        // ****** Use a running count of ships by type for ship starting locaitons
         int _ScoutShips = 0;
         int _DestroyerShips = 0;
         int _CapitalShips = 0;
         int _UtilityShips = 0;
+
         int zLocation = 0;
         int _zScoutDepth = 0;
         int _zDestroyerDepth = 0;
         int _zCapitalDepth = 0;
         int _zUtilityDepth = 0;
         bool firstTimeNotFriend = false;
-        //public int _enemyScoutShips = 0;
-        //public int _enemyDestroyerShips = 0;
-        //public int _enemyCapitalShips = 0;
-        //public int _enemyUtilityShips = 0;
+
         public List<GameObject> CameraTargetList; // do not send directly to CameraMultiTarget, send to GameManager first
 
 
@@ -53,12 +51,6 @@ namespace Assets.Script
             float shipScale = 100f;
 
             List<string> preCombatShipNames = preCombatShips.ToList();
-            // local list of ships for this combat instance
-            //foreach (var item in preCombatEnemies.ToList())
-            //{
-            //    preCombatShipNames.Add(item);
-            //}
-            // int xCameraEmpty = 0; // 0 for left side friends and 300 for right side enemies
 
             var cameraTargets = new List<GameObject>();
 
@@ -66,7 +58,6 @@ namespace Assets.Script
             //List<GameObject> tempList = new List<GameObject>();
             for (int i = 0; i < preCombatShipNames.Count; i++)
             {
-
                 int xLocation = -5500;
                 int yLocation = 0;
                 int rotationOnY = 90;
@@ -257,6 +248,10 @@ namespace Assets.Script
                 _DestroyerShips = 0;
                 _CapitalShips = 0;
                 _UtilityShips = 0;
+                _zScoutDepth = 0;
+                _zDestroyerDepth = 0;
+                _zCapitalDepth = 0;
+                _zUtilityDepth = 0; 
             }
 
             if (true) //isFriend)

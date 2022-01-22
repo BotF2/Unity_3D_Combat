@@ -4116,7 +4116,7 @@ Camera:
     height: 1
   near clip plane: 1
   far clip plane: 1000000
-  field of view: 18
+  field of view: 24
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -6647,9 +6647,9 @@ MonoBehaviour:
   f_animator3: {fileID: 802029860}
   e_animator1: {fileID: 180068647}
   _warpInTimer: 4
+  _normalizeFieldOfView: 0
   _cameraTarget: {x: 0, y: 0, z: 0}
   _mouseRotationSpeed: 5
-  turningPositiveX: 1
   RotateSmoothTime: 0.1
 --- !u!4 &807690123
 Transform:
@@ -6688,14 +6688,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 809409197}
-  m_LocalRotation: {x: -0.008726465, y: 0, z: 0, w: 0.999962}
+  m_LocalRotation: {x: -0.004363368, y: 0, z: 0, w: 0.9999905}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 584432629}
   m_Father: {fileID: 963194228}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -1, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.5, y: 0, z: 0}
 --- !u!1 &838582337
 GameObject:
   m_ObjectHideFlags: 0
@@ -7924,9 +7924,9 @@ MonoBehaviour:
   f_animator3: {fileID: 0}
   e_animator1: {fileID: 0}
   _warpInTimer: 4
+  _normalizeFieldOfView: 0
   _cameraTarget: {x: 0, y: 0, z: 0}
   _mouseRotationSpeed: 5
-  turningPositiveX: 1
   RotateSmoothTime: 0.1
 --- !u!114 &963194231
 MonoBehaviour:
