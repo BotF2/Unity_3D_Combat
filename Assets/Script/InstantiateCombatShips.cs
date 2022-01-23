@@ -7,6 +7,7 @@ namespace Assets.Script
     public class InstantiateCombatShips : MonoBehaviour
     {
         public List<GameObject> combatShips;
+        private Orders order;
         //public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
         //public GameObject Enemy_0;
         public bool _isFriend;
@@ -165,7 +166,72 @@ namespace Assets.Script
                 case Orders.Rush:
             #region Rush Region
                 {
-                    
+                    switch (_nameArray[1].ToUpper())
+                    {
+                        case "SCOUT":
+                            if (_isFriend)
+                                xLocation = xLocation + 100;
+                            else xLocation = xLocation - 100;
+                            yLocation = yScout;
+                            if (_ScoutShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zScoutDepth;
+                                _zScoutDepth++;
+                            }
+
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "DESTROYER":
+                            if(_isFriend)
+                                xLocation = xLocation + 50;
+                            else xLocation = xLocation - 50;
+                            yLocation = yDestroyer;
+                            if (_DestroyerShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zDestroyerDepth;
+                                _zDestroyerDepth++;
+                            }
+
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "CRUISER":
+                        case "LTCRUISER":
+                        case "HVYCRUISER":
+                            //xLocation = xOffsetLeftRight;
+                            yLocation = yCapital;
+                            if (_CapitalShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zCapitalDepth;
+                                _zCapitalDepth++;
+                            }
+
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "TRANSPORT":
+                        case "COLONY":
+                        case "CONSTRUCTION":
+                            if (_isFriend)
+                                xLocation -= zSeparator;
+                            else
+                                xLocation += zSeparator;
+                            yLocation = yCapital;
+                            if (_UtilityShips % 2 == 0)
+                            {
+                                yLocation += ySeparator;
+                                zLocation = zSeparator * _zUtilityDepth;
+                                _zUtilityDepth++;
+                            }
+
+                            SetShipCounts(_nameArray[1].ToUpper(), _isFriend);
+                            break;
+                        case "ONEMORE":
+                            break;
+                        default:
+                            break;
+                    }
                     GameObject ship = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                     GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
 
@@ -237,6 +303,10 @@ namespace Assets.Script
             GameManager.Instance.ProvideCombatShips(FriendShips, EnemyShips);
 
             #endregion
+        }
+        public void SetCombatOrder(Orders daOrder)
+        {
+            order = daOrder;
         }
         private void SetShipCounts(string shipType, bool isFriend)
         {

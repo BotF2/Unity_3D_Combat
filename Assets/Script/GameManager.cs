@@ -415,13 +415,14 @@ namespace Assets.Script
                     panelCombat_Menu.SetActive(true);
                     //_statePassedInit = true;
                     LoadFriendAndEnemyNames(); // for combat
-                    //combatOrderSelection.ImplementCombatOrder();
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
+                   // _combatOrder = combatOrderSelection.ImplementCombatOrder();
                     break;
                 case State.COMBAT_INIT:
+                    
                     _statePassedCombatMenu_Init = true;
                     actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
-
+                    instantiateCombatShips.SetCombatOrder(_combatOrder);
                     instantiateCombatShips.PreCombatSetup(FriendNameArray, true);
                     instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
                     _statePassedCombatInit = true;
