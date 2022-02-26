@@ -69,6 +69,7 @@ namespace Assets.Script
 
         private void LateUpdate()
 		{
+
             if (_targets.Length == 0)
             {
                 return;
