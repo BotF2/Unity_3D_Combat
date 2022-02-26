@@ -43,11 +43,7 @@ namespace Assets.Script
         friend,
         enemy
     }
-    public enum NearOrFar
-    {
-        Near,
-        Far
-    }
+
     public enum ShipType
     {
         Scout,
@@ -413,13 +409,11 @@ namespace Assets.Script
                     break;
                 case State.COMBAT_MENU:
                     panelCombat_Menu.SetActive(true);
-                    //_statePassedInit = true;
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
-                   // _combatOrder = combatOrderSelection.ImplementCombatOrder();
+                    // _combatOrder = combatOrderSelection.ImplementCombatOrder();
                     break;
-                case State.COMBAT_INIT:
-                    
+                case State.COMBAT_INIT:                 
                     _statePassedCombatMenu_Init = true;
                     actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
                     instantiateCombatShips.SetCombatOrder(_combatOrder);
@@ -562,10 +556,13 @@ namespace Assets.Script
           
             cameraMultiTarget.SetTargets(_cameraTargets.ToArray()); // start multiCamera - main camers before warp in of ships
         }
-        public void ProvideCombatShips(Dictionary<int, GameObject> combatFriends, Dictionary<int, GameObject> combatEnemies)
+        public void ProvideFriendCombatShips(Dictionary<int, GameObject> combatFriendObjects)
         {
-            FriendShips = combatFriends;
-            EnemyShips = combatEnemies;
+            FriendShips = combatFriendObjects; // geting friend combat ship dictionary for combat
+        }
+        public void ProvideEnemyCombatShips(Dictionary<int, GameObject> combatEnemyObjects)
+        {
+            EnemyShips = combatEnemyObjects;
         }
 
         public int SetShipLayer(string civ)
@@ -613,135 +610,48 @@ namespace Assets.Script
             }
         }
 
-        private GameObject GetAnimatorEmpty(GameObject _temp, FriendOrFoe who)
-        {
-            int shipTypeIncrement = 0;
-            int enemyIncrement = 0;
-            if (who == FriendOrFoe.enemy)
-                enemyIncrement = 6;
-            string readName = _temp.name.ToUpper();
-            string[] _nameParts = readName.Split('_');
-            string shipType = _nameParts[1];
-            switch (shipType)
-            {
-                case "SCOUT":
-                    shipTypeIncrement = 0;
-                    break;
-                case "DESTROYER":
-                    shipTypeIncrement = 1;
-                    break;
-                case "CRUISER":
-                case "LT-CRUISER":
-                case "HVY-CRISER":
-                    shipTypeIncrement = 2;
-                    break;
-                case "COLONY":
-                    shipTypeIncrement = 3;
-                    break;
-                //case "more ship types here":
-                //    shipIncrement = 0;
-                //    break;
-                default:
-                    break;
-            }
-            return animationEmpties[shipTypeIncrement + enemyIncrement];
-        }
-        private GameObject[] GetRoeByShipType(string shipName, FriendOrFoe side, NearOrFar nearOrFar)
-        {
-            string[] _nameParts = shipName.ToUpper().Split('_');
-            string shipType = _nameParts[1];
-            switch (shipType)
-            {
-                case "SCOUT":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            return _friendScouts;
-                        else return _friendFarScouts;
-                    else if (nearOrFar == NearOrFar.Near)
-                        return _enemyScouts;
-                    else return _enemyFarScouts;
-                case "DESTROYER":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            return _friendDestroyer;
-                        else return _friendFarDestroyer;
-                    else if (nearOrFar == NearOrFar.Near)
-                        return _enemyDestroyer;
-                    else return _enemyFarDestroyer;
-                case "CRUISER":
-                case "LT-CRUISER":
-                case "HVY-CRISER":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            return _friendCapital;
-                        else return _friendFarCapital;
-                    else if (nearOrFar == NearOrFar.Near)
-                        return _enemyCapital;
-                    else return _enemyFarCapital;
-                //case "COLONY":
-                //    return ShipType.Colony;
-                //case "more ship types here":
-                default:
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            return _friendScouts;
-                        else return _friendFarScouts;
-                    else if (nearOrFar == NearOrFar.Near)
-                        return _enemyScouts;
-                    else return _enemyFarScouts;
-            }
-        }
-        private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
-        {
-            string[] _nameParts = shipName.ToUpper().Split('_');
-            string shipType = _nameParts[1];
-            switch (shipType)
-            {
-                case "SCOUT":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            _friendScouts = shortList.ToArray();
-                        else _friendFarScouts = shortList.ToArray();
-                    else if (nearOrFar == NearOrFar.Near)
-                        _enemyScouts = shortList.ToArray();
-                    else _enemyFarScouts = shortList.ToArray();
-                    break;
-                case "DESTROYER":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            _friendDestroyer = shortList.ToArray();
-                        else _friendFarDestroyer = shortList.ToArray();
-                    else if (nearOrFar == NearOrFar.Near)
-                        _enemyDestroyer = shortList.ToArray();
-                    else _enemyFarDestroyer = shortList.ToArray();
-                    break;
-                case "CRUISER":
-                case "LT-CRUISER":
-                case "HVY-CRISER":
-                    if (side == FriendOrFoe.friend)
-                        if (nearOrFar == NearOrFar.Near)
-                            _friendCapital = shortList.ToArray();
-                        else _friendFarCapital = shortList.ToArray();
-                    else if (nearOrFar == NearOrFar.Near)
-                        _enemyCapital = shortList.ToArray();
-                    else _enemyFarCapital = shortList.ToArray();
-                    break;
-                //case "COLONY":
-                //    return ShipType.Colony;
-                //case "more ship types here":
-                default:
-                    break;
-            }
-        }
-
-        private void RotateFriend(GameObject who)
-        {
-            who.transform.Rotate(0, 90, 0);
-        }
-        private void RotateEnemy(GameObject who)
-        {
-            who.transform.Rotate(0, -90, 0);
-        }
+        //private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
+        //{
+        //    string[] _nameParts = shipName.ToUpper().Split('_');
+        //    string shipType = _nameParts[1];
+        //    switch (shipType)
+        //    {
+        //        case "SCOUT":
+        //            if (side == FriendOrFoe.friend)
+        //                if (nearOrFar == NearOrFar.Near)
+        //                    _friendScouts = shortList.ToArray();
+        //                else _friendFarScouts = shortList.ToArray();
+        //            else if (nearOrFar == NearOrFar.Near)
+        //                _enemyScouts = shortList.ToArray();
+        //            else _enemyFarScouts = shortList.ToArray();
+        //            break;
+        //        case "DESTROYER":
+        //            if (side == FriendOrFoe.friend)
+        //                if (nearOrFar == NearOrFar.Near)
+        //                    _friendDestroyer = shortList.ToArray();
+        //                else _friendFarDestroyer = shortList.ToArray();
+        //            else if (nearOrFar == NearOrFar.Near)
+        //                _enemyDestroyer = shortList.ToArray();
+        //            else _enemyFarDestroyer = shortList.ToArray();
+        //            break;
+        //        case "CRUISER":
+        //        case "LT-CRUISER":
+        //        case "HVY-CRISER":
+        //            if (side == FriendOrFoe.friend)
+        //                if (nearOrFar == NearOrFar.Near)
+        //                    _friendCapital = shortList.ToArray();
+        //                else _friendFarCapital = shortList.ToArray();
+        //            else if (nearOrFar == NearOrFar.Near)
+        //                _enemyCapital = shortList.ToArray();
+        //            else _enemyFarCapital = shortList.ToArray();
+        //            break;
+        //        //case "COLONY":
+        //        //    return ShipType.Colony;
+        //        //case "more ship types here":
+        //        default:
+        //            break;
+        //    }
+        //}
 
         public bool AreWeFriends(GameObject who)
         {
@@ -758,6 +668,7 @@ namespace Assets.Script
             FriendNameArray = _friendNameArray;
             string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
                 "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
+            
             EnemyNameArray = _enemyNameArray;
         }
 
@@ -823,32 +734,7 @@ namespace Assets.Script
             };
             PrefabDitionary = tempPrefabDitionary;
         }
-        public void StarterGalaxyObjects()
-        {
-            #region Instantiate Prefab GameObjects
 
-            //Dictionary<int, GameObject> _starterLocal = new Dictionary<int, GameObject>();
-            //// Dictionary<GameObject, GameObject[]> localShipTargetDictionary = new Dictionary<GameObject, GameObject[]>();
-            ////Dictionary<string, int[]> tempshipDataDictionary = new Dictionary<string, int[]>();
-            //for (int i = 0; i < StartGameObjectNames.Count(); i++)
-            //{
-            //    //GameObject[] resetFriendArray = GetRoeByShipType(_friendNameArray[i], FriendOrFoe.friend, NearOrFar.Near);
-            //    GameObject _tempPrefab = (GameObject)Instantiate(PrefabDitionary[StartGameObjectNames[i]], HomeSystemTrans(StartGameObjectNames[i]), Quaternion.identity);
-
-            //    _tempPrefab.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
-            //    _starterLocal.Add(i, _tempPrefab);
-            //    if (ShipDataDictionary.TryGetValue(StartGameObjectNames[i].ToUpper(), out int[] _result))
-            //    {
-            //        _tempPrefab.GetComponent<Ship>()._shieldsMaxHealth = _result[0];
-            //        _tempPrefab.GetComponent<Ship>()._hullMaxHealth = _result[1];
-            //        _tempPrefab.GetComponent<Ship>()._torpedoDamage = _result[2];
-            //        _tempPrefab.GetComponent<Ship>()._beamDamage = _result[3];
-            //        _tempPrefab.GetComponent<Ship>()._cost = _result[4];
-            //    }
-            //}
-            //CurrentGameObjects = _starterLocal;
-            #endregion
-        }
         #endregion
         public void LoadShipData(string filename)
         {
@@ -893,65 +779,6 @@ namespace Assets.Script
                 //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
             }
             #endregion
-        }
-        public void ParentToAnimation(GameObject ship, GameObject cameraEmpty) // Orders order,
-        {
-            cameraEmpty.layer = ship.layer;
-            cameraEmpty.transform.SetParent(ship.transform, false);
-            if (ship.transform.position.x < 0)
-                {
-                int choseWarp = UnityEngine.Random.Range(0, 3);
-                switch (choseWarp)
-                {
-                    case 0:
-                        animFriend1.layer = ship.layer;
-                        ship.transform.SetParent(animFriend1.transform, true);
-                       // cameraEmpty.transform.SetParent(animFriend1.transform, true);
-                        break;
-                    case 1:
-                        animFriend2.layer = ship.layer;
-                        ship.transform.SetParent(animFriend2.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend2.transform, true);
-                        break;
-                    case 2:
-                        animFriend3.layer = ship.layer;
-                        ship.transform.SetParent(animFriend3.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend3.transform, true);
-                        break;
-                    default:
-                        animFriend1.layer = ship.layer;
-                        ship.transform.SetParent(animFriend1.transform, true);
-                        //cameraEmpty.transform.SetParent(animFriend1.transform, true);
-                        break;
-                }
-            }
-            else
-            {
-                int choseWarp = UnityEngine.Random.Range(0, 3);
-                switch (choseWarp)
-                {
-                    case 0:
-                        animEnemy1.layer = ship.layer;
-                        ship.transform.SetParent(animEnemy1.transform, true);
-                        //cameraEmpty.transform.SetParent(animEnemy1.transform, true);
-                        break;
-                    case 1:
-                        animEnemy2.layer = ship.layer;
-                        ship.transform.SetParent(animEnemy2.transform, true);
-                        //cameraEmpty.transform.SetParent(animEnemy2.transform, true);
-                        break;
-                    case 2:
-                        animEnemy3.layer = ship.layer;
-                        ship.transform.SetParent(animEnemy3.transform, true);
-                       // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
-                        break;
-                    default:
-                        animEnemy1.layer = ship.layer;
-                        ship.transform.SetParent(animEnemy1.transform, true);
-                       // cameraEmpty.transform.SetParent(animEnemy1.transform, true);
-                        break;
-                }
-            }
         }
 
         public void LoadCombatData() //(string filename) // List<sting>

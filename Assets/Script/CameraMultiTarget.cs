@@ -38,7 +38,6 @@ namespace Assets.Script
 		public float _warpInTimer = 5f;
 		private bool _warpingIn = true;
 		private bool _spaceKey = false;
-		private bool _alreadyAutoRotated = false;
 		private bool _firstTimeMouseRotate = true;
 		public bool _normalizeFieldOfView = false;
 		private float _autoRotationTimer = 5f;
@@ -124,7 +123,6 @@ namespace Assets.Script
                 {
 					// autoratation code
 					_firstTimeMouseRotate = true;
-					_alreadyAutoRotated = true;
 					float Rotation = 0.05f;
 
                     if (_rotationDirectionTimer < 2f)
@@ -196,11 +194,11 @@ namespace Assets.Script
 			// ..normalize shipcamera field of view
 			if (_shipCamera.fieldOfView >= _shipCameraFieldOfView + 0.5f || _shipCamera.fieldOfView <= _shipCameraFieldOfView - 0.5f)   //_autoRotationTimer < 1.5f)
 			{
-				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView) //&& !_fieldOfViewOK)
+				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView) 
 				{
 					_shipCamera.fieldOfView += 0.1f;
 				}
-				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView) // && !_fieldOfViewOK)
+				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView) 
 				{
 					_shipCamera.fieldOfView -= 0.08f;
 				}

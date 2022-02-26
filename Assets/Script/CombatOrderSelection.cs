@@ -13,20 +13,27 @@ namespace Assets.Script
         public static Toggle Engage, Rush, Retreat, Formation, ProtectTransports, TargetTransports;
         public List<Toggle> toggleOrderList = new List<Toggle>() { Engage, Rush, Retreat, Formation, ProtectTransports, TargetTransports};
         private Toggle _activeToggle;
+        private Toggle previousToggle;
+        public static Orders order;
 
-
-
+        private void Start()
+        {
+            previousToggle = toggleOrderList[0]; ;
+        }
         private void Update()
         {
+            
             foreach (var toggle in toggleOrderList)
             {
                 if (toggle.isOn)
                 {
                     _activeToggle = toggle;
+                    if (previousToggle != toggle)
+                        ActiveToggle(_activeToggle);
                     break;
                 }
             }
-            ActiveToggle(_activeToggle);
+            previousToggle = _activeToggle;
         }
         public void ActiveToggle(Toggle activeToggleOrder)
         {
@@ -34,34 +41,34 @@ namespace Assets.Script
             switch (activeToggleOrder.name.ToUpper())
             {
                 case "TOGGLE_ENGAGE":
-                    //Engage = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.Engage;
+                    order = Orders.Engage;
                     Debug.Log("Active Engage.");
                     break;
                 case "TOGGLE_RUSH":
                     Debug.Log("Active Rush.");
-                    //Rush = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.Rush;
+                    order = Orders.Rush;
                     break;
                 case "TOGGLE_RETREAT":
                     Debug.Log("Active Retreat.");
-                    //Retreat = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.Retreat;
+                    order = Orders.Retreat;
                     break;
                 case "TOGGLE_FORMATION":
                     Debug.Log("Active Formation.");
-                    //Formation = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.Formation;
+                    order = Orders.Formation;
                     break;
                 case "TOGGLE_PROTECT_TRANSPORTS":
                     Debug.Log("Active Protect Transports.");
-                    //ProtectTransports = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.ProtectTransports;
+                    order = Orders.ProtectTransports;
                     break;
                 case "TOGGLE_TARGET_TRANSPORTS":
                     Debug.Log("Active Target Transports.");
-                    //TargetTransports = _activeToggle;
                     GameManager.Instance._combatOrder = Orders.TargetTransports;
+                    order= Orders.TargetTransports;
                     break;
                 default:
                     break;
