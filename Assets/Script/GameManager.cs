@@ -336,6 +336,7 @@ namespace Assets.Script
 
         void BeginState(State newState)
         {
+
             switch (newState)
             {
                 case State.LOBBY_MENU:
