@@ -5,21 +5,65 @@ using UnityEngine;
 namespace Assets.Script
 {
     public class ZoomCamera : MonoBehaviour
+
     {
-        //public GameManager gameManager;
+        public Camera _shipCamera;
+        public CameraMultiTarget cameraMultiTarget;
+        bool _startZoomerUpdate = false;
+        bool _doneWithWideAngle = false;
+        float _startTimer = 0;
+
         void Update()
         {
-            if (GameManager.Instance._statePasedInit)
+            if (_startZoomerUpdate)
             {
-                if (Input.GetAxis("Mouse ScrollWheel") > 0 && GetComponent<Camera>().fieldOfView > 12)
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView > 20)
+                    _shipCamera.fieldOfView = _shipCamera.fieldOfView - (Time.time - _startTimer) / 5;
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView <= 20)
+                    _doneWithWideAngle = true;
+
+                if (_doneWithWideAngle) // && cameraMultiTarget._rotateAroundTarget)
                 {
-                    GetComponent<Camera>().fieldOfView--;
-                }
-                if (Input.GetAxis("Mouse ScrollWheel") < 0 && GetComponent<Camera>().fieldOfView < 40)
-                {
-                    GetComponent<Camera>().fieldOfView++;
+                    if (Input.mouseScrollDelta == Vector2.zero)
+                        return;
+                    else//GameManager.Instance._statePassedCombatInit)
+                    {
+                        bool turnOffNormalize = false;
+                        if (cameraMultiTarget._normalizeFieldOfView)
+                        {
+                            cameraMultiTarget._normalizeFieldOfView = false;
+                            turnOffNormalize = true;
+                        }
+                        if (Input.mouseScrollDelta.y > 0 && _shipCamera.fieldOfView > 10) //GetAxis("Mouse ScrollWheel") 
+                        {
+                            _shipCamera.fieldOfView--;
+                        }
+                        if (Input.mouseScrollDelta.y < 0 && _shipCamera.fieldOfView < 30) //.GetAxis("Mouse ScrollWheel") < 0 
+                        {
+                            _shipCamera.fieldOfView++;
+                        }
+                        if (turnOffNormalize)
+                        {
+                            cameraMultiTarget._normalizeFieldOfView = true;
+                            turnOffNormalize = false;
+                        }
+
+                    }
                 }
             }
         }
+        public void ZoomIn()
+        {
+            _doneWithWideAngle = false;
+            _startZoomerUpdate = true;
+            _shipCamera.fieldOfView = 60;
+            _startTimer = Time.time;
+        }
+        public void TurnOfZoomerUpdate()
+        {
+            _startZoomerUpdate = false;
+            _doneWithWideAngle = false;
+        }         
+      
     }
 }

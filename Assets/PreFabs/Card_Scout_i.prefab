@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1925599905612047464}
   m_Layer: 14
   m_Name: CARD_SCOUT_I
-  m_TagString: CARD_SCOUT_I
+  m_TagString: CARD_SCOUT_I(CLONE)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,11 +53,12 @@ MonoBehaviour:
   _torpedoDamage: 10
   _beamDamage: 10
   _cost: 0
+  combatAreaOffset: -5000
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
   _layer: 14
-  torpedoPrefab: {fileID: 415201065488554502, guid: 4a8748064f7ffc14386b869a8c85273c, type: 3}
+  torpedoPrefab: {fileID: 7054183224101263012, guid: cfe8470bab9e3224785cf7c17a0cc792, type: 3}
   beamPrefab: {fileID: 4536739393464978480, guid: e80467a06758fb54faf1a973b8d75d29, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
   explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
@@ -107,26 +108,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
-  rotationSpeed: 0
   Friend_0: {fileID: 0}
   Enemy_0: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
-  xFactorFriend: -3500
-  xFactorEnemmy: 4500
-  Friend_Y0_Z0: {fileID: 0}
-  Friend_Y0_Z1: {fileID: 0}
-  Friend_Y0_Z2: {fileID: 0}
-  Friend_Y1_Z0: {fileID: 0}
-  Friend_Y1_Z1: {fileID: 0}
-  Friend_Y1_Z2: {fileID: 0}
-  Enemy_Y0_Z0: {fileID: 0}
-  Enemy_Y0_Z1: {fileID: 0}
-  Enemy_Y0_Z2: {fileID: 0}
-  Enemy_Y1_Z0: {fileID: 0}
-  Enemy_Y1_Z1: {fileID: 0}
-  Enemy_Y1_Z2: {fileID: 0}
+  offsetFriendLeft: -5500
+  offsetFriendRight: 5800
+  offsetEnemyRight: 5500
+  offsetEnemyLeft: -5800
+  animationEmpties:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Borg_Destroyer_i: {fileID: 0}
   Borg_Destroyer_ii: {fileID: 0}
   Borg_Cube_ii: {fileID: 0}
@@ -164,13 +168,30 @@ MonoBehaviour:
   Rom_Cruiser_iii: {fileID: 0}
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
+  Rom_Scout_iii: {fileID: 0}
+  FriendScout_Y0_Z0: {fileID: 0}
+  FriendDestroyer_Y0_Z1: {fileID: 0}
+  FriendCapital_Y0_Z2: {fileID: 0}
+  FriendColony_Y1_Z0: {fileID: 0}
+  Friend_Y1_Z1: {fileID: 0}
+  Friend_Y1_Z2: {fileID: 0}
+  EnemyScout_Y0_Z0: {fileID: 0}
+  EnemyDestroyer_Y0_Z1: {fileID: 0}
+  EnemyCapital_Y0_Z2: {fileID: 0}
+  EnemyColony_Y1_Z0: {fileID: 0}
+  Enemy_Y1_Z1: {fileID: 0}
+  Enemy_Y1_Z2: {fileID: 0}
   friends: 0
   enemies: 0
-  panelMenu: {fileID: 0}
-  panelPlay: {fileID: 0}
-  panelCompleted: {fileID: 0}
+  panelMain_Menu: {fileID: 0}
+  panelGalactic_Play: {fileID: 0}
+  panelGalactic_Completed: {fileID: 0}
+  panelCombat_Menu: {fileID: 0}
+  panelCombat_Play: {fileID: 0}
+  panelCombat_Completed: {fileID: 0}
   panelGameOver: {fileID: 0}
   _statePassedInit: 0
+  _statePassedMain_Init: 0
 --- !u!1001 &7651250298393361884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,6 +246,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6d91feeb8d0c47949b11f49c079c0621, type: 3}
       propertyPath: m_Name
       value: CARD_SCOUT_I
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d91feeb8d0c47949b11f49c079c0621, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6d91feeb8d0c47949b11f49c079c0621, type: 3}
+      propertyPath: m_TagString
+      value: CARD_SCOUT_I(CLONE)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d91feeb8d0c47949b11f49c079c0621, type: 3}

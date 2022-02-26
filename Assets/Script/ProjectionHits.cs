@@ -1,4 +1,6 @@
-﻿namespace Assets.Script
+﻿using System;
+
+namespace Assets.Script
 {
     class ProjectionHits
     {
