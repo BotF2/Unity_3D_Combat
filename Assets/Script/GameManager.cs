@@ -310,10 +310,9 @@ namespace Assets.Script
 
         public void CombatPlayClicked()
         {
-            //if (IsHost) // if (IsLocalPlayer)
-            //{ 
+
             SwitchtState(State.COMBAT_INIT);
-            //}
+
         }
 
         public void SwitchtState(State newState, float delay = 0)
