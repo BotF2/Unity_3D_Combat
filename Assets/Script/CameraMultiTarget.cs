@@ -46,7 +46,7 @@ namespace Assets.Script
 		public float _mouseRotationSpeed = 5.0f;
 		private TurnDirection _turnDirection { get; set; } = TurnDirection.left;
 		private Vector3 _axisOfRotation;
-		public float RotateSmoothTime = 0.1f;
+		public float RotateSmoothTime = 0.01f;
 		private float AngularVelocity = 0.0f;
 		//bool _fieldOfViewOK;
 		#endregion
@@ -124,7 +124,7 @@ namespace Assets.Script
                 {
 					// autoratation code
 					_firstTimeMouseRotate = true;
-					float Rotation = 0.05f;
+					float Rotation = 0.015f;
 
                     if (_rotationDirectionTimer < 2f)
                     {
@@ -197,11 +197,11 @@ namespace Assets.Script
 			{
 				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView) 
 				{
-					_shipCamera.fieldOfView += 0.1f;
+					_shipCamera.fieldOfView += 0.005f;
 				}
 				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView) 
 				{
-					_shipCamera.fieldOfView -= 0.08f;
+					_shipCamera.fieldOfView -= 0.005f;
 				}
 			}
 		}
