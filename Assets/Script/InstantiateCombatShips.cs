@@ -78,7 +78,7 @@ namespace Assets.Script
                         capitalList.Add(preCombatShipNames[i]);
                         break;
                     case "TRANSPORT":
-                    case "COLONY":
+                    case "COLONYSHIP":
                     case "CONSTRUCTION":
                         otherShipsList.Add(preCombatShipNames[i]);
                         break;
@@ -151,7 +151,7 @@ namespace Assets.Script
                                 SetShipCounts(arrayOfNames[1].ToUpper(), _isFriend);
                                 break;
                             case "TRANSPORT":
-                            case "COLONY":
+                            case "COLONYSHIP":
                             case "CONSTRUCTION":
                                 if (_isFriend)
                                     xLocation -= zSeparator;
@@ -235,7 +235,7 @@ namespace Assets.Script
                                 SetShipCounts(arrayOfNames[1].ToUpper(), _isFriend);
                                 break;
                             case "TRANSPORT":
-                            case "COLONY":
+                            case "COLONYSHIP":
                             case "CONSTRUCTION":
                                 if (_isFriend)
                                     xLocation -= zSeparator;
@@ -331,7 +331,7 @@ namespace Assets.Script
                             SetShipCounts(arrayOfNames[1].ToUpper(), _isFriend);
                             break;
                         case "TRANSPORT":
-                        case "COLONY":
+                        case "COLONYSHIP":
                         case "CONSTRUCTION":
                             if (_isFriend)
                                 xLocation += zSeparator;
@@ -405,7 +405,7 @@ namespace Assets.Script
                                 SetShipCounts(arrayOfNames[1].ToUpper(), _isFriend);
                                 break;
                             case "TRANSPORT":
-                            case "COLONY":
+                            case "COLONYSHIP":
                             case "CONSTRUCTION":
                                 if (_isFriend)
                                     xLocation -= zSeparator;
@@ -531,7 +531,7 @@ namespace Assets.Script
                     _CapitalShips++;
                     break;
                 case "TRANSPORT":
-                case "COLONY":
+                case "COLONYSHIP":
                     _UtilityShips++;
                     break;
                 case "ONEMORE":
@@ -625,7 +625,7 @@ namespace Assets.Script
                             cameraEmpty.transform.SetParent(animFriendRushScout.transform, true);
                             break;
                         case "TRANSPORT":
-                        case "COLONY":
+                        case "COLONYSHIP":
                         case "CONSTRUCTION":
                             animFriendRushScout.layer = ship.layer;
                             ship.transform.SetParent(animFriendRushScout.transform, true);
@@ -661,7 +661,7 @@ namespace Assets.Script
                             cameraEmpty.transform.SetParent(animEnemyRushScout.transform, true);
                             break;
                         case "TRANSPORT":
-                        case "COLONY":
+                        case "COLONYSHIP":
                         case "CONSTRUCTION":
                             animEnemyRushScout.layer = ship.layer;
                             ship.transform.SetParent(animEnemyRushScout.transform, true);

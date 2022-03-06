@@ -34,6 +34,7 @@ TagManager:
   - ROM_SCOUT_III(CLONE)
   - CARD_SCOUT_I(CLONE)
   - CARD_SCOUT_I
+  - FED_COLONYSHIP_I(CLONE)
   layers:
   - Default
   - TransparentFX
