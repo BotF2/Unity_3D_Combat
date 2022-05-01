@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4051403268812470202}
   - component: {fileID: 2650581018091406167}
   - component: {fileID: -6779463604558058701}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Kling_Cruiser_ii
   m_TagString: KLING_CRUISER_II(CLONE)
   m_Icon: {fileID: 0}
@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  civilization: 0
+  _civilization: 0
+  _shipType: 0
+  _techLevel: 0
   _shieldsMaxHealth: 50
   _hullMaxHealth: 0
   _torpedoDamage: 33
@@ -57,7 +59,7 @@ MonoBehaviour:
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
-  _layer: 13
+  _layer: 9
   torpedoPrefab: {fileID: 2418217858496453369, guid: 900648a236471344095b2fce24fe8f9f, type: 3}
   beamPrefab: {fileID: 5033631567701610589, guid: 1dfb61c49117ac54eba5d4699c922b19, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
@@ -115,6 +117,8 @@ MonoBehaviour:
   animEnemy1: {fileID: 0}
   animEnemy2: {fileID: 0}
   animEnemy3: {fileID: 0}
+  Friend_0: {fileID: 0}
+  Enemy_0: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
   offsetFriendLeft: -5500
@@ -147,11 +151,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
+  Fed_Colonyship_i: {fileID: 0}
+  Fed_Colonyship_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
+  Kling_Colonyship_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -185,8 +192,7 @@ MonoBehaviour:
   _statePassedLobbyInit: 0
   _statePassedMain_Init: 0
   _statePassedCombatMenu_Init: 0
-  _statePassedCombatInitLeft: 0
-  _statePassedCombatInitRight: 0
+  _statePassedCombatInit: 0
   _statePassedCombatPlay: 0
 --- !u!54 &-6779463604558058701
 Rigidbody:
@@ -215,7 +221,7 @@ GameObject:
   - component: {fileID: 1060504617399540895}
   - component: {fileID: 9074709498910361551}
   - component: {fileID: 2969194719112770880}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: KLING_CRUISER_II
   m_TagString: KLING_CRUISER_II(CLONE)
   m_Icon: {fileID: 0}

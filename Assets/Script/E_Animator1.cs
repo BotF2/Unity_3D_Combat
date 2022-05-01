@@ -10,7 +10,7 @@ namespace Assets.Script
     {
         public Animator anim;
         public AudioSource warpAudioSource_0;
-        public static bool endOfEnemyWarp = false;
+
         void Start()
         {
             anim = GetComponent<Animator>();
@@ -22,11 +22,12 @@ namespace Assets.Script
             {
                 anim.SetBool("EnemyWarp1", true);
                 PlayWarp();
-                //EndOfEnemyWarp();
+                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("E1_allGoodThings"))
+                //{
+                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
+                //    once = 1;
+                //}
             }
-            // lets warp animation run
-            //if (GameManager.Instance._statePassedCombatPlay)
-            //    anim.SetBool("EnemyStop1", true);
         }
 
         public void PlayWarp() // called in animation - warp
@@ -37,9 +38,5 @@ namespace Assets.Script
                 warpAudioSource_0.Play();
             }
         }
-        //public void EndOfEnemyWarp()
-        //{
-        //    endOfEnemyWarp = true; // run on autorotate and spacebar rotate
-        //}
     }
 }

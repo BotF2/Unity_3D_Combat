@@ -10,6 +10,8 @@ namespace Assets.Script
     {
         public Animator anim;
         public AudioSource warpAudioSource_0;
+        //private SetShipLayerByAnimaStat shipLayerSetup;
+        int once = 0;
 
         void Start()
         {
@@ -20,13 +22,16 @@ namespace Assets.Script
         {
             if (GameManager.Instance._statePassedCombatInit)
             {
-                anim.SetBool("EnemyWarp2", true);
-                //PlayWarp();
-            }
+                anim.SetBool("EnemyWarp2", true); // code state turns on warp animation
+                PlayWarp();
+                // how to get animation done to inform code of state????
+                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)).IsName("E2_allGoodThings"))
+                //{
+                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
+                //    once = 1;
+                //}
+            } 
             // lets warp animation run
-            //if (GameManager.Instance._statePassedCombatPlay)
-            //    anim.SetBool("EnemyStop2", true);
-
         }
         public void PlayWarp() // called in animation - warp
         {

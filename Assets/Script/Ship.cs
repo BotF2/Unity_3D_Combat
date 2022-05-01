@@ -13,14 +13,16 @@ namespace Assets.Script
     public class Ship : MonoBehaviour
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
-        public Civilization civilization;
+        public Civilization _civilization;
+        public ShipType _shipType;
+        public TechLevel _techLevel;
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits
         public int _beamDamage;
         public int _cost;
         private bool _isFriend;
-        private Rigidbody rigidbody;
+        private new Rigidbody rigidbody;
         private GameObject shipGameObject;
         private Transform _farTarget;
         private Transform _nearTarget;
@@ -67,24 +69,140 @@ namespace Assets.Script
         //List<Design> shipDesign = new List<Design>();
         //Material _orgMaterial;
         //Renderer _renderer;
+
+
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
+            string[] nameArray = this.name.Split('_');
+            string typeOfShip = nameArray[1];
+
+            switch (typeOfShip.ToUpper())
+            {
+                case "SCOUT":
+                    _shipType = ShipType.Scout;
+                    break;
+                case "DESTROYER":
+                    _shipType = ShipType.Destroyer;
+                    break;
+                case "CURISER":
+                    _shipType = ShipType.Cruiser;
+                    break;
+                case "LTCURISER":
+                    _shipType = ShipType.LtCruiser;
+                    break;
+                case "HVYCURISER":
+                    _shipType = ShipType.HvyCruiser;
+                    break;
+                case "TRANSPORT":
+                    _shipType = ShipType.Transport;
+                    break;
+                case "COLONYSHIP":
+                    _shipType = ShipType.Colonyship;
+                    break;
+                case "ONEMORE":
+                    _shipType = ShipType.OneMore;
+                    break;
+                default:
+                    break;
+            }
+            string civ = nameArray[0];
+            switch (civ.ToUpper())
+            {
+                case "FED":
+                    _civilization = Civilization.FED;
+                    break;
+                case "TERRAN":
+                    _civilization = Civilization.TERRAN;
+                    break;
+                case "ROM":
+                    _civilization = Civilization.ROM;
+                    break;
+                case "KLING":
+                    _civilization = Civilization.KLING;
+                    break;
+                case "CARD":
+                    _civilization = Civilization.CARD;
+                    break;
+                case "DOM":
+                    _civilization = Civilization.DOM;
+                    break;
+                case "BORG":
+                    _civilization = Civilization.BORG;
+                    break;
+                default:
+                    break;
+            }
         }
         void Start()
         {
-              //_whoIAm = MyCivilization(this.name);
+            //_whoIAm = MyCivilization(this.name);
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
             _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-            if (_isFriend)
-               // combatAreaOffset *= -1;
-            //_shields.SetActive(true);
-            //_renderer = GetComponent<Renderer>();
-            //_orgMaterial = _renderer.sharedMaterial;
+            //if (_isFriend)
+                // combatAreaOffset *= -1;
+                //_shields.SetActive(true);
+                //_renderer = GetComponent<Renderer>();
+                //_orgMaterial = _renderer.sharedMaterial;
 
-            shipGameObject = gameObject;
+            //shipGameObject = gameObject;
+            //if (shipGameObject.name.Contains("Scout"))
+            //    _shipType = ShipType.Scout;
+            //string[] nameArray = shipGameObject.name.Split('_');
+            //string typeOfShip = nameArray[1];
+
+            //switch (typeOfShip.ToUpper())
+            //{
+            //    case "SCOUT":
+            //        _shipType = ShipType.Scout;
+            //        break;
+            //    case "DESTROYER":
+            //        _shipType = ShipType.Destroyer;
+            //        break;
+            //    case "CAPITAL":
+            //        _shipType = ShipType.Capital;
+            //        break;
+            //    case "TRANSPORT":
+            //        _shipType = ShipType.Transport;
+            //        break;
+            //    case "COLONYSHIP":
+            //        _shipType = ShipType.Colonyship;
+            //        break;
+            //    case "ONEMORE":
+            //        _shipType = ShipType.OneMore;
+            //        break;
+            //    default:
+            //        break;
+            //}
+            //string civ = nameArray[0];
+            //switch (civ.ToUpper())
+            //{
+            //    case "FED":
+            //        _civilization = Civilization.Fed;
+            //        break;
+            //    case "TERRAN":
+            //        _civilization = Civilization.Terran;
+            //        break;
+            //    case "ROM":
+            //        _civilization = Civilization.Rom;
+            //        break;
+            //    case "KLING":
+            //        _civilization = Civilization.Kling;
+            //        break;
+            //    case "CARD":
+            //        _civilization = Civilization.Card;
+            //        break;
+            //    case "DOM":
+            //        _civilization = Civilization.Dom;
+            //        break;
+            //    case "BORG":
+            //        _civilization = Civilization.Borg;
+            //        break;
+            //    default:
+            //        break;
+            //}
 
         }
         private void Update()

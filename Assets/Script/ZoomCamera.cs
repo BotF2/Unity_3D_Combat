@@ -17,9 +17,9 @@ namespace Assets.Script
         {
             if (_startZoomerUpdate)
             {
-                if (!_doneWithWideAngle && _shipCamera.fieldOfView > 20)
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView > 22)
                     _shipCamera.fieldOfView = _shipCamera.fieldOfView - (Time.time - _startTimer) / 5;
-                if (!_doneWithWideAngle && _shipCamera.fieldOfView <= 20)
+                if (!_doneWithWideAngle && _shipCamera.fieldOfView <= 22)
                     _doneWithWideAngle = true;
 
                 if (_doneWithWideAngle) // && cameraMultiTarget._rotateAroundTarget)

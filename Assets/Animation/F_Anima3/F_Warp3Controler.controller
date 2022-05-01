@@ -17,7 +17,7 @@ AnimatorStateMachine:
     m_Position: {x: -200, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4613244808493019351}
-    m_Position: {x: -500, y: -100, z: 0}
+    m_Position: {x: -490, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -364445576617392861}
     m_Position: {x: 390, y: -100, z: 0}
@@ -27,7 +27,7 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 190, y: -190, z: 0}
-  m_EntryPosition: {x: -760, y: -100, z: 0}
+  m_EntryPosition: {x: -740, y: -100, z: 0}
   m_ExitPosition: {x: -30, y: -190, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4613244808493019351}
@@ -165,7 +165,8 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 2134883730050635378}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -194,13 +195,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: FriendStop3
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -214,6 +215,18 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &2134883730050635378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2613d8923b922245a2e4b1e7f5a37f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &7825392032649995344
 AnimatorState:
   serializedVersion: 6
@@ -221,7 +234,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: StopTest
+  m_Name: Stop_F3
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

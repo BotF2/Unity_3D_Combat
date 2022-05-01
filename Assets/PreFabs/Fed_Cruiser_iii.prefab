@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4286520172123492372}
   - component: {fileID: 3191500322838844849}
   - component: {fileID: 4521624401308703123}
-  m_Layer: 10
-  m_Name: FED_CRUISER_III
+  m_Layer: 9
+  m_Name: Fed_Cruiser_iii
   m_TagString: FED_CRUISER_III(CLONE)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  civilization: 0
+  _civilization: 0
+  _shipType: 0
+  _techLevel: 0
   _shieldsMaxHealth: 66
   _hullMaxHealth: 0
   _torpedoDamage: 40
@@ -57,7 +59,7 @@ MonoBehaviour:
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
-  _layer: 10
+  _layer: 9
   torpedoPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
   beamPrefab: {fileID: 9124248098745324454, guid: be36503a1c8662942ad11e8299bce16f, type: 3}
   shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
@@ -122,6 +124,8 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
+  zoomCamera: {fileID: 0}
+  combatOrderSelection: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
   animFriend2: {fileID: 0}
@@ -129,6 +133,8 @@ MonoBehaviour:
   animEnemy1: {fileID: 0}
   animEnemy2: {fileID: 0}
   animEnemy3: {fileID: 0}
+  Friend_0: {fileID: 0}
+  Enemy_0: {fileID: 0}
   yFactor: 3000
   zFactor: 3500
   offsetFriendLeft: -5500
@@ -161,11 +167,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
+  Fed_Colonyship_i: {fileID: 0}
+  Fed_Colonyship_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
+  Kling_Colonyship_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -198,7 +207,9 @@ MonoBehaviour:
   panelGameOver: {fileID: 0}
   _statePassedLobbyInit: 0
   _statePassedMain_Init: 0
+  _statePassedCombatMenu_Init: 0
   _statePassedCombatInit: 0
+  _statePassedCombatPlay: 0
 --- !u!1001 &4102102167558064397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,7 +271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 817867230366a404cad9846c095aa144, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 817867230366a404cad9846c095aa144, type: 3}

@@ -6,20 +6,20 @@ using System.IO;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
-using MLAPI;
+//using MLAPI;
 using UnityEngine.UI;
 //using UnityEngine.UI;
 
 namespace Assets.Script
 {
     public enum Civilization    {
-        Fed,
-        Terran,
-        Rom,
-        Kling,
-        Card,
-        Dom,
-        Borg
+        FED,
+        TERRAN,
+        ROM,
+        KLING,
+        CARD,
+        DOM,
+        BORG
     }
     public enum HomeSystem
     {
@@ -48,9 +48,12 @@ namespace Assets.Script
     {
         Scout,
         Destroyer,
-        Capital,
+        Cruiser,
+        LtCruiser,
+        HvyCruiser,
         Transport,
-        Colony,
+        Colonyship,
+        Construction,
         OneMore
     }
     public enum Orders
@@ -62,9 +65,10 @@ namespace Assets.Script
         ProtectTransports,
         TargetTransports
     }
-    public class GameManager : NetworkBehaviour
+    public class GameManager : MonoBehaviour
     {
         public bool _weAreFriend = false;
+        public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public static bool _isSinglePlayer = true;
         public Civilization _localPlayer;
         public Civilization _hostPlayer;
@@ -136,12 +140,15 @@ namespace Assets.Script
         public GameObject Fed_Scout_ii;
         public GameObject Fed_Scout_iii;
         public GameObject Fed_Scout_iv;
+        public GameObject Fed_Colonyship_i;
+        public GameObject Fed_Colonyship_ii;
 
         public GameObject Kling_Cruiser_ii;
         public GameObject Kling_Destroyer_i;
         public GameObject Kling_Destroyer_ii;
         public GameObject Kling_Scout_i;
         public GameObject Kling_Scout_ii;
+        public GameObject Kling_Colonyship_i;
 
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
@@ -264,7 +271,7 @@ namespace Assets.Script
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
             _techLevel = TechLevel.Early;
-            _localPlayer = Civilization.Fed;
+            _localPlayer = Civilization.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
 
@@ -310,10 +317,9 @@ namespace Assets.Script
 
         public void CombatPlayClicked()
         {
-            //if (IsHost) // if (IsLocalPlayer)
-            //{ 
+
             SwitchtState(State.COMBAT_INIT);
-            //}
+
         }
 
         public void SwitchtState(State newState, float delay = 0)
@@ -336,6 +342,7 @@ namespace Assets.Script
 
         void BeginState(State newState)
         {
+
             switch (newState)
             {
                 case State.LOBBY_MENU:
@@ -354,7 +361,7 @@ namespace Assets.Script
                         case false:
                             break;
                         default:
-                            break;
+                            //break;
                     }
                     break;
                 case State.MAIN_MENU:
@@ -376,19 +383,19 @@ namespace Assets.Script
                     }
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
-                        case Civilization.Fed: // do something about multiplayer and civs here??
+                        case Civilization.FED: // do something about multiplayer and civs here??
                             break;
-                        case Civilization.Terran:
+                        case Civilization.TERRAN:
                             break;
-                        case Civilization.Rom:
+                        case Civilization.ROM:
                             break;
-                        case Civilization.Kling:
+                        case Civilization.KLING:
                             break;
-                        case Civilization.Card:
+                        case Civilization.CARD:
                             break;
-                        case Civilization.Dom:
+                        case Civilization.DOM:
                             break;
-                        case Civilization.Borg:
+                        case Civilization.BORG:
                             break;
                         default:
                             break;
@@ -413,7 +420,8 @@ namespace Assets.Script
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
                     break;
-                case State.COMBAT_INIT:                 
+                case State.COMBAT_INIT:
+                    //_combatWarpIn = true; // turn false again in E_animator3 call to GameManager WarpInOver()
                     _statePassedCombatMenu_Init = true;
                     actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
                     instantiateCombatShips.SetCombatOrder(_combatOrder);
@@ -431,6 +439,7 @@ namespace Assets.Script
                     _statePassedCombatPlay = true; 
                     break;
                 case State.COMBAT_COMPLETED:
+                    _warpingInIsOver = false;
                     // panelCombat_Play.SetActive(true);
                     panelCombat_Completed.SetActive(true);
                     if (false)// requirments for game over here
@@ -548,11 +557,22 @@ namespace Assets.Script
         }
         public void SetDummyCameraTargets()
          {
-            List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0};
+            List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0}; // dummies
            
-            var multiTargets = instantiateCombatShips.GetCameraTargets(); // array for CameraMultiTarget
+            List<GameObject> multiTargets = instantiateCombatShips.GetCameraTargets(); // get list - array for CameraMultiTarget
+            List<GameObject> survivingTargets = new List<GameObject>();
             if (multiTargets.Count() > 0)
-                _cameraTargets = multiTargets;
+            {
+                for (int i = 0; i < multiTargets.Count; i++)
+                {
+                    if (multiTargets[i] != null)
+                    {
+                        survivingTargets.Add(multiTargets[i]);
+                    }
+                }
+                
+                _cameraTargets.AddRange(survivingTargets);
+            }
           
             cameraMultiTarget.SetTargets(_cameraTargets.ToArray()); // start multiCamera - main camers before warp in of ships
         }
@@ -563,6 +583,29 @@ namespace Assets.Script
         public void ProvideEnemyCombatShips(Dictionary<int, GameObject> combatEnemyObjects)
         {
             EnemyShips = combatEnemyObjects;
+        }
+        public void WarpingInCompleted()
+        {
+            _warpingInIsOver = true;
+        }
+        public void SetShipLayer()
+        {
+            Dictionary<int, GameObject> allDaShipObjectInCombat = new Dictionary<int, GameObject>();
+            allDaShipObjectInCombat = FriendShips;
+            var _keys = EnemyShips.Keys.ToArray();
+            var _shipObjects = EnemyShips.Values.ToArray();
+            //FriendShips.
+            for (int i = 0; i < EnemyShips.Count; i++)
+            {
+                allDaShipObjectInCombat.Add(_keys[i] + FriendShips.Count +1, _shipObjects[i]);
+            }
+            
+            foreach (var shipGameObject in allDaShipObjectInCombat.Values)
+            {
+                var arrayOfName = shipGameObject.name.ToUpper().Split('_');
+                shipGameObject.layer = SetShipLayer(arrayOfName[0]);
+                
+            } 
         }
 
         public int SetShipLayer(string civ)
@@ -664,10 +707,11 @@ namespace Assets.Script
         }
         public void LoadFriendAndEnemyNames()
         {
-            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II", "FED_DESTROYER_I", "FED_SCOUT_II" };
+            string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II",
+                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_COLONYSHIP_I" };
             FriendNameArray = _friendNameArray;
-            string[] _enemyNameArray = new string[] { "KLING_DESTROYER_I", "CARD_SCOUT_I", "KLING_CRUISER_II", "KLING_SCOUT_II",
-                "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III" }; //"KLING_DESTROYER_I",
+            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_COLONYSHIP_I","CARD_SCOUT_I",
+                "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III"}; //"KLING_DESTROYER_I",
             
             EnemyNameArray = _enemyNameArray;
         }
@@ -725,9 +769,10 @@ namespace Assets.Script
             {
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
-                { "FED_CRUISER_III", Fed_Cruiser_iii }, //{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+                { "FED_CRUISER_III", Fed_Cruiser_iii }, {"FED_SCOUT_IV", Fed_Scout_iv},//{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
+                { "FED_COLONYSHIP_I", Fed_Colonyship_i }, 
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
-                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii },
+                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii }, {"KLING_COLONYSHIP_I", Kling_Colonyship_i},
                 { "CARD_SCOUT_I", Card_Scout_i },
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
@@ -780,7 +825,7 @@ namespace Assets.Script
             }
             #endregion
         }
-
+        #region Old Load Combat Data
         public void LoadCombatData() //(string filename) // List<sting>
         {
             //// ToDo: relocate to combat class
@@ -1044,6 +1089,7 @@ namespace Assets.Script
 
             ////StaticStuff.LoadStaticEnemyDictionary(EnemyShips);   
         }
+        #endregion
         public Dictionary<GameObject, GameObject[]> GetShipTravelTargets()
         {
             return _shipTargetDictionary;

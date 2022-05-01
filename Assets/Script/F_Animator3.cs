@@ -10,12 +10,9 @@ namespace Assets.Script
     {
         public Animator anim;
         public AudioSource warpAudioSource_0;
-        public static bool endOfFriendWarp = false;
+       // private SetShipLayerByAnimaStat shipLayerSetup;
+        int once = 0;
 
-        private void Awake()
-        {
-
-        }
         // Start is called before the first frame update
         void Start()
         {
@@ -28,10 +25,12 @@ namespace Assets.Script
             {
                 anim.SetBool("FriendWarp3", true);// lets warp animation run
                 PlayWarp();
-               // EndOfFiendWarp();
+                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("F3_allGoodThings"))
+                //{
+                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
+                //    once++;
+                //}
             }
-            //if (GameManager.Instance._statePassedCombatPlay)
-            //    anim.SetBool("FriendStop3", true);
         }
 
         public void PlayWarp() // called in animation - warp
@@ -42,10 +41,5 @@ namespace Assets.Script
                 warpAudioSource_0.Play();
             }
         }
-        //public void EndOfFiendWarp()
-        //{
-        //    endOfFriendWarp = true; // run on autorotate and spacebar rotate
-        //   // GameManager.Instance.TurnOnRightSide();
-        //}
     }
 }

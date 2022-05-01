@@ -10,12 +10,9 @@ namespace Assets.Script
     {
         // must name class and file the same
         public Animator anim;
-        // public bool _doingInit_0;
-       // public bool FriendWarp2;
         public AudioSource warpAudioSource_0;
-        //private Rigidbody rigidbody;
-        //bool allStop = false;
-        //float stopTimer = 0;
+       // private SetShipLayerByAnimaStat shipLayerSetup;
+        int once = 0;
   
         void Start()
         {
@@ -28,7 +25,12 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("FriendWarp2", true);// lets warp animation run
-               // PlayWarp();
+                PlayWarp();
+                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("F2_allGoodThings"))
+                //{
+                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
+                //    once = 1;
+                //}
             }
             //if (GameManager.Instance._statePassedCombatPlay)
             //    anim.SetBool("FriendStop2", true);
