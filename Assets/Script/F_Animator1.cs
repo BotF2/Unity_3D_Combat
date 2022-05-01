@@ -10,29 +10,34 @@ namespace Assets.Script
     {
         // must name class and file the same
         public Animator anim;
-        // public bool _doingInit_0;
-        //public bool FriendWarp1;
         public AudioSource warpAudioSource_0;
-        //private Rigidbody rigidbody;
-        //bool allStop = false;
-        //float stopTimer = 0;
+        //private SetShipLayerByAnimaStat shipLayerSetup;
+        int once = 0;
+
 
         void Start()
         {
             anim = GetComponent<Animator>();
+            //layer = new SetShipLayer();
         }
 
         // Update is called once per frame  
         void Update()
         {
+
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("FriendWarp1", true);
-               // PlayWarp();
+                PlayWarp();
+                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("F1_allGoodThings"))
+                //{
+                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
+                //    once = 1;
+                //}
+
             }
             // lets warp animation run
-            //if (GameManager.Instance._statePassedCombatPlay)
-            //    anim.SetBool("FriendStop1", true);
+
         }
 
         public void PlayWarp() // called in animation - warps by event to function PlayWarp()

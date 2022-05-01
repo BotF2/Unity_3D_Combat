@@ -8,16 +8,17 @@ namespace Assets.Script
    
     public class E_Animator3 : MonoBehaviour  
     {
-        // must name class and file the same
+       // public bool _warpingInOver = false;
         public Animator anim;
-        // public bool _doingInit_0;
-        //public bool EnemyWarp3;
         public AudioSource warpAudioSource_0;
-       // public F_Animator3 _friendAnima3;
+        //private SetShipLayerByAnimaStat shipLayerSetup;
+        //private CameraMultiTarget cameraMultiTarget;
+        int once = 0;
 
         void Start()
         {
             anim = GetComponent<Animator>();
+           // cameraMultiTarget = GetComponent<CameraMultiTarget>();
         }
 
         // Update is called once per frame  
@@ -26,11 +27,9 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("EnemyWarp3", true);
-               //PlayWarp();
+                PlayWarp();
             }
             // lets warp animation run
-            //if (GameManager.Instance._statePassedCombatPlay)
-            //    anim.SetBool("EnemyStop3", true);
         }
 
         public void PlayWarp() // called in animation - warp
@@ -40,6 +39,11 @@ namespace Assets.Script
                 warpAudioSource_0.volume = 1f;
                 warpAudioSource_0.Play();
             }
+        }
+        public void SetShipLayers()
+        {
+            GameManager.Instance.SetShipLayer();
+            GameManager.Instance.WarpingInCompleted();
         }
     }
 }

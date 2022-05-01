@@ -27,17 +27,15 @@ namespace Assets.Script
 		private Camera _camera;
 		public Camera _shipCamera;
 		private float _shipCameraFieldOfView;
+		private float _shipCameraFOV_counter = 0;
 		public GameObject _cameraHolder;
 		private GameObject[] _targets = new GameObject[0];
 		private DebugProjection _debugProjection;
 
 		#region added to cameraMuliTararget
-		public F_Animator3 f_animator3;
-		public E_Animator1 e_animator1;
 		private Vector3 _cameraOffSet;
-		public float _warpInTimer = 5f;
-		private bool _warpingIn = true;
-		private bool _spaceKey = false;
+        private bool _warpingIn = true;
+        private bool _spaceKey = false;
 		private bool _firstTimeMouseRotate = true;
 		public bool _normalizeFieldOfView = false;
 		private float _autoRotationTimer = 5f;
@@ -46,9 +44,9 @@ namespace Assets.Script
 		public float _mouseRotationSpeed = 5.0f;
 		private TurnDirection _turnDirection { get; set; } = TurnDirection.left;
 		private Vector3 _axisOfRotation;
-		public float RotateSmoothTime = 0.01f;
+		public float RotateSmoothTime = 0.001f;
 		private float AngularVelocity = 0.0f;
-		//bool _fieldOfViewOK;
+		//int counter = 0;
 		#endregion
 
 		enum DebugProjection { DISABLE, IDENTITY, ROTATED }
@@ -59,47 +57,71 @@ namespace Assets.Script
 			_targets = targets;
         }
 
-        private void Awake()
+		private void Awake()
 		{
 			_camera = Camera.main; // give gameObject(camera) and unity Camera.main the same position and rotation at end of LateUpdate		
-            //_camera = gameObject.GetComponent<Camera>(); // not working
-            _debugProjection = DebugProjection.ROTATED;
+			_debugProjection = DebugProjection.ROTATED;
 			_shipCameraFieldOfView = _shipCamera.fieldOfView;
 		}
 
         private void LateUpdate()
 		{
 
-            if (_targets.Length == 0)
+			if (_targets.Length == 0)
+			{
+				return;
+			}
+			else
+			{
+				List<GameObject> survivingTargets = new List<GameObject>();
+
+				for (int i = 0; i < _targets.Count(); i++)
+				{
+					if (_targets[i] != null)
+					{
+						survivingTargets.Add(_targets[i]);
+					}
+				}
+
+				_targets = survivingTargets.ToArray(); // update target to surviving ships
+				
+			}
+
+			if (GameManager.Instance._warpingInIsOver)
+				_warpingIn = false;
+
+            if (_warpingIn)
             {
-                return;
+                var _delatFOV = _shipCameraFOV_counter + 0.05f;
+                _shipCameraFOV_counter = _shipCameraFOV_counter + 0.05f;
+                _shipCamera.fieldOfView = 60f - _delatFOV;
             }
-			var targetPositionAndRotation = TargetPositionAndRotation(_targets);
+
+            var targetPositionAndRotation = TargetPositionAndRotation(_targets);
 
 			if (Input.GetKey("space") && !_warpingIn)
 			{
 				_spaceKey = true;
 				_autoRotationTimer = 5.0f;
 			}
-			else if(!_warpingIn)
-            {
-				_spaceKey = false;
-            }
-			Vector3 velocity = Vector3.zero;
-
-			if (_warpingIn || !_spaceKey)
+			else if (!_warpingIn)
 			{
-				_normalizeFieldOfView = true;
+				_spaceKey = false;
+			}
+			Vector3 velocity = Vector3.zero;
+			gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
+			if (!_spaceKey)
+			{
 				if (_autoRotationTimer > 0)
 				{
-					if ( _autoRotationTimer < 4.5f)
-					{
-						NormalizFieldOfView();		
+                    if (_autoRotationTimer < 4.5f)
+                    {
+                        NormalizFieldOfView();
                     }
-					
-					_cameraOffSet = gameObject.transform.position - _cameraTarget;
-					gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
 
+                    _cameraOffSet = gameObject.transform.position - _cameraTarget;
+					//gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, targetPositionAndRotation.Position, ref velocity, MoveSmoothTime);
+					
 					var target_rot = Quaternion.LookRotation(_cameraTarget - gameObject.transform.position); //_cameraTarget.transform.position
 					var delta = Quaternion.Angle(gameObject.transform.rotation, target_rot);
 					if (delta > 0.0f)
@@ -108,10 +130,8 @@ namespace Assets.Script
 						t = 1f - t / delta;
 						gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, target_rot, t);
 					}
-					if (_warpInTimer <= 0.0f)
-						_warpingIn = false;
-					else _warpInTimer -= Time.deltaTime;
-					if (!_warpingIn && !_spaceKey)
+
+                    if (!_warpingIn && !_spaceKey)
 					{
 						_autoRotationTimer -= Time.deltaTime;
 						if (_autoRotationTimer <= 0.0f)
@@ -120,47 +140,46 @@ namespace Assets.Script
 							else _turnDirection = TurnDirection.up;
 					}
 				}
-                else
-                {
+				else
+				{
 					// autoratation code
 					_firstTimeMouseRotate = true;
 					float Rotation = 0.015f;
 
-                    if (_rotationDirectionTimer < 2f)
-                    {
+					if (_rotationDirectionTimer < 2f)
+					{
 						NormalizFieldOfView();
 					}
-                    if (_rotationDirectionTimer <= 0)
-                    {
-                        _rotationDirectionTimer = 2f;
-                        _autoRotationTimer = 5f;
-                    }
-                    switch (_turnDirection)
-                    {
-                        case TurnDirection.up:
+					if (_rotationDirectionTimer <= 0)
+					{
+						_rotationDirectionTimer = 2f;
+						_autoRotationTimer = 5f;
+					}
+					switch (_turnDirection)
+					{
+						case TurnDirection.up:
 							_axisOfRotation = Vector3.right;
-                            break;
-                        case TurnDirection.right:
+							break;
+						case TurnDirection.right:
 							_axisOfRotation = Vector3.down;
-                            break;
-                        case TurnDirection.down:
+							break;
+						case TurnDirection.down:
 							_axisOfRotation = Vector3.left;
-                            break;
-                        case TurnDirection.left:
+							break;
+						case TurnDirection.left:
 							_axisOfRotation = Vector3.up;
-                            break;
-                        default:
-                            break;
-                    }
-                    AutoRotation(Rotation, _axisOfRotation);
-                    _rotationDirectionTimer -= Time.deltaTime;
-					gameObject.transform.LookAt(_cameraTarget);					
+							break;
+						default:
+							break;
+					}
+					AutoRotation(Rotation, _axisOfRotation);
+					_rotationDirectionTimer -= Time.deltaTime;
+					gameObject.transform.LookAt(_cameraTarget);
 				}
 			}
-			else
+			else 
 			{
 				// this 'else' is spacebar key is down so rotate with mouse
-				_normalizeFieldOfView = false;
 				Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * _mouseRotationSpeed, Vector3.up);
 				_cameraOffSet = cameraTurnAngleX * _cameraOffSet;
 				Vector3 newPositionX = _cameraTarget + _cameraOffSet;
@@ -174,15 +193,17 @@ namespace Assets.Script
 				{
 					_autoRotationTimer = 5f;
 					_firstTimeMouseRotate = false;
-                }
+				}
 			}
+
 			_camera.transform.position = gameObject.transform.position;
 			_camera.transform.rotation = gameObject.transform.rotation;
+			//_camera.fieldOfView = _shipCameraFieldOfView;
+
 		}
 
-        // Added method for from Rotation around target
-        #region Auto Rotation around average target
-        private void AutoRotation(float Rotating, Vector3 direction)
+		#region Auto Rotation around average target
+		private void AutoRotation(float Rotating, Vector3 direction)
 		{
 			Quaternion cameraTurnAngleX = Quaternion.AngleAxis(Rotating * _mouseRotationSpeed, direction);
             _cameraOffSet = cameraTurnAngleX * _cameraOffSet;
@@ -195,16 +216,19 @@ namespace Assets.Script
 			// ..normalize shipcamera field of view
 			if (_shipCamera.fieldOfView >= _shipCameraFieldOfView + 0.5f || _shipCamera.fieldOfView <= _shipCameraFieldOfView - 0.5f)   //_autoRotationTimer < 1.5f)
 			{
-				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView) 
+				if (_shipCamera.fieldOfView <= _shipCameraFieldOfView)
 				{
 					_shipCamera.fieldOfView += 0.005f;
 				}
-				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView) 
+				else if (_shipCamera.fieldOfView >= _shipCameraFieldOfView)
 				{
 					_shipCamera.fieldOfView -= 0.005f;
 				}
-			}
+            }
+			_shipCameraFieldOfView = _shipCamera.fieldOfView;
+
 		}
+
         PositionAndRotation TargetPositionAndRotation(GameObject[] targets)
 		{
 			_cameraTarget = calculateCentroid(targets);
@@ -349,6 +373,10 @@ namespace Assets.Script
 
 			return centroid;
 		}
+		//public void WarpIsOver()
+  //      {
+		//	_warpingIn = false;
+  //      }
 	}
 }
 
