@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.Mathematics;
+
 using UnityEngine;
 //using MLAPI;
 using UnityEngine.UI;
@@ -220,15 +220,15 @@ namespace Assets.Script
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
-        public GameObject panelLobby_Menu;
-        // public GameObject panelLobby_Init; // no init gameobjects
-        public GameObject panelMain_Menu;
-        public GameObject panelGalactic_Play;
-        public GameObject panelGalactic_Completed;
-        public GameObject panelCombat_Menu;
-        public GameObject panelCombat_Play;
-        public GameObject panelCombat_Completed;
-        public GameObject panelGameOver;
+        public GameObject Canvas;
+        private GameObject PanelLobby_Menu;
+        private GameObject PanelMain_Menu;
+        private GameObject PanelGalactic_Play;
+        private GameObject PanelGalactic_Completed;
+        private GameObject PanelCombat_Menu;
+        private GameObject PanelCombat_Play;
+        private GameObject PanelCombat_Completed;
+        private GameObject PanelGameOver;
         //public GameObject[] levels;
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
@@ -252,15 +252,35 @@ namespace Assets.Script
         public bool _statePassedCombatMenu_Init = false;
         public bool _statePassedCombatInit = false; // COMBAT INIT
         public bool _statePassedCombatPlay = false;
+        //private GameObject canvas;
 
         private void Awake()
         {
             Instance = this; // static reference to single GameManager
+            Canvas = GameObject.Find("Canvas");
+            PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
+            PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
+            PanelGalactic_Play = Canvas.transform.Find("PanelGalactic_Play").gameObject;
+            PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
+            PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
+            PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
+            PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
+            PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
         }
 
 
         void Start()
         {
+            //Canvas = GameObject.Find("Canvas");
+            //PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
+            //PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
+            //PanelGalactic_Play = Canvas.transform.Find("PanelGalactic_Play").gameObject;
+            //PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
+            //PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
+            //PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
+            //PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
+            //PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+   
             SwitchtState(State.LOBBY_MENU);
             if (SaveManager.hasLoaded)
             {
@@ -346,25 +366,26 @@ namespace Assets.Script
             switch (newState)
             {
                 case State.LOBBY_MENU:
-                    panelMain_Menu.SetActive(false); // turn off if returning to lobby
-                    panelLobby_Menu.SetActive(true);
+                    PanelMain_Menu.SetActive(false); // turn off if returning to lobby
+                    PanelLobby_Menu.SetActive(true); // Lobby first
 
                     break;
                 case State.LOBBY_INIT:
-                    panelMain_Menu.SetActive(true);
+                    //panelMain_Menu.SetActive(true);
                     SwitchtState(State.MAIN_MENU);
                     _statePassedLobbyInit = true;
                     switch (_isSinglePlayer) // we set this bool in the singlePlayerLobby and multipPlayerLobby buttons above so do we need this for something else??
                     {
-                        case true: //Do something here??
+                        case true: 
                             break;
-                        case false:
+                        case false: //Do something here, start multiplayer?
                             break;
                         default:
                             //break;
                     }
                     break;
                 case State.MAIN_MENU:
+                    PanelMain_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
                     switch (_techLevel) // is set in TechSelection.cs for GameManager._techLevel
@@ -400,8 +421,8 @@ namespace Assets.Script
                         default:
                             break;
                     }
-                    panelMain_Menu.SetActive(false);
-                    panelGalactic_Play.SetActive(true);
+                    PanelMain_Menu.SetActive(false);
+                    PanelGalactic_Play.SetActive(true);
                     _statePassedMain_Init = true;
                     SwitchtState(State.GALACTIC_PLAY);
                     break;
@@ -409,13 +430,13 @@ namespace Assets.Script
                     _statePassedMain_Init = true;
                     break;
                 case State.GALACTIC_COMPLETED:
-                    panelGalactic_Play.SetActive(false);
-                    panelCombat_Menu.SetActive(true);
+                    PanelGalactic_Play.SetActive(false);
+                    PanelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
                     SwitchtState(State.COMBAT_MENU);
                     break;
                 case State.COMBAT_MENU:
-                    panelCombat_Menu.SetActive(true);
+                    PanelCombat_Menu.SetActive(true);
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
@@ -428,11 +449,11 @@ namespace Assets.Script
                     instantiateCombatShips.PreCombatSetup(FriendNameArray, true);
                     instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
                     _statePassedCombatInit = true;
-                    SetDummyCameraTargets();
+                    SetCameraTargets();
                     zoomCamera.ZoomIn(); 
-                    panelCombat_Menu.SetActive(false);
+                    PanelCombat_Menu.SetActive(false);
                     
-                    panelCombat_Play.SetActive(true);
+                    PanelCombat_Play.SetActive(true);
                     SwitchtState(State.COMBAT_PLAY);
                     break;
                 case State.COMBAT_PLAY:
@@ -441,7 +462,7 @@ namespace Assets.Script
                 case State.COMBAT_COMPLETED:
                     _warpingInIsOver = false;
                     // panelCombat_Play.SetActive(true);
-                    panelCombat_Completed.SetActive(true);
+                    PanelCombat_Completed.SetActive(true);
                     if (false)// requirments for game over here
                         SwitchtState(State.GAMEOVER);
                     else
@@ -457,7 +478,7 @@ namespace Assets.Script
                 //    SwitchtState(State.COMBAT_PLAY);
                 //    break;
                 case State.GAMEOVER:
-                    panelGameOver.SetActive(true);                  
+                    PanelGameOver.SetActive(true);                  
                     break;
                 default:
                     break;
@@ -515,47 +536,47 @@ namespace Assets.Script
             switch (_state)
             {
                 case State.LOBBY_MENU:
-                    panelLobby_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(false);
                     break;
                 case State.LOBBY_INIT: // no init panles to turn off
                     break;
                 case State.MAIN_MENU:
-                    panelMain_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
                     break;
                 case State.MAIN_INIT:
                     break;
                 case State.GALACTIC_PLAY:
-                    panelGalactic_Play.SetActive(false);
+                    PanelGalactic_Play.SetActive(false);
                     break;
                 case State.GALACTIC_COMPLETED:
-                    panelGalactic_Play.SetActive(false);
-                    panelGalactic_Completed.SetActive(false);
+                    PanelGalactic_Play.SetActive(false);
+                    PanelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_MENU:
                     // panelGalactic_Play.SetActive(false);
-                    panelCombat_Menu.SetActive(false);
+                    PanelCombat_Menu.SetActive(false);
                     break;
                 case State.COMBAT_INIT:
-                    panelCombat_Menu.SetActive(false);
+                    PanelCombat_Menu.SetActive(false);
                     // panelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_PLAY:
-                    panelCombat_Play.SetActive(false);
+                    PanelCombat_Play.SetActive(false);
                     break;
                 case State.COMBAT_COMPLETED:
-                    panelCombat_Completed.SetActive(false);
+                    PanelCombat_Completed.SetActive(false);
                     break;
                 //case State.LOADNEXT:
                 //    break;
                 case State.GAMEOVER:
                     // panelCombat_Play.SetActive(false); // ToDo: get Combat to return to Galactic on Combat_Completed
-                    panelGameOver.SetActive(false);
+                    PanelGameOver.SetActive(false);
                     break;
                 default:
                     break;
             }
         }
-        public void SetDummyCameraTargets()
+        public void SetCameraTargets()
          {
             List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0}; // dummies
            

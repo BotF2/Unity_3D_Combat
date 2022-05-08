@@ -285,6 +285,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -293,12 +294,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: -1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -2200,6 +2201,94 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      explosions-sprite_8: 5796904078439031889
+      explosions-sprite_62: -7714616760565665821
+      explosions-sprite_36: 4437932955636626728
+      explosions-sprite_80: 4023500857967004027
+      explosions-sprite_16: 8979577061988009523
+      explosions-sprite_33: 5615107412930222681
+      explosions-sprite_47: 3821470142914010439
+      explosions-sprite_2: 8090484271219828464
+      explosions-sprite_1: -8234495283844130016
+      explosions-sprite_49: 4430299512529716294
+      explosions-sprite_40: -1895412513457845729
+      explosions-sprite_68: 7335348704571512720
+      explosions-sprite_13: 2876642704910360632
+      explosions-sprite_53: 2812014430961980281
+      explosions-sprite_0: -8531132134111716538
+      explosions-sprite_11: -67484198322972514
+      explosions-sprite_15: 518272534641206340
+      explosions-sprite_56: 7279189103345086296
+      explosions-sprite_52: -6868232655262438571
+      explosions-sprite_54: 8931357973670983805
+      explosions-sprite_83: 3478540650576766385
+      explosions-sprite_37: 6502290325783360970
+      explosions-sprite_17: -7920489923093183605
+      explosions-sprite_20: 8265700282090220887
+      explosions-sprite_42: -2764711725825589702
+      explosions-sprite_44: -6701727476614767982
+      explosions-sprite_50: 3469547548715377951
+      explosions-sprite_10: 3525338948990865103
+      explosions-sprite_18: 4781431590844968392
+      explosions-sprite_3: 1247040465292902464
+      explosions-sprite_25: -596461247821428397
+      explosions-sprite_35: 1066457678456034607
+      explosions-sprite_14: 6616863734487176454
+      explosions-sprite_86: 3361466735543420428
+      explosions-sprite_63: 5002693276902924787
+      explosions-sprite_26: -47247836163357866
+      explosions-sprite_39: -5977278900746209570
+      explosions-sprite_85: 8508187569454628614
+      explosions-sprite_69: -6600106663341952270
+      explosions-sprite_73: 7922690032351455931
+      explosions-sprite_21: 2367241779845519316
+      explosions-sprite_65: -6546925451784730861
+      explosions-sprite_5: -3863190094384354339
+      explosions-sprite_57: 8579638895258482156
+      explosions-sprite_51: 6704233062470353236
+      explosions-sprite_71: 8418658947563930072
+      explosions-sprite_75: -7344937158020004477
+      explosions-sprite_59: -3840396236152235135
+      explosions-sprite_74: 3783384880580872781
+      explosions-sprite_30: 8790791265222158096
+      explosions-sprite_12: -3371151898697092709
+      explosions-sprite_64: -720922390694866153
+      explosions-sprite_66: 57549791536122120
+      explosions-sprite_84: 5041609405010233329
+      explosions-sprite_72: 2950689562293572733
+      explosions-sprite_43: 283842393555319427
+      explosions-sprite_70: 8018922491514346711
+      explosions-sprite_38: 6795706756571104603
+      explosions-sprite_6: 6041652257913597911
+      explosions-sprite_45: -1720310715186252457
+      explosions-sprite_34: 1272718916641591510
+      explosions-sprite_7: -386605592169213844
+      explosions-sprite_55: -1453154026442545923
+      explosions-sprite_46: 5713037203087411791
+      explosions-sprite_9: -3138016627840691039
+      explosions-sprite_4: -2764736098770773575
+      explosions-sprite_61: -8196372126083403110
+      explosions-sprite_23: -6795127493800078754
+      explosions-sprite_22: -1230479984932893230
+      explosions-sprite_24: -4446145284974208820
+      explosions-sprite_77: 2942846471986994480
+      explosions-sprite_82: 8346759827283542724
+      explosions-sprite_60: -3714084776330347884
+      explosions-sprite_81: 6496384204127641992
+      explosions-sprite_27: -3354103464219011718
+      explosions-sprite_19: -1529685868703153805
+      explosions-sprite_58: 5852228823870516905
+      explosions-sprite_29: 8281828712211890049
+      explosions-sprite_41: -5534967804580014993
+      explosions-sprite_67: 8341070510547100537
+      explosions-sprite_76: 5011424731421945580
+      explosions-sprite_79: 6588040519943988583
+      explosions-sprite_28: 2760437253812556985
+      explosions-sprite_31: -2142269335777098799
+      explosions-sprite_32: 605385520254020394
+      explosions-sprite_78: -6533169875292274940
+      explosions-sprite_48: 341724300718528888
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

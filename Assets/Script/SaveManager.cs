@@ -33,16 +33,16 @@ namespace Assets.Script
         }
         public static void Load()
         {
-            string dataPath = Application.persistentDataPath;
-            if (System.IO.File.Exists(dataPath + "/" + activeSave.saveName + ".save"))
-            {
-                var serializer = new XmlSerializer(typeof(SaveData));
-                var stream = new FileStream(dataPath + "/" + activeSave.saveName + ".save", FileMode.Open);
-                activeSave = serializer.Deserialize(stream) as SaveData;
-                stream.Close();
-                hasLoaded = true;
-                Debug.Log("Loaded");
-            }
+            //string dataPath = Application.persistentDataPath;
+            //if (System.IO.File.Exists(dataPath + "/" + activeSave.saveName + ".save"))
+            //{
+            //    var serializer = new XmlSerializer(typeof(SaveData));
+            //    var stream = new FileStream(dataPath + "/" + activeSave.saveName + ".save", FileMode.Open);
+            //    activeSave = serializer.Deserialize(stream) as SaveData;
+            //    stream.Close();
+            //    hasLoaded = true;
+            //    Debug.Log("Loaded");
+            //}
         }
         public void DeleteSaveData() // ToDo: connect this to something, when there is a saved game menu
         {

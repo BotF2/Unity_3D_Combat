@@ -25,7 +25,7 @@ namespace Assets.Script
         private void Start()
         {
             CivilizationGroup = GetComponent<ToggleGroup>();
-            CivilizationGroup.enabled = true;
+            //CivilizationGroup.enabled = true;
             Fed.isOn = true;
             Fed.Select();
             Fed.OnSelect(null); // turns background selected color on, go figure.

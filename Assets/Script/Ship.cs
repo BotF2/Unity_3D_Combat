@@ -74,7 +74,11 @@ namespace Assets.Script
         private void Awake()
         {
             rigidbody = GetComponent<Rigidbody>();
-            string[] nameArray = this.name.Split('_');
+            string[] nameArray = new string[3] { "civilization", "shipType", "era" };
+            if (this.name != "Ship")
+                {
+                    nameArray = this.name.Split('_');              
+                }
             string typeOfShip = nameArray[1];
 
             switch (typeOfShip.ToUpper())
