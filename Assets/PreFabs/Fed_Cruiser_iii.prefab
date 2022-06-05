@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4568656963718999782}
   m_Father: {fileID: 0}
@@ -51,23 +52,24 @@ MonoBehaviour:
   _civilization: 0
   _shipType: 0
   _techLevel: 0
-  _shieldsMaxHealth: 66
+  _shieldsMaxHealth: 0
   _hullMaxHealth: 0
-  _torpedoDamage: 40
-  _beamDamage: 40
+  _torpedoDamage: 0
+  _beamDamage: 0
   _cost: 0
+  _rigidbody: {fileID: 0}
   shieldsAreUp: 0
-  _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
-  _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
-  _layer: 9
-  torpedoPrefab: {fileID: 7054183224101263012, guid: 31f76a165db9003408ffa00ccf1e0a2b, type: 3}
-  beamPrefab: {fileID: 9124248098745324454, guid: be36503a1c8662942ad11e8299bce16f, type: 3}
-  shieldPrefab: {fileID: 2728667995667333680, guid: 8dc98514a5d11854c8cd27b4365832e7, type: 3}
-  explosionPrefab: {fileID: 1095849975592326347, guid: d1fcf255ded2f0746885a1ee26887b53, type: 3}
-  clipTorpedoFire: {fileID: 8300000, guid: b66b45b26fe9ab54dbd3adef080ac7f7, type: 3}
-  clipExplodTorpedo: {fileID: 8300000, guid: 5c4733ebca3b871419cb202d96befc83, type: 3}
-  clipBeamWeapon: {fileID: 8300000, guid: 97fc0e251bc73a84ea04f86f75437c54, type: 3}
-  clipWarpCoreBreach: {fileID: 8300000, guid: e954b04650179c84f88bbb5f4e1625d4, type: 3}
+  _warpCoreBreach: {fileID: 0}
+  _ringExplosion: {fileID: 0}
+  _layer: 0
+  torpedoPrefab: {fileID: 0}
+  beamPrefab: {fileID: 0}
+  shieldPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  clipTorpedoFire: {fileID: 0}
+  clipExplodTorpedo: {fileID: 0}
+  clipBeamWeapon: {fileID: 0}
+  clipWarpCoreBreach: {fileID: 0}
 --- !u!54 &4286520172123492372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weAreFriend: 0
+  _warpingInIsOver: 0
+  _isSinglePlayer: 0
   _localPlayer: 0
   _hostPlayer: 0
   _cliantZero: 0
@@ -125,6 +129,14 @@ MonoBehaviour:
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
+  Canvas: {fileID: 0}
+  _SinglePlayer: {fileID: 0}
+  _MultiPlayer: {fileID: 0}
+  _LoadGamePanel: {fileID: 0}
+  _SaveGamePanel: {fileID: 0}
+  _SettingsGamePanel: {fileID: 0}
+  _ExitQuit: {fileID: 0}
+  _CreditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
@@ -197,14 +209,6 @@ MonoBehaviour:
   - {fileID: 0}
   friends: 0
   enemies: 0
-  panelLobby_Menu: {fileID: 0}
-  panelMain_Menu: {fileID: 0}
-  panelGalactic_Play: {fileID: 0}
-  panelGalactic_Completed: {fileID: 0}
-  panelCombat_Menu: {fileID: 0}
-  panelCombat_Play: {fileID: 0}
-  panelCombat_Completed: {fileID: 0}
-  panelGameOver: {fileID: 0}
   _statePassedLobbyInit: 0
   _statePassedMain_Init: 0
   _statePassedCombatMenu_Init: 0

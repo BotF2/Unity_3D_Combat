@@ -11,10 +11,21 @@ namespace Assets.Script
     {
         Toggle _activeToggle;
         public Toggle Fed, Kling, Rom, Card, Dom, Borg;
-        ToggleGroup CivilizationGroup;
+        public ToggleGroup CivilizationGroup;
+        public GameObject Canvas;
 
         private void Awake()
         {
+            Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
+            var _mainMenu = Canvas.transform.Find("PanelMain_Menu").gameObject;
+            var _civilizationGroup = _mainMenu.transform.Find("CIVILIZATIONS").gameObject;
+            CivilizationGroup = _civilizationGroup.GetComponent<ToggleGroup>();
+            CivilizationGroup.RegisterToggle(Fed);
+            CivilizationGroup.RegisterToggle(Kling);
+            CivilizationGroup.RegisterToggle(Rom);
+            CivilizationGroup.RegisterToggle(Card);
+            CivilizationGroup.RegisterToggle(Dom);
+            CivilizationGroup.RegisterToggle(Borg);
             Fed.isOn = true;
             Kling.isOn = false;
             Rom.isOn = false;
@@ -24,8 +35,7 @@ namespace Assets.Script
         }
         private void Start()
         {
-            CivilizationGroup = GetComponent<ToggleGroup>();
-            //CivilizationGroup.enabled = true;
+            CivilizationGroup.enabled = true;
             Fed.isOn = true;
             Fed.Select();
             Fed.OnSelect(null); // turns background selected color on, go figure.
@@ -36,16 +46,14 @@ namespace Assets.Script
             Borg.isOn = false;
         }
         private void Update()
-        {            
-            _activeToggle = CivilizationGroup.ActiveToggles().ToArray().FirstOrDefault();
-            ActiveToggle();
+        {
+            if (GameManager.Instance._statePassedLobbyInit)
+            {
+                _activeToggle = CivilizationGroup.ActiveToggles().ToArray().FirstOrDefault();
+                if (_activeToggle != null)
+                    ActiveToggle();
+            }
         }
-        //public void OnClickPlayCiv() // ToDo: call this on play button in Main Menu
-        //{
-        //    //GameManager.Instance._localPlayer = _
-        //    Toggle toggle = _activeToggle;
-        //    Debug.Log(toggle.name + " _ ");
-        //}
         public void ActiveToggle()
         {
             switch (_activeToggle.name.ToUpper())

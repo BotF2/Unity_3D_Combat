@@ -7,9 +7,9 @@ using System.Xml.Serialization;
 
 namespace Assets.Script
 {
-    public class SaveManager : MonoBehaviour
+    public class SaveLoadManager : MonoBehaviour
     {
-        public static SaveManager instance;
+        public static SaveLoadManager instance;
 
         public static SaveData activeSave; // static SaveData, is this static a problem???
 
@@ -18,7 +18,7 @@ namespace Assets.Script
         private void Awake()
         {
             instance = this;
-            Load();
+           // Load();
         }
         public static void Save()
         {

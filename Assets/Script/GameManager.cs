@@ -69,7 +69,8 @@ namespace Assets.Script
     {
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
-        public static bool _isSinglePlayer = true;
+        
+        public bool _isSinglePlayer;
         public Civilization _localPlayer;
         public Civilization _hostPlayer;
         public Civilization _cliantZero;
@@ -88,6 +89,28 @@ namespace Assets.Script
         public InstantiateCombatShips instantiateCombatShips;
         public ActOnCombatOrder actOnCombatOrder;
         public ZoomCamera zoomCamera;
+        public GameObject Canvas;
+        private GameObject PanelLobby_Menu;
+        private GameObject PanelLoadGame_Menu;
+        private GameObject PanelSaveGame_Menu;
+        private GameObject PanelSettings_Menu;
+        private GameObject PanelCredits_Menu;
+        private GameObject PanelMain_Menu;
+        private GameObject PanelMultiplayerLobby_Menu;
+        private GameObject PanelGalactic_Play;
+        private GameObject PanelGalactic_Completed;
+        private GameObject PanelCombat_Menu;
+        private GameObject PanelCombat_Play;
+        private GameObject PanelCombat_Completed;
+        private GameObject PanelGameOver;
+        
+        public SinglePlayer _SinglePlayer;
+        public MultiPlayer _MultiPlayer;
+        public LoadGamePanel _LoadGamePanel;
+        public SaveGamePanel _SaveGamePanel;
+        public SettingsGamePanel _SettingsGamePanel;
+        public ExitQuit _ExitQuit;
+        public CreditsGamePanel _CreditsGamePanel;
         public CombatOrderSelection combatOrderSelection;
 
         public float shipScale = 2000f; // old LoadCombatData Combat
@@ -220,20 +243,9 @@ namespace Assets.Script
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
-        public GameObject Canvas;
-        private GameObject PanelLobby_Menu;
-        private GameObject PanelMain_Menu;
-        private GameObject PanelGalactic_Play;
-        private GameObject PanelGalactic_Completed;
-        private GameObject PanelCombat_Menu;
-        private GameObject PanelCombat_Play;
-        private GameObject PanelCombat_Completed;
-        private GameObject PanelGameOver;
-        //public GameObject[] levels;
-
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { LOBBY_MENU, LOBBY_INIT, MAIN_MENU, MAIN_INIT, GALACTIC_PLAY, GALACTIC_COMPLETED,
-            COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER }; //LOADNEXT,
+        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, GALACTIC_PLAY, GALACTIC_COMPLETED,
+            COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
         private State _state;
 
         private int _level;
@@ -247,7 +259,6 @@ namespace Assets.Script
         bool _isSwitchingState = false;
 
         public bool _statePassedLobbyInit = false;
-        // public bool StatePassedInit { get { return _statePassedInit; } set { _statePassedInit = value; } }
         public bool _statePassedMain_Init = false;
         public bool _statePassedCombatMenu_Init = false;
         public bool _statePassedCombatInit = false; // COMBAT INIT
@@ -257,9 +268,14 @@ namespace Assets.Script
         private void Awake()
         {
             Instance = this; // static reference to single GameManager
-            Canvas = GameObject.Find("Canvas");
+            Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
+            PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
+            PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
+            PanelSettings_Menu = Canvas.transform.Find("PanelSettings_Menu").gameObject;
+            PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
+            PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
             PanelGalactic_Play = Canvas.transform.Find("PanelGalactic_Play").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
@@ -270,19 +286,9 @@ namespace Assets.Script
 
 
         void Start()
-        {
-            //Canvas = GameObject.Find("Canvas");
-            //PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
-            //PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
-            //PanelGalactic_Play = Canvas.transform.Find("PanelGalactic_Play").gameObject;
-            //PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
-            //PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
-            //PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
-            //PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
-            //PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-   
+        { 
             SwitchtState(State.LOBBY_MENU);
-            if (SaveManager.hasLoaded)
+            if (SaveLoadManager.hasLoaded)
             {
                 // get respons with locations... SaveManager.activeSave.(somethings here from save data)
             }
@@ -290,6 +296,7 @@ namespace Assets.Script
                                                                                         // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
+
             _techLevel = TechLevel.Early;
             _localPlayer = Civilization.FED;
             if (_isSinglePlayer)
@@ -304,21 +311,48 @@ namespace Assets.Script
 
         public void BackToLobbyClick()  // from Main Menu
         {
+            _statePassedLobbyInit = false;
             SwitchtState(State.LOBBY_MENU);
+            _LoadGamePanel.ClosePanel();
         }
 
-        public void SinglePlayerLobbyClicked() // go to main menu
+        public void SinglePlayerLobbyClicked() // go to main menu through LOBBY_INIT
         {
-            SwitchtState(State.LOBBY_INIT);
+            SwitchtState(State.LOBBY_INIT); // start process to open main menu
             _isSinglePlayer = true;
         }
-        public void MultiPlayerLobbyClicked() // go to main menu
+        public void MultiPlayerLobbyClicked() 
         {
-            SwitchtState(State.LOBBY_INIT);
+            SwitchtState(State.MULTIPLAYER_MENU);
             _isSinglePlayer = false;
             //ToDo: network manager here IsHost IsLocalPlayer or in BeginState??
         }
-        public void GalaxyPlayClicked()
+        public void LoadSavedGameClicked() 
+        {
+            SwitchtState(State.LOAD_MENU);
+            _LoadGamePanel.OpenPanel(); 
+        }
+        public void SaveGameClicked() 
+        {
+            SwitchtState(State.SAVE_MENU);
+            _SaveGamePanel.OpenPanel();
+        }
+        public void SettingsClicked() 
+        {
+            SwitchtState(State.SETTINGS_MENU);
+            _SettingsGamePanel.OpenPanel();
+        }
+       public void CreditsClicked()
+        {
+            SwitchtState(State.CREDITS_MENU);
+            _CreditsGamePanel.OpenPanel();
+        }
+        public void ExitClicked()
+        {
+            _ExitQuit.ExitTheGame();
+
+        }
+        public void GalaxyPlayClicked() // BOLDLY GO
         {
             //if (IsHost) // if (IsLocalPlayer)
             //{ 
@@ -367,16 +401,20 @@ namespace Assets.Script
             {
                 case State.LOBBY_MENU:
                     PanelMain_Menu.SetActive(false); // turn off if returning to lobby
-                    PanelLobby_Menu.SetActive(true); // Lobby first
-
+                    PanelLoadGame_Menu.SetActive(false);
+                    PanelSaveGame_Menu.SetActive(false);
+                    PanelSettings_Menu.SetActive(false);
+                    PanelCredits_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;
+
                 case State.LOBBY_INIT:
                     //panelMain_Menu.SetActive(true);
                     SwitchtState(State.MAIN_MENU);
                     _statePassedLobbyInit = true;
-                    switch (_isSinglePlayer) // we set this bool in the singlePlayerLobby and multipPlayerLobby buttons above so do we need this for something else??
+                    switch (_isSinglePlayer) // Do we need this? Methods, SinglePlayerLobbyClicked() MultipPalyerLobbyClicked(), already set bool and called LobbyInit
                     {
-                        case true: 
+                        case true:
                             break;
                         case false: //Do something here, start multiplayer?
                             break;
@@ -384,8 +422,35 @@ namespace Assets.Script
                             //break;
                     }
                     break;
+                case State.LOAD_MENU:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
+                    //PanelSaveGame_Menu.SetActive(false);
+                    PanelLoadGame_Menu.SetActive(true);
+                    break;
+                case State.SAVE_MENU:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
+                    PanelSaveGame_Menu.SetActive(true);
+                    break;
+                case State.SETTINGS_MENU:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
+                    PanelSettings_Menu.SetActive(true);
+                    break;
+                case State.CREDITS_MENU:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
+                    PanelCredits_Menu.SetActive(true);
+                    break;
                 case State.MAIN_MENU:
+                    PanelLoadGame_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(true);
+
+                    break;
+                case State.MULTIPLAYER_MENU:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
                     switch (_techLevel) // is set in TechSelection.cs for GameManager._techLevel
@@ -422,20 +487,28 @@ namespace Assets.Script
                             break;
                     }
                     PanelMain_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(false);
+                    PanelLoadGame_Menu.SetActive(false);
+                    PanelSaveGame_Menu.SetActive(false);
                     PanelGalactic_Play.SetActive(true);
                     _statePassedMain_Init = true;
                     SwitchtState(State.GALACTIC_PLAY);
                     break;
                 case State.GALACTIC_PLAY:
+                    PanelMain_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.GALACTIC_COMPLETED:
+                    PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Play.SetActive(false);
                     PanelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
                     SwitchtState(State.COMBAT_MENU);
                     break;
                 case State.COMBAT_MENU:
+                    PanelLobby_Menu.SetActive(false);
                     PanelCombat_Menu.SetActive(true);
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
@@ -443,6 +516,7 @@ namespace Assets.Script
                     break;
                 case State.COMBAT_INIT:
                     //_combatWarpIn = true; // turn false again in E_animator3 call to GameManager WarpInOver()
+                    PanelLobby_Menu.SetActive(false);
                     _statePassedCombatMenu_Init = true;
                     actOnCombatOrder.CombatOrderAction(_combatOrder, FriendShips, EnemyShips);
                     instantiateCombatShips.SetCombatOrder(_combatOrder);
@@ -451,15 +525,16 @@ namespace Assets.Script
                     _statePassedCombatInit = true;
                     SetCameraTargets();
                     zoomCamera.ZoomIn(); 
-                    PanelCombat_Menu.SetActive(false);
-                    
+                    PanelCombat_Menu.SetActive(false);                   
                     PanelCombat_Play.SetActive(true);
                     SwitchtState(State.COMBAT_PLAY);
                     break;
                 case State.COMBAT_PLAY:
+                    PanelLobby_Menu.SetActive(false);
                     _statePassedCombatPlay = true; 
                     break;
                 case State.COMBAT_COMPLETED:
+                    PanelLobby_Menu.SetActive(false);
                     _warpingInIsOver = false;
                     // panelCombat_Play.SetActive(true);
                     PanelCombat_Completed.SetActive(true);
@@ -495,10 +570,20 @@ namespace Assets.Script
                     break;
                 case State.LOBBY_INIT:
                     break;
+                case State.LOAD_MENU:
+                    break;
+                case State.SAVE_MENU:
+                    break;
+                case State.SETTINGS_MENU:
+                    break;
+                case State.CREDITS_MENU:
+                    break;
                 case State.MAIN_MENU:
                     break;
                 case State.MAIN_INIT:
                     _statePassedMain_Init = true;
+                    break;
+                case State.MULTIPLAYER_MENU:
                     break;
                 case State.GALACTIC_PLAY:
                     _statePassedMain_Init = true;
@@ -538,12 +623,28 @@ namespace Assets.Script
                 case State.LOBBY_MENU:
                     PanelLobby_Menu.SetActive(false);
                     break;
+                case State.LOAD_MENU:
+                    PanelLoadGame_Menu.SetActive(false);
+                    break;
+                case State.SAVE_MENU:
+                    PanelSaveGame_Menu.SetActive(false);
+                    break;
+                case State.SETTINGS_MENU:
+                    PanelSettings_Menu.SetActive(false);
+                    break;
+                case State.CREDITS_MENU:
+                    PanelCredits_Menu.SetActive(false);
+                    break;
                 case State.LOBBY_INIT: // no init panles to turn off
                     break;
                 case State.MAIN_MENU:
                     PanelMain_Menu.SetActive(false);
                     break;
                 case State.MAIN_INIT:
+
+                    break;
+                case State.MULTIPLAYER_MENU:
+                    PanelMultiplayerLobby_Menu.SetActive(false);
                     break;
                 case State.GALACTIC_PLAY:
                     PanelGalactic_Play.SetActive(false);
@@ -798,7 +899,8 @@ namespace Assets.Script
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            PrefabDitionary = tempPrefabDitionary;
+            if (PrefabDitionary == null) // do not load twice
+                PrefabDitionary = tempPrefabDitionary;
         }
 
         #endregion

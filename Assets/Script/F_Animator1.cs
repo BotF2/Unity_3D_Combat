@@ -10,7 +10,7 @@ namespace Assets.Script
     {
         // must name class and file the same
         public Animator anim;
-        public AudioSource warpAudioSource_0;
+        //public AudioSource warpAudioSource_0;
         //private SetShipLayerByAnimaStat shipLayerSetup;
         int once = 0;
 
@@ -28,7 +28,7 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedCombatInit)
             {
                 anim.SetBool("FriendWarp1", true);
-                PlayWarp();
+                //PlayWarp();
                 //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("F1_allGoodThings"))
                 //{
                 //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
@@ -44,8 +44,8 @@ namespace Assets.Script
         {
             if (GameManager.Instance._statePassedCombatInit)
             {
-                warpAudioSource_0.volume = 1f;
-                warpAudioSource_0.Play();
+                //warpAudioSource_0.volume = 1f;
+                //warpAudioSource_0.Play();
             }
         }
     }

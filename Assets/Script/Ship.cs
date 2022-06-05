@@ -21,6 +21,7 @@ namespace Assets.Script
         public int _torpedoDamage; // update with data of torpedo that hits
         public int _beamDamage;
         public int _cost;
+        public Rigidbody _rigidbody;
         private bool _isFriend;
         private new Rigidbody rigidbody;
         private GameObject shipGameObject;
@@ -73,7 +74,8 @@ namespace Assets.Script
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            //_rigidbody = this.GetComponent<Rigidbody>(); // Do we need to get rigibody or is it just part of prefab ship?
+            //var rigidbody = _rigibody.GetComponent<Rigidbody>();
             string[] nameArray = new string[3] { "civilization", "shipType", "era" };
             if (this.name != "Ship")
                 {
