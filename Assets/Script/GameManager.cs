@@ -1,4 +1,3 @@
-using Assets.Script;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,7 +6,6 @@ using System.Linq;
 
 using UnityEngine;
 //using MLAPI;
-using UnityEngine.UI;
 //using UnityEngine.UI;
 
 namespace Assets.Script
@@ -20,6 +18,12 @@ namespace Assets.Script
         CARD,
         DOM,
         BORG
+    }
+    public enum GalaxyType
+    {
+        IRREGULAR,
+        SPIRAL,
+        ELLIPTICAL,
     }
     public enum HomeSystem
     {
@@ -80,10 +84,14 @@ namespace Assets.Script
         public Civilization _cliantFour;
         public Civilization _cliantFive;   
         public static TechLevel _techLevel;
+        public Galaxy _galaxy = new Galaxy();
+        public static GalaxyType galaxyType = GalaxyType.ELLIPTICAL;
+        public int galaxyStarCount = 1; // ToDo: set reset in Main Menu
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
+        public Galaxy Galaxy;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
         public InstantiateCombatShips instantiateCombatShips;
@@ -302,6 +310,8 @@ namespace Assets.Script
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
 
+            Galaxy galaxy = new Galaxy();
+
             // *** moving load Combat ships to BeginState newState CombatMenu CombatInit that turns true on entering combat in galaxy view.
 
             //StarterGalaxyObjects(); // GNDN ToDo: move to Main_Init in pre for galaxy play
@@ -453,6 +463,23 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
+                    //ToDo: galaxyStarCount enter star number in Main Menu, few 20, average 40, many 60..?
+                    galaxyStarCount = 1; // wtf is 40 coming from?
+                    //Galaxy.Generate(1, GalaxyType.IRREGULAR);
+                    switch (galaxyType) // ToDo: set in Main Menu
+                    {
+                        case GalaxyType.IRREGULAR:
+                            _galaxy.Generate(1, GalaxyType.IRREGULAR);
+                            break;
+                        case GalaxyType.SPIRAL:
+                            _galaxy.Generate(1, GalaxyType.SPIRAL);
+                            break;
+                        case GalaxyType.ELLIPTICAL:
+                            _galaxy.Generate(1, GalaxyType.ELLIPTICAL);
+                            break;
+                        default:
+                            break;
+                    }
                     switch (_techLevel) // is set in TechSelection.cs for GameManager._techLevel
                     {
                         case TechLevel.Early: //Do something here??

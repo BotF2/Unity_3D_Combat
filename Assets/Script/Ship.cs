@@ -12,7 +12,7 @@ namespace Assets.Script
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
         public Civilization _civilization;
         public ShipType _shipType;
         public TechLevel _techLevel;
