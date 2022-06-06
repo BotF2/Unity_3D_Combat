@@ -8,7 +8,7 @@ namespace Assets.Script
     public class SolarSystemView : MonoBehaviour
     {
         //public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
-        //GameManager gameManger;
+        GameManager gameManger;
         SolarSystem solarSystem;
         public Sprite[] sprites;
         private GameManager gameManager;
@@ -29,15 +29,15 @@ namespace Assets.Script
             for (int i = 0; i < solarSystem.Children.Count; i++)
             {
                 OrbitalGalactic orbital = solarSystem.Children[i];
+                
                 GameObject gameObject = new GameObject();
-                gameObject.transform.SetParent(this.transform, true);
+                gameObject.layer = 30; // galactic
+                gameObject.transform.SetParent(this.transform, false);
+
                 SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
+               
                 spritView.sprite = sprites[orbital.graphicID];
-
-                // What is wrong with the scale ? smaller images, not High Res?
-
-               // spritView.transform.transform.position = solarSystem.Position;
-                //spritView.transform.// scale
+         
             }
         }
 
