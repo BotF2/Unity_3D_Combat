@@ -92,6 +92,7 @@ namespace Assets.Script
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
         public Galaxy Galaxy;
+        public SolarSystemView SolarSystemView;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
         public InstantiateCombatShips instantiateCombatShips;
@@ -469,13 +470,13 @@ namespace Assets.Script
                     switch (galaxyType) // ToDo: set in Main Menu
                     {
                         case GalaxyType.IRREGULAR:
-                            _galaxy.Generate(1, GalaxyType.IRREGULAR);
+                            _galaxy.Generate(2, GalaxyType.IRREGULAR);
                             break;
                         case GalaxyType.SPIRAL:
-                            _galaxy.Generate(1, GalaxyType.SPIRAL);
+                            _galaxy.Generate(2, GalaxyType.SPIRAL);
                             break;
                         case GalaxyType.ELLIPTICAL:
-                            _galaxy.Generate(1, GalaxyType.ELLIPTICAL);
+                            _galaxy.Generate(2, GalaxyType.ELLIPTICAL);
                             break;
                         default:
                             break;
