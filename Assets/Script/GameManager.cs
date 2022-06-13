@@ -470,13 +470,16 @@ namespace Assets.Script
                     switch (galaxyType) // ToDo: set in Main Menu
                     {
                         case GalaxyType.IRREGULAR:
-                            _galaxy.Generate(2, GalaxyType.IRREGULAR);
+                            _galaxy.Generate(1, GalaxyType.IRREGULAR);
+                            SolarSystemView.ViewSolarSystem(_galaxy);
                             break;
                         case GalaxyType.SPIRAL:
-                            _galaxy.Generate(2, GalaxyType.SPIRAL);
+                            _galaxy.Generate(1, GalaxyType.SPIRAL);
+                            SolarSystemView.ViewSolarSystem(_galaxy);
                             break;
                         case GalaxyType.ELLIPTICAL:
-                            _galaxy.Generate(2, GalaxyType.ELLIPTICAL);
+                            _galaxy.Generate(1, GalaxyType.ELLIPTICAL);
+                            SolarSystemView.ViewSolarSystem(_galaxy);
                             break;
                         default:
                             break;
@@ -529,6 +532,7 @@ namespace Assets.Script
                     _statePassedMain_Init = true;
                     break;
                 case State.GALACTIC_COMPLETED:
+                    PanelGalactic_Play.SetActive(true);
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Play.SetActive(false);
                     PanelCombat_Menu.SetActive(true);

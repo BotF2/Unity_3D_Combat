@@ -6,6 +6,7 @@ namespace Assets.Script
 {
     public class Galaxy
     {
+
         public Galaxy()
         {
             // not procedurally generate in constructor
@@ -13,9 +14,11 @@ namespace Assets.Script
         }
         public List<SolarSystem> SolarSystems;
         public GalaxyType GalaxyEnum;
+        public int NumberOfStars;
 
         public void Generate(int numStars, GalaxyType galaxyType)
         {
+            NumberOfStars = numStars;
             for (int i = 0; i < numStars; i++)
             {
                 SolarSystem ss = new SolarSystem();
@@ -23,6 +26,7 @@ namespace Assets.Script
                 SolarSystems.Add(ss);
             }
             // ToDo: use numStars and GalaxyType
+            
 
         }
 
