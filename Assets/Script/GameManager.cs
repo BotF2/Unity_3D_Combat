@@ -23,7 +23,13 @@ namespace Assets.Script
     {
         IRREGULAR,
         SPIRAL,
-        ELLIPTICAL,
+        ELLIPTICAL
+    }
+    public enum GalaxySize
+    {
+        SMALL,
+        MEDIUM,
+        LARGE
     }
     public enum HomeSystem
     {
@@ -84,14 +90,15 @@ namespace Assets.Script
         public Civilization _cliantFour;
         public Civilization _cliantFive;   
         public static TechLevel _techLevel;
-        public Galaxy _galaxy = new Galaxy();
+        //public Galaxy _galaxy = new Galaxy();
         public static GalaxyType galaxyType = GalaxyType.ELLIPTICAL;
+        public static GalaxySize galaxySize = GalaxySize.SMALL;
         public int galaxyStarCount = 1; // ToDo: set reset in Main Menu
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
 
-        public Galaxy Galaxy;
+        public Galaxy galaxy;
         public SolarSystemView SolarSystemView;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
@@ -311,7 +318,8 @@ namespace Assets.Script
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
 
-            Galaxy galaxy = new Galaxy();
+           // Galaxy galaxy = new Galaxy();
+           // Galaxy = galaxy;
 
             // *** moving load Combat ships to BeginState newState CombatMenu CombatInit that turns true on entering combat in galaxy view.
 
@@ -464,22 +472,29 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    //ToDo: galaxyStarCount enter star number in Main Menu, few 20, average 40, many 60..?
-                    galaxyStarCount = 1; // wtf is 40 coming from?
-                    //Galaxy.Generate(1, GalaxyType.IRREGULAR);
+                    //ToDo: galaxyStarCount !!!! use enum GalaxySize in MainMenu to set number of Stas, Solarsystem
+                    
+                    if (galaxySize == GalaxySize.SMALL)                      
+                        galaxyStarCount = 20;
+                    if (galaxySize == GalaxySize.MEDIUM)
+                        galaxyStarCount = 40;
+                    if (galaxySize == GalaxySize.LARGE)
+                        galaxyStarCount = 60;
+                    
+                    
                     switch (galaxyType) // ToDo: set in Main Menu
-                    {
+                    {                      
                         case GalaxyType.IRREGULAR:
-                            _galaxy.Generate(1, GalaxyType.IRREGULAR);
-                            SolarSystemView.ViewSolarSystem(_galaxy);
+                            Galaxy galaxyI = new Galaxy(this, GalaxyType.IRREGULAR, galaxyStarCount);
+                            SolarSystemView.ShowSolarSystemView(galaxyI);
                             break;
                         case GalaxyType.SPIRAL:
-                            _galaxy.Generate(1, GalaxyType.SPIRAL);
-                            SolarSystemView.ViewSolarSystem(_galaxy);
+                            Galaxy galaxyS = new Galaxy(this, GalaxyType.SPIRAL, galaxyStarCount);
+                            SolarSystemView.ShowSolarSystemView(galaxyS);
                             break;
                         case GalaxyType.ELLIPTICAL:
-                            _galaxy.Generate(1, GalaxyType.ELLIPTICAL);
-                            SolarSystemView.ViewSolarSystem(_galaxy);
+                            Galaxy galaxyE = new Galaxy(this, GalaxyType.ELLIPTICAL, galaxyStarCount);
+                            SolarSystemView.ShowSolarSystemView(galaxyE);
                             break;
                         default:
                             break;

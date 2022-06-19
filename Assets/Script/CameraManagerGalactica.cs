@@ -34,7 +34,7 @@ namespace Assets.Script
             cam = GetComponentInChildren<Camera>();
             cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
             zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
-            cam.transform.LookAt(transform.position + Vector3.up * lookAtOffset);
+            cam.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
         }
         
         private void OnEnable()
