@@ -10,13 +10,13 @@ namespace Assets.Script
 
         public SolarSystem Generate()
         {
-            // make a solar system, myStar is a child of the system and myStar has child planets
+            // make a solar system, myStar is a child of the system and myStar has child planets...
             
             OrbitalGalactic myStar = new OrbitalGalactic();
-            myStar.GraphicID = 0; // StarGraphicID;
-            
+            myStar.GraphicID = 0; // StarGraphicID;          
             this.AddChild(myStar);
             //StarGraphicID += 2;
+
             for (int i = 0; i < 8; i++)
             {
                 Planet planet = new Planet();

@@ -97,11 +97,13 @@ namespace Assets.Script
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
-
-        public Galaxy galaxy;
+        public UInt64 galacticTime = 0;
+        public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public SolarSystemView SolarSystemView;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
+       // public CameraManagerGalactica cameraManagerGalactica;
+        //public Camera galacticCamera; 
         public InstantiateCombatShips instantiateCombatShips;
         public ActOnCombatOrder actOnCombatOrder;
         public ZoomCamera zoomCamera;
@@ -297,7 +299,7 @@ namespace Assets.Script
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
-            PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+            PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;            
         }
 
 
@@ -317,7 +319,7 @@ namespace Assets.Script
             _localPlayer = Civilization.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
-
+            //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
            // Galaxy galaxy = new Galaxy();
            // Galaxy = galaxy;
 
@@ -412,6 +414,13 @@ namespace Assets.Script
             //BeginState(newState);
             _isSwitchingState = false;
         }
+        // Unity Inspector only sees non static pulic void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
+        public void AdvanceTime(int numSeconds) // is there a problem that this is int and galactic time is UInt64 so as to fit with OrbitalGalatic time in UInt64?
+        {
+            galacticTime = galacticTime + (ulong)numSeconds ;
+            galaxy.Update(galacticTime);
+        }
+
 
         void BeginState(State newState)
         {
@@ -480,21 +489,21 @@ namespace Assets.Script
                         galaxyStarCount = 40;
                     if (galaxySize == GalaxySize.LARGE)
                         galaxyStarCount = 60;
-                    
+                    int firstSolarSystemID = 0; // ToDo: tie this to home system based on civ set in Main Menu/ or where we left off?
                     
                     switch (galaxyType) // ToDo: set in Main Menu
                     {                      
                         case GalaxyType.IRREGULAR:
-                            Galaxy galaxyI = new Galaxy(this, GalaxyType.IRREGULAR, galaxyStarCount);
-                            SolarSystemView.ShowSolarSystemView(galaxyI);
+                            Galaxy galaxyI = new Galaxy(this, GalaxyType.IRREGULAR, galaxyStarCount); // this gameManager, galaxy type, galaxy size/num stars
+                            SolarSystemView.ShowSolarSystemView(galaxyI, firstSolarSystemID);
                             break;
                         case GalaxyType.SPIRAL:
                             Galaxy galaxyS = new Galaxy(this, GalaxyType.SPIRAL, galaxyStarCount);
-                            SolarSystemView.ShowSolarSystemView(galaxyS);
+                            SolarSystemView.ShowSolarSystemView(galaxyS, firstSolarSystemID);
                             break;
                         case GalaxyType.ELLIPTICAL:
                             Galaxy galaxyE = new Galaxy(this, GalaxyType.ELLIPTICAL, galaxyStarCount);
-                            SolarSystemView.ShowSolarSystemView(galaxyE);
+                            SolarSystemView.ShowSolarSystemView(galaxyE, firstSolarSystemID);
                             break;
                         default:
                             break;

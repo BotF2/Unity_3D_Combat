@@ -17,20 +17,25 @@ namespace Assets.Script
         public void Generate(int maxMoons)
         {
             this.OrbitalDistance = (ulong)UnityEngine.Random.Range(100, 800) * 1000000 * 1000;
-            TimeToOrbit = 365 * 24 * 60 * 60; // ToDo: use real physics 
+            TimeToOrbit = this.OrbitTimeForDistance(); // ToDo: use real physics 
             GraphicID = UnityEngine.Random.Range(1, 12);
-            int m = UnityEngine.Random.Range(1, maxMoons + 1);
-            for (int i= 0; i < m; i++)
+            int moons = UnityEngine.Random.Range(1, maxMoons + 1);
+            for (int i= 0; i < moons; i++)
             {
                 OrbitalGalactic moon = new OrbitalGalactic();
                 this.AddChild(moon);
-                moon.OrbitalDistance = 1000000; // fix me
-                TimeToOrbit = 36 * 24 * 60 * 60;
+                moon.OrbitalDistance = 100000000000/2; // fix me
+                moon.TimeToOrbit = moon.OrbitTimeForDistance()/10; // fix with real physics (orbital version)
             }
+        }
+        ulong OrbitTimeForDistance() // for planet
+        {
+            // Fix this with real orbital math
+            return 365 * 24 * 60 * 60;
         }
         public void MakeEarth()
         {
-            Angle = 0; // North of star
+            OffsetAngle = 0; // North of star
             OrbitalDistance = 150000000000; // 150 million KM
             TimeToOrbit = 365 * 24 * 60 * 60; // for Earth, days * hours * min * sec (in sec)
         }

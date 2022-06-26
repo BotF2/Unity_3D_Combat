@@ -29,6 +29,11 @@ namespace Assets.Script
         float frameZoom;
         Camera cam;
 
+        //public CameraManagerGalactica()
+        //{
+        //    cam = LoadGalacticCamera();
+        //}
+
         private void Awake()
         {
             cam = GetComponentInChildren<Camera>();
@@ -94,7 +99,10 @@ namespace Assets.Script
                 frameZoom = 0f;
             }
         }
-
+        //public Camera LoadGalacticCamera()
+        //{
+        //    return cam;
+        //}
         private void LockPositionInBounds()
         {
             transform.position = new Vector3(

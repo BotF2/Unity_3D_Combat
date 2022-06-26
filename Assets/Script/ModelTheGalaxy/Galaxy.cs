@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+
 
 namespace Assets.Script
 {
@@ -10,36 +12,28 @@ namespace Assets.Script
         public List<SolarSystem> SolarSystems;
         public GalaxyType GalaxyEnum;
         public int NumberOfStars;
-        public Galaxy(GameManager gameM, GalaxyType galaxyEnum, int numberOfStars)
+        public Galaxy(GameManager gameManager, GalaxyType galaxyEnum, int numberOfStars)
         {
+            // For now, we set a SEED for the random number generator, so that it
+            // starts from the same galaxy every time, see planet.cs random now not so random
+            UnityEngine.Random.InitState(123);
+            
             //this._gameManager = gameManager;
             GalaxyEnum = galaxyEnum;
             NumberOfStars = numberOfStars;
             SolarSystems = GenerateSystems(numberOfStars);
-            gameM.galaxy = this;
+            gameManager.galaxy = this;
         }
-        public List<Galaxy> GenerateGalaxy(GalaxyType galaxyEnum, int numberOfStars)
+
+        public void Update(UInt64 timeSinceStart) 
         {
-            //this._gameManager = gameManager;
-            GalaxyEnum = galaxyEnum;
-            NumberOfStars = numberOfStars;
-            SolarSystems = GenerateSystems(numberOfStars);
-            List<Galaxy> result = new List<Galaxy>();
-            result.Add(this);
-            return result;
+            // ToDo: Consider only updating the systems you are looking at
+            foreach (SolarSystem ss in SolarSystems)
+            {
+                ss.Update(timeSinceStart); // solarsystem inherits from orbital with this Update()
+            }
         }
 
-        //public Galaxy()
-        //{
-        //    // not procedurally generate in constructor
-        //    SolarSystems = new List<SolarSystem>();
-        //}
-
-
-        //private void Awake()
-        //{
-        //    gameManager = GameManager.Instance;
-        //}
         public List<SolarSystem> GenerateSystems(int numberOfStars)
         {
             List<SolarSystem> result = new List<SolarSystem>();
@@ -66,8 +60,6 @@ namespace Assets.Script
             //gameManager.Galaxy = galaxy;
           
             // ToDo: use numStars and GalaxyType
-            
-
         }
 
         public void LoadFromFile(string fileName)
