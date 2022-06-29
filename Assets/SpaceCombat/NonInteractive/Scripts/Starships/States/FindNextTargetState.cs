@@ -1,4 +1,5 @@
-﻿using Assets.Plugins.YAFSM;
+﻿using System.Linq;
+using Assets.Plugins.YAFSM;
 using UnityEngine;
 
 namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
@@ -29,7 +30,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
 
             float minimumDistance = Mathf.Infinity;
 
-            foreach (var availableTarget in StarshipController.AvailableTargets)
+            foreach (var availableTarget in StarshipController.AvailableTargets.Where(x => x.HitPoints > 0))
             {
                 float distance = Vector3.Distance(availableTarget.transform.position, StarshipController.transform.position);
 

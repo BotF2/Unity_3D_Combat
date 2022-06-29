@@ -1,30 +1,30 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts
+namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
 {
     [Serializable]
     public class Steering
     {
         [SerializeField]
         private float _maxVelocity = 1f;
-        public float MaxVelocity => _maxVelocity; // Maximum Velocity
+        public float MaxVelocity => _maxVelocity;
 
         [SerializeField]
         private float _accelerationSpeed = 1f;
         public float AccelerationSpeed => _accelerationSpeed; // Amount to increase Acceleration with.
 
         [SerializeField]
-        private float _turnSpeed = 1f;
-        public float TurnSpeed => _turnSpeed; // Amount to increase Acceleration with.
+        private float _turnRate = 1f;
+        public float TurnRate => _turnRate; 
 
         [SerializeField]
         private float _maxAcceleration = 1f;
-        public float MaxAcceleration => _maxAcceleration; // Amount to increase Acceleration with.
+        public float MaxAcceleration => _maxAcceleration;
 
         [SerializeField]
         private float _minAcceleration = 1f;
-        public float MinAcceleration => _minAcceleration; // Amount to increase Acceleration with.
+        public float MinAcceleration => _minAcceleration;
 
         public float CurrentVelocity { get; private set; }
         public float CurrentAcceleration { get; private set; }
