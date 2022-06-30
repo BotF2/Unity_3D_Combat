@@ -17,6 +17,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
 
         private IDictionary<TorpedoHardPointInfo, bool> _hardPointFireCoroutinesRunning = new Dictionary<TorpedoHardPointInfo, bool>();
         private AudioPlayer _audioPlayer;
+        private Coroutine _fireAllTorpedosCoroutine;
 
         public void Awake()
         {
@@ -37,7 +38,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
             {
                 if (!_hardPointFireCoroutinesRunning[photonTorpedoHardPoint])
                 {
-                    StartCoroutine(FireAllTorpedos(target, photonTorpedoHardPoint));
+                    _fireAllTorpedosCoroutine = StartCoroutine(FireAllTorpedos(target, photonTorpedoHardPoint));
                 }
 
 
@@ -76,6 +77,11 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
             }
         }
 
+        public void CeaseFire()
+        {
+            StopCoroutine(_fireAllTorpedosCoroutine);
+        }
+
         IEnumerator FireAllTorpedos(Transform target, TorpedoHardPointInfo torpedoHardPointInfo)
         {
             _hardPointFireCoroutinesRunning[torpedoHardPointInfo] = true;
@@ -91,7 +97,6 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
                 _audioPlayer.PlayClip(torpedoHardPointInfo.AudioClip);
 
                 torpedoHardPointInfo.LoadedTorpedos--;
-
 
                 yield return torpedoHardPointInfo.WaitForFireAction;
             }

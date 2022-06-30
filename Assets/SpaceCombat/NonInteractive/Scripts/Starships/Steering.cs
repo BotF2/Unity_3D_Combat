@@ -16,7 +16,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
 
         [SerializeField]
         private float _turnRate = 1f;
-        public float TurnRate => _turnRate; 
+        public float TurnRate => _turnRate;
 
         [SerializeField]
         private float _maxAcceleration = 1f;
@@ -29,8 +29,46 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
         public float CurrentVelocity { get; private set; }
         public float CurrentAcceleration { get; private set; }
 
-        public void SetVelocity()
+        private float _desiredVelocity;
+
+        public StarshipController StarshipController { get; set; }
+
+        public void SteeringUpdate()
         {
+            UpdateVelocity();
+            UpdateAcceleration();
+
+            //TODO: Need to check for collision avoidance
+
+            StarshipController.transform.Translate(StarshipController.transform.forward * CurrentVelocity * Time.deltaTime, Space.World);
+
+            if (StarshipController.CurrentTarget != null)
+            {
+                var targetRotation = Quaternion.LookRotation(StarshipController.CurrentTarget.transform.position - StarshipController.transform.position);
+                var turningStrength = Mathf.Min(_turnRate * Time.deltaTime, 1);
+                Debug.Log($"{targetRotation}, {turningStrength}");
+                float rotationZ = 0.1f * Mathf.Sin(Time.time * CurrentVelocity);
+                StarshipController.transform.Rotate(new Vector3(0f, 0f, rotationZ));
+                StarshipController.transform.rotation = Quaternion.Lerp(StarshipController.transform.rotation, targetRotation, turningStrength);
+            }
+        }
+
+        public void SetDesiredVelocity(float desiredVelocity)
+        {
+            _desiredVelocity = desiredVelocity;
+        }
+
+        private void UpdateAcceleration()
+        {
+            if (_desiredVelocity > 0 || _desiredVelocity < CurrentVelocity)
+            {
+                CurrentAcceleration += _accelerationSpeed * Time.deltaTime;
+            }
+            else if (_desiredVelocity < 0 || _desiredVelocity > CurrentVelocity)
+            {
+                CurrentAcceleration -= _accelerationSpeed * Time.deltaTime;
+            }
+
             if (CurrentAcceleration > MaxAcceleration)
             {
                 CurrentAcceleration = MaxAcceleration;
@@ -39,12 +77,23 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
             {
                 CurrentAcceleration = MinAcceleration;
             }
+        }
 
+        private void UpdateVelocity()
+        {
             CurrentVelocity += CurrentAcceleration;
 
-            if (CurrentVelocity > MaxVelocity)
+            if (_desiredVelocity > 0 && _desiredVelocity > CurrentVelocity && _desiredVelocity < MaxVelocity)
             {
-                CurrentVelocity = MaxVelocity; 
+                CurrentVelocity = _desiredVelocity;
+            }
+            else if (_desiredVelocity < 0 && _desiredVelocity < CurrentVelocity && _desiredVelocity > -MaxVelocity)
+            {
+                CurrentVelocity = _desiredVelocity;
+            }
+            else if (CurrentVelocity > MaxVelocity)
+            {
+                CurrentVelocity = MaxVelocity;
             }
             else if (CurrentVelocity < -MaxVelocity)
             {

@@ -11,8 +11,9 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
         [SerializeField] private Steering _steering;
         public Steering Steering => _steering;
         public List<StarshipController> AvailableTargets { get; private set; }
-        public StarshipController CurrentTarget { get; set; }
+        public GameObject CurrentTarget { get; set; }
         public float Radius { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
 
         public int HitPoints { get; set;  } = 100;
 
@@ -23,11 +24,22 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
         {
             base.Awake();
 
+            Rigidbody = GetComponent<Rigidbody>();
+
             var myCollider = GetComponent<CapsuleCollider>();
             Radius = myCollider.radius;
 
             WeaponsManager = GetComponent<WeaponsManager>();
             WeaponsManager.StarshipCollider = myCollider;
+
+            Steering.StarshipController = this;
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            _steering.SteeringUpdate();
         }
 
         protected override void AddStates()
@@ -36,14 +48,17 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
             AddState<FindNextTargetState>();
             AddState<SeekTargetState>();
             AddState<EngageTargetState>();
+            AddState<GotoWaypointState>();
 
             SetInitialState<IdleState>();
+            SetInitialState<GotoWaypointState>();
         }
 
         public void SetAvailableTargets(List<StarshipController> availableTargets)
         {
             AvailableTargets = availableTargets;
-            ChangeState<FindNextTargetState>();
+            //ChangeState<FindNextTargetState>();
+            SetInitialState<GotoWaypointState>();
         }
 
         public override void OnCollisionEnter(Collision collision)

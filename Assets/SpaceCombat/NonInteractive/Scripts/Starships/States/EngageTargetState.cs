@@ -5,6 +5,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
 {
     public class EngageTargetState : State
     {
+        private StarshipController _starshipTarget;
         private StarshipController StarshipController => (StarshipController)Machine;
 
         public override void Update()
@@ -12,20 +13,15 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
             base.Update();
 
             StarshipController.WeaponsManager.FireEverything(StarshipController.CurrentTarget.transform);
+
+            _starshipTarget = StarshipController.CurrentTarget.GetComponent<StarshipController>();
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
-            StarshipController.Steering.SetVelocity();
-
-            StarshipController.transform.Translate(StarshipController.transform.forward * StarshipController.Steering.CurrentVelocity * Time.deltaTime, Space.World);
-
-            var targetRotation = Quaternion.LookRotation(StarshipController.CurrentTarget.transform.position - StarshipController.transform.position);
-            var turningStrength = Mathf.Min(StarshipController.Steering.TurnRate * Time.deltaTime, 1);
-            StarshipController.transform.rotation = Quaternion.Lerp(StarshipController.transform.rotation, targetRotation, turningStrength);
-
+            StarshipController.Steering.SetDesiredVelocity(StarshipController.Steering.MaxVelocity);
 
             var targetDistance = Vector3.Distance(StarshipController.CurrentTarget.transform.position, StarshipController.transform.position);
             if (targetDistance > StarshipController.WeaponsManager.WeaponsRange)
@@ -33,10 +29,17 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
                 StarshipController.ChangeState<SeekTargetState>();
             }
 
-            if (StarshipController.CurrentTarget.HitPoints <= 0)
+            if (_starshipTarget.HitPoints <= 0)
             {
                 StarshipController.ChangeState<FindNextTargetState>();
             }
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            StarshipController.WeaponsManager.CeaseFire();
         }
     }
 }

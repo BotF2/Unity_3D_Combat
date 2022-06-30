@@ -24,9 +24,9 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
             }
         }
 
-        private StarshipController FindNearestTarget()
+        private GameObject FindNearestTarget()
         {
-            StarshipController foundTarget = null;
+            GameObject foundTarget = null;
 
             float minimumDistance = Mathf.Infinity;
 
@@ -36,7 +36,7 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
 
                 if (distance < minimumDistance)
                 {
-                    foundTarget = availableTarget;
+                    foundTarget = availableTarget.gameObject;
                     minimumDistance = distance;
                 }
             }
