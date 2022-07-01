@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
 {
@@ -44,11 +45,17 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
 
             if (StarshipController.CurrentTarget != null)
             {
+                float zAngle = GetZRotationAngle(StarshipController.transform, StarshipController.CurrentTarget.transform);
+                float rotationZ = Mathf.Min(zAngle * Time.deltaTime, 1);
+
+                float yDifference = GetHeightDifference(StarshipController.transform, StarshipController.CurrentTarget.transform);
+                float rotationX = Mathf.Min(yDifference * Time.deltaTime, 1);
+
+                StarshipController.transform.Rotate(new Vector3(rotationX, 0f, rotationZ));
+
                 var targetRotation = Quaternion.LookRotation(StarshipController.CurrentTarget.transform.position - StarshipController.transform.position);
                 var turningStrength = Mathf.Min(_turnRate * Time.deltaTime, 1);
-                Debug.Log($"{targetRotation}, {turningStrength}");
-                float rotationZ = 0.1f * Mathf.Sin(Time.time * CurrentVelocity);
-                StarshipController.transform.Rotate(new Vector3(0f, 0f, rotationZ));
+                
                 StarshipController.transform.rotation = Quaternion.Lerp(StarshipController.transform.rotation, targetRotation, turningStrength);
             }
         }
@@ -99,6 +106,17 @@ namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
             {
                 CurrentVelocity = -MaxVelocity;
             }
+        }
+
+        private float GetZRotationAngle(Transform shipTransform, Transform targetTransform)
+        {
+            var targetDir = targetTransform.position - shipTransform.position;
+            return Vector3.Angle(shipTransform.transform.forward, targetDir);
+        }
+
+        private float GetHeightDifference(Transform shipTransform, Transform targetTransform)
+        {
+            return shipTransform.position.y - targetTransform.position.y;
         }
     }
 }
