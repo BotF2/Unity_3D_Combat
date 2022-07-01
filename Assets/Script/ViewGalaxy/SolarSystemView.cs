@@ -82,7 +82,7 @@ namespace Assets.Script
             SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
             spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
             spritView.sprite = Sprites[orbitalG.GraphicID];
-            //if(galacticCamera != null)
+            //if(galacticCamera != null) // NO LUCK SO FAR BRINGING IN THE GALACTIC CAMERA FOR A LookAt(camera);
             //    spritView.transform.LookAt(galacticCamera.transform);
             //StupidInt += 1;
             for (int i = 0; i < orbitalG.Children.Count; i++)
