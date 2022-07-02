@@ -15,7 +15,6 @@ namespace Assets.Script
         public bool _isFriend;
         public GameObject cameraEmpty;
         public GameObject animFriend1;
-        //public Animator animatorFriend1;
         public GameObject animFriend2;
         public GameObject animFriend3;
         public GameObject animEnemy1;

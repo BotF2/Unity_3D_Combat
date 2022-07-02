@@ -645,8 +645,10 @@ namespace Assets.Script
                     _statePassedMain_Init = true;
                     break;
                 case State.GALACTIC_COMPLETED:
+                    PanelLobby_Menu.SetActive(false);
                     break;
                 case State.COMBAT_MENU:
+                    PanelLobby_Menu.SetActive(false);
                     // ToDo: end combat
                     //if (enemies are == 0 || friends are == 0)
                     //    {
@@ -710,7 +712,7 @@ namespace Assets.Script
                     PanelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_MENU:
-                    // panelGalactic_Play.SetActive(false);
+                    //panelGalactic_Play.SetActive(false);
                     PanelCombat_Menu.SetActive(false);
                     break;
                 case State.COMBAT_INIT:
