@@ -23,7 +23,7 @@ namespace Assets.Script
             if (GameManager.FriendShips.Count > 0)
             {
                 string whoTorpedo = gameObject.name.Substring(0, 3);
-                string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one can be a dummy so go with [1], think this does not happen now
+                string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one may be a dummy so go with [1], think this does not happen now
                 if (whoTorpedo == friendShips)
                     theLocalTargetDictionary = GameManager.EnemyShips;
                 else
@@ -67,7 +67,8 @@ namespace Assets.Script
         }
         public void OnCollisionEnter(Collision collision)
         {
-            Destroy(this.gameObject); // kill weapon gameobject holding speed script
+            if (this.gameObject.tag != collision.gameObject.name) // do not blow up the torpedo if it hits the ship collider on launching
+                Destroy(this.gameObject); // kill weapon gameobject holding speed script
         }
         public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
         {

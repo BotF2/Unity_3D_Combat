@@ -24,7 +24,7 @@ namespace Assets.Script
         public Rigidbody _rigidbody;
         private bool _isFriend;
         private new Rigidbody rigidbody;
-        private GameObject shipGameObject;
+        //private GameObject shipGameObject;
         private Transform _farTarget;
         private Transform _nearTarget;
         private Transform _currentTarget;
@@ -51,7 +51,7 @@ namespace Assets.Script
         //private int _torpedoWarhead;
         //private int _beamPower;
         public int _layer;
-        public GameObject torpedoPrefab; // set in prefab of ships
+        public GameObject torpedoPrefab; // set in prefab of ships code in inspector
         public GameObject beamPrefab;
         private GameObject beamObject;
         public GameObject shieldPrefab;
@@ -212,58 +212,10 @@ namespace Assets.Script
 
         }
         private void Update()
-        { // Move
-            if (GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
+        {
+
+            if (gameObject.name.ToUpper() != "SHIP") //GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
             {
-                //rigidbody.velocity = Vector3.zero;
-                //rigidbody.angularVelocity = Vector3.zero;
-                // ToDo: update to put physics movement on parent of ship so camera empty gets it too
-
-                //rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
-                #region travel between targets here
-                //if (!isFarTargetSet)
-                //{
-                //    GameObject fart = new GameObject();
-                //    GameObject[] farty = new GameObject[] { fart, fart };
-                //    //Transform value = fart.transform;
-                //    var dictionary = GameManager.Instance.GetShipTravelTargets();
-
-                //    if (dictionary.TryGetValue(shipGameObject, out farty))
-                //    {
-                //        _nearTarget = farty[0].transform;
-                //        _farTarget = farty[1].transform;
-                //    }
-                //    _currentTarget = _farTarget;
-                //    isFarTargetSet = true;
-                //}
-                //#endregion
-                //#region Alernate near and far targets
-                //if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
-                //    lockTurn = false;
-
-                //int leftRight = 1;
-                //if (_currentTarget.position.x < 0)
-                //    leftRight = -1;
-                //if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
-                //{
-                //    if (_currentTarget == _farTarget)
-                //    {
-                //        _currentTarget = _nearTarget;
-                //        lockTurn = true;
-                //    }
-                //    else if (_currentTarget == _nearTarget)
-                //    {
-                //        _currentTarget = _farTarget;
-                //        lockTurn = true;
-                //    }
-                //}
-                #endregion
-                #region turn to target
-                //var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
-                //rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
-                ////transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
-                #endregion
-
                 if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
                 {
                     string whoTorpedo = gameObject.name.Substring(0, 3);
@@ -317,6 +269,49 @@ namespace Assets.Script
                     OnTriggerStay(meshCollider);
                     Destroy(beamObject, 0.65f);
                 }
+                #region travel between targets here
+                //if (!isFarTargetSet)
+                //{
+                //    GameObject fart = new GameObject();
+                //    GameObject[] farty = new GameObject[] { fart, fart };
+                //    //Transform value = fart.transform;
+                //    var dictionary = GameManager.Instance.GetShipTravelTargets();
+
+                //    if (dictionary.TryGetValue(shipGameObject, out farty))
+                //    {
+                //        _nearTarget = farty[0].transform;
+                //        _farTarget = farty[1].transform;
+                //    }
+                //    _currentTarget = _farTarget;
+                //    isFarTargetSet = true;
+                //}
+                //#endregion
+                //#region Alernate near and far targets
+                //if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
+                //    lockTurn = false;
+
+                //int leftRight = 1;
+                //if (_currentTarget.position.x < 0)
+                //    leftRight = -1;
+                //if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
+                //{
+                //    if (_currentTarget == _farTarget)
+                //    {
+                //        _currentTarget = _nearTarget;
+                //        lockTurn = true;
+                //    }
+                //    else if (_currentTarget == _nearTarget)
+                //    {
+                //        _currentTarget = _farTarget;
+                //        lockTurn = true;
+                //    }
+                //}
+                #endregion
+                #region turn to target
+                //var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
+                //rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
+                ////transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
+                #endregion
             }
         }
         private void FixedUpdate()

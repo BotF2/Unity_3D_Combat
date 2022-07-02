@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6665026997039616199}
   m_Father: {fileID: 0}
@@ -48,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  _civilization: 0
+  _civilization: 3
   _shipType: 0
   _techLevel: 0
   _shieldsMaxHealth: 30
@@ -56,6 +57,7 @@ MonoBehaviour:
   _torpedoDamage: 16
   _beamDamage: 16
   _cost: 0
+  _rigidbody: {fileID: 0}
   shieldsAreUp: 0
   _warpCoreBreach: {fileID: 3556742307895565664, guid: 5c5f31f8b3118dd4e96bd242d9b303dd, type: 3}
   _ringExplosion: {fileID: 2985515082085028294, guid: 95ee08a69fa725a4a8be377a055a2aaf, type: 3}
@@ -95,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weAreFriend: 0
+  _warpingInIsOver: 0
+  _isSinglePlayer: 0
   _localPlayer: 0
   _hostPlayer: 0
   _cliantZero: 0
@@ -103,12 +107,23 @@ MonoBehaviour:
   _cliantThree: 0
   _cliantFour: 0
   _cliantFive: 0
+  galaxyStarCount: 1
   _combatOrder: 0
+  galacticTime: 0
+  SolarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
+  Canvas: {fileID: 0}
+  _SinglePlayer: {fileID: 0}
+  _MultiPlayer: {fileID: 0}
+  _LoadGamePanel: {fileID: 0}
+  _SaveGamePanel: {fileID: 0}
+  _SettingsGamePanel: {fileID: 0}
+  _ExitQuit: {fileID: 0}
+  _CreditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
@@ -181,14 +196,6 @@ MonoBehaviour:
   - {fileID: 0}
   friends: 0
   enemies: 0
-  panelLobby_Menu: {fileID: 0}
-  panelMain_Menu: {fileID: 0}
-  panelGalactic_Play: {fileID: 0}
-  panelGalactic_Completed: {fileID: 0}
-  panelCombat_Menu: {fileID: 0}
-  panelCombat_Play: {fileID: 0}
-  panelCombat_Completed: {fileID: 0}
-  panelGameOver: {fileID: 0}
   _statePassedLobbyInit: 0
   _statePassedMain_Init: 0
   _statePassedCombatMenu_Init: 0
@@ -238,6 +245,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1.1612326, y: 1.1612326, z: 1.1612326}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 702854180133880748}
   m_RootOrder: 0
@@ -261,6 +269,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

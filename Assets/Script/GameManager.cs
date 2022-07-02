@@ -239,23 +239,23 @@ namespace Assets.Script
         private int enemyShipLayer;
 
         #region travel points as game object
-        private GameObject[] _friendScouts;
-        private GameObject[] _friendFarScouts;
-        private GameObject[] _friendDestroyer;
-        private GameObject[] _friendFarDestroyer;
-        private GameObject[] _friendCapital;
-        private GameObject[] _friendFarCapital;
-        private GameObject[] _friendColony;
-        private GameObject[] _friendFarColony;
+        //private GameObject[] _friendScouts;
+        //private GameObject[] _friendFarScouts;
+        //private GameObject[] _friendDestroyer;
+        //private GameObject[] _friendFarDestroyer;
+        //private GameObject[] _friendCapital;
+        //private GameObject[] _friendFarCapital;
+        //private GameObject[] _friendColony;
+        //private GameObject[] _friendFarColony;
 
-        private GameObject[] _enemyScouts;
-        private GameObject[] _enemyFarScouts;
-        private GameObject[] _enemyDestroyer;
-        private GameObject[] _enemyFarDestroyer;
-        private GameObject[] _enemyCapital;
-        private GameObject[] _enemyFarCapital;
-        private GameObject[] _enemyColony;
-        private GameObject[] _enemyFarColony;
+        //private GameObject[] _enemyScouts;
+        //private GameObject[] _enemyFarScouts;
+        //private GameObject[] _enemyDestroyer;
+        //private GameObject[] _enemyFarDestroyer;
+        //private GameObject[] _enemyCapital;
+        //private GameObject[] _enemyFarCapital;
+        //private GameObject[] _enemyColony;
+        //private GameObject[] _enemyFarColony;
         public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;  // key ship gameObject, value target gameObject (problem, is loaded inside LoadCombat()
         #endregion
 
@@ -599,7 +599,7 @@ namespace Assets.Script
                     else
                     {
                         SwitchtState(State.GALACTIC_PLAY);
-                        _statePassedCombatInit = false;
+                        _statePassedCombatInit = true;
                         _statePassedCombatMenu_Init = false;
                         zoomCamera.TurnOfZoomerUpdate();
                     }
