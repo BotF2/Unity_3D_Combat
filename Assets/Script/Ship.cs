@@ -43,7 +43,7 @@ namespace Assets.Script
         public GameObject _warpCoreBreach;
         public GameObject _ringExplosion;
         private bool _isTorpedo;
-        private Transform beamTargetTransform;
+        private Transform beamTargetTransform; // Torpedo targeting is in PhotonTorpedo.cs as the torpedo moves
 
         private Dictionary<int, GameObject> theLocalTargetDictionary;
         private float diff = 0;
@@ -214,17 +214,22 @@ namespace Assets.Script
         private void Update()
         {
 
-            if (gameObject.name.ToUpper() != "SHIP") //GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
+            if (gameObject.name.ToUpper() != "SHIP") // GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
             {
-                if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
+                if (GameManager.FriendShips.Count > 0 && GameManager.EnemyShips.Count >0 && gameObject.name != "Ship")
                 {
-                    string whoTorpedo = gameObject.name.Substring(0, 3);
-                    string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one might be a dummy so go with [1]
-                    if (whoTorpedo == friendShips)
+                    string whoTorpedo = gameObject.name.Substring(0, 3).ToUpper();
+                    string ship;
+                    if (_isFriend)
+                        ship = GameManager.FriendNameArray[0].Substring(0, 3);
+                    else
+                        ship = GameManager.EnemyNameArray[0].Substring(0, 3);
+                    ship = ship.ToUpper();
+                    if (whoTorpedo == ship)
                         theLocalTargetDictionary = GameManager.EnemyShips;
                     else
                         theLocalTargetDictionary = GameManager.FriendShips;
-                    FindBeamTarget(theLocalTargetDictionary);
+                    //FindBeamTarget(theLocalTargetDictionary);
                 }
  
                 if (beamObject == null)
@@ -234,7 +239,7 @@ namespace Assets.Script
                 {
                     GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                     _tempTorpedo.layer = gameObject.layer + 10;
-                    _tempTorpedo.tag = gameObject.name.ToUpper();
+                    _tempTorpedo.tag = gameObject.name.ToUpper() + "(CLONE)"; // see Edit>Project, Tags and Layers predefined for ship names + (CLONE)
                     _tempTorpedo.AddComponent<AudioSource>().playOnAwake = false;
                     _tempTorpedo.AddComponent<AudioSource>().clip = clipTorpedoFire;
                     theSource = _tempTorpedo.GetComponent<AudioSource>();
@@ -245,28 +250,26 @@ namespace Assets.Script
                 {
                     GameObject beamObject = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
                     FindBeamTarget(theLocalTargetDictionary);
-                    linePositions[0] = this.transform.position + (transform.right * 50) + (transform.forward * 50);
-                    linePositions[1] = beamTargetTransform.position + (transform.right * 50) - (transform.forward * 50);
-                    //beamObject = _tempBeam;
-                    //_tempBeam.layer = gameObject.layer + 10;
-                    beamObject.tag = gameObject.name.ToUpper();
+                    linePositions[0] = this.transform.position + (transform.right * 1) + (transform.forward * 1);
+                    linePositions[1] = beamTargetTransform.position + (transform.right * 1) - (transform.forward * 1);
+                    beamObject.tag = gameObject.name.ToUpper() + "(CLONE)";
 
                     var theLine = beamObject.GetComponent<LineRenderer>();
                     theLine.SetVertexCount(2);
-                    theLine.SetWidth(50f, 50f);
+                    theLine.SetWidth(1f, 1f);
                     theLine.SetPosition(0, linePositions[0]);
                     theLine.SetPosition(1, linePositions[1]);
-                    var meshCollider = theLine.GetComponent<MeshCollider>();
-                    Mesh mesh = new Mesh();
+                    var boxCollider = theLine.GetComponent<BoxCollider>();
+                    MeshFilter meshFilter = (MeshFilter)beamObject.GetComponent("MeshFilter");
+                    Mesh mesh = meshFilter.mesh;
                     theLine.BakeMesh(mesh, true);
-                    meshCollider.sharedMesh = mesh;
-                    meshCollider.isTrigger = true;
+                    boxCollider.isTrigger = true;
 
                     beamObject.AddComponent<AudioSource>().playOnAwake = false;
                     beamObject.AddComponent<AudioSource>().clip = clipBeamWeapon;
                     theNextSource = beamObject.GetComponent<AudioSource>();
                     theNextSource.PlayOneShot(clipBeamWeapon);
-                    OnTriggerStay(meshCollider);
+                    OnTriggerStay(boxCollider);
                     Destroy(beamObject, 0.65f);
                 }
                 #region travel between targets here
@@ -393,7 +396,7 @@ namespace Assets.Script
                             theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
                             positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
                             _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                            Destroy(_shields, 1.3f);
+                            Destroy(_shields, 2f);
                             ShieldsTakeDagame(_torpedoDamage);
                             _torpedoDamage = 0;
                             break;
@@ -485,9 +488,9 @@ namespace Assets.Script
                 theSource = ringExplosion.GetComponent<AudioSource>();
                 theSource.PlayOneShot(clipWarpCoreBreach);
                 GameObject warpCore = Instantiate(_warpCoreBreach, transform.position, Quaternion.identity) as GameObject;
-                Destroy(warpCore, 1.3f);
-                Destroy(ringExplosion, 4f);
-                Destroy(shieldPrefab);
+                Destroy(warpCore, 2f);
+                Destroy(ringExplosion, 2f);
+                Destroy(_shields, 2f);
             }
         }
 

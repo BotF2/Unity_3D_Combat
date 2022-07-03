@@ -396,7 +396,11 @@ namespace Assets.Script
             SwitchtState(State.COMBAT_INIT);
 
         }
-
+        public void ResetFriendAndEnemyDictionaries()
+        {
+            FriendShips.Clear();
+            EnemyShips.Clear();
+        }
         public void SwitchtState(State newState, float delay = 0)
         {
             StartCoroutine(SwitchDelay(newState, delay));
@@ -756,13 +760,13 @@ namespace Assets.Script
           
             cameraMultiTarget.SetTargets(_cameraTargets.ToArray()); // start multiCamera - main camers before warp in of ships
         }
-        public void ProvideFriendCombatShips(Dictionary<int, GameObject> combatFriendObjects)
+        public void ProvideFriendCombatShips(int numIndex, GameObject daObject)
         {
-            FriendShips = combatFriendObjects; // geting friend combat ship dictionary for combat
+            FriendShips.Add(numIndex,daObject); // geting friend combat ship dictionary for combat
         }
-        public void ProvideEnemyCombatShips(Dictionary<int, GameObject> combatEnemyObjects)
+        public void ProvideEnemyCombatShips(int numIndex, GameObject daObject)
         {
-            EnemyShips = combatEnemyObjects;
+            EnemyShips.Add(numIndex, daObject);
         }
         public void WarpingInCompleted()
         {

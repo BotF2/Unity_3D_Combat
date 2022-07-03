@@ -59,9 +59,11 @@ namespace Assets.Script
         private string[] arrayCountShipTypes;
         private string[] arrayNames;
 
-        public void PreCombatSetup(string[] preCombatShips, bool _isFriend) 
+        public void PreCombatSetup(string[] preCombatShips, bool _areFriends) 
         // The preCombatShips is one side of the list of combatents that will come from galaxy screen incoming combat data
         {
+            GameManager.Instance.ResetFriendAndEnemyDictionaries();
+            _isFriend = _areFriends;
             // we do all friend shipGameOb first, when we do the first enemy reset shipGameOb counts to zero at start           
             _scoutShips = 0; // running count as we process the list of ships
             _destroyerShips = 0;
@@ -253,6 +255,7 @@ namespace Assets.Script
                         }
 
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];    
                         PopulateShipData(shipGameOb); // Ship class script is attached in prefab so fill in the data
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
                         var aCameraTarget = shipGameOb;   
@@ -330,6 +333,7 @@ namespace Assets.Script
                                 break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
@@ -420,6 +424,7 @@ namespace Assets.Script
                             break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
@@ -491,6 +496,7 @@ namespace Assets.Script
                                 break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
@@ -530,12 +536,13 @@ namespace Assets.Script
             for (int j = 0; j < combatShips.Count; j++)
             {
                 localShipObjectDictionary.Add(j, combatShips[j]);
+
+                if (_isFriend)
+                {
+                    GameManager.Instance.ProvideFriendCombatShips(j, combatShips[j]);
+                }
+                else GameManager.Instance.ProvideEnemyCombatShips(j, combatShips[j]);
             }
-            if (_isFriend)
-            {
-                GameManager.Instance.ProvideFriendCombatShips(localShipObjectDictionary);
-            }
-            else GameManager.Instance.ProvideEnemyCombatShips(localShipObjectDictionary);
             combatShips.Clear();
             #endregion
         } // end of pre combat setup methode call for friend or enemy
