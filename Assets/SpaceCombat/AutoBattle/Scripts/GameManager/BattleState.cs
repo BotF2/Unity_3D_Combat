@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assets.Plugins.YAFSM;
+﻿using Assets.Plugins.YAFSM;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.GameManager
+namespace Assets.SpaceCombat.AutoBattle.Scripts.GameManager
 {
     public class BattleState : State
     {
-        public NonInteractiveCombatGameManager GameManager
+        public AutoBattleGameManager GameManager
         {
-            get { return (NonInteractiveCombatGameManager)Machine; }
+            get { return (AutoBattleGameManager)Machine; }
         }
 
         public override void Enter()

@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Assets.Plugins.YAFSM;
-using Assets.SpaceCombat.NonInteractive.Scripts.Starships;
+using Assets.SpaceCombat.AutoBattle.Scripts.Starships;
 using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.GameManager
+namespace Assets.SpaceCombat.AutoBattle.Scripts.GameManager
 {
-    public class NonInteractiveCombatGameManager : MachineBehaviour
+    public class AutoBattleGameManager : MachineBehaviour
     {
         [SerializeField] public List<StarshipInfo> AttackersPrefabs = new();
         [SerializeField] public List<StarshipInfo> DefendersPrefabs = new();
