@@ -7,6 +7,7 @@ namespace Assets.Script
 {
     public class InstantiateCombatShips : MonoBehaviour
     {
+        public Combat combat;
         public List<GameObject> combatShips;
         //public List<Ship> ships;
         public Orders order;
@@ -264,6 +265,7 @@ namespace Assets.Script
                         ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order); //aCameraTarget, _isFriend, CombatOrderSelection.order);
                         combatShips.Add(shipGameOb); // list of comabat ships informing GameManager of combat ships
                         cameraTargets.Add(aCameraTarget);
+                        combat.AddCombatant(shipGameOb);
                         break;
                     }
                     #endregion Engage Region

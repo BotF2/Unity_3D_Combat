@@ -11,7 +11,6 @@ namespace Assets.Script
     {
         public GameManager gameManager;
         public SolarSystem solarSystem;
-        //public Camera galacticCamera;
         public Sprite[] Sprites;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.2f;
@@ -34,11 +33,12 @@ namespace Assets.Script
                     UpdateSprites(solarSystem.Children[i]);
                 }
         }
+
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
-            //CameraManagerGalactica cameraManagerGalactica = new CameraManagerGalactica();
-            //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
+
             ourGalaxy = galaxy; 
+           // gameManager.
             while (transform.childCount > 0) // delelt old systems from prior update
             {
                 Transform child = transform.GetChild(0);
@@ -47,7 +47,7 @@ namespace Assets.Script
             }
             orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();
             //solarSystem = SolarSystems[0];
-            solarSystem = ourGalaxy.SolarSystems[0]; // take the first one for now, for display but use solarSystemID later for civ...
+            solarSystem = ourGalaxy.SolarSystems[solarSystemID]; 
             for (int i = 0; i < solarSystem.Children.Count; i++)
             {
                 this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);
@@ -62,8 +62,9 @@ namespace Assets.Script
                 Destroy(child.gameObject);
 
             }
+            gameManager.ChangeSystemClicked(buttonSystemID, this);
             orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();
-            solarSystem = ourGalaxy.SolarSystems[buttonSystemID]; // take the system button ID to show
+            solarSystem = gameManager.galaxy.SolarSystems[buttonSystemID]; // take the system button ID to show
             for (int i = 0; i < solarSystem.Children.Count; i++)
             {
                 this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);

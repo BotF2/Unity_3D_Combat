@@ -7,12 +7,12 @@ namespace Assets.Script
 {
     public class PhotonTorpedo : MonoBehaviour
     {
-        public float speed = 1000f;
+        public float speed = 10f;
         public float turnRate = 1f;
         private Rigidbody homingTorpedo;
 
         private Transform target;
-        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private List<GameObject> theLocalTargetList;
         private float diff = 0;
 
 
@@ -24,13 +24,13 @@ namespace Assets.Script
                 string whoTorpedo = gameObject.name.Substring(0, 3);
                 string friendShips = GameManager.FriendNameArray[0].Substring(0, 3); 
                 if (whoTorpedo == friendShips)
-                    theLocalTargetDictionary = GameManager.EnemyShips;
+                    theLocalTargetList = GameManager.EnemyShips;
                 else
-                    theLocalTargetDictionary = GameManager.FriendShips;
+                    theLocalTargetList = GameManager.FriendShips;
                 homingTorpedo = transform.GetComponent<Rigidbody>();
                 if (homingTorpedo != null)
                 {
-                    FindTargetNearTorpedo(theLocalTargetDictionary);
+                    FindTargetNearTorpedo(theLocalTargetList);
                 }
                 if (target == null)
                 {
@@ -59,10 +59,10 @@ namespace Assets.Script
             if (this.gameObject.tag != collision.gameObject.name) // do not blow up the torpedo if it hits the ship collider on launching
                 Destroy(this.gameObject, 0.3f); // kill weapon gameobject holding speed script
         }
-        public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
+        public void FindTargetNearTorpedo(List<GameObject> theTargets)
         {
             var distance = Mathf.Infinity;
-            foreach (var possibleTarget in theTargets.Values)
+            foreach (var possibleTarget in theTargets)
             {
                 if (possibleTarget != null)
                 {

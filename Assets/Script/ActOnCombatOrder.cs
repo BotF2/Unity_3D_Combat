@@ -7,21 +7,23 @@ namespace Assets.Script
 {
     public class ActOnCombatOrder : MonoBehaviour
     {
-        public static Dictionary<int, GameObject> FriendShips = new Dictionary<int, GameObject>();  // updated to current combat
-        public static Dictionary<int, GameObject> EnemyShips = new Dictionary<int, GameObject>();
-        public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
+        public static List<GameObject> FriendShips = new List<GameObject>();  // updated to current combat
+        public static List<GameObject> EnemyShips = new List<GameObject>();
+        public static List<GameObject> CombatObjects = new List<GameObject>();
 
-        public void CombatOrderAction(Orders order, Dictionary<int, GameObject> daFriends, Dictionary<int, GameObject> daEnemies) // GameManager Orders updated by toggle in CombatmMenu through CombatOrderSeleciton.cs
+        public void CombatOrderAction(Orders order, List<GameObject> daFriends, List<GameObject> daEnemies) // GameManager Orders updated by toggle in CombatmMenu through CombatOrderSeleciton.cs
         {
             FriendShips = daFriends;
             EnemyShips = daEnemies;
-            foreach (var item in daEnemies)
+
+            for (int i = 0; i < daFriends.Count; i++)
             {
-                CombatObjects.Add(item.Key, item.Value);
+                CombatObjects.Add(daFriends[i]);
             }
-            foreach (var item in daFriends)
+
+            for (int i = 0; i < daEnemies.Count; i++)
             {
-                CombatObjects.Add(item.Key, item.Value);
+                CombatObjects.Add(daEnemies[i]);
             }
 
             switch (order)

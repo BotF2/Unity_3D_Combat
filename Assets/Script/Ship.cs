@@ -13,6 +13,7 @@ namespace Assets.Script
     public class Ship : MonoBehaviour
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
+        public Combat combat;
         public Civilization _civilization;
         public ShipType _shipType;
         public TechLevel _techLevel;
@@ -23,6 +24,7 @@ namespace Assets.Script
         public int _cost;
         public Rigidbody _rigidbody;
         private bool _isFriend;
+        private bool _notInThisFight;
         private new Rigidbody rigidbody;
         //private GameObject shipGameObject;
         private Transform _farTarget;
@@ -45,7 +47,7 @@ namespace Assets.Script
         private bool _isTorpedo;
         private Transform beamTargetTransform; // Torpedo targeting is in PhotonTorpedo.cs as the torpedo moves
 
-        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private List<GameObject> theLocalTargetList;
         private float diff = 0;
         private Vector3[] linePositions = new Vector3[2]; // beam line render points in update
         //private int _torpedoWarhead;
@@ -146,89 +148,40 @@ namespace Assets.Script
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
-            _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-            //if (_isFriend)
-                // combatAreaOffset *= -1;
-                //_shields.SetActive(true);
-                //_renderer = GetComponent<Renderer>();
-                //_orgMaterial = _renderer.sharedMaterial;
-
-            //shipGameObject = gameObject;
-            //if (shipGameObject.name.Contains("Scout"))
-            //    _shipType = ShipType.Scout;
-            //string[] nameArray = shipGameObject.name.Split('_');
-            //string typeOfShip = nameArray[1];
-
-            //switch (typeOfShip.ToUpper())
-            //{
-            //    case "SCOUT":
-            //        _shipType = ShipType.Scout;
-            //        break;
-            //    case "DESTROYER":
-            //        _shipType = ShipType.Destroyer;
-            //        break;
-            //    case "CAPITAL":
-            //        _shipType = ShipType.Capital;
-            //        break;
-            //    case "TRANSPORT":
-            //        _shipType = ShipType.Transport;
-            //        break;
-            //    case "COLONYSHIP":
-            //        _shipType = ShipType.Colonyship;
-            //        break;
-            //    case "ONEMORE":
-            //        _shipType = ShipType.OneMore;
-            //        break;
-            //    default:
-            //        break;
-            //}
-            //string civ = nameArray[0];
-            //switch (civ.ToUpper())
-            //{
-            //    case "FED":
-            //        _civilization = Civilization.Fed;
-            //        break;
-            //    case "TERRAN":
-            //        _civilization = Civilization.Terran;
-            //        break;
-            //    case "ROM":
-            //        _civilization = Civilization.Rom;
-            //        break;
-            //    case "KLING":
-            //        _civilization = Civilization.Kling;
-            //        break;
-            //    case "CARD":
-            //        _civilization = Civilization.Card;
-            //        break;
-            //    case "DOM":
-            //        _civilization = Civilization.Dom;
-            //        break;
-            //    case "BORG":
-            //        _civilization = Civilization.Borg;
-            //        break;
-            //    default:
-            //        break;
-            //}
 
         }
         private void Update()
         {
-
-            if (gameObject.name.ToUpper() != "SHIP") // GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
+            if (gameManager != null && gameManager._statePassedMain_Init)
+            {
+                if (combat.FriendCivCombatants().Contains(_civilization))
+                {
+                    _isFriend = true;
+                    _notInThisFight = false;
+                }
+                else if (combat.EnemyCivCombatants().Contains(_civilization))
+                {
+                    _isFriend = false;
+                    _notInThisFight = false;
+                }
+                else _notInThisFight = true;
+            }
+            if (!_notInThisFight && gameObject.name.ToUpper() != "SHIP") // GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
             {
                 if (GameManager.FriendShips.Count > 0 && GameManager.EnemyShips.Count >0 && gameObject.name != "Ship")
                 {
                     string whoTorpedo = gameObject.name.Substring(0, 3).ToUpper();
-                    string ship;
+                    string nameTheSide;
                     if (_isFriend)
-                        ship = GameManager.FriendNameArray[0].Substring(0, 3);
+                        nameTheSide = GameManager.FriendNameArray[0].Substring(0, 3); // ToDo: account for alies with other civ names 
                     else
-                        ship = GameManager.EnemyNameArray[0].Substring(0, 3);
-                    ship = ship.ToUpper();
-                    if (whoTorpedo == ship)
-                        theLocalTargetDictionary = GameManager.EnemyShips;
+                        nameTheSide = GameManager.EnemyNameArray[0].Substring(0, 3);
+                    nameTheSide = nameTheSide.ToUpper();
+
+                    if (whoTorpedo == nameTheSide)
+                        theLocalTargetList = GameManager.EnemyShips;
                     else
-                        theLocalTargetDictionary = GameManager.FriendShips;
+                        theLocalTargetList = GameManager.FriendShips;
                     //FindBeamTarget(theLocalTargetDictionary);
                 }
  
@@ -249,7 +202,7 @@ namespace Assets.Script
                 if (Input.GetKeyDown(KeyCode.B))
                 {
                     GameObject beamObject = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                    FindBeamTarget(theLocalTargetDictionary);
+                    FindBeamTarget(theLocalTargetList);
                     linePositions[0] = this.transform.position + (transform.right * 1) + (transform.forward * 1);
                     linePositions[1] = beamTargetTransform.position + (transform.right * 1) - (transform.forward * 1);
                     beamObject.tag = gameObject.name.ToUpper() + "(CLONE)";
@@ -416,11 +369,11 @@ namespace Assets.Script
                 Destroy(explo, 2f);
             }
         }
-        public void FindBeamTarget(Dictionary<int, GameObject> theTargets)
+        public void FindBeamTarget(List<GameObject> theTargets)
         {
             var distance = Mathf.Infinity;
 
-            foreach (var possibleTarget in theTargets.Values)
+            foreach (var possibleTarget in theTargets)
             {
                 if (possibleTarget != null)
                 {
@@ -464,10 +417,10 @@ namespace Assets.Script
                     var newList = GameManager.FriendNameArray.ToList();
                     newList.Remove(gameObject.name);
                     GameManager.FriendNameArray = newList.ToArray();
-                    if (GameManager.FriendShips.ContainsValue(gameObject))
+                    if (GameManager.FriendShips.Contains(gameObject))
                     {
-                        var someKeyAndShip = GameManager.FriendShips.FirstOrDefault(o => o.Value == gameObject);
-                        GameManager.FriendShips.Remove(someKeyAndShip.Key);
+                        var someKeyAndShip = GameManager.FriendShips.FirstOrDefault(o => o == gameObject);
+                        GameManager.FriendShips.Remove(someKeyAndShip);
                     }
                 }
                 else if (GameManager.EnemyNameArray.Contains(gameObject.name))
@@ -475,10 +428,10 @@ namespace Assets.Script
                     var newList = GameManager.EnemyNameArray.ToList();
                     newList.Remove(gameObject.name);
                     GameManager.EnemyNameArray = newList.ToArray();
-                    if (GameManager.EnemyShips.ContainsValue(gameObject))
+                    if (GameManager.EnemyShips.Contains(gameObject))
                     {
-                        var otherKeyAndShip = GameManager.EnemyShips.FirstOrDefault(o => o.Value == gameObject);
-                        GameManager.EnemyShips.Remove(otherKeyAndShip.Key);
+                        var otherKeyAndShip = GameManager.EnemyShips.FirstOrDefault(o => o == gameObject);
+                        GameManager.EnemyShips.Remove(otherKeyAndShip);
                     }
                 }
                 Debug.Log("Ship destroid");
