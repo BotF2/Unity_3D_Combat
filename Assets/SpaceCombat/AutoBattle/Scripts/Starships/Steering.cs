@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
+namespace Assets.SpaceCombat.AutoBattle.Scripts.Starships
 {
     [Serializable]
     public class Steering

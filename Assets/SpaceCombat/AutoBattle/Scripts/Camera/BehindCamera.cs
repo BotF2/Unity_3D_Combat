@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.Camera
+namespace Assets.SpaceCombat.AutoBattle.Scripts.Camera
 {
     public class BehindCamera : MonoBehaviour
     {

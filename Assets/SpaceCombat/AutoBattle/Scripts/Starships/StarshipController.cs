@@ -1,10 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Assets.Plugins.YAFSM;
-using Assets.SpaceCombat.NonInteractive.Scripts.Starships.States;
-using System.Collections.Generic;
+using Assets.SpaceCombat.AutoBattle.Scripts.Starships.States;
 using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
+namespace Assets.SpaceCombat.AutoBattle.Scripts.Starships
 {
     public abstract class StarshipController : MachineBehaviour
     {

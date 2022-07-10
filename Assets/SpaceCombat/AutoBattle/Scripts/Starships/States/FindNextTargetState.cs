@@ -2,7 +2,7 @@
 using Assets.Plugins.YAFSM;
 using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships.States
+namespace Assets.SpaceCombat.AutoBattle.Scripts.Starships.States
 {
     public class FindNextTargetState : State
     {

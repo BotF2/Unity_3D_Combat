@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.SpaceCombat.NonInteractive.Scripts.Starships
+namespace Assets.SpaceCombat.AutoBattle.Scripts.Starships
 {
     public class PhotonTorpedo : MonoBehaviour
     {
