@@ -12,7 +12,8 @@ namespace Assets.Script
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour
     {
-        public GameManager gameManager; // grant access to GameManager by assigning it in the inspector field for public gameManager with GameManager in Inspector
+        public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
+        public Combat combat;
         public Civilization _civilization;
         public ShipType _shipType;
         public TechLevel _techLevel;
@@ -21,9 +22,11 @@ namespace Assets.Script
         public int _torpedoDamage; // update with data of torpedo that hits
         public int _beamDamage;
         public int _cost;
+        public Rigidbody _rigidbody;
         private bool _isFriend;
+        private bool _notInThisFight;
         private new Rigidbody rigidbody;
-        private GameObject shipGameObject;
+        //private GameObject shipGameObject;
         private Transform _farTarget;
         private Transform _nearTarget;
         private Transform _currentTarget;
@@ -42,15 +45,15 @@ namespace Assets.Script
         public GameObject _warpCoreBreach;
         public GameObject _ringExplosion;
         private bool _isTorpedo;
-        private Transform beamTargetTransform;
+        private Transform beamTargetTransform; // Torpedo targeting is in PhotonTorpedo.cs as the torpedo moves
 
-        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private List<GameObject> theLocalTargetList;
         private float diff = 0;
         private Vector3[] linePositions = new Vector3[2]; // beam line render points in update
         //private int _torpedoWarhead;
         //private int _beamPower;
         public int _layer;
-        public GameObject torpedoPrefab; // set in prefab of ships
+        public GameObject torpedoPrefab; // set in prefab of ships code in inspector
         public GameObject beamPrefab;
         private GameObject beamObject;
         public GameObject shieldPrefab;
@@ -73,8 +76,13 @@ namespace Assets.Script
 
         private void Awake()
         {
-            rigidbody = GetComponent<Rigidbody>();
-            string[] nameArray = this.name.Split('_');
+            //_rigidbody = this.GetComponent<Rigidbody>(); // Do we need to get rigibody or is it just part of prefab ship?
+            //var rigidbody = _rigibody.GetComponent<Rigidbody>();
+            string[] nameArray = new string[3] { "civilization", "shipType", "era" };
+            if (this.name != "Ship")
+                {
+                    nameArray = this.name.Split('_');              
+                }
             string typeOfShip = nameArray[1];
 
             switch (typeOfShip.ToUpper())
@@ -140,80 +148,83 @@ namespace Assets.Script
             _shieldsCurrentHealth = _shieldsMaxHealth;
             //InvokeRepeating("Regenerate", _shieldsRegeneratRate, _shieldsRegeneratRate); // see Regenerate method below
             shieldsAreUp = true;
-            _isFriend = GameManager.Instance.AreWeFriends(gameObject);
-            //if (_isFriend)
-                // combatAreaOffset *= -1;
-                //_shields.SetActive(true);
-                //_renderer = GetComponent<Renderer>();
-                //_orgMaterial = _renderer.sharedMaterial;
-
-            //shipGameObject = gameObject;
-            //if (shipGameObject.name.Contains("Scout"))
-            //    _shipType = ShipType.Scout;
-            //string[] nameArray = shipGameObject.name.Split('_');
-            //string typeOfShip = nameArray[1];
-
-            //switch (typeOfShip.ToUpper())
-            //{
-            //    case "SCOUT":
-            //        _shipType = ShipType.Scout;
-            //        break;
-            //    case "DESTROYER":
-            //        _shipType = ShipType.Destroyer;
-            //        break;
-            //    case "CAPITAL":
-            //        _shipType = ShipType.Capital;
-            //        break;
-            //    case "TRANSPORT":
-            //        _shipType = ShipType.Transport;
-            //        break;
-            //    case "COLONYSHIP":
-            //        _shipType = ShipType.Colonyship;
-            //        break;
-            //    case "ONEMORE":
-            //        _shipType = ShipType.OneMore;
-            //        break;
-            //    default:
-            //        break;
-            //}
-            //string civ = nameArray[0];
-            //switch (civ.ToUpper())
-            //{
-            //    case "FED":
-            //        _civilization = Civilization.Fed;
-            //        break;
-            //    case "TERRAN":
-            //        _civilization = Civilization.Terran;
-            //        break;
-            //    case "ROM":
-            //        _civilization = Civilization.Rom;
-            //        break;
-            //    case "KLING":
-            //        _civilization = Civilization.Kling;
-            //        break;
-            //    case "CARD":
-            //        _civilization = Civilization.Card;
-            //        break;
-            //    case "DOM":
-            //        _civilization = Civilization.Dom;
-            //        break;
-            //    case "BORG":
-            //        _civilization = Civilization.Borg;
-            //        break;
-            //    default:
-            //        break;
-            //}
 
         }
         private void Update()
-        { // Move
-            if (GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
+        {
+            if (gameManager != null && gameManager._statePassedMain_Init)
             {
-                //rigidbody.velocity = Vector3.zero;
-                //rigidbody.angularVelocity = Vector3.zero;
-                // ToDo: update to put physics movement on parent of ship so camera empty gets it too
+                if (combat.FriendCivCombatants().Contains(_civilization))
+                {
+                    _isFriend = true;
+                    _notInThisFight = false;
+                }
+                else if (combat.EnemyCivCombatants().Contains(_civilization))
+                {
+                    _isFriend = false;
+                    _notInThisFight = false;
+                }
+                else _notInThisFight = true;
+            }
+            if (!_notInThisFight && gameObject.name.ToUpper() != "SHIP") // GameManager.Instance._statePassedCombatInit) //  || GameManager.Instance._statePassedCombatInitRight)
+            {
+                if (GameManager.FriendShips.Count > 0 && GameManager.EnemyShips.Count >0 && gameObject.name != "Ship")
+                {
+                    string whoTorpedo = gameObject.name.Substring(0, 3).ToUpper();
+                    string nameTheSide;
+                    if (_isFriend)
+                        nameTheSide = GameManager.FriendNameArray[0].Substring(0, 3); // ToDo: account for alies with other civ names 
+                    else
+                        nameTheSide = GameManager.EnemyNameArray[0].Substring(0, 3);
+                    nameTheSide = nameTheSide.ToUpper();
 
-                //rigidbody.velocity = transform.forward * Time.deltaTime * _speedBooster;
+                    if (whoTorpedo == nameTheSide)
+                        theLocalTargetList = GameManager.EnemyShips;
+                    else
+                        theLocalTargetList = GameManager.FriendShips;
+                    //FindBeamTarget(theLocalTargetDictionary);
+                }
+ 
+                if (beamObject == null)
+                    beamTargetTransform = null;
+
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                    _tempTorpedo.layer = gameObject.layer + 10;
+                    _tempTorpedo.tag = gameObject.name.ToUpper() + "(CLONE)"; // see Edit>Project, Tags and Layers predefined for ship names + (CLONE)
+                    _tempTorpedo.AddComponent<AudioSource>().playOnAwake = false;
+                    _tempTorpedo.AddComponent<AudioSource>().clip = clipTorpedoFire;
+                    theSource = _tempTorpedo.GetComponent<AudioSource>();
+                    theSource.PlayOneShot(clipTorpedoFire);
+                    Destroy(_tempTorpedo, 8f);
+                }
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    GameObject beamObject = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+                    FindBeamTarget(theLocalTargetList);
+                    linePositions[0] = this.transform.position + (transform.right * 1) + (transform.forward * 1);
+                    linePositions[1] = beamTargetTransform.position + (transform.right * 1) - (transform.forward * 1);
+                    beamObject.tag = gameObject.name.ToUpper() + "(CLONE)";
+
+                    var theLine = beamObject.GetComponent<LineRenderer>();
+                    theLine.SetVertexCount(2);
+                    theLine.SetWidth(1f, 1f);
+                    theLine.SetPosition(0, linePositions[0]);
+                    theLine.SetPosition(1, linePositions[1]);
+                    var boxCollider = theLine.GetComponent<BoxCollider>();
+                    MeshFilter meshFilter = (MeshFilter)beamObject.GetComponent("MeshFilter");
+                    Mesh mesh = meshFilter.mesh;
+                    theLine.BakeMesh(mesh, true);
+                    boxCollider.isTrigger = true;
+
+                    beamObject.AddComponent<AudioSource>().playOnAwake = false;
+                    beamObject.AddComponent<AudioSource>().clip = clipBeamWeapon;
+                    theNextSource = beamObject.GetComponent<AudioSource>();
+                    theNextSource.PlayOneShot(clipBeamWeapon);
+                    OnTriggerStay(boxCollider);
+                    Destroy(beamObject, 0.65f);
+                }
                 #region travel between targets here
                 //if (!isFarTargetSet)
                 //{
@@ -257,60 +268,6 @@ namespace Assets.Script
                 //rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
                 ////transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
                 #endregion
-
-                if (GameManager.FriendShips.Count > 0 && gameObject.name != "Ship")
-                {
-                    string whoTorpedo = gameObject.name.Substring(0, 3);
-                    string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one might be a dummy so go with [1]
-                    if (whoTorpedo == friendShips)
-                        theLocalTargetDictionary = GameManager.EnemyShips;
-                    else
-                        theLocalTargetDictionary = GameManager.FriendShips;
-                    FindBeamTarget(theLocalTargetDictionary);
-                }
- 
-                if (beamObject == null)
-                    beamTargetTransform = null;
-
-                if (Input.GetKeyDown(KeyCode.V))
-                {
-                    GameObject _tempTorpedo = Instantiate(torpedoPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                    _tempTorpedo.layer = gameObject.layer + 10;
-                    _tempTorpedo.tag = gameObject.name.ToUpper();
-                    _tempTorpedo.AddComponent<AudioSource>().playOnAwake = false;
-                    _tempTorpedo.AddComponent<AudioSource>().clip = clipTorpedoFire;
-                    theSource = _tempTorpedo.GetComponent<AudioSource>();
-                    theSource.PlayOneShot(clipTorpedoFire);
-                    Destroy(_tempTorpedo, 8f);
-                }
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    GameObject beamObject = Instantiate(beamPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-                    FindBeamTarget(theLocalTargetDictionary);
-                    linePositions[0] = this.transform.position + (transform.right * 50) + (transform.forward * 50);
-                    linePositions[1] = beamTargetTransform.position + (transform.right * 50) - (transform.forward * 50);
-                    //beamObject = _tempBeam;
-                    //_tempBeam.layer = gameObject.layer + 10;
-                    beamObject.tag = gameObject.name.ToUpper();
-
-                    var theLine = beamObject.GetComponent<LineRenderer>();
-                    theLine.SetVertexCount(2);
-                    theLine.SetWidth(50f, 50f);
-                    theLine.SetPosition(0, linePositions[0]);
-                    theLine.SetPosition(1, linePositions[1]);
-                    var meshCollider = theLine.GetComponent<MeshCollider>();
-                    Mesh mesh = new Mesh();
-                    theLine.BakeMesh(mesh, true);
-                    meshCollider.sharedMesh = mesh;
-                    meshCollider.isTrigger = true;
-
-                    beamObject.AddComponent<AudioSource>().playOnAwake = false;
-                    beamObject.AddComponent<AudioSource>().clip = clipBeamWeapon;
-                    theNextSource = beamObject.GetComponent<AudioSource>();
-                    theNextSource.PlayOneShot(clipBeamWeapon);
-                    OnTriggerStay(meshCollider);
-                    Destroy(beamObject, 0.65f);
-                }
             }
         }
         private void FixedUpdate()
@@ -392,7 +349,7 @@ namespace Assets.Script
                             theOriginOf += transform.forward * 20; // ship origin plus 20 forward for explosion
                             positionOf += transform.forward * 10;  // ship origin plus 10 forward for shields
                             _shields = Instantiate(shieldPrefab, positionOf, rotationOf) as GameObject;
-                            Destroy(_shields, 1.3f);
+                            Destroy(_shields, 2f);
                             ShieldsTakeDagame(_torpedoDamage);
                             _torpedoDamage = 0;
                             break;
@@ -412,11 +369,11 @@ namespace Assets.Script
                 Destroy(explo, 2f);
             }
         }
-        public void FindBeamTarget(Dictionary<int, GameObject> theTargets)
+        public void FindBeamTarget(List<GameObject> theTargets)
         {
             var distance = Mathf.Infinity;
 
-            foreach (var possibleTarget in theTargets.Values)
+            foreach (var possibleTarget in theTargets)
             {
                 if (possibleTarget != null)
                 {
@@ -460,10 +417,10 @@ namespace Assets.Script
                     var newList = GameManager.FriendNameArray.ToList();
                     newList.Remove(gameObject.name);
                     GameManager.FriendNameArray = newList.ToArray();
-                    if (GameManager.FriendShips.ContainsValue(gameObject))
+                    if (GameManager.FriendShips.Contains(gameObject))
                     {
-                        var someKeyAndShip = GameManager.FriendShips.FirstOrDefault(o => o.Value == gameObject);
-                        GameManager.FriendShips.Remove(someKeyAndShip.Key);
+                        var someKeyAndShip = GameManager.FriendShips.FirstOrDefault(o => o == gameObject);
+                        GameManager.FriendShips.Remove(someKeyAndShip);
                     }
                 }
                 else if (GameManager.EnemyNameArray.Contains(gameObject.name))
@@ -471,10 +428,10 @@ namespace Assets.Script
                     var newList = GameManager.EnemyNameArray.ToList();
                     newList.Remove(gameObject.name);
                     GameManager.EnemyNameArray = newList.ToArray();
-                    if (GameManager.EnemyShips.ContainsValue(gameObject))
+                    if (GameManager.EnemyShips.Contains(gameObject))
                     {
-                        var otherKeyAndShip = GameManager.EnemyShips.FirstOrDefault(o => o.Value == gameObject);
-                        GameManager.EnemyShips.Remove(otherKeyAndShip.Key);
+                        var otherKeyAndShip = GameManager.EnemyShips.FirstOrDefault(o => o == gameObject);
+                        GameManager.EnemyShips.Remove(otherKeyAndShip);
                     }
                 }
                 Debug.Log("Ship destroid");
@@ -484,9 +441,9 @@ namespace Assets.Script
                 theSource = ringExplosion.GetComponent<AudioSource>();
                 theSource.PlayOneShot(clipWarpCoreBreach);
                 GameObject warpCore = Instantiate(_warpCoreBreach, transform.position, Quaternion.identity) as GameObject;
-                Destroy(warpCore, 1.3f);
-                Destroy(ringExplosion, 4f);
-                Destroy(shieldPrefab);
+                Destroy(warpCore, 2f);
+                Destroy(ringExplosion, 2f);
+                Destroy(_shields, 2f);
             }
         }
 

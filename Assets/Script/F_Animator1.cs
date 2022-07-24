@@ -18,7 +18,6 @@ namespace Assets.Script
         void Start()
         {
             anim = GetComponent<Animator>();
-            //layer = new SetShipLayer();
         }
 
         // Update is called once per frame  
@@ -29,11 +28,6 @@ namespace Assets.Script
             {
                 anim.SetBool("FriendWarp1", true);
                 PlayWarp();
-                //if (once == 0 && anim.GetCurrentAnimatorStateInfo(0).IsName("F1_allGoodThings"))
-                //{
-                //    shipLayerSetup.OnStateEnter(anim, anim.GetCurrentAnimatorStateInfo(anim.GetLayerIndex(anim.name)), anim.GetLayerIndex(anim.name));
-                //    once = 1;
-                //}
 
             }
             // lets warp animation run
