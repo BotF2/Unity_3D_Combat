@@ -7,49 +7,42 @@ namespace Assets.Script
 {
     public class PhotonTorpedo : MonoBehaviour
     {
-        //public GameManager gameManager;
-        public float speed = 1000f;
+        public float speed = 10f;
         public float turnRate = 1f;
         private Rigidbody homingTorpedo;
-        //public float fuseDelay = 10f;
-        //public GameObject torpedo;
+
         private Transform target;
-        private Dictionary<int, GameObject> theLocalTargetDictionary;
+        private List<GameObject> theLocalTargetList;
         private float diff = 0;
 
 
         private void Start()
         {
-            if (GameManager.FriendShips.Count > 0)
+           
+            if (GameManager.Instance._statePassedMain_Init) // ToDo: how do we know if combat is over? && GameManager.Instance.FriendShips.Count > 0)
             {
                 string whoTorpedo = gameObject.name.Substring(0, 3);
-                string friendShips = GameManager.FriendNameArray[1].Substring(0, 3); // first one can be a dummy so go with [1], think this does not happen now
+                string friendShips = GameManager.FriendNameArray[0].Substring(0, 3); 
                 if (whoTorpedo == friendShips)
-                    theLocalTargetDictionary = GameManager.EnemyShips;
+                    theLocalTargetList = GameManager.EnemyShips;
                 else
-                    theLocalTargetDictionary = GameManager.FriendShips;
+                    theLocalTargetList = GameManager.FriendShips;
                 homingTorpedo = transform.GetComponent<Rigidbody>();
                 if (homingTorpedo != null)
                 {
-                    FindTargetNearTorpedo(theLocalTargetDictionary);
+                    FindTargetNearTorpedo(theLocalTargetList);
                 }
                 if (target == null)
                 {
-                    Destroy(gameObject);
+                    Destroy(gameObject, 0.3f);
                 }
             }
         }
-        private void Awake()
-        {
 
-        }
         private void FixedUpdate()
         {
             if (target != null && homingTorpedo != null)
             {
-                //var forward = transform.forward;
-                //var quaternion = Quaternion.identity;
-
                 var targetRotation = Quaternion.LookRotation(target.position - transform.position);
                 homingTorpedo.MoveRotation(Quaternion.RotateTowards(transform.rotation, targetRotation, turnRate));
                 transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
@@ -60,19 +53,16 @@ namespace Assets.Script
             }
 
         }
-        private void Update()
-        {
-            //if (homingTorpedo != null)
-            //    transform.Translate(Vector3.forward * speed * Time.deltaTime * 3);
-        }
+
         public void OnCollisionEnter(Collision collision)
         {
-            Destroy(this.gameObject); // kill weapon gameobject holding speed script
+            if (this.gameObject.tag != collision.gameObject.name) // do not blow up the torpedo if it hits the ship collider on launching
+                Destroy(this.gameObject, 0.3f); // kill weapon gameobject holding speed script
         }
-        public void FindTargetNearTorpedo(Dictionary<int, GameObject> theTargets)
+        public void FindTargetNearTorpedo(List<GameObject> theTargets)
         {
             var distance = Mathf.Infinity;
-            foreach (var possibleTarget in theTargets.Values)
+            foreach (var possibleTarget in theTargets)
             {
                 if (possibleTarget != null)
                 {

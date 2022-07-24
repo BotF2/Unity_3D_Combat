@@ -13,11 +13,11 @@ namespace Assets.Script
 
         public void OnSaveClicked()
         {
-            SaveManager.Save();
+            SaveLoadManager.Save();
         }
         public void OnLoadClicked()
         {
-            SaveManager.Load();
+            SaveLoadManager.Load();
         }
         public void OnExitClicked()
         {

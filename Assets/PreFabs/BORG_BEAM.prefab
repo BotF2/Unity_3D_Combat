@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1947471556914783554}
   - component: {fileID: 4613550164859831967}
-  - component: {fileID: 952267632712376301}
+  - component: {fileID: 1195968152042145716}
+  - component: {fileID: -7523656446747598753}
   m_Layer: 0
   m_Name: BORG_BEAM
   m_TagString: Untagged
@@ -28,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1474.2212, y: -52.84854, z: 5614.962}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,6 +45,7 @@ LineRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -130,8 +133,8 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!64 &952267632712376301
-MeshCollider:
+--- !u!65 &1195968152042145716
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -140,7 +143,14 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 1474.2212, y: 52.84854, z: -5614.462}
+--- !u!33 &-7523656446747598753
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3520991220717468901}
+  m_Mesh: {fileID: -8429869004850668383, guid: 200687b3df498bd46be048dadb383ad0, type: 3}

@@ -19,10 +19,10 @@ namespace Assets.Script
         public float Pitch;
 		public float Yaw;
 		public float Roll;
-		public float PaddingLeft = 210f;
-		public float PaddingRight = 210f;
-		public float PaddingUp = 210f;
-		public float PaddingDown = 210f;
+		public float PaddingLeft = 310f;
+		public float PaddingRight = 310f;
+		public float PaddingUp = 310f;
+		public float PaddingDown = 310f;
 		public float MoveSmoothTime = 0.19f;
 		private Camera _camera;
 		public Camera _shipCamera;

@@ -7,6 +7,7 @@ namespace Assets.Script
 {
     public class InstantiateCombatShips : MonoBehaviour
     {
+        public Combat combat;
         public List<GameObject> combatShips;
         //public List<Ship> ships;
         public Orders order;
@@ -15,7 +16,6 @@ namespace Assets.Script
         public bool _isFriend;
         public GameObject cameraEmpty;
         public GameObject animFriend1;
-        //public Animator animatorFriend1;
         public GameObject animFriend2;
         public GameObject animFriend3;
         public GameObject animEnemy1;
@@ -60,9 +60,11 @@ namespace Assets.Script
         private string[] arrayCountShipTypes;
         private string[] arrayNames;
 
-        public void PreCombatSetup(string[] preCombatShips, bool _isFriend) 
+        public void PreCombatSetup(string[] preCombatShips, bool _areFriends) 
         // The preCombatShips is one side of the list of combatents that will come from galaxy screen incoming combat data
         {
+            GameManager.Instance.ResetFriendAndEnemyDictionaries();
+            _isFriend = _areFriends;
             // we do all friend shipGameOb first, when we do the first enemy reset shipGameOb counts to zero at start           
             _scoutShips = 0; // running count as we process the list of ships
             _destroyerShips = 0;
@@ -254,15 +256,16 @@ namespace Assets.Script
                         }
 
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];    
                         PopulateShipData(shipGameOb); // Ship class script is attached in prefab so fill in the data
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
                         var aCameraTarget = shipGameOb;   
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocationEnd, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
                         ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order); //aCameraTarget, _isFriend, CombatOrderSelection.order);
-
                         combatShips.Add(shipGameOb); // list of comabat ships informing GameManager of combat ships
                         cameraTargets.Add(aCameraTarget);
+                        combat.AddCombatant(shipGameOb);
                         break;
                     }
                     #endregion Engage Region
@@ -332,14 +335,13 @@ namespace Assets.Script
                                 break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
                         ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order);//aCameraTarget, _isFriend, CombatOrderSelection.order);
                         PopulateShipData(shipGameOb);
-                        //GameManager.Instance.SetShipLayer(arrayNames[0]); // informs GameManager of layer
-                        //shipGameOb.layer = GameManager.Instance.SetShipLayer(arrayNames[0].ToUpper()); // sets ship layer
 
                         combatShips.Add(shipGameOb); // ends up informing GameManager of combat ships
                         cameraTargets.Add(aCameraTarget);
@@ -350,21 +352,20 @@ namespace Assets.Script
                     case Orders.Retreat:
                     #region Retreat Region
                     {
-                        if (_isFriend)
-                        {
-                            xLocation = 0;
-                            rotationOnY = -90;
-                        }
-                        else
-                        {
-                            xLocation = 300;
-                            rotationOnY = 90;
-                        }
+                            if (_isFriend)
+                            {
+                                xLocation = 0;
+                                rotationOnY = -90;
+                            }
+                            else
+                            {
+                                xLocation = 300;
+                                rotationOnY = 90;
+                            }
 
                         switch (arrayNames[1].ToUpper())
                         {
                         case "SCOUT":
-                            SetShipCounts(arrayNames[1].ToUpper());
                             if (_isFriend)
                                 xLocation = xLocation - 100;
                             else xLocation = xLocation + 100;
@@ -375,9 +376,9 @@ namespace Assets.Script
                                 zLocation = zSeparator * _zScoutDepth;
                                 _zScoutDepth++;
                             }
+                            SetShipCounts(arrayNames[1].ToUpper());
                             break;
                         case "DESTROYER":
-                            SetShipCounts(arrayNames[1].ToUpper());
                             if (_isFriend)
                                 xLocation = xLocation - 50;
                             else xLocation = xLocation + 50;
@@ -388,11 +389,11 @@ namespace Assets.Script
                                 zLocation = zSeparator * _zDestroyerDepth;
                                 _zDestroyerDepth++;
                             }
+                            SetShipCounts(arrayNames[1].ToUpper());
                             break;
                         case "CRUISER":
                         case "LTCRUISER":
                         case "HVYCRUISER":
-                            SetShipCounts(arrayNames[1].ToUpper());
                             yLocation = yCapital;
                             if (_capitalShips % 2 == 0)
                             {
@@ -400,11 +401,12 @@ namespace Assets.Script
                                 zLocation = zSeparator * _zCapitalDepth;
                                 _zCapitalDepth++;
                             }
+                            SetShipCounts(arrayNames[1].ToUpper());
                             break;
                         case "TRANSPORT":
                         case "COLONYSHIP":
                         case "CONSTRUCTION":
-                            SetShipCounts(arrayNames[1].ToUpper());
+
                             if (_isFriend)
                                 xLocation += zSeparator;
                             else
@@ -416,6 +418,7 @@ namespace Assets.Script
                                 zLocation = zSeparator * _zUtilityDepth;
                                 _zUtilityDepth++;
                             }
+                            SetShipCounts(arrayNames[1].ToUpper());
                             break;
                         case "ONEMORE":
                             break;
@@ -423,15 +426,13 @@ namespace Assets.Script
                             break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
-                        ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order); // aCameraTarget, _isFriend, CombatOrderSelection.order);
+                       // ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order); // aCameraTarget, _isFriend, CombatOrderSelection.order);
                         PopulateShipData(shipGameOb);
-                        //GameManager.Instance.SetShipLayer(arrayNames[0]); // informs GameManager of layer
-                        //shipGameOb.layer = GameManager.Instance.SetShipLayer(arrayNames[0].ToUpper()); // sets shipGameOb layer
-
                         combatShips.Add(shipGameOb); // ends up informing GameManager of combat ships
                         cameraTargets.Add(aCameraTarget);
                         break;
@@ -497,19 +498,16 @@ namespace Assets.Script
                                 break;
                         }
                         GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
                         //aCameraTarget.transform.Rotate(0, rotationOnY, 0); // match ship rotation
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
                         ParentToAnimation(shipGameOb, _isFriend, CombatOrderSelection.order); //aCameraTarget, _isFriend, CombatOrderSelection.order);
                         PopulateShipData(shipGameOb);
-                        //GameManager.Instance.SetShipLayer(arrayNames[0]); // informs GameManager of layer
-                        //shipGameOb.layer = GameManager.Instance.SetShipLayer(arrayNames[0].ToUpper()); // sets shipGameOb layer
-
                         combatShips.Add(shipGameOb); // ends up informing GameManager of combat ships
                         cameraTargets.Add(aCameraTarget);
-                        break;
-                            
+                        break;                            
                     }
                     #endregion Formation Region
 
@@ -540,23 +538,16 @@ namespace Assets.Script
             for (int j = 0; j < combatShips.Count; j++)
             {
                 localShipObjectDictionary.Add(j, combatShips[j]);
+
+                if (_isFriend)
+                {
+                    GameManager.Instance.ProvideFriendCombatShips(j, combatShips[j]);
+                }
+                else GameManager.Instance.ProvideEnemyCombatShips(j, combatShips[j]);
             }
-            if (_isFriend)
-            {
-                GameManager.Instance.ProvideFriendCombatShips(localShipObjectDictionary);
-            }
-            else GameManager.Instance.ProvideEnemyCombatShips(localShipObjectDictionary);
             combatShips.Clear();
             #endregion
         } // end of pre combat setup methode call for friend or enemy
-
-        //private void OnStateEnter(Animator animator1, object animator2, AnimatorStateInfo animatorStateInfo, object stateInfo, int v, object layerIndex)
-        //{
-
-        //    GameManager.Instance.SetShipLayer(arrayNames[0]); // informs GameManager of layer
-        //    //shipGameOb.layer = GameManager.Instance.SetShipLayer(arrayNames[0].ToUpper()); // sets shipGameOb layer
-        //   //throw new System.NotImplementedException();
-        //}
 
         private void PopulateShipData(GameObject _ship)
         {
@@ -838,7 +829,82 @@ namespace Assets.Script
             break;
             #endregion
             case Orders.Retreat:
-            break;
+                    {
+
+                    }
+                //if (_utilityShips != 0 && _capitalShips != 0) // if so then capital ships come in before utility / colonyships ships
+                //{
+
+                //    if (shipGameOb.name.ToUpper().Contains("CRUISER") || shipGameOb.name.ToUpper().Contains("LTCRUISER")
+                //            || shipGameOb.name.ToUpper().Contains("HVYCRUISER") || shipGameOb.name.ToUpper().Contains("COLONYSHIP")
+                //            || shipGameOb.name.ToUpper().Contains("TRANSPORT") || shipGameOb.name.ToUpper().Contains("CONSTRUCTION"))
+                //    {
+                //        if (_aFriend)
+                //        {
+                //            //animatorFriend1 = animFriend1.GetComponent<Animator>();
+                //            animFriend1.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animFriend1.transform, true);
+                //            // cameraEmpty.transform.SetParent(animFriend1.transform, true);
+                //        }
+                //        else
+                //        {
+                //            //animatorEnemy1 = animEnemy1.GetComponent<Animator>();
+                //            animEnemy1.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animEnemy1.transform, true);
+                //            // cameraEmpty.transform.SetParent(animEnemy1.transform, true);
+                //        }
+                //        return;
+                //    }
+                //}
+                //// if not capital or utility ship do random
+
+                //if (_aFriend)
+                //{
+                //    int choseWarp1 = Random.Range(0, 2);
+                //    switch (choseWarp1)
+                //    {
+                //        case 0:
+                //            animFriend2.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animFriend2.transform, true);
+                //            //cameraEmpty.transform.SetParent(animFriend2.transform, true);
+                //            break;
+                //        case 1:
+                //            animFriend3.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animFriend3.transform, true);
+                //            //cameraEmpty.transform.SetParent(animFriend3.transform, true);
+                //            break;
+                //        default:
+                //            animFriend3.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animFriend3.transform, true);
+                //            //cameraEmpty.transform.SetParent(animFriend3.transform, true);
+                //            break;
+                //    }
+                //}
+                //else
+                //{
+                //    int choseWarp2 = Random.Range(0, 2);
+                //    switch (choseWarp2)
+                //    {
+                //        case 0:
+                //            animEnemy2.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animEnemy2.transform, true);
+                //            // cameraEmpty.transform.SetParent(animEnemy2.transform, true);
+                //            break;
+                //        case 1:
+                //            animEnemy3.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animEnemy3.transform, true);
+                //            // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
+                //            break;
+                //        default:
+                //            animEnemy3.layer = shipGameOb.layer;
+                //            shipGameOb.transform.SetParent(animEnemy3.transform, true);
+                //            // cameraEmpty.transform.SetParent(animEnemy3.transform, true);
+                //            break;
+                //    }
+
+                //}
+
+                    break;
             case Orders.Formation:
             {
             #region Formation animation
