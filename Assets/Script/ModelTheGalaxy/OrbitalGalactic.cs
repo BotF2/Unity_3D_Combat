@@ -43,7 +43,7 @@ namespace Assets.Script
         public void Update(UInt64 timeSinceStart)
         {
             // advance angle to current time
-            OffsetAngle = (2f * Mathf.PI * (float)timeSinceStart / (float)TimeToOrbit);
+            OffsetAngle = 2f * Mathf.PI * (float)timeSinceStart / (float)TimeToOrbit;
 
             // update all of our children
             for (int i = 0; i < Children.Count; i++)

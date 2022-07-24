@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 namespace Assets.Script
 {
-
     public class SolarSystemView : MonoBehaviour // !!! INSIDE PanelGalactic_Play IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
@@ -14,7 +13,7 @@ namespace Assets.Script
         public Sprite[] Sprites;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.2f;
-        Galaxy ourGalaxy; // StupidInt = 0;
+        Galaxy ourGalaxy; 
         Dictionary<OrbitalGalactic, GameObject> orbitalGameObjectMap; // put in the orbital sprit and get the game object
 
         // private OrbitalGalactic mySolarSystem; // star and planets
@@ -33,12 +32,31 @@ namespace Assets.Script
                     UpdateSprites(solarSystem.Children[i]);
                 }
         }
+        public void TurnOffSolarSystemview(int solarSystemID)
+        {
+            //for (int i = 0; i < solarSystem.Children.Count; i++)
+            //{
+            //    solarSystem.RemoveChild(solarSystem.Children[i]);
+            //}
+            solarSystem = ourGalaxy.SolarSystems[solarSystemID];
+            for (int i = 0; i < solarSystem.Children.Count; i++)
+            {
+                Transform child = this.transform.GetChild(0);
+                child.SetParent(null);
+                var renderer = child.transform.GetComponent<SpriteRenderer>();
+                Destroy(renderer);
+                Destroy(child.gameObject);
+            }
+                    this.transform.SetParent(null);
+            Destroy(this.gameObject);
 
+
+        }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
 
             ourGalaxy = galaxy; 
-           // gameManager.
+            // gameManager.
             while (transform.childCount > 0) // delelt old systems from prior update
             {
                 Transform child = transform.GetChild(0);
@@ -60,7 +78,6 @@ namespace Assets.Script
                 Transform child = transform.GetChild(0);
                 child.SetParent(null); // decreases number of children in while loop
                 Destroy(child.gameObject);
-
             }
             gameManager.ChangeSystemClicked(buttonSystemID, this);
             orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();

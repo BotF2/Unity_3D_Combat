@@ -300,7 +300,7 @@ namespace Assets.Script
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
             PanelGalactic_Map = Canvas.transform.Find("PanelGalactic_Map").gameObject;
-            PanelSystem_Play = Canvas.transform.Find("PanelGalactic_Play").gameObject;
+            PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
@@ -381,39 +381,30 @@ namespace Assets.Script
         }
         public void ChangeSystemClicked(int systemID, SolarSystemView ssView) //(SolarSystemView ssView)
         {
-            //if (IsHost) // if (IsLocalPlayer)
-            //{ 
             solarSystemID = systemID;
-
             solarSystemView = ssView;
             SwitchtState(State.SYSTEM_PLAY);
-            //LoadGameObjects();
+
             // ToDo: get Empire and techlevel from MainMenu
-            //}
         }
         public void GalaxyPlayClicked() // BOLDLY GO
         {
-
             SwitchtState(State.MAIN_INIT);
         }
         public void GalaxyMapClicked() // in GalacticPlay going back to galactic map
         {
-
+            PanelSystem_Play.SetActive(false);
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            //SwitchtState(State.GALACTIC_MAP);
         }
         public void EndGalacticPlayClicked()
         {
-            //if (IsHost) // if (IsLocalPlayer)
-            //{ 
             SwitchtState(State.GALACTIC_COMPLETED);
-            //}
         }
 
         public void CombatPlayClicked()
         {
-
             SwitchtState(State.COMBAT_INIT);
-
         }
         public void ResetFriendAndEnemyDictionaries()
         {
@@ -438,9 +429,9 @@ namespace Assets.Script
             _isSwitchingState = false;
         }
         // Unity Inspector only sees non static pulic void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
-        public void AdvanceTime(int numSeconds) // is there a problem that this is int and galactic time is UInt64 so as to fit with OrbitalGalatic time in UInt64?
+        public void AdvanceTime(UInt64 numSeconds) // is there a problem that this is int and galactic time is UInt64 so as to fit with OrbitalGalatic time in UInt64?
         {
-            galacticTime = galacticTime + (ulong)numSeconds;
+            galacticTime = galacticTime + numSeconds;
             galaxy.Update(galacticTime);
         }
 
@@ -573,15 +564,15 @@ namespace Assets.Script
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
+             
                     PanelLobby_Menu.SetActive(false);
-                    PanelSystem_Play.SetActive(false);
+                    //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                    PanelGalactic_Map.SetActive(true);
+                    PanelSystem_Play.SetActive(false);
 
-                    //galaxyView.GenerateGalaxy(galaxyStarCount, GalaxyType.IRREGULAR);
-                    //Galaxy galaxyI = new Galaxy(this, GalaxyType.IRREGULAR, galaxyStarCount);
-                    //galaxyView.ShowGalaxyView(galaxyI);
                     break;
                 case State.SYSTEM_PLAY:
                     PanelMain_Menu.SetActive(false);
@@ -595,19 +586,19 @@ namespace Assets.Script
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
-                    SwitchtState(State.GALACTIC_MAP);
+                    solarSystemView.TurnOffSolarSystemview(solarSystemID);//solarSystemView);
+                    PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
-                    //PanelGalactic_Map.SetActive(false);
-                    PanelSystem_Play.SetActive(false);
                     _statePassedMain_Init = true;
-
+                    PanelGalactic_Map.SetActive(true);
+                    SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;
                 case State.GALACTIC_COMPLETED:
-                    PanelSystem_Play.SetActive(true);
+                    PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
                     PanelGalactic_Map.SetActive(false);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705809156}
-  m_IndirectSpecularColor: {r: 0.04307756, g: 0.036497727, b: 0.040010285, a: 1}
+  m_IndirectSpecularColor: {r: 0.04300286, g: 0.036511935, b: 0.03998754, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -533,9 +533,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: d3ea4cc63b5115448b2ef4d337cb7b50, type: 3}
+      - m_Target: {fileID: 1187732007}
         m_TargetAssemblyTypeName: Assets.Script.GameManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GalaxyPlayClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9316,6 +9316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -10889,7 +10890,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Boldly Go
+  m_text: 'Boldly Go
+
+    Galactic Map'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d5aabc3ee1e5b04190fb4cdca2721c0, type: 2}
   m_sharedMaterial: {fileID: 8622332772880260112, guid: 3d5aabc3ee1e5b04190fb4cdca2721c0, type: 2}
@@ -19179,7 +19182,7 @@ GameObject:
   - component: {fileID: 1301631252}
   - component: {fileID: 1301631254}
   m_Layer: 5
-  m_Name: PanelGalactic_Play
+  m_Name: PanelSystemPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29845,7 +29848,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1187732007}
         m_TargetAssemblyTypeName: Assets.Script.GameManager, Assembly-CSharp
-        m_MethodName: GalaxyMapClicked
+        m_MethodName: GalaxyPlayClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
