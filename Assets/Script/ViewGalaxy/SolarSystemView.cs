@@ -32,25 +32,15 @@ namespace Assets.Script
                     UpdateSprites(solarSystem.Children[i]);
                 }
         }
-        public void TurnOffSolarSystemview(int solarSystemID)
+        public void TurnOffSolarSystemView(int solarSystemID)
         {
-            //for (int i = 0; i < solarSystem.Children.Count; i++)
-            //{
-            //    solarSystem.RemoveChild(solarSystem.Children[i]);
-            //}
             solarSystem = ourGalaxy.SolarSystems[solarSystemID];
-            for (int i = 0; i < solarSystem.Children.Count; i++)
+            while (solarSystem != null && solarSystem.transform.childCount >0)
             {
-                Transform child = this.transform.GetChild(0);
+                Transform child = solarSystem.transform.GetChild(0);
                 child.SetParent(null);
-                var renderer = child.transform.GetComponent<SpriteRenderer>();
-                Destroy(renderer);
                 Destroy(child.gameObject);
-            }
-                    this.transform.SetParent(null);
-            Destroy(this.gameObject);
-
-
+            }    
         }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
