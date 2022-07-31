@@ -46,7 +46,6 @@ namespace Assets.Script
         }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
-
             ourGalaxy = galaxy; 
             // gameManager.
             while (transform.childCount > 0) // delelt old systems from prior update
