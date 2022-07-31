@@ -32,6 +32,7 @@ namespace Assets.Script
                     UpdateSprites(solarSystem.Children[i]);
                 }
         }
+
         public void TurnOffSolarSystemView(int solarSystemID)
         {
             solarSystem = ourGalaxy.SolarSystems[solarSystemID];
@@ -41,6 +42,7 @@ namespace Assets.Script
                 child.SetParent(null);
                 Destroy(child.gameObject);
             }    
+
         }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
