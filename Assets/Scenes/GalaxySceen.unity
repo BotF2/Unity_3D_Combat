@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705809156}
-  m_IndirectSpecularColor: {r: 0.04300286, g: 0.036511935, b: 0.03998754, a: 1}
+  m_IndirectSpecularColor: {r: 0.04307756, g: 0.036497727, b: 0.040010285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -535,7 +535,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1187732007}
         m_TargetAssemblyTypeName: Assets.Script.GameManager, Assembly-CSharp
-        m_MethodName: GalaxyPlayClicked
+        m_MethodName: GalaxyMapClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

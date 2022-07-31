@@ -391,10 +391,11 @@ namespace Assets.Script
         {
             SwitchtState(State.MAIN_INIT);
         }
-        public void GalaxyMapClicked() // in GalacticPlay going back to galactic map
+        public void GalaxyMapClicked() // in system going back to galactic map
         {
-            PanelSystem_Play.SetActive(false);
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            //PanelSystem_Play.SetActive(false);
+            //PanelGalactic_Map.SetActive(true);
             //SwitchtState(State.GALACTIC_MAP);
         }
         public void EndGalacticPlayClicked()
@@ -586,7 +587,7 @@ namespace Assets.Script
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
-                    solarSystemView.TurnOffSolarSystemview(solarSystemID);//solarSystemView);
+                    solarSystemView.TurnOffSolarSystemview(galaxy, solarSystemID);//solarSystemView);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
