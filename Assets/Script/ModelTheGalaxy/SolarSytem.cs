@@ -27,5 +27,11 @@ namespace Assets.Script
             }
             return this;
         }
+        public SolarSystem GenerateGalaxyCenter()
+        {
+            OrbitalGalactic myStar = new OrbitalGalactic();
+            myStar.GraphicID = 0; // StarGraphicID; 
+            return this;
+        }
     }
 }

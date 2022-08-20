@@ -36,11 +36,11 @@ namespace Assets.Script
             }
 
         }
-        public void GenerateGalaxy(int numStars, GalaxyType galaxyType)
+        public void GenerateGalaxy(int numStars)
         {
             if (gameManager.galaxy == null)
             {
-                Galaxy galaxy = new Galaxy(gameManager, galaxyType, numStars);
+                Galaxy galaxy = new Galaxy(gameManager, numStars);
                 gameManager.galaxy = galaxy;
             }
             //if (this.solarSystems.Count == 0)

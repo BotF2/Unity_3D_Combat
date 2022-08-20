@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+//using Unity.VisualScripting;
 using UnityEngine;
 //using MLAPI;
 //using UnityEngine.UI;
@@ -22,15 +22,21 @@ namespace Assets.Script
     }
     public enum GalaxyType
     {
-        IRREGULAR,
-        SPIRAL,
-        ELLIPTICAL
+        CANON,
+        RANDOM
     }
     public enum GalaxySize
     {
         SMALL,
         MEDIUM,
         LARGE
+    }
+    public enum TechLevel
+    {
+        EARLY,
+        DEVELOPED,
+        ADVANCED,
+        SUPREME
     }
     public enum HomeSystem
     {
@@ -41,13 +47,6 @@ namespace Assets.Script
         CARDASSIA,
         OMARIAN_NEBULA,
         DELTA_PRIME
-    }
-    public enum TechLevel
-    {
-        Early,
-        Developed,
-        Advanced,
-        Supreme,
     }
     public enum FriendOrFoe
     {
@@ -80,7 +79,6 @@ namespace Assets.Script
     {
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
-
         public bool _isSinglePlayer;
         public Civilization _localPlayer;
         public Civilization _hostPlayer;
@@ -90,12 +88,11 @@ namespace Assets.Script
         public Civilization _cliantThree;
         public Civilization _cliantFour;
         public Civilization _cliantFive;
+        public static GalaxySize _galaxySize;
+        public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
-        //public Galaxy _galaxy = new Galaxy();
-        public static GalaxyType galaxyType = GalaxyType.ELLIPTICAL;
-        public static GalaxySize galaxySize = GalaxySize.SMALL;
-        public int galaxyStarCount = 1; // ToDo: set reset in Main Menu
-        public int solarSystemID;
+        public int _galaxyStarCount; 
+        public int _solarSystemID;
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
@@ -112,6 +109,7 @@ namespace Assets.Script
         public ActOnCombatOrder actOnCombatOrder;
         public ZoomCamera zoomCamera;
         public GameObject Canvas;
+        public GameObject CanvasWorld;
         private GameObject PanelLobby_Menu;
         private GameObject PanelLoadGame_Menu;
         private GameObject PanelSaveGame_Menu;
@@ -119,14 +117,26 @@ namespace Assets.Script
         private GameObject PanelCredits_Menu;
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
-        private GameObject PanelGalactic_Map;    
+        private GameObject PanelGalactic_Map; 
         private GameObject PanelSystem_Play;
         private GameObject PanelGalactic_Completed;
         private GameObject PanelCombat_Menu;
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
-
+        private GameObject System_FEDERATION ;
+       // private GameObject System_TERRANEMPIRE ;
+        private GameObject System_ROMULANS ;
+        private GameObject System_KLINGONS ;
+        private GameObject System_CARDASSIANS ;
+        private GameObject System_DOMINION ;
+        private GameObject System_BORG ;
+        private GameObject System_ACAMARIANS ;
+        private GameObject System_AKAALI ;
+        private GameObject System_AKRITIRIANS ;
+        private List<GameObject> AllSystemsList;
+        private List<GameObject> ActiveSystemList;
+            
         public SinglePlayer _SinglePlayer;
         public MultiPlayer _MultiPlayer;
         public LoadGamePanel _LoadGamePanel;
@@ -292,6 +302,7 @@ namespace Assets.Script
         {
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
+            CanvasWorld = GameObject.Find("CanvasWorld");
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -299,13 +310,17 @@ namespace Assets.Script
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelGalactic_Map = Canvas.transform.Find("PanelGalactic_Map").gameObject;
+            PanelGalactic_Map = CanvasWorld.transform.Find("PanelGalactic_Map").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+            System_FEDERATION = CanvasWorld.transform.Find("ButtonSystem0").gameObject;
+            System_ROMULANS = CanvasWorld.transform.Find("ButtonSystem1").gameObject;
+            System_KLINGONS = CanvasWorld.transform.Find("ButtonSystem2").gameObject;
+            AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS, System_KLINGONS };
         }
 
 
@@ -321,7 +336,7 @@ namespace Assets.Script
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
 
-            _techLevel = TechLevel.Early;
+            _galaxySize = GalaxySize.SMALL;
             _localPlayer = Civilization.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
@@ -381,19 +396,77 @@ namespace Assets.Script
         }
         public void ChangeSystemClicked(int systemID, SolarSystemView ssView) //(SolarSystemView ssView)
         {
-            solarSystemID = systemID;
+            PanelLobby_Menu.SetActive(false);
+            _solarSystemID = systemID;
             solarSystemView = ssView;
             SwitchtState(State.SYSTEM_PLAY);
+            for (int i = 0; i < 3; i++)
+            {
+                if (systemID != i);
+                ActiveSystemList[i].SetActive(false);
+            }
 
             // ToDo: get Empire and techlevel from MainMenu
         }
-        public void GalaxyPlayClicked() // BOLDLY GO
+        public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
             SwitchtState(State.MAIN_INIT);
+            TurnOnSystems();
+        }
+        public void TurnOnSystems()
+        {
+            // a loop here through all systems setting them active = true
+            //for (int i = 0; i < _galaxyStarCount; i++)
+            //{
+            //    AllSystemsList[i].SetActive(true);
+            //    if (i != 0)
+            //     ActiveSystemList.Add(AllSystemsList[i]);
+            //}
+            System_FEDERATION.SetActive(true);
+            System_ROMULANS.SetActive(true);
+            System_KLINGONS.SetActive(true);
+        }
+        public void SetGalaxyMapSize()
+        {
+            switch (_galaxySize)
+            {
+                case GalaxySize.SMALL:
+                    _galaxyStarCount = 20;
+                    LoadGalacticMap("SMALL");
+                    break;
+                case GalaxySize.MEDIUM:
+                    _galaxyStarCount = 30;
+                    break;
+                case GalaxySize.LARGE:
+                    _galaxyStarCount = 40;
+                    break;
+                default:
+                    break;
+            }
+        }
+        public void LoadGalacticMap(string mapsize)
+        {
+            switch (mapsize)
+            {
+                case "SMALL":                   
+                    break;
+
+                case "MEDIUM":
+                    break;
+
+                case "LARGE":
+                    break;
+
+                default:
+                    break;
+            }
         }
         public void GalaxyMapClicked() // in system going back to galactic map
         {
+           // CanvasWorld = GameObject.Find("CanvasWorld");
+            PanelGalactic_Map = CanvasWorld.transform.Find("PanelGalactic_Map").gameObject;
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            PanelGalactic_Map.SetActive(true);
             //PanelSystem_Play.SetActive(false);
             //PanelGalactic_Map.SetActive(true);
             //SwitchtState(State.GALACTIC_MAP);
@@ -448,6 +521,12 @@ namespace Assets.Script
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
+                    //if (CanvasWorld != null)
+                    //{
+                        //CanvasWorld.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    //}
+
                     PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;
 
@@ -496,32 +575,23 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    //ToDo: galaxyStarCount !!!! use enum GalaxySize in MainMenu to set number of Stas, Solarsystem
-                    galaxyStarCount = 20;
-                    if (galaxySize == GalaxySize.SMALL)
-                        galaxyStarCount = 20;
-                    if (galaxySize == GalaxySize.MEDIUM)
-                        galaxyStarCount = 40;
-                    if (galaxySize == GalaxySize.LARGE)
-                        galaxyStarCount = 60;
-                   
-                    switch (_techLevel) // is set in TechSelection.cs for GameManager._techLevel
+                    switch (_galaxyType) // ToDo: get input from Main Menu
                     {
-                        case TechLevel.Early: //Do something here??
+                        case GalaxyType.CANON:
+                            // canon type galaxy.cs SolarSystemsMap dictionary
+                            SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
                             break;
-                        case TechLevel.Developed:
-                            break;
-                        case TechLevel.Advanced:
-                            break;
-                        case TechLevel.Supreme:
-                            break;
-
-                        default:
+                        case GalaxyType.RANDOM:
+                            // generate type galaxy.cs SolarSystemsMap dictionary
+                            SetGalaxyMapSize();
+                            //GenerateGalaxyMap();                           
                             break;
                     }
+                   
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
-                        case Civilization.FED: // do something about multiplayer and civs here??
+                        case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
+                            // set 
                             break;
                         case Civilization.TERRAN:
                             break;
@@ -538,30 +608,16 @@ namespace Assets.Script
                         default:
                             break;
                     }
-                    //switch (galaxyType) // ToDo: set in Main Menu
-                    //{
-                    //    case GalaxyType.IRREGULAR:
-                    //        //Galaxy galaxyI = new Galaxy(this, GalaxyType.IRREGULAR, galaxyStarCount); // this gameManager, galaxy type, galaxy size/num stars
-                    //        SolarSystemView.ShowSolarSystemView(galaxyI, firstSolarSystemID);
-                    //        break;
-                    //    case GalaxyType.SPIRAL:
-                    //        //Galaxy galaxyS = new Galaxy(this, GalaxyType.SPIRAL, galaxyStarCount);
-                    //        SolarSystemView.ShowSolarSystemView(galaxyS, firstSolarSystemID);
-                    //        break;
-                    //    case GalaxyType.ELLIPTICAL:
-                    //        //Galaxy galaxyE = new Galaxy(this, GalaxyType.ELLIPTICAL, galaxyStarCount);
-                    //        SolarSystemView.ShowSolarSystemView(galaxyE, firstSolarSystemID);
-                    //        break;
-                    //    default:
-                    //        break;
-                    //}
                     PanelMain_Menu.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelLoadGame_Menu.SetActive(false);
                     PanelSaveGame_Menu.SetActive(false);
+                    //CanvasWorld = GameObject.Find("CanvasWorld");
+                    //CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
+
                     _statePassedMain_Init = true;
-                    galaxyView.GenerateGalaxy(galaxyStarCount, GalaxyType.IRREGULAR);
+                    galaxyView.GenerateGalaxy(_galaxyStarCount);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
@@ -571,7 +627,9 @@ namespace Assets.Script
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                   // CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
+
                     PanelSystem_Play.SetActive(false);
 
                     break;
@@ -579,20 +637,23 @@ namespace Assets.Script
                     PanelMain_Menu.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+
+                   // PanelGalactic_Map.SetActive(false);
+                    //CanvasWorld.SetActive(false);
                     PanelSystem_Play.SetActive(true);
                     _statePassedMain_Init = true;
-                    solarSystemView.ShowSolarSystemView(galaxy, solarSystemID); // ToDo show current ss
+                    solarSystemView.ShowSolarSystemView(galaxy, _solarSystemID); // ToDo show current ss
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
-                    solarSystemView.TurnOffSolarSystemview(galaxy, solarSystemID);//solarSystemView);
+                    solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                   // CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
                     SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
@@ -603,7 +664,8 @@ namespace Assets.Script
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
-                    PanelCombat_Menu.SetActive(true);
+                    //CanvasWorld.SetActive(false);
+                    //PanelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
                     SwitchtState(State.COMBAT_MENU);
                     break;
@@ -692,7 +754,7 @@ namespace Assets.Script
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
-                    //PanelGalactic_Map.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY_INIT:
