@@ -109,7 +109,7 @@ namespace Assets.Script
         public ActOnCombatOrder actOnCombatOrder;
         public ZoomCamera zoomCamera;
         public GameObject Canvas;
-        public GameObject CanvasWorld;
+        public GameObject CanvasGalactic;
         private GameObject PanelLobby_Menu;
         private GameObject PanelLoadGame_Menu;
         private GameObject PanelSaveGame_Menu;
@@ -302,7 +302,7 @@ namespace Assets.Script
         {
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
-            CanvasWorld = GameObject.Find("CanvasWorld");
+            CanvasGalactic = GameObject.Find("CanvasGalactic");
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -310,16 +310,16 @@ namespace Assets.Script
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelGalactic_Map = CanvasWorld.transform.Find("PanelGalactic_Map").gameObject;
+            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-            System_FEDERATION = CanvasWorld.transform.Find("ButtonSystem0").gameObject;
-            System_ROMULANS = CanvasWorld.transform.Find("ButtonSystem1").gameObject;
-            System_KLINGONS = CanvasWorld.transform.Find("ButtonSystem2").gameObject;
+            System_FEDERATION = CanvasGalactic.transform.Find("ButtonSystem0").gameObject;
+            System_ROMULANS = CanvasGalactic.transform.Find("ButtonSystem1").gameObject;
+            System_KLINGONS = CanvasGalactic.transform.Find("ButtonSystem2").gameObject;
             AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS, System_KLINGONS };
         }
 
@@ -464,7 +464,7 @@ namespace Assets.Script
         public void GalaxyMapClicked() // in system going back to galactic map
         {
            // CanvasWorld = GameObject.Find("CanvasWorld");
-            PanelGalactic_Map = CanvasWorld.transform.Find("PanelGalactic_Map").gameObject;
+            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
             PanelGalactic_Map.SetActive(true);
             //PanelSystem_Play.SetActive(false);
