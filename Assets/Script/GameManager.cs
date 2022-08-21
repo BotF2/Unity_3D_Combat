@@ -124,7 +124,7 @@ namespace Assets.Script
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
-        private GameObject SystemGalacticCore;
+       // private GameObject SystemGalacticCore;
         private GameObject System_FEDERATION ;
        // private GameObject System_TERRANEMPIRE ;
         private GameObject System_ROMULANS ;
@@ -318,11 +318,11 @@ namespace Assets.Script
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-            SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
-            System_FEDERATION = CanvasGalactic.transform.Find("ButtonSystem0").gameObject;
+           // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
+            System_FEDERATION = CanvasGalactic.transform.Find("FederationSystem").gameObject;
             System_ROMULANS = CanvasGalactic.transform.Find("ButtonSystem1").gameObject;
             System_KLINGONS = CanvasGalactic.transform.Find("ButtonSystem2").gameObject;
-            AllSystemsList = new List<GameObject> { SystemGalacticCore, System_FEDERATION, System_ROMULANS, System_KLINGONS };
+            AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS, System_KLINGONS };
         }
 
 
@@ -402,10 +402,10 @@ namespace Assets.Script
             _solarSystemID = systemID;
             solarSystemView = ssView;
             SwitchtState(State.SYSTEM_PLAY);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < AllSystemsList.Count; i++)
             {
                 if (systemID != i);
-                ActiveSystemList[i].SetActive(false);
+                AllSystemsList[i].SetActive(false);
             }
 
             // ToDo: get Empire and techlevel from MainMenu

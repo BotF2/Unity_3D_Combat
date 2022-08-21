@@ -37,7 +37,7 @@ TagManager:
   - BORG_CRUISER_II(CLONE)
   - BORG_DESTROYER_III(CLONE)
   - ROM_CRUISER_II
-  - Galatic Camera
+  - GalacticCamera
   layers:
   - Default
   - TransparentFX
