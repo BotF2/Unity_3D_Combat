@@ -320,8 +320,8 @@ namespace Assets.Script
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
            // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
             System_FEDERATION = CanvasGalactic.transform.Find("FederationSystem").gameObject;
-            System_ROMULANS = CanvasGalactic.transform.Find("ButtonSystem1").gameObject;
-            System_KLINGONS = CanvasGalactic.transform.Find("ButtonSystem2").gameObject;
+            System_ROMULANS = CanvasGalactic.transform.Find("RomulanSystem").gameObject;
+            System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
             AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS, System_KLINGONS };
         }
 
