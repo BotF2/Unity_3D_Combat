@@ -318,7 +318,8 @@ namespace Assets.Script
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-           // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
+            // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
+            
             System_FEDERATION = CanvasGalactic.transform.Find("FederationSystem").gameObject;
             System_ROMULANS = CanvasGalactic.transform.Find("RomulanSystem").gameObject;
             System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
@@ -415,6 +416,13 @@ namespace Assets.Script
             SwitchtState(State.MAIN_INIT);
             TurnOnSystems();
         }
+        public void GalaxyMapClicked() // in system going back to galactic map
+        {
+
+            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            PanelGalactic_Map.SetActive(true);
+        }
         public void TurnOnSystems()
         {
             // a loop here through all systems setting them active = true
@@ -463,16 +471,7 @@ namespace Assets.Script
                     break;
             }
         }
-        public void GalaxyMapClicked() // in system going back to galactic map
-        {
-           // CanvasWorld = GameObject.Find("CanvasWorld");
-            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
-            SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
-            PanelGalactic_Map.SetActive(true);
-            //PanelSystem_Play.SetActive(false);
-            //PanelGalactic_Map.SetActive(true);
-            //SwitchtState(State.GALACTIC_MAP);
-        }
+
         public void EndGalacticPlayClicked()
         {
             SwitchtState(State.GALACTIC_COMPLETED);
