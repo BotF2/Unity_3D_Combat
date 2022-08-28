@@ -414,16 +414,16 @@ namespace Assets.Script
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
             SwitchtState(State.MAIN_INIT);
-            TurnOnSystems();
+            TurnOnGalacticSystems(true);
         }
         public void GalaxyMapClicked() // in system going back to galactic map
         {
 
-            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+           // PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
-            PanelGalactic_Map.SetActive(true);
+            //PanelGalactic_Map.SetActive(true);
         }
-        public void TurnOnSystems()
+        public void TurnOnGalacticSystems(bool offOn)
         {
             // a loop here through all systems setting them active = true
             //for (int i = 0; i < _galaxyStarCount; i++)
@@ -432,9 +432,9 @@ namespace Assets.Script
             //    if (i != 0)
             //     ActiveSystemList.Add(AllSystemsList[i]);
             //}
-            System_FEDERATION.SetActive(true);
-            System_ROMULANS.SetActive(true);
-            System_KLINGONS.SetActive(true);
+            System_FEDERATION.SetActive(offOn);
+            System_ROMULANS.SetActive(offOn);
+            System_KLINGONS.SetActive(offOn);
         }
         public void SetGalaxyMapSize()
         {
@@ -649,14 +649,15 @@ namespace Assets.Script
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
+                    TurnOnGalacticSystems(true);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                   // CanvasWorld.SetActive(true);
+                    
                     PanelGalactic_Map.SetActive(true);
-                    SwitchtState(State.GALACTIC_MAP);
+                    //SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;

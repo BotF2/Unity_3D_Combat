@@ -90,7 +90,7 @@ namespace Assets.Script
 
             }
             solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
-            solarSystemView.ShowNextSolarSystemView(buttonSystemID);
+            solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
            // gameManager.ChangeSystemClicked(buttonSystemID); // (solarSystemView);
 
             //solarSystem = ourGalaxy.SolarSystems[buttonSystemID]; // take the system button ID to show

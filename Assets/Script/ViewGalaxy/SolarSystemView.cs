@@ -42,6 +42,7 @@ namespace Assets.Script
                 Destroy(child.gameObject);
             }
             solarSystem = null;
+           
         }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
