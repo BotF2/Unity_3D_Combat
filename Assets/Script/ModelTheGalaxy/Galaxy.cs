@@ -11,7 +11,6 @@ namespace Assets.Script
         public Galaxy theGalaxy;
         public List<SolarSystem> SolarSystems;
         public bool GalaxyNotNull = false;
-        //public GalaxyType GalaxyEnum;
         public int NumberOfStars;
         public SolarSystem galaxyCenter = new SolarSystem();
         public Dictionary<Vector3, SolarSystem> SolarSystemsMap; 
@@ -21,8 +20,6 @@ namespace Assets.Script
             // starts from the same galaxy every time, see planet.cs random is now not so random
             UnityEngine.Random.InitState(123);
 
-            //this._gameManager = gameManager;
-           // GalaxyEnum = galaxyEnum;
             NumberOfStars = numberOfStars;
 
             SolarSystems = GenerateSystems(numberOfStars);
@@ -60,8 +57,6 @@ namespace Assets.Script
                 SolarSystem ss = new SolarSystem();
                 ss.Generate();
                 result.Add(ss);
-                // ss. = this;
-                // Children.Add(child);
             }
 
             return result;

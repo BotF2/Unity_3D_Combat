@@ -643,7 +643,6 @@ namespace Assets.Script
                     //CanvasWorld.SetActive(false);
                     PanelSystem_Play.SetActive(true);
                     _statePassedMain_Init = true;
-                    solarSystemView.ShowSolarSystemView(galaxy, _solarSystemID); // ToDo show current ss
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;

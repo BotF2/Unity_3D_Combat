@@ -12,7 +12,6 @@ namespace Assets.Script
         public GameManager gameManager;
         public SolarSystemView solarSystemView;
         public Galaxy ourGalaxy;
-        //public SolarSystem solarSystem;
         public Sprite[] Sprites;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         // float planetMoonScale = 0.2f;
@@ -43,43 +42,7 @@ namespace Assets.Script
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
                 gameManager.galaxy = galaxy;
             }
-            //if (this.solarSystems.Count == 0)
-            //{
-            //    //Galaxy galaxy = new Galaxy();
-            //    NumberOfStars = numStars;
-            //    for (int i = 0; i < numStars; i++)
-            //    {
-            //        SolarSystem ss = new SolarSystem();
-            //        ss.Generate();
-            //        SolarSystems.Add(ss);
-            //        // galaxy.AddChild(ss);
-            //    }
-            //    //gameManager.Galaxy = galaxy;
-
-            //    // ToDo: use numStars and GalaxyType
-            //}
         }
-        //public void GenerateGalaxy(Galaxy galaxy) // called from gameManager with the input galaxy
-        //{
-
-        //    ourGalaxy = galaxy; 
-        //    // Think this is only for deleting sprites as in SolarSystem and not part of Galaxy view
-        //    //while (transform.childCount > 0) // delelt old systems from prior update
-        //    //{
-        //    //    Transform child = transform.GetChild(0);
-        //    //    child.SetParent(null); // decreases number of children in while loop
-        //    //    Destroy(child.gameObject);
-        //    //}
-        //    solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
-        //    //solarSystem = ourGalaxy.SolarSystems[0]; // take the first one for now, for display but use solarSystemID later for civ...
-        //    //solarSystem = ourGalaxy; // display this galaxy
-        //    for (int i = 0; i < ourGalaxy.SolarSystems.Count; i++)
-        //    {
-        //        //ToDo: make buttons here
-        //        //this.MakeSpritesForSolarSystems(this.transform, ourGalaxy.SolarSystems[i]);
-        //    }
-            
-        //}
         public void ShowASolarSystemView(int buttonSystemID)
         {
             while (transform.childCount > 0) // delelt old systems from prior update
@@ -91,13 +54,6 @@ namespace Assets.Script
             }
             solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
             solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
-           // gameManager.ChangeSystemClicked(buttonSystemID); // (solarSystemView);
-
-            //solarSystem = ourGalaxy.SolarSystems[buttonSystemID]; // take the system button ID to show
-            //for (int i = 0; i < solarSystem.Children.Count; i++)
-            //{
-            //    this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);
-            //}
         }
 
         private void MakeButtonsForSolarSystems(Transform transformParent, SolarSystem ss)
@@ -122,7 +78,6 @@ namespace Assets.Script
             //    MakeSpritesForOrbital(gameObject.transform, ss.Children[i]);
             //    //spritView.transform.LookAt();
             //}
-        }
         void UpdateSystemButtons(SolarSystem ss)
         {
             GameObject gameObject = solarSystemGameObjectMap[ss];

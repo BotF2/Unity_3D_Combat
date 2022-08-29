@@ -15,7 +15,6 @@ namespace Assets.Script
             OrbitalGalactic myStar = new OrbitalGalactic();
             myStar.GraphicID = 0; // StarGraphicID;          
             this.AddChild(myStar);
-            //StarGraphicID += 2;
 
             for (int i = 0; i < 8; i++)
             {
@@ -23,7 +22,6 @@ namespace Assets.Script
                 planet.Generate(3);
                 //planet.GraphicID = PlanetGraphicID;
                 myStar.AddChild(planet);
-                
             }
             return this;
         }
