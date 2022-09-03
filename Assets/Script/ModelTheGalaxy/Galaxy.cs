@@ -22,7 +22,8 @@ namespace Assets.Script
 
             NumberOfStars = numberOfStars;
 
-            SolarSystems = GenerateSystems(numberOfStars);
+            SolarSystems = GenerateSystems(numberOfStars); // for solar system view
+
             //this.AddChild(myStar);
             theGalaxy = this;
             gameManager.galaxy = this;

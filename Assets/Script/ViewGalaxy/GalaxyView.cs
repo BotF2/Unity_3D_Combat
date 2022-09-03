@@ -40,6 +40,7 @@ namespace Assets.Script
             if (gameManager.galaxy == null)
             {
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
+                GameObject starSystemGameOb = Instantiate(GameManager.PrefabDitionary["KlingonSystem"], new Vector3(1, 2, 2), Quaternion.identity);
                 gameManager.galaxy = galaxy;
             }
         }
@@ -65,10 +66,10 @@ namespace Assets.Script
             gameObject.transform.SetParent(transformParent, false);
             // set position in 3D
             gameObject.transform.position = ss.Position / zoomLevels; // cut down scale of system to view
-            // ToDo: make buttons here
-                //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
-                //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-                //spritView.sprite = Sprites[ss.GraphicID];
+                                                                      // ToDo: make buttons here
+                                                                      //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
+                                                                      //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
+                                                                      //spritView.sprite = Sprites[ss.GraphicID];
 
             //if(galacticCamera != null) // NO LUCK SO FAR BRINGING IN THE GALACTIC CAMERA FOR A LookAt(camera);
             //    spritView.transform.LookAt(galacticCamera.transform);
@@ -78,6 +79,7 @@ namespace Assets.Script
             //    MakeSpritesForOrbital(gameObject.transform, ss.Children[i]);
             //    //spritView.transform.LookAt();
             //}
+        }
         void UpdateSystemButtons(SolarSystem ss)
         {
             GameObject gameObject = solarSystemGameObjectMap[ss];

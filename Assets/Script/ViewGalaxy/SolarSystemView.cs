@@ -32,7 +32,17 @@ namespace Assets.Script
                     UpdateSprites(solarSystem.Children[i]);
                 }
         }
-           
+
+        public void TurnOffSolarSystemview(Galaxy galaxy, int solarSystemID)
+        {
+            ourGalaxy = galaxy;
+            while (transform.childCount > 0) // delelt old systems from prior update
+            {
+                Transform child = transform.GetChild(0);
+                child.SetParent(null); // decreases number of children in while loop
+                Destroy(child.gameObject);
+            }
+            solarSystem = null;
         }
         public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
         {
