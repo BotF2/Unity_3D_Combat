@@ -255,7 +255,7 @@ namespace Assets.Script
                                 break;
                         }
 
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];    
                         PopulateShipData(shipGameOb); // Ship class script is attached in prefab so fill in the data
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
@@ -334,7 +334,7 @@ namespace Assets.Script
                             default:
                                 break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
@@ -425,7 +425,7 @@ namespace Assets.Script
                         default:
                             break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
@@ -497,7 +497,7 @@ namespace Assets.Script
                             default:
                                 break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are

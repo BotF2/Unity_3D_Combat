@@ -128,7 +128,7 @@ namespace Assets.Script
         private GameObject System_FEDERATION ;
        // private GameObject System_TERRANEMPIRE ;
         private GameObject System_ROMULANS ;
-        private GameObject System_KLINGONS ;
+        //private GameObject System_KLINGONS ;
         private GameObject System_CARDASSIANS ;
         private GameObject System_DOMINION ;
         private GameObject System_BORG ;
@@ -215,7 +215,13 @@ namespace Assets.Script
         public GameObject Rom_Scout_ii;
         public GameObject Rom_Scout_iii;
 
-        public static Dictionary<string, GameObject> PrefabDitionary;
+        public static Dictionary<string, GameObject> PrefabShipDitionary;
+        #endregion
+
+        #region prefab Star Systems
+        public GameObject Kling_StarSystem;
+
+        public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
 
         #region Animation empties by ship type Now from ActOnCombatOrder.cs?
@@ -322,8 +328,8 @@ namespace Assets.Script
             
             System_FEDERATION = CanvasGalactic.transform.Find("FederationSystem").gameObject;
             System_ROMULANS = CanvasGalactic.transform.Find("RomulanSystem").gameObject;
-            System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
-            AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS, System_KLINGONS };
+           // System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
+            AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS };
         }
 
 
@@ -434,7 +440,7 @@ namespace Assets.Script
             //}
             System_FEDERATION.SetActive(offOn);
             System_ROMULANS.SetActive(offOn);
-            System_KLINGONS.SetActive(offOn);
+           // System_KLINGONS.SetActive(offOn);
         }
         public void SetGalaxyMapSize()
         {
@@ -1051,21 +1057,6 @@ namespace Assets.Script
         }
         public void LoadPrefabs()
         {
-            // Do this in InstantiateCombatShips.cs
-            //foreach (string name in StartGameObjectNames)
-            //{
-            //    string[] collObjectName = name.ToUpper().Split('_');
-            //    int _shipLayer = 10;
-            //    if (collObjectName[1] == "SCOUT" || collObjectName[1] == "DESTROYER" || collObjectName[1] == "CRUISER" ||
-            //        collObjectName[1] == "LT_CRUISER" || collObjectName[1] == "HVY_CRUISER" || collObjectName[1] == "TRANSPORT")
-            //        _shipLayer = SetShipLayer(collObjectName[0]);
-            //}
-
-            //ToDo: build all prefabs needed for game and laod here in place of tempPrefabDitionary
-            //foreach (var item in StartGameObjectNames)
-            //{
-            //    prefabDitionary.Add(item, name of prefab here)
-            //}
             Dictionary<string, GameObject> tempPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
@@ -1078,8 +1069,18 @@ namespace Assets.Script
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            if (PrefabDitionary == null) // do not load twice
-                PrefabDitionary = tempPrefabDitionary;
+            if (PrefabShipDitionary == null) // do not load twice
+                PrefabShipDitionary = tempPrefabDitionary;
+
+            Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                {"KLING_SYSTEM", Kling_StarSystem }
+            };
+
+            if (PrefabStarSystemDitionary == null)
+            {
+                PrefabStarSystemDitionary = systemPrefabDitionary;
+            }
         }
 
         #endregion

@@ -40,7 +40,7 @@ namespace Assets.Script
             if (gameManager.galaxy == null)
             {
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
-                GameObject starSystemGameOb = Instantiate(GameManager.PrefabDitionary["KlingonSystem"], new Vector3(1, 2, 2), Quaternion.identity);
+                GameObject starSystemGameOb = Instantiate(GameManager.PrefabStarSystemDitionary["KLING_SYSTEM"], new Vector3(1, 2, 2), Quaternion.identity);
                 gameManager.galaxy = galaxy;
             }
         }
