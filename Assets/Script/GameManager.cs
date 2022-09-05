@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace Assets.Script
 {
+    #region Enums
     public enum Civilization
     {
         FED,
@@ -48,6 +49,33 @@ namespace Assets.Script
         OMARIAN_NEBULA,
         DELTA_PRIME
     }
+    public enum SystemData
+    {
+        Sys_Int,
+        X_Vector3,
+        Y_Vector3,
+        Z_Vector3,
+        Name,
+        Civ_Owner,
+        Sys_Type,
+        Star_Type,
+        Planet_1,
+        Moons_1,
+        Planet_2,
+        Moons_2,
+        Planet_3,
+        Moons_3,
+        Planet_4,
+        Moons_4,
+        Planet_5,
+        Moons_5,
+        Planet_6,
+        Moons_6,
+        Planet_7,
+        Moons_7,
+        Planet_8,
+        Moons_8
+    }
     public enum FriendOrFoe
     {
         friend,
@@ -66,6 +94,38 @@ namespace Assets.Script
         Construction,
         OneMore
     }
+    public enum SystemType
+    {
+        SolarSystem,
+        Nebula,
+        Complex,
+        BlackHole,
+        WormHole,
+        TransWarpHub,
+        NebulaSystem,
+        ComplexSystem //????
+
+    }
+    public enum StarType
+    {
+        Blue,
+        White,
+        Yellow,
+        Orange,
+        Red,
+        NebulaStar,
+        Complex //???
+
+    }
+    public enum PlanetType
+    {
+        H_uninhabitable,
+        J_gasGiant,
+        M_habitable,
+        L_marginalForLife,
+        K_marsLike,
+       
+    }
     public enum Orders
     {
         Engage,
@@ -75,6 +135,8 @@ namespace Assets.Script
         ProtectTransports,
         TargetTransports
     }
+    #endregion
+
     public class GameManager : MonoBehaviour
     {
         public bool _weAreFriend = false;
@@ -150,6 +212,8 @@ namespace Assets.Script
         public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
+        public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
+
         public GameObject animFriend1;
         public GameObject animFriend2;
         public GameObject animFriend3;
@@ -219,7 +283,164 @@ namespace Assets.Script
         #endregion
 
         #region prefab Star Systems
-        public GameObject Kling_StarSystem;
+        public GameObject FED_StarSystem;
+        public GameObject ROM_StarSystem;
+        public GameObject KLING_StarSystem;
+        public GameObject CARD_StarSystem;
+        public GameObject DOM_StarSystem;
+        public GameObject BORG_StarSystem;
+        public GameObject ACAMARIANS_StarSystem;
+        public GameObject AKAALI_StarSystem;
+        public GameObject AKRITIRIANS_StarSystem;
+        public GameObject ALDEANS_StarSystem;
+        public GameObject ALGOLIANS_StarSystem;
+        public GameObject ALSAURIANS_StarSystem;
+        public GameObject ANDORIANS_StarSystem;
+        public GameObject ANGOSIANS_StarSystem;
+        public GameObject ANKARI_StarSystem;
+        public GameObject ANTEDEANS_StarSystem;
+        public GameObject ANTICANS_StarSystem;
+        public GameObject ARBAZAN_StarSystem;
+        public GameObject ARDANANS_StarSystem;
+        public GameObject ARGRATHI_StarSystem;
+        public GameObject ARKARIANS_StarSystem;
+        public GameObject ATREANS_StarSystem;
+        public GameObject AXANAR_StarSystem;
+        public GameObject BAJORANS_StarSystem;
+        public GameObject BAKU_StarSystem;
+        public GameObject BANDI_StarSystem;
+        public GameObject BANEANS_StarSystem;
+        public GameObject BARZANS_StarSystem;
+        public GameObject BENZITES_StarSystem;
+        public GameObject BETAZOIDS_StarSystem;
+        public GameObject BILANAIANS_StarSystem;
+        public GameObject BOLIANS_StarSystem;
+        public GameObject BOMAR_StarSystem;
+        public GameObject BOSLICS_StarSystem;
+        public GameObject BOTHA_StarSystem;
+        public GameObject BREELLIANS_StarSystem;
+        public GameObject BREEN_StarSystem;
+        public GameObject BREKKIANS_StarSystem;
+        public GameObject BYNARS_StarSystem;
+        public GameObject CAIRN_StarSystem;
+        public GameObject CALDONIANS_StarSystem;
+        public GameObject CAPELLANS_StarSystem;
+        public GameObject CHALNOTH_StarSystem;
+        public GameObject CORIDAN_StarSystem;
+        public GameObject CORVALLENS_StarSystem;
+        public GameObject CYTHERIANS_StarSystem;
+        public GameObject DELTANS_StarSystem;
+        public GameObject DENOBULANS_StarSystem;
+        public GameObject DEVORE_StarSystem;
+        public GameObject DOPTERIANS_StarSystem;
+        public GameObject DOSI_StarSystem;
+        public GameObject DRAI_StarSystem;
+        public GameObject DREMANS_StarSystem;
+        public GameObject EDO_StarSystem;
+        public GameObject ELAURIANS_StarSystem;
+        public GameObject ELAYSIANS_StarSystem;
+        public GameObject ENTHARANS_StarSystem;
+        public GameObject EVORA_StarSystem;
+        public GameObject EXCALBIANS_StarSystem;
+        public GameObject FERENGI_StarSystem;
+        public GameObject FLAXIANS_StarSystem;
+        public GameObject GORN_StarSystem;
+        public GameObject GRAZERITES_StarSystem;
+        public GameObject HAAKONIANS_StarSystem;
+        public GameObject HALKANS_StarSystem;
+        public GameObject HAZARI_StarSystem;
+        public GameObject HEKARANS_StarSystem;
+        public GameObject HIROGEN_StarSystem;
+        public GameObject HORTA_StarSystem;
+        public GameObject IYAARANS_StarSystem;
+        public GameObject JNAII_StarSystem;
+        public GameObject KAELON_StarSystem;
+        public GameObject KAREMMA_StarSystem;
+        public GameObject KAZON_StarSystem;
+        public GameObject KELLERUN_StarSystem;
+        public GameObject KESPRYTT_StarSystem;
+        public GameObject KLAESTRONIANS_StarSystem;
+        public GameObject KRADIN_StarSystem;
+        public GameObject KREETASSANS_StarSystem;
+        public GameObject KRIOSIANS_StarSystem;
+        public GameObject KTARIANS_StarSystem;
+        public GameObject LEDOSIANS_StarSystem;
+        public GameObject LISSEPIANS_StarSystem;
+        public GameObject LOKIRRIM_StarSystem;
+        public GameObject LURIANS_StarSystem;
+        public GameObject MALCORIANS_StarSystem;
+        public GameObject MALON_StarSystem;
+        public GameObject MAQUIS_StarSystem;
+        public GameObject MARKALIANS_StarSystem;
+        public GameObject MERIDIANS_StarSystem;
+        public GameObject MINTAKANS_StarSystem;
+        public GameObject MIRADORN_StarSystem;
+        public GameObject MIZARIANS_StarSystem;
+        public GameObject MOKRA_StarSystem;
+        public GameObject MONEANS_StarSystem;
+        public GameObject NAUSICAANS_StarSystem;
+        public GameObject NECHANI_StarSystem;
+        public GameObject NEZU_StarSystem;
+        public GameObject NORCADIANS_StarSystem;
+        public GameObject NUMIRI_StarSystem;
+        public GameObject NUUBARI_StarSystem;
+        public GameObject NYRIANS_StarSystem;
+        public GameObject OCAMPA_StarSystem;
+        public GameObject ORIONS_StarSystem;
+        public GameObject ORNARANS_StarSystem;
+        public GameObject PAKLED_StarSystem;
+        public GameObject PARADANS_StarSystem;
+        public GameObject QUARREN_StarSystem;
+        public GameObject RAKHARI_StarSystem;
+        public GameObject RAKOSANS_StarSystem;
+        public GameObject RAMATIANS_StarSystem;
+        public GameObject REMANS_StarSystem;
+        public GameObject RIGELIANS_StarSystem;
+        public GameObject RISIANS_StarSystem;
+        public GameObject RUTIANS_StarSystem;
+        public GameObject SELAY_StarSystem;
+        public GameObject SHELIAK_StarSystem;
+        public GameObject SIKARIANS_StarSystem;
+        public GameObject SKRREEA_StarSystem;
+        public GameObject SONA_StarSystem;
+        public GameObject SULIBAN_StarSystem;
+        public GameObject TAKARANS_StarSystem;
+        public GameObject TAKARIANS_StarSystem;
+        public GameObject TAKTAK_StarSystem;
+        public GameObject TALARIANS_StarSystem;
+        public GameObject TALAXIANS_StarSystem;
+        public GameObject TALOSIANS_StarSystem;
+        public GameObject TAMARIANS_StarSystem;
+        public GameObject TANUGANS_StarSystem;
+        public GameObject TELLARITES_StarSystem;
+        public GameObject TEPLANS_StarSystem;
+        public GameObject THOLIANS_StarSystem;
+        public GameObject TILONIANS_StarSystem;
+        public GameObject TLANI_StarSystem;
+        public GameObject TRABE_StarSystem;
+        public GameObject TRILL_StarSystem;
+        public GameObject TROGORANS_StarSystem;
+        public GameObject TZENKETHI_StarSystem;
+        public GameObject ULLIANS_StarSystem;
+        public GameObject VAADWAUR_StarSystem;
+        public GameObject VENTAXIANS_StarSystem;
+        public GameObject VHNORI_StarSystem;
+        public GameObject VIDIIANS_StarSystem;
+        public GameObject VISSIANS_StarSystem;
+        public GameObject VORGONS_StarSystem;
+        public GameObject VORI_StarSystem;
+        public GameObject VULCANS_StarSystem;
+        public GameObject WADI_StarSystem;
+        public GameObject XANTHANS_StarSystem;
+        public GameObject XEPOLITES_StarSystem;
+        public GameObject XINDI_StarSystem;
+        public GameObject XYRILLIANS_StarSystem;
+        public GameObject YADERANS_StarSystem;
+        public GameObject YRIDIANS_StarSystem;
+        public GameObject ZAHL_StarSystem;
+        public GameObject ZAKDORN_StarSystem;
+        public GameObject ZALKONIANS_StarSystem;
+        public GameObject ZIBALIANS_StarSystem;
 
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
@@ -326,8 +547,8 @@ namespace Assets.Script
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
             // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
             
-            System_FEDERATION = CanvasGalactic.transform.Find("FederationSystem").gameObject;
-            System_ROMULANS = CanvasGalactic.transform.Find("RomulanSystem").gameObject;
+            //System_FEDERATION = CanvasGalactic.transform.Find("FedSystem").gameObject;
+            //System_ROMULANS = CanvasGalactic.transform.Find("RomSystem").gameObject;
            // System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
             AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS };
         }
@@ -341,7 +562,7 @@ namespace Assets.Script
                 // get respons with locations... SaveManager.activeSave.(somethings here from save data)
             }
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt"); // populate prefabs
-                                                                                        // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
 
@@ -420,7 +641,7 @@ namespace Assets.Script
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
             SwitchtState(State.MAIN_INIT);
-            TurnOnGalacticSystems(true);
+            //TurnOnGalacticSystems(true);
         }
         public void GalaxyMapClicked() // in system going back to galactic map
         {
@@ -438,9 +659,9 @@ namespace Assets.Script
             //    if (i != 0)
             //     ActiveSystemList.Add(AllSystemsList[i]);
             //}
-            System_FEDERATION.SetActive(offOn);
-            System_ROMULANS.SetActive(offOn);
-           // System_KLINGONS.SetActive(offOn);
+            //System_FEDERATION.SetActive(offOn);
+            //System_ROMULANS.SetActive(offOn);
+            // System_KLINGONS.SetActive(offOn);
         }
         public void SetGalaxyMapSize()
         {
@@ -654,7 +875,7 @@ namespace Assets.Script
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
-                    TurnOnGalacticSystems(true);
+                   // TurnOnGalacticSystems(true);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
@@ -1074,9 +1295,166 @@ namespace Assets.Script
 
             Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                {"KLING_SYSTEM", Kling_StarSystem }
+                { "FED", FED_StarSystem },
+                { "ROM", ROM_StarSystem },
+                { "KLING", KLING_StarSystem },
+                { "CARD", CARD_StarSystem },
+                { "DOM", DOM_StarSystem },
+                { "BORG", BORG_StarSystem },
+                { "ACAMARIANS", ACAMARIANS_StarSystem },
+                { "AKAALI", AKAALI_StarSystem },
+                { "AKRITIRIANS", AKRITIRIANS_StarSystem },
+                { "ALDEANS", ALDEANS_StarSystem },
+                { "ALGOLIANS", ALGOLIANS_StarSystem },
+                { "ALSAURIANS", ALSAURIANS_StarSystem },
+                { "ANDORIANS", ANDORIANS_StarSystem },
+                { "ANGOSIANS", ANGOSIANS_StarSystem },
+                { "ANKARI", ANKARI_StarSystem },
+                { "ANTEDEANS", ANTEDEANS_StarSystem },
+                { "ANTICANS", ANTICANS_StarSystem },
+                { "ARBAZAN", ARBAZAN_StarSystem },
+                { "ARDANANS", ARDANANS_StarSystem },
+                { "ARGRATHI", ARGRATHI_StarSystem },
+                { "ARKARIANS", ARKARIANS_StarSystem },
+                { "ATREANS", ATREANS_StarSystem },
+                { "AXANAR", AXANAR_StarSystem },
+                { "BAJORANS", BAJORANS_StarSystem },
+                { "BAKU", BAKU_StarSystem },
+                { "BANDI", BANDI_StarSystem },
+                { "BANEANS", BANEANS_StarSystem },
+                { "BARZANS", BARZANS_StarSystem },
+                { "BENZITES", BENZITES_StarSystem },
+                { "BETAZOIDS", BETAZOIDS_StarSystem },
+                { "BILANAIANS", BILANAIANS_StarSystem },
+                { "BOLIANS", BOLIANS_StarSystem },
+                { "BOMAR", BOMAR_StarSystem },
+                { "BOSLICS", BOSLICS_StarSystem },
+                { "BOTHA", BOTHA_StarSystem },
+                { "BREELLIANS", BREELLIANS_StarSystem },
+                { "BREEN", BREEN_StarSystem },
+                { "BREKKIANS", BREKKIANS_StarSystem },
+                { "BYNARS", BYNARS_StarSystem },
+                { "CAIRN", CAIRN_StarSystem },
+                { "CALDONIANS", CALDONIANS_StarSystem },
+                { "CAPELLANS", CAPELLANS_StarSystem },
+                { "CHALNOTH", CHALNOTH_StarSystem },
+                { "CORIDAN", CORIDAN_StarSystem },
+                { "CORVALLENS", CORVALLENS_StarSystem },
+                { "CYTHERIANS", CYTHERIANS_StarSystem },
+                { "DELTANS", DELTANS_StarSystem },
+                { "DENOBULANS", DENOBULANS_StarSystem },
+                { "DEVORE", DEVORE_StarSystem },
+                { "DOPTERIANS", DOPTERIANS_StarSystem },
+                { "DOSI", DOSI_StarSystem },
+                { "DRAI", DRAI_StarSystem },
+                { "DREMANS", DREMANS_StarSystem },
+                { "EDO", EDO_StarSystem },
+                { "ELAURIANS", ELAURIANS_StarSystem },
+                { "ELAYSIANS", ELAYSIANS_StarSystem },
+                { "ENTHARANS", ENTHARANS_StarSystem },
+                { "EVORA", EVORA_StarSystem },
+                { "EXCALBIANS", EXCALBIANS_StarSystem },
+                { "FERENGI", FERENGI_StarSystem },
+                { "FLAXIANS", FLAXIANS_StarSystem },
+                { "GORN", GORN_StarSystem },
+                { "GRAZERITES", GRAZERITES_StarSystem },
+                { "HAAKONIANS", HAAKONIANS_StarSystem },
+                { "HALKANS", HALKANS_StarSystem },
+                { "HAZARI", HAZARI_StarSystem },
+                { "HEKARANS", HEKARANS_StarSystem },
+                { "HIROGEN", HIROGEN_StarSystem },
+                { "HORTA", HORTA_StarSystem },
+                { "IYAARANS", IYAARANS_StarSystem },
+                { "JNAII", JNAII_StarSystem },
+                { "KAELON", KAELON_StarSystem },
+                { "KAREMMA", KAREMMA_StarSystem },
+                { "KAZON", KAZON_StarSystem },
+                { "KELLERUN", KELLERUN_StarSystem },
+                { "KESPRYTT", KESPRYTT_StarSystem },
+                { "KLAESTRONIANS", KLAESTRONIANS_StarSystem },
+                { "KRADIN", KRADIN_StarSystem },
+                { "KREETASSANS", KREETASSANS_StarSystem },
+                { "KRIOSIANS", KRIOSIANS_StarSystem },
+                { "KTARIANS", KTARIANS_StarSystem },
+                { "LEDOSIANS", LEDOSIANS_StarSystem },
+                { "LISSEPIANS", LISSEPIANS_StarSystem },
+                { "LOKIRRIM", LOKIRRIM_StarSystem },
+                { "LURIANS", LURIANS_StarSystem },
+                { "MALCORIANS", MALCORIANS_StarSystem },
+                { "MALON", MALON_StarSystem },
+                { "MAQUIS", MAQUIS_StarSystem },
+                { "MARKALIANS", MARKALIANS_StarSystem },
+                { "MERIDIANS", MERIDIANS_StarSystem },
+                { "MINTAKANS", MINTAKANS_StarSystem },
+                { "MIRADORN", MIRADORN_StarSystem },
+                { "MIZARIANS", MIZARIANS_StarSystem },
+                { "MOKRA", MOKRA_StarSystem },
+                { "MONEANS", MONEANS_StarSystem },
+                { "NAUSICAANS", NAUSICAANS_StarSystem },
+                { "NECHANI", NECHANI_StarSystem },
+                { "NEZU", NEZU_StarSystem },
+                { "NORCADIANS", NORCADIANS_StarSystem },
+                { "NUMIRI", NUMIRI_StarSystem },
+                { "NUUBARI", NUUBARI_StarSystem },
+                { "NYRIANS", NYRIANS_StarSystem },
+                { "OCAMPA", OCAMPA_StarSystem },
+                { "ORIONS", ORIONS_StarSystem },
+                { "ORNARANS", ORNARANS_StarSystem },
+                { "PAKLED", PAKLED_StarSystem },
+                { "PARADANS", PARADANS_StarSystem },
+                { "QUARREN", QUARREN_StarSystem },
+                { "RAKHARI", RAKHARI_StarSystem },
+                { "RAKOSANS", RAKOSANS_StarSystem },
+                { "RAMATIANS", RAMATIANS_StarSystem },
+                { "REMANS", REMANS_StarSystem },
+                { "RIGELIANS", RIGELIANS_StarSystem },
+                { "RISIANS", RISIANS_StarSystem },
+                { "RUTIANS", RUTIANS_StarSystem },
+                { "SELAY", SELAY_StarSystem },
+                { "SHELIAK", SHELIAK_StarSystem },
+                { "SIKARIANS", SIKARIANS_StarSystem },
+                { "SKRREEA", SKRREEA_StarSystem },
+                { "SONA", SONA_StarSystem },
+                { "SULIBAN", SULIBAN_StarSystem },
+                { "TAKARANS", TAKARANS_StarSystem },
+                { "TAKARIANS", TAKARIANS_StarSystem },
+                { "TAKTAK", TAKTAK_StarSystem },
+                { "TALARIANS", TALARIANS_StarSystem },
+                { "TALAXIANS", TALAXIANS_StarSystem },
+                { "TALOSIANS", TALOSIANS_StarSystem },
+                { "TAMARIANS", TAMARIANS_StarSystem },
+                { "TANUGANS", TANUGANS_StarSystem },
+                { "TELLARITES", TELLARITES_StarSystem },
+                { "TEPLANS", TEPLANS_StarSystem },
+                { "THOLIANS", THOLIANS_StarSystem },
+                { "TILONIANS", TILONIANS_StarSystem },
+                { "TLANI", TLANI_StarSystem },
+                { "TRABE", TRABE_StarSystem },
+                { "TRILL", TRILL_StarSystem },
+                { "TROGORANS", TROGORANS_StarSystem },
+                { "TZENKETHI", TZENKETHI_StarSystem },
+                { "ULLIANS", ULLIANS_StarSystem },
+                { "VAADWAUR", VAADWAUR_StarSystem },
+                { "VENTAXIANS", VENTAXIANS_StarSystem },
+                { "VHNORI", VHNORI_StarSystem },
+                { "VIDIIANS", VIDIIANS_StarSystem },
+                { "VISSIANS", VISSIANS_StarSystem },
+                { "VORGONS", VORGONS_StarSystem },
+                { "VORI", VORI_StarSystem },
+                { "VULCANS", VULCANS_StarSystem },
+                { "WADI", WADI_StarSystem },
+                { "XANTHANS", XANTHANS_StarSystem },
+                { "XEPOLITES", XEPOLITES_StarSystem },
+                { "XINDI", XINDI_StarSystem },
+                { "XYRILLIANS", XYRILLIANS_StarSystem },
+                { "YADERANS", YADERANS_StarSystem },
+                { "YRIDIANS", YRIDIANS_StarSystem },
+                { "ZAHL", ZAHL_StarSystem },
+                { "ZAKDORN", ZAKDORN_StarSystem },
+                { "ZALKONIANS", ZALKONIANS_StarSystem },
+                { "ZIBALIANS", ZIBALIANS_StarSystem }
             };
-
+            
             if (PrefabStarSystemDitionary == null)
             {
                 PrefabStarSystemDitionary = systemPrefabDitionary;
@@ -1123,6 +1501,85 @@ namespace Assets.Script
 
                 reader.Close();
                 ShipDataDictionary = _shipDataDictionary;
+                //StaticStuff staticStuffToLoad = new StaticStuff();
+                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+            }
+            #endregion
+        }
+        public void LoadSystemData(string filename)
+        {
+            #region Read SystemData.txt 
+
+            Dictionary<string, string[]> _systemDataDictionary = new Dictionary<string, string[]>();
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+
+                       // _ = int.TryParse(coll[1], out int currentValueOne);
+                       // _ = int.TryParse(coll[2], out int currentValueTwo);
+                       // _ = int.TryParse(coll[3], out int currentValueThree);
+                       // _ = int.TryParse(coll[4], out int currentValueFour);
+                       // _ = int.TryParse(coll[5], out int currentValueFive);
+                       // _ = int.TryParse(coll[6], out int currentValueSix);
+                       // _ = int.TryParse(coll[7], out int currentValueSeven);
+                       // _ = int.TryParse(coll[8], out int currentValueEight);
+                       // _ = int.TryParse(coll[9], out int currentValueNine);
+                       // _ = int.TryParse(coll[10], out int currentValueTen);
+                       // _ = int.TryParse(coll[11], out int currentValueEleven);
+                       // _ = int.TryParse(coll[12], out int currentValueTweleve);
+                       // _ = int.TryParse(coll[13], out int currentValueThirteen);
+                       // _ = int.TryParse(coll[14], out int currentValueFourteen);
+                       // _ = int.TryParse(coll[15], out int currentValueFifteen);
+
+                        //string[] systemDataArray = new string[25]
+                        //{
+                        //    coll[0],
+                        //    coll[1],
+                        //    coll[2],
+                        //    coll[3],
+                        //    coll[4],
+                        //    coll[5],
+                        //    coll[6],
+                        //    coll[7],
+                        //    coll[8],
+                        //    coll[9],
+                        //    coll[10],
+                        //    coll[11],
+                        //    coll[12],
+                        //    coll[13],
+                        //    coll[14],
+                        //    coll[15],
+                        //    coll[16],
+                        //    coll[17],
+                        //    coll[18],
+                        //    coll[19],
+                        //    coll[20],
+                        //    coll[21],
+                        //    coll[22],
+                        //    coll[23],
+                        //    coll[24]
+                        //};
+
+                        _systemDataDictionary.Add(coll[5].ToString(), coll);
+                        //_shipInts.Clear();
+                    }
+                }
+
+                reader.Close();
+                SystemDataDictionary = _systemDataDictionary;
                 //StaticStuff staticStuffToLoad = new StaticStuff();
                 //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
             }
@@ -1398,32 +1855,32 @@ namespace Assets.Script
             return _shipTargetDictionary;
         }
 
-        private Vector3 HomeSystemTrans(string objectName)
-        {
-            //ToDo: where is everyone?
-            var coll = objectName.Split(separator);
+        //private Vector3 HomeSystemTrans(string objectName)
+        //{
+        //    //ToDo: where is everyone?
+        //    var coll = objectName.Split(separator);
 
-            string currentValueZero = coll[0].ToUpper();
-            switch (currentValueZero)
-            {
-                case "SOL":
-                    return new Vector3(0, 0, 0);    
-                case "TERRA":
-                    return new Vector3(0, 0, 1);
-                case "ROMULUS":
-                    return new Vector3(0, 0, 2);
-                case "KRONOS":
-                    return new Vector3(0, 0, 3);
-                case "CARDASSIA":
-                    return new Vector3(0, 0, 4);
-                case "OMARIAN":
-                    return new Vector3(0, 0, 5);
-                case "UNIMATRIX":
-                    return new Vector3(0, 0, 6);
-                default:
-                    return new Vector3(0, 0, 07);
-            }
-        }
+        //    string currentValueZero = coll[0].ToUpper();
+        //    switch (currentValueZero)
+        //    {
+        //        case "SOL":
+        //            return new Vector3(0, 0, 0);    
+        //        case "TERRA":
+        //            return new Vector3(0, 0, 1);
+        //        case "ROMULUS":
+        //            return new Vector3(0, 0, 2);
+        //        case "KRONOS":
+        //            return new Vector3(0, 0, 3);
+        //        case "CARDASSIA":
+        //            return new Vector3(0, 0, 4);
+        //        case "OMARIAN":
+        //            return new Vector3(0, 0, 5);
+        //        case "UNIMATRIX":
+        //            return new Vector3(0, 0, 6);
+        //        default:
+        //            return new Vector3(0, 0, 07);
+        //    }
+        //}
     
     }
 }

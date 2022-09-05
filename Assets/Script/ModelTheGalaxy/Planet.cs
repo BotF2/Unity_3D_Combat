@@ -10,6 +10,8 @@ namespace Assets.Script
 {
     internal class Planet : OrbitalGalactic
     {
+        public PlanetType planteType;
+
         public Planet()
         {
 

@@ -45,7 +45,7 @@ namespace Assets.Script
             }
         }
 
-        public List<SolarSystem> GenerateSystems(int numberOfStars)
+        public List<SolarSystem> GenerateSystems(int numberOfStars) // ToDo: load SystemDate.txt instead of generate
         {
             List<SolarSystem> result = new List<SolarSystem>();
             for (int i = 0; i < numberOfStars; i++)

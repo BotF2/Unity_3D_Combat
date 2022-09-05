@@ -5,8 +5,12 @@ namespace Assets.Script
 {
     public class SolarSystem : OrbitalGalactic
     {
-        //public int StarGraphicID = 0; // even
-        //public int PlanetGraphicID = 1; // odd
+        public int SystemGraphicID;
+        public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
+        public Civilization _civOwner;
+        public StarType _starType;
+        public int _planets; // set in SystemData.txt
+
 
         public SolarSystem Generate()
         {
@@ -15,14 +19,15 @@ namespace Assets.Script
             OrbitalGalactic myStar = new OrbitalGalactic();
             myStar.GraphicID = 0; // StarGraphicID;          
             this.AddChild(myStar);
+            // load a data file SystemData
 
-            for (int i = 0; i < 8; i++)
-            {
-                Planet planet = new Planet();
-                planet.Generate(3);
-                //planet.GraphicID = PlanetGraphicID;
-                myStar.AddChild(planet);
-            }
+            //for (int i = 0; i < 8; i++)
+            //{
+            //    Planet planet = new Planet();
+            //    planet.Generate(3);
+            //    //planet.GraphicID = PlanetGraphicID;
+            //    myStar.AddChild(planet);
+            //}
             return this;
         }
         public SolarSystem GenerateGalaxyCenter()

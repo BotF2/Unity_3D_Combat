@@ -38,6 +38,8 @@ TagManager:
   - BORG_DESTROYER_III(CLONE)
   - ROM_CRUISER_II
   - GalacticCamera
+  - Galatic Camera
+  - GalacticCanvas
   layers:
   - Default
   - TransparentFX
