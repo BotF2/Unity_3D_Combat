@@ -22,7 +22,6 @@ namespace Assets.Script
         public float farZoomLimit = 16f;
         public float startingZoom = 5f;
         
-
         IZoomStrategy zoomStrategy;
         Vector3 frameMove;
         float frameRotate;
@@ -85,7 +84,8 @@ namespace Assets.Script
             }
             if (frameRotate != 0f)
             {
-                transform.Rotate(Vector3.up, frameRotate * Time.deltaTime * rotateSpeed);
+                //transform.Rotate(Vector3.up, frameRotate * Time.deltaTime * rotateSpeed);
+                transform.Rotate(Vector3.forward, frameRotate * Time.deltaTime * rotateSpeed);
                 frameRotate = 0f;
             }
             if (frameZoom < 0f)
@@ -99,10 +99,7 @@ namespace Assets.Script
                 frameZoom = 0f;
             }
         }
-        //public Camera LoadGalacticCamera()
-        //{
-        //    return cam;
-        //}
+
         private void LockPositionInBounds()
         {
             transform.position = new Vector3(
