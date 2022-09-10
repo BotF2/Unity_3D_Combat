@@ -1861,6 +1861,42 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &91560853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 91560854}
+  m_Layer: 30
+  m_Name: ACAMARIASysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &91560854
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 91560853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &100831009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,6 +2213,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117766971}
   m_CullTransparentMesh: 1
+--- !u!1 &122631311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 122631312}
+  m_Layer: 30
+  m_Name: BETAZOIDSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &122631312
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122631311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -150}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2900, y: -9100}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &130133400
 GameObject:
   m_ObjectHideFlags: 0
@@ -4433,6 +4505,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201045959}
   m_CullTransparentMesh: 1
+--- !u!1 &204221422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204221423}
+  m_Layer: 30
+  m_Name: BORGSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &204221423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204221422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6000, y: 6000}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &212903650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4604,7 +4712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -960.00006, y: 540}
+  m_AnchoredPosition: {x: -959.99994, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -6549,6 +6657,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360870566}
   m_CullTransparentMesh: 1
+--- !u!1 &361890685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361890686}
+  m_Layer: 30
+  m_Name: ANDORIASysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &361890686
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361890685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -900, y: -7100}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &396737602
 GameObject:
   m_ObjectHideFlags: 0
@@ -7747,6 +7891,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470745636}
   m_CullTransparentMesh: 0
+--- !u!1 &471903016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471903017}
+  m_Layer: 30
+  m_Name: CARDSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &471903017
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471903016}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 150}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4300, y: -7500}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &474373534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 474373535}
+  m_Layer: 30
+  m_Name: DOMSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &474373535
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474373534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -300}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4500, y: 5000}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &487025400
 GameObject:
   m_ObjectHideFlags: 0
@@ -14528,7 +14744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.50006, y: 514}
+  m_AnchoredPosition: {x: -940.49994, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -14714,9 +14930,164 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
   solarSystemView: {fileID: 438363858}
-  FedSysEmpty: {fileID: 1116883997}
-  RomSysEmpty: {fileID: 862521009}
-  KlingSysEmpty: {fileID: 1037980889}
+  FEDSysEmpty: {fileID: 1116883997}
+  ROMSysEmpty: {fileID: 862521009}
+  KLINGSysEmpty: {fileID: 1037980889}
+  CARDSysEmpty: {fileID: 471903016}
+  DOMSysEmpty: {fileID: 474373534}
+  BORGSysEmpty: {fileID: 204221422}
+  ACAMARIANSSysEmpty: {fileID: 0}
+  AKAALISysEmpty: {fileID: 0}
+  AKRITIRIANSSysEmpty: {fileID: 0}
+  ALDEANSSysEmpty: {fileID: 0}
+  ALGOLIANSSysEmpty: {fileID: 0}
+  ALSAURIANSSysEmpty: {fileID: 0}
+  ANDORIANSSysEmpty: {fileID: 0}
+  ANGOSIANSSysEmpty: {fileID: 0}
+  ANKARISysEmpty: {fileID: 0}
+  ANTEDEANSSysEmpty: {fileID: 0}
+  ANTICANSSysEmpty: {fileID: 0}
+  ARBAZANSysEmpty: {fileID: 0}
+  ARDANANSSysEmpty: {fileID: 0}
+  ARGRATHISysEmpty: {fileID: 0}
+  ARKARIANSSysEmpty: {fileID: 0}
+  ATREANSSysEmpty: {fileID: 0}
+  AXANARSysEmpty: {fileID: 0}
+  BAJORANSSysEmpty: {fileID: 0}
+  BAKUSysEmpty: {fileID: 0}
+  BANDISysEmpty: {fileID: 0}
+  BANEANSSysEmpty: {fileID: 0}
+  BARZANSSysEmpty: {fileID: 0}
+  BENZITESSysEmpty: {fileID: 0}
+  BETAZOIDSSysEmpty: {fileID: 0}
+  BILANAIANSSysEmpty: {fileID: 0}
+  BOLIANSSysEmpty: {fileID: 0}
+  BOMARSysEmpty: {fileID: 0}
+  BOSLICSSysEmpty: {fileID: 0}
+  BOTHASysEmpty: {fileID: 0}
+  BREELLIANSSysEmpty: {fileID: 0}
+  BREENSysEmpty: {fileID: 0}
+  BREKKIANSSysEmpty: {fileID: 0}
+  BYNARSSysEmpty: {fileID: 0}
+  CAIRNSysEmpty: {fileID: 0}
+  CALDONIANSSysEmpty: {fileID: 0}
+  CAPELLANSSysEmpty: {fileID: 0}
+  CHALNOTHSysEmpty: {fileID: 0}
+  CORIDANSysEmpty: {fileID: 0}
+  CORVALLENSSysEmpty: {fileID: 0}
+  CYTHERIANSSysEmpty: {fileID: 0}
+  DELTANSSysEmpty: {fileID: 0}
+  DENOBULANSSysEmpty: {fileID: 0}
+  DEVORESysEmpty: {fileID: 0}
+  DOPTERIANSSysEmpty: {fileID: 0}
+  DOSISysEmpty: {fileID: 0}
+  DRAISysEmpty: {fileID: 0}
+  DREMANSSysEmpty: {fileID: 0}
+  EDOSysEmpty: {fileID: 0}
+  ELAURIANSSysEmpty: {fileID: 0}
+  ELAYSIANSSysEmpty: {fileID: 0}
+  ENTHARANSSysEmpty: {fileID: 0}
+  EVORASysEmpty: {fileID: 0}
+  EXCALBIANSSysEmpty: {fileID: 0}
+  FERENGISysEmpty: {fileID: 0}
+  FLAXIANSSysEmpty: {fileID: 0}
+  GORNSysEmpty: {fileID: 0}
+  GRAZERITESSysEmpty: {fileID: 0}
+  HAAKONIANSSysEmpty: {fileID: 0}
+  HALKANSSysEmpty: {fileID: 0}
+  HAZARISysEmpty: {fileID: 0}
+  HEKARANSSysEmpty: {fileID: 0}
+  HIROGENSysEmpty: {fileID: 0}
+  HORTASysEmpty: {fileID: 0}
+  IYAARANSSysEmpty: {fileID: 0}
+  JNAIISysEmpty: {fileID: 0}
+  KAELONSysEmpty: {fileID: 0}
+  KAREMMASysEmpty: {fileID: 0}
+  KAZONSysEmpty: {fileID: 0}
+  KELLERUNSysEmpty: {fileID: 0}
+  KESPRYTTSysEmpty: {fileID: 0}
+  KLAESTRONIANSSysEmpty: {fileID: 0}
+  KRADINSysEmpty: {fileID: 0}
+  KREETASSANSSysEmpty: {fileID: 0}
+  KRIOSIANSSysEmpty: {fileID: 0}
+  KTARIANSSysEmpty: {fileID: 0}
+  LEDOSIANSSysEmpty: {fileID: 0}
+  LISSEPIANSSysEmpty: {fileID: 0}
+  LOKIRRIMSysEmpty: {fileID: 0}
+  LURIANSSysEmpty: {fileID: 0}
+  MALCORIANSSysEmpty: {fileID: 0}
+  MALONSysEmpty: {fileID: 0}
+  MAQUISSysEmpty: {fileID: 0}
+  MARKALIANSSysEmpty: {fileID: 0}
+  MERIDIANSSysEmpty: {fileID: 0}
+  MINTAKANSSysEmpty: {fileID: 0}
+  MIRADORNSysEmpty: {fileID: 0}
+  MIZARIANSSysEmpty: {fileID: 0}
+  MOKRASysEmpty: {fileID: 0}
+  MONEANSSysEmpty: {fileID: 0}
+  NAUSICAANSSysEmpty: {fileID: 0}
+  NECHANISysEmpty: {fileID: 0}
+  NEZUSysEmpty: {fileID: 0}
+  NORCADIANSSysEmpty: {fileID: 0}
+  NUMIRISysEmpty: {fileID: 0}
+  NUUBARISysEmpty: {fileID: 0}
+  NYRIANSSysEmpty: {fileID: 0}
+  OCAMPASysEmpty: {fileID: 0}
+  ORIONSSysEmpty: {fileID: 0}
+  ORNARANSSysEmpty: {fileID: 0}
+  PAKLEDSysEmpty: {fileID: 0}
+  PARADANSSysEmpty: {fileID: 0}
+  QUARRENSysEmpty: {fileID: 0}
+  RAKHARISysEmpty: {fileID: 0}
+  RAKOSANSSysEmpty: {fileID: 0}
+  RAMATIANSSysEmpty: {fileID: 0}
+  REMANSSysEmpty: {fileID: 0}
+  RIGELIANSSysEmpty: {fileID: 0}
+  RISIANSSysEmpty: {fileID: 0}
+  RUTIANSSysEmpty: {fileID: 0}
+  SELAYSysEmpty: {fileID: 0}
+  SHELIAKSysEmpty: {fileID: 0}
+  SIKARIANSSysEmpty: {fileID: 0}
+  SKRREEASysEmpty: {fileID: 0}
+  SONASysEmpty: {fileID: 0}
+  SULIBANSysEmpty: {fileID: 0}
+  TAKARANSSysEmpty: {fileID: 0}
+  TAKARIANSSysEmpty: {fileID: 0}
+  TAKTAKSysEmpty: {fileID: 0}
+  TALARIANSSysEmpty: {fileID: 0}
+  TALAXIANSSysEmpty: {fileID: 0}
+  TALOSIANSSysEmpty: {fileID: 0}
+  TAMARIANSSysEmpty: {fileID: 0}
+  TANUGANSSysEmpty: {fileID: 0}
+  TELLARITESSysEmpty: {fileID: 0}
+  TEPLANSSysEmpty: {fileID: 0}
+  THOLIANSSysEmpty: {fileID: 0}
+  TILONIANSSysEmpty: {fileID: 0}
+  TLANISysEmpty: {fileID: 0}
+  TRABESysEmpty: {fileID: 0}
+  TRILLSysEmpty: {fileID: 0}
+  TROGORANSSysEmpty: {fileID: 0}
+  TZENKETHISysEmpty: {fileID: 0}
+  ULLIANSSysEmpty: {fileID: 0}
+  VAADWAURSysEmpty: {fileID: 0}
+  VENTAXIANSSysEmpty: {fileID: 0}
+  VHNORISysEmpty: {fileID: 0}
+  VIDIIANSSysEmpty: {fileID: 0}
+  VISSIANSSysEmpty: {fileID: 0}
+  VORGONSSysEmpty: {fileID: 0}
+  VORISysEmpty: {fileID: 0}
+  VULCANSSysEmpty: {fileID: 0}
+  WADISysEmpty: {fileID: 0}
+  XANTHANSSysEmpty: {fileID: 0}
+  XEPOLITESSysEmpty: {fileID: 0}
+  XINDISysEmpty: {fileID: 0}
+  XYRILLIANSSysEmpty: {fileID: 0}
+  YADERANSSysEmpty: {fileID: 0}
+  YRIDIANSSysEmpty: {fileID: 0}
+  ZAHLSysEmpty: {fileID: 0}
+  ZAKDORNSysEmpty: {fileID: 0}
+  ZALKONIANSSysEmpty: {fileID: 0}
+  ZIBALIANSSysEmpty: {fileID: 0}
   Sprites: []
   zoomLevels: 150000000000
 --- !u!1 &807690121
@@ -15143,7 +15514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 862521010}
   m_Layer: 30
-  m_Name: RomSysEmpty
+  m_Name: ROMSysEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16468,6 +16839,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &985302229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 985302230}
+  m_Layer: 30
+  m_Name: BAKUSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &985302230
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985302229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 500, y: -8600}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1007481783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16890,7 +17297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1037980890}
   m_Layer: 30
-  m_Name: KlingSysEmpty
+  m_Name: KLINGSysEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16904,7 +17311,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037980889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -500}
+  m_LocalPosition: {x: 0, y: 0, z: -250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18060,7 +18467,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116883998}
   m_Layer: 30
-  m_Name: FedSysEmpty
+  m_Name: FEDSysEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18074,7 +18481,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116883997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 500}
+  m_LocalPosition: {x: 0, y: 0, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18505,7 +18912,7 @@ RectTransform:
   m_Children:
   - {fileID: 1528842457}
   m_Father: {fileID: 1195700024}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0.531, y: 0, z: 0.892}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19190,12 +19597,21 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1700268081}
   - {fileID: 1160279385}
   - {fileID: 2037503728}
+  - {fileID: 1700268081}
   - {fileID: 1116883998}
   - {fileID: 862521010}
   - {fileID: 1037980890}
+  - {fileID: 471903017}
+  - {fileID: 474373535}
+  - {fileID: 204221423}
+  - {fileID: 91560854}
+  - {fileID: 1795667469}
+  - {fileID: 361890686}
+  - {fileID: 2014061770}
+  - {fileID: 985302230}
+  - {fileID: 122631312}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28310,7 +28726,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1195700024}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706323375
 GameObject:
@@ -30578,6 +30994,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794377974}
   m_CullTransparentMesh: 1
+--- !u!1 &1795667468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795667469}
+  m_Layer: 30
+  m_Name: AKAALISysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1795667469
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795667468}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1800, y: -5400}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1797597343
 GameObject:
   m_ObjectHideFlags: 0
@@ -33095,6 +33547,42 @@ RectTransform:
   m_AnchoredPosition: {x: 857, y: -371}
   m_SizeDelta: {x: 1600, y: 1000}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &2014061769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2014061770}
+  m_Layer: 30
+  m_Name: ARBAZANSysEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2014061770
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014061769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 200}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2900, y: -6100}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2014621649
 GameObject:
   m_ObjectHideFlags: 0
@@ -33641,7 +34129,7 @@ RectTransform:
   - {fileID: 241886371}
   - {fileID: 1373040213}
   m_Father: {fileID: 1195700024}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
