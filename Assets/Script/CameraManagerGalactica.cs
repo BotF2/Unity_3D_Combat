@@ -26,12 +26,7 @@ namespace Assets.Script
         Vector3 frameMove;
         float frameRotate;
         float frameZoom;
-        Camera cam;
-
-        //public CameraManagerGalactica()
-        //{
-        //    cam = LoadGalacticCamera();
-        //}
+        Camera cam; //This is realy an empty CameraFocusGalactic
 
         private void Awake()
         {
@@ -40,7 +35,10 @@ namespace Assets.Script
             zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
             cam.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
         }
-        
+        private void Start()
+        {
+            cam.transform.Rotate(-4f, 3f, -2f);
+        }
         private void OnEnable()
         {
             KeyboardInputManagerGalactica.OnMoveInput += UpdateFrameMove;
@@ -74,6 +72,7 @@ namespace Assets.Script
 
         private void LateUpdate()
         {
+            
             //cam.cullingMask = LayerMask.GetMask("Galactic");
             if (frameMove != Vector3.zero)
             {
