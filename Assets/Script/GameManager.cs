@@ -186,19 +186,17 @@ namespace Assets.Script
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
-       // private GameObject SystemGalacticCore;
-        private GameObject System_FEDERATION ;
-       // private GameObject System_TERRANEMPIRE ;
-        private GameObject System_ROMULANS ;
-        //private GameObject System_KLINGONS ;
-        private GameObject System_CARDASSIANS ;
-        private GameObject System_DOMINION ;
-        private GameObject System_BORG ;
-        private GameObject System_ACAMARIANS ;
-        private GameObject System_AKAALI ;
-        private GameObject System_AKRITIRIANS ;
-        private List<GameObject> AllSystemsList;
-        private List<GameObject> ActiveSystemList;
+       //// private GameObject SystemGalacticCore;
+       // public GameObject System_FEDERATION ;
+       //// private GameObject System_TERRANEMPIRE ;
+       // public GameObject System_ROMULANS ;
+       // public GameObject System_KLINGONS ;
+       // public GameObject System_CARDASSIANS ;
+       // public GameObject System_DOMINION ;
+       // public GameObject System_BORG ;
+       // public GameObject System_ACAMARIANS ;
+       // public GameObject System_AKAALI ;
+       // public GameObject System_AKRITIRIANS ;
             
         public SinglePlayer _SinglePlayer;
         public MultiPlayer _MultiPlayer;
@@ -441,7 +439,7 @@ namespace Assets.Script
         public GameObject ZAKDORN_StarSystem;
         public GameObject ZALKONIANS_StarSystem;
         public GameObject ZIBALIANS_StarSystem;
-
+        public List<GameObject> AllSystemsList;
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
 
@@ -550,7 +548,167 @@ namespace Assets.Script
             //System_FEDERATION = CanvasGalactic.transform.Find("FedSystem").gameObject;
             //System_ROMULANS = CanvasGalactic.transform.Find("RomSystem").gameObject;
            // System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
-            AllSystemsList = new List<GameObject> { System_FEDERATION, System_ROMULANS };
+            AllSystemsList = new List<GameObject> {  FED_StarSystem,
+                                                     ROM_StarSystem,
+                                                     KLING_StarSystem,
+                                                     CARD_StarSystem,
+                                                     DOM_StarSystem,
+                                                     BORG_StarSystem,
+                                                     ACAMARIANS_StarSystem,
+                                                    #region
+                                                     AKAALI_StarSystem,
+                                                     AKRITIRIANS_StarSystem,
+                                                     ALDEANS_StarSystem,
+                                                     ALGOLIANS_StarSystem,
+                                                     ALSAURIANS_StarSystem,
+                                                     ANDORIANS_StarSystem,
+                                                     ANGOSIANS_StarSystem,
+                                                     ANKARI_StarSystem,
+                                                     ANTEDEANS_StarSystem,
+                                                     ANTICANS_StarSystem,
+                                                     ARBAZAN_StarSystem,
+                                                     ARDANANS_StarSystem,
+                                                     ARGRATHI_StarSystem,
+                                                     ARKARIANS_StarSystem,
+                                                     ATREANS_StarSystem,
+                                                     AXANAR_StarSystem,
+                                                     BAJORANS_StarSystem,
+                                                     BAKU_StarSystem,
+                                                     BANDI_StarSystem,
+                                                     BANEANS_StarSystem,
+                                                     BARZANS_StarSystem,
+                                                     BENZITES_StarSystem,
+                                                     BETAZOIDS_StarSystem,
+                                                     BILANAIANS_StarSystem,
+                                                     BOLIANS_StarSystem,
+                                                     BOMAR_StarSystem,
+                                                     BOSLICS_StarSystem,
+                                                     BOTHA_StarSystem,
+                                                     BREELLIANS_StarSystem,
+                                                     BREEN_StarSystem,
+                                                     BREKKIANS_StarSystem,
+                                                     BYNARS_StarSystem,
+                                                     CAIRN_StarSystem,
+                                                     CALDONIANS_StarSystem,
+                                                     CAPELLANS_StarSystem,
+                                                     CHALNOTH_StarSystem,
+                                                     CORIDAN_StarSystem,
+                                                     CORVALLENS_StarSystem,
+                                                     CYTHERIANS_StarSystem,
+                                                     DELTANS_StarSystem,
+                                                     DENOBULANS_StarSystem,
+                                                     DEVORE_StarSystem,
+                                                     DOPTERIANS_StarSystem,
+                                                     DOSI_StarSystem,
+                                                     DRAI_StarSystem,
+                                                     DREMANS_StarSystem,
+                                                     EDO_StarSystem,
+                                                     ELAURIANS_StarSystem,
+                                                     ELAYSIANS_StarSystem,
+                                                     ENTHARANS_StarSystem,
+                                                     EVORA_StarSystem,
+                                                     EXCALBIANS_StarSystem,
+                                                     FERENGI_StarSystem,
+                                                     FLAXIANS_StarSystem,
+                                                     GORN_StarSystem,
+                                                     GRAZERITES_StarSystem,
+                                                     HAAKONIANS_StarSystem,
+                                                     HALKANS_StarSystem,
+                                                     HAZARI_StarSystem,
+                                                     HEKARANS_StarSystem,
+                                                     HIROGEN_StarSystem,
+                                                     HORTA_StarSystem,
+                                                     IYAARANS_StarSystem,
+                                                     JNAII_StarSystem,
+                                                     KAELON_StarSystem,
+                                                     KAREMMA_StarSystem,
+                                                     KAZON_StarSystem,
+                                                     KELLERUN_StarSystem,
+                                                     KESPRYTT_StarSystem,
+                                                     KLAESTRONIANS_StarSystem,
+                                                     KRADIN_StarSystem,
+                                                     KREETASSANS_StarSystem,
+                                                     KRIOSIANS_StarSystem,
+                                                     KTARIANS_StarSystem,
+                                                     LEDOSIANS_StarSystem,
+                                                     LISSEPIANS_StarSystem,
+                                                     LOKIRRIM_StarSystem,
+                                                     LURIANS_StarSystem,
+                                                     MALCORIANS_StarSystem,
+                                                     MALON_StarSystem,
+                                                     MAQUIS_StarSystem,
+                                                     MARKALIANS_StarSystem,
+                                                     MERIDIANS_StarSystem,
+                                                     MINTAKANS_StarSystem,
+                                                     MIRADORN_StarSystem,
+                                                     MIZARIANS_StarSystem,
+                                                     MOKRA_StarSystem,
+                                                     MONEANS_StarSystem,
+                                                     NAUSICAANS_StarSystem,
+                                                     NECHANI_StarSystem,
+                                                     NEZU_StarSystem,
+                                                     NORCADIANS_StarSystem,
+                                                     NUMIRI_StarSystem,
+                                                     NUUBARI_StarSystem,
+                                                     NYRIANS_StarSystem,
+                                                     OCAMPA_StarSystem,
+                                                     ORIONS_StarSystem,
+                                                     ORNARANS_StarSystem,
+                                                     PAKLED_StarSystem,
+                                                     PARADANS_StarSystem,
+                                                     QUARREN_StarSystem,
+                                                     RAKHARI_StarSystem,
+                                                     RAKOSANS_StarSystem,
+                                                     RAMATIANS_StarSystem,
+                                                     REMANS_StarSystem,
+                                                     RIGELIANS_StarSystem,
+                                                     RISIANS_StarSystem,
+                                                     RUTIANS_StarSystem,
+                                                     SELAY_StarSystem,
+                                                     SHELIAK_StarSystem,
+                                                     SIKARIANS_StarSystem,
+                                                     SKRREEA_StarSystem,
+                                                     SONA_StarSystem,
+                                                     SULIBAN_StarSystem,
+                                                     TAKARANS_StarSystem,
+                                                     TAKARIANS_StarSystem,
+                                                     TAKTAK_StarSystem,
+                                                     TALARIANS_StarSystem,
+                                                     TALAXIANS_StarSystem,
+                                                     TALOSIANS_StarSystem,
+                                                     TAMARIANS_StarSystem,
+                                                     TANUGANS_StarSystem,
+                                                     TELLARITES_StarSystem,
+                                                     TEPLANS_StarSystem,
+                                                     THOLIANS_StarSystem,
+                                                     TILONIANS_StarSystem,
+                                                     TLANI_StarSystem,
+                                                     TRABE_StarSystem,
+                                                     TRILL_StarSystem,
+                                                     TROGORANS_StarSystem,
+                                                     TZENKETHI_StarSystem,
+                                                     ULLIANS_StarSystem,
+                                                     VAADWAUR_StarSystem,
+                                                     VENTAXIANS_StarSystem,
+                                                     VHNORI_StarSystem,
+                                                     VIDIIANS_StarSystem,
+                                                     VISSIANS_StarSystem,
+                                                     VORGONS_StarSystem,
+                                                     VORI_StarSystem,
+                                                     VULCANS_StarSystem,
+                                                     WADI_StarSystem,
+                                                     XANTHANS_StarSystem,
+                                                     XEPOLITES_StarSystem,
+                                                     XINDI_StarSystem,
+                                                     XYRILLIANS_StarSystem,
+                                                     YADERANS_StarSystem,
+                                                     YRIDIANS_StarSystem,
+                                                     ZAHL_StarSystem,
+                                                     ZAKDORN_StarSystem,
+                                                     ZALKONIANS_StarSystem,
+                                                     ZIBALIANS_StarSystem,
+                                                    #endregion
+            };
         }
 
 
@@ -632,7 +790,7 @@ namespace Assets.Script
             SwitchtState(State.SYSTEM_PLAY);
             for (int i = 0; i < AllSystemsList.Count; i++)
             {
-                if (systemID != i);
+                if (systemID != i & AllSystemsList[i] != null)
                 AllSystemsList[i].SetActive(false);
             }
 
@@ -668,14 +826,14 @@ namespace Assets.Script
             switch (_galaxySize)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = 20;
+                    _galaxyStarCount = 30;
                     LoadGalacticMap("SMALL");
                     break;
                 case GalaxySize.MEDIUM:
-                    _galaxyStarCount = 30;
+                    _galaxyStarCount = 40;
                     break;
                 case GalaxySize.LARGE:
-                    _galaxyStarCount = 40;
+                    _galaxyStarCount = 50;
                     break;
                 default:
                     break;

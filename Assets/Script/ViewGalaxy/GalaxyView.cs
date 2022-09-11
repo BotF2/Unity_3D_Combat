@@ -364,16 +364,19 @@ namespace Assets.Script
             string [] keysForSytemDictioanry = WhatMapWasSelected();
             if (gameManager.galaxy == null)
             {
-                numStars = 3; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
+                //numStars = 3; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
                 for (int i = 0; i < numStars; i++)
                 {
                     string ourKey = keysForSytemDictioanry[i];
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
-                        new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
-                    starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
-                    starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-                    starSystemNewGameOb.SetActive(true);
+                    if (keysForSytemDictioanry[i].Length != 0)
+                    {
+                        GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
+                            new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
+                        starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
+                        starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+                        starSystemNewGameOb.SetActive(true);
+                    }
                 }
                 //var theCameras = GameManager.FindObjectsOfType<Camera>();
                 //foreach (var item in theCameras)
@@ -392,9 +395,17 @@ namespace Assets.Script
          
         private string[] WhatMapWasSelected()
         {
+            String[] _systemData;
+            List<String> ourCivs = new List<string>();
             switch (GameManager._galaxySize)
             {
-                case GalaxySize.SMALL:
+               case GalaxySize.SMALL:
+                    
+                 foreach (KeyValuePair<String, String[]> elements in GameManager.SystemDataDictionary)
+                    {
+                        _systemData = elements.Value;
+                        ourCivs.Add(_systemData[5]);
+                    }            
                     break;
                 case GalaxySize.MEDIUM:
                     break;
@@ -409,9 +420,9 @@ namespace Assets.Script
                     break;
             }
             //ToDo: use this to get the right kind of map 
-            string[] ourMap = new string[] { "FED", "ROM", "KLING" };
+           // string[] ourMap = new string[] { "FED", "ROM", "KLING" };
             // keys for a the map we want out of the GameManager.PrefabStarSystemDitionary;
-            return ourMap;
+            return ourCivs.ToArray();
         }
         private int VectorValue(string theKey, char axis)
         {

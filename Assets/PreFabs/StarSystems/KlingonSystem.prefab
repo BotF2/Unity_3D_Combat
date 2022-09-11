@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 4761592045379931413}
   - component: {fileID: 4761592045379932904}
+  - component: {fileID: -2616565783020529768}
   m_Layer: 30
   m_Name: KlingonSystem
   m_TagString: Untagged
@@ -124,9 +125,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4761592045379931411}
+      - m_Target: {fileID: -2616565783020529768}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: ShowNextSolarSystemView
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,6 +149,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2616565783020529768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761592045379931411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0347283525cec304f9904fec549d7485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  Sprites: []
+  zoomLevels: 150000000000
 --- !u!1 &4761592045574567647
 GameObject:
   m_ObjectHideFlags: 0
