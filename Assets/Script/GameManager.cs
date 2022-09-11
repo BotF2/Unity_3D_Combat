@@ -442,7 +442,7 @@ namespace Assets.Script
         public List<GameObject> AllSystemsList;
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
-
+        //public Sprite FedCiv
         #region Animation empties by ship type Now from ActOnCombatOrder.cs?
         //public GameObject FriendScout_Y0_Z0;
         //public GameObject FriendDestroyer_Y0_Z1;

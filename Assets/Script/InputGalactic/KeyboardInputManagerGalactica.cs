@@ -16,11 +16,11 @@ namespace Assets.Script
             // Move
             if (Input.GetKey(KeyCode.W))
             {
-                OnMoveInput?.Invoke(Vector3.forward);
+                OnMoveInput?.Invoke(Vector3.up); // is up on galactic map CameraFcousGalactica
             }
             if (Input.GetKey(KeyCode.S))
             {
-                OnMoveInput?.Invoke(-Vector3.forward);
+                OnMoveInput?.Invoke(-Vector3.up); // is down
             }
             if (Input.GetKey(KeyCode.A))
             {

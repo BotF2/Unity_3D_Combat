@@ -11,13 +11,13 @@ namespace Assets.Script
         public Vector2 cameraOffset = new Vector2(10f, 14f);
         public float lookAtOffset = 2f;
         [Header("Move Controls")]
-        public float inOutSpeed = 5f;
-        public float lateralSpeed = 5f;
-        public float rotateSpeed = 45f;
+        public float inOutSpeed = 50f;
+        public float lateralSpeed = 50f;
+        public float rotateSpeed = 10f;
         [Header("Move Bounds")]
         public Vector2 minBounds, maxBounds;
         [Header("Zoom Controls")]
-        public float zoomSpeed = 4f;
+        public float zoomSpeed = 400f;
         public float nearZoomLimit = 2f;
         public float farZoomLimit = 16f;
         public float startingZoom = 5f;
@@ -76,7 +76,7 @@ namespace Assets.Script
             //cam.cullingMask = LayerMask.GetMask("Galactic");
             if (frameMove != Vector3.zero)
             {
-                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y, frameMove.z * inOutSpeed);
+                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z);
                 transform.position += transform.TransformDirection(speedModFrameMove) * Time.deltaTime;
                 LockPositionInBounds();
                 frameMove = Vector3.zero; 
