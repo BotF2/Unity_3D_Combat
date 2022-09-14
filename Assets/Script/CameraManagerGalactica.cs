@@ -72,8 +72,6 @@ namespace Assets.Script
 
         private void LateUpdate()
         {
-            
-            //cam.cullingMask = LayerMask.GetMask("Galactic");
             if (frameMove != Vector3.zero)
             {
                 Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z);
