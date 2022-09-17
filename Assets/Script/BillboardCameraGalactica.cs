@@ -13,7 +13,7 @@ namespace Assets.Script
         {
             foreach (Camera camera in Camera.allCameras)
             {
-                if (camera.gameObject.name == "CameraGalactica")
+                if (camera.tag == "GalacticCamera")
                 {
                     cameraGal = camera;
                 }

@@ -22,7 +22,7 @@ namespace Assets.Script
             {
                 OnMoveInput?.Invoke(-Vector3.up); // is down
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A)) // mainly x left right
             {
                 OnMoveInput?.Invoke(-Vector3.right);
             }
@@ -38,6 +38,15 @@ namespace Assets.Script
             if (Input.GetKey(KeyCode.E))
             {
                 OnRotateInput?.Invoke(+1f);
+            }
+            // up down
+            if (Input.GetKey(KeyCode.DownArrow)) // mainly y up down
+            {
+                OnMoveInput?.Invoke(-Vector3.forward);
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                OnMoveInput?.Invoke(Vector3.forward);
             }
             // Zoom
             if (Input.GetKey(KeyCode.Z))

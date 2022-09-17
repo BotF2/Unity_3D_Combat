@@ -11,9 +11,9 @@ namespace Assets.Script
         public Vector2 cameraOffset = new Vector2(10f, 14f);
         public float lookAtOffset = 2f;
         [Header("Move Controls")]
-        public float inOutSpeed = 50f;
-        public float lateralSpeed = 50f;
-        public float rotateSpeed = 10f;
+        public float inOutSpeed = 100f;
+        public float lateralSpeed = 100f;
+        public float rotateSpeed = 35f;
         [Header("Move Bounds")]
         public Vector2 minBounds, maxBounds;
         [Header("Zoom Controls")]
@@ -26,10 +26,11 @@ namespace Assets.Script
         Vector3 frameMove;
         float frameRotate;
         float frameZoom;
-        Camera cam; //This is realy an empty CameraFocusGalactic
+        Camera cam; 
 
         private void Awake()
         {
+            // ToDo: Camera Zoom is not working here in galactic view, see zoomStrategy and OrthographicZoomStrategy.cs
             cam = GetComponentInChildren<Camera>();
             cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
             zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
@@ -37,7 +38,8 @@ namespace Assets.Script
         }
         private void Start()
         {
-            cam.transform.Rotate(-4f, 3f, -2f);
+            this.transform.Rotate(-1f, 1f, -1f); // enables activates the camera but I do not know why
+            this.transform.Rotate(1f, -1f, 1f);
         }
         private void OnEnable()
         {
@@ -74,7 +76,7 @@ namespace Assets.Script
         {
             if (frameMove != Vector3.zero)
             {
-                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z);
+                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z * lateralSpeed);
                 transform.position += transform.TransformDirection(speedModFrameMove) * Time.deltaTime;
                 LockPositionInBounds();
                 frameMove = Vector3.zero; 
