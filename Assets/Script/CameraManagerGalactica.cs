@@ -13,7 +13,8 @@ namespace Assets.Script
         [Header("Move Controls")]
         public float inOutSpeed = 100f;
         public float lateralSpeed = 100f;
-        public float rotateSpeed = 35f;
+        public float upDownSpeed = 10f;
+        public float rotateSpeed = 20f;
         [Header("Move Bounds")]
         public Vector2 minBounds, maxBounds;
         [Header("Zoom Controls")]
@@ -76,7 +77,7 @@ namespace Assets.Script
         {
             if (frameMove != Vector3.zero)
             {
-                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z * lateralSpeed);
+                Vector3 speedModFrameMove = new Vector3(frameMove.x * lateralSpeed, frameMove.y * inOutSpeed, frameMove.z * upDownSpeed);
                 transform.position += transform.TransformDirection(speedModFrameMove) * Time.deltaTime;
                 LockPositionInBounds();
                 frameMove = Vector3.zero; 

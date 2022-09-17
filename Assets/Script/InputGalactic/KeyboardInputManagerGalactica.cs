@@ -33,11 +33,11 @@ namespace Assets.Script
             // Rotate
             if (Input.GetKey(KeyCode.Q))
             {
-                OnRotateInput?.Invoke(-1f);
+                OnRotateInput?.Invoke(+1f);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                OnRotateInput?.Invoke(+1f);
+                OnRotateInput?.Invoke(-1f);
             }
             // up down
             if (Input.GetKey(KeyCode.DownArrow)) // mainly y up down

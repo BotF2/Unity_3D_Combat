@@ -364,7 +364,7 @@ namespace Assets.Script
             string [] keysForSytemDictioanry = WhatMapWasSelected();
             if (gameManager.galaxy == null)
             {
-                numStars = 3; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
+                numStars = 6; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
                 for (int i = 0; i < numStars; i++)
                 {
