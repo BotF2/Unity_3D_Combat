@@ -16,13 +16,13 @@ namespace Assets.Script
             // Move
             if (Input.GetKey(KeyCode.W))
             {
-                OnMoveInput?.Invoke(Vector3.forward);
+                OnMoveInput?.Invoke(Vector3.up); // is up on galactic map CameraFcousGalactica
             }
             if (Input.GetKey(KeyCode.S))
             {
-                OnMoveInput?.Invoke(-Vector3.forward);
+                OnMoveInput?.Invoke(-Vector3.up); // is down
             }
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A)) // mainly x left right
             {
                 OnMoveInput?.Invoke(-Vector3.right);
             }
@@ -33,11 +33,20 @@ namespace Assets.Script
             // Rotate
             if (Input.GetKey(KeyCode.Q))
             {
-                OnRotateInput?.Invoke(-1f);
+                OnRotateInput?.Invoke(+1f);
             }
             if (Input.GetKey(KeyCode.E))
             {
-                OnRotateInput?.Invoke(+1f);
+                OnRotateInput?.Invoke(-1f);
+            }
+            // up down
+            if (Input.GetKey(KeyCode.DownArrow)) // mainly y up down
+            {
+                OnMoveInput?.Invoke(-Vector3.forward);
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                OnMoveInput?.Invoke(Vector3.forward);
             }
             // Zoom
             if (Input.GetKey(KeyCode.Z))

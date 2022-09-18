@@ -11,23 +11,29 @@ namespace Assets.Script
         public Galaxy theGalaxy;
         public List<SolarSystem> SolarSystems;
         public bool GalaxyNotNull = false;
-        public GalaxyType GalaxyEnum;
         public int NumberOfStars;
-        public Dictionary<Vector3, SolarSystem> SolarSystemsMap; // not used at this time
-        public Galaxy(GameManager gameManager, GalaxyType galaxyEnum, int numberOfStars)
+        public SolarSystem galaxyCenter = new SolarSystem();
+        public Dictionary<Vector3, SolarSystem> SolarSystemsMap; 
+        public Galaxy(GameManager gameManager, int numberOfStars)
         {
             // For now, we set a SEED for the random number generator, so that it
             // starts from the same galaxy every time, see planet.cs random is now not so random
             UnityEngine.Random.InitState(123);
 
-            //this._gameManager = gameManager;
-            GalaxyEnum = galaxyEnum;
             NumberOfStars = numberOfStars;
 
-            SolarSystems = GenerateSystems(numberOfStars);
+            SolarSystems = GenerateSystems(numberOfStars); // for solar system view
+
             //this.AddChild(myStar);
             theGalaxy = this;
             gameManager.galaxy = this;
+        }
+        public void Awake()
+        {
+            var galaxyCenterSystem = new SolarSystem();
+            galaxyCenter = galaxyCenterSystem.GenerateGalaxyCenter();
+            Vector3 galacticCenterVector = new Vector3(0, 0, 0);
+            SolarSystemsMap.Add(galacticCenterVector, galaxyCenter);
         }
 
         public void Update(UInt64 timeSinceStart)
@@ -39,21 +45,19 @@ namespace Assets.Script
             }
         }
 
-        public List<SolarSystem> GenerateSystems(int numberOfStars)
+        public List<SolarSystem> GenerateSystems(int numberOfStars) // ToDo: load SystemDate.txt instead of generate
         {
             List<SolarSystem> result = new List<SolarSystem>();
             for (int i = 0; i < numberOfStars; i++)
             {
                 if (i == 0)
                 {
-                    // ToDo: make a GalaxyMap (like a SolarSystem.cs but no moon, just solar systems as buttons in place of stars of a solcar system
+                    // ToDo: use GalaxyView (like a SolarSystem.cs but no moons, just solar systems as buttons in place of stars of a solcar system
                     // a GenerateGalaxyMap() that give buttons for solar systems form GalaxyMap class
                 }
                 SolarSystem ss = new SolarSystem();
                 ss.Generate();
                 result.Add(ss);
-                // ss. = this;
-                // Children.Add(child);
             }
 
             return result;
@@ -66,11 +70,10 @@ namespace Assets.Script
             }
             return GalaxyNotNull;
         }
-        public void Generate(int numStars, GalaxyType galaxyType)
+        public void Generate(int numStars)
         {
             if (SolarSystems.Count == 0)
             {
-                //Galaxy galaxy = new Galaxy();
                 NumberOfStars = numStars;
                 for (int i = 0; i < numStars; i++)
                 {

@@ -16,7 +16,7 @@ namespace Assets.Script
 
         private void Awake()
         {
-            Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
+            Canvas = GameObject.Find("Canvas"); 
             var _mainMenu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             var _civilizationGroup = _mainMenu.transform.Find("CIVILIZATIONS").gameObject;
             CivilizationGroup = _civilizationGroup.GetComponent<ToggleGroup>();
