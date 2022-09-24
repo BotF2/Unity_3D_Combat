@@ -821,40 +821,42 @@ namespace Assets.Script
             //System_ROMULANS.SetActive(offOn);
             // System_KLINGONS.SetActive(offOn);
         }
-        public void SetGalaxyMapSize()
+        public void SetGalaxyMapSize() // 
         {
             switch (_galaxySize)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = 30;
-                    LoadGalacticMap("SMALL");
+                    _galaxyStarCount = 6; // 30;
+                   // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:
                     _galaxyStarCount = 40;
+                    //LoadGalacticMapButtons("MEDIUM");
                     break;
                 case GalaxySize.LARGE:
                     _galaxyStarCount = 50;
+                    //LoadGalacticMapButtons("LARGE");
                     break;
                 default:
                     break;
             }
         }
-        public void LoadGalacticMap(string mapsize)
+        public void LoadGalacticMapButtons(string mapsize)
         {
-            switch (mapsize)
-            {
-                case "SMALL":                   
-                    break;
+            //switch (mapsize)
+            //{
+            //    case "SMALL":                   
+            //        break;
 
-                case "MEDIUM":
-                    break;
+            //    case "MEDIUM":
+            //        break;
 
-                case "LARGE":
-                    break;
+            //    case "LARGE":
+            //        break;
 
-                default:
-                    break;
-            }
+            //    default:
+            //        break;
+            //}
         }
 
         public void EndGalacticPlayClicked()
@@ -1003,7 +1005,7 @@ namespace Assets.Script
                     PanelGalactic_Map.SetActive(true);
 
                     _statePassedMain_Init = true;
-                    galaxyView.GenerateGalaxy(_galaxyStarCount);
+                    galaxyView.InstantiateSystemButtons(_galaxyStarCount);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:

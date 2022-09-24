@@ -70,7 +70,8 @@ namespace Assets.Script
             }
             gameManager.ChangeSystemClicked(buttonSystemID, this);
             orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();
-            solarSystem = gameManager.galaxy.SolarSystems[buttonSystemID]; // take the system button ID to show
+            SolarSystem _solarSystem = gameManager.galaxy.SolarSystems[buttonSystemID];
+            solarSystem = _solarSystem; // take the system button ID to show
             for (int i = 0; i < solarSystem.Children.Count; i++)
             {
                 this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);

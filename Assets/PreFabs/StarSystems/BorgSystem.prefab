@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 6d9b1e2fe4f286649a2808703b83bef1, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4306060808537133551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -262,9 +262,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9039146970883477554}
+      - m_Target: {fileID: 4306060808537133550}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
-        m_MethodName: ShowNextSolarSystemView
+        m_MethodName: 
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4306060808537133550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0347283525cec304f9904fec549d7485, type: 3}
+  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
