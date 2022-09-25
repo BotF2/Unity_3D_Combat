@@ -69,8 +69,9 @@ namespace Assets.Script
                 Destroy(child.gameObject);
             }
             gameManager.ChangeSystemClicked(buttonSystemID, this);
+            Galaxy _galaxy = new Galaxy(GameManager.Instance, GameManager.Instance._galaxyStarCount);
             orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();
-            SolarSystem _solarSystem = gameManager.galaxy.SolarSystems[buttonSystemID];
+            SolarSystem _solarSystem = GameManager.Instance.galaxy.SolarSystems[buttonSystemID];
             solarSystem = _solarSystem; // take the system button ID to show
             for (int i = 0; i < solarSystem.Children.Count; i++)
             {
