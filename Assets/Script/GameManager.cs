@@ -1032,7 +1032,7 @@ namespace Assets.Script
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
-                    solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
+                    solarSystemView.TurnOffSolarSystemView(_solarSystemID);//solarSystemView);
                    // TurnOnGalacticSystems(true);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
