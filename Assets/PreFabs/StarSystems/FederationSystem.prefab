@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3346189262701856375}
   - component: {fileID: 3346189262701856374}
   - component: {fileID: 3346189262701856369}
-  - component: {fileID: -1674285329130289240}
+  - component: {fileID: 6356150639372353484}
   m_Layer: 30
   m_Name: FederationSystem
   m_TagString: Untagged
@@ -262,7 +262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -1674285329130289240}
+      - m_Target: {fileID: 6356150639372353484}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
         m_MethodName: ShowNextSolarSystemView
         m_Mode: 3
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1674285329130289240
+--- !u!114 &6356150639372353484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3346189262701856372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0347283525cec304f9904fec549d7485, type: 3}
+  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}

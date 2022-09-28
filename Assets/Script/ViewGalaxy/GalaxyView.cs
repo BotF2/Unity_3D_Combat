@@ -359,12 +359,12 @@ namespace Assets.Script
             }
 
         }
-        public void GenerateGalaxy(int numStars)
+        public void InstantiateSystemButtons(int numStars)
         {
-            string [] keysForSytemDictioanry = WhatMapWasSelected();
+            string[] keysForSytemDictioanry = ReadSystemData();
             if (gameManager.galaxy == null)
             {
-                numStars = 6; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
+                //numStars = 6; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
                 Galaxy galaxy = new Galaxy(gameManager, numStars);
                 for (int i = 0; i < numStars; i++)
                 {
@@ -393,23 +393,26 @@ namespace Assets.Script
             }
         }
          
-        private string[] WhatMapWasSelected()
+        private string[] ReadSystemData()
         {
             String[] _systemData;
             List<String> ourCivs = new List<string>();
-            switch (GameManager._galaxySize)
+            foreach (KeyValuePair<String, String[]> elements in GameManager.SystemDataDictionary)
             {
+                _systemData = elements.Value;
+                ourCivs.Add(_systemData[5]);
+            }
+            switch (GameManager._galaxySize) // do we need this???
+            {
+
                case GalaxySize.SMALL:
-                    
-                 foreach (KeyValuePair<String, String[]> elements in GameManager.SystemDataDictionary)
-                    {
-                        _systemData = elements.Value;
-                        ourCivs.Add(_systemData[5]);
-                    }            
+                             
                     break;
                 case GalaxySize.MEDIUM:
+
                     break;
                 case GalaxySize.LARGE:
+
                     break;
             }
             switch (GameManager._galaxyType)
@@ -420,8 +423,7 @@ namespace Assets.Script
                     break;
             }
             //ToDo: use this to get the right kind of map 
-           // string[] ourMap = new string[] { "FED", "ROM", "KLING" };
-            // keys for a the map we want out of the GameManager.PrefabStarSystemDitionary;
+
             return ourCivs.ToArray();
         }
         private int VectorValue(string theKey, char axis)
