@@ -372,7 +372,6 @@ GameObject:
   - component: {fileID: 2178242268351434934}
   - component: {fileID: 2178242268351434929}
   - component: {fileID: 2178242268351434932}
-  - component: {fileID: -1668908504396290736}
   m_Layer: 30
   m_Name: RomulanSystem
   m_TagString: Untagged
@@ -396,6 +395,7 @@ RectTransform:
   - {fileID: 2178242267070512931}
   - {fileID: 7870821659198776202}
   - {fileID: 3027755178531600843}
+  - {fileID: 2285021763440072562}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -1668908504396290736}
+      - m_Target: {fileID: 9084953696436389776}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
         m_MethodName: ShowNextSolarSystemView
         m_Mode: 3
@@ -510,21 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1668908504396290736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2178242268351434931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  Sprites: []
-  zoomLevels: 150000000000
 --- !u!1 &4961153818964160876
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,3 +599,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6778890974866850277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2285021763440072562}
+  - component: {fileID: 9084953696436389776}
+  m_Layer: 30
+  m_Name: SSView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2285021763440072562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778890974866850277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2178242268351434928}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9084953696436389776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778890974866850277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  Sprites: []
+  zoomLevels: 150000000000

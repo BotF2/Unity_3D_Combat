@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4967571711921835855}
   - component: {fileID: 4967571711921835852}
   - component: {fileID: 4967571711921836209}
-  - component: {fileID: 6725239644785317313}
   m_Layer: 30
   m_Name: DomSystem
   m_TagString: Untagged
@@ -37,6 +36,7 @@ RectTransform:
   - {fileID: 4967571713217737865}
   - {fileID: 4500632711002468827}
   - {fileID: 844650581568127414}
+  - {fileID: 1241940888185438836}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6725239644785317313}
+      - m_Target: {fileID: 8795170218495896457}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
         m_MethodName: ShowNextSolarSystemView
         m_Mode: 3
@@ -151,21 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6725239644785317313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4967571711921835850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  Sprites: []
-  zoomLevels: 150000000000
 --- !u!1 &4967571713217737862
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +244,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 42.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -394,7 +379,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 24.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -436,6 +421,58 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6894893561431564479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241940888185438836}
+  - component: {fileID: 8795170218495896457}
+  m_Layer: 30
+  m_Name: SSView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1241940888185438836
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894893561431564479}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4967571711921835853}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8795170218495896457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894893561431564479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  Sprites: []
+  zoomLevels: 150000000000
 --- !u!1 &7457074988689469976
 GameObject:
   m_ObjectHideFlags: 0

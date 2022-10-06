@@ -1,5 +1,57 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3368568847799921217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5162830055170688851}
+  - component: {fileID: 5913968117060826972}
+  m_Layer: 30
+  m_Name: SSView
+  m_TagString: SolarSystemViewObject
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5162830055170688851
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368568847799921217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4761592045379931412}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5913968117060826972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368568847799921217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  Sprites: []
+  zoomLevels: 150000000000
 --- !u!1 &4761592045379931411
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,9 +63,8 @@ GameObject:
   - component: {fileID: 4761592045379931412}
   - component: {fileID: 4761592045379931415}
   - component: {fileID: 4761592045379931414}
-  - component: {fileID: 4761592045379931413}
   - component: {fileID: 4761592045379932904}
-  - component: {fileID: -2616565783020529768}
+  - component: {fileID: 124299536620563853}
   m_Layer: 30
   m_Name: KlingonSystem
   m_TagString: Untagged
@@ -37,6 +88,7 @@ RectTransform:
   - {fileID: 4761592045574567632}
   - {fileID: 4076244752203068290}
   - {fileID: 962648411362886639}
+  - {fileID: 5162830055170688851}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -83,7 +135,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4761592045379931413
+--- !u!114 &4761592045379932904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761592045379931411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &124299536620563853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +191,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -2616565783020529768}
+      - m_Target: {fileID: 5913968117060826972}
         m_TargetAssemblyTypeName: Assets.Script.SolarSystemView, Assembly-CSharp
         m_MethodName: ShowNextSolarSystemView
         m_Mode: 3
@@ -139,33 +203,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4761592045379932904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4761592045379931411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-2616565783020529768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4761592045379931411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bd5e49a3ddea740bd3886316783eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  Sprites: []
-  zoomLevels: 150000000000
 --- !u!1 &4761592045574567647
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -180,7 +181,8 @@ namespace Assets.Script
         // float planetMoonScale = 0.2f;
         //Dictionary<OrbitalGalactic, GameObject> orbitalGameObjectMap; // put in the orbital sprit and get the game object
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
-
+        private char separator = ',';
+        public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
         // private OrbitalGalactic mySolarSystem; // star and planets
         void Start()
         {
@@ -346,6 +348,7 @@ namespace Assets.Script
                 ZIBALIANSSysEmpty
             #endregion
             };
+            LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
         }
         void Update()
         {
@@ -357,88 +360,76 @@ namespace Assets.Script
                 // ToDo: update system buttons features, owner color
                 // UpdateSystemButtons(SolarSystem)
             }
-
         }
         public void InstantiateSystemButtons(int numStars)
         {
             string[] keysForSytemDictioanry = ReadSystemData();
-            if (gameManager.galaxy == null)
-            {
+
                 //numStars = 6; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
-                Galaxy galaxy = new Galaxy(gameManager, numStars);
-                for (int i = 0; i < numStars; i++)
+            Galaxy galaxy = new Galaxy(gameManager);
+            for (int i = 0; i < numStars; i++)
+            {
+                string ourKey = keysForSytemDictioanry[i];
+                if (keysForSytemDictioanry[i].Length != 0)
                 {
-                    string ourKey = keysForSytemDictioanry[i];
-                    if (keysForSytemDictioanry[i].Length != 0)
-                    {
-                        GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
-                            new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
-                        starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
-                        starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-                        starSystemNewGameOb.SetActive(true);
-                    }
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
+                        new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
+                    starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
+                    starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+                    starSystemNewGameOb.SetActive(true);
                 }
-                //var theCameras = GameManager.FindObjectsOfType<Camera>();
-                //foreach (var item in theCameras)
-                //{
-                //    var original = item.transform;
-                //    item.transform.Rotate(new Vector3(0, 0, 0), Space.World);
-                //    var originalRotation = original.rotation;
-                //    item.transform.rotation = originalRotation;
-                //}
-               //GameObject starSystemGameOb = Instantiate(GameManager.PrefabStarSystemDitionary["KLING_SYSTEM"], new Vector3(1, 2, 2), Quaternion.identity);
-                //starSystemGameOb.transform.SetParent(canvasGalactic.transform);
-                //starSystemGameOb.transform.localScale = new Vector3(1,1,1);
-                gameManager.galaxy = galaxy;
             }
+            gameManager.galaxy = galaxy;
+           // ourGalaxy.PopulateCanonSystem();
         }
          
         private string[] ReadSystemData()
         {
-            String[] _systemData;
-            List<String> ourCivs = new List<string>();
-            foreach (KeyValuePair<String, String[]> elements in GameManager.SystemDataDictionary)
+            //SolarSystem.LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            String[] _systemCivData;
+            List<string> ourCivNames = new List<string>();
+            foreach (KeyValuePair<int, String[]> elements in SystemDataDictionary)
             {
-                _systemData = elements.Value;
-                ourCivs.Add(_systemData[5]);
+                _systemCivData = elements.Value;
+                ourCivNames.Add(_systemCivData[5]); // civ name is element five
             }
-            switch (GameManager._galaxySize) // do we need this???
-            {
+            //switch (GameManager._galaxySize) // do we need this??? NO, it is numStars
+            //{
 
-               case GalaxySize.SMALL:
+            //   case GalaxySize.SMALL:
                              
-                    break;
-                case GalaxySize.MEDIUM:
+            //        break;
+            //    case GalaxySize.MEDIUM:
 
-                    break;
-                case GalaxySize.LARGE:
+            //        break;
+            //    case GalaxySize.LARGE:
 
-                    break;
-            }
-            switch (GameManager._galaxyType)
-            {
-                case GalaxyType.CANON:
-                    break;
-                case GalaxyType.RANDOM:
-                    break;
-            }
+            //        break;
+            //}
+            //switch (GameManager._galaxyType)
+            //{
+            //    case GalaxyType.CANON:
+            //        break;
+            //    case GalaxyType.RANDOM:
+            //        break;
+            //}
             //ToDo: use this to get the right kind of map 
 
-            return ourCivs.ToArray();
+            return ourCivNames.ToArray();
         }
-        private int VectorValue(string theKey, char axis)
+        private int VectorValue(int systemID, char axis)
         {
             int number;
             switch (axis)
             {
                 case 'x':
-                    number = int.Parse(GameManager.SystemDataDictionary[theKey][1]);
+                    number = int.Parse(SystemDataDictionary[systemID][1]);// int key to get sting[] and index of x value
                     break;
                 case 'y':
-                    number = int.Parse(GameManager.SystemDataDictionary[theKey][2]);
+                    number = int.Parse(SystemDataDictionary[systemID][2]);
                     break;
                 case 'z':
-                    number = int.Parse(GameManager.SystemDataDictionary[theKey][3]);
+                    number = int.Parse(SystemDataDictionary[systemID][3]);
                     break;
                 default:
                     number = 1000;
@@ -460,42 +451,124 @@ namespace Assets.Script
             solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
         }
 
-        private void MakeButtonsForSolarSystems(Transform transformParent, SolarSystem ss)
-        {
-            //CameraManagerGalactica cameraManagerGalactic = new CameraManagerGalactica();
-            GameObject gameObject = new GameObject();
-            solarSystemGameObjectMap[ss] = gameObject; // update map
-            gameObject.layer = 30; // galactic
-            gameObject.transform.SetParent(transformParent, false);
-            // set position in 3D
-            gameObject.transform.position = ss.Position / zoomLevels; // cut down scale of system to view
-                                                                      // ToDo: make buttons here
-                                                                      //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
-                                                                      //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-                                                                      //spritView.sprite = Sprites[ss.GraphicID];
-
-            //if(galacticCamera != null) // NO LUCK SO FAR BRINGING IN THE GALACTIC CAMERA FOR A LookAt(camera);
-            //    spritView.transform.LookAt(galacticCamera.transform);
-            //StupidInt += 1;
-            //for (int i = 0; i < ss.Children.Count; i++)
-            //{
-            //    MakeSpritesForOrbital(gameObject.transform, ss.Children[i]);
-            //    //spritView.transform.LookAt();
-            //}
-        }
-        void UpdateSystemButtons(SolarSystem ss)
-        {
-            GameObject gameObject = solarSystemGameObjectMap[ss];
-           // gameObject.transform.position = ss.Position / zoomLevels;
-            //for (int i = 0; i < ss.Children.Count; i++)
-            //{
-            //    UpdateSprites(ss.Children[i]);
-            //}
-        }
         public void SetZoomLevel(ulong zl)
         {
             zoomLevels = zl;
             //Update planet postions and scale graphics to still see planet sprites as a few pix
         }
+        public void LoadSystemData(string filename)
+        {
+            #region Read SystemData.txt 
+            int entryNum = 0;
+            Dictionary<int, string[]> _systemDataDictionary = new Dictionary<int, string[]>();
+            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+
+                while (!reader.EndOfStream)
+                {
+
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split(separator);
+
+                        // _ = int.TryParse(coll[1], out int currentValueOne);
+                        // _ = int.TryParse(coll[2], out int currentValueTwo);
+                        // _ = int.TryParse(coll[3], out int currentValueThree);
+                        // _ = int.TryParse(coll[4], out int currentValueFour);
+                        // _ = int.TryParse(coll[5], out int currentValueFive);
+                        // _ = int.TryParse(coll[6], out int currentValueSix);
+                        // _ = int.TryParse(coll[7], out int currentValueSeven);
+                        // _ = int.TryParse(coll[8], out int currentValueEight);
+                        // _ = int.TryParse(coll[9], out int currentValueNine);
+                        // _ = int.TryParse(coll[10], out int currentValueTen);
+                        // _ = int.TryParse(coll[11], out int currentValueEleven);
+                        // _ = int.TryParse(coll[12], out int currentValueTweleve);
+                        // _ = int.TryParse(coll[13], out int currentValueThirteen);
+                        // _ = int.TryParse(coll[14], out int currentValueFourteen);
+                        // _ = int.TryParse(coll[15], out int currentValueFifteen);
+
+                        //string[] systemDataArray = new string[25]
+                        //{
+                        //    coll[0],
+                        //    coll[1],
+                        //    coll[2],
+                        //    coll[3],
+                        //    coll[4],
+                        //    coll[5],
+                        //    coll[6],
+                        //    coll[7],
+                        //    coll[8],
+                        //    coll[9],
+                        //    coll[10],
+                        //    coll[11],
+                        //    coll[12],
+                        //    coll[13],
+                        //    coll[14],
+                        //    coll[15],
+                        //    coll[16],
+                        //    coll[17],
+                        //    coll[18],
+                        //    coll[19],
+                        //    coll[20],
+                        //    coll[21],
+                        //    coll[22],
+                        //    coll[23],
+                        //    coll[24]
+                        //};
+
+                        _systemDataDictionary.Add(entryNum, coll);
+                        entryNum++;
+                        //_shipInts.Clear();
+                    }
+                }
+
+                reader.Close();
+                SystemDataDictionary = _systemDataDictionary;
+                //StaticStuff staticStuffToLoad = new StaticStuff();
+                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+            }
+            #endregion
+        }
+        // Now we Instanitate buttons in InstantiateSystemButtons
+        //private void MakeButtonsForSolarSystems(Transform transformParent, SolarSystem ss)
+        //{
+        //    //CameraManagerGalactica cameraManagerGalactic = new CameraManagerGalactica();
+        //    GameObject gameObject = new GameObject();
+        //    solarSystemGameObjectMap[ss] = gameObject; // update map
+        //    gameObject.layer = 30; // galactic
+        //    gameObject.transform.SetParent(transformParent, false);
+        //    // set position in 3D
+        //    gameObject.transform.position = ss.Position / zoomLevels; // cut down scale of system to view
+        //                                                              // ToDo: make buttons here
+        //                                                              //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
+        //                                                              //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
+        //                                                              //spritView.sprite = Sprites[ss.GraphicID];
+
+        //    //if(galacticCamera != null) // NO LUCK SO FAR BRINGING IN THE GALACTIC CAMERA FOR A LookAt(camera);
+        //    //    spritView.transform.LookAt(galacticCamera.transform);
+        //    //StupidInt += 1;
+        //    //for (int i = 0; i < ss.Children.Count; i++)
+        //    //{
+        //    //    MakeSpritesForOrbital(gameObject.transform, ss.Children[i]);
+        //    //    //spritView.transform.LookAt();
+        //    //}
+        //}
+        //void UpdateSystemButtons(SolarSystem ss)
+        //{
+        //    GameObject gameObject = solarSystemGameObjectMap[ss];
+        //   // gameObject.transform.position = ss.Position / zoomLevels;
+        //    //for (int i = 0; i < ss.Children.Count; i++)
+        //    //{
+        //    //    UpdateSprites(ss.Children[i]);
+        //    //}
+        //}
     }
 }

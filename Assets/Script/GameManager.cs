@@ -97,14 +97,9 @@ namespace Assets.Script
     public enum SystemType
     {
         SolarSystem,
-        Nebula,
-        Complex,
-        BlackHole,
-        WormHole,
-        TransWarpHub,
         NebulaSystem,
-        ComplexSystem //????
-
+        ComplexSystem,
+        BlackHoleSystem,
     }
     public enum StarType
     {
@@ -113,8 +108,10 @@ namespace Assets.Script
         Yellow,
         Orange,
         Red,
-        NebulaStar,
-        Complex //???
+        Nebula,
+        Complex,
+        BlackHole,
+        WormHole,//???
 
     }
     public enum PlanetType
@@ -210,7 +207,7 @@ namespace Assets.Script
         public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
-        public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
+        //public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
 
         public GameObject animFriend1;
         public GameObject animFriend2;
@@ -280,7 +277,7 @@ namespace Assets.Script
         public static Dictionary<string, GameObject> PrefabShipDitionary;
         #endregion
 
-        #region prefab Star Systems
+        #region prefab Star Systems, button gameobjects
         public GameObject FED_StarSystem;
         public GameObject ROM_StarSystem;
         public GameObject KLING_StarSystem;
@@ -439,6 +436,7 @@ namespace Assets.Script
         public GameObject ZAKDORN_StarSystem;
         public GameObject ZALKONIANS_StarSystem;
         public GameObject ZIBALIANS_StarSystem;
+       // public GameObject GALACTIC_Center; // do not need a galactic center system button
         public List<GameObject> AllSystemsList;
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
@@ -503,7 +501,7 @@ namespace Assets.Script
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, SYSTEM_PLAY, GALACTIC_COMPLETED,
+        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, GALACTIC_MAP_INIT, SYSTEM_PLAY, GALACTIC_COMPLETED,
             COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
         private State _state;
 
@@ -543,11 +541,7 @@ namespace Assets.Script
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-            // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
-            
-            //System_FEDERATION = CanvasGalactic.transform.Find("FedSystem").gameObject;
-            //System_ROMULANS = CanvasGalactic.transform.Find("RomSystem").gameObject;
-           // System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
+            // GameObjects for the system buttons
             AllSystemsList = new List<GameObject> {  FED_StarSystem,
                                                      ROM_StarSystem,
                                                      KLING_StarSystem,
@@ -707,11 +701,10 @@ namespace Assets.Script
                                                      ZAKDORN_StarSystem,
                                                      ZALKONIANS_StarSystem,
                                                      ZIBALIANS_StarSystem,
-                                                    #endregion
+                                                     //GALACTIC_Center,
+                                                     #endregion
             };
         }
-
-
         void Start()
         {
             SwitchtState(State.LOBBY_MENU);
@@ -720,7 +713,7 @@ namespace Assets.Script
                 // get respons with locations... SaveManager.activeSave.(somethings here from save data)
             }
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt"); // populate prefabs
-            LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            //LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
 
@@ -956,7 +949,6 @@ namespace Assets.Script
                 case State.MAIN_MENU:
                     PanelLoadGame_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(true);
-
                     break;
                 case State.MULTIPLAYER_MENU:
                     PanelLobby_Menu.SetActive(false);
@@ -1019,14 +1011,21 @@ namespace Assets.Script
                     PanelGalactic_Map.SetActive(true);
 
                     PanelSystem_Play.SetActive(false);
-
+                    //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
                     break;
-                case State.SYSTEM_PLAY:
-                    PanelMain_Menu.SetActive(false);
+
+                case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    SwitchtState(State.SYSTEM_PLAY);
+                    break;
+
+                case State.SYSTEM_PLAY:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
 
-                   // PanelGalactic_Map.SetActive(false);
+                    // PanelGalactic_Map.SetActive(false);
                     //CanvasWorld.SetActive(false);
                     PanelSystem_Play.SetActive(true);
                     _statePassedMain_Init = true;
@@ -1141,7 +1140,13 @@ namespace Assets.Script
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
+                case State.GALACTIC_MAP_INIT:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    _statePassedMain_Init = true;
+                    break;
                 case State.SYSTEM_PLAY:
+                    PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
@@ -1210,6 +1215,10 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     break;
                 case State.GALACTIC_MAP:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    break;
+                case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
                     break;
@@ -1612,7 +1621,8 @@ namespace Assets.Script
                 { "ZAHL", ZAHL_StarSystem },
                 { "ZAKDORN", ZAKDORN_StarSystem },
                 { "ZALKONIANS", ZALKONIANS_StarSystem },
-                { "ZIBALIANS", ZIBALIANS_StarSystem }
+                { "ZIBALIANS", ZIBALIANS_StarSystem },
+                //{ "GALACTIC_CENTER", GALACTIC_Center }
             };
             
             if (PrefabStarSystemDitionary == null)
@@ -1666,85 +1676,85 @@ namespace Assets.Script
             }
             #endregion
         }
-        public void LoadSystemData(string filename)
-        {
-            #region Read SystemData.txt 
+        //public void LoadSystemData(string filename)
+        //{
+        //    #region Read SystemData.txt 
 
-            Dictionary<string, string[]> _systemDataDictionary = new Dictionary<string, string[]>();
-            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+        //    Dictionary<string, string[]> _systemDataDictionary = new Dictionary<string, string[]>();
+        //    var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
-            var _dataPoints = new List<string>();
-            using (var reader = new StreamReader(file))
-            {
+        //    var _dataPoints = new List<string>();
+        //    using (var reader = new StreamReader(file))
+        //    {
 
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        continue;
-                    _dataPoints.Add(line.Trim());
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            if (line == null)
+        //                continue;
+        //            _dataPoints.Add(line.Trim());
 
-                    if (line.Length > 0)
-                    {
-                        var coll = line.Split(separator);
+        //            if (line.Length > 0)
+        //            {
+        //                var coll = line.Split(separator);
 
-                       // _ = int.TryParse(coll[1], out int currentValueOne);
-                       // _ = int.TryParse(coll[2], out int currentValueTwo);
-                       // _ = int.TryParse(coll[3], out int currentValueThree);
-                       // _ = int.TryParse(coll[4], out int currentValueFour);
-                       // _ = int.TryParse(coll[5], out int currentValueFive);
-                       // _ = int.TryParse(coll[6], out int currentValueSix);
-                       // _ = int.TryParse(coll[7], out int currentValueSeven);
-                       // _ = int.TryParse(coll[8], out int currentValueEight);
-                       // _ = int.TryParse(coll[9], out int currentValueNine);
-                       // _ = int.TryParse(coll[10], out int currentValueTen);
-                       // _ = int.TryParse(coll[11], out int currentValueEleven);
-                       // _ = int.TryParse(coll[12], out int currentValueTweleve);
-                       // _ = int.TryParse(coll[13], out int currentValueThirteen);
-                       // _ = int.TryParse(coll[14], out int currentValueFourteen);
-                       // _ = int.TryParse(coll[15], out int currentValueFifteen);
+        //               // _ = int.TryParse(coll[1], out int currentValueOne);
+        //               // _ = int.TryParse(coll[2], out int currentValueTwo);
+        //               // _ = int.TryParse(coll[3], out int currentValueThree);
+        //               // _ = int.TryParse(coll[4], out int currentValueFour);
+        //               // _ = int.TryParse(coll[5], out int currentValueFive);
+        //               // _ = int.TryParse(coll[6], out int currentValueSix);
+        //               // _ = int.TryParse(coll[7], out int currentValueSeven);
+        //               // _ = int.TryParse(coll[8], out int currentValueEight);
+        //               // _ = int.TryParse(coll[9], out int currentValueNine);
+        //               // _ = int.TryParse(coll[10], out int currentValueTen);
+        //               // _ = int.TryParse(coll[11], out int currentValueEleven);
+        //               // _ = int.TryParse(coll[12], out int currentValueTweleve);
+        //               // _ = int.TryParse(coll[13], out int currentValueThirteen);
+        //               // _ = int.TryParse(coll[14], out int currentValueFourteen);
+        //               // _ = int.TryParse(coll[15], out int currentValueFifteen);
 
-                        //string[] systemDataArray = new string[25]
-                        //{
-                        //    coll[0],
-                        //    coll[1],
-                        //    coll[2],
-                        //    coll[3],
-                        //    coll[4],
-                        //    coll[5],
-                        //    coll[6],
-                        //    coll[7],
-                        //    coll[8],
-                        //    coll[9],
-                        //    coll[10],
-                        //    coll[11],
-                        //    coll[12],
-                        //    coll[13],
-                        //    coll[14],
-                        //    coll[15],
-                        //    coll[16],
-                        //    coll[17],
-                        //    coll[18],
-                        //    coll[19],
-                        //    coll[20],
-                        //    coll[21],
-                        //    coll[22],
-                        //    coll[23],
-                        //    coll[24]
-                        //};
+        //                //string[] systemDataArray = new string[25]
+        //                //{
+        //                //    coll[0],
+        //                //    coll[1],
+        //                //    coll[2],
+        //                //    coll[3],
+        //                //    coll[4],
+        //                //    coll[5],
+        //                //    coll[6],
+        //                //    coll[7],
+        //                //    coll[8],
+        //                //    coll[9],
+        //                //    coll[10],
+        //                //    coll[11],
+        //                //    coll[12],
+        //                //    coll[13],
+        //                //    coll[14],
+        //                //    coll[15],
+        //                //    coll[16],
+        //                //    coll[17],
+        //                //    coll[18],
+        //                //    coll[19],
+        //                //    coll[20],
+        //                //    coll[21],
+        //                //    coll[22],
+        //                //    coll[23],
+        //                //    coll[24]
+        //                //};
 
-                        _systemDataDictionary.Add(coll[5].ToString(), coll);
-                        //_shipInts.Clear();
-                    }
-                }
+        //                _systemDataDictionary.Add(coll[5].ToString(), coll);
+        //                //_shipInts.Clear();
+        //            }
+        //        }
 
-                reader.Close();
-                SystemDataDictionary = _systemDataDictionary;
-                //StaticStuff staticStuffToLoad = new StaticStuff();
-                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
-            }
-            #endregion
-        }
+        //        reader.Close();
+        //        SystemDataDictionary = _systemDataDictionary;
+        //        //StaticStuff staticStuffToLoad = new StaticStuff();
+        //        //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+        //    }
+        //    #endregion
+        //}
         #region Old Load Combat Data
         public void LoadCombatData() //(string filename) // List<sting>
         {

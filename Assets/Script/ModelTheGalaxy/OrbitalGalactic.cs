@@ -12,11 +12,12 @@ namespace Assets.Script
         public float InitAngle; // random first angle of orbital to parent in constructor below
         public float OffsetAngle; // angle aroung orbit over time
         public UInt64 OrbitalDistance; // in *meters*
-        public UInt64 TimeToOrbit; // in sec, ToDo: Kepler's Third Law: the squares of the orbital periods of the
+        public UInt64 TimeToOrbit; // in sec to get around the star, ToDo: Kepler's Third Law: the squares
+                                   // of the orbital periods of the
                                    // planets are directly proportional to the cubes of the semi-major axes
                                    // of their orbits. Kepler's Third Law implies that the period for a planet
                                    // to orbit the Sun increases rapidly with the radius of its orbit.
-        public int GraphicID;
+        public int GraphicID; // sprit 
         public OrbitalGalactic()
         {
             TimeToOrbit = 1;
