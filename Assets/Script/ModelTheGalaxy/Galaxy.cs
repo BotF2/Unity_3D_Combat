@@ -97,12 +97,6 @@ namespace Assets.Script
             }
         }
 
-        public void LoadFromFile(string fileName)
-        {
-            // may not use this
-        }
-
-
         //public void AddChildSystem(SolarSystem child)
         //{
         //    child.Parent = this;

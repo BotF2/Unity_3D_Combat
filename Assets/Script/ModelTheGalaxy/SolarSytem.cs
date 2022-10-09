@@ -8,10 +8,6 @@ namespace Assets.Script
     {
         public int SystemGraphicID;
         public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
-        //public Civilization _civOwner;
-        //public StarType _starType;
-        //public int _planets; // set in SystemData.txt
-
 
         public SolarSystem Generate()
         {

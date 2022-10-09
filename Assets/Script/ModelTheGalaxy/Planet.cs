@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-
 namespace Assets.Script
 {
     internal class Planet : OrbitalGalactic
@@ -40,10 +39,6 @@ namespace Assets.Script
             OffsetAngle = 0; // North of star
             OrbitalDistance = 150000000000; // 150 million KM
             TimeToOrbit = 365 * 24 * 60 * 60; // for Earth, days * hours * min * sec (in sec)
-        }
-        public void LoadPlanet(string planetName)
-        {
-
         }
     }
 }
