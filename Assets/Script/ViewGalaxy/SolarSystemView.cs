@@ -33,7 +33,6 @@ namespace Assets.Script
                 return;
             // loop orbitals updating position base on zoomlevel
             else
-                for (int i = 0; i < solarSystem.Children.Count; i++)
                 {
                     UpdateSprites(solarSystem.Children[i]);
                 }
@@ -77,9 +76,6 @@ namespace Assets.Script
                 child.SetParent(null); // decreases number of children in while loop
                 Destroy(child.gameObject);
             }
-            gameManager.ChangeSystemClicked(buttonSystemID, this);
-            gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
-            string[] systemData = systemDataDictionary[buttonSystemID];
 
             //for (int i = 0; i < solarSystem.Children.Count; i++)
             //{
