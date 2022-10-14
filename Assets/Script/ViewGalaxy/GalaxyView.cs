@@ -178,8 +178,6 @@ namespace Assets.Script
         private List<GameObject> SysEmptyList;
         public Sprite[] Sprites;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
-        // float planetMoonScale = 0.2f;
-        //Dictionary<OrbitalGalactic, GameObject> orbitalGameObjectMap; // put in the orbital sprit and get the game object
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();

@@ -155,7 +155,6 @@ namespace Assets.Script
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
-        public UInt64 galacticTime = 0;
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
         public SolarSystemView solarSystemView;
