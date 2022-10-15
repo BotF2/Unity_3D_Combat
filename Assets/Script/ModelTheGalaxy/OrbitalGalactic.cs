@@ -52,11 +52,6 @@ namespace Assets.Script
                 Children[i].Update(timeSinceStart);
             }
         }
-        public ulong OrbitTimeForDistance() // for orbital including moon
-        {
-            // Fix this with real orbital math
-            return 365 * 24 * 60 * 60;
-        }
         public void MakeOrbital()
         {
             OffsetAngle = 0; // North of star Earth

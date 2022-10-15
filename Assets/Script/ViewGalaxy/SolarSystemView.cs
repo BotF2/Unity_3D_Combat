@@ -31,7 +31,6 @@ namespace Assets.Script
         {
             if (solarSystem == null)
                 return;
-            // loop orbitals updating position base on zoomlevel
             else
                 {
                     UpdateSprites(solarSystem.Children[i]);
