@@ -11,7 +11,7 @@ namespace Assets.Script
         public List<OrbitalGalactic> Children;
         public float InitAngle; // random first angle of orbital to parent in constructor below
         public float OffsetAngle; // angle aroung orbit over time
-        public UInt64 OrbitalDistance; // in *meters*
+        public UInt64 OrbitalDistance = 7000000000; // magic number
         public UInt64 TimeToOrbit; // in sec to get around the star, ToDo: Kepler's Third Law: the squares
                                    // of the orbital periods of the
                                    // planets are directly proportional to the cubes of the semi-major axes
@@ -28,12 +28,19 @@ namespace Assets.Script
         {
             get
             {
-                Vector3 myOffset = new Vector3(
-                    Mathf.Sin(InitAngle + OffsetAngle) * OrbitalDistance,
-                    0,
-                    Mathf.Cos(InitAngle + OffsetAngle) * OrbitalDistance
-                    ); // y (up/down) is locked to zero but consider addint in 3D
-        
+                Vector3 myOffset;
+                if (this.GraphicID == 0)
+                {
+                    myOffset = Vector3.zero; // stars are not seen to orbit, GraphicID zero
+                }
+                else
+                {
+                    myOffset = new Vector3(
+                        Mathf.Cos(InitAngle + OffsetAngle) * OrbitalDistance,
+                        0,
+                        Mathf.Sin(InitAngle + OffsetAngle) * OrbitalDistance
+                        ); // y (up/down) is locked to zero but consider addint in 3D
+                }
                 if (Parent != null)
                 {
                     myOffset += Parent.Position;
@@ -41,10 +48,10 @@ namespace Assets.Script
                 return myOffset;
             }
         }
-        public void Update(UInt64 timeSinceStart)
+        public void Update(float timeSinceStart)
         {
             // advance angle to current time
-            OffsetAngle = 2f * Mathf.PI * (float)timeSinceStart / (float)TimeToOrbit;
+            OffsetAngle = 2f * Mathf.PI * timeSinceStart / (float)TimeToOrbit;
 
             // update all of our children
             for (int i = 0; i < Children.Count; i++)
@@ -52,12 +59,17 @@ namespace Assets.Script
                 Children[i].Update(timeSinceStart);
             }
         }
-        public void MakeOrbital()
+        public ulong OrbitTime() // for orbital including moon
         {
-            OffsetAngle = 0; // North of star Earth
-            OrbitalDistance = 150000000000; // 150 million KM
-            TimeToOrbit = 365 * 24 * 60 * 60; // for Earth, days * hours * min * sec (in sec)
+            ulong tenthOfAnEarthYearInSeconds = 365 * 24 * 60 * 60 / 10;
+            return tenthOfAnEarthYearInSeconds;
         }
+        //public void MakeOrbital()
+        //{
+        //    OffsetAngle = 0; // North of star Earth
+        //    OrbitalDistance = 150000000000; // 150 million KM
+        //    TimeToOrbit = 365 * 24 * 60 * 60; // for Earth, days * hours * min * sec (in sec)
+        //}
 
         public void AddChild(OrbitalGalactic child)
         {

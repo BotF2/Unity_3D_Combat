@@ -32,11 +32,12 @@ namespace Assets.Script
         }
         public void Awake()
         {
-            // On awake there is a galaxy with the galalctic center 'system' but on button for it
+            // On awake there is a galaxy with the galalctic center 'system' but no button for it
             var galaxyCenterSystem = new SolarSystem();
             galaxyCenter = galaxyCenterSystem.GenerateGalaxyCenter();
             Vector3 galacticCenterVector = new Vector3(0, 0, 0);
             SolarSystemsMap.Add(galacticCenterVector, galaxyCenter);
+            SolarSystems.Add(galaxyCenterSystem);
         }
 
         public void Update(UInt64 timeSinceStart)
@@ -47,12 +48,16 @@ namespace Assets.Script
                 ss.Update(timeSinceStart); // solarsystem inherits from orbital with this Update()
             }
         }
-        //public void PopulateCanonSystem()
-        //{
-        //    SolarSystems = GalaxyView.SystemDataDictionary
 
-        //}
+        public SolarSystem LoadThisSystem(int systemButtonID) // Do we need this for just a single system to be shown by SolarSystemView??
+        {
 
+            SolarSystem ss = new SolarSystem();
+            ss.Generate();
+            //result.Add(ss);
+            
+            return ss;
+        }
         public List<SolarSystem> GenerateSystems(int numberOfStars) // ToDo: load SystemDate.txt instead of generate
         {
             List<SolarSystem> result = new List<SolarSystem>();

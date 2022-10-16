@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 //using Unity.VisualScripting;
 using UnityEngine;
 //using MLAPI;
@@ -121,6 +122,7 @@ namespace Assets.Script
         M_habitable,
         L_marginalForLife,
         K_marsLike,
+        Moon
        
     }
     public enum Orders
@@ -882,13 +884,7 @@ namespace Assets.Script
             //BeginState(newState);
             _isSwitchingState = false;
         }
-        // Unity Inspector only sees non static pulic void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
-        public void AdvanceTime(UInt64 numSeconds) // is there a problem that this is int and galactic time is UInt64 so as to fit with OrbitalGalatic time in UInt64?
-        {
-            galacticTime = galacticTime + numSeconds;
-            galaxy.Update(galacticTime);
-        }
-
+        // Unity Inspector only sees non static public void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
 
         void BeginState(State newState)
         {
@@ -1000,7 +996,7 @@ namespace Assets.Script
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-             
+                    
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);

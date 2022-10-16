@@ -176,7 +176,7 @@ namespace Assets.Script
         #endregion
 
         private List<GameObject> SysEmptyList;
-        public Sprite[] Sprites;
+        public List<int> NumbersForSystem;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
@@ -185,7 +185,9 @@ namespace Assets.Script
         void Start()
         {
             gameManager = GameManager.Instance;
-            SysEmptyList = new List<GameObject> { FEDSysEmpty,
+            SysEmptyList = new List<GameObject>
+            {
+                FEDSysEmpty,
                 ROMSysEmpty,
                 KLINGSysEmpty,
                 CARDSysEmpty,
@@ -378,7 +380,9 @@ namespace Assets.Script
                 }
             }
             gameManager.galaxy = galaxy;
-           // ourGalaxy.PopulateCanonSystem();
+            SolarSystemView view = new SolarSystemView();
+            //view.NumbersOfSystemID(NumbersForSystem);
+            //ourGalaxy.PopulateCanonSystem();
         }
          
         private string[] ReadSystemData()
@@ -457,7 +461,7 @@ namespace Assets.Script
         public void LoadSystemData(string filename)
         {
             #region Read SystemData.txt 
-            int entryNum = 0;
+            //int entryNum = 0;
             Dictionary<int, string[]> _systemDataDictionary = new Dictionary<int, string[]>();
             var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
@@ -522,8 +526,9 @@ namespace Assets.Script
                         //    coll[24]
                         //};
 
-                        _systemDataDictionary.Add(entryNum, coll);
-                        entryNum++;
+                        _systemDataDictionary.Add(int.Parse(coll[0]), coll);
+                        NumbersForSystem.Add(int.Parse(coll[0]));
+                        //entryNum++;
                         //_shipInts.Clear();
                     }
                 }
