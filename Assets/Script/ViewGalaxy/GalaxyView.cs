@@ -361,12 +361,15 @@ namespace Assets.Script
                 // UpdateSystemButtons(SolarSystem)
             }
         }
-        public void InstantiateSystemButtons(int numStars)
+        public void InstantiateSystemButtons(int numStars, GalaxyType canonOrRandom)
         {
+            // ToDo Implement both cannon and radome based on incoming GalaxyType seletection
             string[] keysForSytemDictioanry = ReadSystemData();
 
-                //numStars = 6; // use numStars, without this reset, when we have enough system-button prefabs built and loaded 
+            //We are currently only numStars = 6; use numStars, without this reset, when we have enough system-button prefabs built and loaded 
+
             Galaxy galaxy = new Galaxy(gameManager);
+            if (canonOrRandom == GalaxyType.CANON)
             for (int i = 0; i < numStars; i++)
             {
                 string ourKey = keysForSytemDictioanry[i];
@@ -379,10 +382,13 @@ namespace Assets.Script
                     starSystemNewGameOb.SetActive(true);
                 }
             }
+            else
+            { 
+                // do random galaxy here
+            }
+
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
-            //view.NumbersOfSystemID(NumbersForSystem);
-            //ourGalaxy.PopulateCanonSystem();
         }
          
         private string[] ReadSystemData()
@@ -479,57 +485,10 @@ namespace Assets.Script
 
                     if (line.Length > 0)
                     {
-                        var coll = line.Split(separator);
+                        var sysDataStringArray = line.Split(separator);
 
-                        // _ = int.TryParse(coll[1], out int currentValueOne);
-                        // _ = int.TryParse(coll[2], out int currentValueTwo);
-                        // _ = int.TryParse(coll[3], out int currentValueThree);
-                        // _ = int.TryParse(coll[4], out int currentValueFour);
-                        // _ = int.TryParse(coll[5], out int currentValueFive);
-                        // _ = int.TryParse(coll[6], out int currentValueSix);
-                        // _ = int.TryParse(coll[7], out int currentValueSeven);
-                        // _ = int.TryParse(coll[8], out int currentValueEight);
-                        // _ = int.TryParse(coll[9], out int currentValueNine);
-                        // _ = int.TryParse(coll[10], out int currentValueTen);
-                        // _ = int.TryParse(coll[11], out int currentValueEleven);
-                        // _ = int.TryParse(coll[12], out int currentValueTweleve);
-                        // _ = int.TryParse(coll[13], out int currentValueThirteen);
-                        // _ = int.TryParse(coll[14], out int currentValueFourteen);
-                        // _ = int.TryParse(coll[15], out int currentValueFifteen);
-
-                        //string[] systemDataArray = new string[25]
-                        //{
-                        //    coll[0],
-                        //    coll[1],
-                        //    coll[2],
-                        //    coll[3],
-                        //    coll[4],
-                        //    coll[5],
-                        //    coll[6],
-                        //    coll[7],
-                        //    coll[8],
-                        //    coll[9],
-                        //    coll[10],
-                        //    coll[11],
-                        //    coll[12],
-                        //    coll[13],
-                        //    coll[14],
-                        //    coll[15],
-                        //    coll[16],
-                        //    coll[17],
-                        //    coll[18],
-                        //    coll[19],
-                        //    coll[20],
-                        //    coll[21],
-                        //    coll[22],
-                        //    coll[23],
-                        //    coll[24]
-                        //};
-
-                        _systemDataDictionary.Add(int.Parse(coll[0]), coll);
-                        NumbersForSystem.Add(int.Parse(coll[0]));
-                        //entryNum++;
-                        //_shipInts.Clear();
+                        _systemDataDictionary.Add(int.Parse(sysDataStringArray[0]), sysDataStringArray);
+                        NumbersForSystem.Add(int.Parse(sysDataStringArray[0]));
                     }
                 }
 

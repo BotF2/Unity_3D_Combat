@@ -15,12 +15,132 @@ namespace Assets.Script
     public enum Civilization
     {
         FED,
-        TERRAN,
         ROM,
         KLING,
         CARD,
         DOM,
-        BORG
+        BORG,
+        ACAMARIAN,
+        AKAALI,
+        AKRITIRIAN,
+        ALDEAN,
+        ALGOLIAN,
+        ALSAURIAN,
+        ANDORIAN,
+        ANGOSIAN,
+        ANKARI,
+        ANTEDEAN,
+        ANTICAN,
+        ARBAZAN,
+        ARGRATHI,
+        AXANARIAN,
+        BAJORAN,
+        BAKU,
+        BANEAN,
+        BARZAN,
+        BENZIT,
+        BETAZOID,
+        BOLIAN,
+        BOMAR,
+        BOTHAN,
+        BREELLIAN,
+        BREEN,
+        BREKKIAN,
+        CALDONIAN,
+        CHALNOTHIAN,
+        CORIDAN,
+        CORVALLEN,
+        CYTHERIAN,
+        DENOBULAN,
+        DEVOREN,
+        DOSI,
+        DRAI,
+        ELAURIAN,
+        ENTHARAN,
+        EVORAN,
+        EXCALBIAN,
+        FERENGI,
+        FLAXIAN,
+        GORN,
+        HAAKONIAN,
+        HALKAN,
+        HAZARI,
+        HIROGEN,
+        IYAARAN,
+        KAELON,
+        KAREMMAN,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRONIAN,
+        KRADIN,
+        KREETASSAN,
+        LEDOSIAN,
+        LISSEPIAN,
+        LOKIRRIM,
+        LURIAN,
+        MALON,
+        MERIDIAN,
+        MINTAKAN,
+        MIRADORN,
+        MIZARIAN,
+        MOKRAN,
+        MONEAN,
+        NAUSICAAN,
+        NECHANI,
+        NEZU,
+        NORCADIAN,
+        NUMIRI,
+        NUUBARI,
+        NYRIAN,
+        OCAMPAN,
+        PARADAN,
+        QUARREN,
+        RAKHARI,
+        RAKOSAN,
+        RAMATIAN,
+        RIGELIAN,
+        RISIAN,
+        SELAY,
+        SIKARIAN,
+        SKRREEAN,
+        SONAN,
+        TAKARAN,
+        TAKARIAN,
+        TAKTAK,
+        TALARIAN,
+        TALAXIAN,
+        TALOSIAN,
+        TAMARIA,
+        TELLARITE,
+        TEPLAN,
+        THOLIAN,
+        TILONIAN,
+        TLANI,
+        TRABEN,
+        TRILL,
+        TROGORAN,
+        TZENKETHI,
+        ULLIAN,
+        VAADWAUR,
+        VENTAXIAN,
+        VHNORI,
+        VIDIIAN,
+        VISSIAN,
+        VORGON,
+        VORI,
+        VULCAN,
+        WADI,
+        XANTHAN,
+        XEPOLITES,
+        XINDI,
+        XYRILLIAN,
+        YADERAN,
+        YRIDIAN,
+        ZAHL,
+        ZALKONIAN,
+        ZIBAL,
+        TEMPLATE
     }
     public enum GalaxyType
     {
@@ -50,33 +170,7 @@ namespace Assets.Script
         OMARIAN_NEBULA,
         DELTA_PRIME
     }
-    public enum SystemData
-    {
-        Sys_Int,
-        X_Vector3,
-        Y_Vector3,
-        Z_Vector3,
-        Name,
-        Civ_Owner,
-        Sys_Type,
-        Star_Type,
-        Planet_1,
-        Moons_1,
-        Planet_2,
-        Moons_2,
-        Planet_3,
-        Moons_3,
-        Planet_4,
-        Moons_4,
-        Planet_5,
-        Moons_5,
-        Planet_6,
-        Moons_6,
-        Planet_7,
-        Moons_7,
-        Planet_8,
-        Moons_8
-    }
+
     public enum FriendOrFoe
     {
         friend,
@@ -97,10 +191,16 @@ namespace Assets.Script
     }
     public enum SystemType
     {
-        SolarSystem,
+        YellowStarSystem,
+        OrangeStarSystem,
+        WhiteStarSystem,
+        RedStarSystem,
         NebulaSystem,
         ComplexSystem,
         BlackHoleSystem,
+        WormHoleSystem,
+        TranWarpHubSystem,
+        SolarSystem
     }
     public enum StarType
     {
@@ -835,8 +935,26 @@ namespace Assets.Script
                     break;
             }
         }
+        public void SetGalaxyMapCanon() // 
+        {
+            switch (_galaxyType)
+            {
+                case GalaxyType.CANON:
+                    _galaxyType = GalaxyType.CANON; // 30;
+                                          // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
+                    break;
+                case GalaxyType.RANDOM:
+                    _galaxyType = GalaxyType.RANDOM;
+                    //LoadGalacticMapButtons("MEDIUM");
+                    break;
+
+                default:
+                    break;
+            }
+        }
         public void LoadGalacticMapButtons(string mapsize)
         {
+
             //switch (mapsize)
             //{
             //    case "SMALL":                   
@@ -950,26 +1068,27 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    switch (_galaxyType) // ToDo: get input from Main Menu
-                    {
-                        case GalaxyType.CANON:
-                            // canon type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
-                            break;
-                        case GalaxyType.RANDOM:
-                            // generate type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize();
-                            //GenerateGalaxyMap();                           
-                            break;
-                    }
-                   
+                    SetGalaxyMapSize();
+                    //switch (_galaxyType) // ToDo: get input from Main Menu
+                    //{
+                    //    case GalaxyType.CANON:
+                    //        // canon type galaxy.cs SolarSystemsMap dictionary
+                    //        SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
+                    //        break;
+                    //    case GalaxyType.RANDOM:
+                    //        // generate type galaxy.cs SolarSystemsMap dictionary
+                    //        SetGalaxyMapSize();
+                    //        //GenerateGalaxyMap();                           
+                    //        break;
+                    //}
+                    SetGalaxyMapCanon();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
                         case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
                             // set 
                             break;
-                        case Civilization.TERRAN:
-                            break;
+                        //case Civilization.TERRAN:
+                        //    break;
                         case Civilization.ROM:
                             break;
                         case Civilization.KLING:
@@ -992,7 +1111,7 @@ namespace Assets.Script
                     PanelGalactic_Map.SetActive(true);
 
                     _statePassedMain_Init = true;
-                    galaxyView.InstantiateSystemButtons(_galaxyStarCount);
+                    galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:

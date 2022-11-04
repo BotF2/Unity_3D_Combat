@@ -9,10 +9,12 @@ using UnityEngine.Rendering;
 
 namespace Assets.Script
 {
-    internal class Planet : OrbitalGalactic
+    public class Planet : OrbitalGalactic
     {
         public PlanetType planteType;
+        public int planetImageNum;
         private float priorAngle;
+        public int numMoons;
 
         public void LoadPlanet(Planet myPlanet, string[] systemData, int i)
         {
@@ -20,28 +22,32 @@ namespace Assets.Script
             myPlanet.OrbitalDistance = (myPlanet.OrbitalDistance) + ((ulong)i * (myPlanet.OrbitalDistance *(ulong)2));//80000000000)/8);
             OrbitalGalactic myOrbital = new OrbitalGalactic();
             this.TimeToOrbit = myOrbital.OrbitTime() + ((ulong)i * myOrbital.OrbitTime());// 365 * 24 * 60 * 60/5);
-            string pType = systemData[8 + (i*2)];
+            string pType = systemData[8 + (i*3)];
             switch (pType)
             {
                 case "H":
                     this.planteType = PlanetType.H_uninhabitable;
-                    this.GraphicID = (int)PlanetType.H_uninhabitable +1; 
+                    this.GraphicID = (int)PlanetType.H_uninhabitable +1; // H planet type index = 0 so GraphicID = 1, Star is graphicID = 0
                     break;
                 case "J":
-                    this.planteType = PlanetType.J_gasGiant;
+                    this.planteType = PlanetType.J_gasGiant; // J planet type GraphicID = 2
                     this.GraphicID = (int)PlanetType.J_gasGiant +1;
                     break;
                 case "M":
-                    this.planteType = PlanetType.M_habitable;
+                    this.planteType = PlanetType.M_habitable; // M planet type GraphicID = 3
                     this.GraphicID = (int)PlanetType.M_habitable + 1;
                     break;
                 case "L":
-                    this.planteType = PlanetType.L_marginalForLife;
+                    this.planteType = PlanetType.L_marginalForLife;// L planet type GraphicID = 4
                     this.GraphicID = (int)PlanetType.L_marginalForLife + 1;
                     break;
                 case "K":
-                    this.planteType = PlanetType.K_marsLike;
+                    this.planteType = PlanetType.K_marsLike; // K planet type GraphicID = 5
                     this.GraphicID = (int)PlanetType.K_marsLike + 1;
+                    break;
+                case "Moon":
+                    this.planteType = PlanetType.Moon;
+                    this.GraphicID = (int)PlanetType.Moon + 1; // Moon planet type GraphicID = 6
                     break;
                 default:
                     this.planteType = PlanetType.K_marsLike;

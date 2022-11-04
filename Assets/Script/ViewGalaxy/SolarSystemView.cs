@@ -10,11 +10,17 @@ using System.Net;
 
 namespace Assets.Script
 {
-    public class SolarSystemView : MonoBehaviour 
+    public class SolarSystemView : MonoBehaviour
     {
         public GameManager gameManager;
         public SolarSystem solarSystem;
-        public Sprite[] starSprites; 
+        public Sprite[] starSprites;
+        public Sprite[] solEarthSys;
+        public Sprite[] m_TypeHabitable;
+        public Sprite[] h_TypeUninbaitable;
+        public Sprite[] k_TypeMarsLike;
+        public Sprite[] j_TypeGaseGiants;
+        public Sprite[] moonType;
         public Sprite[] planetMoonSprites;
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
@@ -90,14 +96,13 @@ namespace Assets.Script
             gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
             systemDataArray = systemDataDictionary[buttonSystemID];
             var mySolarSystem = new SolarSystem();
-            mySolarSystem.LoadSystem(systemDataArray);
+            mySolarSystem.LoadSystem(systemDataArray, buttonSystemID);
             solarSystem = mySolarSystem;
 
-            for (int i = 0; i < solarSystem.Children.Count; i++)
+            for (int i = 0; i < solarSystem.Children.Count; i++) // put sprites on orbitals for display
             {
                 this.LoadSpritesForOrbital(this.transform, solarSystem.Children[i]);
             }
-
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG)
         {       
@@ -106,12 +111,14 @@ namespace Assets.Script
                 orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>() { { orbitalG, gameObject } };
             else
                 orbitalGameObjectMap.Add(orbitalG, gameObject);
-            gameObject.transform.SetParent(transformParent, false);           
-            gameObject.transform.position = orbitalG.Position / zoomLevels; 
-            gameObject.layer = 3; // Star System layer
-            gameObject.name = "Orbital";
-            SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
-            renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
+                gameObject.transform.SetParent(transformParent, false);           
+                gameObject.transform.position = orbitalG.Position / zoomLevels; 
+                gameObject.layer = 3; // Star System layer
+                gameObject.name = "Orbital";
+                SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
+                renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
+
+            //*********TODO: here is where we will bring up sprites base on num in systemdata after planet type
             if (int.Parse(systemDataArray[0]) == 0)
                 this.LoadEarthSprites(transformParent, orbitalG, renderer);
             else
@@ -120,7 +127,7 @@ namespace Assets.Script
                 {
                     case 0:
                         string starColor = systemDataArray[7];
-                        gameObject.name = "Star";
+                        gameObject.name = "Star"; // star is system view is single sprite
                         switch (starColor)
                         {
                             case "Blue":
@@ -173,15 +180,14 @@ namespace Assets.Script
         }
         private void LoadEarthSprites(Transform transformParent, OrbitalGalactic orbitalG, SpriteRenderer renderer)
         {
-            if (orbitalG.GraphicID == 1 + (int)PlanetType.Moon)
+            if (orbitalG.GraphicID == 1 + (int)PlanetType.Moon) // Moon are index = 5 in enum / graphic id = 6 
             {
                 if (orbitalG.Parent.GraphicID == 7)
                 {
                     renderer.sprite = earthMoonSprite;
-                }
-                
+                }              
                 else   
-                renderer.sprite = planetMoonSprites[UnityEngine.Random.Range(29, 34)];
+                renderer.sprite = moonType[UnityEngine.Random.Range(0, 2)];
             }
             else
             {

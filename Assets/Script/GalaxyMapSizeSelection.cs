@@ -11,26 +11,25 @@ namespace Assets.Script
     {
         Toggle _activeGalaxyMapSizeToggle;
         public Toggle Small, Medium, Large;
-        ToggleGroup GalaxyMapSizeGroup;
+        public ToggleGroup GalaxyMapSizeGroup;
         public GameObject Canvas;
 
         private void Awake()
         {
             Canvas = GameObject.Find("Canvas"); 
             var _mainMenu = Canvas.transform.Find("PanelMain_Menu").gameObject;
-            var _technologyGroup = _mainMenu.transform.Find("GALAXYMAPSIZE").gameObject; // DID WE CONNECT THIS???
-            GalaxyMapSizeGroup = _technologyGroup.GetComponent<ToggleGroup>();
+            var _mapSizeGroup = _mainMenu.transform.Find("GALAXYMAPSIZE").gameObject; // DID WE CONNECT THIS???
+            GalaxyMapSizeGroup = _mapSizeGroup.GetComponent<ToggleGroup>();
             GalaxyMapSizeGroup.RegisterToggle(Small);
             GalaxyMapSizeGroup.RegisterToggle(Medium);
-            GalaxyMapSizeGroup.RegisterToggle(Large);
-      
+            GalaxyMapSizeGroup.RegisterToggle(Large);      
             Small.isOn = true;
             Medium.isOn = false;
             Large.isOn = false;
         }
         private void Start()
         {
-            GalaxyMapSizeGroup = GetComponent<ToggleGroup>();
+           // GalaxyMapSizeGroup = GetComponent<ToggleGroup>();
             GalaxyMapSizeGroup.enabled = true;
             Small.isOn = true;
             Small.Select();
@@ -43,7 +42,8 @@ namespace Assets.Script
             if (GameManager.Instance._statePassedLobbyInit)
             {
                 _activeGalaxyMapSizeToggle = GalaxyMapSizeGroup.ActiveToggles().ToArray().FirstOrDefault();
-                ActiveToggle();
+                if (_activeGalaxyMapSizeToggle != null)
+                    ActiveToggle();
             }
         }
         public void ActiveToggle()

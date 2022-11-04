@@ -120,9 +120,9 @@ namespace Assets.Script
                 case "FED":
                     _civilization = Civilization.FED;
                     break;
-                case "TERRAN":
-                    _civilization = Civilization.TERRAN;
-                    break;
+                //case "TERRAN":
+                //    _civilization = Civilization.TERRAN;
+                //    break;
                 case "ROM":
                     _civilization = Civilization.ROM;
                     break;
