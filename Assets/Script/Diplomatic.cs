@@ -15,7 +15,7 @@ namespace Assets.Script
             WillFightAlongSide
         }
         public List<Civilization> FightWithFed = new List<Civilization>() { Civilization.FED };
-        public List<Civilization> FightWithTerran;
+        //public List<Civilization> FightWithTerran;
         public List<Civilization> FightWithRom = new List<Civilization>() { Civilization.ROM, Civilization.KLING, Civilization.CARD };
         public List<Civilization> FightWithKling = new List<Civilization>() { Civilization.ROM, Civilization.KLING, Civilization.CARD };
         public List<Civilization> FightWithCard = new List<Civilization>() { Civilization.ROM, Civilization.KLING, Civilization.CARD };
@@ -23,7 +23,7 @@ namespace Assets.Script
         public List<Civilization> FightWithBorg;
 
         public List<Civilization> FightFed = new List<Civilization>() { Civilization.ROM, Civilization.KLING, Civilization.CARD };
-        public List<Civilization> FightTerran;
+       // public List<Civilization> FightTerran;
         public List<Civilization> FightRom = new List<Civilization>() { Civilization.FED };
         public List<Civilization> FightKling = new List<Civilization>() { Civilization.FED };
         public List<Civilization> FightCard = new List<Civilization>() { Civilization.FED };
@@ -46,9 +46,9 @@ namespace Assets.Script
                 case Civilization.FED:
                     return FightWithFed.ToArray();
                     break;
-                case Civilization.TERRAN:
-                    return FightWithTerran.ToArray();
-                    break;
+                //case Civilization.TERRAN:
+                //    return FightWithTerran.ToArray();
+                //    break;
                 case Civilization.ROM:
                     return FightWithRom.ToArray();
                     break;
@@ -76,9 +76,9 @@ namespace Assets.Script
                 case Civilization.FED:
                     return FightFed.ToArray();
                     break;
-                case Civilization.TERRAN:
-                    return FightTerran.ToArray();
-                    break;
+                //case Civilization.TERRAN:
+                //    return FightTerran.ToArray();
+                //    break;
                 case Civilization.ROM:
                     return FightRom.ToArray();
                     break;

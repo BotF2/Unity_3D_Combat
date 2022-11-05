@@ -29,9 +29,9 @@ namespace Assets.Script
                 case "FED":
                     daCiv = Civilization.FED;
                     break;
-                case "TERRAN":
-                    daCiv = Civilization.TERRAN;
-                    break;
+                //case "TERRAN":
+                //    daCiv = Civilization.TERRAN;
+                //    break;
                 case "ROM":
                     daCiv = Civilization.ROM;
                     break;

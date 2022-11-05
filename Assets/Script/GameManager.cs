@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 //using Unity.VisualScripting;
 using UnityEngine;
 //using MLAPI;
@@ -14,12 +15,132 @@ namespace Assets.Script
     public enum Civilization
     {
         FED,
-        TERRAN,
         ROM,
         KLING,
         CARD,
         DOM,
-        BORG
+        BORG,
+        ACAMARIAN,
+        AKAALI,
+        AKRITIRIAN,
+        ALDEAN,
+        ALGOLIAN,
+        ALSAURIAN,
+        ANDORIAN,
+        ANGOSIAN,
+        ANKARI,
+        ANTEDEAN,
+        ANTICAN,
+        ARBAZAN,
+        ARGRATHI,
+        AXANARIAN,
+        BAJORAN,
+        BAKU,
+        BANEAN,
+        BARZAN,
+        BENZIT,
+        BETAZOID,
+        BOLIAN,
+        BOMAR,
+        BOTHAN,
+        BREELLIAN,
+        BREEN,
+        BREKKIAN,
+        CALDONIAN,
+        CHALNOTHIAN,
+        CORIDAN,
+        CORVALLEN,
+        CYTHERIAN,
+        DENOBULAN,
+        DEVOREN,
+        DOSI,
+        DRAI,
+        ELAURIAN,
+        ENTHARAN,
+        EVORAN,
+        EXCALBIAN,
+        FERENGI,
+        FLAXIAN,
+        GORN,
+        HAAKONIAN,
+        HALKAN,
+        HAZARI,
+        HIROGEN,
+        IYAARAN,
+        KAELON,
+        KAREMMAN,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRONIAN,
+        KRADIN,
+        KREETASSAN,
+        LEDOSIAN,
+        LISSEPIAN,
+        LOKIRRIM,
+        LURIAN,
+        MALON,
+        MERIDIAN,
+        MINTAKAN,
+        MIRADORN,
+        MIZARIAN,
+        MOKRAN,
+        MONEAN,
+        NAUSICAAN,
+        NECHANI,
+        NEZU,
+        NORCADIAN,
+        NUMIRI,
+        NUUBARI,
+        NYRIAN,
+        OCAMPAN,
+        PARADAN,
+        QUARREN,
+        RAKHARI,
+        RAKOSAN,
+        RAMATIAN,
+        RIGELIAN,
+        RISIAN,
+        SELAY,
+        SIKARIAN,
+        SKRREEAN,
+        SONAN,
+        TAKARAN,
+        TAKARIAN,
+        TAKTAK,
+        TALARIAN,
+        TALAXIAN,
+        TALOSIAN,
+        TAMARIA,
+        TELLARITE,
+        TEPLAN,
+        THOLIAN,
+        TILONIAN,
+        TLANI,
+        TRABEN,
+        TRILL,
+        TROGORAN,
+        TZENKETHI,
+        ULLIAN,
+        VAADWAUR,
+        VENTAXIAN,
+        VHNORI,
+        VIDIIAN,
+        VISSIAN,
+        VORGON,
+        VORI,
+        VULCAN,
+        WADI,
+        XANTHAN,
+        XEPOLITES,
+        XINDI,
+        XYRILLIAN,
+        YADERAN,
+        YRIDIAN,
+        ZAHL,
+        ZALKONIAN,
+        ZIBAL,
+        TEMPLATE
     }
     public enum GalaxyType
     {
@@ -49,33 +170,7 @@ namespace Assets.Script
         OMARIAN_NEBULA,
         DELTA_PRIME
     }
-    public enum SystemData
-    {
-        Sys_Int,
-        X_Vector3,
-        Y_Vector3,
-        Z_Vector3,
-        Name,
-        Civ_Owner,
-        Sys_Type,
-        Star_Type,
-        Planet_1,
-        Moons_1,
-        Planet_2,
-        Moons_2,
-        Planet_3,
-        Moons_3,
-        Planet_4,
-        Moons_4,
-        Planet_5,
-        Moons_5,
-        Planet_6,
-        Moons_6,
-        Planet_7,
-        Moons_7,
-        Planet_8,
-        Moons_8
-    }
+
     public enum FriendOrFoe
     {
         friend,
@@ -96,15 +191,16 @@ namespace Assets.Script
     }
     public enum SystemType
     {
-        SolarSystem,
-        Nebula,
-        Complex,
-        BlackHole,
-        WormHole,
-        TransWarpHub,
+        YellowStarSystem,
+        OrangeStarSystem,
+        WhiteStarSystem,
+        RedStarSystem,
         NebulaSystem,
-        ComplexSystem //????
-
+        ComplexSystem,
+        BlackHoleSystem,
+        WormHoleSystem,
+        TranWarpHubSystem,
+        SolarSystem
     }
     public enum StarType
     {
@@ -113,8 +209,10 @@ namespace Assets.Script
         Yellow,
         Orange,
         Red,
-        NebulaStar,
-        Complex //???
+        Nebula,
+        Complex,
+        BlackHole,
+        WormHole,//???
 
     }
     public enum PlanetType
@@ -124,6 +222,7 @@ namespace Assets.Script
         M_habitable,
         L_marginalForLife,
         K_marsLike,
+        Moon
        
     }
     public enum Orders
@@ -158,7 +257,6 @@ namespace Assets.Script
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
-        public UInt64 galacticTime = 0;
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
         public SolarSystemView solarSystemView;
@@ -210,7 +308,7 @@ namespace Assets.Script
         public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
-        public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
+        //public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
 
         public GameObject animFriend1;
         public GameObject animFriend2;
@@ -280,7 +378,7 @@ namespace Assets.Script
         public static Dictionary<string, GameObject> PrefabShipDitionary;
         #endregion
 
-        #region prefab Star Systems
+        #region prefab Star Systems, button gameobjects
         public GameObject FED_StarSystem;
         public GameObject ROM_StarSystem;
         public GameObject KLING_StarSystem;
@@ -439,6 +537,7 @@ namespace Assets.Script
         public GameObject ZAKDORN_StarSystem;
         public GameObject ZALKONIANS_StarSystem;
         public GameObject ZIBALIANS_StarSystem;
+       // public GameObject GALACTIC_Center; // do not need a galactic center system button
         public List<GameObject> AllSystemsList;
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
         #endregion
@@ -503,7 +602,7 @@ namespace Assets.Script
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, SYSTEM_PLAY, GALACTIC_COMPLETED,
+        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, GALACTIC_MAP_INIT, SYSTEM_PLAY, GALACTIC_COMPLETED,
             COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
         private State _state;
 
@@ -543,11 +642,7 @@ namespace Assets.Script
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
-            // SystemGalacticCore = CanvasGalactic.transform.Find("GalacticCore").gameObject;
-            
-            //System_FEDERATION = CanvasGalactic.transform.Find("FedSystem").gameObject;
-            //System_ROMULANS = CanvasGalactic.transform.Find("RomSystem").gameObject;
-           // System_KLINGONS = CanvasGalactic.transform.Find("KlingonSystem").gameObject;
+            // GameObjects for the system buttons
             AllSystemsList = new List<GameObject> {  FED_StarSystem,
                                                      ROM_StarSystem,
                                                      KLING_StarSystem,
@@ -707,11 +802,10 @@ namespace Assets.Script
                                                      ZAKDORN_StarSystem,
                                                      ZALKONIANS_StarSystem,
                                                      ZIBALIANS_StarSystem,
-                                                    #endregion
+                                                     //GALACTIC_Center,
+                                                     #endregion
             };
         }
-
-
         void Start()
         {
             SwitchtState(State.LOBBY_MENU);
@@ -720,7 +814,7 @@ namespace Assets.Script
                 // get respons with locations... SaveManager.activeSave.(somethings here from save data)
             }
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt"); // populate prefabs
-            LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            //LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
             LoadPrefabs();
 
@@ -821,40 +915,60 @@ namespace Assets.Script
             //System_ROMULANS.SetActive(offOn);
             // System_KLINGONS.SetActive(offOn);
         }
-        public void SetGalaxyMapSize()
+        public void SetGalaxyMapSize() // 
         {
             switch (_galaxySize)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = 30;
-                    LoadGalacticMap("SMALL");
+                    _galaxyStarCount = 6; // 30;
+                   // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:
                     _galaxyStarCount = 40;
+                    //LoadGalacticMapButtons("MEDIUM");
                     break;
                 case GalaxySize.LARGE:
                     _galaxyStarCount = 50;
+                    //LoadGalacticMapButtons("LARGE");
                     break;
                 default:
                     break;
             }
         }
-        public void LoadGalacticMap(string mapsize)
+        public void SetGalaxyMapCanon() // 
         {
-            switch (mapsize)
+            switch (_galaxyType)
             {
-                case "SMALL":                   
+                case GalaxyType.CANON:
+                    _galaxyType = GalaxyType.CANON; // 30;
+                                          // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
-
-                case "MEDIUM":
-                    break;
-
-                case "LARGE":
+                case GalaxyType.RANDOM:
+                    _galaxyType = GalaxyType.RANDOM;
+                    //LoadGalacticMapButtons("MEDIUM");
                     break;
 
                 default:
                     break;
             }
+        }
+        public void LoadGalacticMapButtons(string mapsize)
+        {
+
+            //switch (mapsize)
+            //{
+            //    case "SMALL":                   
+            //        break;
+
+            //    case "MEDIUM":
+            //        break;
+
+            //    case "LARGE":
+            //        break;
+
+            //    default:
+            //        break;
+            //}
         }
 
         public void EndGalacticPlayClicked()
@@ -888,13 +1002,7 @@ namespace Assets.Script
             //BeginState(newState);
             _isSwitchingState = false;
         }
-        // Unity Inspector only sees non static pulic void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
-        public void AdvanceTime(UInt64 numSeconds) // is there a problem that this is int and galactic time is UInt64 so as to fit with OrbitalGalatic time in UInt64?
-        {
-            galacticTime = galacticTime + numSeconds;
-            galaxy.Update(galacticTime);
-        }
-
+        // Unity Inspector only sees non static public void methodes with no parameter or paramater float, int, string, bool or UnityEntine.Object
 
         void BeginState(State newState)
         {
@@ -954,33 +1062,33 @@ namespace Assets.Script
                 case State.MAIN_MENU:
                     PanelLoadGame_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(true);
-
                     break;
                 case State.MULTIPLAYER_MENU:
                     PanelLobby_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    switch (_galaxyType) // ToDo: get input from Main Menu
-                    {
-                        case GalaxyType.CANON:
-                            // canon type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
-                            break;
-                        case GalaxyType.RANDOM:
-                            // generate type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize();
-                            //GenerateGalaxyMap();                           
-                            break;
-                    }
-                   
+                    SetGalaxyMapSize();
+                    //switch (_galaxyType) // ToDo: get input from Main Menu
+                    //{
+                    //    case GalaxyType.CANON:
+                    //        // canon type galaxy.cs SolarSystemsMap dictionary
+                    //        SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
+                    //        break;
+                    //    case GalaxyType.RANDOM:
+                    //        // generate type galaxy.cs SolarSystemsMap dictionary
+                    //        SetGalaxyMapSize();
+                    //        //GenerateGalaxyMap();                           
+                    //        break;
+                    //}
+                    SetGalaxyMapCanon();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
                         case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
                             // set 
                             break;
-                        case Civilization.TERRAN:
-                            break;
+                        //case Civilization.TERRAN:
+                        //    break;
                         case Civilization.ROM:
                             break;
                         case Civilization.KLING:
@@ -1003,11 +1111,11 @@ namespace Assets.Script
                     PanelGalactic_Map.SetActive(true);
 
                     _statePassedMain_Init = true;
-                    galaxyView.GenerateGalaxy(_galaxyStarCount);
+                    galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-             
+                    
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
@@ -1017,14 +1125,21 @@ namespace Assets.Script
                     PanelGalactic_Map.SetActive(true);
 
                     PanelSystem_Play.SetActive(false);
-
+                    //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
                     break;
-                case State.SYSTEM_PLAY:
-                    PanelMain_Menu.SetActive(false);
+
+                case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    SwitchtState(State.SYSTEM_PLAY);
+                    break;
+
+                case State.SYSTEM_PLAY:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
 
-                   // PanelGalactic_Map.SetActive(false);
+                    // PanelGalactic_Map.SetActive(false);
                     //CanvasWorld.SetActive(false);
                     PanelSystem_Play.SetActive(true);
                     _statePassedMain_Init = true;
@@ -1139,7 +1254,13 @@ namespace Assets.Script
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
+                case State.GALACTIC_MAP_INIT:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    _statePassedMain_Init = true;
+                    break;
                 case State.SYSTEM_PLAY:
+                    PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
@@ -1208,6 +1329,10 @@ namespace Assets.Script
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     break;
                 case State.GALACTIC_MAP:
+                    PanelLobby_Menu.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
+                    break;
+                case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
                     break;
@@ -1610,7 +1735,8 @@ namespace Assets.Script
                 { "ZAHL", ZAHL_StarSystem },
                 { "ZAKDORN", ZAKDORN_StarSystem },
                 { "ZALKONIANS", ZALKONIANS_StarSystem },
-                { "ZIBALIANS", ZIBALIANS_StarSystem }
+                { "ZIBALIANS", ZIBALIANS_StarSystem },
+                //{ "GALACTIC_CENTER", GALACTIC_Center }
             };
             
             if (PrefabStarSystemDitionary == null)
@@ -1664,85 +1790,85 @@ namespace Assets.Script
             }
             #endregion
         }
-        public void LoadSystemData(string filename)
-        {
-            #region Read SystemData.txt 
+        //public void LoadSystemData(string filename)
+        //{
+        //    #region Read SystemData.txt 
 
-            Dictionary<string, string[]> _systemDataDictionary = new Dictionary<string, string[]>();
-            var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+        //    Dictionary<string, string[]> _systemDataDictionary = new Dictionary<string, string[]>();
+        //    var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
 
-            var _dataPoints = new List<string>();
-            using (var reader = new StreamReader(file))
-            {
+        //    var _dataPoints = new List<string>();
+        //    using (var reader = new StreamReader(file))
+        //    {
 
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (line == null)
-                        continue;
-                    _dataPoints.Add(line.Trim());
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            if (line == null)
+        //                continue;
+        //            _dataPoints.Add(line.Trim());
 
-                    if (line.Length > 0)
-                    {
-                        var coll = line.Split(separator);
+        //            if (line.Length > 0)
+        //            {
+        //                var coll = line.Split(separator);
 
-                       // _ = int.TryParse(coll[1], out int currentValueOne);
-                       // _ = int.TryParse(coll[2], out int currentValueTwo);
-                       // _ = int.TryParse(coll[3], out int currentValueThree);
-                       // _ = int.TryParse(coll[4], out int currentValueFour);
-                       // _ = int.TryParse(coll[5], out int currentValueFive);
-                       // _ = int.TryParse(coll[6], out int currentValueSix);
-                       // _ = int.TryParse(coll[7], out int currentValueSeven);
-                       // _ = int.TryParse(coll[8], out int currentValueEight);
-                       // _ = int.TryParse(coll[9], out int currentValueNine);
-                       // _ = int.TryParse(coll[10], out int currentValueTen);
-                       // _ = int.TryParse(coll[11], out int currentValueEleven);
-                       // _ = int.TryParse(coll[12], out int currentValueTweleve);
-                       // _ = int.TryParse(coll[13], out int currentValueThirteen);
-                       // _ = int.TryParse(coll[14], out int currentValueFourteen);
-                       // _ = int.TryParse(coll[15], out int currentValueFifteen);
+        //               // _ = int.TryParse(coll[1], out int currentValueOne);
+        //               // _ = int.TryParse(coll[2], out int currentValueTwo);
+        //               // _ = int.TryParse(coll[3], out int currentValueThree);
+        //               // _ = int.TryParse(coll[4], out int currentValueFour);
+        //               // _ = int.TryParse(coll[5], out int currentValueFive);
+        //               // _ = int.TryParse(coll[6], out int currentValueSix);
+        //               // _ = int.TryParse(coll[7], out int currentValueSeven);
+        //               // _ = int.TryParse(coll[8], out int currentValueEight);
+        //               // _ = int.TryParse(coll[9], out int currentValueNine);
+        //               // _ = int.TryParse(coll[10], out int currentValueTen);
+        //               // _ = int.TryParse(coll[11], out int currentValueEleven);
+        //               // _ = int.TryParse(coll[12], out int currentValueTweleve);
+        //               // _ = int.TryParse(coll[13], out int currentValueThirteen);
+        //               // _ = int.TryParse(coll[14], out int currentValueFourteen);
+        //               // _ = int.TryParse(coll[15], out int currentValueFifteen);
 
-                        //string[] systemDataArray = new string[25]
-                        //{
-                        //    coll[0],
-                        //    coll[1],
-                        //    coll[2],
-                        //    coll[3],
-                        //    coll[4],
-                        //    coll[5],
-                        //    coll[6],
-                        //    coll[7],
-                        //    coll[8],
-                        //    coll[9],
-                        //    coll[10],
-                        //    coll[11],
-                        //    coll[12],
-                        //    coll[13],
-                        //    coll[14],
-                        //    coll[15],
-                        //    coll[16],
-                        //    coll[17],
-                        //    coll[18],
-                        //    coll[19],
-                        //    coll[20],
-                        //    coll[21],
-                        //    coll[22],
-                        //    coll[23],
-                        //    coll[24]
-                        //};
+        //                //string[] systemDataArray = new string[25]
+        //                //{
+        //                //    coll[0],
+        //                //    coll[1],
+        //                //    coll[2],
+        //                //    coll[3],
+        //                //    coll[4],
+        //                //    coll[5],
+        //                //    coll[6],
+        //                //    coll[7],
+        //                //    coll[8],
+        //                //    coll[9],
+        //                //    coll[10],
+        //                //    coll[11],
+        //                //    coll[12],
+        //                //    coll[13],
+        //                //    coll[14],
+        //                //    coll[15],
+        //                //    coll[16],
+        //                //    coll[17],
+        //                //    coll[18],
+        //                //    coll[19],
+        //                //    coll[20],
+        //                //    coll[21],
+        //                //    coll[22],
+        //                //    coll[23],
+        //                //    coll[24]
+        //                //};
 
-                        _systemDataDictionary.Add(coll[5].ToString(), coll);
-                        //_shipInts.Clear();
-                    }
-                }
+        //                _systemDataDictionary.Add(coll[5].ToString(), coll);
+        //                //_shipInts.Clear();
+        //            }
+        //        }
 
-                reader.Close();
-                SystemDataDictionary = _systemDataDictionary;
-                //StaticStuff staticStuffToLoad = new StaticStuff();
-                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
-            }
-            #endregion
-        }
+        //        reader.Close();
+        //        SystemDataDictionary = _systemDataDictionary;
+        //        //StaticStuff staticStuffToLoad = new StaticStuff();
+        //        //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
+        //    }
+        //    #endregion
+        //}
         #region Old Load Combat Data
         public void LoadCombatData() //(string filename) // List<sting>
         {

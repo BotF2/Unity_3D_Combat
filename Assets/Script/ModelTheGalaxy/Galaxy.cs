@@ -14,27 +14,31 @@ namespace Assets.Script
         public int NumberOfStars;
         public SolarSystem galaxyCenter = new SolarSystem();
         public Dictionary<Vector3, SolarSystem> SolarSystemsMap; 
-        public Galaxy(GameManager gameManager, int numberOfStars)
+        public Galaxy(GameManager gameManager)
         {
+            gameManager.galaxy = this;
+            theGalaxy = this;
+
             // For now, we set a SEED for the random number generator, so that it
             // starts from the same galaxy every time, see planet.cs random is now not so random
-            UnityEngine.Random.InitState(123);
+            //UnityEngine.Random.InitState(123);
 
-            NumberOfStars = numberOfStars;
+            //NumberOfStars = numberOfStars;
 
-            SolarSystems = GenerateSystems(numberOfStars); // for solar system view
+            //SolarSystems = GenerateSystems(numberOfStars); // for solar system view
 
             //this.AddChild(myStar);
-            theGalaxy = this;
-            gameManager.galaxy = this;
+
         }
-        public void Awake()
-        {
-            var galaxyCenterSystem = new SolarSystem();
-            galaxyCenter = galaxyCenterSystem.GenerateGalaxyCenter();
-            Vector3 galacticCenterVector = new Vector3(0, 0, 0);
-            SolarSystemsMap.Add(galacticCenterVector, galaxyCenter);
-        }
+        //public void Awake()
+        //{
+        //    // On awake there is a galaxy with the galalctic center 'system' but no button for it
+        //    var galaxyCenterSystem = new SolarSystem();
+        //    galaxyCenter = galaxyCenterSystem.GenerateGalaxyCenter();
+        //    Vector3 galacticCenterVector = new Vector3(0, 0, 0);
+        //    SolarSystemsMap.Add(galacticCenterVector, galaxyCenter);
+        //    SolarSystems.Add(galaxyCenterSystem);
+        //}
 
         public void Update(UInt64 timeSinceStart)
         {
@@ -45,6 +49,15 @@ namespace Assets.Script
             }
         }
 
+        public SolarSystem LoadThisSystem(int systemButtonID) // Do we need this for just a single system to be shown by SolarSystemView??
+        {
+
+            SolarSystem ss = new SolarSystem();
+            ss.Generate();
+            //result.Add(ss);
+            
+            return ss;
+        }
         public List<SolarSystem> GenerateSystems(int numberOfStars) // ToDo: load SystemDate.txt instead of generate
         {
             List<SolarSystem> result = new List<SolarSystem>();
@@ -54,6 +67,7 @@ namespace Assets.Script
                 {
                     // ToDo: use GalaxyView (like a SolarSystem.cs but no moons, just solar systems as buttons in place of stars of a solcar system
                     // a GenerateGalaxyMap() that give buttons for solar systems form GalaxyMap class
+
                 }
                 SolarSystem ss = new SolarSystem();
                 ss.Generate();
@@ -70,7 +84,7 @@ namespace Assets.Script
             }
             return GalaxyNotNull;
         }
-        public void Generate(int numStars)
+        public void Generate(int numStars) // non canon map generated
         {
             if (SolarSystems.Count == 0)
             {
@@ -87,12 +101,6 @@ namespace Assets.Script
                 // ToDo: use numStars and GalaxyType
             }
         }
-
-        public void LoadFromFile(string fileName)
-        {
-            // may not use this
-        }
-
 
         //public void AddChildSystem(SolarSystem child)
         //{
