@@ -22,7 +22,6 @@ namespace Assets.Script
             // For now, we set a SEED for the random number generator, so that it
             // starts from the same galaxy every time, see planet.cs random is now not so random
             //UnityEngine.Random.InitState(123);
-
             //NumberOfStars = numberOfStars;
 
             //SolarSystems = GenerateSystems(numberOfStars); // for solar system view
