@@ -54,7 +54,6 @@ namespace Assets.Script
                     UpdateSprites(sunOrbitalGalactic.Children[i]); // UpdateSprites looks a moon in children of the orbital sent to it
                 }
             }
-
         }
 
         public void TurnOffSolarSystemview(Galaxy galaxy, int solarSystemID)

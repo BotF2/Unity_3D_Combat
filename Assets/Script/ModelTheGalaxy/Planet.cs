@@ -18,7 +18,6 @@ namespace Assets.Script
 
         public void LoadPlanet(Planet myPlanet, string[] systemData, int i)
         {
-            // this.OrbitalDistance = (ulong)(100 +(i*100) * 1000000 * 1000);
             myPlanet.OrbitalDistance = (myPlanet.OrbitalDistance) + ((ulong)i * (myPlanet.OrbitalDistance *(ulong)2));//80000000000)/8);
             OrbitalGalactic myOrbital = new OrbitalGalactic();
             this.TimeToOrbit = myOrbital.OrbitTime() + ((ulong)i * myOrbital.OrbitTime());// 365 * 24 * 60 * 60/5);

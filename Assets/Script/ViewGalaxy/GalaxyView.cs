@@ -401,28 +401,6 @@ namespace Assets.Script
                 _systemCivData = elements.Value;
                 ourCivNames.Add(_systemCivData[5]); // civ name is element five
             }
-            //switch (GameManager._galaxySize) // do we need this??? NO, it is numStars
-            //{
-
-            //   case GalaxySize.SMALL:
-                             
-            //        break;
-            //    case GalaxySize.MEDIUM:
-
-            //        break;
-            //    case GalaxySize.LARGE:
-
-            //        break;
-            //}
-            //switch (GameManager._galaxyType)
-            //{
-            //    case GalaxyType.CANON:
-            //        break;
-            //    case GalaxyType.RANDOM:
-            //        break;
-            //}
-            //ToDo: use this to get the right kind of map 
-
             return ourCivNames.ToArray();
         }
         private int VectorValue(int systemID, char axis)
