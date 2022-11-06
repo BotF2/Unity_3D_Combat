@@ -26,6 +26,7 @@ namespace Assets.Script
             this.sysName = systemData[4];
             this.sysCivOwner = GetCivOwnerEnum(systemData[5]);
             this.sysType = GetSystemType(systemData[6]);
+            this.sysStarType = GetStarTypeEnum(systemData[7]);
             this.sysPlanets = GetPlanetArray(systemData);
             this.AddChild(myStar);
             for (int i = 0; i < 8; i++) // all systems have 8 planets for now, setting up the orbitals for display
@@ -115,7 +116,7 @@ namespace Assets.Script
         }
         public SystemType GetSystemType(string sysType)
         {
-             SystemType theSys = SystemType.YellowStarSystem;
+            SystemType theSys = SystemType.YellowStarSystem;
             switch (sysType)
             {
                 case "YellowStarSystem":
@@ -152,6 +153,7 @@ namespace Assets.Script
         }
         public Civilization GetCivOwnerEnum(string civ)
         {
+            #region Geting Civ
             Civilization theCiv = Civilization.FED;
             switch (civ)
             {
@@ -420,6 +422,44 @@ namespace Assets.Script
                     break;
             }
             return theCiv;
+            #endregion GetCiv
+        }
+        public StarType GetStarTypeEnum(string star)
+        {
+            StarType thisStar = new StarType();
+            switch (star)
+            { 
+                case "Blue":
+                    thisStar = StarType.Blue;
+                    break;
+                case "White":
+                    thisStar = StarType.White;
+                    break;
+                case "Yellow":
+                    thisStar = StarType.Yellow;
+                    break;
+                case "Orange":
+                    thisStar = StarType.Orange;
+                    break;
+                case "Red":
+                    thisStar = StarType.Red;
+                    break;
+                case "Nebula":
+                    thisStar = StarType.Nebula;
+                    break;
+                case "Complex":
+                    thisStar = StarType.Complex;
+                    break;
+                case "BlackHole":
+                    thisStar = StarType.BlackHole;
+                    break;
+                case "WormHole":
+                    thisStar = StarType.WormHole;
+                    break;
+                default:
+                    break;
+            }
+            return thisStar;
         }
     }
 
