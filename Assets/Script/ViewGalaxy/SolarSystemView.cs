@@ -22,7 +22,7 @@ namespace Assets.Script
         public Sprite[] k_TypeMarsLike;
         public Sprite[] j_TypeGaseGiants;
         public Sprite[] moonType;
-        //public Sprite[] planetMoonSprites;
+        private Color systemColorTint = new Color(1, 1, 1);
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
         private string[] systemDataArray;
@@ -124,12 +124,13 @@ namespace Assets.Script
             gameObject.name = "Orbital";
             SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
             renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-
+            
             //*********TODO: here is where we will bring up sprites base on num in systemdata after planet type
             if (int.Parse(systemDataArray[0]) == 0)
                 this.LoadEarthSprites(gameObject.transform, orbitalG, renderer);
             else
             {
+                
                 switch (orbitalG.GraphicID)
                 {
                     case 0:
@@ -139,18 +140,22 @@ namespace Assets.Script
                         {
                             case "Blue":
                                 renderer.sprite = starSprites[0];
+                                systemColorTint = new Color(0.004f, 0.765f, 1f); // blueish
                                 break;
                             case "Orange":
                                 renderer.sprite = starSprites[1];
+                                systemColorTint = new Color(1f, 0.827f, 0.588f); // Oragneish
                                 break;
                             case "Red":
                                 renderer.sprite = starSprites[2];
+                                systemColorTint = new Color(0.96f, 0.58f, 0.58f); // redish
                                 break;
                             case "White":
                                 renderer.sprite = starSprites[3];
                                 break;
                             case "Yellow":
                                 renderer.sprite = starSprites[4];
+                                systemColorTint = new Color(0.992f, 0.984f, 0.698f); // yellowish
                                 break;
                             default:
                                 break;
@@ -175,8 +180,10 @@ namespace Assets.Script
                         renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
                         break;
                     default:
-                        break;                    
+                        break; 
+                        
                 }
+                renderer.color = systemColorTint;
             }
 
             for (int j = 0; j < orbitalG.Children.Count; j++)
