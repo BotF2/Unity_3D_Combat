@@ -20,7 +20,8 @@ namespace Assets.Script
         public Sprite[] m_TypeHabitable;
         public Sprite[] h_TypeUninbaitable;
         public Sprite[] k_TypeMarsLike;
-        public Sprite[] j_TypeGaseGiants;
+        public Sprite[] j_TypeGasGiants;
+        public Sprite[] r_TypeRingGiants;
         public Sprite[] moonType;
         //public Sprite[] planetMoonSprites;
         public Sprite[] solSprites;
@@ -160,7 +161,7 @@ namespace Assets.Script
                         renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];
                         break;
                     case 1 + (int)PlanetType.J_gasGiant:
-                        renderer.sprite = j_TypeGaseGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
+                        renderer.sprite = j_TypeGasGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.M_habitable:
                         renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];

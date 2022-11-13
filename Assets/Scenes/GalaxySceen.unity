@@ -4602,7 +4602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.9971, y: 540}
+  m_AnchoredPosition: {x: -959.997, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -14529,7 +14529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.4971, y: 514}
+  m_AnchoredPosition: {x: -940.497, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -25860,42 +25860,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2f1f8aad7a94d24d94fce77d9b37404, type: 3}
   - {fileID: 21300000, guid: 58e30b0b8a8a69a44a606305ed3c6eeb, type: 3}
   - {fileID: 21300000, guid: 975eb136204620c4e9ab174bd9da3da8, type: 3}
-  planetMoonSprites:
-  - {fileID: 21300000, guid: 99d52d6aa3bf4974a853443a2a5e64ea, type: 3}
-  - {fileID: 21300000, guid: 91fa78cc9e05cae49b5b8bfe1d64d194, type: 3}
-  - {fileID: 21300000, guid: 7bf306a86374c5542ae96eb6f6bbc672, type: 3}
-  - {fileID: 21300000, guid: af1298c7454dcfa4e80c8ebeebeef690, type: 3}
-  - {fileID: 21300000, guid: bf78816705b2a9c40a4bdbc3f9911825, type: 3}
-  - {fileID: 21300000, guid: 91ba986b94cb3ea409aff0ebd2e58107, type: 3}
-  - {fileID: 21300000, guid: ad03a7a3eb984464291dd13420dd2665, type: 3}
-  - {fileID: 21300000, guid: e62ef164733412e479e19ebd8868ba60, type: 3}
-  - {fileID: 21300000, guid: a8dd2c5ac08249141834985c409fc25f, type: 3}
-  - {fileID: 21300000, guid: afc64e276c828ff4281b95f7b52e490a, type: 3}
-  - {fileID: 21300000, guid: 23c9f88c5b4aa7046960897253945bb7, type: 3}
-  - {fileID: 21300000, guid: 74f91fefddbe2e14a8c177e552190dd3, type: 3}
-  - {fileID: 21300000, guid: af1298c7454dcfa4e80c8ebeebeef690, type: 3}
-  - {fileID: 21300000, guid: ad03a7a3eb984464291dd13420dd2665, type: 3}
-  - {fileID: 21300000, guid: 23c928b2115214f4f91fd6a8c79310eb, type: 3}
-  - {fileID: 21300000, guid: 115e1dfecc88a464fa98891286976877, type: 3}
-  - {fileID: 21300000, guid: 91ba986b94cb3ea409aff0ebd2e58107, type: 3}
-  - {fileID: 21300000, guid: a8dd2c5ac08249141834985c409fc25f, type: 3}
-  - {fileID: 21300000, guid: e62ef164733412e479e19ebd8868ba60, type: 3}
-  - {fileID: 21300000, guid: 29617edf7aecadb4db2870e5eafba23c, type: 3}
-  - {fileID: 21300000, guid: bf78816705b2a9c40a4bdbc3f9911825, type: 3}
-  - {fileID: 21300000, guid: 7bf306a86374c5542ae96eb6f6bbc672, type: 3}
-  - {fileID: 21300000, guid: 91fa78cc9e05cae49b5b8bfe1d64d194, type: 3}
-  - {fileID: 21300000, guid: 99d52d6aa3bf4974a853443a2a5e64ea, type: 3}
-  - {fileID: 21300000, guid: d5b1393f75469414cbe75ace5d6cb99c, type: 3}
-  - {fileID: 21300000, guid: afc64e276c828ff4281b95f7b52e490a, type: 3}
-  - {fileID: 21300000, guid: 23c9f88c5b4aa7046960897253945bb7, type: 3}
-  - {fileID: 21300000, guid: 74f91fefddbe2e14a8c177e552190dd3, type: 3}
-  - {fileID: 21300000, guid: af1298c7454dcfa4e80c8ebeebeef690, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
-  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
   solSprites:
   - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
   - {fileID: 21300000, guid: b753932936691df4ebbeff85171adbfb, type: 3}
