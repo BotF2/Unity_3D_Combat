@@ -16,14 +16,21 @@ namespace Assets.Script
         public GameManager gameManager;
         public SolarSystem solarSystem;
         public Sprite[] starSprites;
-        public Sprite[] solEarthSys;
+        public Sprite[] solFedSys;
         public Sprite[] m_TypeHabitable;
         public Sprite[] h_TypeUninbaitable;
         public Sprite[] k_TypeMarsLike;
+<<<<<<< HEAD
         public Sprite[] j_TypeGaseGiants;
+        public Sprite[] moonType;        
+=======
+        public Sprite[] j_TypeGasGiants;
+        public Sprite[] r_TypeRingGiants;
         public Sprite[] moonType;
+>>>>>>> origin/StarSystem
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
+        private Color systemColorTint = new Color(1, 1, 1);
         private string[] systemDataArray;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.25f;
@@ -123,7 +130,7 @@ namespace Assets.Script
             SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
             renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
             
-            //*********TODO: here is where we will bring up sprites base on num in systemdata after planet type
+            //********* bring up sprites base on num in systemdata after planet type
             if (int.Parse(systemDataArray[0]) == 0)
                 this.LoadEarthSprites(gameObject.transform, orbitalG, renderer);
             else
@@ -155,6 +162,12 @@ namespace Assets.Script
                                 renderer.sprite = starSprites[4];
                                 systemColorTint = new Color(0.992f, 0.984f, 0.698f); // yellowish
                                 break;
+                            case "Nebula":
+                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use firts planet sprite as 'star'
+                                break;
+                            case "Complex":
+                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use firts planet sprite as 'star'
+                                break;
                             default:
                                 break;
                         }
@@ -163,14 +176,14 @@ namespace Assets.Script
                         renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];
                         break;
                     case 1 + (int)PlanetType.J_gasGiant:
-                        renderer.sprite = j_TypeGaseGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
+                        renderer.sprite = j_TypeGasGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.M_habitable:
                         renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];
                         break;
-                    //case 1 + (int)PlanetType.L_marginalForLife:
-                    //    renderer.sprite = planetMoonSprites[UnityEngine.Random.Range(17, 22)];
-                    //    break;
+                        //case 1 + (int)PlanetType.L_marginalForLife:
+                        //    renderer.sprite = planetMoonSprites[UnityEngine.Random.Range(17, 22)];
+                        //    break;
                     case 1 + (int)PlanetType.K_marsLike:
                         renderer.sprite = k_TypeMarsLike[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
@@ -200,6 +213,7 @@ namespace Assets.Script
                 }              
                 else   
                 renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
+                renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale); // smaller for moons
             }
             else
             {
@@ -210,36 +224,43 @@ namespace Assets.Script
                         earthSpriteCounter++;
                         break;
                     case 1:
-                        renderer.sprite = solSprites[0];
+                        renderer.sprite = solFedSys[0];
                         earthSpriteCounter++;
                         break;
                     case 2:
-                        renderer.sprite = solSprites[1];
+                        renderer.sprite = solFedSys[1];
                         earthSpriteCounter++;
                         break;
                     case 3:
-                        renderer.sprite = solSprites[2];
+                        renderer.sprite = solFedSys[2];
                         orbitalG.GraphicID = 7; // find earth and use to get it's moon
                         earthSpriteCounter++;
                         break;
                     case 4:
-                        renderer.sprite = solSprites[3];
+                        renderer.sprite = solFedSys[3];
                         earthSpriteCounter++;
                         break;
                     case 5:
-                        renderer.sprite = solSprites[4];
+                        renderer.sprite = solFedSys[4]; // find Jupiter
+                        renderer.transform.localScale += new Vector3(0.3f, 0.3f, 0);
                         earthSpriteCounter++;
                         break;
                     case 6:
-                        renderer.sprite = solSprites[5];
+                        renderer.sprite = solFedSys[5]; // find Saturn
+                        renderer.transform.localScale += new Vector3(0.2f, 0.2f, 0);
                         earthSpriteCounter++;
                         break;
                     case 7:
-                        renderer.sprite = solSprites[6];
+                        renderer.sprite = solFedSys[6]; // find Uranus
+                        Vector3 roatationVector = new Vector3(0, 0, 45);
+                        Quaternion roatation = Quaternion.Euler(roatationVector);
+                        renderer.transform.rotation = renderer.transform.rotation * roatation;
+                        renderer.transform.localScale += new Vector3(0.3f, 0.3f, 0);
                         earthSpriteCounter++;
                         break;
                     case 8:
-                        renderer.sprite = solSprites[7];
+                        renderer.sprite = solFedSys[7];
+                        renderer.transform.localScale += new Vector3(0.2f, 0.2f, 0);
                         earthSpriteCounter = 0;
                         break;
                     case 9:
