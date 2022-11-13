@@ -22,13 +22,11 @@ namespace Assets.Script
         public Sprite[] k_TypeMarsLike;
         public Sprite[] j_TypeGaseGiants;
         public Sprite[] moonType;
-        private Color systemColorTint = new Color(1, 1, 1);
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
         private string[] systemDataArray;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.25f;
-        //Galaxy ourGalaxy;
         public float galacticTime = 0;
         private int deltaTime =1000;
         private int earthSpriteCounter = 0;
@@ -253,26 +251,6 @@ namespace Assets.Script
             }
             // no need for additional loop here
         }
-        //private void MakeSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG)
-        //{
-        //    //CameraManagerGalactica cameraManagerGalactic = new CameraManagerGalactica();
-        //    GameObject orbitalGgameObject = new GameObject();
-        //    //orbitalGameObjectMap[orbitalG] = gameObject; // update map
-        //    //gameObject.layer = 30; // galactic
-        //    orbitalGgameObject.transform.SetParent(transformParent, false);
-        //    // set position in 3D
-        //    orbitalGgameObject.transform.position = orbitalG.Position / zoomLevels; // cut down scale of system to view
-        //    SpriteRenderer spritView = orbitalGgameObject.AddComponent<SpriteRenderer>();
-        //    spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-        //    spritView.sprite = planetMoonSprites[orbitalG.GraphicID];
-        //    orbitalGameObjectMap.Add(orbitalG, orbitalGgameObject);
-
-        //    for (int i = 0; i < orbitalG.Children.Count; i++)
-        //    {
-        //        MakeSpritesForOrbital(orbitalGgameObject.transform, orbitalG.Children[i]);
-        //        //spritView.transform.LookAt();
-        //    }
-        //}
         void UpdateSprites(OrbitalGalactic orbital) //, float time)
         {
             GameObject gameObject = orbitalGameObjectMap[orbital];
