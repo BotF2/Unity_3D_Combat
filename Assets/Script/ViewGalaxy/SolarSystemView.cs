@@ -23,13 +23,11 @@ namespace Assets.Script
         public Sprite[] j_TypeGasGiants;
         public Sprite[] r_TypeRingGiants;
         public Sprite[] moonType;
-        //public Sprite[] planetMoonSprites;
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
         private string[] systemDataArray;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.25f;
-        //Galaxy ourGalaxy;
         public float galacticTime = 0;
         private int deltaTime =1000;
         private int earthSpriteCounter = 0;
@@ -125,12 +123,13 @@ namespace Assets.Script
             gameObject.name = "Orbital";
             SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
             renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-
+            
             //*********TODO: here is where we will bring up sprites base on num in systemdata after planet type
             if (int.Parse(systemDataArray[0]) == 0)
                 this.LoadEarthSprites(gameObject.transform, orbitalG, renderer);
             else
             {
+                
                 switch (orbitalG.GraphicID)
                 {
                     case 0:
@@ -140,18 +139,22 @@ namespace Assets.Script
                         {
                             case "Blue":
                                 renderer.sprite = starSprites[0];
+                                systemColorTint = new Color(0.004f, 0.765f, 1f); // blueish
                                 break;
                             case "Orange":
                                 renderer.sprite = starSprites[1];
+                                systemColorTint = new Color(1f, 0.827f, 0.588f); // Oragneish
                                 break;
                             case "Red":
                                 renderer.sprite = starSprites[2];
+                                systemColorTint = new Color(0.96f, 0.58f, 0.58f); // redish
                                 break;
                             case "White":
                                 renderer.sprite = starSprites[3];
                                 break;
                             case "Yellow":
                                 renderer.sprite = starSprites[4];
+                                systemColorTint = new Color(0.992f, 0.984f, 0.698f); // yellowish
                                 break;
                             default:
                                 break;
@@ -176,8 +179,10 @@ namespace Assets.Script
                         renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
                         break;
                     default:
-                        break;                    
+                        break; 
+                        
                 }
+                renderer.color = systemColorTint;
             }
 
             for (int j = 0; j < orbitalG.Children.Count; j++)
@@ -247,26 +252,6 @@ namespace Assets.Script
             }
             // no need for additional loop here
         }
-        //private void MakeSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG)
-        //{
-        //    //CameraManagerGalactica cameraManagerGalactic = new CameraManagerGalactica();
-        //    GameObject orbitalGgameObject = new GameObject();
-        //    //orbitalGameObjectMap[orbitalG] = gameObject; // update map
-        //    //gameObject.layer = 30; // galactic
-        //    orbitalGgameObject.transform.SetParent(transformParent, false);
-        //    // set position in 3D
-        //    orbitalGgameObject.transform.position = orbitalG.Position / zoomLevels; // cut down scale of system to view
-        //    SpriteRenderer spritView = orbitalGgameObject.AddComponent<SpriteRenderer>();
-        //    spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-        //    spritView.sprite = planetMoonSprites[orbitalG.GraphicID];
-        //    orbitalGameObjectMap.Add(orbitalG, orbitalGgameObject);
-
-        //    for (int i = 0; i < orbitalG.Children.Count; i++)
-        //    {
-        //        MakeSpritesForOrbital(orbitalGgameObject.transform, orbitalG.Children[i]);
-        //        //spritView.transform.LookAt();
-        //    }
-        //}
         void UpdateSprites(OrbitalGalactic orbital) //, float time)
         {
             GameObject gameObject = orbitalGameObjectMap[orbital];
