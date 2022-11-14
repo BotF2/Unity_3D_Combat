@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4125db910ed07d408a32cf4b3290d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solarSystemView: {fileID: 0}
 --- !u!1 &4306060808014556862
 GameObject:
   m_ObjectHideFlags: 0
