@@ -20,14 +20,8 @@ namespace Assets.Script
         public Sprite[] m_TypeHabitable;
         public Sprite[] h_TypeUninbaitable;
         public Sprite[] k_TypeMarsLike;
-<<<<<<< HEAD
         public Sprite[] j_TypeGaseGiants;
         public Sprite[] moonType;        
-=======
-        public Sprite[] j_TypeGasGiants;
-        public Sprite[] r_TypeRingGiants;
-        public Sprite[] moonType;
->>>>>>> origin/StarSystem
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
         private Color systemColorTint = new Color(1, 1, 1);
