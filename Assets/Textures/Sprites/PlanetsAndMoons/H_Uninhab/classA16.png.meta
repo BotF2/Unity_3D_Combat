@@ -42,11 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-<<<<<<< HEAD:Assets/Textures/Sprites/PlanetsAndMoons/H_Uninhab/classA16.png.meta
   spriteMode: 1
-=======
-  spriteMode: 2
->>>>>>> origin/StarSystem:Assets/Textures/Sprits/GalaxyMapStars/YellowStarMulti.png.meta
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,11 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-<<<<<<< HEAD:Assets/Textures/Sprites/PlanetsAndMoons/H_Uninhab/classA16.png.meta
   cookieLightType: 0
-=======
-  cookieLightType: 1
->>>>>>> origin/StarSystem:Assets/Textures/Sprits/GalaxyMapStars/YellowStarMulti.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -109,127 +101,20 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/Textures/Sprites/PlanetsAndMoons/H_Uninhab/classA16.png.meta
-=======
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
->>>>>>> origin/StarSystem:Assets/Textures/Sprits/GalaxyMapStars/YellowStarMulti.png.meta
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: YellowStarMulti_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7fff462f7df872a40b5b0a5fc3de4f7e
-      internalID: 23313872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YellowStarMulti_1
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b6fa2ceecde03c4b89fc0c7dfd277bc
-      internalID: 2133311412
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YellowStarMulti_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 424c3bac1144fcd40b44f11305e2b579
-      internalID: -440388179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: YellowStarMulti_3
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 768feee37ccc696418db8517f98331eb
-      internalID: -180703370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-<<<<<<< HEAD:Assets/Textures/Sprites/PlanetsAndMoons/H_Uninhab/classA16.png.meta
     spriteID: 5e97eb03825dee720800000000000000
-=======
-    spriteID: e36b8f69980a9464692280c2903167d5
->>>>>>> origin/StarSystem:Assets/Textures/Sprits/GalaxyMapStars/YellowStarMulti.png.meta
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      YellowStarMulti_3: -180703370
-      YellowStarMulti_0: 23313872
-      YellowStarMulti_2: -440388179
-      YellowStarMulti_1: 2133311412
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
