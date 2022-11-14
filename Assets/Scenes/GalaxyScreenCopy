@@ -4602,7 +4602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.997, y: 540}
+  m_AnchoredPosition: {x: -959.9971, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -14529,7 +14529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.497, y: 514}
+  m_AnchoredPosition: {x: -940.4971, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -18210,7 +18210,7 @@ GameObject:
   m_Layer: 6
   m_Name: FEDSysEmpty
   m_TagString: Untagged
-  m_Icon: {fileID: 2800000, guid: e09448d868a0bdc4eaef42a5a017aa67, type: 3}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -19053,7 +19053,7 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 1132767801056259965, guid: dfc5864bdb2ea05438c51055d1fec6aa, type: 3}
-  FED_StarSystem: {fileID: 1116883997}
+  FED_StarSystem: {fileID: 3346189262701856372, guid: 8c9ac4dc3817c114cb1f0eca490dc49b, type: 3}
   ROM_StarSystem: {fileID: 2178242268351434931, guid: 9c33d0079d6e31f42a061ba3c70c4259, type: 3}
   KLING_StarSystem: {fileID: 4761592045379931411, guid: 625880a2fbbcbe2499317d1dd19d0e19, type: 3}
   CARD_StarSystem: {fileID: 1408337172147834668, guid: ee762c678b267b24d9ebdf3a7e477dc2, type: 3}
@@ -25761,7 +25761,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9e9c58c703776674d9f276a4fac5bc91, type: 3}
   - {fileID: 21300000, guid: a2ef2b82f85028748bc7721594cade18, type: 3}
   - {fileID: 21300000, guid: cb2f3416617ba594d9d79e7451cae3e2, type: 3}
-  solFedSys: []
+  solEarthSys:
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: b753932936691df4ebbeff85171adbfb, type: 3}
+  - {fileID: 21300000, guid: 7786add71cf6b7e4b8066beb4af0b978, type: 3}
+  - {fileID: 21300000, guid: 4eecc2414535d594f9531748112c7176, type: 3}
+  - {fileID: 21300000, guid: db3afcbb761e9574b97583909541dd4f, type: 3}
+  - {fileID: 21300000, guid: 92a021f50b863f947b5458710265b9aa, type: 3}
+  - {fileID: 21300000, guid: ea506ca592ea05c4e8a8832ca51d6ad0, type: 3}
+  - {fileID: 21300000, guid: f24ffaf4f162b33489dc5f0f088b2afe, type: 3}
   m_TypeHabitable:
   - {fileID: 21300000, guid: c172674d880f4764f9df7ed441b1e29b, type: 3}
   - {fileID: 21300000, guid: d4fd52fc6c921e94780aaf6578728ec2, type: 3}
@@ -25887,6 +25895,42 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2f1f8aad7a94d24d94fce77d9b37404, type: 3}
   - {fileID: 21300000, guid: 58e30b0b8a8a69a44a606305ed3c6eeb, type: 3}
   - {fileID: 21300000, guid: 975eb136204620c4e9ab174bd9da3da8, type: 3}
+  planetMoonSprites:
+  - {fileID: 21300000, guid: 601dee02a83ade74f970e796f98f0fc2, type: 3}
+  - {fileID: 21300000, guid: 58e30b0b8a8a69a44a606305ed3c6eeb, type: 3}
+  - {fileID: 21300000, guid: f2f1f8aad7a94d24d94fce77d9b37404, type: 3}
+  - {fileID: 21300000, guid: 0497f06428c31e541adc9239778b66c9, type: 3}
+  - {fileID: 21300000, guid: 9aaeb3534bc40df418ff994356ac4d13, type: 3}
+  - {fileID: 21300000, guid: 91ba986b94cb3ea409aff0ebd2e58107, type: 3}
+  - {fileID: 21300000, guid: ad03a7a3eb984464291dd13420dd2665, type: 3}
+  - {fileID: 21300000, guid: e62ef164733412e479e19ebd8868ba60, type: 3}
+  - {fileID: 21300000, guid: a8dd2c5ac08249141834985c409fc25f, type: 3}
+  - {fileID: 21300000, guid: afc64e276c828ff4281b95f7b52e490a, type: 3}
+  - {fileID: 21300000, guid: 23c9f88c5b4aa7046960897253945bb7, type: 3}
+  - {fileID: 21300000, guid: 74f91fefddbe2e14a8c177e552190dd3, type: 3}
+  - {fileID: 21300000, guid: af1298c7454dcfa4e80c8ebeebeef690, type: 3}
+  - {fileID: 21300000, guid: ad03a7a3eb984464291dd13420dd2665, type: 3}
+  - {fileID: 21300000, guid: 23c928b2115214f4f91fd6a8c79310eb, type: 3}
+  - {fileID: 21300000, guid: 115e1dfecc88a464fa98891286976877, type: 3}
+  - {fileID: 21300000, guid: 91ba986b94cb3ea409aff0ebd2e58107, type: 3}
+  - {fileID: 21300000, guid: a8dd2c5ac08249141834985c409fc25f, type: 3}
+  - {fileID: 21300000, guid: e62ef164733412e479e19ebd8868ba60, type: 3}
+  - {fileID: 21300000, guid: 29617edf7aecadb4db2870e5eafba23c, type: 3}
+  - {fileID: 21300000, guid: bf78816705b2a9c40a4bdbc3f9911825, type: 3}
+  - {fileID: 21300000, guid: 7bf306a86374c5542ae96eb6f6bbc672, type: 3}
+  - {fileID: 21300000, guid: 91fa78cc9e05cae49b5b8bfe1d64d194, type: 3}
+  - {fileID: 21300000, guid: 99d52d6aa3bf4974a853443a2a5e64ea, type: 3}
+  - {fileID: 21300000, guid: d5b1393f75469414cbe75ace5d6cb99c, type: 3}
+  - {fileID: 21300000, guid: afc64e276c828ff4281b95f7b52e490a, type: 3}
+  - {fileID: 21300000, guid: 23c9f88c5b4aa7046960897253945bb7, type: 3}
+  - {fileID: 21300000, guid: 74f91fefddbe2e14a8c177e552190dd3, type: 3}
+  - {fileID: 21300000, guid: af1298c7454dcfa4e80c8ebeebeef690, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
+  - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
   solSprites:
   - {fileID: 21300000, guid: 1cefa5ef345188041bb82a5b4cf93a7c, type: 3}
   - {fileID: 21300000, guid: b753932936691df4ebbeff85171adbfb, type: 3}
