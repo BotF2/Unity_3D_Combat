@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Assets.Script
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using Assets.Script;
+
+namespace BOTF3D_Combat
 {
+
     public class Combat : MonoBehaviour
     {
         //ToDo: get a list of combatants form galaxy map / diplomacy
@@ -60,7 +65,7 @@ namespace Assets.Script
                 _enemyCivs.Add(daCiv);
             }
         }
-    
+
         public List<GameObject> UpdateFriendCombatants()
         {
             return _friendCombatans;

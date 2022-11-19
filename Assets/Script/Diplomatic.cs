@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Assets.Script
+using BOTF3D_GalaxyMap;
+using Assets.Script;
+using BOTF3D_Combat;
+
+namespace BOTF3D_Core
 {
     public class Diplomatic: MonoBehaviour
     {

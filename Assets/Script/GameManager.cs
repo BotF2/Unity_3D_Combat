@@ -6,10 +6,13 @@ using System.Linq;
 using Unity.VisualScripting;
 //using Unity.VisualScripting;
 using UnityEngine;
+using Assets.Script;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Combat;
 //using MLAPI;
 //using UnityEngine.UI;
 
-namespace Assets.Script
+namespace BOTF3D_Core
 {
     #region Enums
     public enum Civilization

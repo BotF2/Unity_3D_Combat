@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_Combat
 {
     public class ActOnCombatOrder : MonoBehaviour
     {

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using BOTF3D_Core;
+using BOTF3D_Combat;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_GalaxyMap
 {
 
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!

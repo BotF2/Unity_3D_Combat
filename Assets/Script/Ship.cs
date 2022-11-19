@@ -6,8 +6,11 @@ using System.IO;
 using UnityEngine;
 //using UnityEngine.UI;
 using System.Linq;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_Combat
 {
     [RequireComponent(typeof(GameManager))]
     public class Ship : MonoBehaviour

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_Combat
 {
 	enum TurnDirection
 	{

@@ -4,8 +4,10 @@ using UnityEngine;
 using TMPro;
 using Assets.Script;
 using System;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
 
-namespace Assets.Script
+namespace BOTF3D_Combat
 {
     public class SpacebarForRotate : MonoBehaviour
     {

@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using BOTF3D_Combat;
 
 namespace Assets.Script
 {

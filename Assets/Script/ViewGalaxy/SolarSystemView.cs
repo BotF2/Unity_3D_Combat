@@ -8,8 +8,12 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Net;
 using UnityEngine.Rendering.VirtualTexturing;
+using BOTF3D_Core;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Combat;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_GalaxyMap
 {
     public class SolarSystemView : MonoBehaviour
     {
@@ -21,7 +25,7 @@ namespace Assets.Script
         public Sprite[] h_TypeUninbaitable;
         public Sprite[] k_TypeMarsLike;
         public Sprite[] j_TypeGaseGiants;
-        public Sprite[] moonType;        
+        public Sprite[] moonType;
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
         private Color systemColorTint = new Color(1, 1, 1);
@@ -29,7 +33,7 @@ namespace Assets.Script
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         float planetMoonScale = 0.25f;
         public float galacticTime = 0;
-        private int deltaTime =1000;
+        private int deltaTime = 1000;
         private int earthSpriteCounter = 0;
         Dictionary<OrbitalGalactic, GameObject> orbitalGameObjectMap; // put in the orbital sprit and get the game object
         public static Dictionary<int, string[]> systemDataDictionary = new Dictionary<int, string[]>();
@@ -92,7 +96,7 @@ namespace Assets.Script
                 child.SetParent(null); // decreases number of children in while loop
                 Destroy(child.gameObject);
             }
-            
+
             gameManager.ChangeSystemClicked(buttonSystemID, this);
             gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
             systemDataArray = systemDataDictionary[buttonSystemID];
@@ -106,7 +110,7 @@ namespace Assets.Script
             //this.LoadSpritesForOrbital(this.transform, solarSystem.Children[0], buttonSystemID, 0);
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG, int systemID, int i)
-        {       
+        {
             GameObject gameObject = new GameObject();
             if (orbitalGameObjectMap != null)
             {
@@ -117,19 +121,19 @@ namespace Assets.Script
 
             orbitalGameObjectMap.TryAdd(orbitalG, gameObject);
 
-            gameObject.transform.SetParent(transformParent, false);           
-            gameObject.transform.position = orbitalG.Position / zoomLevels; 
+            gameObject.transform.SetParent(transformParent, false);
+            gameObject.transform.position = orbitalG.Position / zoomLevels;
             gameObject.layer = 3; // Star System layer
             gameObject.name = "Orbital";
             SpriteRenderer renderer = gameObject.AddComponent<SpriteRenderer>();
             renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-            
+
             //********* bring up sprites base on num in systemdata after planet type
             if (int.Parse(systemDataArray[0]) == 0)
                 this.LoadEarthSprites(gameObject.transform, orbitalG, renderer);
             else
             {
-                
+
                 switch (orbitalG.GraphicID)
                 {
                     case 0:
@@ -167,26 +171,26 @@ namespace Assets.Script
                         }
                         break;
                     case 1 + (int)PlanetType.H_uninhabitable:
-                        renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];
+                        renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.J_gasGiant:
                         renderer.sprite = j_TypeGaseGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.M_habitable:
-                        renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9 + (i*3)])];
+                        renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
-                        //case 1 + (int)PlanetType.L_marginalForLife:
-                        //    renderer.sprite = planetMoonSprites[UnityEngine.Random.Range(17, 22)];
-                        //    break;
+                    //case 1 + (int)PlanetType.L_marginalForLife:
+                    //    renderer.sprite = planetMoonSprites[UnityEngine.Random.Range(17, 22)];
+                    //    break;
                     case 1 + (int)PlanetType.K_marsLike:
                         renderer.sprite = k_TypeMarsLike[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
-                    case 1 + (int)PlanetType.Moon: 
+                    case 1 + (int)PlanetType.Moon:
                         renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
                         break;
                     default:
-                        break; 
-                        
+                        break;
+
                 }
                 renderer.color = systemColorTint;
             }
@@ -204,9 +208,9 @@ namespace Assets.Script
                 if (orbitalG.Parent.GraphicID == 7) // Earth is set in switch below when earth goes through
                 {
                     renderer.sprite = earthMoonSprite;
-                }              
-                else   
-                renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
+                }
+                else
+                    renderer.sprite = moonType[UnityEngine.Random.Range(0, 6)];
                 renderer.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale); // smaller for moons
             }
             else

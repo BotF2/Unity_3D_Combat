@@ -2,9 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BOTF3D_Core;
+using BOTF3D_Combat;
+using Assets.Script;
 
-namespace Assets.Script
+namespace BOTF3D_GalaxyMap
 {
+
     public class SolarSystem : OrbitalGalactic
     {
         public int SystemGraphicID;
@@ -16,44 +20,45 @@ namespace Assets.Script
         public SystemType sysType;
         public StarType sysStarType;
         public Planet[] sysPlanets;
-        
+
         public SolarSystem LoadSystem(string[] systemData, int whatButton)
         {
-                OrbitalGalactic myStar = new OrbitalGalactic(); // empty for our planets to orbit
-                myStar.GraphicID = 0; // StarGraphicID;
-                this.sysID = whatButton;
-                this.sysLocation = new Vector3(int.Parse(systemData[1]), int.Parse(systemData[2]), int.Parse(systemData[3]));
-                this.sysName = systemData[4];
-                this.sysCivOwner = GetCivOwnerEnum(systemData[5]);
-                this.sysType = GetSystemType(systemData[6]);
-                this.sysStarType = GetStarTypeEnum(systemData[7]);
-                this.sysPlanets = GetPlanetArray(systemData);
-                this.AddChild(myStar);
-                if (systemData[7] == "Nebula" || systemData[7] == "Complex")
+            OrbitalGalactic myStar = new OrbitalGalactic(); // empty for our planets to orbit
+            myStar.GraphicID = 0; // StarGraphicID;
+            this.sysID = whatButton;
+            this.sysLocation = new Vector3(int.Parse(systemData[1]), int.Parse(systemData[2]), int.Parse(systemData[3]));
+            this.sysName = systemData[4];
+            this.sysCivOwner = GetCivOwnerEnum(systemData[5]);
+            this.sysType = GetSystemType(systemData[6]);
+            this.sysStarType = GetStarTypeEnum(systemData[7]);
+            this.sysPlanets = GetPlanetArray(systemData);
+            this.AddChild(myStar);
+            if (systemData[7] == "Nebula" || systemData[7] == "Complex")
+            {
+                // ToDo sprite sheet animation / nebula background too
+            }
+            else
+            {
+                for (int i = 0; i < 8; i++) // all systems have 8 planets for now, setting up the orbitals for display
                 {
-                  // ToDo sprite sheet animation / nebula background too
-                }
-                else { 
-                    for (int i = 0; i < 8; i++) // all systems have 8 planets for now, setting up the orbitals for display
+                    Planet planet = new Planet();
+                    planet.LoadPlanet(planet, systemData, i);
+                    myStar.AddChild(planet);
+                    int numMoons = int.Parse(systemData[10 + (i * 3)]);
+                    switch (numMoons)
                     {
-                        Planet planet = new Planet();
-                        planet.LoadPlanet(planet, systemData, i);
-                        myStar.AddChild(planet);
-                        int numMoons = int.Parse(systemData[10 + (i * 3)]);
-                        switch (numMoons)
-                        {
-                            case 0:
-                                break;
-                            case 1:
-                                planet.LoadMoons(planet, 1);
-                                break;
-                            case 2:
-                                planet.LoadMoons(planet, 2);
-                                break;
-                            case 3:
-                                planet.LoadMoons(planet, 3);
-                                break;
-                        }
+                        case 0:
+                            break;
+                        case 1:
+                            planet.LoadMoons(planet, 1);
+                            break;
+                        case 2:
+                            planet.LoadMoons(planet, 2);
+                            break;
+                        case 3:
+                            planet.LoadMoons(planet, 3);
+                            break;
+                    }
                 }
             }
             return this;
@@ -407,7 +412,7 @@ namespace Assets.Script
                 //case Civilization.ZIBAL:
                 //    break;
                 //case Civilization.TEMPLATE:
-                    //break;
+                //break;
                 default:
                     break;
             }
@@ -418,7 +423,7 @@ namespace Assets.Script
         {
             StarType thisStar = new StarType();
             switch (star)
-            { 
+            {
                 case "Blue":
                     thisStar = StarType.Blue;
                     break;
@@ -452,5 +457,5 @@ namespace Assets.Script
             return thisStar;
         }
     }
-
 }
+

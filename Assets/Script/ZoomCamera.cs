@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BOTF3D_GalaxyMap;
+using Assets.Script;
+using BOTF3D_Combat;
 
-namespace Assets.Script
+namespace BOTF3D_Core
 {
     public class ZoomCamera : MonoBehaviour
 
