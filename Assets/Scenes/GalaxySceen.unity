@@ -689,6 +689,7 @@ MonoBehaviour:
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
@@ -1402,7 +1403,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4919279783028184138, guid: c57774e263194434d9ca36f268977fbb, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4919279783028184138, guid: c57774e263194434d9ca36f268977fbb, type: 3}
       propertyPath: m_LocalScale.y
@@ -4602,7 +4603,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.9971, y: 540}
+  m_AnchoredPosition: {x: -959.99506, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -6264,7 +6265,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &338236304
 GameObject:
@@ -6467,7 +6468,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360870566
 GameObject:
@@ -8909,7 +8910,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563330764
 GameObject:
@@ -9412,7 +9413,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584432628}
-  m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0.008726558, y: -0, z: -0, w: 0.999962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9435,6 +9436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipCamera: {fileID: 584432635}
   cameraMultiTarget: {fileID: 807690122}
+  _cameraGalactica: {fileID: 45544412}
 --- !u!114 &584432633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9867,7 +9869,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &612174981
 GameObject:
@@ -10891,10 +10893,9 @@ Transform:
   m_LocalPosition: {x: 1047.414, y: -1491.3514, z: 2778.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 807690123}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &654966028
 GameObject:
@@ -11493,7 +11494,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &686532524
 GameObject:
@@ -12705,7 +12706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13947,7 +13948,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790018167
 GameObject:
@@ -14529,7 +14530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.4971, y: 514}
+  m_AnchoredPosition: {x: -940.49506, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -14599,7 +14600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14926,12 +14927,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 807690121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1047.414, y: 1491.1781, z: -2678.75}
+  m_LocalPosition: {x: 0, y: -0.17333984, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 651798064}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809409197
 GameObject:
@@ -15816,7 +15817,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16233,6 +16234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipCamera: {fileID: 584432635}
   cameraMultiTarget: {fileID: 807690122}
+  _cameraGalactica: {fileID: 0}
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -16629,7 +16631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5394787729860895100, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 5394787729860895100, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17664,7 +17666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1155550792006857361, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 1155550792006857361, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18633,7 +18635,7 @@ GameObject:
   - component: {fileID: 1160279385}
   - component: {fileID: 1160279386}
   m_Layer: 6
-  m_Name: CameraFocusGalactica
+  m_Name: Camera Manager Galactica
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -18672,18 +18674,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f1a0e20b3c35241bcd480c6f521e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _active: 1
+  _mouseSense: 1.8
+  _enableTranslation: 1
+  _translationSpeed: 55
+  _enableMovement: 1
+  _movementSpeed: 10
+  _speedAccelerationFactor: 1.5
+  _initPositonButton: 114
   cameraOffset: {x: 0, y: 0}
   lookAtOffset: 2
-  inOutSpeed: 100
-  lateralSpeed: 100
-  upDownSpeed: 10
   rotateSpeed: 20
+  maxRotation: 20
+  minRotation: -20
   minBounds: {x: -6000, y: -4000}
   maxBounds: {x: 1112000, y: 1118000}
-  zoomSpeed: 400
-  nearZoomLimit: 2
-  farZoomLimit: 16
-  startingZoom: 5
 --- !u!1 &1164812502
 GameObject:
   m_ObjectHideFlags: 0
@@ -18983,12 +18988,13 @@ MonoBehaviour:
   solarSystemView: {fileID: 1538149116}
   ship: {fileID: 1670698544}
   cameraMultiTarget: {fileID: 807690122}
+  cameraManagerGalactica: {fileID: 1160279386}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529373}
   actOnCombatOrder: {fileID: 330116306}
   zoomCamera: {fileID: 1788582308}
   Canvas: {fileID: 572942814}
-  CanvasGalactic: {fileID: 0}
+  CanvasGalactic: {fileID: 1195700020}
   _SinglePlayer: {fileID: 2141310086}
   _MultiPlayer: {fileID: 553410909}
   _LoadGamePanel: {fileID: 354149417}
@@ -19355,7 +19361,7 @@ RectTransform:
   - {fileID: 985302230}
   - {fileID: 122631312}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20841,7 +20847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_RootOrder
-      value: 36
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_LocalScale.y
@@ -22607,7 +22613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1398289160
 MonoBehaviour:
@@ -25012,7 +25018,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521063285
 GameObject:
@@ -25335,9 +25341,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1528842457}
-  - component: {fileID: 1528842459}
-  - component: {fileID: 1528842458}
   - component: {fileID: 1528842460}
+  - component: {fileID: 1528842462}
+  - component: {fileID: 1528842461}
   m_Layer: 6
   m_Name: CameraGalacticaHolder
   m_TagString: Untagged
@@ -25361,7 +25367,15 @@ Transform:
   m_Father: {fileID: 1160279385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -67, y: 0, z: 0}
---- !u!114 &1528842458
+--- !u!81 &1528842460
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528842456}
+  m_Enabled: 1
+--- !u!114 &1528842461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25377,9 +25391,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras:
-  - {fileID: 114930957}
-  m_RendererIndex: 0
+  m_Cameras: []
+  m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -25395,7 +25408,7 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!20 &1528842459
+--- !u!20 &1528842462
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25418,15 +25431,15 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 100000000
-  field of view: 21.2
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1610612738
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -25438,14 +25451,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1528842460
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528842456}
-  m_Enabled: 1
 --- !u!1 &1531341355
 GameObject:
   m_ObjectHideFlags: 0
@@ -25777,7 +25782,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d021405dc9bbc4c46bad1c725ea54ffe, type: 3}
   - {fileID: 21300000, guid: 77d7c5d0cc64d1c4681bc7a913117d28, type: 3}
   - {fileID: 21300000, guid: 88c3aa01114048e44b31f02ec7ae3022, type: 3}
-  - {fileID: 21300000, guid: 0ed150c457616fd41accf78b283abe42, type: 3}
+  - {fileID: 21300000, guid: 226f64c69f826184994c915fc8f48507, type: 3}
   - {fileID: 21300000, guid: 0e3f2f49f350ff34ca4d9f0542612996, type: 3}
   - {fileID: 21300000, guid: 3a7dcc06c3bb18d4699c59caa91d05b3, type: 3}
   - {fileID: 21300000, guid: 3a7dcc06c3bb18d4699c59caa91d05b3, type: 3}
@@ -25804,18 +25809,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7ce1d6620737fe74b8bdab3f33fa32bb, type: 3}
   - {fileID: 21300000, guid: 79216f4ce7d1cce488c681c42cf32dba, type: 3}
   - {fileID: 21300000, guid: afc3929da4e246847a9342dd6e725ac3, type: 3}
-  - {fileID: 21300000, guid: a2610873cbba23448b1ddcd0789a3acc, type: 3}
+  - {fileID: 21300000, guid: a6fe240245c3d954bae475b1962eaa21, type: 3}
   - {fileID: 21300000, guid: ad0d52baa9cb49745bdceca36be02da3, type: 3}
   - {fileID: 21300000, guid: d331545a33977ef49919c8a6b98a4680, type: 3}
   - {fileID: 21300000, guid: afc3929da4e246847a9342dd6e725ac3, type: 3}
   k_TypeMarsLike:
-  - {fileID: 21300000, guid: 0f73cd7d380c646478d123552f545240, type: 3}
-  - {fileID: 21300000, guid: 635f6eb9e31012f4c92a7bb07a571dc0, type: 3}
   - {fileID: 21300000, guid: eede8d5c6e469794a864dad6f3b5c6d1, type: 3}
   - {fileID: 21300000, guid: d9967657f77bdca449c1aa4ada961d1c, type: 3}
   - {fileID: 21300000, guid: 791f5e35a02b56542a50a1f447c0f31c, type: 3}
   - {fileID: 21300000, guid: 3aea2b2390d3d8644a797794bc23607a, type: 3}
-  - {fileID: 21300000, guid: 84dc26088dfd9804ead7324ced52832b, type: 3}
   - {fileID: 21300000, guid: d38ba78678a430242bd9757267004844, type: 3}
   - {fileID: 21300000, guid: 7a160fb7867ef1447a6f1af49b7625b1, type: 3}
   - {fileID: 21300000, guid: bfd37c0469d765644927675cab681aee, type: 3}
@@ -25825,53 +25827,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7cbe2c8b587eaed45ae8ecce64cf8904, type: 3}
   - {fileID: 21300000, guid: 38d929b83ab3dce4482333029183e3e8, type: 3}
   - {fileID: 21300000, guid: 1051047a1c83c7145830e439c22ff856, type: 3}
+  - {fileID: 21300000, guid: 7222fe992b0308a4c806bc229aee76ad, type: 3}
   - {fileID: 21300000, guid: f44c5fbbcf99a4748a2428923ca98a33, type: 3}
-  - {fileID: 21300000, guid: 38d929b83ab3dce4482333029183e3e8, type: 3}
-  - {fileID: 21300000, guid: 7cbe2c8b587eaed45ae8ecce64cf8904, type: 3}
-  - {fileID: 21300000, guid: d38ba78678a430242bd9757267004844, type: 3}
-  - {fileID: 21300000, guid: 84dc26088dfd9804ead7324ced52832b, type: 3}
-  - {fileID: 21300000, guid: 0ab08fdbaca056a49b2f82909f0e28d1, type: 3}
-  - {fileID: 21300000, guid: cbfb31a690c848348b7a4a14e17c7c77, type: 3}
-  - {fileID: 21300000, guid: bfd37c0469d765644927675cab681aee, type: 3}
-  j_TypeGaseGiants:
-  - {fileID: 21300000, guid: 938c1d882a5aa544c970dcbba2412306, type: 3}
-  - {fileID: 21300000, guid: 2dba7236a23c13c49994571f77ffe91f, type: 3}
-  - {fileID: 21300000, guid: a8dd2c5ac08249141834985c409fc25f, type: 3}
+  - {fileID: 21300000, guid: 1051047a1c83c7145830e439c22ff856, type: 3}
+  - {fileID: 21300000, guid: f44c5fbbcf99a4748a2428923ca98a33, type: 3}
+  j_TypeGasGiants:
+  - {fileID: 21300000, guid: e5b2127955ad469499e4feb5eb8f6571, type: 3}
+  - {fileID: 21300000, guid: be4ec164ca360ae4d9f41267dea1f545, type: 3}
   - {fileID: 21300000, guid: 1316c7bf8ef436b418ccb4d58fd8f690, type: 3}
   - {fileID: 21300000, guid: 240b96e6bc36adc44bc72dc5c0c765e9, type: 3}
+  - {fileID: 21300000, guid: 6e51fade87a551641beac8d971453d3c, type: 3}
+  - {fileID: 21300000, guid: ddd6461d2a3512247be630761df98b35, type: 3}
   - {fileID: 21300000, guid: dc52d4ae423c73547b3437d24372caa6, type: 3}
-  - {fileID: 21300000, guid: de5648c929d924f4fb7f9cabb55ca13a, type: 3}
-  - {fileID: 21300000, guid: 037bf0c2377c91f4bad0d02840f801f7, type: 3}
+  - {fileID: 21300000, guid: d675aca0c8d232348b8d80a68867adbf, type: 3}
   - {fileID: 21300000, guid: b2ee82a037b8c3349940fa7ac65d4b5c, type: 3}
   - {fileID: 21300000, guid: 1f160063a4f88454487b082d883bc87c, type: 3}
   - {fileID: 21300000, guid: ceb480e72d1837345b266190d365979d, type: 3}
   - {fileID: 21300000, guid: 379692ab543e51244b095ba7fb64801a, type: 3}
   - {fileID: 21300000, guid: b22a16178e3aae04981533950b321c9d, type: 3}
   - {fileID: 21300000, guid: 21551cb893b28c44c9370b3e31cb6e86, type: 3}
-  - {fileID: 21300000, guid: 077338917d07f1c41bcddf13d48efd05, type: 3}
-  - {fileID: 21300000, guid: 387d4512600bc75468d7751cf305a568, type: 3}
-  - {fileID: 21300000, guid: 3b013cc6d83066a4c98092f046f2a138, type: 3}
-  - {fileID: 21300000, guid: e1770cf1ce4065c4cba040d1de3d23be, type: 3}
-  - {fileID: 21300000, guid: c13515201d82a74479e2d26d6691dadd, type: 3}
-  - {fileID: 21300000, guid: 076c1255f07fe044f8a001e692fe9e95, type: 3}
-  - {fileID: 21300000, guid: 15cc5cddab7838846b92211a9345bf1f, type: 3}
-  - {fileID: 21300000, guid: 076c1255f07fe044f8a001e692fe9e95, type: 3}
-  - {fileID: 21300000, guid: c13515201d82a74479e2d26d6691dadd, type: 3}
-  - {fileID: 21300000, guid: e1770cf1ce4065c4cba040d1de3d23be, type: 3}
-  - {fileID: 21300000, guid: 3b013cc6d83066a4c98092f046f2a138, type: 3}
-  - {fileID: 21300000, guid: 387d4512600bc75468d7751cf305a568, type: 3}
-  - {fileID: 21300000, guid: 077338917d07f1c41bcddf13d48efd05, type: 3}
-  - {fileID: 21300000, guid: 21551cb893b28c44c9370b3e31cb6e86, type: 3}
-  - {fileID: 21300000, guid: b22a16178e3aae04981533950b321c9d, type: 3}
-  - {fileID: 21300000, guid: 379692ab543e51244b095ba7fb64801a, type: 3}
-  - {fileID: 21300000, guid: ceb480e72d1837345b266190d365979d, type: 3}
-  - {fileID: 21300000, guid: 1f160063a4f88454487b082d883bc87c, type: 3}
-  - {fileID: 21300000, guid: b2ee82a037b8c3349940fa7ac65d4b5c, type: 3}
-  - {fileID: 21300000, guid: 037bf0c2377c91f4bad0d02840f801f7, type: 3}
-  - {fileID: 21300000, guid: de5648c929d924f4fb7f9cabb55ca13a, type: 3}
-  - {fileID: 21300000, guid: dc52d4ae423c73547b3437d24372caa6, type: 3}
-  - {fileID: 21300000, guid: 240b96e6bc36adc44bc72dc5c0c765e9, type: 3}
-  - {fileID: 21300000, guid: 1316c7bf8ef436b418ccb4d58fd8f690, type: 3}
   moonType:
   - {fileID: 21300000, guid: 975eb136204620c4e9ab174bd9da3da8, type: 3}
   - {fileID: 21300000, guid: 601dee02a83ade74f970e796f98f0fc2, type: 3}
@@ -26645,7 +26619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1605516652
 GameObject:
@@ -27738,6 +27712,7 @@ MonoBehaviour:
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
@@ -28465,7 +28440,7 @@ GameObject:
   m_Layer: 6
   m_Name: GalacticCore
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -30512,7 +30487,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1784953748
 GameObject:
@@ -30682,6 +30657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipCamera: {fileID: 584432635}
   cameraMultiTarget: {fileID: 807690122}
+  _cameraGalactica: {fileID: 45544412}
 --- !u!4 &1788582309
 Transform:
   m_ObjectHideFlags: 0
@@ -30695,7 +30671,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794377974
 GameObject:
@@ -33578,7 +33554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_RootOrder
-      value: 35
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 3222200768185632736, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34512,7 +34488,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083323499
 GameObject:
@@ -35400,7 +35376,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2141310086
 MonoBehaviour:
@@ -35457,7 +35433,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145234215
 GameObject:
@@ -35733,7 +35709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7764467756891880976, guid: b72afb4249e76d54c9b847fc5e29bee6, type: 3}
       propertyPath: m_RootOrder
-      value: 40
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 7764467756891880976, guid: b72afb4249e76d54c9b847fc5e29bee6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35819,7 +35795,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9124819752923257947, guid: 10af618c74c866d479ae2d8c61d25215, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 9124819752923257947, guid: 10af618c74c866d479ae2d8c61d25215, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35892,7 +35868,7 @@ PrefabInstance:
       objectReference: {fileID: 899714680}
     - target: {fileID: 8370251913101214813, guid: b9c47c808056f6f4483d2a4def22daac, type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 8370251913101214813, guid: b9c47c808056f6f4483d2a4def22daac, type: 3}
       propertyPath: m_LocalPosition.x

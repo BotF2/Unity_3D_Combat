@@ -265,8 +265,8 @@ namespace BOTF3D_Core
         public SolarSystemView solarSystemView;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
+        public CameraManagerGalactica cameraManagerGalactica;
         public Combat combat;
-        // public CameraManagerGalactica cameraManagerGalactica;
         //public Camera galacticCamera; 
         public InstantiateCombatShips instantiateCombatShips;
         public ActOnCombatOrder actOnCombatOrder;
@@ -606,7 +606,7 @@ namespace BOTF3D_Core
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
         public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, GALACTIC_MAP_INIT, SYSTEM_PLAY, GALACTIC_COMPLETED,
-            COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
+            COMBAT_MENU, COMBAT_SETUP, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
         private State _state;
 
         private int _level;
@@ -645,6 +645,7 @@ namespace BOTF3D_Core
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+
             // GameObjects for the system buttons
             AllSystemsList = new List<GameObject> {  FED_StarSystem,
                                                      ROM_StarSystem,
@@ -981,7 +982,7 @@ namespace BOTF3D_Core
 
         public void CombatPlayClicked()
         {
-            SwitchtState(State.COMBAT_INIT);
+            SwitchtState(State.COMBAT_SETUP);
         }
         public void ResetFriendAndEnemyDictionaries()
         {
@@ -1118,7 +1119,9 @@ namespace BOTF3D_Core
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-                    
+                    //cameraManagerGalactica.gameObject.SetActive(true);
+                    //cameraManagerGalactica.enabled = true;
+                    //cameraManagerGalactica.TurnOnGalaxyFly();
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
@@ -1132,6 +1135,9 @@ namespace BOTF3D_Core
                     break;
 
                 case State.GALACTIC_MAP_INIT:
+                    //cameraManagerGalactica.gameObject.SetActive(false);
+                    //cameraManagerGalactica.enabled = false;
+                    //cameraManagerGalactica.TurnOffGalaxyFly();
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
@@ -1141,7 +1147,8 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
-
+                    //cameraManagerGalactica.gameObject.SetActive(false);
+                    //cameraManagerGalactica.enabled = false;
                     // PanelGalactic_Map.SetActive(false);
                     //CanvasWorld.SetActive(false);
                     PanelSystem_Play.SetActive(true);
@@ -1151,7 +1158,11 @@ namespace BOTF3D_Core
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
-                   // TurnOnGalacticSystems(true);
+                    //cameraManagerGalactica.gameObject.SetActive(true);
+                    //cameraManagerGalactica.enabled = true;
+                    //cameraManagerGalactica.TurnOnGalaxyFly();
+                    cameraManagerGalactica.ResetGalacticCamLocation();
+                    // TurnOnGalacticSystems(true);
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
@@ -1168,6 +1179,7 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    //galaxyView.TurnOffGalaxyView(galaxy);
                     //CanvasWorld.SetActive(false);
                     //PanelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
@@ -1180,7 +1192,7 @@ namespace BOTF3D_Core
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
                     //_combatWarpIn = true; // turn false again in E_animator3 call to GameManager WarpInOver()
                     PanelLobby_Menu.SetActive(false);
                     _statePassedCombatMenu_Init = true;
@@ -1282,7 +1294,7 @@ namespace BOTF3D_Core
                     //    End Combat
                     //}
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
                     //if (F_Animator3.)
                     //instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
                     //_statePassedCombatInitRight = true;
@@ -1353,7 +1365,7 @@ namespace BOTF3D_Core
                     //panelGalactic_Play.SetActive(false);
                     PanelCombat_Menu.SetActive(false);
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
                     PanelCombat_Menu.SetActive(false);
                     // panelGalactic_Completed.SetActive(false);
                     break;

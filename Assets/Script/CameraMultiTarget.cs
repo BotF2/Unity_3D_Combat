@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using BOTF3D_GalaxyMap;
 using BOTF3D_Core;
-using Assets.Script;
 
 namespace BOTF3D_Combat
 {

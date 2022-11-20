@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net;
 using UnityEngine.Rendering.VirtualTexturing;
 using BOTF3D_Core;
-using BOTF3D_GalaxyMap;
 using BOTF3D_Combat;
 using Assets.Script;
 
@@ -24,7 +23,7 @@ namespace BOTF3D_GalaxyMap
         public Sprite[] m_TypeHabitable;
         public Sprite[] h_TypeUninbaitable;
         public Sprite[] k_TypeMarsLike;
-        public Sprite[] j_TypeGaseGiants;
+        public Sprite[] j_TypeGasGiants;
         public Sprite[] moonType;
         public Sprite[] solSprites;
         public Sprite earthMoonSprite;
@@ -174,7 +173,7 @@ namespace BOTF3D_GalaxyMap
                         renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.J_gasGiant:
-                        renderer.sprite = j_TypeGaseGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
+                        renderer.sprite = j_TypeGasGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.M_habitable:
                         renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];

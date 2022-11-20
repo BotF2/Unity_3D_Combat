@@ -4,6 +4,8 @@ using UnityEngine;
 using BOTF3D_GalaxyMap;
 using Assets.Script;
 using BOTF3D_Combat;
+using DG.Tweening.Core.Easing;
+using TMPro.Examples;
 
 namespace BOTF3D_Core
 {
@@ -12,10 +14,19 @@ namespace BOTF3D_Core
     {
         public Camera _shipCamera;
         public CameraMultiTarget cameraMultiTarget;
+        public Camera _cameraGalactica;
+        //public GameManager _gameManager;
         bool _startZoomerUpdate = false;
         bool _doneWithWideAngle = false;
+        bool _startGalacticZoomerUpdate = false;
+        bool _doneWithGalacticWideAngele = false;
         float _startTimer = 0;
+        float _startGalacticTimer = 0;
 
+        //private void Start()
+        //{
+        //    //_gameManager = GameManager.Instance;
+        //}
         void Update()
         {
             if (_startZoomerUpdate)
@@ -54,6 +65,19 @@ namespace BOTF3D_Core
                     }
                 }
             }
+            //if (_startGalacticZoomerUpdate)
+            //{
+            //    if (!_doneWithGalacticWideAngele && _cameraGalactica.fieldOfView > 24)
+            //        _cameraGalactica.fieldOfView = _cameraGalactica.fieldOfView - (Time.time - _startGalacticTimer) / 5;
+            //    if (!_doneWithGalacticWideAngele && _cameraGalactica.fieldOfView <= 24)
+            //        _doneWithGalacticWideAngele = true;
+
+            //    if (_doneWithGalacticWideAngele) // && cameraMultiTarget._rotateAroundTarget)
+            //    {
+            //        if (Input.mouseScrollDelta == Vector2.zero)
+            //            return;
+            //    }
+            //}
         }
         public void ZoomIn()
         {
@@ -66,7 +90,19 @@ namespace BOTF3D_Core
         {
             _startZoomerUpdate = false;
             _doneWithWideAngle = false;
-        }         
+        }
+        //public void GalacticZoomIn()
+        //{
+        //    _doneWithGalacticWideAngele = false;
+        //    _startGalacticZoomerUpdate = true;
+        //    _cameraGalactica.fieldOfView = 60;
+        //    _startGalacticTimer = Time.time;
+        //}
+        //public void TurnOfGalacticZoomUpdate()
+        //{
+        //    _startGalacticZoomerUpdate = false;
+        //    _doneWithGalacticWideAngele = false;
+        //}
       
     }
 }

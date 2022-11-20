@@ -8,8 +8,8 @@ using UnityEngine.UI;
 using System.Linq;
 using BOTF3D_Core;
 using Assets.Script;
-using BOTF3D_Core;
-using Assets.Script;
+using BOTF3D_Combat;
+
 
 namespace BOTF3D_GalaxyMap
 {

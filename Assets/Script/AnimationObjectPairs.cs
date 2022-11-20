@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using BOTF3D_GalaxyMap;
-using Assets.Script;
 using BOTF3D_Combat;
 
 namespace BOTF3D_Core

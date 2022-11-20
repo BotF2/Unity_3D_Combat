@@ -364,6 +364,17 @@ namespace BOTF3D_GalaxyMap
                 // UpdateSystemButtons(SolarSystem)
             }
         }
+        //public void TurnOffGalaxyView(Galaxy galaxy) //, int solarSystemID)
+        //{
+        //    ourGalaxy = galaxy;
+        //    while (transform.childCount > 0) // delelt old systems from prior update
+        //    {
+        //        Transform child = transform.GetChild(0);
+        //        child.SetParent(null); // decreases number of children in while loop
+        //        Destroy(child.gameObject);
+        //    }
+        //    //solarSystem = null;
+        //}
         public void InstantiateSystemButtons(int numStars, GalaxyType canonOrRandom)
         {
             // ToDo Implement both cannon and radome based on incoming GalaxyType seletection
