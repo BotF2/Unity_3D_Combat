@@ -16,7 +16,7 @@ namespace BOTF3D_GalaxyMap
         public int sysID;
         public Vector3 sysLocation;
         public string sysName;
-        public Civilization sysCivOwner;
+        public Civ sysCivOwner;
         public SystemType sysType;
         public StarType sysStarType;
         public Planet[] sysPlanets;
@@ -146,32 +146,32 @@ namespace BOTF3D_GalaxyMap
             }
             return theSys;
         }
-        public Civilization GetCivOwnerEnum(string civ)
+        public Civ GetCivOwnerEnum(string civ)
         {
             #region Geting Civ
-            Civilization theCiv = Civilization.FED;
+            Civ theCiv = Civ.FED;
             switch (civ)
             {
                 case "FED":
-                    theCiv = Civilization.FED;
+                    theCiv = Civ.FED;
                     break;
                 case "ROM":
-                    theCiv = Civilization.ROM;
+                    theCiv = Civ.ROM;
                     break;
                 case "KLING":
-                    theCiv = Civilization.KLING;
+                    theCiv = Civ.KLING;
                     break;
                 case "CARD":
-                    theCiv = Civilization.CARD;
+                    theCiv = Civ.CARD;
                     break;
                 case "DOM":
-                    theCiv = Civilization.DOM;
+                    theCiv = Civ.DOM;
                     break;
                 case "BORG":
-                    theCiv = Civilization.BORG;
+                    theCiv = Civ.BORG;
                     break;
                 case "ACAMARIAN":
-                    theCiv = Civilization.ACAMARIAN;
+                    theCiv = Civ.ACAMARIAN;
                     break;
                 //case Civilization.AKAALI:
                 //    break;

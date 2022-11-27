@@ -15,7 +15,7 @@ using BOTF3D_Combat;
 namespace BOTF3D_Core
 {
     #region Enums
-    public enum Civilization
+    public enum Civ
     {
         FED,
         ROM,
@@ -226,8 +226,173 @@ namespace BOTF3D_Core
         L_marginalForLife,
         K_marsLike,
         Moon
-       
+
     }
+    public enum Systems
+    {
+        #region System Names
+
+        SOL,
+        ROMULAN,
+        KLINGON,
+        CARDASSIAN,
+        DOMINION,
+        BORG,
+        ACAMAR,
+        AKAALI,
+        AKRITIRI,
+        ALDEA,
+        ALGOL,
+        ALSAURI,
+        ANDORIAN,
+        ANGOSIA,
+        ANKARI,
+        ANTEDEA,
+        ANTICA,
+        ARBAZ,
+        ARDANA,
+        ARGRATHI,
+        ARKARIA,
+        ATREA,
+        AXANAR,
+        BAJOR,
+        BAKU,
+        BANDI,
+        BANEA,
+        BARZA,
+        BENZAR,
+        BETAZED,
+        BILANA,
+        BOLIA,
+        BOMAR,
+        BOSLIC,
+        BOTHA,
+        BREEL,
+        BREEN,
+        BREKKA,
+        BYNAR,
+        CAIRN,
+        CALDON,
+        CAPELLA,
+        CHALNOTH,
+        CORIDAN,
+        CORVALLE,
+        CYTHERIA,
+        DELTA,
+        DENOBULA,
+        DEVORE,
+        DOPTERIA,
+        DOSI,
+        DRAI,
+        DREMA,
+        EDO,
+        ELAURIA,
+        ELAYSIA,
+        ENTHARA,
+        EVORA,
+        EXCALBIA,
+        FERENGI,
+        FLAXIA,
+        GORN,
+        GRAZERITES,
+        HAAKONIA,
+        HALKA,
+        HAZARI,
+        HEKARA,
+        HIROGEN,
+        HORTA,
+        IYAARA,
+        JNAII,
+        KAELON,
+        KAREMMA,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRON,
+        KRADIN,
+        KREETASSA,
+        KRIOSIA,
+        KTARIA,
+        LEDOSIA,
+        LISSEPIA,
+        LOKIRRIM,
+        LURIA,
+        MALCORIA,
+        MALON,
+        MAQUIS,
+        MARKALIA,
+        MERIDIA,
+        MINTAKA,
+        MIRADORN,
+        MIZARIA,
+        MOKRA,
+        MONEA,
+        NAUSICAA,
+        NECHANI,
+        NEZU,
+        NORCADIA,
+        NUMIRI,
+        NUUBARI,
+        NYRIA,
+        OCAMPA,
+        ORION,
+        ORNARA,
+        PAKLED,
+        PARADA,
+        QUARREN,
+        RAKHARI,
+        RAKOSA,
+        RAMATIA,
+        REMUS,
+        RIGELIA,
+        RISIA,
+        RUTIA,
+        SELAY,
+        SHELIAK,
+        SIKARIA,
+        SKRREEA,
+        SONA,
+        SULIBAN,
+        TAKARA,
+        TAKARIA,
+        TAKTAK,
+        TALARIA,
+        TALAX,
+        TALOSIA,
+        TAMARIA,
+        TANUGA,
+        TELLAR,
+        TEPLA,
+        THOLIA,
+        TILONIA,
+        TLANI,
+        TRABE,
+        TRILL,
+        TROGORA,
+        TZENKETHI,
+        ULLIA,
+        VAADWAUR,
+        VENTAXIA,
+        VHNORI,
+        VIDIIA,
+        VISSIA,
+        VORGON,
+        VORI,
+        VULCAN,
+        WADI,
+        XANTHAN,
+        XEPOLITES,
+        XINDI,
+        XYRILLIA,
+        YADERA,
+        YRIDIA,
+        ZAHL,
+        ZAKDORN,
+        ZALKONIA,
+        ZIBAL
+        #endregion
+    }
+
     public enum Orders
     {
         Engage,
@@ -244,14 +409,14 @@ namespace BOTF3D_Core
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
-        public Civilization _localPlayer;
-        public Civilization _hostPlayer;
-        public Civilization _cliantZero;
-        public Civilization _cliantOne;
-        public Civilization _cliantTwo;
-        public Civilization _cliantThree;
-        public Civilization _cliantFour;
-        public Civilization _cliantFive;
+        public Civ _localPlayer;
+        public Civ _hostPlayer;
+        public Civ _cliantZero;
+        public Civ _cliantOne;
+        public Civ _cliantTwo;
+        public Civ _cliantThree;
+        public Civ _cliantFour;
+        public Civ _cliantFive;
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
@@ -274,6 +439,7 @@ namespace BOTF3D_Core
         public GameObject Canvas;
         public GameObject CanvasGalactic;
         private GameObject PanelLobby_Menu;
+        private GameObject PanelGalaxyUI;
         private GameObject PanelLoadGame_Menu;
         private GameObject PanelSaveGame_Menu;
         private GameObject PanelSettings_Menu;
@@ -631,6 +797,7 @@ namespace BOTF3D_Core
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
             CanvasGalactic = GameObject.Find("CanvasGalactic");
+            PanelGalaxyUI = Canvas.transform.Find("PanelGalaxyUI").gameObject;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -823,7 +990,7 @@ namespace BOTF3D_Core
             LoadPrefabs();
 
             _galaxySize = GalaxySize.SMALL;
-            _localPlayer = Civilization.FED;
+            _localPlayer = Civ.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
                                      //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
@@ -1088,20 +1255,20 @@ namespace BOTF3D_Core
                     SetGalaxyMapCanon();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
-                        case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
+                        case Civ.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
                             // set 
                             break;
                         //case Civilization.TERRAN:
                         //    break;
-                        case Civilization.ROM:
+                        case Civ.ROM:
                             break;
-                        case Civilization.KLING:
+                        case Civ.KLING:
                             break;
-                        case Civilization.CARD:
+                        case Civ.CARD:
                             break;
-                        case Civilization.DOM:
+                        case Civ.DOM:
                             break;
-                        case Civilization.BORG:
+                        case Civ.BORG:
                             break;
                         default:
                             break;
@@ -1113,7 +1280,7 @@ namespace BOTF3D_Core
                     //CanvasWorld = GameObject.Find("CanvasWorld");
                     //CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
-
+                    PanelGalaxyUI.SetActive(true);
                     _statePassedMain_Init = true;
                     galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
                     SwitchtState(State.GALACTIC_MAP);
@@ -1129,7 +1296,7 @@ namespace BOTF3D_Core
                     _statePassedMain_Init = true;
                    // CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
-
+                    PanelGalaxyUI.SetActive(true);
                     PanelSystem_Play.SetActive(false);
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
                     break;
@@ -1140,6 +1307,7 @@ namespace BOTF3D_Core
                     //cameraManagerGalactica.TurnOffGalaxyFly();
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
 
@@ -1157,6 +1325,8 @@ namespace BOTF3D_Core
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
+                    PanelGalactic_Map.SetActive(true);
+                    PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
                     //cameraManagerGalactica.gameObject.SetActive(true);
                     //cameraManagerGalactica.enabled = true;
@@ -1168,8 +1338,8 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    
-                    PanelGalactic_Map.SetActive(true);
+                   
+                    SwitchtState(State.GALACTIC_MAP);
                     //SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
@@ -1179,6 +1349,7 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     //galaxyView.TurnOffGalaxyView(galaxy);
                     //CanvasWorld.SetActive(false);
                     //PanelCombat_Menu.SetActive(true);
@@ -1268,15 +1439,19 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                    PanelGalactic_Map.SetActive(true);
+                    PanelGalaxyUI.SetActive(true);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY_INIT:
@@ -1346,16 +1521,19 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY:
                     PanelSystem_Play.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     PanelLobby_Menu.SetActive(false);
+                    //nelGalactic_Map.SetActive(true);
                     break;
                 case State.GALACTIC_COMPLETED:
                     PanelSystem_Play.SetActive(false);
