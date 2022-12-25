@@ -375,25 +375,27 @@ namespace BOTF3D_GalaxyMap
         //    }
         //    //solarSystem = null;
         //}
-        public void InstantiateSystemButtons(int numStars, GalaxyType canonOrRandom)
+        public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
         {
             // ToDo Implement both cannon and radome based on incoming GalaxyType seletection
-            string[] keysForSytemDictioanry = ReadSystemData();
+            string[] keysForSytemDictioanry = ReadSystemData(); // all the system names in string[]
 
             //We are currently only numStars = 6; use numStars, without this reset, when we have enough system-button prefabs built and loaded 
 
             Galaxy galaxy = new Galaxy(gameManager);
             if (canonOrRandom == GalaxyType.CANON)
-            for (int i = 0; i < numStars; i++)
+            for (int i = 0; i < numStars.Length; i++)
             {
-                string ourKey = keysForSytemDictioanry[i];
+                string ourKey = keysForSytemDictioanry[numStars[i]];
                 if (keysForSytemDictioanry[i].Length != 0)
                 {
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey],
                         new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
-                    starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
+                    starSystemNewGameOb.transform.SetParent(SysEmptyList[numStars[i]].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
                     starSystemNewGameOb.SetActive(true);
+                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
+                    //myButton.image.sprite.
                 }
             }
             else
@@ -405,7 +407,7 @@ namespace BOTF3D_GalaxyMap
             SolarSystemView view = new SolarSystemView();
         }
          
-        private string[] ReadSystemData()
+        private string[] ReadSystemData() // get names of civ in an array
         {
             //SolarSystem.LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             String[] _systemCivData;

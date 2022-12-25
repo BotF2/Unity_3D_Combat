@@ -16,13 +16,12 @@ namespace BOTF3D_GalaxyMap
         public TMPro.TMP_Dropdown resolutionDropdown; // get DropdownSystems menu
         public GameManager _gameManager;
         public Civ? _localPlayer;
-        private List<Systems> _systemsList;
+        private List<string> _systemsList;
 
         public void Awake()
         {
-            //********* List will become List<Systems> like _systemsList field above when we implement  (not a list of string like now )
-            List<string> systems = new List<string>() { "Earth System/Sol", "Vulcan System/40 Eridani A", "Andorian System/Andoria" };
-            resolutionDropdown.AddOptions(systems);
+            _systemsList = new List<string>() { "Earth System/Sol", "Vulcan System/40 Eridani A", "Andorian System/Andoria" };
+            resolutionDropdown.AddOptions(_systemsList);
         }
 
         public void Update()
@@ -64,21 +63,10 @@ namespace BOTF3D_GalaxyMap
         {
             //resolutionDropdown.options.Clear(); // Clear Options
 
-            //ToDo: go get current owned system, _systemList field, for Local Player
+            //ToDo: go get current owned system, _systemList field as string names of systems, for Local Player
 
             //resolutionDropdown.AddOptions(_systemsList);
                
-
-            //List<TMP_Dropdown.OptionData> missingItems = new List<TMP_Dropdown.OptionData>();
-            //foreach (var system in resolutionDropdown.options)
-            //{
-            //    if (system != null && !resolutionDropdown.options.Contains(system))
-            //    {
-            //        missingItems.Add(system);
-            //        //resolutionDropdown.AddOptions(List<system>);
-            //    }
-            //    resolutionDropdown.AddOptions(missingItems);
-            //}
         }
     }
 }

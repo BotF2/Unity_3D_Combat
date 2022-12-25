@@ -100,7 +100,8 @@ namespace BOTF3D_GalaxyMap
         private Vector3 currentRotation;
         float frameRotate = 1f;
         //float frameZoom;
-        Camera cam;
+        Camera camGalactica;
+        public Camera telescope;
 
         private float _currentIncrease = 0.1f; // active control of camera movement rate
                                                //private float _currentIncreaseMem = 0;
@@ -116,10 +117,10 @@ namespace BOTF3D_GalaxyMap
             maxRotation = _initRotation.z + 10f;
             minRotation = _initRotation.z - 10f;
 
-            cam = GetComponentInChildren<Camera>();
+            camGalactica = GetComponentInChildren<Camera>();
             //cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
             //zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
-            cam.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
+            camGalactica.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
         }
         private void Start()
         {
@@ -128,6 +129,8 @@ namespace BOTF3D_GalaxyMap
             _initPosition = transform.position;
             _initRotation = transform.eulerAngles;
             currentRotation = this.transform.localEulerAngles;
+            //telescope.transform.position = camGalactica.transform.position;
+            //telescope.transform.rotation = camGalactica.transform.rotation;
         }
 
         private void Update()

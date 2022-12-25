@@ -420,7 +420,7 @@ namespace BOTF3D_Core
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
-        public int _galaxyStarCount; 
+        public int[] _galaxyStarCount; 
         public int _solarSystemID;
         public Orders _combatOrder;
 
@@ -447,6 +447,7 @@ namespace BOTF3D_Core
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
         private GameObject PanelGalactic_Map; 
+        //private GameObject PanelGalacticTelescope;
         private GameObject PanelSystem_Play;
         private GameObject PanelGalactic_Completed;
         private GameObject PanelCombat_Menu;
@@ -806,6 +807,7 @@ namespace BOTF3D_Core
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
             PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
@@ -1091,15 +1093,15 @@ namespace BOTF3D_Core
             switch (_galaxySize)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = 6; // 30;
+                    _galaxyStarCount = new int[]{ 0,1,2,3,4,5,6,12}; // 8 for now;
                    // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:
-                    _galaxyStarCount = 40;
+                    _galaxyStarCount = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 12 }; //72;
                     //LoadGalacticMapButtons("MEDIUM");
                     break;
                 case GalaxySize.LARGE:
-                    _galaxyStarCount = 50;
+                    _galaxyStarCount = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 12 }; // 159;
                     //LoadGalacticMapButtons("LARGE");
                     break;
                 default:
@@ -1190,6 +1192,7 @@ namespace BOTF3D_Core
                     //{
                         //CanvasWorld.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                   // PanelGalacticTelescope.SetActive(false);
                     //}
 
                     PanelLobby_Menu.SetActive(true); // Lobby first             
@@ -1280,6 +1283,7 @@ namespace BOTF3D_Core
                     //CanvasWorld = GameObject.Find("CanvasWorld");
                     //CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
+                   // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     _statePassedMain_Init = true;
                     galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
@@ -1296,6 +1300,7 @@ namespace BOTF3D_Core
                     _statePassedMain_Init = true;
                    // CanvasWorld.SetActive(true);
                     PanelGalactic_Map.SetActive(true);
+                    //PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     PanelSystem_Play.SetActive(false);
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
@@ -1307,7 +1312,7 @@ namespace BOTF3D_Core
                     //cameraManagerGalactica.TurnOffGalaxyFly();
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
-                    PanelGalaxyUI.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
 
@@ -1326,6 +1331,7 @@ namespace BOTF3D_Core
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     PanelGalactic_Map.SetActive(true);
+                   // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
                     //cameraManagerGalactica.gameObject.SetActive(true);
@@ -1349,6 +1355,7 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     //galaxyView.TurnOffGalaxyView(galaxy);
                     //CanvasWorld.SetActive(false);
@@ -1440,17 +1447,20 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                     PanelGalactic_Map.SetActive(true);
+                   // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                   // PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
@@ -1521,11 +1531,13 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY:
