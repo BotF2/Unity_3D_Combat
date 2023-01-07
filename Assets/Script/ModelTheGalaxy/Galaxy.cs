@@ -10,7 +10,7 @@ namespace Assets.Script
 {
     public class Galaxy
     {
-        public Galaxy theGalaxy;
+        public static Galaxy theGalaxy;
         public List<SolarSystem> SolarSystems;
         public bool GalaxyNotNull = false;
         public int NumberOfStars;

@@ -15,6 +15,7 @@ namespace BOTF3D_GalaxyMap
     {
         public GameManager gameManager;
         public SolarSystemView solarSystemView;
+        //public CivilizationData civilizationDate;
         public Galaxy ourGalaxy;
         // public Canvas canvasGalactic;
         public GameObject FEDSysEmpty;
@@ -185,9 +186,9 @@ namespace BOTF3D_GalaxyMap
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
         // private OrbitalGalactic mySolarSystem; // star and planets
-        void Start()
+        void Awake()
         {
-            gameManager = GameManager.Instance;
+            //gameManager = GameManager.Instance;
             SysEmptyList = new List<GameObject>
             {
                 FEDSysEmpty,
@@ -364,21 +365,11 @@ namespace BOTF3D_GalaxyMap
                 // UpdateSystemButtons(SolarSystem)
             }
         }
-        //public void TurnOffGalaxyView(Galaxy galaxy) //, int solarSystemID)
-        //{
-        //    ourGalaxy = galaxy;
-        //    while (transform.childCount > 0) // delelt old systems from prior update
-        //    {
-        //        Transform child = transform.GetChild(0);
-        //        child.SetParent(null); // decreases number of children in while loop
-        //        Destroy(child.gameObject);
-        //    }
-        //    //solarSystem = null;
-        //}
+
         public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
         {
             // ToDo Implement both cannon and radome based on incoming GalaxyType seletection
-            string[] keysForSytemDictioanry = ReadSystemData(); // all the system names in string[]
+            string[] keysForSytemDictioanry = ReadSystemNames(); // all the system names in string[]
 
             //We are currently only numStars = 6; use numStars, without this reset, when we have enough system-button prefabs built and loaded 
 
@@ -393,6 +384,9 @@ namespace BOTF3D_GalaxyMap
                         new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(SysEmptyList[numStars[i]].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+
+                    CivilizationData.Create(numStars[i]);
+
                     starSystemNewGameOb.SetActive(true);
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
                     //myButton.image.sprite.
@@ -407,7 +401,7 @@ namespace BOTF3D_GalaxyMap
             SolarSystemView view = new SolarSystemView();
         }
          
-        private string[] ReadSystemData() // get names of civ in an array
+        private string[] ReadSystemNames() // get names of civ in an array
         {
             //SolarSystem.LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             String[] _systemCivData;
@@ -440,7 +434,7 @@ namespace BOTF3D_GalaxyMap
             return number;
         }
 
-        public void ShowASolarSystemView(int buttonSystemID)
+        public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system 
         {
             while (transform.childCount > 0) // delelt old systems from prior update
             {
