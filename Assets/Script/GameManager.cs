@@ -13,7 +13,7 @@ using BOTF3D_Combat;
 namespace BOTF3D_Core
 {
     #region Enums
-    public enum Civ
+    public enum CivEnum
     {
         FED,
         ROM,
@@ -141,7 +141,7 @@ namespace BOTF3D_Core
         ZAHL,
         ZALKONIAN,
         ZIBAL,
-        TEMPLATE
+        PLACEHOLDER,
     }
     #region StarSystemEnums
     public enum StarSystemEnum
@@ -304,6 +304,7 @@ namespace BOTF3D_Core
         ZAKDORN,
         ZALKONIA,
         ZIBAL,
+        PLACEHOLDER,
     }
     #endregion starSystemEnums
     public enum GalaxyType
@@ -570,14 +571,14 @@ namespace BOTF3D_Core
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
-        public Civ _localPlayer;
-        public Civ _hostPlayer;
-        public Civ _cliantZero;
-        public Civ _cliantOne;
-        public Civ _cliantTwo;
-        public Civ _cliantThree;
-        public Civ _cliantFour;
-        public Civ _cliantFive;
+        public CivEnum _localPlayer;
+        public CivEnum _hostPlayer;
+        public CivEnum _cliantZero;
+        public CivEnum _cliantOne;
+        public CivEnum _cliantTwo;
+        public CivEnum _cliantThree;
+        public CivEnum _cliantFour;
+        public CivEnum _cliantFive;
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
@@ -1153,7 +1154,7 @@ namespace BOTF3D_Core
             LoadPrefabs();
 
             _galaxySize = GalaxySize.SMALL;
-            _localPlayer = Civ.FED;
+            _localPlayer = CivEnum.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
                                      //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
@@ -1419,20 +1420,20 @@ namespace BOTF3D_Core
                     SetGalaxyMapCanon();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
-                        case Civ.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
+                        case CivEnum.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
                             // set 
                             break;
                         //case Civilization.TERRAN:
                         //    break;
-                        case Civ.ROM:
+                        case CivEnum.ROM:
                             break;
-                        case Civ.KLING:
+                        case CivEnum.KLING:
                             break;
-                        case Civ.CARD:
+                        case CivEnum.CARD:
                             break;
-                        case Civ.DOM:
+                        case CivEnum.DOM:
                             break;
-                        case Civ.BORG:
+                        case CivEnum.BORG:
                             break;
                         default:
                             break;

@@ -88,13 +88,13 @@ namespace BOTF3D_GalaxyMap
         // In Galaxy Map X is right left, Y is in out and z is negative up down
         [Header("Camera Positioning")]
         public Vector2 cameraOffset = new Vector2(10f, 14f);
-        public float lookAtOffset = 2f;
+        public float lookAtOffset = 400f;
 
         public float rotateSpeed = 20f;
         public float maxRotation;
         public float minRotation;
         [Header("Move Bounds")]
-        public Vector2 minBounds, maxBounds;
+        public Vector3 minBounds, maxBounds;
         [Header("Zoom Controls")]
 
         private Vector3 currentRotation;
@@ -111,8 +111,8 @@ namespace BOTF3D_GalaxyMap
 
         private void Awake()
         {
-            minBounds = new Vector2(-65f, -330f);
-            maxBounds = new Vector2(15f, -90f);
+            minBounds = new Vector3(-500f, -330f, -1000f);
+            maxBounds = new Vector3(300f, 400f, 1000f);
 
             maxRotation = _initRotation.z + 10f;
             minRotation = _initRotation.z - 10f;
@@ -157,18 +157,36 @@ namespace BOTF3D_GalaxyMap
                 if (Input.GetKey(KeyCode.S))
                     deltaPosition -= transform.up;
 
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.D))
                     deltaPosition += transform.right;
 
-                if (Input.GetKey(KeyCode.D))
+                //if (Input.GetKey(KeyCode.RightArrow))
+                //    deltaPosition += transform.right;
+
+                if (Input.GetKey(KeyCode.A))
                     deltaPosition -= transform.right;
 
+                //if(Input.GetKey(KeyCode.LeftArrow))
+                //    deltaPosition -= transform.right;
+
                 if (Input.GetKey(KeyCode.Q))
+                    deltaPosition += transform.forward;
+
+                //if (Input.GetKey(KeyCode.UpArrow))
+                //    deltaPosition += transform.forward;
+
+                if (Input.GetKey(KeyCode.E))
+                    deltaPosition -= transform.forward;
+
+                //if (Input.GetKey(KeyCode.DownArrow))
+                //    deltaPosition -= transform.forward;
+
+                if (Input.GetKey(KeyCode.Z))
                 {
                     transform.Rotate(Vector3.forward, frameRotate * Time.deltaTime * rotateSpeed);
                 }
 
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKey(KeyCode.C))
                 {
                     transform.Rotate(Vector3.back, frameRotate * Time.deltaTime * rotateSpeed);
                 }
@@ -210,7 +228,8 @@ namespace BOTF3D_GalaxyMap
             transform.position = new Vector3(
             Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
             Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y),
-            transform.position.z);
+            Mathf.Clamp(transform.position.z, minBounds.z, maxBounds.z));
+            //transform.position.z);
         }
         public float ClampAngles(float angle, float min, float max)
         {

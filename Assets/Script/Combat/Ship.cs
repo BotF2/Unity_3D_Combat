@@ -17,7 +17,7 @@ namespace BOTF3D_Combat
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
         public Combat combat;
-        public Civ _civilization;
+        public CivEnum _civilization;
         public ShipType _shipType;
         public GalaxySize _techLevel;
         public int _shieldsMaxHealth; // set in ShipData.txt
@@ -121,25 +121,25 @@ namespace BOTF3D_Combat
             switch (civ.ToUpper())
             {
                 case "FED":
-                    _civilization = Civ.FED;
+                    _civilization = CivEnum.FED;
                     break;
                 //case "TERRAN":
                 //    _civilization = Civilization.TERRAN;
                 //    break;
                 case "ROM":
-                    _civilization = Civ.ROM;
+                    _civilization = CivEnum.ROM;
                     break;
                 case "KLING":
-                    _civilization = Civ.KLING;
+                    _civilization = CivEnum.KLING;
                     break;
                 case "CARD":
-                    _civilization = Civ.CARD;
+                    _civilization = CivEnum.CARD;
                     break;
                 case "DOM":
-                    _civilization = Civ.DOM;
+                    _civilization = CivEnum.DOM;
                     break;
                 case "BORG":
-                    _civilization = Civ.BORG;
+                    _civilization = CivEnum.BORG;
                     break;
                 default:
                     break;

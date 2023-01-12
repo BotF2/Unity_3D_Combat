@@ -385,7 +385,7 @@ namespace BOTF3D_GalaxyMap
                     starSystemNewGameOb.transform.SetParent(SysEmptyList[numStars[i]].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
-                    CivilizationData.Create(numStars[i]);
+                    var theCiv = CivilizationData.Create(numStars[i]); // and civs make systems
 
                     starSystemNewGameOb.SetActive(true);
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();

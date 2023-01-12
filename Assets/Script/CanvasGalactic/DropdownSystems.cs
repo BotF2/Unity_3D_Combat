@@ -15,7 +15,7 @@ namespace BOTF3D_GalaxyMap
     {
         public TMPro.TMP_Dropdown resolutionDropdown; // get DropdownSystems menu
         public GameManager _gameManager;
-        public Civ? _localPlayer;
+        public CivEnum? _localPlayer;
         private List<string> _systemsList;
 
         public void Awake()
@@ -37,23 +37,23 @@ namespace BOTF3D_GalaxyMap
         {
             switch (_localPlayer)
             {
-                case Civ.FED:
-                    FindCivSystems((int)Civ.FED);
+                case CivEnum.FED:
+                    FindCivSystems((int)CivEnum.FED);
                     break;
-                case Civ.ROM:
-                    FindCivSystems((int)Civ.ROM);
+                case CivEnum.ROM:
+                    FindCivSystems((int)CivEnum.ROM);
                     break;
-                case Civ.KLING:
-                    FindCivSystems((int)Civ.KLING);
+                case CivEnum.KLING:
+                    FindCivSystems((int)CivEnum.KLING);
                     break;
-                case Civ.CARD:
-                    FindCivSystems((int)Civ.CARD);
+                case CivEnum.CARD:
+                    FindCivSystems((int)CivEnum.CARD);
                     break;
-                case Civ.DOM:
-                    FindCivSystems((int)Civ.DOM);
+                case CivEnum.DOM:
+                    FindCivSystems((int)CivEnum.DOM);
                     break;
-                case Civ.BORG:
-                    FindCivSystems((int)Civ.BORG);
+                case CivEnum.BORG:
+                    FindCivSystems((int)CivEnum.BORG);
                     break;
                 default:
                     break;

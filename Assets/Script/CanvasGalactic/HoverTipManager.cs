@@ -8,6 +8,7 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine.UI;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -15,9 +16,17 @@ namespace BOTF3D_GalaxyMap
     {
         public TextMeshProUGUI tipText;
         public RectTransform tipWindow;
-        private Vector3 theLocation;
+        //public GameObject tipWindowTwo;
 
-        public static Action<string> OnMouseHover;
+        private RawImage img;
+        //private RawImage imgTwo;
+        private Vector3 theLocation;
+        private StarSystemEnum starSystemEnum;
+        private StarSystem theStarSystem;
+        [SerializeField]
+        public StarSystemData starSystemData;
+
+        public static Action<string, StarSystemEnum> OnMouseHover;
         public static Action OnMouseLoseFocus;
 
         private void OnEnable()
@@ -40,10 +49,17 @@ namespace BOTF3D_GalaxyMap
             Vector3 movedUp = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 5);
             theLocation = movedUp;
         }
-        private void ShowTip(string tip) //, Vector2 mousePosition);
+        public void WhatSystem(StarSystemEnum starSysEneum)
         {
-            tipText.text = tip;
-            //tipWindow.sizeDelta= new Vector2(tipText.preferredWidth > 200 ? 200 : tipText.preferredWidth, tipText.preferredHeight);
+            theStarSystem = StarSystemData.StarSystemDictionary[starSysEneum];
+        }
+        private void ShowTip(string tip, StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
+        {
+            var theSystem = StarSystemData.StarSystemDictionary[starSystemEnum];
+            tipText.text = theSystem._ownerCiv._shortName;
+            img = tipWindow.gameObject.GetComponent<RawImage>();
+            img.texture = theSystem._ownerCiv._insignia.texture;
+
             tipWindow.gameObject.SetActive(true);
             tipWindow.transform.position = theLocation; //new Vector3 (theLocation.x + 200, theLocation.y + 200, theLocation.z - 100);
         }

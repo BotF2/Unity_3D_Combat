@@ -24,8 +24,8 @@ namespace BOTF3D_Combat
         public List<GameObject> _friendCombatans; // for now be get the combatant gameObjects as they are instantiated in InstantiatCombatShips
         public List<GameObject> _enemyCombatans;
 
-        public List<Civ> _friendCivs = new List<Civ>() { Civ.FED };
-        public List<Civ> _enemyCivs = new List<Civ>() { Civ.KLING, Civ.ROM, Civ.CARD };
+        public List<CivEnum> _friendCivs = new List<CivEnum>() { CivEnum.FED };
+        public List<CivEnum> _enemyCivs = new List<CivEnum>() { CivEnum.KLING, CivEnum.ROM, CivEnum.CARD };
 
         public void AddCombatant(GameObject combatant)
         {
@@ -35,32 +35,32 @@ namespace BOTF3D_Combat
                 nameArray = combatant.name.Split('_');
             }
             string civName = nameArray[0];
-            Civ daCiv;
+            CivEnum daCiv;
             switch (civName.ToUpper())
             {
                 case "FED":
-                    daCiv = Civ.FED;
+                    daCiv = CivEnum.FED;
                     break;
                 //case "TERRAN":
                 //    daCiv = Civilization.TERRAN;
                 //    break;
                 case "ROM":
-                    daCiv = Civ.ROM;
+                    daCiv = CivEnum.ROM;
                     break;
                 case "KLING":
-                    daCiv = Civ.KLING;
+                    daCiv = CivEnum.KLING;
                     break;
                 case "CARD":
-                    daCiv = Civ.CARD;
+                    daCiv = CivEnum.CARD;
                     break;
                 case "DOM":
-                    daCiv = Civ.DOM;
+                    daCiv = CivEnum.DOM;
                     break;
                 case "BORG":
-                    daCiv = Civ.BORG;
+                    daCiv = CivEnum.BORG;
                     break;
                 default:
-                    daCiv = Civ.FED;
+                    daCiv = CivEnum.FED;
                     break;
             }
             if (_friendCivs.Contains(daCiv))
@@ -81,11 +81,11 @@ namespace BOTF3D_Combat
         {
             return _enemyCombatans;
         }
-        public List<Civ> FriendCivCombatants()
+        public List<CivEnum> FriendCivCombatants()
         {
             return _friendCivs;
         }
-        public List<Civ> EnemyCivCombatants()
+        public List<CivEnum> EnemyCivCombatants()
         {
             return _enemyCivs;
         }

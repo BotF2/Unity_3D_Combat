@@ -7,6 +7,7 @@ using Assets.Script;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -16,11 +17,14 @@ namespace BOTF3D_GalaxyMap
         private float timeToHoverWait = 0.5f;
         public HoverTipManager hoverTipManager;
         public GameObject myParent;
+        [SerializeField] 
+        private StarSystemEnum _starSysEnum;
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             StopAllCoroutines();
             hoverTipManager.WhereIsTheTip(gameObject.transform.position);
+            hoverTipManager.WhatSystem(_starSysEnum);
             StartCoroutine(StartTimer());
         }
 
@@ -31,7 +35,7 @@ namespace BOTF3D_GalaxyMap
         }
         private void ShowMessage()
         {
-            HoverTipManager.OnMouseHover(tipToShow); //, Input.mousePosition);
+            HoverTipManager.OnMouseHover(tipToShow, _starSysEnum); //, Input.mousePosition);
         }
         private IEnumerator StartTimer()
         {

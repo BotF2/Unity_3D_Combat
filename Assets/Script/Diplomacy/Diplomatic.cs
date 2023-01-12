@@ -18,21 +18,21 @@ namespace Assets.Script
             WillTrade,
             WillFightAlongSide
         }
-        public List<Civ> FightWithFed = new List<Civ>() { Civ.FED };
+        public List<CivEnum> FightWithFed = new List<CivEnum>() { CivEnum.FED };
         //public List<Civilization> FightWithTerran;
-        public List<Civ> FightWithRom = new List<Civ>() { Civ.ROM, Civ.KLING, Civ.CARD };
-        public List<Civ> FightWithKling = new List<Civ>() { Civ.ROM, Civ.KLING, Civ.CARD };
-        public List<Civ> FightWithCard = new List<Civ>() { Civ.ROM, Civ.KLING, Civ.CARD };
-        public List<Civ> FightWithDom;
-        public List<Civ> FightWithBorg;
+        public List<CivEnum> FightWithRom = new List<CivEnum>() { CivEnum.ROM, CivEnum.KLING, CivEnum.CARD };
+        public List<CivEnum> FightWithKling = new List<CivEnum>() { CivEnum.ROM, CivEnum.KLING, CivEnum.CARD };
+        public List<CivEnum> FightWithCard = new List<CivEnum>() { CivEnum.ROM, CivEnum.KLING, CivEnum.CARD };
+        public List<CivEnum> FightWithDom;
+        public List<CivEnum> FightWithBorg;
 
-        public List<Civ> FightFed = new List<Civ>() { Civ.ROM, Civ.KLING, Civ.CARD };
+        public List<CivEnum> FightFed = new List<CivEnum>() { CivEnum.ROM, CivEnum.KLING, CivEnum.CARD };
        // public List<Civilization> FightTerran;
-        public List<Civ> FightRom = new List<Civ>() { Civ.FED };
-        public List<Civ> FightKling = new List<Civ>() { Civ.FED };
-        public List<Civ> FightCard = new List<Civ>() { Civ.FED };
-        public List<Civ> FightDom;
-        public List<Civ> FightBorg;
+        public List<CivEnum> FightRom = new List<CivEnum>() { CivEnum.FED };
+        public List<CivEnum> FightKling = new List<CivEnum>() { CivEnum.FED };
+        public List<CivEnum> FightCard = new List<CivEnum>() { CivEnum.FED };
+        public List<CivEnum> FightDom;
+        public List<CivEnum> FightBorg;
 
         public void Start()
         {
@@ -43,29 +43,29 @@ namespace Assets.Script
             // update diplomacy here
         }
 
-        public Civ[] WhoFigthsWithMe(Civ civ)
+        public CivEnum[] WhoFigthsWithMe(CivEnum civ)
         {
             switch (civ)
             {
-                case Civ.FED:
+                case CivEnum.FED:
                     return FightWithFed.ToArray();
                     break;
                 //case Civilization.TERRAN:
                 //    return FightWithTerran.ToArray();
                 //    break;
-                case Civ.ROM:
+                case CivEnum.ROM:
                     return FightWithRom.ToArray();
                     break;
-                case Civ.KLING:
+                case CivEnum.KLING:
                     return FightWithKling.ToArray();
                     break;
-                case Civ.CARD:
+                case CivEnum.CARD:
                     return FightWithCard.ToArray();
                     break;
-                case Civ.DOM:
+                case CivEnum.DOM:
                     return FightWithDom.ToArray();
                     break;
-                case Civ.BORG:
+                case CivEnum.BORG:
                     return FightWithBorg.ToArray();
                     break;
                 default:
@@ -73,29 +73,29 @@ namespace Assets.Script
                     break;
             }
         }
-        public Civ[] WhoIsAtWar(Civ civ)
+        public CivEnum[] WhoIsAtWar(CivEnum civ)
         {
             switch (civ)
             {
-                case Civ.FED:
+                case CivEnum.FED:
                     return FightFed.ToArray();
                     break;
                 //case Civilization.TERRAN:
                 //    return FightTerran.ToArray();
                 //    break;
-                case Civ.ROM:
+                case CivEnum.ROM:
                     return FightRom.ToArray();
                     break;
-                case Civ.KLING:
+                case CivEnum.KLING:
                     return FightKling.ToArray();
                     break;
-                case Civ.CARD:
+                case CivEnum.CARD:
                     return FightCard.ToArray();
                     break;
-                case Civ.DOM:
+                case CivEnum.DOM:
                     return FightDom.ToArray();
                     break;
-                case Civ.BORG:
+                case CivEnum.BORG:
                     return FightBorg.ToArray();
                     break;
                 default:
