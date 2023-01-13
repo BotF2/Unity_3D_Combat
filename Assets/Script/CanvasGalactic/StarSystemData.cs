@@ -24,6 +24,9 @@ namespace BOTF3D_GalaxyMap
             StarSystem daSystem = new StarSystem(systemInt);
             string[] sysStrings = GalaxyView.SystemDataDictionary[systemInt];
             daSystem._systemInt = systemInt;
+            daSystem._x = int.Parse(sysStrings[1]);
+            daSystem._y = int.Parse(sysStrings[2]);
+            daSystem._z = int.Parse(sysStrings[3]);
             daSystem._sysEnum = (StarSystemEnum)systemInt;
             daSystem._sysName = sysStrings[4];
             StarType star;

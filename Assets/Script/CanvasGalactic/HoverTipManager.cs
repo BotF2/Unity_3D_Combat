@@ -19,14 +19,13 @@ namespace BOTF3D_GalaxyMap
         //public GameObject tipWindowTwo;
 
         private RawImage img;
-        //private RawImage imgTwo;
+
         private Vector3 theLocation;
-        private StarSystemEnum starSystemEnum;
         private StarSystem theStarSystem;
         [SerializeField]
         public StarSystemData starSystemData;
 
-        public static Action<string, StarSystemEnum> OnMouseHover;
+        public static Action<StarSystemEnum> OnMouseHover;
         public static Action OnMouseLoseFocus;
 
         private void OnEnable()
@@ -49,14 +48,19 @@ namespace BOTF3D_GalaxyMap
             Vector3 movedUp = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 5);
             theLocation = movedUp;
         }
-        public void WhatSystem(StarSystemEnum starSysEneum)
+        public void WhatSystem(StarSystemEnum starSysEnum)
         {
-            theStarSystem = StarSystemData.StarSystemDictionary[starSysEneum];
+            theStarSystem = StarSystemData.StarSystemDictionary[starSysEnum];
         }
-        private void ShowTip(string tip, StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
+        private void ShowTip(StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
         {
             var theSystem = StarSystemData.StarSystemDictionary[starSystemEnum];
             tipText.text = theSystem._ownerCiv._shortName;
+            tipWindow.localScale = new Vector3(1,1,1);
+            if (theSystem._y > 0)
+            {
+                tipWindow.localScale *= 2;
+            }
             img = tipWindow.gameObject.GetComponent<RawImage>();
             img.texture = theSystem._ownerCiv._insignia.texture;
 

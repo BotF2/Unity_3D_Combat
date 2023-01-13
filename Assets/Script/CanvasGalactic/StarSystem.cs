@@ -19,6 +19,9 @@ namespace BOTF3D_GalaxyMap
         #region Fields
 
         public int _systemInt;
+        public int _x;
+        public int _y;
+        public int _z;
         public StarSystemEnum _sysEnum;
         public string _sysName;
         public StarType _starType;

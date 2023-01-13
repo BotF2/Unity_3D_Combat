@@ -13,10 +13,9 @@ namespace BOTF3D_GalaxyMap
 {
     public class HoverTips : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        public string tipToShow;
+        //public string tipToShow;
         private float timeToHoverWait = 0.5f;
         public HoverTipManager hoverTipManager;
-        public GameObject myParent;
         [SerializeField] 
         private StarSystemEnum _starSysEnum;
 
@@ -24,7 +23,7 @@ namespace BOTF3D_GalaxyMap
         {
             StopAllCoroutines();
             hoverTipManager.WhereIsTheTip(gameObject.transform.position);
-            hoverTipManager.WhatSystem(_starSysEnum);
+            hoverTipManager.WhatSystem(_starSysEnum); // send the starsystem enum to the manager
             StartCoroutine(StartTimer());
         }
 
@@ -35,7 +34,7 @@ namespace BOTF3D_GalaxyMap
         }
         private void ShowMessage()
         {
-            HoverTipManager.OnMouseHover(tipToShow, _starSysEnum); //, Input.mousePosition);
+            HoverTipManager.OnMouseHover( _starSysEnum); //, Input.mousePosition);
         }
         private IEnumerator StartTimer()
         {

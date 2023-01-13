@@ -257,7 +257,6 @@ namespace BOTF3D_Core
         RAKHARI,
         RAKOSA,
         RAMATIA,
-        REMUS,
         RIGELIA,
         RISIA,
         RUTIA,
