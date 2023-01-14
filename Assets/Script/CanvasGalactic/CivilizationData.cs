@@ -21,7 +21,7 @@ namespace BOTF3D_GalaxyMap
         [SerializeField]
         public static Dictionary<int, string[]> CivDataDictionary; // incoming data
         [SerializeField]
-        public static Dictionary<CivEnum, Civilization> CivilizationDictionary = new Dictionary<CivEnum, Civilization>() { { CivEnum.PLACEHOLDER, new Civilization(900) } };
+        public static Dictionary<CivEnum, Civilization> CivilizationDictionary = new Dictionary<CivEnum, Civilization>() { { CivEnum.PLACEHOLDER, new Civilization(111) } };
 
         #endregion
         public void Awake()

@@ -1,8 +1,8 @@
-0,FED,FEDERATION,United Federation of Planets,SOL,Compation,Peaceful,fed,FEDERATION,2,2
-1,ROM,ROMULAN,Romulan Star Empire,ROMULUS,Arrogent,Hostile,rom,ROMULANS,2,2
-2,KLING,KLINGON,Klingon Empire,KRONOS,Warlike,Honorable,kling,KLINGON,2,2
-3,CARD,CARDASSIAN,Cardassian Union,CARDASSIA,Ruthless,Materialistic,card,CARDASSIAN,2,2
-4,DOM,DOMINION,Dominion,OMARIAN_NEBULA,Religious,Warlike,dom,DOMINION,2,2
+0,FED,FEDERATION,United Federation of Planets,SOL,Compation,Peaceful,federation,FEDERATION,2,2
+1,ROM,ROMULAN,Romulan Star Empire,ROMULUS,Arrogent,Hostile,romulans,ROMULANS,2,2
+2,KLING,KLINGON,Klingon Empire,KRONOS,Warlike,Honorable,klingon,KLINGON,2,2
+3,CARD,CARDASSIAN,Cardassian Union,CARDASSIA,Ruthless,Materialistic,cardassian,CARDASSIAN,2,2
+4,DOM,DOMINION,Dominion,OMARIAN_NEBULA,Religious,Warlike,dominion,DOMINION,2,2
 5,BORG,BORG,Borg Collective,UNICOMPLEX,Materializtic,Hostile,borg,BORG,2,2
 6,ACAMARIANS,ACAMARIANS,ACAMARIANS,ACAMA,Compation,Neutral,acamarians,ACAMARIANS,2,2
 7,AKAALI,AKAALI,AKAALI,AKAALI,Neutral,Hostile,akaali,AKAALI,2,2
@@ -109,6 +109,7 @@
 108,RAKHARI,RAKHARI,RAKHARI,RAKHARI,Compation,Arrogant,rakhari,RAKHARI,2,2
 109,RAKOSANS,RAKOSANS,RAKOSANS,RAKOSA,Neutral,Compation,rakosans,RAKOSANS,2,2
 110,RAMATIANS,RAMATIANS,RAMATIANS,RAMATIA,Hostile,Neutral,ramatians,RAMATIANS,2,2
+111,PLACEHOLDER,PLACEHOLDER,PLACEHOLDER,HELIOS,Neutral,Neutral,none,_default,0,0
 112,RIGELIANS,RIGELIANS,RIGELIANS,RIGELIA,Ruthless,Warlike,rigelians,RIGELIANS,2,2
 113,RISIANS,RISIANS,RISIANS,RISIA,Peaceful,Neutral,risians,RISIANS,2,2
 114,RUTIANS,RUTIANS,RUTIANS,RUTIA,Warlike,materialistic,rutians,RUTIANS,2,2
@@ -143,7 +144,7 @@
 143,VISSIANS,VISSIANS,VISSIANS,VISSIA,Arrogant,Ruthless,vissians,VISSIANS,2,2
 144,VORGONS,VORGONS,VORGONS,VORGON,Humility,Peaceful,vorgons,VORGONS,2,2
 145,VORI,VORI,VORI,VORI,Warlike,Materialistic,vori,VORI,2,2
-146,VULCANS,VULCANS,VULCANS,_40_ERIDANI_A_II,Intellectual,Neutral,vulcans,VULCANS,2,2
+146,VULCANS,VULCANS,VULCANS,FORTY_ERIDANI,Intellectual,Neutral,vulcans,VULCANS,2,2
 147,WADI,WADI,WADI,WADI,Compation,Neutral,wadi,WADI,2,2
 148,XANTHANS,XANTHANS,XANTHANS,XANTHAN,Neutral,Materialistic,xanthans,XANTHANS,2,2
 149,XEPOLITES,XEPOLITES,XEPOLITES,XEPOLITES,Hostile,Religious,xepolites,XEPOLITES,2,2
