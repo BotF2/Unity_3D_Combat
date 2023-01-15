@@ -9,6 +9,7 @@ using BOTF3D_Combat;
 using UnityEngine.UIElements;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -16,7 +17,6 @@ namespace BOTF3D_GalaxyMap
     {
         public TextMeshProUGUI tipText;
         public RectTransform tipWindow;
-        //public GameObject tipWindowTwo;
 
         private RawImage img;
 
@@ -25,8 +25,9 @@ namespace BOTF3D_GalaxyMap
         [SerializeField]
         public StarSystemData starSystemData;
 
-        public static Action<string, StarSystemEnum> OnMouseHover;
+        public static Action<StarSystemEnum> OnMouseHover;
         public static Action OnMouseLoseFocus;
+        
 
         private void OnEnable()
         {
@@ -48,12 +49,11 @@ namespace BOTF3D_GalaxyMap
             Vector3 movedUp = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 5);
             theLocation = movedUp;
         }
-        public void WhatSystem(string tip, StarSystemEnum starSysEnum)
+        public void WhatSystem( StarSystemEnum starSysEnum)
         {
             theStarSystem = StarSystemData.StarSystemDictionary[starSysEnum];
-            tipText.text = tip;
         }
-        private void ShowTip(string tip, StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
+        private void ShowTip( StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
         {
             var theSystem = StarSystemData.StarSystemDictionary[starSystemEnum];
             tipText.text = theSystem._ownerCiv._shortName;
@@ -66,7 +66,7 @@ namespace BOTF3D_GalaxyMap
             img.texture = theSystem._ownerCiv._insignia.texture;
 
             tipWindow.gameObject.SetActive(true);
-            tipWindow.transform.position = theLocation; //new Vector3 (theLocation.x + 200, theLocation.y + 200, theLocation.z - 100);
+            tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.y + 200, theLocation.z - 100);
         }
         private void HideTip()
         {

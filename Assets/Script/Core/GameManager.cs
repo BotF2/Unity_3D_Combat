@@ -639,7 +639,7 @@ namespace BOTF3D_Core
         private GameObject PanelCredits_Menu;
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
-        private GameObject PanelGalactic_Map; 
+       // private GameObject PanelGalactic_Map; 
         //private GameObject PanelGalacticTelescope;
         private GameObject PanelSystem_Play;
         private GameObject PanelGalactic_Completed;
@@ -999,7 +999,7 @@ namespace BOTF3D_Core
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            //PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
@@ -1384,7 +1384,7 @@ namespace BOTF3D_Core
                     //if (CanvasWorld != null)
                     //{
                         //CanvasWorld.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                    // PanelGalacticTelescope.SetActive(false);
                     //}
 
@@ -1475,7 +1475,7 @@ namespace BOTF3D_Core
                     PanelSaveGame_Menu.SetActive(false);
                     //CanvasWorld = GameObject.Find("CanvasWorld");
                     //CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
                    // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     _statePassedMain_Init = true;
@@ -1492,7 +1492,7 @@ namespace BOTF3D_Core
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                    // CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
                     //PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     PanelSystem_Play.SetActive(false);
@@ -1504,7 +1504,7 @@ namespace BOTF3D_Core
                     //cameraManagerGalactica.enabled = false;
                     //cameraManagerGalactica.TurnOffGalaxyFly();
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                   // PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
@@ -1523,7 +1523,7 @@ namespace BOTF3D_Core
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
-                    PanelGalactic_Map.SetActive(true);
+                   // PanelGalactic_Map.SetActive(true);
                    // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
@@ -1547,7 +1547,7 @@ namespace BOTF3D_Core
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                  //  PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     //galaxyView.TurnOffGalaxyView(galaxy);
@@ -1639,20 +1639,20 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
                    // PanelGalacticTelescope.SetActive(true);
                     PanelGalaxyUI.SetActive(true);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                    // PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
@@ -1723,13 +1723,13 @@ namespace BOTF3D_Core
                     break;
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
                     break;

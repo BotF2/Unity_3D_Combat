@@ -10,11 +10,17 @@ using Assets.Script;
 
 namespace BOTF3D_GalaxyMap
 {
-
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
         public SolarSystemView solarSystemView;
+        [SerializeField]
+        public HoverTips hoverTips;
+        public HoverTipManager hoverTipManager;
+        [SerializeField]
+        public Canvas canvasGalactic;
+        //public Pane canvasGalaxy;
+        //public PanelGalactic_Map 
         //public CivilizationData civilizationDate;
         public Galaxy ourGalaxy;
         // public Canvas canvasGalactic;
@@ -130,7 +136,7 @@ namespace BOTF3D_GalaxyMap
         public GameObject RAKHARISysEmpty;
         public GameObject RAKOSANSSysEmpty;
         public GameObject RAMATIANSSysEmpty;
-        public GameObject REMANSSysEmpty;
+        public GameObject HELIOSSysEmpty;
         public GameObject RIGELIANSSysEmpty;
         public GameObject RISIANSSysEmpty;
         public GameObject RUTIANSSysEmpty;
@@ -303,7 +309,7 @@ namespace BOTF3D_GalaxyMap
                 RAKHARISysEmpty,
                 RAKOSANSSysEmpty,
                 RAMATIANSSysEmpty,
-                REMANSSysEmpty,
+                HELIOSSysEmpty,
                 RIGELIANSSysEmpty,
                 RISIANSSysEmpty,
                 RUTIANSSysEmpty,
@@ -353,6 +359,32 @@ namespace BOTF3D_GalaxyMap
             #endregion
             };
             LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            //for (int i = 0; i < SysEmptyList.Count; i++)
+            //{
+            //    GameObject tempObject = GameObject.Find("CanvasGalactic");
+            //    if (tempObject != null)
+            //    {
+            //        canvasGalactic = tempObject.GetComponent<Canvas>();
+
+            //        SysEmptyList[i] = new GameObject();
+
+            //        SysEmptyList[i].name = SystemDataDictionary[i][4];
+            //        int x = int.Parse(SystemDataDictionary[i][1]);
+            //        int y = int.Parse(SystemDataDictionary[i][2]);
+            //        int z = int.Parse(SystemDataDictionary[i][3]);
+            //        Vector3 worldSpace = new Vector3(x, y, z);
+            //        SysEmptyList[i].transform.Translate(worldSpace, Space.World);
+            //        SysEmptyList[i].transform.SetParent(canvasGalactic.transform, false);
+            //        SysEmptyList[i].layer= 6;
+            //        var hTips = SysEmptyList[i].AddComponent<HoverTips>();
+            //        hTips._hoverTipManager = hoverTipManager;
+            //        hTips._starSysEnum = (StarSystemEnum)i;
+            //        hTips._sysLocation = worldSpace;
+            //        hTips._hoverTipManager = hoverTipManager;
+
+            //        SysEmptyList[i].SetActive(true);
+            //    }
+            //}
         }
         void Update()
         {
@@ -377,15 +409,40 @@ namespace BOTF3D_GalaxyMap
             if (canonOrRandom == GalaxyType.CANON)
             for (int i = 0; i < numStars.Length; i++)
             {
-                string ourKey = keysForSytemDictioanry[numStars[i]];
-                if (keysForSytemDictioanry[i].Length != 0)
+                int sysIndex = numStars[i];
+                string ourKey = keysForSytemDictioanry[sysIndex];
+                if (keysForSytemDictioanry[sysIndex].Length != 0)
                 {
+                    GameObject tempObject = GameObject.Find("CanvasGalactic");
+                    if (tempObject != null)
+                    {
+                        canvasGalactic = tempObject.GetComponent<Canvas>();
+
+                        SysEmptyList[sysIndex] = new GameObject();
+
+                        SysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
+                        int x = int.Parse(SystemDataDictionary[sysIndex][1]);
+                        int y = int.Parse(SystemDataDictionary[sysIndex][2]);
+                        int z = int.Parse(SystemDataDictionary[sysIndex][3]);
+                        Vector3 worldSpace = new Vector3(x, y, z);
+                        SysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
+                        SysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
+                        SysEmptyList[sysIndex].layer = 6;
+                        var hTips = SysEmptyList[sysIndex].AddComponent<HoverTips>();
+                        hTips._hoverTipManager = hoverTipManager;
+                        hTips._starSysEnum = (StarSystemEnum)sysIndex;
+                        hTips._sysLocation = worldSpace;
+                        hTips._hoverTipManager = hoverTipManager;
+
+                        SysEmptyList[sysIndex].SetActive(true);
+                    }
+
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey],
-                        new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
-                    starSystemNewGameOb.transform.SetParent(SysEmptyList[numStars[i]].transform, false);
+                    new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
+                    starSystemNewGameOb.transform.SetParent(SysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
-                    var theCiv = CivilizationData.Create(numStars[i]); // and civs make systems
+                    var theCiv = CivilizationData.Create(sysIndex); // and civs make systems
 
                     starSystemNewGameOb.SetActive(true);
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();

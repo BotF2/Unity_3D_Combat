@@ -24,6 +24,7 @@ TagManager:
   - ROM_SCOUT_III(CLONE)
   - BORG_CRUISER_II(CLONE)
   - SolarSystemViewObject
+  - HoverTipManager
   layers:
   - Default
   - TransparentFX

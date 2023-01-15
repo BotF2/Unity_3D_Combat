@@ -12,12 +12,14 @@ using UnityEngine.XR;
 using static UnityEngine.ParticleSystem;
 using UnityEngine.Rendering;
 using System.Runtime.CompilerServices;
+using UnityEngine.Device;
 
 namespace BOTF3D_GalaxyMap
 {
     public class CivilizationData : MonoBehaviour
     {
         #region Fields
+        //public Canvas canvasGalactic;
         [SerializeField]
         public static Dictionary<int, string[]> CivDataDictionary; // incoming data
         [SerializeField]
@@ -65,19 +67,22 @@ namespace BOTF3D_GalaxyMap
             daCiv._shortName = sysStrings[2];
             daCiv._longName = sysStrings[3];
 
+            //GetImage(systemInt, 8, "Insignias/", daCiv); // 8 is insignia
             string holdInsigniaName = CivDataDictionary[systemInt][8];
             string pathInsignia = "Insignias/" + holdInsigniaName;
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane); // (nameInsginia);
             var rend = go.GetComponent<Renderer>();
             rend.material.mainTexture = Resources.Load(pathInsignia) as Texture;
-            daCiv._insignia = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0,0,rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
- 
+            daCiv._insignia = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            go.gameObject.SetActive(false);
+            //GetImage(systemInt, 7, "Civilizations/", daCiv); // 7 is Civ
             string holdCivName = CivDataDictionary[systemInt][7];
             string pathCiv = "Civilizations/" + holdCivName;
             GameObject goTwo = GameObject.CreatePrimitive(PrimitiveType.Plane);
             var rendTwo = goTwo.GetComponent<Renderer>();
             rendTwo.material.mainTexture = Resources.Load(pathCiv) as Texture;
             daCiv._raceImage = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            goTwo.gameObject.SetActive(false);
 
             daCiv._civResearch = int.Parse(sysStrings[10]);
             daCiv._civCredits = int.Parse(sysStrings[9]);
@@ -86,5 +91,16 @@ namespace BOTF3D_GalaxyMap
             daCiv._homeSystem._ownerCiv = daCiv;
             return daCiv;
         }
+        //private static void GetImage(int system, int theIndex, string path, Civilization daCiv)
+        //{
+        //    string holdInsigniaName = CivDataDictionary[system][theIndex];
+        //    string pathInsignia = path + holdInsigniaName;
+        //    GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane); // (nameInsginia);
+        //    var rend = go.GetComponent<Renderer>();
+        //    rend.material.mainTexture = Resources.Load(pathInsignia) as Texture;
+        //    daCiv._insignia = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+        //    go.gameObject.SetActive(false);
+
+        //}
     }
 }
