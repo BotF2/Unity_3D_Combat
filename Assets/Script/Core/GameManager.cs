@@ -1203,7 +1203,7 @@ namespace BOTF3D_Core
         {
             _statePassedLobbyInit = false;
             SwitchtState(State.LOBBY_MENU);
-            _LoadGamePanel.ClosePanel();
+            //_LoadGamePanel.ClosePanel();
         }
 
         public void SinglePlayerLobbyClicked() // go to main menu through LOBBY_INIT
@@ -1268,25 +1268,13 @@ namespace BOTF3D_Core
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
             //PanelGalactic_Map.SetActive(true);
         }
-        public void TurnOnGalacticSystems(bool offOn)
-        {
-            // a loop here through all systems setting them active = true
-            //for (int i = 0; i < _galaxyStarCount; i++)
-            //{
-            //    AllSystemsList[i].SetActive(true);
-            //    if (i != 0)
-            //     ActiveSystemList.Add(AllSystemsList[i]);
-            //}
-            //System_FEDERATION.SetActive(offOn);
-            //System_ROMULANS.SetActive(offOn);
-            // System_KLINGONS.SetActive(offOn);
-        }
+
         public void SetGalaxyMapSize() // 
         {
             switch (_galaxySize)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = new int[]{ 0,1,2,3,4,5,6,7,12,146}; 
+                    _galaxyStarCount = new int[]{0,1,2,3,4,5,6,7,12,54,59,61,90,95,105,103,113,116,125,129,131,135,138,146,147,150,155}; 
                    // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:

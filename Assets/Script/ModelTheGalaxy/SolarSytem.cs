@@ -17,6 +17,7 @@ namespace BOTF3D_GalaxyMap
         public Vector3 sysLocation;
         public string sysName;
         //public CivEnum sysCivOwner; // no civ, not in the view, only the class
+        public int sysPop;
         public SystemType sysType;
         public StarType sysStarType;
         public Planet[] sysPlanets;
@@ -29,8 +30,9 @@ namespace BOTF3D_GalaxyMap
             this.sysLocation = new Vector3(int.Parse(systemData[1]), int.Parse(systemData[2]), int.Parse(systemData[3]));
             this.sysName = systemData[4];
             //this.sysCivOwner = GetCivOwnerEnum(systemData[5]);
-            this.sysType = GetSystemType(systemData[6]);
-            this.sysStarType = GetStarTypeEnum(systemData[7]);
+            this.sysPop = int.Parse(systemData[6]);
+            this.sysType = GetSystemType(systemData[7]);
+            this.sysStarType = GetStarTypeEnum(systemData[8]);
             this.sysPlanets = GetPlanetArray(systemData);
             this.AddChild(myStar);
             if (systemData[7] == "Nebula" || systemData[7] == "Complex")

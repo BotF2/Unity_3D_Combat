@@ -111,7 +111,7 @@ namespace BOTF3D_GalaxyMap
 
         private void Awake()
         {
-            minBounds = new Vector3(-500f, -330f, -1000f);
+            minBounds = new Vector3(-500f, -450f, -1000f);
             maxBounds = new Vector3(300f, 400f, 1000f);
 
             maxRotation = _initRotation.z + 10f;

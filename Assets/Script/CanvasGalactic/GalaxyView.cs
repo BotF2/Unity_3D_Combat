@@ -24,165 +24,165 @@ namespace BOTF3D_GalaxyMap
         //public CivilizationData civilizationDate;
         public Galaxy ourGalaxy;
         // public Canvas canvasGalactic;
-        public GameObject FEDSysEmpty;
-        public GameObject ROMSysEmpty;
-        public GameObject KLINGSysEmpty;
-        public GameObject CARDSysEmpty;
-        public GameObject DOMSysEmpty;
-        public GameObject BORGSysEmpty;
+        private GameObject FEDSysEmpty;
+        private GameObject ROMSysEmpty;
+        private GameObject KLINGSysEmpty;
+        private GameObject CARDSysEmpty;
+        private GameObject DOMSysEmpty;
+        private GameObject BORGSysEmpty;
         #region The Minor Race Empties
-        public GameObject ACAMARIANSSysEmpty;
-        public GameObject AKAALISysEmpty;
-        public GameObject AKRITIRIANSSysEmpty;
-        public GameObject ALDEANSSysEmpty;
-        public GameObject ALGOLIANSSysEmpty;
-        public GameObject ALSAURIANSSysEmpty;
-        public GameObject ANDORIANSSysEmpty;
-        public GameObject ANGOSIANSSysEmpty;
-        public GameObject ANKARISysEmpty;
-        public GameObject ANTEDEANSSysEmpty;
-        public GameObject ANTICANSSysEmpty;
-        public GameObject ARBAZANSysEmpty;
-        public GameObject ARDANANSSysEmpty;
-        public GameObject ARGRATHISysEmpty;
-        public GameObject ARKARIANSSysEmpty;
-        public GameObject ATREANSSysEmpty;
-        public GameObject AXANARSysEmpty;
-        public GameObject BAJORANSSysEmpty;
-        public GameObject BAKUSysEmpty;
-        public GameObject BANDISysEmpty;
-        public GameObject BANEANSSysEmpty;
-        public GameObject BARZANSSysEmpty;
-        public GameObject BENZITESSysEmpty;
-        public GameObject BETAZOIDSSysEmpty;
-        public GameObject BILANAIANSSysEmpty;
-        public GameObject BOLIANSSysEmpty;
-        public GameObject BOMARSysEmpty;
-        public GameObject BOSLICSSysEmpty;
-        public GameObject BOTHASysEmpty;
-        public GameObject BREELLIANSSysEmpty;
-        public GameObject BREENSysEmpty;
-        public GameObject BREKKIANSSysEmpty;
-        public GameObject BYNARSSysEmpty;
-        public GameObject CAIRNSysEmpty;
-        public GameObject CALDONIANSSysEmpty;
-        public GameObject CAPELLANSSysEmpty;
-        public GameObject CHALNOTHSysEmpty;
-        public GameObject CORIDANSysEmpty;
-        public GameObject CORVALLENSSysEmpty;
-        public GameObject CYTHERIANSSysEmpty;
-        public GameObject DELTANSSysEmpty;
-        public GameObject DENOBULANSSysEmpty;
-        public GameObject DEVORESysEmpty;
-        public GameObject DOPTERIANSSysEmpty;
-        public GameObject DOSISysEmpty;
-        public GameObject DRAISysEmpty;
-        public GameObject DREMANSSysEmpty;
-        public GameObject EDOSysEmpty;
-        public GameObject ELAURIANSSysEmpty;
-        public GameObject ELAYSIANSSysEmpty;
-        public GameObject ENTHARANSSysEmpty;
-        public GameObject EVORASysEmpty;
-        public GameObject EXCALBIANSSysEmpty;
-        public GameObject FERENGISysEmpty;
-        public GameObject FLAXIANSSysEmpty;
-        public GameObject GORNSysEmpty;
-        public GameObject GRAZERITESSysEmpty;
-        public GameObject HAAKONIANSSysEmpty;
-        public GameObject HALKANSSysEmpty;
-        public GameObject HAZARISysEmpty;
-        public GameObject HEKARANSSysEmpty;
-        public GameObject HIROGENSysEmpty;
-        public GameObject HORTASysEmpty;
-        public GameObject IYAARANSSysEmpty;
-        public GameObject JNAIISysEmpty;
-        public GameObject KAELONSysEmpty;
-        public GameObject KAREMMASysEmpty;
-        public GameObject KAZONSysEmpty;
-        public GameObject KELLERUNSysEmpty;
-        public GameObject KESPRYTTSysEmpty;
-        public GameObject KLAESTRONIANSSysEmpty;
-        public GameObject KRADINSysEmpty;
-        public GameObject KREETASSANSSysEmpty;
-        public GameObject KRIOSIANSSysEmpty;
-        public GameObject KTARIANSSysEmpty;
-        public GameObject LEDOSIANSSysEmpty;
-        public GameObject LISSEPIANSSysEmpty;
-        public GameObject LOKIRRIMSysEmpty;
-        public GameObject LURIANSSysEmpty;
-        public GameObject MALCORIANSSysEmpty;
-        public GameObject MALONSysEmpty;
-        public GameObject MAQUISSysEmpty;
-        public GameObject MARKALIANSSysEmpty;
-        public GameObject MERIDIANSSysEmpty;
-        public GameObject MINTAKANSSysEmpty;
-        public GameObject MIRADORNSysEmpty;
-        public GameObject MIZARIANSSysEmpty;
-        public GameObject MOKRASysEmpty;
-        public GameObject MONEANSSysEmpty;
-        public GameObject NAUSICAANSSysEmpty;
-        public GameObject NECHANISysEmpty;
-        public GameObject NEZUSysEmpty;
-        public GameObject NORCADIANSSysEmpty;
-        public GameObject NUMIRISysEmpty;
-        public GameObject NUUBARISysEmpty;
-        public GameObject NYRIANSSysEmpty;
-        public GameObject OCAMPASysEmpty;
-        public GameObject ORIONSSysEmpty;
-        public GameObject ORNARANSSysEmpty;
-        public GameObject PAKLEDSysEmpty;
-        public GameObject PARADANSSysEmpty;
-        public GameObject QUARRENSysEmpty;
-        public GameObject RAKHARISysEmpty;
-        public GameObject RAKOSANSSysEmpty;
-        public GameObject RAMATIANSSysEmpty;
-        public GameObject HELIOSSysEmpty;
-        public GameObject RIGELIANSSysEmpty;
-        public GameObject RISIANSSysEmpty;
-        public GameObject RUTIANSSysEmpty;
-        public GameObject SELAYSysEmpty;
-        public GameObject SHELIAKSysEmpty;
-        public GameObject SIKARIANSSysEmpty;
-        public GameObject SKRREEASysEmpty;
-        public GameObject SONASysEmpty;
-        public GameObject SULIBANSysEmpty;
-        public GameObject TAKARANSSysEmpty;
-        public GameObject TAKARIANSSysEmpty;
-        public GameObject TAKTAKSysEmpty;
-        public GameObject TALARIANSSysEmpty;
-        public GameObject TALAXIANSSysEmpty;
-        public GameObject TALOSIANSSysEmpty;
-        public GameObject TAMARIANSSysEmpty;
-        public GameObject TANUGANSSysEmpty;
-        public GameObject TELLARITESSysEmpty;
-        public GameObject TEPLANSSysEmpty;
-        public GameObject THOLIANSSysEmpty;
-        public GameObject TILONIANSSysEmpty;
-        public GameObject TLANISysEmpty;
-        public GameObject TRABESysEmpty;
-        public GameObject TRILLSysEmpty;
-        public GameObject TROGORANSSysEmpty;
-        public GameObject TZENKETHISysEmpty;
-        public GameObject ULLIANSSysEmpty;
-        public GameObject VAADWAURSysEmpty;
-        public GameObject VENTAXIANSSysEmpty;
-        public GameObject VHNORISysEmpty;
-        public GameObject VIDIIANSSysEmpty;
-        public GameObject VISSIANSSysEmpty;
-        public GameObject VORGONSSysEmpty;
-        public GameObject VORISysEmpty;
-        public GameObject VULCANSSysEmpty;
-        public GameObject WADISysEmpty;
-        public GameObject XANTHANSSysEmpty;
-        public GameObject XEPOLITESSysEmpty;
-        public GameObject XINDISysEmpty;
-        public GameObject XYRILLIANSSysEmpty;
-        public GameObject YADERANSSysEmpty;
-        public GameObject YRIDIANSSysEmpty;
-        public GameObject ZAHLSysEmpty;
-        public GameObject ZAKDORNSysEmpty;
-        public GameObject ZALKONIANSSysEmpty;
-        public GameObject ZIBALIANSSysEmpty;
+        private GameObject ACAMARIANSSysEmpty;
+        private GameObject AKAALISysEmpty;
+        private GameObject AKRITIRIANSSysEmpty;
+        private GameObject ALDEANSSysEmpty;
+        private GameObject ALGOLIANSSysEmpty;
+        private GameObject ALSAURIANSSysEmpty;
+        private GameObject ANDORIANSSysEmpty;
+        private GameObject ANGOSIANSSysEmpty;
+        private GameObject ANKARISysEmpty;
+        private GameObject ANTEDEANSSysEmpty;
+        private GameObject ANTICANSSysEmpty;
+        private GameObject ARBAZANSysEmpty;
+        private GameObject ARDANANSSysEmpty;
+        private GameObject ARGRATHISysEmpty;
+        private GameObject ARKARIANSSysEmpty;
+        private GameObject ATREANSSysEmpty;
+        private GameObject AXANARSysEmpty;
+        private GameObject BAJORANSSysEmpty;
+        private GameObject BAKUSysEmpty;
+        private GameObject BANDISysEmpty;
+        private GameObject BANEANSSysEmpty;
+        private GameObject BARZANSSysEmpty;
+        private GameObject BENZITESSysEmpty;
+        private GameObject BETAZOIDSSysEmpty;
+        private GameObject BILANAIANSSysEmpty;
+        private GameObject BOLIANSSysEmpty;
+        private GameObject BOMARSysEmpty;
+        private GameObject BOSLICSSysEmpty;
+        private GameObject BOTHASysEmpty;
+        private GameObject BREELLIANSSysEmpty;
+        private GameObject BREENSysEmpty;
+        private GameObject BREKKIANSSysEmpty;
+        private GameObject BYNARSSysEmpty;
+        private GameObject CAIRNSysEmpty;
+        private GameObject CALDONIANSSysEmpty;
+        private GameObject CAPELLANSSysEmpty;
+        private GameObject CHALNOTHSysEmpty;
+        private GameObject CORIDANSysEmpty;
+        private GameObject CORVALLENSSysEmpty;
+        private GameObject CYTHERIANSSysEmpty;
+        private GameObject DELTANSSysEmpty;
+        private GameObject DENOBULANSSysEmpty;
+        private GameObject DEVORESysEmpty;
+        private GameObject DOPTERIANSSysEmpty;
+        private GameObject DOSISysEmpty;
+        private GameObject DRAISysEmpty;
+        private GameObject DREMANSSysEmpty;
+        private GameObject EDOSysEmpty;
+        private GameObject ELAURIANSSysEmpty;
+        private GameObject ELAYSIANSSysEmpty;
+        private GameObject ENTHARANSSysEmpty;
+        private GameObject EVORASysEmpty;
+        private GameObject EXCALBIANSSysEmpty;
+        private GameObject FERENGISysEmpty;
+        private GameObject FLAXIANSSysEmpty;
+        private GameObject GORNSysEmpty;
+        private GameObject GRAZERITESSysEmpty;
+        private GameObject HAAKONIANSSysEmpty;
+        private GameObject HALKANSSysEmpty;
+        private GameObject HAZARISysEmpty;
+        private GameObject HEKARANSSysEmpty;
+        private GameObject HIROGENSysEmpty;
+        private GameObject HORTASysEmpty;
+        private GameObject IYAARANSSysEmpty;
+        private GameObject JNAIISysEmpty;
+        private GameObject KAELONSysEmpty;
+        private GameObject KAREMMASysEmpty;
+        private GameObject KAZONSysEmpty;
+        private GameObject KELLERUNSysEmpty;
+        private GameObject KESPRYTTSysEmpty;
+        private GameObject KLAESTRONIANSSysEmpty;
+        private GameObject KRADINSysEmpty;
+        private GameObject KREETASSANSSysEmpty;
+        private GameObject KRIOSIANSSysEmpty;
+        private GameObject KTARIANSSysEmpty;
+        private GameObject LEDOSIANSSysEmpty;
+        private GameObject LISSEPIANSSysEmpty;
+        private GameObject LOKIRRIMSysEmpty;
+        private GameObject LURIANSSysEmpty;
+        private GameObject MALCORIANSSysEmpty;
+        private GameObject MALONSysEmpty;
+        private GameObject MAQUISSysEmpty;
+        private GameObject MARKALIANSSysEmpty;
+        private GameObject MERIDIANSSysEmpty;
+        private GameObject MINTAKANSSysEmpty;
+        private GameObject MIRADORNSysEmpty;
+        private GameObject MIZARIANSSysEmpty;
+        private GameObject MOKRASysEmpty;
+        private GameObject MONEANSSysEmpty;
+        private GameObject NAUSICAANSSysEmpty;
+        private GameObject NECHANISysEmpty;
+        private GameObject NEZUSysEmpty;
+        private GameObject NORCADIANSSysEmpty;
+        private GameObject NUMIRISysEmpty;
+        private GameObject NUUBARISysEmpty;
+        private GameObject NYRIANSSysEmpty;
+        private GameObject OCAMPASysEmpty;
+        private GameObject ORIONSSysEmpty;
+        private GameObject ORNARANSSysEmpty;
+        private GameObject PAKLEDSysEmpty;
+        private GameObject PARADANSSysEmpty;
+        private GameObject QUARRENSysEmpty;
+        private GameObject RAKHARISysEmpty;
+        private GameObject RAKOSANSSysEmpty;
+        private GameObject RAMATIANSSysEmpty;
+        private GameObject HELIOSSysEmpty;
+        private GameObject RIGELIANSSysEmpty;
+        private GameObject RISIANSSysEmpty;
+        private GameObject RUTIANSSysEmpty;
+        private GameObject SELAYSysEmpty;
+        private GameObject SHELIAKSysEmpty;
+        private GameObject SIKARIANSSysEmpty;
+        private GameObject SKRREEASysEmpty;
+        private GameObject SONASysEmpty;
+        private GameObject SULIBANSysEmpty;
+        private GameObject TAKARANSSysEmpty;
+        private GameObject TAKARIANSSysEmpty;
+        private GameObject TAKTAKSysEmpty;
+        private GameObject TALARIANSSysEmpty;
+        private GameObject TALAXIANSSysEmpty;
+        private GameObject TALOSIANSSysEmpty;
+        private GameObject TAMARIANSSysEmpty;
+        private GameObject TANUGANSSysEmpty;
+        private GameObject TELLARITESSysEmpty;
+        private GameObject TEPLANSSysEmpty;
+        private GameObject THOLIANSSysEmpty;
+        private GameObject TILONIANSSysEmpty;
+        private GameObject TLANISysEmpty;
+        private GameObject TRABESysEmpty;
+        private GameObject TRILLSysEmpty;
+        private GameObject TROGORANSSysEmpty;
+        private GameObject TZENKETHISysEmpty;
+        private GameObject ULLIANSSysEmpty;
+        private GameObject VAADWAURSysEmpty;
+        private GameObject VENTAXIANSSysEmpty;
+        private GameObject VHNORISysEmpty;
+        private GameObject VIDIIANSSysEmpty;
+        private GameObject VISSIANSSysEmpty;
+        private GameObject VORGONSSysEmpty;
+        private GameObject VORISysEmpty;
+        private GameObject VULCANSSysEmpty;
+        private GameObject WADISysEmpty;
+        private GameObject XANTHANSSysEmpty;
+        private GameObject XEPOLITESSysEmpty;
+        private GameObject XINDISysEmpty;
+        private GameObject XYRILLIANSSysEmpty;
+        private GameObject YADERANSSysEmpty;
+        private GameObject YRIDIANSSysEmpty;
+        private GameObject ZAHLSysEmpty;
+        private GameObject ZAKDORNSysEmpty;
+        private GameObject ZALKONIANSSysEmpty;
+        private GameObject ZIBALIANSSysEmpty;
         #endregion
 
         private List<GameObject> SysEmptyList;
@@ -359,32 +359,7 @@ namespace BOTF3D_GalaxyMap
             #endregion
             };
             LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
-            //for (int i = 0; i < SysEmptyList.Count; i++)
-            //{
-            //    GameObject tempObject = GameObject.Find("CanvasGalactic");
-            //    if (tempObject != null)
-            //    {
-            //        canvasGalactic = tempObject.GetComponent<Canvas>();
 
-            //        SysEmptyList[i] = new GameObject();
-
-            //        SysEmptyList[i].name = SystemDataDictionary[i][4];
-            //        int x = int.Parse(SystemDataDictionary[i][1]);
-            //        int y = int.Parse(SystemDataDictionary[i][2]);
-            //        int z = int.Parse(SystemDataDictionary[i][3]);
-            //        Vector3 worldSpace = new Vector3(x, y, z);
-            //        SysEmptyList[i].transform.Translate(worldSpace, Space.World);
-            //        SysEmptyList[i].transform.SetParent(canvasGalactic.transform, false);
-            //        SysEmptyList[i].layer= 6;
-            //        var hTips = SysEmptyList[i].AddComponent<HoverTips>();
-            //        hTips._hoverTipManager = hoverTipManager;
-            //        hTips._starSysEnum = (StarSystemEnum)i;
-            //        hTips._sysLocation = worldSpace;
-            //        hTips._hoverTipManager = hoverTipManager;
-
-            //        SysEmptyList[i].SetActive(true);
-            //    }
-            //}
         }
         void Update()
         {
@@ -544,38 +519,5 @@ namespace BOTF3D_GalaxyMap
             }
             #endregion
         }
-        // Now we Instanitate buttons in InstantiateSystemButtons
-        //private void MakeButtonsForSolarSystems(Transform transformParent, SolarSystem ss)
-        //{
-        //    //CameraManagerGalactica cameraManagerGalactic = new CameraManagerGalactica();
-        //    GameObject gameObject = new GameObject();
-        //    solarSystemGameObjectMap[ss] = gameObject; // update map
-        //    gameObject.layer = 30; // galactic
-        //    gameObject.transform.SetParent(transformParent, false);
-        //    // set position in 3D
-        //    gameObject.transform.position = ss.Position / zoomLevels; // cut down scale of system to view
-        //                                                              // ToDo: make buttons here
-        //                                                              //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
-        //                                                              //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
-        //                                                              //spritView.sprite = Sprites[ss.GraphicID];
-
-        //    //if(galacticCamera != null) // NO LUCK SO FAR BRINGING IN THE GALACTIC CAMERA FOR A LookAt(camera);
-        //    //    spritView.transform.LookAt(galacticCamera.transform);
-        //    //StupidInt += 1;
-        //    //for (int i = 0; i < ss.Children.Count; i++)
-        //    //{
-        //    //    MakeSpritesForOrbital(gameObject.transform, ss.Children[i]);
-        //    //    //spritView.transform.LookAt();
-        //    //}
-        //}
-        //void UpdateSystemButtons(SolarSystem ss)
-        //{
-        //    GameObject gameObject = solarSystemGameObjectMap[ss];
-        //   // gameObject.transform.position = ss.Position / zoomLevels;
-        //    //for (int i = 0; i < ss.Children.Count; i++)
-        //    //{
-        //    //    UpdateSprites(ss.Children[i]);
-        //    //}
-        //}
     }
 }

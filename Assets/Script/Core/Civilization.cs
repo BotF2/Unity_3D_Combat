@@ -28,7 +28,7 @@ namespace BOTF3D_Core
         public StarSystem _homeSystem;
         //public Traits _traitOne;
         //public Traits _traitTwo;
-        public Sprite _raceImage;
+        public Sprite _civImage;
         public Sprite _insignia;
         //private readonly int _civId;
         public float _credits;

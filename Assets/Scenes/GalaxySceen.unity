@@ -7770,7 +7770,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514618981}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalPosition: {x: 0, y: 0, z: 39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9479,7 +9479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9fadc2da4ce6a864a966d929459047ab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa15b8495e013ad439d3f95b29151649, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10236,7 +10236,7 @@ SpriteRenderer:
   m_Size: {x: 2.7, y: 2.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &634080230
@@ -10670,7 +10670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e09448d868a0bdc4eaef42a5a017aa67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14a2519d96d11174db2a3a8a7ca38acc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11629,7 +11629,7 @@ MonoBehaviour:
     Galaxy Map'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3922e2d3cd859f5428ce18d1620f4686, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 2246d9047bd8dc14a82e70c1d41c6028, type: 2}
+  m_sharedMaterial: {fileID: -568164551536872572, guid: 3922e2d3cd859f5428ce18d1620f4686, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14040,7 +14040,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 16a85b328ba5d704083449990f0f2230, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2c2f0fae1a5b66e43bac080a29636a75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14756,165 +14756,7 @@ MonoBehaviour:
   solarSystemView: {fileID: 1538149116}
   hoverTips: {fileID: 605296299}
   hoverTipManager: {fileID: 1696207954}
-  canvasGalactic: {fileID: 0}
-  FEDSysEmpty: {fileID: 0}
-  ROMSysEmpty: {fileID: 0}
-  KLINGSysEmpty: {fileID: 0}
-  CARDSysEmpty: {fileID: 0}
-  DOMSysEmpty: {fileID: 0}
-  BORGSysEmpty: {fileID: 0}
-  ACAMARIANSSysEmpty: {fileID: 0}
-  AKAALISysEmpty: {fileID: 0}
-  AKRITIRIANSSysEmpty: {fileID: 0}
-  ALDEANSSysEmpty: {fileID: 0}
-  ALGOLIANSSysEmpty: {fileID: 0}
-  ALSAURIANSSysEmpty: {fileID: 0}
-  ANDORIANSSysEmpty: {fileID: 0}
-  ANGOSIANSSysEmpty: {fileID: 0}
-  ANKARISysEmpty: {fileID: 0}
-  ANTEDEANSSysEmpty: {fileID: 0}
-  ANTICANSSysEmpty: {fileID: 0}
-  ARBAZANSysEmpty: {fileID: 0}
-  ARDANANSSysEmpty: {fileID: 0}
-  ARGRATHISysEmpty: {fileID: 0}
-  ARKARIANSSysEmpty: {fileID: 0}
-  ATREANSSysEmpty: {fileID: 0}
-  AXANARSysEmpty: {fileID: 0}
-  BAJORANSSysEmpty: {fileID: 0}
-  BAKUSysEmpty: {fileID: 0}
-  BANDISysEmpty: {fileID: 0}
-  BANEANSSysEmpty: {fileID: 0}
-  BARZANSSysEmpty: {fileID: 0}
-  BENZITESSysEmpty: {fileID: 0}
-  BETAZOIDSSysEmpty: {fileID: 0}
-  BILANAIANSSysEmpty: {fileID: 0}
-  BOLIANSSysEmpty: {fileID: 0}
-  BOMARSysEmpty: {fileID: 0}
-  BOSLICSSysEmpty: {fileID: 0}
-  BOTHASysEmpty: {fileID: 0}
-  BREELLIANSSysEmpty: {fileID: 0}
-  BREENSysEmpty: {fileID: 0}
-  BREKKIANSSysEmpty: {fileID: 0}
-  BYNARSSysEmpty: {fileID: 0}
-  CAIRNSysEmpty: {fileID: 0}
-  CALDONIANSSysEmpty: {fileID: 0}
-  CAPELLANSSysEmpty: {fileID: 0}
-  CHALNOTHSysEmpty: {fileID: 0}
-  CORIDANSysEmpty: {fileID: 0}
-  CORVALLENSSysEmpty: {fileID: 0}
-  CYTHERIANSSysEmpty: {fileID: 0}
-  DELTANSSysEmpty: {fileID: 0}
-  DENOBULANSSysEmpty: {fileID: 0}
-  DEVORESysEmpty: {fileID: 0}
-  DOPTERIANSSysEmpty: {fileID: 0}
-  DOSISysEmpty: {fileID: 0}
-  DRAISysEmpty: {fileID: 0}
-  DREMANSSysEmpty: {fileID: 0}
-  EDOSysEmpty: {fileID: 0}
-  ELAURIANSSysEmpty: {fileID: 0}
-  ELAYSIANSSysEmpty: {fileID: 0}
-  ENTHARANSSysEmpty: {fileID: 0}
-  EVORASysEmpty: {fileID: 0}
-  EXCALBIANSSysEmpty: {fileID: 0}
-  FERENGISysEmpty: {fileID: 0}
-  FLAXIANSSysEmpty: {fileID: 0}
-  GORNSysEmpty: {fileID: 0}
-  GRAZERITESSysEmpty: {fileID: 0}
-  HAAKONIANSSysEmpty: {fileID: 0}
-  HALKANSSysEmpty: {fileID: 0}
-  HAZARISysEmpty: {fileID: 0}
-  HEKARANSSysEmpty: {fileID: 0}
-  HIROGENSysEmpty: {fileID: 0}
-  HORTASysEmpty: {fileID: 0}
-  IYAARANSSysEmpty: {fileID: 0}
-  JNAIISysEmpty: {fileID: 0}
-  KAELONSysEmpty: {fileID: 0}
-  KAREMMASysEmpty: {fileID: 0}
-  KAZONSysEmpty: {fileID: 0}
-  KELLERUNSysEmpty: {fileID: 0}
-  KESPRYTTSysEmpty: {fileID: 0}
-  KLAESTRONIANSSysEmpty: {fileID: 0}
-  KRADINSysEmpty: {fileID: 0}
-  KREETASSANSSysEmpty: {fileID: 0}
-  KRIOSIANSSysEmpty: {fileID: 0}
-  KTARIANSSysEmpty: {fileID: 0}
-  LEDOSIANSSysEmpty: {fileID: 0}
-  LISSEPIANSSysEmpty: {fileID: 0}
-  LOKIRRIMSysEmpty: {fileID: 0}
-  LURIANSSysEmpty: {fileID: 0}
-  MALCORIANSSysEmpty: {fileID: 0}
-  MALONSysEmpty: {fileID: 0}
-  MAQUISSysEmpty: {fileID: 0}
-  MARKALIANSSysEmpty: {fileID: 0}
-  MERIDIANSSysEmpty: {fileID: 0}
-  MINTAKANSSysEmpty: {fileID: 0}
-  MIRADORNSysEmpty: {fileID: 0}
-  MIZARIANSSysEmpty: {fileID: 0}
-  MOKRASysEmpty: {fileID: 0}
-  MONEANSSysEmpty: {fileID: 0}
-  NAUSICAANSSysEmpty: {fileID: 0}
-  NECHANISysEmpty: {fileID: 0}
-  NEZUSysEmpty: {fileID: 0}
-  NORCADIANSSysEmpty: {fileID: 0}
-  NUMIRISysEmpty: {fileID: 0}
-  NUUBARISysEmpty: {fileID: 0}
-  NYRIANSSysEmpty: {fileID: 0}
-  OCAMPASysEmpty: {fileID: 0}
-  ORIONSSysEmpty: {fileID: 0}
-  ORNARANSSysEmpty: {fileID: 0}
-  PAKLEDSysEmpty: {fileID: 0}
-  PARADANSSysEmpty: {fileID: 0}
-  QUARRENSysEmpty: {fileID: 0}
-  RAKHARISysEmpty: {fileID: 0}
-  RAKOSANSSysEmpty: {fileID: 0}
-  RAMATIANSSysEmpty: {fileID: 0}
-  HELIOSSysEmpty: {fileID: 0}
-  RIGELIANSSysEmpty: {fileID: 0}
-  RISIANSSysEmpty: {fileID: 0}
-  RUTIANSSysEmpty: {fileID: 0}
-  SELAYSysEmpty: {fileID: 0}
-  SHELIAKSysEmpty: {fileID: 0}
-  SIKARIANSSysEmpty: {fileID: 0}
-  SKRREEASysEmpty: {fileID: 0}
-  SONASysEmpty: {fileID: 0}
-  SULIBANSysEmpty: {fileID: 0}
-  TAKARANSSysEmpty: {fileID: 0}
-  TAKARIANSSysEmpty: {fileID: 0}
-  TAKTAKSysEmpty: {fileID: 0}
-  TALARIANSSysEmpty: {fileID: 0}
-  TALAXIANSSysEmpty: {fileID: 0}
-  TALOSIANSSysEmpty: {fileID: 0}
-  TAMARIANSSysEmpty: {fileID: 0}
-  TANUGANSSysEmpty: {fileID: 0}
-  TELLARITESSysEmpty: {fileID: 0}
-  TEPLANSSysEmpty: {fileID: 0}
-  THOLIANSSysEmpty: {fileID: 0}
-  TILONIANSSysEmpty: {fileID: 0}
-  TLANISysEmpty: {fileID: 0}
-  TRABESysEmpty: {fileID: 0}
-  TRILLSysEmpty: {fileID: 0}
-  TROGORANSSysEmpty: {fileID: 0}
-  TZENKETHISysEmpty: {fileID: 0}
-  ULLIANSSysEmpty: {fileID: 0}
-  VAADWAURSysEmpty: {fileID: 0}
-  VENTAXIANSSysEmpty: {fileID: 0}
-  VHNORISysEmpty: {fileID: 0}
-  VIDIIANSSysEmpty: {fileID: 0}
-  VISSIANSSysEmpty: {fileID: 0}
-  VORGONSSysEmpty: {fileID: 0}
-  VORISysEmpty: {fileID: 0}
-  VULCANSSysEmpty: {fileID: 0}
-  WADISysEmpty: {fileID: 0}
-  XANTHANSSysEmpty: {fileID: 0}
-  XEPOLITESSysEmpty: {fileID: 0}
-  XINDISysEmpty: {fileID: 0}
-  XYRILLIANSSysEmpty: {fileID: 0}
-  YADERANSSysEmpty: {fileID: 0}
-  YRIDIANSSysEmpty: {fileID: 0}
-  ZAHLSysEmpty: {fileID: 0}
-  ZAKDORNSysEmpty: {fileID: 0}
-  ZALKONIANSSysEmpty: {fileID: 0}
-  ZIBALIANSSysEmpty: {fileID: 0}
+  canvasGalactic: {fileID: 1195700023}
   NumbersForSystem: 
   zoomLevels: 150000000000
 --- !u!1 &807690121
@@ -17776,7 +17618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46a0a7ea181abbf4e98fa72b74a278f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 232910cb579e9f54490573696f7c84d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18717,7 +18559,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160279384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5900}
+  m_LocalPosition: {x: 0, y: 0, z: -3600}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19278,10 +19120,10 @@ MonoBehaviour:
   RAMATIANS_StarSystem: {fileID: 0}
   REMANS_StarSystem: {fileID: 0}
   RIGELIANS_StarSystem: {fileID: 0}
-  RISIANS_StarSystem: {fileID: 0}
+  RISIANS_StarSystem: {fileID: 4761592045379931411, guid: 5341a76f602d5184aacdf70a4b9a0e17, type: 3}
   RUTIANS_StarSystem: {fileID: 0}
   SELAY_StarSystem: {fileID: 0}
-  SHELIAK_StarSystem: {fileID: 0}
+  SHELIAK_StarSystem: {fileID: 4761592045379931411, guid: 31bb406297c2fd947a017e979ff2be75, type: 3}
   SIKARIANS_StarSystem: {fileID: 0}
   SKRREEA_StarSystem: {fileID: 0}
   SONA_StarSystem: {fileID: 0}
@@ -19289,8 +19131,8 @@ MonoBehaviour:
   TAKARANS_StarSystem: {fileID: 0}
   TAKARIANS_StarSystem: {fileID: 0}
   TAKTAK_StarSystem: {fileID: 0}
-  TALARIANS_StarSystem: {fileID: 4761592045379931411, guid: f80973d7041fc3c469b9df89ac2c8f0b, type: 3}
-  TALAXIANS_StarSystem: {fileID: 0}
+  TALARIANS_StarSystem: {fileID: 0}
+  TALAXIANS_StarSystem: {fileID: 4761592045379931411, guid: f80973d7041fc3c469b9df89ac2c8f0b, type: 3}
   TALOSIANS_StarSystem: {fileID: 0}
   TAMARIANS_StarSystem: {fileID: 0}
   TANUGANS_StarSystem: {fileID: 0}
@@ -19303,7 +19145,7 @@ MonoBehaviour:
   TRILL_StarSystem: {fileID: 4761592045379931411, guid: 96ba938c6b8eae349b25610ef2bcd84d, type: 3}
   TROGORANS_StarSystem: {fileID: 0}
   TZENKETHI_StarSystem: {fileID: 0}
-  ULLIANS_StarSystem: {fileID: 0}
+  ULLIANS_StarSystem: {fileID: 4761592045379931411, guid: ab66506aec6a704458af29679debc534, type: 3}
   VAADWAUR_StarSystem: {fileID: 0}
   VENTAXIANS_StarSystem: {fileID: 0}
   VHNORI_StarSystem: {fileID: 0}
@@ -19315,12 +19157,12 @@ MonoBehaviour:
   WADI_StarSystem: {fileID: 4761592045379931411, guid: 3b0190d0673df2245bf1834e51b64483, type: 3}
   XANTHANS_StarSystem: {fileID: 0}
   XEPOLITES_StarSystem: {fileID: 0}
-  XINDI_StarSystem: {fileID: 0}
+  XINDI_StarSystem: {fileID: 4761592045379931411, guid: c7bacc066dbafcf439ee569f22633fad, type: 3}
   XYRILLIANS_StarSystem: {fileID: 0}
   YADERANS_StarSystem: {fileID: 0}
   YRIDIANS_StarSystem: {fileID: 0}
   ZAHL_StarSystem: {fileID: 0}
-  ZAKDORN_StarSystem: {fileID: 0}
+  ZAKDORN_StarSystem: {fileID: 4761592045379931411, guid: 10483812951cbad469979a4ae4a9cbf3, type: 3}
   ZALKONIANS_StarSystem: {fileID: 0}
   ZIBALIANS_StarSystem: {fileID: 0}
   AllSystemsList: []
@@ -22583,7 +22425,7 @@ SpriteRenderer:
   m_Size: {x: 2.7, y: 2.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1391532375
@@ -24344,7 +24186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b1696beb94300c14c9e376605c6832a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 748587eff35397343ae959897b2b10e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29265,7 +29107,7 @@ SpriteRenderer:
   m_Size: {x: 2.7, y: 2.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1709259034 stripped
@@ -30139,7 +29981,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ed29bd44d0e160d449685d0a677591f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6577b1dd19ea1145be9f48e24aca46c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -33384,7 +33226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b1696beb94300c14c9e376605c6832a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 748587eff35397343ae959897b2b10e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -33627,7 +33469,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 15}
+  m_AnchoredPosition: {x: -71.2, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!136 &1942135831

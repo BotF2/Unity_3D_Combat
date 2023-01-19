@@ -58,12 +58,16 @@ namespace BOTF3D_GalaxyMap
             var theSystem = StarSystemData.StarSystemDictionary[starSystemEnum];
             tipText.text = theSystem._ownerCiv._shortName;
             tipWindow.localScale = new Vector3(1,1,1);
-            if (theSystem._y > -4700)
+            if (theSystem._y > -1000)
             {
-                tipWindow.localScale *= 2; // if deep into screen make it bigger
+                tipWindow.localScale *= 2f; // if deep into screen make it bigger
+            }
+            else if (theSystem._x > -4700)
+            {
+                tipWindow.localScale *= 1.5f; // if deep into screen make it bigger
             }
             img = tipWindow.gameObject.GetComponent<RawImage>();
-            img.texture = theSystem._ownerCiv._insignia.texture;
+            img.texture = theSystem._ownerCiv._civImage.texture;
 
             tipWindow.gameObject.SetActive(true);
             tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.y + 200, theLocation.z - 100);
