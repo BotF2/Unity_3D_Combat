@@ -14,8 +14,9 @@ namespace BOTF3D_Core
         public List<TabButton> tabButtons;
         public Sprite tabIdel;
         public Sprite tabHover;
-        public Sprite tabSelected;
+        public Sprite tabActive;
         public TabButton selectedTab;
+        public List<GameObject> objectsToSwap;
 
         public void Subscribe(TabButton button)
         {
@@ -40,14 +41,26 @@ namespace BOTF3D_Core
         {
             selectedTab = button;
             ResetTabs();
-            button.background.sprite = tabSelected;
+            button.background.sprite = tabActive;
+            int index = button.transform.GetSiblingIndex();
+            for (int i = 0; i < objectsToSwap.Count; i++)
+            {
+                if(i == index)
+                {
+                    objectsToSwap[i].SetActive(true);
+                }
+                else
+                {
+                    objectsToSwap[i].SetActive(false);
+                }
+            }
         }
         public void ResetTabs()
         {
             foreach ( TabButton button in tabButtons)
             {
                 if (selectedTab != null && button == selectedTab)
-                    continue;
+                    { continue; }
                 button.background.sprite = tabIdel;
             }
         }

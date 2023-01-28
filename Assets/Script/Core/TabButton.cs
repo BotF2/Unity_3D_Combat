@@ -23,12 +23,12 @@ namespace BOTF3D_Core
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            tabGroup.onTabSelected(this);
+            tabGroup.OnTabEnter(this);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            tabGroup.onTabSelected(this);
+            tabGroup.OnTabExit(this);
         }
 
         // Start is called before the first frame update

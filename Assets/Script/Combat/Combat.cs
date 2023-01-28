@@ -18,10 +18,10 @@ namespace BOTF3D_Combat
     public class Combat : MonoBehaviour
     {
         //ToDo: get a list of combatants form galaxy map / diplomacy
-        // call diplomayc WhoFigthsWithMe(Civilization civ) with civs from galaxy map
+        // call diplomacy WhoFigthsWithMe(Civilization civ) with civs from galaxy map
         // call WhoIsAtWar(Civilization civ) with civs and build a list of FriendShips on left and EnemyShips on right.
         // Hard coded for now
-        public List<GameObject> _friendCombatans; // for now be get the combatant gameObjects as they are instantiated in InstantiatCombatShips
+        public List<GameObject> _friendCombatans; // for now, get the combatant gameObjects as they are instantiated in InstantiatCombatShips
         public List<GameObject> _enemyCombatans;
 
         public List<CivEnum> _friendCivs = new List<CivEnum>() { CivEnum.FED };

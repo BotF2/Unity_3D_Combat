@@ -7,6 +7,7 @@ using UnityEngine;
 using Assets.Script;
 using BOTF3D_GalaxyMap;
 using BOTF3D_Combat;
+using UnityEngine.UI;
 //using MLAPI;
 //using UnityEngine.UI;
 
@@ -625,6 +626,7 @@ namespace BOTF3D_Core
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
         public Camera cameraGalactica;
+        //public Button buttonStopGalacticPlay;
         public Camera cameraTelescope;
         public Combat combat;
         public InstantiateCombatShips instantiateCombatShips;
@@ -994,7 +996,8 @@ namespace BOTF3D_Core
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.           
             CanvasGalactic = GameObject.Find("CanvasGalactic");
-            //cameraGalactica = Camera.("CameraGalactica"); 
+          
+            //buttonStopGalacticPlay = CanvasGalactic.transform.Find("ButtonStopGalacticPlay").;
             PanelGalaxyUI = Canvas.transform.Find("PanelGalaxyUI").gameObject;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
@@ -1404,6 +1407,8 @@ namespace BOTF3D_Core
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
+                    //cameraManagerGalactica.ActivateButtonStopGalacticPlay(true);
+                    //cameraManagerGalactica.
                     //if (CanvasWorld != null)
                     //{
                         //CanvasWorld.SetActive(false);
@@ -1508,6 +1513,7 @@ namespace BOTF3D_Core
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
+                    cameraManagerGalactica.ActivateButtonStopGalacticPlay(true);
                     cameraGalactica.enabled = true;
                     cameraTelescope.enabled = true;
                     //cameraManagerGalactica.enabled = true;
@@ -1526,6 +1532,7 @@ namespace BOTF3D_Core
                     break;
 
                 case State.GALACTIC_MAP_INIT:
+                    cameraManagerGalactica.ActivateButtonStopGalacticPlay(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     //cameraManagerGalactica.gameObject.SetActive(false);
@@ -1577,6 +1584,7 @@ namespace BOTF3D_Core
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
+                    //buttonStopGalacticPlay.enabled= false;
                     _statePassedMain_Init = true;
                     //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
@@ -1601,6 +1609,7 @@ namespace BOTF3D_Core
                     break;
                 case State.COMBAT_SETUP:
                     //_combatWarpIn = true; // turn false again in E_animator3 call to GameManager WarpInOver()
+                    PanelGalaxyUI.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     _statePassedCombatMenu_Init = true;
                     FriendShips = combat.UpdateFriendCombatants().ToList();
@@ -1617,6 +1626,7 @@ namespace BOTF3D_Core
                     SwitchtState(State.COMBAT_PLAY);
                     break;
                 case State.COMBAT_PLAY:
+                    PanelGalaxyUI.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     _statePassedCombatPlay = true;
                     break;
@@ -1709,11 +1719,13 @@ namespace BOTF3D_Core
                     //}
                     break;
                 case State.COMBAT_SETUP:
+
                     //if (F_Animator3.)
                     //instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
                     //_statePassedCombatInitRight = true;
                     break;
                 case State.COMBAT_PLAY:
+                    PanelLobby_Menu.SetActive(false);
                     // _statePassedInit = true;
                     break;
                 case State.COMBAT_COMPLETED:
@@ -1788,6 +1800,7 @@ namespace BOTF3D_Core
                     break;
                 case State.COMBAT_SETUP:
                     PanelCombat_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(false);
                     // panelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_PLAY:

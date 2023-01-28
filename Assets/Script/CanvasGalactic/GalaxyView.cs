@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
+using Unity.VisualScripting;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -23,7 +24,8 @@ namespace BOTF3D_GalaxyMap
         //public PanelGalactic_Map 
         //public CivilizationData civilizationDate;
         public Galaxy ourGalaxy;
-        // public Canvas canvasGalactic;
+        public static GameObject buttonStopGalacticPlay;
+        public static Button _buttonPlayGalacticPlay;
         private GameObject FEDSysEmpty;
         private GameObject ROMSysEmpty;
         private GameObject KLINGSysEmpty;

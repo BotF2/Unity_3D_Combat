@@ -25,6 +25,7 @@ TagManager:
   - BORG_CRUISER_II(CLONE)
   - SolarSystemViewObject
   - HoverTipManager
+  - ButtonStopGalacticPlay
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,6 @@ using BOTF3D_GalaxyMap;
 using BOTF3D_Core;
 using Assets.Script;
 
-
 namespace BOTF3D_Combat
 {
     public class InstantiateCombatShips : MonoBehaviour
@@ -24,14 +23,7 @@ namespace BOTF3D_Combat
         public GameObject animEnemy1;
         public GameObject animEnemy2;
         public GameObject animEnemy3;
-        //public GameObject animFriendRushScout;
-        //public GameObject animFriendRushDistroy;
-        //public GameObject animFriendRushCapital;
-        //public GameObject animFriendRushUtility;
-        //public GameObject animEnemyRushScout;
-        //public GameObject animEnemyRushDistroy;
-        //public GameObject animEnemyRushCapital;
-        //public GameObject animEnemyRushUtility;
+
         int ySeparator = 40; // gap in grid between ships on y axis
         int zSeparator = 70;
         float shipScale = 100f;
@@ -68,7 +60,7 @@ namespace BOTF3D_Combat
         {
             GameManager.Instance.ResetFriendAndEnemyDictionaries();
             _isFriend = _areFriends;
-            // we do all friend shipGameOb first, when we do the first enemy reset shipGameOb counts to zero at start           
+            // we do all friend shipGameOb first, when we do the first enemy reseting shipGameOb counts to zero at start           
             _scoutShips = 0; // running count as we process the list of ships
             _destroyerShips = 0;
             _capitalShips = 0;
@@ -606,6 +598,7 @@ namespace BOTF3D_Combat
         }
         public void ParentToAnimation(GameObject shipGameOb, bool _aFriend, Orders order) //GameObject cameraEmpty, bool _aFriend, Orders order)
         {
+            cameraEmpty = shipGameOb;
             cameraEmpty.layer = shipGameOb.layer;
             // shipGameOb is parent to cameraEmpty and animFriend or animEnemy set as parent of shipGameOb below
             switch (order)

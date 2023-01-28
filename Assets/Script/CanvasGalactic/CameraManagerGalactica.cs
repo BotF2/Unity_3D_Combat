@@ -101,11 +101,12 @@ namespace BOTF3D_GalaxyMap
         float frameRotate = 1f;
         //float frameZoom;
         Camera camGalactica;
-        public Camera telescope;
+        public GameObject telescopeHolder; 
+        //public Camera telescope;
+        public GameObject buttonStopGalacticPlay;
 
         private float _currentIncrease = 0.1f; // active control of camera movement rate
                                                //private float _currentIncreaseMem = 0;
-
         private Vector3 _initPosition;
         private Vector3 _initRotation;
 
@@ -118,6 +119,7 @@ namespace BOTF3D_GalaxyMap
             minRotation = _initRotation.z - 10f;
 
             camGalactica = GetComponentInChildren<Camera>();
+
             //cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
             //zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
             camGalactica.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
@@ -217,6 +219,20 @@ namespace BOTF3D_GalaxyMap
             this.transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y,
                  ClampAngles(transform.rotation.eulerAngles.z, minRotation, maxRotation));
         }
+        public void ActivateButtonStopGalacticPlay(bool turnOn)
+        {
+            if (turnOn)
+            {
+                buttonStopGalacticPlay.SetActive(true);
+                telescopeHolder.SetActive(true);
+            }
+            else
+            {
+                buttonStopGalacticPlay.SetActive(false);
+                telescopeHolder.SetActive(false);
+            }
+        }
+
         public void ResetGalacticCamLocation()
         {
             transform.position = _initPosition;
