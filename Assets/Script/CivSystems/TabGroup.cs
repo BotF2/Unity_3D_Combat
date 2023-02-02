@@ -31,6 +31,7 @@ namespace BOTF3D_Core
             ResetTabs();
             if (selectedTab == null || button !=selectedTab)
                 button.background.sprite = tabHover;
+            
         }
         public void OnTabExit(TabButton button)
         {
@@ -39,7 +40,12 @@ namespace BOTF3D_Core
 
         public void onTabSelected(TabButton button) 
         {
+            if (selectedTab != null)
+            {
+                selectedTab.Deselect();
+            }
             selectedTab = button;
+            selectedTab.Select();
             ResetTabs();
             button.background.sprite = tabActive;
             int index = button.transform.GetSiblingIndex();
@@ -64,6 +70,7 @@ namespace BOTF3D_Core
                 button.background.sprite = tabIdel;
             }
         }
+
     }
 }
 

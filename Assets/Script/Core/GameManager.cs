@@ -174,6 +174,7 @@ namespace BOTF3D_Core
         ZAKDORN,
         ZALKONIANS,
         ZIBALIANS,
+        UNINHABITED,
     }
     #region StarSystemEnums
     public enum StarSystemEnum

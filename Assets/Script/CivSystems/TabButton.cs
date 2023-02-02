@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
 using Assets.Script;
 using BOTF3D_GalaxyMap;
 using BOTF3D_Combat;
@@ -15,6 +16,8 @@ namespace BOTF3D_Core
         public TabGroup tabGroup;
 
         public Image background;
+        public UnityEvent onTabSelected;
+        public UnityEvent onTabDeselected;  
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -38,11 +41,20 @@ namespace BOTF3D_Core
             tabGroup.Subscribe(this);
 
         }
-
-        // Update is called once per frame
-        void Update()
+        public void Select()
         {
-
+            if(onTabSelected!= null)
+            {
+                onTabSelected.Invoke();
+            }
         }
+        public void Deselect()
+        {
+            if(onTabDeselected != null)
+            {
+                onTabDeselected.Invoke();
+            }
+        }
+
     }
 }
