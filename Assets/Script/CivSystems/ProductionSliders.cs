@@ -19,6 +19,7 @@ namespace BOTF3D_Core
 
         private float[] values; 
         [SerializeField] private Slider[] sliders;
+        //private List<Slider> activeSlidersList;
         [SerializeField] private TextMeshProUGUI[] slideText;
         [SerializeField] private Button[] locks;
 
@@ -37,19 +38,28 @@ namespace BOTF3D_Core
                 }
                 values = Array.ConvertAll(sliders, GetRatio);
             }
+            //activeSlidersList = sliders.ToList();
         }
         private void Update()
         {
+            int lockCount = 0;
             for (int i = 0; i < sliders.Length; i++)
             {
                 if (locks[i].image.sprite == locked)
                 {
                     sliders[i].gameObject.SetActive(false);
+                    lockCount++;
                 }
-                else if (locks[i].image.sprite == unlocked)
+                else if (locks[i].image.sprite == unlocked) // && activeSlidersList.Count() > 1)
                 {
                     sliders[i].gameObject.SetActive(true);
+                    lockCount--;
                 }
+                if (lockCount == 1)
+                    for (int k = 0; k < sliders.Length; k++)
+                    {
+                        sliders[k].gameObject.SetActive(false);
+                    }
                 double j;
                 j = Math.Round((double)sliders[i].value, 1);
                 slideText[i].text = j.ToString();

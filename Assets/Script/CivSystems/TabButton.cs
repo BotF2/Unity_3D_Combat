@@ -10,14 +10,22 @@ using BOTF3D_Combat;
 
 namespace BOTF3D_Core
 {
+    public enum Panels
+    {
+        PanelDefense,
+        PanelResearch,
+        PanelSpy,
+        PanelIndustry,
+    }
+
     [RequireComponent(typeof(Image))]
     public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         public TabGroup tabGroup;
-
         public Image background;
         public UnityEvent onTabSelected;
-        public UnityEvent onTabDeselected;  
+        public UnityEvent onTabDeselected;
+        public Panels tabForPanel;
 
         public void OnPointerClick(PointerEventData eventData)
         {
@@ -34,7 +42,6 @@ namespace BOTF3D_Core
             tabGroup.OnTabExit(this);
         }
 
-        // Start is called before the first frame update
         void Start()
         {
             background= GetComponent<Image>();

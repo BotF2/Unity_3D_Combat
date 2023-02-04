@@ -26,6 +26,10 @@ TagManager:
   - SolarSystemViewObject
   - HoverTipManager
   - ButtonStopGalacticPlay
+  - TabDefense
+  - TabResearch
+  - TabSpy
+  - TabIndustry
   layers:
   - Default
   - TransparentFX

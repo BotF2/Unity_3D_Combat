@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 using Assets.Script;
 using BOTF3D_GalaxyMap;
@@ -9,6 +10,13 @@ using BOTF3D_Combat;
 
 namespace BOTF3D_Core
 {
+    public enum TabButtons
+    {
+        TabDefense,
+        TabResearch,
+        TabSpy,
+        TabIndustry,
+    }
     public class TabGroup : MonoBehaviour
     {
         public List<TabButton> tabButtons;
@@ -17,8 +25,8 @@ namespace BOTF3D_Core
         public Sprite tabActive;
         public TabButton selectedTab;
         public List<GameObject> objectsToSwap;
-
-        public void Subscribe(TabButton button)
+       
+        public void Subscribe(TabButton button) 
         {
             if (tabButtons == null)
             {
@@ -48,7 +56,7 @@ namespace BOTF3D_Core
             selectedTab.Select();
             ResetTabs();
             button.background.sprite = tabActive;
-            int index = button.transform.GetSiblingIndex();
+            int index = (int)button.tabForPanel;
             for (int i = 0; i < objectsToSwap.Count; i++)
             {
                 if(i == index)
