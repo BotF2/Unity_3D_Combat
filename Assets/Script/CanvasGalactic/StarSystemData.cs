@@ -16,7 +16,7 @@ namespace BOTF3D_GalaxyMap
     public class StarSystemData : MonoBehaviour
     {
         [SerializeField]
-        public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>() { { StarSystemEnum.PLACEHOLDER, new StarSystem(900) } };
+        public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>(); // { { StarSystemEnum.PLACEHOLDER, new StarSystem(900) } };
 
         public static StarSystem Create(int systemInt)
         {
@@ -32,18 +32,37 @@ namespace BOTF3D_GalaxyMap
             StarType star;
             if (Enum.TryParse(sysStrings[7], out star))
                 daSystem._starType = star;
-            daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
+//            daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
             daSystem._systemPopulation = int.Parse(sysStrings[6]);
-            daSystem._homeColony = true;
-            //daSystem._ownerName = daSystem._ownerCiv.name;
-            //_civInsignia leave for StarSystemDataBase to do
-            //    _systemPopulation = 2;
-            //    _systemResearch = 2;
-            //    _homeColony = true;
-            //    _text = "blah, blah, blah";
-            StarSystemDictionary.Add(daSystem._sysEnum, daSystem);
+            daSystem._ownerName = sysStrings[5];
+            //_civInsignia leave for CivilizationData to do
+            //daSystem._systemPopulation = int.Parse(sysStrings[6]);
+            if (sysStrings[5] != "UNINHABITED")
+                daSystem._homeColony = true;
+            else daSystem._homeColony = false;
+            daSystem._text = "blah, blah, blah";
+            //StarSystemDictionary.Add(daSystem._sysEnum, daSystem);
 
             return daSystem;
+        }
+        //public StarSystem GetStarSystemByInt(int sysInt) // Use the Ditoinary
+        //{
+        //    return StarSystemData.Create(sysInt); // = sysInt;
+        //    //return this;
+        //}
+        public void LoadSystemDictionary(int[] starArray)
+        {
+            for (int i = 0; i < starArray.Length; i++)
+            {
+                var sys = StarSystemData.Create(starArray[i]);
+                
+                StarSystemDictionary.Add(sys._sysEnum, sys);
+            }
+        }
+        public void UpdateSystemOwner(Civilization civ, StarSystem sys)
+        {
+            StarSystem theSystem = StarSystemData.StarSystemDictionary[sys._sysEnum];
+            theSystem._ownerCiv = civ;
         }
     }
 }

@@ -361,6 +361,7 @@ namespace BOTF3D_GalaxyMap
             #endregion
             };
             LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+            //LoadCivData
 
         }
         void Update()
@@ -468,7 +469,7 @@ namespace BOTF3D_GalaxyMap
             return number;
         }
 
-        public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system 
+        public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system, THE BACKGROUND EYE CANDY
         {
             while (transform.childCount > 0) // delelt old systems from prior update
             {

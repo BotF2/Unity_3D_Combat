@@ -15,16 +15,18 @@ namespace BOTF3D_Core
 
     public class SystemDefButton : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private Text daSysText;
+        public void SetText(string sysName)
+        {
+            daSysText.text = sysName;
+        }
+        public void SetButton()
         {
 
         }
-
-        // Update is called once per frame
-        void Update()
+        public void OnClick()
         {
-
+            
         }
     }
 }

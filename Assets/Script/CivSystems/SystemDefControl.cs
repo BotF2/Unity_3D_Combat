@@ -14,16 +14,18 @@ namespace BOTF3D_Core
 {
     public class SystemDefControl : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private GameObject buttonPrefab;
+        private List<int> intList;
+
+        private void Start()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            for (int i = 0; i < 20; i++)//intList.Count; i++)
+            {
+                GameObject button = Instantiate(buttonPrefab) as GameObject;
+                button.SetActive(true);
+                button.GetComponent<SystemDefButton>().SetText("Sol Earth");
+                button.transform.SetParent(buttonPrefab.transform.parent, false);
+            }
         }
     }
 }

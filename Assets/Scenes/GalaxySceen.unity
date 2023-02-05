@@ -686,6 +686,8 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
@@ -22681,6 +22683,8 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 807470229}
+  civData: {fileID: 1863091656}
+  starSysData: {fileID: 2090482233}
   solarSystemView: {fileID: 1538149116}
   ship: {fileID: 1670698544}
   cameraMultiTarget: {fileID: 807690122}
@@ -33560,6 +33564,8 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
@@ -37984,9 +37990,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1813087268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7136da8b50dec42ac47d2240e995e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b88f6aaa9fa51346bbface8e34d9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  starSystemData: {fileID: 0}
 --- !u!1 &1813279898
 GameObject:
   m_ObjectHideFlags: 0
@@ -39003,6 +39011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b88f6aaa9fa51346bbface8e34d9f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1187732007}
+  starSystemData: {fileID: 2090482233}
 --- !u!1 &1869028883
 GameObject:
   m_ObjectHideFlags: 0
@@ -39071,6 +39081,8 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}

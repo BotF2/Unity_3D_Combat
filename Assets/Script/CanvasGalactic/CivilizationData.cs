@@ -19,11 +19,12 @@ namespace BOTF3D_GalaxyMap
     public class CivilizationData : MonoBehaviour
     {
         #region Fields
-        //public Canvas canvasGalactic;
+        public GameManager gameManager;
+        public StarSystemData starSystemData;
         [SerializeField]
         public static Dictionary<int, string[]> CivDataDictionary; // incoming data
         [SerializeField]
-        public static Dictionary<CivEnum, Civilization> CivilizationDictionary = new Dictionary<CivEnum, Civilization>() { { CivEnum.PLACEHOLDER, new Civilization(111) } };
+        public static Dictionary<CivEnum, Civilization> CivilizationDictionary = new Dictionary<CivEnum, Civilization>(); // { { CivEnum.PLACEHOLDER, new Civilization(111) } };
 
         #endregion
         public void Awake()
@@ -58,6 +59,7 @@ namespace BOTF3D_GalaxyMap
 
             }
             #endregion
+            
         }
         public static Civilization Create(int systemInt)
         {
@@ -87,21 +89,26 @@ namespace BOTF3D_GalaxyMap
 
             daCiv._civResearch = int.Parse(sysStrings[10]);
             daCiv._civCredits = int.Parse(sysStrings[9]);
-            CivilizationDictionary.Add(daCiv._civEnum, daCiv);
-            daCiv._homeSystem = StarSystemData.Create(systemInt);
-            daCiv._homeSystem._ownerCiv = daCiv;
+            daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
+            List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
+            daCiv._ownedSystem = ownedSystemStarterList;
+
             return daCiv;
         }
-        //private static void GetImage(int system, int theIndex, string path, Civilization daCiv)
+        //public Civilization GetCivbyEnum(CivEnum enumCiv)
         //{
-        //    string holdInsigniaName = CivDataDictionary[system][theIndex];
-        //    string pathInsignia = path + holdInsigniaName;
-        //    GameObject go = GameObject.CreatePrimitive(PrimitiveType.Plane); // (nameInsginia);
-        //    var rend = go.GetComponent<Renderer>();
-        //    rend.material.mainTexture = Resources.Load(pathInsignia) as Texture;
-        //    daCiv._insignia = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
-        //    go.gameObject.SetActive(false);
 
+        //    return CivilizationData.Create((int)enumCiv);
         //}
+        public void LoadDictionaryOfCivs(int[] ints) // only call once on loading galaxy 
+        {
+            for (int i = 0; i < ints.Length; i++)
+            {
+                Civilization aCiv = CivilizationData.Create(ints[i]); 
+                starSystemData.UpdateSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back set Civ for owner of system
+                CivilizationData.CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
+
+            }
+        }
     }
 }
