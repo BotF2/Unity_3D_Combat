@@ -31,7 +31,12 @@ namespace BOTF3D_Core
         public Sprite _civImage;
         public Sprite _insignia;
         //private readonly int _civId;
-        public float _credits;
+        //public float _credits;
+        public float _defBudget;
+        public float _techBudget;
+        public float _spyBudget;
+        public float _industryBudget;
+        public float _civPopulation; // credits per game time
         //private List<Bonus> _globalBonuses;
         //private readonly CivilizationMapData _mapData;
         //private readonly ResearchPool _research;
@@ -39,7 +44,9 @@ namespace BOTF3D_Core
         //private readonly List<SitRepEntry> _sitRepEntries;
         //public int _totalPopulation;
         //private readonly Meter _totalValue;
-        public float _civResearch;
+        public float _civTechLevel;
+        //public float _breakThroughs;
+        //public float _intel;
         public float _civCredits;
         //private readonly Treasury _treasury;
         //private int _maintenanceCostLastTurn;
@@ -48,6 +55,7 @@ namespace BOTF3D_Core
         public List<Civilization> _contactList;
        // public StarSystem _homeColony;
         public List<StarSystem> _ownedSystem;
+        public List<Ship> _fleet;
         //private List<int> _IntelIDs;
         //private MapLocation? _homeColonyLocation;
         //private int _seatOfGovernmentId = -1;

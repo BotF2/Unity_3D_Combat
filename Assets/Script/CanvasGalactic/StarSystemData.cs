@@ -32,8 +32,9 @@ namespace BOTF3D_GalaxyMap
             StarType star;
             if (Enum.TryParse(sysStrings[7], out star))
                 daSystem._starType = star;
-//            daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
-            daSystem._systemPopulation = int.Parse(sysStrings[6]);
+            //daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
+            daSystem._systemPopLimit = int.Parse(sysStrings[6]);
+            daSystem._currentSysPop = daSystem._systemPopLimit / 2;
             daSystem._ownerName = sysStrings[5];
             //_civInsignia leave for CivilizationData to do
             //daSystem._systemPopulation = int.Parse(sysStrings[6]);
@@ -41,7 +42,6 @@ namespace BOTF3D_GalaxyMap
                 daSystem._homeColony = true;
             else daSystem._homeColony = false;
             daSystem._text = "blah, blah, blah";
-            //StarSystemDictionary.Add(daSystem._sysEnum, daSystem);
 
             return daSystem;
         }
@@ -64,5 +64,9 @@ namespace BOTF3D_GalaxyMap
             StarSystem theSystem = StarSystemData.StarSystemDictionary[sys._sysEnum];
             theSystem._ownerCiv = civ;
         }
+        //public void AddSysPopulation()
+        //{
+            
+        //}
     }
 }

@@ -29,8 +29,9 @@ namespace BOTF3D_GalaxyMap
        // public Sprite _civInsignia;// do we get it from Civ and not system??
         public Civilization _ownerCiv;
         public string _ownerName;
-        public int _systemPopulation;
- 
+        public float _systemPopLimit;
+        public float _currentSysPop;
+        //public float _production;
         //private int _maintenanceCostLastTurn;
         //private int _rankCredits;
         //public List<CivHistory> _civHist_List = new List<CivHistory>();

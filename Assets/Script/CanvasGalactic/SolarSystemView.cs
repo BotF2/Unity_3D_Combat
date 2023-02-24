@@ -96,21 +96,18 @@ namespace BOTF3D_GalaxyMap
                 Destroy(child.gameObject);
             }
 
-            bool anOwner;
-            gameManager.ChangeSystemClicked(out anOwner, buttonSystemID, this); // clicked galaxy map star
-            if (anOwner)
+            gameManager.ChangeSystemClicked(buttonSystemID, this); // clicked galaxy map star
+
+            gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
+            systemDataArray = systemDataDictionary[buttonSystemID];
+            var mySolarSystem = new SolarSystem();
+            mySolarSystem.LoadSystem(systemDataArray, buttonSystemID);
+            solarSystem = mySolarSystem;
+            for (int i = 0; i < solarSystem.Children.Count; i++)
             {
-                gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
-                systemDataArray = systemDataDictionary[buttonSystemID];
-                var mySolarSystem = new SolarSystem();
-                mySolarSystem.LoadSystem(systemDataArray, buttonSystemID);
-                solarSystem = mySolarSystem;
-                for (int i = 0; i < solarSystem.Children.Count; i++)
-                {
-                    this.LoadSpritesForOrbital(this.transform, solarSystem.Children[i], buttonSystemID, i);
-                }
+                this.LoadSpritesForOrbital(this.transform, solarSystem.Children[i], buttonSystemID, i);
             }
-            //this.LoadSpritesForOrbital(this.transform, solarSystem.Children[0], buttonSystemID, 0);
+
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG, int systemID, int i)
         {

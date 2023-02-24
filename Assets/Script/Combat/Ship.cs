@@ -20,6 +20,8 @@ namespace BOTF3D_Combat
         public CivEnum _civilization;
         public ShipType _shipType;
         public GalaxySize _techLevel;
+        public Transform _galacticLocation;
+        public Transform _galacticDestination;
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits

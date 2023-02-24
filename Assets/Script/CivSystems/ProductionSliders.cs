@@ -16,11 +16,14 @@ namespace BOTF3D_Core
     {       
         [SerializeField] private Sprite locked;
         [SerializeField] private Sprite unlocked;
-
         private float[] values; 
         [SerializeField] private Slider[] sliders;
         //private List<Slider> activeSlidersList;
         [SerializeField] private TextMeshProUGUI[] slideText;
+        public float sliderRateDef = .25f;
+        public float sliderRateTech = .25f;
+        public float sliderRateSpy = .25f;
+        public float sliderRateIndustry = .25f;
         [SerializeField] private Button[] locks;
 
         void Start()
@@ -38,7 +41,6 @@ namespace BOTF3D_Core
                 }
                 values = Array.ConvertAll(sliders, GetRatio);
             }
-            //activeSlidersList = sliders.ToList();
         }
         private void Update()
         {
@@ -60,9 +62,33 @@ namespace BOTF3D_Core
                     {
                         sliders[k].gameObject.SetActive(false);
                     }
-                double j;
-                j = Math.Round((double)sliders[i].value, 1);
+                float j;
+                j = (float)Math.Round((double)sliders[i].value, 1);
                 slideText[i].text = j.ToString();
+                if (i == 0)
+                {
+                    //if (j < 0.1)
+                    //    j = 0.1f;
+                    sliderRateDef = j / 100;                   
+                }
+                if (i == 1)
+                {
+                    //if (j < 0.1)
+                    //    j = 0.1f;
+                    sliderRateTech = j / 100;
+                }
+                if (i == 2)
+                {
+                    //if (j < 0.1)
+                    //    j = 0.1f;
+                    sliderRateSpy = j / 100;
+                }
+                else if (i == 3)
+                {
+                    //if (j < 0.1)
+                    //    j = 0.1f;
+                    sliderRateIndustry = j / 100;
+                }
             }
         }
 

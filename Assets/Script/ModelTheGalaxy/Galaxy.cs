@@ -31,15 +31,6 @@ namespace Assets.Script
             //this.AddChild(myStar);
 
         }
-        //public void Awake()
-        //{
-        //    // On awake there is a galaxy with the galalctic center 'system' but no button for it
-        //    var galaxyCenterSystem = new SolarSystem();
-        //    galaxyCenter = galaxyCenterSystem.GenerateGalaxyCenter();
-        //    Vector3 galacticCenterVector = new Vector3(0, 0, 0);
-        //    SolarSystemsMap.Add(galacticCenterVector, galaxyCenter);
-        //    SolarSystems.Add(galaxyCenterSystem);
-        //}
 
         public void Update(UInt64 timeSinceStart)
         {
@@ -102,16 +93,5 @@ namespace Assets.Script
                 // ToDo: use numStars and GalaxyType
             }
         }
-
-        //public void AddChildSystem(SolarSystem child)
-        //{
-        //    child.Parent = this;
-        //    SolarSystems.Add(child);
-        //}
-        //public void RemoveChildSystem(SolarSystem child)
-        //{
-        //    child.Parent = null;
-        //    SolarSystems.Remove(child);
-        //}
     }
 }
