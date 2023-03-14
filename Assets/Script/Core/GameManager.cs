@@ -736,7 +736,7 @@ namespace BOTF3D_Core
         public static Dictionary<string, GameObject> PrefabShipDitionary;
         #endregion
 
-        #region prefab Star Systems, button gameobjects
+        #region prefab Star Systems and Fleets, button gameobjects
         public GameObject FED_StarSystem;
         public GameObject ROM_StarSystem;
         public GameObject KLING_StarSystem;
@@ -895,9 +895,169 @@ namespace BOTF3D_Core
         public GameObject ZAKDORN_StarSystem;
         public GameObject ZALKONIANS_StarSystem;
         public GameObject ZIBALIANS_StarSystem;
-       // public GameObject GALACTIC_Center; // do not need a galactic center system button
+
+        public GameObject FED_fleet;
+        public GameObject ROM_fleet;
+        public GameObject KLING_fleet;
+        public GameObject CARD_fleet;
+        public GameObject DOM_fleet;
+        public GameObject BORG_fleet;
+        public GameObject ACAMARIANS_fleet;
+        public GameObject AKAALI_fleet;
+        public GameObject AKRITIRIANS_fleet;
+        public GameObject ALDEANS_fleet;
+        public GameObject ALGOLIANS_fleet;
+        public GameObject ALSAURIANS_fleet;
+        public GameObject ANDORIANS_fleet;
+        public GameObject ANGOSIANS_fleet;
+        public GameObject ANKARI_fleet;
+        public GameObject ANTEDEANS_fleet;
+        public GameObject ANTICANS_fleet;
+        public GameObject ARBAZAN_fleet;
+        public GameObject ARDANANS_fleet;
+        public GameObject ARGRATHI_fleet;
+        public GameObject ARKARIANS_fleet;
+        public GameObject ATREANS_fleet;
+        public GameObject AXANAR_fleet;
+        public GameObject BAJORANS_fleet;
+        public GameObject BAKU_fleet;
+        public GameObject BANDI_fleet;
+        public GameObject BANEANS_fleet;
+        public GameObject BARZANS_fleet;
+        public GameObject BENZITES_fleet;
+        public GameObject BETAZOIDS_fleet;
+        public GameObject BILANAIANS_fleet;
+        public GameObject BOLIANS_fleet;
+        public GameObject BOMAR_fleet;
+        public GameObject BOSLICS_fleet;
+        public GameObject BOTHA_fleet;
+        public GameObject BREELLIANS_fleet;
+        public GameObject BREEN_fleet;
+        public GameObject BREKKIANS_fleet;
+        public GameObject BYNARS_fleet;
+        public GameObject CAIRN_fleet;
+        public GameObject CALDONIANS_fleet;
+        public GameObject CAPELLANS_fleet;
+        public GameObject CHALNOTH_fleet;
+        public GameObject CORIDAN_fleet;
+        public GameObject CORVALLENS_fleet;
+        public GameObject CYTHERIANS_fleet;
+        public GameObject DELTANS_fleet;
+        public GameObject DENOBULANS_fleet;
+        public GameObject DEVORE_fleet;
+        public GameObject DOPTERIANS_fleet;
+        public GameObject DOSI_fleet;
+        public GameObject DRAI_fleet;
+        public GameObject DREMANS_fleet;
+        public GameObject EDO_fleet;
+        public GameObject ELAURIANS_fleet;
+        public GameObject ELAYSIANS_fleet;
+        public GameObject ENTHARANS_fleet;
+        public GameObject EVORA_fleet;
+        public GameObject EXCALBIANS_fleet;
+        public GameObject FERENGI_fleet;
+        public GameObject FLAXIANS_fleet;
+        public GameObject GORN_fleet;
+        public GameObject GRAZERITES_fleet;
+        public GameObject HAAKONIANS_fleet;
+        public GameObject HALKANS_fleet;
+        public GameObject HAZARI_fleet;
+        public GameObject HEKARANS_fleet;
+        public GameObject HIROGEN_fleet;
+        public GameObject HORTA_fleet;
+        public GameObject IYAARANS_fleet;
+        public GameObject JNAII_fleet;
+        public GameObject KAELON_fleet;
+        public GameObject KAREMMA_fleet;
+        public GameObject KAZON_fleet;
+        public GameObject KELLERUN_fleet;
+        public GameObject KESPRYTT_fleet;
+        public GameObject KLAESTRONIANS_fleet;
+        public GameObject KRADIN_fleet;
+        public GameObject KREETASSANS_fleet;
+        public GameObject KRIOSIANS_fleet;
+        public GameObject KTARIANS_fleet;
+        public GameObject LEDOSIANS_fleet;
+        public GameObject LISSEPIANS_fleet;
+        public GameObject LOKIRRIM_fleet;
+        public GameObject LURIANS_fleet;
+        public GameObject MALCORIANS_fleet;
+        public GameObject MALON_fleet;
+        public GameObject MAQUIS_fleet;
+        public GameObject MARKALIANS_fleet;
+        public GameObject MERIDIANS_fleet;
+        public GameObject MINTAKANS_fleet;
+        public GameObject MIRADORN_fleet;
+        public GameObject MIZARIANS_fleet;
+        public GameObject MOKRA_fleet;
+        public GameObject MONEANS_fleet;
+        public GameObject NAUSICAANS_fleet;
+        public GameObject NECHANI_fleet;
+        public GameObject NEZU_fleet;
+        public GameObject NORCADIANS_fleet;
+        public GameObject NUMIRI_fleet;
+        public GameObject NUUBARI_fleet;
+        public GameObject NYRIANS_fleet;
+        public GameObject OCAMPA_fleet;
+        public GameObject ORIONS_fleet;
+        public GameObject ORNARANS_fleet;
+        public GameObject PAKLED_fleet;
+        public GameObject PARADANS_fleet;
+        public GameObject QUARREN_fleet;
+        public GameObject RAKHARI_fleet;
+        public GameObject RAKOSANS_fleet;
+        public GameObject RAMATIANS_fleet;
+        public GameObject REMANS_fleet;
+        public GameObject RIGELIANS_fleet;
+        public GameObject RISIANS_fleet;
+        public GameObject RUTIANS_fleet;
+        public GameObject SELAY_fleet;
+        public GameObject SHELIAK_fleet;
+        public GameObject SIKARIANS_fleet;
+        public GameObject SKRREEA_fleet;
+        public GameObject SONA_fleet;
+        public GameObject SULIBAN_fleet;
+        public GameObject TAKARANS_fleet;
+        public GameObject TAKARIANS_fleet;
+        public GameObject TAKTAK_fleet;
+        public GameObject TALARIANS_fleet;
+        public GameObject TALAXIANS_fleet;
+        public GameObject TALOSIANS_fleet;
+        public GameObject TAMARIANS_fleet;
+        public GameObject TANUGANS_fleet;
+        public GameObject TELLARITES_fleet;
+        public GameObject TEPLANS_fleet;
+        public GameObject THOLIANS_fleet;
+        public GameObject TILONIANS_fleet;
+        public GameObject TLANI_fleet;
+        public GameObject TRABE_fleet;
+        public GameObject TRILL_fleet;
+        public GameObject TROGORANS_fleet;
+        public GameObject TZENKETHI_fleet;
+        public GameObject ULLIANS_fleet;
+        public GameObject VAADWAUR_fleet;
+        public GameObject VENTAXIANS_fleet;
+        public GameObject VHNORI_fleet;
+        public GameObject VIDIIANS_fleet;
+        public GameObject VISSIANS_fleet;
+        public GameObject VORGONS_fleet;
+        public GameObject VORI_fleet;
+        public GameObject VULCANS_fleet;
+        public GameObject WADI_fleet;
+        public GameObject XANTHANS_fleet;
+        public GameObject XEPOLITES_fleet;
+        public GameObject XINDI_fleet;
+        public GameObject XYRILLIANS_fleet;
+        public GameObject YADERANS_fleet;
+        public GameObject YRIDIANS_fleet;
+        public GameObject ZAHL_fleet;
+        public GameObject ZAKDORN_fleet;
+        public GameObject ZALKONIANS_fleet;
+        public GameObject ZIBALIANS_fleet;
+        // public GameObject GALACTIC_Center; // do not need a galactic center system button
         public List<GameObject> AllSystemsList;
         public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
+        public static Dictionary<string, GameObject> PrefabFleetDitionary;
         #endregion
         //public Sprite FedCiv
         #region Animation empties by ship type Now from ActOnCombatOrder.cs?
@@ -1489,6 +1649,7 @@ namespace BOTF3D_Core
                     break;
                 case State.GALACTIC_MAP:
                     cameraManagerGalactica.ActivateButtonStopGalacticPlay(true);
+                    cameraManagerGalactica.ActivateButtonFleets(true);
                     cameraGalactica.enabled = true;
                     cameraTelescope.enabled = true;
 
@@ -1505,6 +1666,7 @@ namespace BOTF3D_Core
 
                 case State.GALACTIC_MAP_INIT:
                     cameraManagerGalactica.ActivateButtonStopGalacticPlay(false);
+                    cameraManagerGalactica.ActivateButtonFleets(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     PanelLobby_Menu.SetActive(false);
@@ -2141,12 +2303,180 @@ namespace BOTF3D_Core
                 { "ZAKDORN", ZAKDORN_StarSystem },
                 { "ZALKONIANS", ZALKONIANS_StarSystem },
                 { "ZIBALIANS", ZIBALIANS_StarSystem },
-                //{ "GALACTIC_CENTER", GALACTIC_Center }
+
             };
             
             if (PrefabStarSystemDitionary == null)
             {
                 PrefabStarSystemDitionary = systemPrefabDitionary;
+            }
+
+            Dictionary<string, GameObject> fleetPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                { "FED", FED_fleet },
+                { "ROM", ROM_fleet },
+                { "KLING", KLING_fleet },
+                { "CARD", CARD_fleet },
+                { "DOM", DOM_fleet },
+                { "BORG", BORG_fleet },
+                { "ACAMARIANS", ACAMARIANS_fleet },
+                { "AKAALI", AKAALI_fleet },
+                { "AKRITIRIANS", AKRITIRIANS_fleet },
+                { "ALDEANS", ALDEANS_fleet },
+                { "ALGOLIANS", ALGOLIANS_fleet },
+                { "ALSAURIANS", ALSAURIANS_fleet },
+                { "ANDORIANS", ANDORIANS_fleet },
+                { "ANGOSIANS", ANGOSIANS_fleet },
+                { "ANKARI", ANKARI_fleet },
+                { "ANTEDEANS", ANTEDEANS_fleet },
+                { "ANTICANS", ANTICANS_fleet },
+                { "ARBAZAN", ARBAZAN_fleet },
+                { "ARDANANS", ARDANANS_fleet },
+                { "ARGRATHI", ARGRATHI_fleet },
+                { "ARKARIANS", ARKARIANS_fleet },
+                { "ATREANS", ATREANS_fleet },
+                { "AXANAR", AXANAR_fleet },
+                { "BAJORANS", BAJORANS_fleet },
+                { "BAKU", BAKU_fleet },
+                { "BANDI", BANDI_fleet },
+                { "BANEANS", BANEANS_fleet },
+                { "BARZANS", BARZANS_fleet },
+                { "BENZITES", BENZITES_fleet },
+                { "BETAZOIDS", BETAZOIDS_fleet },
+                { "BILANAIANS", BILANAIANS_fleet },
+                { "BOLIANS", BOLIANS_fleet },
+                { "BOMAR", BOMAR_fleet },
+                { "BOSLICS", BOSLICS_fleet },
+                { "BOTHA", BOTHA_fleet },
+                { "BREELLIANS", BREELLIANS_fleet },
+                { "BREEN", BREEN_fleet },
+                { "BREKKIANS", BREKKIANS_fleet },
+                { "BYNARS", BYNARS_fleet },
+                { "CAIRN", CAIRN_fleet },
+                { "CALDONIANS", CALDONIANS_fleet },
+                { "CAPELLANS", CAPELLANS_fleet },
+                { "CHALNOTH", CHALNOTH_fleet },
+                { "CORIDAN", CORIDAN_fleet },
+                { "CORVALLENS", CORVALLENS_fleet },
+                { "CYTHERIANS", CYTHERIANS_fleet },
+                { "DELTANS", DELTANS_fleet },
+                { "DENOBULANS", DENOBULANS_fleet },
+                { "DEVORE", DEVORE_fleet },
+                { "DOPTERIANS", DOPTERIANS_fleet },
+                { "DOSI", DOSI_fleet },
+                { "DRAI", DRAI_fleet },
+                { "DREMANS", DREMANS_fleet },
+                { "EDO", EDO_fleet },
+                { "ELAURIANS", ELAURIANS_fleet },
+                { "ELAYSIANS", ELAYSIANS_fleet },
+                { "ENTHARANS", ENTHARANS_fleet },
+                { "EVORA", EVORA_fleet },
+                { "EXCALBIANS", EXCALBIANS_fleet },
+                { "FERENGI", FERENGI_fleet },
+                { "FLAXIANS", FLAXIANS_fleet },
+                { "GORN", GORN_fleet },
+                { "GRAZERITES", GRAZERITES_fleet },
+                { "HAAKONIANS", HAAKONIANS_fleet },
+                { "HALKANS", HALKANS_fleet },
+                { "HAZARI", HAZARI_fleet },
+                { "HEKARANS", HEKARANS_fleet },
+                { "HIROGEN", HIROGEN_fleet },
+                { "HORTA", HORTA_fleet },
+                { "IYAARANS", IYAARANS_fleet },
+                { "JNAII", JNAII_fleet },
+                { "KAELON", KAELON_fleet },
+                { "KAREMMA", KAREMMA_fleet },
+                { "KAZON", KAZON_fleet },
+                { "KELLERUN", KELLERUN_fleet },
+                { "KESPRYTT", KESPRYTT_fleet },
+                { "KLAESTRONIANS", KLAESTRONIANS_fleet },
+                { "KRADIN", KRADIN_fleet },
+                { "KREETASSANS", KREETASSANS_fleet },
+                { "KRIOSIANS", KRIOSIANS_fleet },
+                { "KTARIANS", KTARIANS_fleet },
+                { "LEDOSIANS", LEDOSIANS_fleet },
+                { "LISSEPIANS", LISSEPIANS_fleet },
+                { "LOKIRRIM", LOKIRRIM_fleet },
+                { "LURIANS", LURIANS_fleet },
+                { "MALCORIANS", MALCORIANS_fleet },
+                { "MALON", MALON_fleet },
+                { "MAQUIS", MAQUIS_fleet },
+                { "MARKALIANS", MARKALIANS_fleet },
+                { "MERIDIANS", MERIDIANS_fleet },
+                { "MINTAKANS", MINTAKANS_fleet },
+                { "MIRADORN", MIRADORN_fleet },
+                { "MIZARIANS", MIZARIANS_fleet },
+                { "MOKRA", MOKRA_fleet },
+                { "MONEANS", MONEANS_fleet },
+                { "NAUSICAANS", NAUSICAANS_fleet },
+                { "NECHANI", NECHANI_fleet },
+                { "NEZU", NEZU_fleet },
+                { "NORCADIANS", NORCADIANS_fleet },
+                { "NUMIRI", NUMIRI_fleet },
+                { "NUUBARI", NUUBARI_fleet },
+                { "NYRIANS", NYRIANS_fleet },
+                { "OCAMPA", OCAMPA_fleet },
+                { "ORIONS", ORIONS_fleet },
+                { "ORNARANS", ORNARANS_fleet },
+                { "PAKLED", PAKLED_fleet },
+                { "PARADANS", PARADANS_fleet },
+                { "QUARREN", QUARREN_fleet },
+                { "RAKHARI", RAKHARI_fleet },
+                { "RAKOSANS", RAKOSANS_fleet },
+                { "RAMATIANS", RAMATIANS_fleet },
+                { "REMANS", REMANS_fleet },
+                { "RIGELIANS", RIGELIANS_fleet },
+                { "RISIANS", RISIANS_fleet },
+                { "RUTIANS", RUTIANS_fleet },
+                { "SELAY", SELAY_fleet },
+                { "SHELIAK", SHELIAK_fleet },
+                { "SIKARIANS", SIKARIANS_fleet },
+                { "SKRREEA", SKRREEA_fleet },
+                { "SONA", SONA_fleet },
+                { "SULIBAN", SULIBAN_fleet },
+                { "TAKARANS", TAKARANS_fleet },
+                { "TAKARIANS", TAKARIANS_fleet },
+                { "TAKTAK", TAKTAK_fleet },
+                { "TALARIANS", TALARIANS_fleet },
+                { "TALAXIANS", TALAXIANS_fleet },
+                { "TALOSIANS", TALOSIANS_fleet },
+                { "TAMARIANS", TAMARIANS_fleet },
+                { "TANUGANS", TANUGANS_fleet },
+                { "TELLARITES", TELLARITES_fleet },
+                { "TEPLANS", TEPLANS_fleet },
+                { "THOLIANS", THOLIANS_fleet },
+                { "TILONIANS", TILONIANS_fleet },
+                { "TLANI", TLANI_fleet },
+                { "TRABE", TRABE_fleet },
+                { "TRILL", TRILL_fleet },
+                { "TROGORANS", TROGORANS_fleet },
+                { "TZENKETHI", TZENKETHI_fleet },
+                { "ULLIANS", ULLIANS_fleet },
+                { "VAADWAUR", VAADWAUR_fleet },
+                { "VENTAXIANS", VENTAXIANS_fleet },
+                { "VHNORI", VHNORI_fleet },
+                { "VIDIIANS", VIDIIANS_fleet },
+                { "VISSIANS", VISSIANS_fleet },
+                { "VORGONS", VORGONS_fleet },
+                { "VORI", VORI_fleet },
+                { "VULCANS", VULCANS_fleet },
+                { "WADI", WADI_fleet },
+                { "XANTHANS", XANTHANS_fleet },
+                { "XEPOLITES", XEPOLITES_fleet },
+                { "XINDI", XINDI_fleet },
+                { "XYRILLIANS", XYRILLIANS_fleet },
+                { "YADERANS", YADERANS_fleet },
+                { "YRIDIANS", YRIDIANS_fleet },
+                { "ZAHL", ZAHL_fleet },
+                { "ZAKDORN", ZAKDORN_fleet },
+                { "ZALKONIANS", ZALKONIANS_fleet },
+                { "ZIBALIANS", ZIBALIANS_fleet },
+
+            };
+
+            if (PrefabFleetDitionary == null)
+            {
+                PrefabFleetDitionary = fleetPrefabDitionary;
             }
         }
 

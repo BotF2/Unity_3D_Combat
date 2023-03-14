@@ -30,13 +30,8 @@ namespace BOTF3D_Core
         //public Traits _traitTwo;
         public Sprite _civImage;
         public Sprite _insignia;
-        //private readonly int _civId;
-        //public float _credits;
-        public float _defBudget;
-        public float _techBudget;
-        public float _spyBudget;
-        public float _industryBudget;
-        public float _civPopulation; // credits per game time
+        public List<float> _sysTradeAllocation = new List<float> { 100f,};
+        //public float _civPopulation; // credits per game time
         //private List<Bonus> _globalBonuses;
         //private readonly CivilizationMapData _mapData;
         //private readonly ResearchPool _research;
@@ -45,7 +40,8 @@ namespace BOTF3D_Core
         //public int _totalPopulation;
         //private readonly Meter _totalValue;
         public float _civTechLevel;
-        //public float _breakThroughs;
+        public float _civTaxRate;
+        public float _cviGrowthRate; // currently using private float techPopGrowthRate = 0.01f in CivilizationData
         //public float _intel;
         public float _civCredits;
         //private readonly Treasury _treasury;

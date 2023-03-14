@@ -20,13 +20,13 @@ namespace BOTF3D_GalaxyMap
         public static Dictionary<int, string[]> CivDataDictionary; // incoming data
         [SerializeField]
         public static Dictionary<CivEnum, Civilization> CivilizationDictionary = new Dictionary<CivEnum, Civilization>(); // { { CivEnum.PLACEHOLDER, new Civilization(111) } };
-        private float TechPopRate = 0.001f;
-        private float TaxRate = 0.05f;
-        private float payDef = 1f;
-        private float payResearch = 1f;
-        private float paySpy = 1f;
-        private float payIndustry = 1f;
+        private float techPopGrowthRate = 0.01f;
+        //private float factoryMaint = 0.05f;
+        //private float labMaint = 0.05f;
+        //private float intelMaint = 0.05f;
+        //private float defMaint = 0.05f;
         private int numStars;
+        //public List<StarSystem> _sysList;
         [SerializeField]
         public ProductionSliders proSliders;
         #endregion
@@ -61,8 +61,7 @@ namespace BOTF3D_GalaxyMap
                 CivDataDictionary = _civDataDictionary;
 
             }
-            #endregion
-           
+            #endregion          
         }
         public static Civilization Create(int systemInt)
         {
@@ -89,7 +88,7 @@ namespace BOTF3D_GalaxyMap
             rendTwo.material.mainTexture = Resources.Load(pathCiv) as Texture;
             daCiv._civImage = Sprite.Create((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
             goTwo.gameObject.SetActive(false);
-            daCiv._civPopulation = int.Parse(sysStrings[9]);
+           // daCiv._civPopulation = int.Parse(sysStrings[9]);
             daCiv._civCredits = int.Parse(sysStrings[10]);
             daCiv._civTechLevel = int.Parse(sysStrings[11]);
             daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
@@ -109,93 +108,136 @@ namespace BOTF3D_GalaxyMap
             }
             numStars = gameManager._galaxyStarCount.Length;
         }
-        public void AddPopulation()
+        public void DoSystemPoduction()
         {
             //var numStars = gameManager._galaxyStarCount.Length;
+            
             for (int i = 0; i < numStars; i++)
             {
                 var civIndex = gameManager._galaxyStarCount[i];
                 Civilization civ = CivilizationDictionary[(CivEnum)civIndex];
-                List<StarSystem> sysList = civ._ownedSystem;
-                float currentPopulation = 0.01f;
-
-                foreach (var starSys in sysList)
+                CalculateCivSysAllocation(civ);
+                if (civ._ownedSystem.Count > 0)
                 {
-                    float currentSysLimit = (starSys._systemPopLimit + civ._civTechLevel); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
-                    if (starSys._currentSysPop < currentSysLimit)
+                    for (int j= 0; j< civ._ownedSystem.Count; j++)
                     {
-                        starSys._currentSysPop += starSys._currentSysPop* TechPopRate;
-                        currentPopulation += starSys._currentSysPop;
+                        StarSystem starSys = civ._ownedSystem[j];
+                        float sysPopLimit = (starSys._systemPopLimit + civ._civTechLevel); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
+                        if (starSys._currentSysPop < sysPopLimit)
+                        {
+                            starSys._currentSysPop += starSys._currentSysPop * techPopGrowthRate;
+
+                            if (civ._ownedSystem.Count > 1) // profit from trade 
+                            {
+                                civ._civCredits += 5f;
+                            }
+                        }
+                        //ToDo: set factory output at each system by civ level allocation to factories and local factories by system population level
+
+                        //float sysFactoryLimit = (starSys._systemFactoryLimit + civ._civTechLevel);
+                        //if (starSys._currentSysFactories < sysFactoryLimit)
+                        //{
+                        //    starSys._currentSysFactories += starSys._currentSysFactories * techPopGrowthRate;
+                        //}
+                        starSys._sysCredits += starSys._currentSysPop * starSys._currentSysFactories * civ._civTechLevel * techPopGrowthRate;
+                        // ToDo: set tax rate in slider
+                        starSys._sysCredits -= starSys._sysCredits * civ._civTaxRate;
+                        DoSysConsumption(starSys);
+                    }
+                    for (int k = 0; k < civ._ownedSystem.Count; k++) // apply trade income from civ credits
+                    {
+                        StarSystem starSys = civ._ownedSystem[k];
+                        starSys._sysCredits += civ._civCredits * (civ._sysTradeAllocation[k] / 100f);
                     }
                 }
-                civ._civPopulation = currentPopulation;                
+                DoCivConsumption(civ);
             }
         }
-        public void AddPopCredits()
-        // ship qualtiy = civTech * research points
-        // time to produce ship = population(Credits)/civTech, a drain on credits
-        // total credits/time = population, (maintenance + production, the drains on credits)
-        // Population = [population + (100/ research points)]/ population
-        // total Credits is population (popCredits),+ population to credits over time
+        private void DoSysConsumption(StarSystem starSys)
         {
-            //var numStars = gameManager._galaxyStarCount.Length;
-            for (int i = 0; i < numStars; i++)
+            // ToDo: build ships here with starSys._sysCredits
+        }
+        private void DoCivConsumption(Civilization civ)
+        {
+            // ToDo: ship maintenance and Research and Intel consumption here
+            // us civ._civCredits
+        }
+        private void CalculateCivSysAllocation(Civilization civ)
+        {
+            // ToDo: get slider imput here for trade credit allocation
+            civ._sysTradeAllocation.Clear();
+            float allocation = 100f/ civ._ownedSystem.Count;
+            for (int i = 0; i < civ._ownedSystem.Count; i++)
             {
-                Civilization civ = CivilizationDictionary[(CivEnum)i];
-                //if (civ._civCredits < 0.01)
-                //    civ._civCredits = 0.01f;
-                civ._civCredits += TaxRate * civ._civPopulation;
+                civ._sysTradeAllocation.Add(allocation);              
             }
+            
         }
-        public void AddTech()
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                Civilization civ = CivilizationDictionary[(CivEnum)i];
-               // civ._civResearch += civ._breakThroughs; // ToDo: generate breakThroughs from UI Research per turn slider
-            }
-        }
-        public void AddSpy()
-        {
-            for (int i = 0; i < numStars; i++)
-            {
-                Civilization civ = CivilizationDictionary[(CivEnum)i];
-                //float intel
-                //civ._civTechLevel
-                // ToDo: generate intel from UI Spy per turn slider
-                // civ.UI_Data (what we can see of other civs) += civ._intel;
-            }
-        }
-        public void DoCivProduction()
-        {
-            //loop all civs, Civ's Credits * sliderRatioDefence for civ = Denfense budget?
-            // ship qualtiy = civTech * research points
+        //public void AddSysCredits()
+        //// ship quality = civTech * research points
+        //// time to produce ship = population(Credits)/civTech, a drain on credits
+        //// total credits/time = population, (maintenance + production, the drains on credits)
+        //// Population = [population + (100/ research points)]/ population
+        //// total Credits is population (popCredits),+ population to credits over time
+        //{
+        //    //var numStars = gameManager._galaxyStarCount.Length;
+        //    for (int i = 0; i < numStars; i++)
+        //    {
+        //        Civilization civ = CivilizationDictionary[(CivEnum)i];
+        //        //if (civ._civCredits < 0.01)
+        //        //    civ._civCredits = 0.01f;
+        //        //civ._civCredits += TaxRate * civ._civPopulation;
+        //    }
+        //}
+        //public void AddTech()
+        //{
+        //    for (int i = 0; i < 6; i++)
+        //    {
+        //        Civilization civ = CivilizationDictionary[(CivEnum)i];
+        //       // civ._civResearch += civ._breakThroughs; // ToDo: generate breakThroughs from UI Research per turn slider
+        //    }
+        //}
+        //public void AddSpy()
+        //{
+        //    for (int i = 0; i < numStars; i++)
+        //    {
+        //        Civilization civ = CivilizationDictionary[(CivEnum)i];
+        //        //float intel
+        //        //civ._civTechLevel
+        //        // ToDo: generate intel from UI Spy per turn slider
+        //        // civ.UI_Data (what we can see of other civs) += civ._intel;
+        //    }
+        //}
+        //public void DoCivProduction()
+        //{
+        //    //loop all civs, Civ's Credits * sliderRatioDefence for civ = Denfense budget?
+        //    // ship qualtiy = civTech * research points
 
-            var numStars = gameManager._galaxyStarCount.Length;
-            for (int i = 0; i < numStars; i++)
-            {
-                int civIndex = gameManager._galaxyStarCount[i];
-                Civilization civ = CivilizationDictionary[(CivEnum)civIndex];
-                payDef = proSliders.sliderRateDef * civ._civCredits;
-                civ._defBudget += payDef;
-                civ._civCredits -= payDef;
-                payResearch = proSliders.sliderRateTech * civ._civCredits; 
-                civ._techBudget += payResearch;
-                civ._civCredits -= payResearch;
-                paySpy = proSliders.sliderRateSpy * civ._civCredits;
-                civ._spyBudget += paySpy;
-                civ._civCredits -= paySpy;
-                payIndustry = proSliders.sliderRateIndustry * civ._civCredits;
-                civ._industryBudget += payIndustry;
-                civ._civCredits -= payIndustry;
-                float[] budget = new float[4] { civ._defBudget, civ._techBudget, civ._spyBudget, civ._industryBudget };
-                panelCommand.BalanceTheBudget(budget);
-                if (civ._civEnum == gameManager._localPlayer)
-                    panelCommand.DisplayBudget(budget);
+        //    var numStars = gameManager._galaxyStarCount.Length;
+        //    for (int i = 0; i < numStars; i++)
+        //    {
+        //        int civIndex = gameManager._galaxyStarCount[i];
+        //        Civilization civ = CivilizationDictionary[(CivEnum)civIndex];
+        //        payDef = proSliders.sliderRateDef * civ._civCredits;
+        //        //civ._defBudget += payDef;
+        //        civ._civCredits -= payDef;
+        //        payResearch = proSliders.sliderRateTech * civ._civCredits; 
+        //        //civ._techBudget += payResearch;
+        //        civ._civCredits -= payResearch;
+        //        paySpy = proSliders.sliderRateSpy * civ._civCredits;
+        //       // civ._spyBudget += paySpy;
+        //        civ._civCredits -= paySpy;
+        //        payIndustry = proSliders.sliderRateIndustry * civ._civCredits;
+        //        //civ._industryBudget += payIndustry;
+        //        civ._civCredits -= payIndustry;
+        //        //float[] budget = new float[4] { civ._defBudget, civ._techBudget, civ._spyBudget, civ._industryBudget };
+        //        //panelCommand.BalanceTheBudget(budget);
+        //        //if (civ._civEnum == gameManager._localPlayer)
+        //            //panelCommand.DisplayBudget(budget);
 
-            }
+        //    }
 
-        }
+        //}
         //void BalanceTheBudget(float[] _budget)
         //{
 

@@ -44,11 +44,11 @@ namespace BOTF3D_Core
             // Population = [population + (100/ research points)]/ population
             // total Credits is population (popCredits),+ population to credits over time
             // Produce();
-            civilizationData.AddPopulation();
-            civilizationData.AddPopCredits();
-            civilizationData.AddTech();
-            civilizationData.AddSpy();
-            civilizationData.DoCivProduction();         
+            civilizationData.DoSystemPoduction();
+            //civilizationData.DoConsumption();
+            //civilizationData.AddTech();
+            //civilizationData.AddSpy();
+            //civilizationData.DoCivProduction();         
         }
         private void Produce() //not in this class, do it in CivilizationData.DoCivProduction
         {

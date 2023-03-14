@@ -104,7 +104,7 @@ namespace BOTF3D_GalaxyMap
         public GameObject telescopeHolder; 
         //public Camera telescope;
         public GameObject buttonStopGalacticPlay;
-
+        public GameObject buttonFleets;
         private float _currentIncrease = 0.1f; // active control of camera movement rate
                                                //private float _currentIncreaseMem = 0;
         private Vector3 _initPosition;
@@ -230,6 +230,17 @@ namespace BOTF3D_GalaxyMap
             {
                 buttonStopGalacticPlay.SetActive(false);
                 telescopeHolder.SetActive(false);
+            }
+        }
+        public void ActivateButtonFleets(bool turnOn)
+        {
+            if (turnOn)
+            {
+                buttonFleets.SetActive(true);
+            }
+            else
+            {
+                buttonFleets.SetActive(false);
             }
         }
 

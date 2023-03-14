@@ -33,9 +33,11 @@ namespace BOTF3D_GalaxyMap
             if (Enum.TryParse(sysStrings[7], out star))
                 daSystem._starType = star;
             //daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
-            daSystem._systemPopLimit = int.Parse(sysStrings[6]);
-            daSystem._currentSysPop = daSystem._systemPopLimit / 2;
+            daSystem._sysCredits = 10f;
+            daSystem._systemPopLimit = int.Parse(sysStrings[33]);
+            daSystem._currentSysPop = int.Parse(sysStrings[6]);
             daSystem._ownerName = sysStrings[5];
+            daSystem._currentSysFactories = float.Parse(sysStrings[32]);
             //_civInsignia leave for CivilizationData to do
             //daSystem._systemPopulation = int.Parse(sysStrings[6]);
             if (sysStrings[5] != "UNINHABITED")

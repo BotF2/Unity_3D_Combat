@@ -19,7 +19,7 @@ namespace BOTF3D_Combat
         public Combat combat;
         public CivEnum _civilization;
         public ShipType _shipType;
-        public GalaxySize _techLevel;
+        public float _techPoints; 
         public Transform _galacticLocation;
         public Transform _galacticDestination;
         public int _shieldsMaxHealth; // set in ShipData.txt
@@ -72,7 +72,6 @@ namespace BOTF3D_Combat
         public AudioClip clipWarpCoreBreach;
 
         // private Renderer rend; // not working 
-
         // public Material _hitMaterial;
         //List<Design> shipDesign = new List<Design>();
         //Material _orgMaterial;
@@ -81,8 +80,6 @@ namespace BOTF3D_Combat
 
         private void Awake()
         {
-            //_rigidbody = this.GetComponent<Rigidbody>(); // Do we need to get rigibody or is it just part of prefab ship?
-            //var rigidbody = _rigibody.GetComponent<Rigidbody>();
             string[] nameArray = new string[3] { "civilization", "shipType", "era" };
             if (this.name != "Ship")
                 {

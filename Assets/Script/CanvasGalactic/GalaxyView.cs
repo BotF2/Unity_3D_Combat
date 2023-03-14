@@ -8,6 +8,7 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
 using Unity.VisualScripting;
+using DG.Tweening;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -32,7 +33,7 @@ namespace BOTF3D_GalaxyMap
         private GameObject CARDSysEmpty;
         private GameObject DOMSysEmpty;
         private GameObject BORGSysEmpty;
-        #region The Minor Race Empties
+        #region The Minor Race System Empties
         private GameObject ACAMARIANSSysEmpty;
         private GameObject AKAALISysEmpty;
         private GameObject AKRITIRIANSSysEmpty;
@@ -186,18 +187,179 @@ namespace BOTF3D_GalaxyMap
         private GameObject ZALKONIANSSysEmpty;
         private GameObject ZIBALIANSSysEmpty;
         #endregion
-
-        private List<GameObject> SysEmptyList;
+        private GameObject FEDFleetEmpty;
+        private GameObject ROMFleetEmpty;
+        private GameObject KLINGFleetEmpty;
+        private GameObject CARDFleetEmpty;
+        private GameObject DOMFleetEmpty;
+        private GameObject BORGFleetEmpty;
+        #region The Minor Race fleet Empties
+        private GameObject ACAMARIANSFleetEmpty;
+        private GameObject AKAALIFleetEmpty;
+        private GameObject AKRITIRIANSFleetEmpty;
+        private GameObject ALDEANSFleetEmpty;
+        private GameObject ALGOLIANSFleetEmpty;
+        private GameObject ALSAURIANSFleetEmpty;
+        private GameObject ANDORIANSFleetEmpty;
+        private GameObject ANGOSIANSFleetEmpty;
+        private GameObject ANKARIFleetEmpty;
+        private GameObject ANTEDEANSFleetEmpty;
+        private GameObject ANTICANSFleetEmpty;
+        private GameObject ARBAZANFleetEmpty;
+        private GameObject ARDANANSFleetEmpty;
+        private GameObject ARGRATHIFleetEmpty;
+        private GameObject ARKARIANSFleetEmpty;
+        private GameObject ATREANSFleetEmpty;
+        private GameObject AXANARFleetEmpty;
+        private GameObject BAJORANSFleetEmpty;
+        private GameObject BAKUFleetEmpty;
+        private GameObject BANDIFleetEmpty;
+        private GameObject BANEANSFleetEmpty;
+        private GameObject BARZANSFleetEmpty;
+        private GameObject BENZITESFleetEmpty;
+        private GameObject BETAZOIDSFleetEmpty;
+        private GameObject BILANAIANSFleetEmpty;
+        private GameObject BOLIANSFleetEmpty;
+        private GameObject BOMARFleetEmpty;
+        private GameObject BOSLICSFleetEmpty;
+        private GameObject BOTHAFleetEmpty;
+        private GameObject BREELLIANSFleetEmpty;
+        private GameObject BREENFleetEmpty;
+        private GameObject BREKKIANSFleetEmpty;
+        private GameObject BYNARSFleetEmpty;
+        private GameObject CAIRNFleetEmpty;
+        private GameObject CALDONIANSFleetEmpty;
+        private GameObject CAPELLANSFleetEmpty;
+        private GameObject CHALNOTHFleetEmpty;
+        private GameObject CORIDANFleetEmpty;
+        private GameObject CORVALLENSFleetEmpty;
+        private GameObject CYTHERIANSFleetEmpty;
+        private GameObject DELTANSFleetEmpty;
+        private GameObject DENOBULANSFleetEmpty;
+        private GameObject DEVOREFleetEmpty;
+        private GameObject DOPTERIANSFleetEmpty;
+        private GameObject DOSIFleetEmpty;
+        private GameObject DRAIFleetEmpty;
+        private GameObject DREMANSFleetEmpty;
+        private GameObject EDOFleetEmpty;
+        private GameObject ELAURIANSFleetEmpty;
+        private GameObject ELAYSIANSFleetEmpty;
+        private GameObject ENTHARANSFleetEmpty;
+        private GameObject EVORAFleetEmpty;
+        private GameObject EXCALBIANSFleetEmpty;
+        private GameObject FERENGIFleetEmpty;
+        private GameObject FLAXIANSFleetEmpty;
+        private GameObject GORNFleetEmpty;
+        private GameObject GRAZERITESFleetEmpty;
+        private GameObject HAAKONIANSFleetEmpty;
+        private GameObject HALKANSFleetEmpty;
+        private GameObject HAZARIFleetEmpty;
+        private GameObject HEKARANSFleetEmpty;
+        private GameObject HIROGENFleetEmpty;
+        private GameObject HORTAFleetEmpty;
+        private GameObject IYAARANSFleetEmpty;
+        private GameObject JNAIIFleetEmpty;
+        private GameObject KAELONFleetEmpty;
+        private GameObject KAREMMAFleetEmpty;
+        private GameObject KAZONFleetEmpty;
+        private GameObject KELLERUNFleetEmpty;
+        private GameObject KESPRYTTFleetEmpty;
+        private GameObject KLAESTRONIANSFleetEmpty;
+        private GameObject KRADINFleetEmpty;
+        private GameObject KREETASSANSFleetEmpty;
+        private GameObject KRIOSIANSFleetEmpty;
+        private GameObject KTARIANSFleetEmpty;
+        private GameObject LEDOSIANSFleetEmpty;
+        private GameObject LISSEPIANSFleetEmpty;
+        private GameObject LOKIRRIMFleetEmpty;
+        private GameObject LURIANSFleetEmpty;
+        private GameObject MALCORIANSFleetEmpty;
+        private GameObject MALONFleetEmpty;
+        private GameObject MAQUISFleetEmpty;
+        private GameObject MARKALIANSFleetEmpty;
+        private GameObject MERIDIANSFleetEmpty;
+        private GameObject MINTAKANSFleetEmpty;
+        private GameObject MIRADORNFleetEmpty;
+        private GameObject MIZARIANSFleetEmpty;
+        private GameObject MOKRAFleetEmpty;
+        private GameObject MONEANSFleetEmpty;
+        private GameObject NAUSICAANSFleetEmpty;
+        private GameObject NECHANIFleetEmpty;
+        private GameObject NEZUFleetEmpty;
+        private GameObject NORCADIANSFleetEmpty;
+        private GameObject NUMIRIFleetEmpty;
+        private GameObject NUUBARIFleetEmpty;
+        private GameObject NYRIANSFleetEmpty;
+        private GameObject OCAMPAFleetEmpty;
+        private GameObject ORIONSFleetEmpty;
+        private GameObject ORNARANSFleetEmpty;
+        private GameObject PAKLEDFleetEmpty;
+        private GameObject PARADANSFleetEmpty;
+        private GameObject QUARRENFleetEmpty;
+        private GameObject RAKHARIFleetEmpty;
+        private GameObject RAKOSANSFleetEmpty;
+        private GameObject RAMATIANSFleetEmpty;
+        private GameObject HELIOSFleetEmpty;
+        private GameObject RIGELIANSFleetEmpty;
+        private GameObject RISIANSFleetEmpty;
+        private GameObject RUTIANSFleetEmpty;
+        private GameObject SELAYFleetEmpty;
+        private GameObject SHELIAKFleetEmpty;
+        private GameObject SIKARIANSFleetEmpty;
+        private GameObject SKRREEAFleetEmpty;
+        private GameObject SONAFleetEmpty;
+        private GameObject SULIBANFleetEmpty;
+        private GameObject TAKARANSFleetEmpty;
+        private GameObject TAKARIANSFleetEmpty;
+        private GameObject TAKTAKFleetEmpty;
+        private GameObject TALARIANSFleetEmpty;
+        private GameObject TALAXIANSFleetEmpty;
+        private GameObject TALOSIANSFleetEmpty;
+        private GameObject TAMARIANSFleetEmpty;
+        private GameObject TANUGANSFleetEmpty;
+        private GameObject TELLARITESFleetEmpty;
+        private GameObject TEPLANSFleetEmpty;
+        private GameObject THOLIANSFleetEmpty;
+        private GameObject TILONIANSFleetEmpty;
+        private GameObject TLANIFleetEmpty;
+        private GameObject TRABEFleetEmpty;
+        private GameObject TRILLFleetEmpty;
+        private GameObject TROGORANSFleetEmpty;
+        private GameObject TZENKETHIFleetEmpty;
+        private GameObject ULLIANSFleetEmpty;
+        private GameObject VAADWAURFleetEmpty;
+        private GameObject VENTAXIANSFleetEmpty;
+        private GameObject VHNORIFleetEmpty;
+        private GameObject VIDIIANSFleetEmpty;
+        private GameObject VISSIANSFleetEmpty;
+        private GameObject VORGONSFleetEmpty;
+        private GameObject VORIFleetEmpty;
+        private GameObject VULCANSFleetEmpty;
+        private GameObject WADIFleetEmpty;
+        private GameObject XANTHANSFleetEmpty;
+        private GameObject XEPOLITESFleetEmpty;
+        private GameObject XINDIFleetEmpty;
+        private GameObject XYRILLIANSFleetEmpty;
+        private GameObject YADERANSFleetEmpty;
+        private GameObject YRIDIANSFleetEmpty;
+        private GameObject ZAHLFleetEmpty;
+        private GameObject ZAKDORNFleetEmpty;
+        private GameObject ZALKONIANSFleetEmpty;
+        private GameObject ZIBALIANSFleetEmpty;
+        #endregion
+        private List<GameObject> sysEmptyList;
+        private List<GameObject> fleetEmptyList;
         public List<int> NumbersForSystem;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
+        public List<GameObject> _fleetObjInGalaxy = new List<GameObject>();
         // private OrbitalGalactic mySolarSystem; // star and planets
         void Awake()
         {
             //gameManager = GameManager.Instance;
-            SysEmptyList = new List<GameObject>
+            sysEmptyList = new List<GameObject>
             {
                 FEDSysEmpty,
                 ROMSysEmpty,
@@ -205,7 +367,7 @@ namespace BOTF3D_GalaxyMap
                 CARDSysEmpty,
                 DOMSysEmpty,
                 BORGSysEmpty,
-                #region Minor Race Entries
+                #region Minor Race System Entries
                 ACAMARIANSSysEmpty,
                 AKAALISysEmpty,
                 AKRITIRIANSSysEmpty,
@@ -360,6 +522,169 @@ namespace BOTF3D_GalaxyMap
                 ZIBALIANSSysEmpty
             #endregion
             };
+            fleetEmptyList = new List<GameObject>
+            {
+                FEDFleetEmpty,
+                ROMFleetEmpty,
+                KLINGFleetEmpty,
+                CARDFleetEmpty,
+                DOMFleetEmpty,
+                BORGFleetEmpty,
+                #region Minor Race Fleet Entries
+                ACAMARIANSFleetEmpty,
+                AKAALIFleetEmpty,
+                AKRITIRIANSFleetEmpty,
+                ALDEANSFleetEmpty,
+                ALGOLIANSFleetEmpty,
+                ALSAURIANSFleetEmpty,
+                ANDORIANSFleetEmpty,
+                ANGOSIANSFleetEmpty,
+                ANKARIFleetEmpty,
+                ANTEDEANSFleetEmpty,
+                ANTICANSFleetEmpty,
+                ARBAZANFleetEmpty,
+                ARDANANSFleetEmpty,
+                ARGRATHIFleetEmpty,
+                ARKARIANSFleetEmpty,
+                ATREANSFleetEmpty,
+                AXANARFleetEmpty,
+                BAJORANSFleetEmpty,
+                BAKUFleetEmpty,
+                BANDIFleetEmpty,
+                BANEANSFleetEmpty,
+                BARZANSFleetEmpty,
+                BENZITESFleetEmpty,
+                BETAZOIDSFleetEmpty,
+                BILANAIANSFleetEmpty,
+                BOLIANSFleetEmpty,
+                BOMARFleetEmpty,
+                BOSLICSFleetEmpty,
+                BOTHAFleetEmpty,
+                BREELLIANSFleetEmpty,
+                BREENFleetEmpty,
+                BREKKIANSFleetEmpty,
+                BYNARSFleetEmpty,
+                CAIRNFleetEmpty,
+                CALDONIANSFleetEmpty,
+                CAPELLANSFleetEmpty,
+                CHALNOTHFleetEmpty,
+                CORIDANFleetEmpty,
+                CORVALLENSFleetEmpty,
+                CYTHERIANSFleetEmpty,
+                DELTANSFleetEmpty,
+                DENOBULANSFleetEmpty,
+                DEVOREFleetEmpty,
+                DOPTERIANSFleetEmpty,
+                DOSIFleetEmpty,
+                DRAIFleetEmpty,
+                DREMANSFleetEmpty,
+                EDOFleetEmpty,
+                ELAURIANSFleetEmpty,
+                ELAYSIANSFleetEmpty,
+                ENTHARANSFleetEmpty,
+                EVORAFleetEmpty,
+                EXCALBIANSFleetEmpty,
+                FERENGIFleetEmpty,
+                FLAXIANSFleetEmpty,
+                GORNFleetEmpty,
+                GRAZERITESFleetEmpty,
+                HAAKONIANSFleetEmpty,
+                HALKANSFleetEmpty,
+                HAZARIFleetEmpty,
+                HEKARANSFleetEmpty,
+                HIROGENFleetEmpty,
+                HORTAFleetEmpty,
+                IYAARANSFleetEmpty,
+                JNAIIFleetEmpty,
+                KAELONFleetEmpty,
+                KAREMMAFleetEmpty,
+                KAZONFleetEmpty,
+                KELLERUNFleetEmpty,
+                KESPRYTTFleetEmpty,
+                KLAESTRONIANSFleetEmpty,
+                KRADINFleetEmpty,
+                KREETASSANSFleetEmpty,
+                KRIOSIANSFleetEmpty,
+                KTARIANSFleetEmpty,
+                LEDOSIANSFleetEmpty,
+                LISSEPIANSFleetEmpty,
+                LOKIRRIMFleetEmpty,
+                LURIANSFleetEmpty,
+                MALCORIANSFleetEmpty,
+                MALONFleetEmpty,
+                MAQUISFleetEmpty,
+                MARKALIANSFleetEmpty,
+                MERIDIANSFleetEmpty,
+                MINTAKANSFleetEmpty,
+                MIRADORNFleetEmpty,
+                MIZARIANSFleetEmpty,
+                MOKRAFleetEmpty,
+                MONEANSFleetEmpty,
+                NAUSICAANSFleetEmpty,
+                NECHANIFleetEmpty,
+                NEZUFleetEmpty,
+                NORCADIANSFleetEmpty,
+                NUMIRIFleetEmpty,
+                NUUBARIFleetEmpty,
+                NYRIANSFleetEmpty,
+                OCAMPAFleetEmpty,
+                ORIONSFleetEmpty,
+                ORNARANSFleetEmpty,
+                PAKLEDFleetEmpty,
+                PARADANSFleetEmpty,
+                QUARRENFleetEmpty,
+                RAKHARIFleetEmpty,
+                RAKOSANSFleetEmpty,
+                RAMATIANSFleetEmpty,
+                HELIOSFleetEmpty,
+                RIGELIANSFleetEmpty,
+                RISIANSFleetEmpty,
+                RUTIANSFleetEmpty,
+                SELAYFleetEmpty,
+                SHELIAKFleetEmpty,
+                SIKARIANSFleetEmpty,
+                SKRREEAFleetEmpty,
+                SONAFleetEmpty,
+                SULIBANFleetEmpty,
+                TAKARANSFleetEmpty,
+                TAKARIANSFleetEmpty,
+                TAKTAKFleetEmpty,
+                TALARIANSFleetEmpty,
+                TALAXIANSFleetEmpty,
+                TALOSIANSFleetEmpty,
+                TAMARIANSFleetEmpty,
+                TANUGANSFleetEmpty,
+                TELLARITESFleetEmpty,
+                TEPLANSFleetEmpty,
+                THOLIANSFleetEmpty,
+                TILONIANSFleetEmpty,
+                TLANIFleetEmpty,
+                TRABEFleetEmpty,
+                TRILLFleetEmpty,
+                TROGORANSFleetEmpty,
+                TZENKETHIFleetEmpty,
+                ULLIANSFleetEmpty,
+                VAADWAURFleetEmpty,
+                VENTAXIANSFleetEmpty,
+                VHNORIFleetEmpty,
+                VIDIIANSFleetEmpty,
+                VISSIANSFleetEmpty,
+                VORGONSFleetEmpty,
+                VORIFleetEmpty,
+                VULCANSFleetEmpty,
+                WADIFleetEmpty,
+                XANTHANSFleetEmpty,
+                XEPOLITESFleetEmpty,
+                XINDIFleetEmpty,
+                XYRILLIANSFleetEmpty,
+                YADERANSFleetEmpty,
+                YRIDIANSFleetEmpty,
+                ZAHLFleetEmpty,
+                ZAKDORNFleetEmpty,
+                ZALKONIANSFleetEmpty,
+                ZIBALIANSFleetEmpty
+            #endregion
+            };
             LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             //LoadCivData
 
@@ -373,6 +698,23 @@ namespace BOTF3D_GalaxyMap
             {
                 // ToDo: update system buttons features, owner color
                 // UpdateSystemButtons(SolarSystem)
+            }
+            if (_fleetObjInGalaxy.Count != 0)
+            {
+                foreach (var fleetObject in _fleetObjInGalaxy)
+                {
+                    if (fleetObject.GetComponent<Fleet>() != null)
+                    {
+                        var myFleet = fleetObject.GetComponent<Fleet>();
+                        if (myFleet.galaxyShipList.Count != 0)
+                            return;
+                        else
+                        {
+                            _fleetObjInGalaxy.Remove(fleetObject);
+                            fleetObject.IsDestroyed();
+                        }
+                    }
+                }
             }
         }
 
@@ -396,28 +738,27 @@ namespace BOTF3D_GalaxyMap
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
 
-                        SysEmptyList[sysIndex] = new GameObject();
+                        sysEmptyList[sysIndex] = new GameObject();
 
-                        SysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
+                        sysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
                         int x = int.Parse(SystemDataDictionary[sysIndex][1]);
                         int y = int.Parse(SystemDataDictionary[sysIndex][2]);
                         int z = int.Parse(SystemDataDictionary[sysIndex][3]);
                         Vector3 worldSpace = new Vector3(x, y, z);
-                        SysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
-                        SysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
-                        SysEmptyList[sysIndex].layer = 6;
-                        var hTips = SysEmptyList[sysIndex].AddComponent<HoverTips>();
+                        sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
+                        sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
+                        sysEmptyList[sysIndex].layer = 6;
+                        var hTips = sysEmptyList[sysIndex].AddComponent<HoverTips>();
                         hTips._hoverTipManager = hoverTipManager;
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
 
-                        SysEmptyList[sysIndex].SetActive(true);
+                        sysEmptyList[sysIndex].SetActive(true);
                     }
 
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey],
-                    new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
-                    starSystemNewGameOb.transform.SetParent(SysEmptyList[sysIndex].transform, false);
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
+                    starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
                     var theCiv = CivilizationData.Create(sysIndex); // and civs make systems
@@ -468,7 +809,31 @@ namespace BOTF3D_GalaxyMap
             }
             return number;
         }
+        public void InstantiateFleet(List<GalaxyShip> fleetShips, CivEnum civEnum, Transform location)
+        {
 
+            Fleet newFleet = new Fleet(fleetShips);
+
+            GameObject tempObject = GameObject.Find("CanvasGalactic");
+            if (tempObject != null)
+            {
+                canvasGalactic = tempObject.GetComponent<Canvas>();
+            }
+            GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
+            fleetNewGameOb.transform.Translate(location.position.x, location.position.y, location.position.z, Space.World);
+            fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
+            fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+
+            fleetNewGameOb.SetActive(true);
+            Fleet myfleet = fleetNewGameOb.GetComponent<Fleet>();
+            myfleet = newFleet;
+            _fleetObjInGalaxy.Add(fleetNewGameOb);           
+        }
+
+        public void updateTheFleet(Fleet fleet, List<GalaxyShip> newShipList)
+        {
+            
+        }
         public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system, THE BACKGROUND EYE CANDY
         {
             while (transform.childCount > 0) // delelt old systems from prior update
