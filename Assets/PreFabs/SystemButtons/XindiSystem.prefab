@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 124299536620563853}
   m_Layer: 30
-  m_Name: Xindi
+  m_Name: XindiSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 5add3b4c3bdecc04c928da347917f0ee, type: 3}
   m_NavMeshLayer: 0

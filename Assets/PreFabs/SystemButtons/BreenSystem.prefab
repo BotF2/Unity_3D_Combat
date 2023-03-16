@@ -297,10 +297,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: -523263834, guid: 9cc41ec9a0bb1c34da8fc507c3093eea, type: 3}
-    m_PressedSprite: {fileID: 2003881654, guid: 9cc41ec9a0bb1c34da8fc507c3093eea, type: 3}
-    m_SelectedSprite: {fileID: 431147474, guid: 9cc41ec9a0bb1c34da8fc507c3093eea, type: 3}
-    m_DisabledSprite: {fileID: 582512710, guid: 9cc41ec9a0bb1c34da8fc507c3093eea, type: 3}
+    m_HighlightedSprite: {fileID: -570724682, guid: 715ddc58203cae945a4388ff503b7332, type: 3}
+    m_PressedSprite: {fileID: -1414231980, guid: 715ddc58203cae945a4388ff503b7332, type: 3}
+    m_SelectedSprite: {fileID: -1826074922, guid: 715ddc58203cae945a4388ff503b7332, type: 3}
+    m_DisabledSprite: {fileID: -160264514, guid: 715ddc58203cae945a4388ff503b7332, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 4306060808537133549}
+  m_TargetGraphic: {fileID: 4761592045379931414, guid: 8bdf7d3ea69eb914aab2ddf930ec66e1, type: 3}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -557,7 +557,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8936429652126452753
@@ -646,6 +646,6 @@ SpriteRenderer:
   m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
