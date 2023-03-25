@@ -14,6 +14,7 @@ namespace BOTF3D_GalaxyMap
 
     public class CameraManagerGalactica : MonoBehaviour
     {
+        //public GameObject FleetManagerEmpty;
         #region UI
 
         [Space]
@@ -133,6 +134,7 @@ namespace BOTF3D_GalaxyMap
             currentRotation = this.transform.localEulerAngles;
             //telescope.transform.position = camGalactica.transform.position;
             //telescope.transform.rotation = camGalactica.transform.rotation;
+            //FleetManagerEmpty = gameObject.transform.Find("FleetManagerEmpty").gameObject;
         }
 
         private void Update()

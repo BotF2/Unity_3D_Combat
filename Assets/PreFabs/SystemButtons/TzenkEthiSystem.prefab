@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 124299536620563853}
   m_Layer: 30
-  m_Name: TzenkEthiSystem
+  m_Name: TzenkethiSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 10685ab0d0edb0846a66d32a49b7ce5f, type: 3}
   m_NavMeshLayer: 0

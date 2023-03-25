@@ -646,7 +646,8 @@ namespace BOTF3D_Core
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
         private GameObject PanelSystem_View;
-        private GameObject PanelSysCommand_Menu; 
+        private GameObject PanelSysCommand_Menu;
+        private GameObject PanelFleetManager;
         private GameObject PanelGalactic_Completed;
         private GameObject PanelCombat_Menu;
         private GameObject PanelCombat_Play;
@@ -1160,6 +1161,9 @@ namespace BOTF3D_Core
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
             PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
+            var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
+            PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
+
             //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
@@ -1645,6 +1649,7 @@ namespace BOTF3D_Core
                     PanelGalaxyUI.SetActive(true);
                     _statePassedMain_Init = true;
                     galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
+                    //galaxyView.InstantiateFleet(_galaxyStarCount);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
@@ -1674,10 +1679,12 @@ namespace BOTF3D_Core
                     break;
 
                 case State.SYSTEM_PLAY:
+                    PanelFleetManager.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
+                    //cameraManagerGalactica.FleetManagerEmpty.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     PanelSystem_View.SetActive(true);
                     if (_playerOwnesSystem)
@@ -1690,6 +1697,7 @@ namespace BOTF3D_Core
                     PanelSysCommand_Menu.SetActive(false);
                     PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
+                    //PanelFleetManager.SetActive(false);
                     //cameraManagerGalactica.gameObject.SetActive(true);
                     //cameraManagerGalactica.enabled = true;
                     //cameraManagerGalactica.TurnOnGalaxyFly();
@@ -2128,7 +2136,7 @@ namespace BOTF3D_Core
         }
         public void LoadPrefabs()
         {
-            Dictionary<string, GameObject> tempPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            Dictionary<string, GameObject> tempShipPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
@@ -2141,7 +2149,7 @@ namespace BOTF3D_Core
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
             if (PrefabShipDitionary == null) // do not load twice
-                PrefabShipDitionary = tempPrefabDitionary;
+                PrefabShipDitionary = tempShipPrefabDitionary;
 
             Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {

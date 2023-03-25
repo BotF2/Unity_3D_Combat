@@ -8,19 +8,21 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
 using Unity.VisualScripting;
-using DG.Tweening;
 
 namespace BOTF3D_GalaxyMap
 {
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
+        public CameraManagerGalactica cameraManagerGalactica;
+        public GameObject fleetManager;
         public SolarSystemView solarSystemView;
         [SerializeField]
         public HoverTips hoverTips;
         public HoverTipManager hoverTipManager;
         [SerializeField]
         public Canvas canvasGalactic;
+        public GameObject PanelFleetManager; 
         //public Pane canvasGalaxy;
         //public PanelGalactic_Map 
         //public CivilizationData civilizationDate;
@@ -358,7 +360,8 @@ namespace BOTF3D_GalaxyMap
         // private OrbitalGalactic mySolarSystem; // star and planets
         void Awake()
         {
-            //gameManager = GameManager.Instance;
+            //fleetManager = cameraManagerGalactica.FleetManagerEmpty;
+            //fleetManager.SetActive(false);
             sysEmptyList = new List<GameObject>
             {
                 FEDSysEmpty,
@@ -693,6 +696,7 @@ namespace BOTF3D_GalaxyMap
         {
             if (ourGalaxy == null)
                 return;
+
             // loop systems and updating data 
             else
             {
@@ -734,7 +738,8 @@ namespace BOTF3D_GalaxyMap
                 if (keysForSytemDictioanry[sysIndex].Length != 0)
                 {
                     GameObject tempObject = GameObject.Find("CanvasGalactic");
-                    if (tempObject != null)
+                       // Fleet newFleet = new Fleet(fleetShips);
+                        if (tempObject != null)
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
 
@@ -753,17 +758,30 @@ namespace BOTF3D_GalaxyMap
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
+                        //var hidSys = sysEmptyList[sysIndex].AddComponent<HideSystemButton>();
+                        //hidSys.weAreHidding = false;
 
                         sysEmptyList[sysIndex].SetActive(true);
                     }
-
+                    // The PreFabStarSystemDictionary and PrefabFleetDictionary are setup in Unity, Hierarchy, GameManager, the public Prefab lists
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-
+                        //var whereTheHeckAreWe = starSystemNewGameOb.transform.position;
+                    if (GameManager.PrefabFleetDitionary[ourKey] != null)
+                    {
+                        GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
+                        // firstFleetOfSystem.transform.SetParent ???
+                        firstFleetOfSystem.transform.SetParent(sysEmptyList[sysIndex].transform, false);
+                        firstFleetOfSystem.transform.Translate(0, 0, 20);
+                        firstFleetOfSystem.transform.localScale = new Vector3(2, 2, 2);
+                        firstFleetOfSystem.layer = 6;
+                        firstFleetOfSystem.SetActive(true);
+                    }
                     var theCiv = CivilizationData.Create(sysIndex); // and civs make systems
-
+                   
                     starSystemNewGameOb.SetActive(true);
+                    
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
                     //myButton.image.sprite.
                 }
@@ -809,7 +827,7 @@ namespace BOTF3D_GalaxyMap
             }
             return number;
         }
-        public void InstantiateFleet(List<GalaxyShip> fleetShips, CivEnum civEnum, Transform location)
+        private void StarterFleetForCivs(List<GalaxyShip> fleetShips)
         {
 
             Fleet newFleet = new Fleet(fleetShips);
@@ -819,15 +837,15 @@ namespace BOTF3D_GalaxyMap
             {
                 canvasGalactic = tempObject.GetComponent<Canvas>();
             }
-            GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
-            fleetNewGameOb.transform.Translate(location.position.x, location.position.y, location.position.z, Space.World);
-            fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
-            fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+            //GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
+            //fleetNewGameOb.transform.Translate(location.position.x, location.position.y, location.position.z, Space.World);
+            //fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
+            //fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
-            fleetNewGameOb.SetActive(true);
-            Fleet myfleet = fleetNewGameOb.GetComponent<Fleet>();
-            myfleet = newFleet;
-            _fleetObjInGalaxy.Add(fleetNewGameOb);           
+            //fleetNewGameOb.SetActive(true);
+            //Fleet myfleet = fleetNewGameOb.GetComponent<Fleet>();
+            //myfleet = newFleet;
+            //_fleetObjInGalaxy.Add(fleetNewGameOb);           
         }
 
         public void updateTheFleet(Fleet fleet, List<GalaxyShip> newShipList)
@@ -836,6 +854,8 @@ namespace BOTF3D_GalaxyMap
         }
         public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system, THE BACKGROUND EYE CANDY
         {
+            //if (fleetManager.active == true)
+            //    return;
             while (transform.childCount > 0) // delelt old systems from prior update
             {
                 Transform child = transform.GetChild(0);
@@ -843,6 +863,7 @@ namespace BOTF3D_GalaxyMap
                 Destroy(child.gameObject);
 
             }
+            //fleetManager.SetActive(false);
             solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
             solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
         }
@@ -886,6 +907,19 @@ namespace BOTF3D_GalaxyMap
                 //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
             }
             #endregion
+        }
+        public void ExitFleetManager()
+        {
+            fleetManager.SetActive(false);
+        }
+        public void EnterFleetManager()
+        {
+            if (fleetManager.active == false)
+            {
+                //fleetManager.SetActive(true);
+                fleetManager.SetActiveRecursively(true);
+            }
+            else fleetManager.SetActiveRecursively(false);
         }
     }
 }

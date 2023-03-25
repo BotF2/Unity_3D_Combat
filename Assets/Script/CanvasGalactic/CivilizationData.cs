@@ -83,14 +83,15 @@ namespace BOTF3D_GalaxyMap
             //GetImage(systemInt, 7, "Civilizations/", daCiv); // 7 is Civ
             string holdCivName = CivDataDictionary[systemInt][7];
             string pathCiv = "Civilizations/" + holdCivName.ToLower();
-            GameObject goTwo = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            var rendTwo = goTwo.GetComponent<Renderer>();
+            GameObject buildImage = GameObject.CreatePrimitive(PrimitiveType.Plane);
+            var rendTwo = buildImage.GetComponent<Renderer>();
             rendTwo.material.mainTexture = Resources.Load(pathCiv) as Texture;
             daCiv._civImage = Sprite.Create((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
-            goTwo.gameObject.SetActive(false);
+            buildImage.gameObject.SetActive(false);
            // daCiv._civPopulation = int.Parse(sysStrings[9]);
             daCiv._civCredits = int.Parse(sysStrings[10]);
-            daCiv._civTechLevel = int.Parse(sysStrings[11]);
+            daCiv._civTechPoints = int.Parse(sysStrings[11]);
+            //daCiv._civTechLevel = TechLevel.EARLY; ToDo: set this by enough techpoints to get new ship images
             daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
             List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
             daCiv._ownedSystem = ownedSystemStarterList;
@@ -122,7 +123,7 @@ namespace BOTF3D_GalaxyMap
                     for (int j= 0; j< civ._ownedSystem.Count; j++)
                     {
                         StarSystem starSys = civ._ownedSystem[j];
-                        float sysPopLimit = (starSys._systemPopLimit + civ._civTechLevel); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
+                        float sysPopLimit = (starSys._systemPopLimit + civ._civTechPoints); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
                         if (starSys._currentSysPop < sysPopLimit)
                         {
                             starSys._currentSysPop += starSys._currentSysPop * techPopGrowthRate;
@@ -139,7 +140,7 @@ namespace BOTF3D_GalaxyMap
                         //{
                         //    starSys._currentSysFactories += starSys._currentSysFactories * techPopGrowthRate;
                         //}
-                        starSys._sysCredits += starSys._currentSysPop * starSys._currentSysFactories * civ._civTechLevel * techPopGrowthRate;
+                        starSys._sysCredits += starSys._currentSysPop * starSys._currentSysFactories * civ._civTechPoints * techPopGrowthRate;
                         // ToDo: set tax rate in slider
                         starSys._sysCredits -= starSys._sysCredits * civ._civTaxRate;
                         DoSysConsumption(starSys);

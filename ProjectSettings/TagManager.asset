@@ -30,6 +30,7 @@ TagManager:
   - TabResearch
   - TabSpy
   - TabIndustry
+  - FleetCamera
   layers:
   - Default
   - TransparentFX

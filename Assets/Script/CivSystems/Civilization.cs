@@ -39,7 +39,8 @@ namespace BOTF3D_Core
         //private readonly List<SitRepEntry> _sitRepEntries;
         //public int _totalPopulation;
         //private readonly Meter _totalValue;
-        public float _civTechLevel;
+        public float _civTechPoints;
+        public TechLevel _civTechLevel;
         public float _civTaxRate;
         public float _cviGrowthRate; // currently using private float techPopGrowthRate = 0.01f in CivilizationData
         //public float _intel;

@@ -30,41 +30,41 @@ namespace BOTF3D_GalaxyMap
             galaxyShipList = ships;
         }
 
-        private void Awake()
+        private void Awake() // what civs are in game and need a fleet???
         {
-            string[] nameArray = new string[3] { "civilization", "shipType", "era" };
-            if (this.name != "Ship")
-            {
-                nameArray = this.name.Split('_');
-            }
-            string civ = nameArray[0];
-            switch (civ.ToUpper())
-            {
-                case "FED":
-                    _civilization = CivEnum.FED;
-                    break;
-                //case "TERRAN":
-                //    _civilization = Civilization.TERRAN;
-                //    break;
-                case "ROM":
-                    _civilization = CivEnum.ROM;
-                    break;
-                case "KLING":
-                    _civilization = CivEnum.KLING;
-                    break;
-                case "CARD":
-                    _civilization = CivEnum.CARD;
-                    break;
-                case "DOM":
-                    _civilization = CivEnum.DOM;
-                    break;
-                case "BORG":
-                    _civilization = CivEnum.BORG;
-                    break;
-                default:
-                    //_civilization = CivEnum.ACAMARIANS;
-                    break;
-            }
+            //string[] nameArray = new string[3] { "civilization", "shipType", "era" };
+            //if (this.name != "Ship")
+            //{
+            //    nameArray = this.name.Split('_');
+            //}
+            //string civ = nameArray[0];
+            //switch (civ.ToUpper())
+            //{
+            //    case "FED":
+            //        _civilization = CivEnum.FED;
+            //        break;
+            //    //case "TERRAN":
+            //    //    _civilization = Civilization.TERRAN;
+            //    //    break;
+            //    case "ROM":
+            //        _civilization = CivEnum.ROM;
+            //        break;
+            //    case "KLING":
+            //        _civilization = CivEnum.KLING;
+            //        break;
+            //    case "CARD":
+            //        _civilization = CivEnum.CARD;
+            //        break;
+            //    case "DOM":
+            //        _civilization = CivEnum.DOM;
+            //        break;
+            //    case "BORG":
+            //        _civilization = CivEnum.BORG;
+            //        break;
+            //    default:
+            //        //_civilization = CivEnum.ACAMARIANS;
+            //        break;
+            //}
 
         }
 
