@@ -11,7 +11,6 @@ using UnityEngine.UIElements;
 
 namespace BOTF3D_GalaxyMap
 {
-
     public class CameraManagerGalactica : MonoBehaviour
     {
         //public GameObject FleetManagerEmpty;
@@ -46,7 +45,7 @@ namespace BOTF3D_GalaxyMap
         [Space]
 
         [SerializeField]
-        [Tooltip("Camera movement by 'W','A','S','D','Q','E' keys is active")]
+        [Tooltip("Camera movement by 'W','A','S','D','Q','E','Z','C' keys is active")]
         private bool _enableMovement = true;
 
         [SerializeField]
@@ -88,9 +87,26 @@ namespace BOTF3D_GalaxyMap
         #endregion UI
         // In Galaxy Map X is right left, Y is in out and z is negative up down
         [Header("Camera Positioning")]
-        public Vector2 cameraOffset = new Vector2(10f, 14f);
-        public float lookAtOffset = 400f;
+        private Vector2 cameraOffset = new Vector2(10f, 14f);
+        #region Zoomed Camera
+        //private Vector2 zoomedCameraOffset = new Vector2(10f, 14f);
+        //private Vector3 groundCamOffset;
+        //private Vector3 zoomedCamTarget;
+        //private Vector3 camSmoothDampV;
+        //// GameObject cam;
+        //public Camera zoomedCam;
+        //public GameObject[] hotspots;
+        //private Ray ray;
+        //private RaycastHit hit;
+        //public float panspeed;
+        //public string colliderTag;
+        //public bool clicked = false;
+        //public Vector3 tempCamTarget;
+        //public Vector3 tempCamPosition;
+        
+        #endregion
 
+        public float lookAtOffset = 400f;
         public float rotateSpeed = 20f;
         public float maxRotation;
         public float minRotation;
@@ -120,6 +136,7 @@ namespace BOTF3D_GalaxyMap
             minRotation = _initRotation.z - 10f;
 
             camGalactica = GetComponentInChildren<Camera>();
+            //zoomedCam = camGalactica;
 
             //cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
             //zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
@@ -132,6 +149,12 @@ namespace BOTF3D_GalaxyMap
             _initPosition = transform.position;
             _initRotation = transform.eulerAngles;
             currentRotation = this.transform.localEulerAngles;
+
+            //Vector3 groundPos = GetWorldPosAtViewportPoint(0.5f, 0.5f);
+            //Debug.Log("groundPos: " + groundPos);
+            //groundCamOffset = camGalactica.transform.position - groundPos;
+            //zoomedCamTarget = camGalactica.transform.position;
+
             //telescope.transform.position = camGalactica.transform.position;
             //telescope.transform.rotation = camGalactica.transform.rotation;
             //FleetManagerEmpty = gameObject.transform.Find("FleetManagerEmpty").gameObject;
@@ -208,8 +231,44 @@ namespace BOTF3D_GalaxyMap
 
                 //Quaternion targetRot = Quaternion.LookRotation();
                 //localTrans.rotation = Quaternion.Slerp(localTrans.rotation, targetRot, RotateSpeed * Time.deltaTime);
+                //ray = camGalactica.ScreenPointToRay(Input.mousePosition);
+                //if (Input.GetMouseButtonDown(1))
+                //{
+                //    if (Physics.Raycast(ray, out hit))
+                //    {
+                //        colliderTag = hit.collider.name; // should be tags name but prefabs are untaged, is this an issue????????????
+                //    }
+                //}
+                //if (Input.GetMouseButtonDown(1) && colliderTag.Contains("System") && clicked == false)
+                //{
+                //    // center where clicked
+                //    float mouseX = Input.mousePosition.x / camGalactica.pixelWidth;
+                //    float mouseY = Input.mousePosition.y / camGalactica.pixelHeight;
+                //    Vector3 clickPt = GetWorldPosAtViewportPoint(mouseX, mouseY);
+                //    zoomedCamTarget = clickPt + groundCamOffset;
+                //    clicked = true;
+                    
+                //    tempCamTarget.x = float.Parse(zoomedCamTarget.x.ToString("0.##"));
+                //    tempCamTarget.y = float.Parse(zoomedCamTarget.y.ToString("0.##"));
+                //    tempCamTarget.z = float.Parse(zoomedCamTarget.z.ToString("0.##"));
+
+                //}
+
+                //// Move the camera smoothly to the target position
+                //if(tempCamPosition != tempCamTarget && clicked == true)
+                //{
+                //    camGalactica.transform.position = Vector3.SmoothDamp(camGalactica.transform.position, zoomedCamTarget, ref camSmoothDampV, panspeed);
+                //    tempCamPosition.x = float.Parse(camGalactica.transform.position.x.ToString("0.##"));
+                //    tempCamPosition.y = float.Parse(camGalactica.transform.position.y.ToString("0.##"));
+                //    tempCamPosition.z = float.Parse(camGalactica.transform.position.z.ToString("0.##"));
+                //}
+                //else if (tempCamPosition == tempCamTarget)
+                //{
+                //    clicked = false;
+                //    colliderTag = "";
+                //}
             }
-            // Return to init position
+            // Return to init position, R
             if (Input.GetKeyDown(_initPositonButton))
             {
                 transform.position = _initPosition;
@@ -221,6 +280,16 @@ namespace BOTF3D_GalaxyMap
             this.transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y,
                  ClampAngles(transform.rotation.eulerAngles.z, minRotation, maxRotation));
         }
+        //private Vector3 GetWorldPosAtViewportPoint(float vx, float vy)
+        //{
+        //    Ray worldRay = camGalactica.ViewportPointToRay(new Vector3(vx,vy,0));
+        //    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        //    float distanceToGround;
+        //    groundPlane.Raycast(worldRay, out distanceToGround);
+        //    Debug.Log("distance to ground" +  distanceToGround);
+
+        //    return worldRay.GetPoint(distanceToGround);
+        //}
         public void ActivateButtonStopGalacticPlay(bool turnOn)
         {
             if (turnOn)
@@ -272,5 +341,9 @@ namespace BOTF3D_GalaxyMap
             if (angle < 0) angle += 360; // if negative convert to 0..360;
             return angle;
         }
+        //private void camSmoothDamp()
+        //{
+            
+        //}
     }
 }

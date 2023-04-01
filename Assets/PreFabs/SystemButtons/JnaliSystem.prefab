@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 2178242268351434934}
   - component: {fileID: 2178242268351434929}
   - component: {fileID: 2178242268351434932}
+  - component: {fileID: 3469474500941750602}
   m_Layer: 30
   m_Name: JnaliSystem
   m_TagString: Untagged
@@ -510,6 +511,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &3469474500941750602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2178242268351434931}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 250, y: 250, z: 250}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4961153818964160876
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +610,7 @@ SpriteRenderer:
   m_Size: {x: 3, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6778890974866850277
@@ -649,3 +663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
+  hideSystemButton: {fileID: 0}
+  hide: {fileID: 0}
+  view: {fileID: 0}

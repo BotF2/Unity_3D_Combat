@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 7614527072877711940}
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 124299536620563853}
+  - component: {fileID: -2870740921722464267}
   m_Layer: 30
   m_Name: SolSystem
   m_TagString: Untagged
@@ -201,6 +202,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!65 &-2870740921722464267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761592045379931411}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 250, y: 250, z: 250}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4761592045621579183
 GameObject:
   m_ObjectHideFlags: 0

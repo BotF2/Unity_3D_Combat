@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4967571711921835855}
   - component: {fileID: 4967571711921835852}
   - component: {fileID: 4967571711921836209}
+  - component: {fileID: 6227956649924041277}
   m_Layer: 30
   m_Name: EdoSystem
   m_TagString: Untagged
@@ -151,6 +152,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &6227956649924041277
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4967571711921835850}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 250, y: 250, z: 250}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4967571713217737862
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
+  hideSystemButton: {fileID: 0}
+  hide: {fileID: 0}
+  view: {fileID: 0}
 --- !u!1 &7457074988689469976
 GameObject:
   m_ObjectHideFlags: 0
