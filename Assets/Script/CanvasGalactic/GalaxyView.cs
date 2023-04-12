@@ -358,6 +358,14 @@ namespace BOTF3D_GalaxyMap
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
         public List<GameObject> _fleetObjInGalaxy = new List<GameObject>();
         // private OrbitalGalactic mySolarSystem; // star and planets
+
+        // See Box Collider in Game view, Galaxy
+        public Camera _cameraGalactica;
+        public Mesh _mesh;
+        public Material _material;
+        public GameObject _systemSpherePrefab;
+        public Vector3 _systemPosition;
+
         void Awake()
         {
             //fleetManager = cameraManagerGalactica.FleetManagerEmpty;
@@ -738,8 +746,8 @@ namespace BOTF3D_GalaxyMap
                 if (keysForSytemDictioanry[sysIndex].Length != 0)
                 {
                     GameObject tempObject = GameObject.Find("CanvasGalactic");
-                       // Fleet newFleet = new Fleet(fleetShips);
-                        if (tempObject != null)
+                   
+                    if (tempObject != null)
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
 
@@ -767,7 +775,15 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-                        //var whereTheHeckAreWe = starSystemNewGameOb.transform.position;
+                    // systemBox
+                    GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
+                    sysSphere.transform.SetParent(sysEmptyList[sysIndex].transform, false);
+                    sysSphere.transform.localScale = new Vector3(40000,40000,40000);
+                    sysSphere.name = sysIndex.ToString();
+                    
+                    //_material.color = new Color(1f, 0f, 0f, 0.1f);
+                  
+                    // fleet prefab
                     if (GameManager.PrefabFleetDitionary[ourKey] != null)
                     {
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
@@ -921,5 +937,9 @@ namespace BOTF3D_GalaxyMap
             }
             else fleetManager.SetActiveRecursively(false);
         }
+        //public static void DrawColliderMesh(Mesh mesh, Matrix4x4 matrix, Material material, int layer, Camera camera = null, int submeshindex = 0, MaterialPropertyBlock properties =null, bool castShadows)
+        //{
+
+        //}
     }
 }

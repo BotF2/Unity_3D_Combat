@@ -34,13 +34,13 @@ namespace BOTF3D_GalaxyMap
 
         [Space]
 
-        [SerializeField]
-        [Tooltip("Camera zooming in/out by 'Mouse Scroll Wheel' is active")]
-        private bool _enableTranslation = true;
+        //[SerializeField]
+        //[Tooltip("Camera zooming in/out by 'Mouse Scroll Wheel' is active")]
+        //private bool _enableTranslation = true;
 
-        [SerializeField]
-        [Tooltip("Velocity of camera zooming in/out")]
-        private float _translationSpeed = 55f;
+        //[SerializeField]
+        //[Tooltip("Velocity of camera zooming in/out")]
+        //private float _translationSpeed = 55f;
 
         [Space]
 
@@ -88,32 +88,18 @@ namespace BOTF3D_GalaxyMap
         // In Galaxy Map X is right left, Y is in out and z is negative up down
         [Header("Camera Positioning")]
         private Vector2 cameraOffset = new Vector2(10f, 14f);
-        #region Zoomed Camera
-        //private Vector2 zoomedCameraOffset = new Vector2(10f, 14f);
-        //private Vector3 groundCamOffset;
-        //private Vector3 zoomedCamTarget;
-        //private Vector3 camSmoothDampV;
-        //// GameObject cam;
-        //public Camera zoomedCam;
-        //public GameObject[] hotspots;
-        //private Ray ray;
-        //private RaycastHit hit;
-        //public float panspeed;
-        //public string colliderTag;
-        //public bool clicked = false;
-        //public Vector3 tempCamTarget;
-        //public Vector3 tempCamPosition;
-        
-        #endregion
 
         public float lookAtOffset = 400f;
-        public float rotateSpeed = 20f;
+        public float _rotateSpeed = 20f;
         public float maxRotation;
         public float minRotation;
         [Header("Move Bounds")]
         public Vector3 minBounds, maxBounds;
         [Header("Zoom Controls")]
+        [SerializeField]
+        private float scrollSpeed = 10f;
 
+        private bool zoomed = false;
         private Vector3 currentRotation;
         float frameRotate = 1f;
         //float frameZoom;
@@ -123,7 +109,6 @@ namespace BOTF3D_GalaxyMap
         public GameObject buttonStopGalacticPlay;
         public GameObject buttonFleets;
         private float _currentIncrease = 0.1f; // active control of camera movement rate
-                                               //private float _currentIncreaseMem = 0;
         private Vector3 _initPosition;
         private Vector3 _initRotation;
 
@@ -136,10 +121,7 @@ namespace BOTF3D_GalaxyMap
             minRotation = _initRotation.z - 10f;
 
             camGalactica = GetComponentInChildren<Camera>();
-            //zoomedCam = camGalactica;
 
-            //cam.transform.localPosition = new Vector3(0f, Mathf.Abs(cameraOffset.y), -Mathf.Abs(cameraOffset.x));
-            //zoomStrategy = new OrthographicZoomStrategy(cam, startingZoom);
             camGalactica.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
         }
         private void Start()
@@ -149,12 +131,7 @@ namespace BOTF3D_GalaxyMap
             _initPosition = transform.position;
             _initRotation = transform.eulerAngles;
             currentRotation = this.transform.localEulerAngles;
-
-            //Vector3 groundPos = GetWorldPosAtViewportPoint(0.5f, 0.5f);
-            //Debug.Log("groundPos: " + groundPos);
-            //groundCamOffset = camGalactica.transform.position - groundPos;
-            //zoomedCamTarget = camGalactica.transform.position;
-
+            
             //telescope.transform.position = camGalactica.transform.position;
             //telescope.transform.rotation = camGalactica.transform.rotation;
             //FleetManagerEmpty = gameObject.transform.Find("FleetManagerEmpty").gameObject;
@@ -164,14 +141,17 @@ namespace BOTF3D_GalaxyMap
         {
             LockPositionInBounds();
 
-            //if (_enableTranslation)
-            //{
-            //    transform.Translate(Vector3.forward * Input.mouseScrollDelta.y * Time.deltaTime * _translationSpeed);
-            //}
-
             // Movement
             if (_enableMovement)
             {
+                if (zoomed)
+                {
+                    _currentIncrease = 0.01f;
+                }
+                else
+                {
+                    _currentIncrease = 0.1f;
+                }
                 Vector3 deltaPosition = Vector3.zero;
                 float currentSpeed = _movementSpeed;
 
@@ -210,12 +190,12 @@ namespace BOTF3D_GalaxyMap
 
                 if (Input.GetKey(KeyCode.Z))
                 {
-                    transform.Rotate(Vector3.forward, frameRotate * Time.deltaTime * rotateSpeed);
+                    transform.Rotate(Vector3.forward, frameRotate * Time.deltaTime * _rotateSpeed);
                 }
 
                 if (Input.GetKey(KeyCode.C))
                 {
-                    transform.Rotate(Vector3.back, frameRotate * Time.deltaTime * rotateSpeed);
+                    transform.Rotate(Vector3.back, frameRotate * Time.deltaTime * _rotateSpeed);
                 }
 
                 //if (Input.GetKey(_moveUp))
@@ -226,47 +206,11 @@ namespace BOTF3D_GalaxyMap
 
                 // Calc acceleration
                 // CalculateCurrentIncrease(deltaPosition != Vector3.zero);
+                
+                //amGalactica.fieldOfView -= Input.GetAxisRaw("Mouse ScrollWheel")  * scrollSpeed;
 
                 transform.position += deltaPosition * currentSpeed * _currentIncrease;
 
-                //Quaternion targetRot = Quaternion.LookRotation();
-                //localTrans.rotation = Quaternion.Slerp(localTrans.rotation, targetRot, RotateSpeed * Time.deltaTime);
-                //ray = camGalactica.ScreenPointToRay(Input.mousePosition);
-                //if (Input.GetMouseButtonDown(1))
-                //{
-                //    if (Physics.Raycast(ray, out hit))
-                //    {
-                //        colliderTag = hit.collider.name; // should be tags name but prefabs are untaged, is this an issue????????????
-                //    }
-                //}
-                //if (Input.GetMouseButtonDown(1) && colliderTag.Contains("System") && clicked == false)
-                //{
-                //    // center where clicked
-                //    float mouseX = Input.mousePosition.x / camGalactica.pixelWidth;
-                //    float mouseY = Input.mousePosition.y / camGalactica.pixelHeight;
-                //    Vector3 clickPt = GetWorldPosAtViewportPoint(mouseX, mouseY);
-                //    zoomedCamTarget = clickPt + groundCamOffset;
-                //    clicked = true;
-                    
-                //    tempCamTarget.x = float.Parse(zoomedCamTarget.x.ToString("0.##"));
-                //    tempCamTarget.y = float.Parse(zoomedCamTarget.y.ToString("0.##"));
-                //    tempCamTarget.z = float.Parse(zoomedCamTarget.z.ToString("0.##"));
-
-                //}
-
-                //// Move the camera smoothly to the target position
-                //if(tempCamPosition != tempCamTarget && clicked == true)
-                //{
-                //    camGalactica.transform.position = Vector3.SmoothDamp(camGalactica.transform.position, zoomedCamTarget, ref camSmoothDampV, panspeed);
-                //    tempCamPosition.x = float.Parse(camGalactica.transform.position.x.ToString("0.##"));
-                //    tempCamPosition.y = float.Parse(camGalactica.transform.position.y.ToString("0.##"));
-                //    tempCamPosition.z = float.Parse(camGalactica.transform.position.z.ToString("0.##"));
-                //}
-                //else if (tempCamPosition == tempCamTarget)
-                //{
-                //    clicked = false;
-                //    colliderTag = "";
-                //}
             }
             // Return to init position, R
             if (Input.GetKeyDown(_initPositonButton))
@@ -280,16 +224,7 @@ namespace BOTF3D_GalaxyMap
             this.transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y,
                  ClampAngles(transform.rotation.eulerAngles.z, minRotation, maxRotation));
         }
-        //private Vector3 GetWorldPosAtViewportPoint(float vx, float vy)
-        //{
-        //    Ray worldRay = camGalactica.ViewportPointToRay(new Vector3(vx,vy,0));
-        //    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-        //    float distanceToGround;
-        //    groundPlane.Raycast(worldRay, out distanceToGround);
-        //    Debug.Log("distance to ground" +  distanceToGround);
 
-        //    return worldRay.GetPoint(distanceToGround);
-        //}
         public void ActivateButtonStopGalacticPlay(bool turnOn)
         {
             if (turnOn)
@@ -341,9 +276,11 @@ namespace BOTF3D_GalaxyMap
             if (angle < 0) angle += 360; // if negative convert to 0..360;
             return angle;
         }
-        //private void camSmoothDamp()
-        //{
-            
-        //}
+        public void SetZoomedStatus()
+        {
+                if (zoomed == false)
+                    zoomed = true;
+                else zoomed = false;
+        }
     }
 }

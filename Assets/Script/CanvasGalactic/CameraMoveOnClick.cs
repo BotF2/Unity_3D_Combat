@@ -13,8 +13,9 @@ namespace BOTF3D_GalaxyMap
 {
     public class CameraMoveOnClick : MonoBehaviour
     {
+        public CameraManagerGalactica cameraManagerGalactica;
         public Camera cam;
-        bool cameraZoomed = false; // this checks to see if the camera was zoomed
+        public bool cameraZoomed = false; // this checks to see if the camera was zoomed
         private string colliderName;
         private Quaternion _initRotation;
         float _initFieldOfView;
@@ -45,10 +46,12 @@ namespace BOTF3D_GalaxyMap
                             // zoom and rotate to clicked object
                             _initRotation = cam.transform.rotation;
                             float deep = hit.collider.transform.position.y;
-                            float newZoom = (deep + 15000f)/ 10000f;
-                            cam.fieldOfView = 90f - newZoom; 
+
+                            float newZoom = (deep + 15000f) / 200f;
+                            cam.fieldOfView = 85 - newZoom;
                             cam.transform.rotation = Quaternion.LookRotation(hit.collider.transform.position - cam.transform.position);                                                                                                               
                             cameraZoomed = true;
+                            cameraManagerGalactica.SetZoomedStatus();
                         }
                     }                   
                 }
@@ -57,8 +60,13 @@ namespace BOTF3D_GalaxyMap
                     cam.fieldOfView = _initFieldOfView;
                     cam.transform.rotation = _initRotation;
                     cameraZoomed = false;
+                    cameraManagerGalactica.SetZoomedStatus();
                 }
             }
         }
+        //public bool AreWeZoomed()
+        //{
+        //    return cameraZoomed;
+        //}
     }
 }

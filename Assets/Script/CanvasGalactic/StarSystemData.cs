@@ -61,14 +61,24 @@ namespace BOTF3D_GalaxyMap
                 StarSystemDictionary.Add(sys._sysEnum, sys);
             }
         }
+        public void AddFleet(StarSystemEnum sysEnum, GameObject fleet)
+        {
+            StarSystem theSystem = StarSystemData.StarSystemDictionary[sysEnum];
+            theSystem._fleetsInSystem.Add(fleet.gameObject);
+        }
+        public void RemoveFleet(StarSystemEnum sysEnum, GameObject fleet)
+        {
+            StarSystem theSystem = StarSystemData.StarSystemDictionary[sysEnum];
+            theSystem._fleetsInSystem.Remove(fleet.gameObject);
+        }
         public void UpdateSystemOwner(Civilization civ, StarSystem sys)
         {
             StarSystem theSystem = StarSystemData.StarSystemDictionary[sys._sysEnum];
             theSystem._ownerCiv = civ;
         }
-        //public void AddSysPopulation()
-        //{
-            
-        //}
+        public StarSystem GetSystem(StarSystemEnum sysEnum)
+        {
+            return StarSystemDictionary[sysEnum];
+        }
     }
 }

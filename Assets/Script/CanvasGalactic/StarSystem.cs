@@ -26,7 +26,7 @@ namespace BOTF3D_GalaxyMap
         public string _sysName;
         public StarType _starType;
         //public Civ _civEnum;
-       // public Sprite _civInsignia;// do we get it from Civ and not system??
+        //public Sprite _civInsignia;// do we get it from Civ and not system??
         public Civilization _ownerCiv;
         public string _ownerName;
         public float _sysCredits;
@@ -41,6 +41,7 @@ namespace BOTF3D_GalaxyMap
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
         public bool _homeColony;
         public string _text;
+        public List<GameObject> _fleetsInSystem;
         #endregion Fields
 
         public StarSystem(int sysInt)

@@ -7,8 +7,7 @@ using UnityEngine;
 using Assets.Script;
 using BOTF3D_GalaxyMap;
 using BOTF3D_Combat;
-using UnityEngine.UI;
-using DG.Tweening.Core.Easing;
+
 //using MLAPI;
 //using UnityEngine.UI;
 
