@@ -777,9 +777,12 @@ namespace BOTF3D_GalaxyMap
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
                     // systemBox
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
-                    sysSphere.transform.SetParent(sysEmptyList[sysIndex].transform, false);
+                    sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
                     sysSphere.transform.localScale = new Vector3(40000,40000,40000);
                     sysSphere.name = sysIndex.ToString();
+                    //StarSystem ourSystem = starSystemNewGameOb.GetComponent<StarSystem>();
+                    //ourSystem._systemSphere = sysSphere;
+                    
                     
                     //_material.color = new Color(1f, 0f, 0f, 0.1f);
                   

@@ -41,6 +41,7 @@ namespace BOTF3D_GalaxyMap
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
         public bool _homeColony;
         public string _text;
+        public GameObject _systemSphere;
         public List<GameObject> _fleetsInSystem;
         #endregion Fields
 

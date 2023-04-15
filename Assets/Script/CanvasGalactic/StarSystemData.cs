@@ -44,14 +44,11 @@ namespace BOTF3D_GalaxyMap
                 daSystem._homeColony = true;
             else daSystem._homeColony = false;
             daSystem._text = "blah, blah, blah";
+            
 
             return daSystem;
         }
-        //public StarSystem GetStarSystemByInt(int sysInt) // Use the Ditoinary
-        //{
-        //    return StarSystemData.Create(sysInt); // = sysInt;
-        //    //return this;
-        //}
+
         public void LoadSystemDictionary(int[] starArray)
         {
             for (int i = 0; i < starArray.Length; i++)
