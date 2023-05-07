@@ -5,9 +5,8 @@ using UnityEngine;
 using Assets.Script;
 using BOTF3D_Core;
 using BOTF3D_Combat;
-using DG.Tweening;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -89,6 +88,7 @@ namespace BOTF3D_GalaxyMap
         [Header("Camera Positioning")]
         private Vector2 cameraOffset = new Vector2(10f, 14f);
 
+        public CameraMoveOnClick _cameraMoveOnClick;
         public float lookAtOffset = 400f;
         public float _rotateSpeed = 20f;
         public float maxRotation;
@@ -111,6 +111,7 @@ namespace BOTF3D_GalaxyMap
         private float _currentIncrease = 0.1f; // active control of camera movement rate
         private Vector3 _initPosition;
         private Vector3 _initRotation;
+        private float _zoomLevel;
 
         private void Awake()
         {
@@ -130,6 +131,7 @@ namespace BOTF3D_GalaxyMap
             this.transform.Rotate(1f, -1f, 1f);
             _initPosition = transform.position;
             _initRotation = transform.eulerAngles;
+            //_zoomLevel = _cameraMoveOnClick.cam.fieldOfView;
             currentRotation = this.transform.localEulerAngles;
             
             //telescope.transform.position = camGalactica.transform.position;
@@ -217,12 +219,18 @@ namespace BOTF3D_GalaxyMap
             {
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
+                //_cameraMoveOnClick.cam.fieldOfView = _zoomLevel;
             }
         }
         void LateUpdate()
         {
             this.transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y,
                  ClampAngles(transform.rotation.eulerAngles.z, minRotation, maxRotation));
+        }
+        public void ResetZoomInCamera()
+        {
+            transform.position = _initPosition;
+            transform.eulerAngles = _initRotation;
         }
 
         public void ActivateButtonStopGalacticPlay(bool turnOn)

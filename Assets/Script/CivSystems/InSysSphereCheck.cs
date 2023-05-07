@@ -12,7 +12,6 @@ namespace BOTF3D_GalaxyMap
     public class InSysSphereCheck : MonoBehaviour
     { // 
         public StarSystemData starSystemData;
-        //private StarSystem starSystem;
         private StarSystemEnum sysEnum;
         private List<Collider> inSysList = new List<Collider>();
         public GameObject sysSphere; // name sphere for system int value
@@ -21,12 +20,12 @@ namespace BOTF3D_GalaxyMap
  
         public void Start()
         {
-            sysSphere = this.gameObject;
+            sysSphere = this.gameObject; // the system sphere, not the system/button
             sysCollider = sysSphere.GetComponent<Collider>();
             int number;
             bool foundOne = int.TryParse(gameObject.name, out number);//did we read an int into number?
             if (foundOne)
-            sysEnum = (StarSystemEnum)int.Parse(gameObject.name);
+             sysEnum = (StarSystemEnum)int.Parse(gameObject.name);
            // too early //starSystemData.AddSystemSphere(sysEnum, sysSphere);// load sysSphere into system in Star System Dictionary
         }
         private void OnTriggerEnter(Collider other)
@@ -35,6 +34,8 @@ namespace BOTF3D_GalaxyMap
             {
                 inSysList.Add(other);
                 starSystemData.AddFleet(sysEnum, (other.gameObject));
+                var fleet = other.gameObject.GetComponent<Fleet>();
+                fleet.inDeepSpace = false;
             }
         } 
         private void OnTriggerExit(Collider other)
@@ -43,6 +44,8 @@ namespace BOTF3D_GalaxyMap
             {
                 inSysList.Remove(other);
                 starSystemData.RemoveFleet(sysEnum, (other.gameObject));
+                var fleet = other.gameObject.GetComponent<Fleet>();
+                fleet.inDeepSpace = true;
             }
         }
         public void AddSystemSphere(StarSystemEnum systemKey) // Use the Ditoinary

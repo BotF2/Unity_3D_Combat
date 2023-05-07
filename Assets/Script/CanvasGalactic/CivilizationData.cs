@@ -15,7 +15,10 @@ namespace BOTF3D_GalaxyMap
         #region Fields
         public GameManager gameManager;
         public StarSystemData starSystemData;
+        [SerializeField]
+        public static Canvas canvasGalactic;
         public PanelCommand panelCommand;
+        //public List<Fleet> civFleetList;
         [SerializeField]
         public static Dictionary<int, string[]> CivDataDictionary; // incoming data
         [SerializeField]
@@ -32,6 +35,11 @@ namespace BOTF3D_GalaxyMap
         #endregion
         public void Awake()
         {
+            //GameObject tempObject = GameObject.Find("CanvasGalactic");
+            //if (tempObject != null)
+            //{
+            //    canvasGalactic = tempObject.GetComponent<Canvas>();
+            //}
             #region Read Civilization Data.txt 
             char separator = ',';
             Dictionary<int, string[]> _civDataDictionary = new Dictionary<int, string[]>();
@@ -95,7 +103,7 @@ namespace BOTF3D_GalaxyMap
             daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
             List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
             daCiv._ownedSystem = ownedSystemStarterList;
-            //sysIndexList = gameManager
+
             return daCiv;
         }
 

@@ -744,14 +744,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -19038,14 +19038,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 8139663474559741778, guid: 70930d94db43bd54581896088501f697, type: 3}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 3222463155622924485, guid: fa058069bb29ea941b73117d2b832a85, type: 3}
-  Fed_Colonyship_i: {fileID: 5012787407966965585, guid: de42228b8883f054796cd89579f64a41, type: 3}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 5012787407966965585, guid: de42228b8883f054796cd89579f64a41, type: 3}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 1358903930982077462, guid: 3cfdad2c45b391e4a89b77ba0a5a783b, type: 3}
   Kling_Destroyer_i: {fileID: 4118301941742209220, guid: cc1e4c322ccea574c8846590f5ec0d36, type: 3}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 960271130701890872, guid: a83ec879888398b408291ab09a821cf3, type: 3}
-  Kling_Colonyship_i: {fileID: 1426752258958691384, guid: a5f75a80ac75baa479183a08796fdde7, type: 3}
+  Kling_Transport_i: {fileID: 1426752258958691384, guid: a5f75a80ac75baa479183a08796fdde7, type: 3}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 6474706349711357221, guid: 72d8a1154b291bd4890a81ac90939553, type: 3}
@@ -27845,14 +27845,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}

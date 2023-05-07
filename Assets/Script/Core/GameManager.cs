@@ -383,8 +383,6 @@ namespace BOTF3D_Core
         LtCruiser,
         HvyCruiser,
         Transport,
-        Colonyship,
-        Construction,
         OneMore
     }
     public enum SystemType
@@ -622,12 +620,14 @@ namespace BOTF3D_Core
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
+        public Fleet fleet;
         [SerializeField] private CivilizationData civData;
         [SerializeField] private StarSystemData starSysData;
         public SolarSystemView solarSystemView;
         public Ship ship;
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
+        public CameraMoveOnClick cameraMoveOnClick;
         public Camera cameraGalactica;
         public Camera cameraTelescope;
         public Combat combat;
@@ -715,15 +715,15 @@ namespace BOTF3D_Core
         public GameObject Fed_Scout_ii;
         public GameObject Fed_Scout_iii;
         public GameObject Fed_Scout_iv;
-        public GameObject Fed_Colonyship_i;
-        public GameObject Fed_Colonyship_ii;
+        public GameObject Fed_Transport_i;
+        public GameObject Fed_Transport_ii;
 
         public GameObject Kling_Cruiser_ii;
         public GameObject Kling_Destroyer_i;
         public GameObject Kling_Destroyer_ii;
         public GameObject Kling_Scout_i;
         public GameObject Kling_Scout_ii;
-        public GameObject Kling_Colonyship_i;
+        public GameObject Kling_Transport_i;
 
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
@@ -1440,6 +1440,7 @@ namespace BOTF3D_Core
 
            // PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            //cameraMoveOnClick.cameraZoomed = false;
             //PanelGalactic_Map.SetActive(true);
         }
         public void LargeGalacticMapSizeClicked(bool newValue)
@@ -1618,6 +1619,7 @@ namespace BOTF3D_Core
                     break;
                 case State.MAIN_INIT:
                     //ToDo; SetGalaxyMapSize();
+                    fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
                     starSysData.LoadSystemDictionary(_galaxyStarCount);
                     civData.LoadDictionaryOfCivs(this._galaxyStarCount);
@@ -2093,9 +2095,9 @@ namespace BOTF3D_Core
         public void LoadFriendAndEnemyNames()
         {
             string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II",
-                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_COLONYSHIP_I" };
+                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_TRANSPORT_I" };
             FriendNameArray = _friendNameArray;
-            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_COLONYSHIP_I","CARD_SCOUT_I",
+            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_TRANSPORT_I","CARD_SCOUT_I",
                 "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III"}; //"KLING_DESTROYER_I",
             
             EnemyNameArray = _enemyNameArray;
@@ -2140,9 +2142,9 @@ namespace BOTF3D_Core
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_III", Fed_Cruiser_iii }, {"FED_SCOUT_IV", Fed_Scout_iv},//{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
-                { "FED_COLONYSHIP_I", Fed_Colonyship_i }, 
+                { "FED_TRANSPORT_I", Fed_Transport_i }, 
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
-                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii }, {"KLING_COLONYSHIP_I", Kling_Colonyship_i},
+                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii }, {"KLING_TRANSPORT_I", Kling_Transport_i},
                 { "CARD_SCOUT_I", Card_Scout_i },
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }

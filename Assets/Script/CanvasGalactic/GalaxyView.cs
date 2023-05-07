@@ -15,6 +15,7 @@ namespace BOTF3D_GalaxyMap
     {
         public GameManager gameManager;
         public CameraManagerGalactica cameraManagerGalactica;
+        public StarSystemData starSystemData;
         public GameObject fleetManager;
         public SolarSystemView solarSystemView;
         [SerializeField]
@@ -766,6 +767,7 @@ namespace BOTF3D_GalaxyMap
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
+        
                         //var hidSys = sysEmptyList[sysIndex].AddComponent<HideSystemButton>();
                         //hidSys.weAreHidding = false;
 
@@ -775,30 +777,37 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+                    //var sysButtonCollider = starSystemNewGameOb.GetComponent<Collider>();
+                    //    if (sysButtonCollider != null)
+                    //        sysButtonCollider.name = starSystemNewGameOb.name;
                     // systemBox
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
                     sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
                     sysSphere.transform.localScale = new Vector3(40000,40000,40000);
                     sysSphere.name = sysIndex.ToString();
-                    //StarSystem ourSystem = starSystemNewGameOb.GetComponent<StarSystem>();
-                    //ourSystem._systemSphere = sysSphere;
-                    
-                    
-                    //_material.color = new Color(1f, 0f, 0f, 0.1f);
-                  
-                    // fleet prefab
+                    sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
+                    var ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
+                    ourSystem._systemSphere = sysSphere;
+
+                    Civilization theCiv = CivilizationData.Create(sysIndex); // and civs make systems
                     if (GameManager.PrefabFleetDitionary[ourKey] != null)
                     {
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
                         // firstFleetOfSystem.transform.SetParent ???
-                        firstFleetOfSystem.transform.SetParent(sysEmptyList[sysIndex].transform, false);
+                        firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false); //sysEmptyList[sysIndex].transform, false);
+                        firstFleetOfSystem.transform.position = sysEmptyList[sysIndex].transform.position;
                         firstFleetOfSystem.transform.Translate(0, 0, 20);
                         firstFleetOfSystem.transform.localScale = new Vector3(2, 2, 2);
                         firstFleetOfSystem.layer = 6;
                         firstFleetOfSystem.SetActive(true);
+                        Fleet firstFleet = firstFleetOfSystem.GetComponent<Fleet>();
+                        firstFleet.gameObject.SetActive(true);
+                        firstFleet.inDeepSpace = false;
+                        firstFleet.newTarget = false;
+                        theCiv.civFleetList = new List<Fleet> { firstFleet };
                     }
-                    var theCiv = CivilizationData.Create(sysIndex); // and civs make systems
-                   
+
+
                     starSystemNewGameOb.SetActive(true);
                     
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();

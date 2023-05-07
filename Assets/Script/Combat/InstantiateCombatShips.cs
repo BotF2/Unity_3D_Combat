@@ -99,8 +99,6 @@ namespace BOTF3D_Combat
                         _totalCapitalShips++;
                         break;
                     case "TRANSPORT":
-                    case "COLONYSHIP":
-                    case "CONSTRUCTION":
                         _totalUtilityShips++;
                         break;
                     case "ONEMORE":
@@ -164,8 +162,8 @@ namespace BOTF3D_Combat
                 //    case "TRANSPORT":
                 //        _shipType = ShipType.Transport;
                 //        break;
-                //    case "COLONYSHIP":
-                //        _shipType = ShipType.Colonyship;;
+                //    case "TRANSPORT":
+                //        _shipType = ShipType.Transport;;
                 //        break;
                 //    case "CONSTRUCTION":
                 //        _shipType = ShipType.Construction;
@@ -229,8 +227,6 @@ namespace BOTF3D_Combat
                                 SetShipCounts(arrayNames[1].ToUpper());
                                 break;
                             case "TRANSPORT":
-                            case "COLONYSHIP":
-                            case "CONSTRUCTION":
                                 if (_isFriend)
                                     xLocation -= zSeparator;
                                 else
@@ -309,8 +305,6 @@ namespace BOTF3D_Combat
                                 SetShipCounts(arrayNames[1].ToUpper());
                                 break;
                             case "TRANSPORT":
-                            case "COLONYSHIP":
-                            case "CONSTRUCTION":
                                 if (_isFriend)
                                     xLocation -= zSeparator;
                                 else
@@ -399,9 +393,6 @@ namespace BOTF3D_Combat
                             SetShipCounts(arrayNames[1].ToUpper());
                             break;
                         case "TRANSPORT":
-                        case "COLONYSHIP":
-                        case "CONSTRUCTION":
-
                             if (_isFriend)
                                 xLocation += zSeparator;
                             else
@@ -472,8 +463,6 @@ namespace BOTF3D_Combat
                                 }
                                 break;
                             case "TRANSPORT":
-                            case "COLONYSHIP":
-                            case "CONSTRUCTION":
                                 SetShipCounts(arrayNames[1].ToUpper());
                                 if (_isFriend)
                                     xLocation -= zSeparator;
@@ -582,8 +571,6 @@ namespace BOTF3D_Combat
                     _capitalShips++;
                     break;
                 case "TRANSPORT":
-                case "CONSTRUCTION":
-                case "COLONYSHIP":
                     _utilityShips++;
                     break;
                 case "ONEMORE":
@@ -610,7 +597,7 @@ namespace BOTF3D_Combat
                 {
                         
                     if (shipGameOb.name.ToUpper().Contains("CRUISER") || shipGameOb.name.ToUpper().Contains("LTCRUISER")
-                            || shipGameOb.name.ToUpper().Contains("HVYCRUISER") || shipGameOb.name.ToUpper().Contains("COLONYSHIP")
+                            || shipGameOb.name.ToUpper().Contains("HVYCRUISER") || shipGameOb.name.ToUpper().Contains("TRANSPORT")
                             || shipGameOb.name.ToUpper().Contains("TRANSPORT")|| shipGameOb.name.ToUpper().Contains("CONSTRUCTION"))                          
                     {
                         if (_aFriend)
@@ -685,7 +672,7 @@ namespace BOTF3D_Combat
                     if (_utilityShips != 0 && _capitalShips != 0) // if we have some capital and utility ships capital and utiliy come on same animation
                     {
                             if (shipGameOb.name.ToUpper().Contains("Cruiser") || shipGameOb.name.ToUpper().Contains("LtCruiser")
-                                    || shipGameOb.name.ToUpper().Contains("HvyCruiser") || shipGameOb.name.ToUpper().Contains("Colonyship")
+                                    || shipGameOb.name.ToUpper().Contains("HvyCruiser") || shipGameOb.name.ToUpper().Contains("Transport")
                                     || shipGameOb.name.ToUpper().Contains("Transport") || shipGameOb.name.ToUpper().Contains("Construction"))
                             {
                             if (_aFriend)
@@ -773,7 +760,7 @@ namespace BOTF3D_Combat
                             //        cameraEmpty.transform.SetParent(animFriendRushCapital.transform, true);
                             //        break;
                             //    case "TRANSPORT":
-                            //    case "COLONYSHIP":
+                            //    case "TRANSPORT":
                             //    case "CONSTRUCTION":
                             //        animFriendRushUtility.layer = shipGameOb.layer;
                             //        shipGameOb.transform.SetParent(animFriendRushUtility.transform, true);
@@ -808,7 +795,7 @@ namespace BOTF3D_Combat
                             //            cameraEmpty.transform.SetParent(animEnemyRushCapital.transform, true);
                             //            break;
                             //        case "TRANSPORT":
-                            //        case "COLONYSHIP":
+                            //        case "TRANSPORT":
                             //        case "CONSTRUCTION":
                             //            animEnemyRushUtility.layer = shipGameOb.layer;
                             //            shipGameOb.transform.SetParent(animEnemyRushUtility.transform, true);
@@ -832,7 +819,7 @@ namespace BOTF3D_Combat
                 //{
 
                 //    if (shipGameOb.name.ToUpper().Contains("CRUISER") || shipGameOb.name.ToUpper().Contains("LTCRUISER")
-                //            || shipGameOb.name.ToUpper().Contains("HVYCRUISER") || shipGameOb.name.ToUpper().Contains("COLONYSHIP")
+                //            || shipGameOb.name.ToUpper().Contains("HVYCRUISER") || shipGameOb.name.ToUpper().Contains("TRANSPORT")
                 //            || shipGameOb.name.ToUpper().Contains("TRANSPORT") || shipGameOb.name.ToUpper().Contains("CONSTRUCTION"))
                 //    {
                 //        if (_aFriend)

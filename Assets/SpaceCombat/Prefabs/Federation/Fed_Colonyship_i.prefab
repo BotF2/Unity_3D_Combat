@@ -98,8 +98,8 @@ GameObject:
   - component: {fileID: 4048789477018096562}
   - component: {fileID: 8967526614188559328}
   m_Layer: 9
-  m_Name: Fed_Colonyship_i
-  m_TagString: FED_COLONYSHIP_I(CLONE)
+  m_Name: Fed_Transport_i
+  m_TagString: FED_TRANSPORT_I(CLONE)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,14 +218,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}

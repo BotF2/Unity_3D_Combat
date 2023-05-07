@@ -91,9 +91,9 @@ namespace BOTF3D_Combat
         }
         // do something
         /*   string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II",
-                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_COLONYSHIP_I" };
+                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_TRANSPORT_I" };
         FriendNameArray = _friendNameArray;
-            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_COLONYSHIP_I","CARD_SCOUT_I",
+            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_TRANSPORT_I","CARD_SCOUT_I",
                 "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III"} */
     }
 }

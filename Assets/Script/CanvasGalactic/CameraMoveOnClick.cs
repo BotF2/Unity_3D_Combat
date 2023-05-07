@@ -18,11 +18,13 @@ namespace BOTF3D_GalaxyMap
         public bool cameraZoomed = false; // this checks to see if the camera was zoomed
         private string colliderName;
         private Quaternion _initRotation;
+       // private Vector3 _initLocation;
         float _initFieldOfView;
 
         private void Start()
         {
             _initRotation = transform.rotation;
+            //_initLocation = transform.position;
             _initFieldOfView = cam.fieldOfView;
         }
 
@@ -31,6 +33,7 @@ namespace BOTF3D_GalaxyMap
             // Right Mouse Click 
             if (Input.GetMouseButtonDown(1))
             {
+                //_initLocation = cam.transform.position;
                 if (!cameraZoomed )
                 { 
                 //Create variables to cast a ray on object
@@ -45,6 +48,7 @@ namespace BOTF3D_GalaxyMap
                         {
                             // zoom and rotate to clicked object
                             _initRotation = cam.transform.rotation;
+                            //_initLocation = cam.transform.position;
                             float deep = hit.collider.transform.position.y;
 
                             float newZoom = (deep + 15000f) / 200f;
@@ -59,14 +63,22 @@ namespace BOTF3D_GalaxyMap
                 {
                     cam.fieldOfView = _initFieldOfView;
                     cam.transform.rotation = _initRotation;
+
+                    cameraZoomed = false;
+                    cameraManagerGalactica.SetZoomedStatus();
+                }
+            }
+            if (Input.GetMouseButtonUp(0)) // reset rotation and zoom field of view on left click leaving galaxy map for system view
+            {
+                if (cameraZoomed)
+                {
+                    cam.fieldOfView = _initFieldOfView;
+                    cam.transform.rotation = _initRotation;
+
                     cameraZoomed = false;
                     cameraManagerGalactica.SetZoomedStatus();
                 }
             }
         }
-        //public bool AreWeZoomed()
-        //{
-        //    return cameraZoomed;
-        //}
     }
 }

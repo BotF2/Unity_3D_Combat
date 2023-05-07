@@ -47,8 +47,8 @@ namespace BOTF3D_GalaxyMap
             //    case "TRANSPORT":
             //        _shipType = ShipType.Transport;
             //        break;
-            //    case "COLONYSHIP":
-            //        _shipType = ShipType.Colonyship;
+            //    case "TRANSPORT":
+            //        _shipType = ShipType.Transport;
             //        break;
             //    case "ONEMORE":
             //        _shipType = ShipType.OneMore;

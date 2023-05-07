@@ -19,7 +19,7 @@ namespace BOTF3D_Core
     {
         #region Fields
 
-        //ToDo: add 2 Traints for a civ
+        //ToDo: add 2 Traits for a civ
         public int _civID;
         public CivEnum _civEnum;
         public string _shortName;
@@ -30,6 +30,7 @@ namespace BOTF3D_Core
         //public Traits _traitTwo;
         public Sprite _civImage;
         public Sprite _insignia;
+        public List<Fleet> civFleetList;
         public List<float> _sysTradeAllocation = new List<float> { 100f,};
         //public float _civPopulation; // credits per game time
         //private List<Bonus> _globalBonuses;

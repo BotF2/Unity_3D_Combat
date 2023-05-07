@@ -13,7 +13,6 @@ namespace BOTF3D_GalaxyMap
     public class Fleet : MonoBehaviour
     {
         public List<GalaxyShip> galaxyShipList = new List<GalaxyShip>();
-       // public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
         public CivEnum _civilization;
         public float _techPoints;
         public Transform _origin;
@@ -24,12 +23,50 @@ namespace BOTF3D_GalaxyMap
         private float distance;
         public float _lineDrawSpeed = 6f;
         public Sprite _insigniaSprite;
+        [SerializeField] Transform target;
+        public bool newTarget = false;
+        public bool inDeepSpace = false;
+        [SerializeField] float movementSpeed = 10f;
+        [SerializeField] float rotationalDamp = .5f;
+        public List<GameObject> destinationList;
 
         public Fleet(List<GalaxyShip> ships)
         {
             galaxyShipList = ships;
         }
+        void Update()
+        {
+            if (newTarget)
+                Turn();
+            if (inDeepSpace)
+                Move();
+        }
+        void Turn()
+        {
+            if (target != null)
+            {
+                transform.rotation = Quaternion.LookRotation(target.position);
+                newTarget = false;
+                inDeepSpace = true;
+            }
+        }
+        void Move()
+        {
+            transform.position += transform.forward * movementSpeed * Time.deltaTime;
+        }
+        void SetTarget()
+        {
+            newTarget = true;
+            inDeepSpace = true;
+        }
+        public void SendTheAllSystemsList(List<GameObject> dalist)
+        {
+            destinationList = dalist;
+        }
+        void Pathfinding()
+        {
 
+        }
         private void Awake() // what civs are in game and need a fleet???
         {
             //string[] nameArray = new string[3] { "civilization", "shipType", "era" };
@@ -65,12 +102,6 @@ namespace BOTF3D_GalaxyMap
             //        //_civilization = CivEnum.ACAMARIANS;
             //        break;
             //}
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
 
         }
     }

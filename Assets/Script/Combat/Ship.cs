@@ -106,10 +106,10 @@ namespace BOTF3D_Combat
                     break;
                 case "TRANSPORT":
                     _shipType = ShipType.Transport;
-                    break;
-                case "COLONYSHIP":
-                    _shipType = ShipType.Colonyship;
-                    break;
+                   break;
+                //case "TRANSPORT":
+                //    _shipType = ShipType.Transport;
+                //    break;
                 case "ONEMORE":
                     _shipType = ShipType.OneMore;
                     break;
