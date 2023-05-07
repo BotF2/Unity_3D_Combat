@@ -106,7 +106,8 @@ namespace BOTF3D_GalaxyMap
         Camera camGalactica;
         public GameObject telescopeHolder; 
         //public Camera telescope;
-        public GameObject buttonStopGalacticPlay;
+        public GameObject combatStopGalacticPlay;
+        public GameObject returnToGalaxyFromSystemView;
         public GameObject buttonFleets;
         private float _currentIncrease = 0.1f; // active control of camera movement rate
         private Vector3 _initPosition;
@@ -233,19 +234,31 @@ namespace BOTF3D_GalaxyMap
             transform.eulerAngles = _initRotation;
         }
 
-        public void ActivateButtonStopGalacticPlay(bool turnOn)
+        public void ActivateCombatStopGalacticPlay(bool turnOn)
         {
             if (turnOn)
             {
-                buttonStopGalacticPlay.SetActive(true);
+                combatStopGalacticPlay.SetActive(true);
                 telescopeHolder.SetActive(true);
             }
             else
             {
-                buttonStopGalacticPlay.SetActive(false);
+                combatStopGalacticPlay.SetActive(false);
                 telescopeHolder.SetActive(false);
             }
         }
+        public void ActivateReturnToGalaxyViewFromSystem(bool turnOn)
+        {
+            if (turnOn)
+            {
+                returnToGalaxyFromSystemView.SetActive(true);
+            }
+            else
+            {
+                returnToGalaxyFromSystemView.SetActive(false);
+            }
+        }
+
         public void ActivateButtonFleets(bool turnOn)
         {
             if (turnOn)

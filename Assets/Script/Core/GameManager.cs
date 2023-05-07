@@ -1654,8 +1654,9 @@ namespace BOTF3D_Core
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-                    cameraManagerGalactica.ActivateButtonStopGalacticPlay(true);
+                    cameraManagerGalactica.ActivateCombatStopGalacticPlay(true);
                     cameraManagerGalactica.ActivateButtonFleets(true);
+                    cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
                     cameraGalactica.enabled = true;
                     cameraTelescope.enabled = true;
 
@@ -1671,7 +1672,7 @@ namespace BOTF3D_Core
                     break;
 
                 case State.GALACTIC_MAP_INIT:
-                    cameraManagerGalactica.ActivateButtonStopGalacticPlay(false);
+                    cameraManagerGalactica.ActivateCombatStopGalacticPlay(false);
                     cameraManagerGalactica.ActivateButtonFleets(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
@@ -1685,12 +1686,19 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
-                    //cameraManagerGalactica.FleetManagerEmpty.SetActive(false);
+                    
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     PanelSystem_View.SetActive(true);
                     if (_playerOwnesSystem)
+                    {
                         PanelSysCommand_Menu.SetActive(true);
-                    else PanelSysCommand_Menu.SetActive(false);
+                        cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
+                    }
+                    else
+                    { 
+                        PanelSysCommand_Menu.SetActive(false);
+                        cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(true);
+                    }
                     _statePassedMain_Init = true;
 
                     break;
@@ -1698,7 +1706,7 @@ namespace BOTF3D_Core
                     PanelSysCommand_Menu.SetActive(false);
                     PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
-                    //PanelFleetManager.SetActive(false);
+                    //cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
                     //cameraManagerGalactica.gameObject.SetActive(true);
                     //cameraManagerGalactica.enabled = true;
                     //cameraManagerGalactica.TurnOnGalaxyFly();
