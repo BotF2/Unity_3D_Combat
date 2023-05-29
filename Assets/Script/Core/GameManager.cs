@@ -325,7 +325,7 @@ namespace BOTF3D_Core
         VISSIA,
         VORGON,
         VORI,
-        FORTY_ERIDANI,
+        VULCAN,
         WADI,
         XANTHAN,
         XEPOLITES,
@@ -602,14 +602,22 @@ namespace BOTF3D_Core
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
+        public Civilization _localPlayerCiv;
+        public Civilization _hostPlayerCiv;
+        public Civilization _clientZeroCiv;
+        public Civilization _clientOneCiv;
+        public Civilization _clientTwoCiv;
+        public Civilization _clientThreeCiv;
+        public Civilization _clientFourCiv;
+        public Civilization _clientFiveCiv;
         public CivEnum _localPlayer;
         public CivEnum _hostPlayer;
-        public CivEnum _cliantZero;
-        public CivEnum _cliantOne;
-        public CivEnum _cliantTwo;
-        public CivEnum _cliantThree;
-        public CivEnum _cliantFour;
-        public CivEnum _cliantFive;
+        public CivEnum _clientZero;
+        public CivEnum _clientOne;
+        public CivEnum _clientTwo;
+        public CivEnum _clientThree;
+        public CivEnum _clientFour;
+        public CivEnum _clientFive;
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
@@ -625,6 +633,7 @@ namespace BOTF3D_Core
         [SerializeField] private StarSystemData starSysData;
         public SolarSystemView solarSystemView;
         public Ship ship;
+        public CivilizationData civilizationData;
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
         public CameraMoveOnClick cameraMoveOnClick;
@@ -675,7 +684,7 @@ namespace BOTF3D_Core
         public GameObject animEnemy2;
         public GameObject animEnemy3;
 
-        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        public GameObject Friend_0; // prefab empty gameobject to clone instantiate into the grids
         public GameObject Enemy_0;
         private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
         public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
@@ -1351,6 +1360,7 @@ namespace BOTF3D_Core
             SetGalaxyMapSize(GalaxySize.SMALL);
             _galaxyType = GalaxyType.CANON;
             SetGalaxyMapCanon(GalaxyType.CANON);
+            SetTechLevel(TechLevel.DEVELOPED);
             // Civ selection happens in CivSelection.cs and Tech level in TechSelection.cs
             _localPlayer = CivEnum.FED;
             if (_isSinglePlayer)
@@ -1414,7 +1424,7 @@ namespace BOTF3D_Core
         {
 
             var currentStarSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemID];
-            Civilization localPlayerCiv = CivilizationData.CivilizationDictionary[_localPlayer];
+            Civilization localPlayerCiv = _localPlayerCiv;
             if (localPlayerCiv._ownedSystem.Contains(currentStarSystem))
                 { _playerOwnesSystem = true; }
             else { _playerOwnesSystem = false; }
@@ -1439,7 +1449,7 @@ namespace BOTF3D_Core
         {
 
            // PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
-            SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            SwitchtState(State.SYSTEM_PLAY_INIT); // end system, then load galaxy map
             //cameraMoveOnClick.cameraZoomed = false;
             //PanelGalactic_Map.SetActive(true);
         }
@@ -1465,22 +1475,33 @@ namespace BOTF3D_Core
             {
                 case GalaxySize.SMALL:
                     _galaxyStarCount = new int[]
-                    {0,1,2,3,4,5 }; //,6,7,12,54,59,61,90,95,105,103,113,116,125,129,131,135,138,146,147,150,155}; 
+                    {0,1,2,3,4,5,23,50,146,155}; //,6,7,12,54,59,61,90,95,105,103,113,116,125,129,131,135,138,146,147,150,155}; 
                    // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:
                     _galaxyStarCount = new int[]
-                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23, 54, 59, 61, 90, 95, 105, 103, 113}; //, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
+                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23,50, 54, 59, 61, 90, 95, 105, 103, 113,146,155}; //, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
                     //LoadGalacticMapButtons("MEDIUM");
                     break;
                 case GalaxySize.LARGE:
                     _galaxyStarCount = new int[]
-                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23, 54, 59, 61, 90, 95, 105, 103, 113, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
+                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23,50, 54, 59, 61, 90, 95, 105, 103, 113, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
                     //LoadGalacticMapButtons("LARGE");
                     break;
                 default:
                     break;
             }
+        }
+        public void SetCivs()
+        {
+            _localPlayerCiv = civilizationData.CivFromEnum(_localPlayer);
+            _hostPlayerCiv = civilizationData.CivFromEnum(_hostPlayer);
+            _clientZeroCiv = civilizationData.CivFromEnum(_clientZero);
+            _clientOneCiv = civilizationData.CivFromEnum(_clientOne);
+            _clientTwoCiv = civilizationData.CivFromEnum(_clientTwo);
+            _clientThreeCiv = civilizationData.CivFromEnum(_clientThree);
+            _clientFourCiv = civilizationData.CivFromEnum(_clientFour);
+            _clientFiveCiv = civilizationData.CivFromEnum(_clientFive);
         }
         public void CanonClicked(bool newValue)
         {
@@ -1504,6 +1525,24 @@ namespace BOTF3D_Core
                     break;
 
                 default:
+                    break;
+            }
+        }
+        public void SetTechLevel(TechLevel newTechLevel)
+        {
+            switch (newTechLevel)
+            {
+                case TechLevel.EARLY:
+                    _techLevel = TechLevel.EARLY;
+                    break;
+                case TechLevel.DEVELOPED:
+                    _techLevel = TechLevel.DEVELOPED;
+                    break;
+                case TechLevel.ADVANCED:
+                    _techLevel = TechLevel.ADVANCED;
+                    break;
+                case TechLevel.SUPREME:
+                    _techLevel = TechLevel.SUPREME;
                     break;
             }
         }
@@ -1619,10 +1658,12 @@ namespace BOTF3D_Core
                     break;
                 case State.MAIN_INIT:
                     //ToDo; SetGalaxyMapSize();
+                    
                     fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
                     starSysData.LoadSystemDictionary(_galaxyStarCount);
                     civData.LoadDictionaryOfCivs(this._galaxyStarCount);
+                    civData.UpdateCivContactListOnStartCivSelection(_techLevel);
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
                         case CivEnum.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
@@ -1643,6 +1684,7 @@ namespace BOTF3D_Core
                         default:
                             break;
                     }
+                    RelationshipManager.Initialize(CivilizationData.civsInGame);
                     PanelMain_Menu.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelLoadGame_Menu.SetActive(false);
@@ -1668,6 +1710,7 @@ namespace BOTF3D_Core
 
                     PanelGalaxyUI.SetActive(true);
                     PanelSystem_View.SetActive(false);
+                    this.SetCivs();
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
                     break;
 

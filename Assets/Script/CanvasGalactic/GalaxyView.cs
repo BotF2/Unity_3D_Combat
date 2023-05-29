@@ -8,12 +8,15 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
 using Unity.VisualScripting;
+using TMPro;
+using UnityEditor.Rendering;
 
 namespace BOTF3D_GalaxyMap
 {
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
+
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
         public GameObject fleetManager;
@@ -23,7 +26,7 @@ namespace BOTF3D_GalaxyMap
         public HoverTipManager hoverTipManager;
         [SerializeField]
         public Canvas canvasGalactic;
-        public GameObject PanelFleetManager; 
+        public GameObject PanelFleetManager;
         //public Pane canvasGalaxy;
         //public PanelGalactic_Map 
         //public CivilizationData civilizationDate;
@@ -730,24 +733,24 @@ namespace BOTF3D_GalaxyMap
                 }
             }
         }
-
+        Go from here
         public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
         {
-            // ToDo Implement both cannon and radome based on incoming GalaxyType seletection
-            string[] keysForSytemDictioanry = ReadSystemNames(); // all the system names in string[]
+            // ToDo Implement both cannon and readme based on incoming GalaxyType selection
+            string[] keysForSystemDictionary = ReadSystemNames(); // all the system names in string[]
 
             //We are currently only numStars = 6; use numStars, without this reset, when we have enough system-button prefabs built and loaded 
 
             Galaxy galaxy = new Galaxy(gameManager);
-            if (canonOrRandom == GalaxyType.CANON)
+            //if (canonOrRandom == GalaxyType.CANON)
             for (int i = 0; i < numStars.Length; i++)
             {
                 int sysIndex = numStars[i];
-                string ourKey = keysForSytemDictioanry[sysIndex];
-                if (keysForSytemDictioanry[sysIndex].Length != 0)
+                string ourKey = keysForSystemDictionary[sysIndex];
+                if (keysForSystemDictionary[sysIndex].Length != 0)
                 {
                     GameObject tempObject = GameObject.Find("CanvasGalactic");
-                   
+
                     if (tempObject != null)
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
@@ -762,14 +765,15 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
+
                         var hTips = sysEmptyList[sysIndex].AddComponent<HoverTips>();
                         hTips._hoverTipManager = hoverTipManager;
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
-        
+
                         //var hidSys = sysEmptyList[sysIndex].AddComponent<HideSystemButton>();
-                        //hidSys.weAreHidding = false;
+                        //hidSys.weAreHiding = false;
 
                         sysEmptyList[sysIndex].SetActive(true);
                     }
@@ -777,13 +781,13 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-                    //var sysButtonCollider = starSystemNewGameOb.GetComponent<Collider>();
-                    //    if (sysButtonCollider != null)
-                    //        sysButtonCollider.name = starSystemNewGameOb.name;
-                    // systemBox
+                    // Get Civ to find contact list for fog of war
+                    Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
+                    FogOfWarNaming(starSystemNewGameOb, civy);
+
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
                     sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
-                    sysSphere.transform.localScale = new Vector3(40000,40000,40000);
+                    sysSphere.transform.localScale = new Vector3(27000, 27000, 27000);
                     sysSphere.name = sysIndex.ToString();
                     sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
                     var ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
@@ -796,7 +800,7 @@ namespace BOTF3D_GalaxyMap
                         // firstFleetOfSystem.transform.SetParent ???
                         firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false); //sysEmptyList[sysIndex].transform, false);
                         firstFleetOfSystem.transform.position = sysEmptyList[sysIndex].transform.position;
-                        firstFleetOfSystem.transform.Translate(0, 0, 20);
+                        firstFleetOfSystem.transform.Translate(0, -5, 15);
                         firstFleetOfSystem.transform.localScale = new Vector3(2, 2, 2);
                         firstFleetOfSystem.layer = 6;
                         firstFleetOfSystem.SetActive(true);
@@ -809,17 +813,42 @@ namespace BOTF3D_GalaxyMap
 
 
                     starSystemNewGameOb.SetActive(true);
-                    
+
+                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
+                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
                     //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
                     //myButton.image.sprite.
                 }
+                if (canonOrRandom == GalaxyType.RANDOM)
+                {
+                    // ToDo: random galaxy here
+                    foreach (var sysEmpty in sysEmptyList)
+                    {
+                        // space out sysEmpties on Galaxy view in a random distribution
+                        // call RandomizeMap to get random x, y and z for: Vector3 worldSpace = new Vector3(x, y, z);
+                        // sysEmpty.transform.Translate(random values here x, y, z);
+                    }
+                }
             }
-            }
-
+            //gameManager.SetCivs();
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
         }
-         
+        private void RandomizeMap()
+        {
+
+        }
+        private void FogOfWarNaming(GameObject sysObject, Civilization civy)
+        {
+            if (gameManager._localPlayer != (CivEnum)civy._civID)
+            {
+                sysObject.GetComponentInChildren<TMP_Text>().text =
+                    "x" + ((int)sysObject.transform.position.x).ToString() +
+                    ",y" + ((int)sysObject.transform.position.y).ToString() +
+                    ",z" + ((int)sysObject.transform.position.z).ToString();
+            }
+
+        }
         private string[] ReadSystemNames() // get names of civ in an array
         {
             //SolarSystem.LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
@@ -873,9 +902,9 @@ namespace BOTF3D_GalaxyMap
             //_fleetObjInGalaxy.Add(fleetNewGameOb);           
         }
 
-        public void updateTheFleet(Fleet fleet, List<GalaxyShip> newShipList)
+        public void UpdateTheFleet(Fleet fleet, List<GalaxyShip> newShipList)
         {
-            
+
         }
         public void ShowASolarSystemView(int buttonSystemID) // The 3D view of system, THE BACKGROUND EYE CANDY
         {

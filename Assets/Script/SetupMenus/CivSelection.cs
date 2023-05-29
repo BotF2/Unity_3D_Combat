@@ -64,32 +64,38 @@ namespace BOTF3D_Core
                 case "TOGGLE_FED":
                     Fed = _activeToggle;
                     GameManager.Instance._localPlayer = CivEnum.FED;
+                   // GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.FED);
                     Debug.Log("Active Fed.");
                     break;
                 case "TOGGLE_KLING":
                     Debug.Log("Active Kling.");
                     GameManager.Instance._localPlayer = CivEnum.KLING;
+                   // GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.KLING);
                     Kling = _activeToggle;
                     break;
                 case "TOGGLE_ROM":
                     Debug.Log("Active Rom.");
                     Rom = _activeToggle;
                     GameManager.Instance._localPlayer = CivEnum.ROM;
+                    //GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.ROM);
                     break;
                 case "TOGGLE_CARD":
                     Debug.Log("Active Card.");
                     Card = _activeToggle;
                     GameManager.Instance._localPlayer = CivEnum.CARD;
+                    //GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.CARD);
                     break;
                 case "TOGGLE_DOM":
                     Debug.Log("Active Dom.");
                     Dom = _activeToggle;
                     GameManager.Instance._localPlayer = CivEnum.DOM;
+                    //GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.DOM);
                     break;
                 case "TOGGLE_BORG":
                     Debug.Log("Active Borg.");
                     Borg = _activeToggle;
                     GameManager.Instance._localPlayer = CivEnum.BORG;
+                    //GameManager.Instance._localPlayerCiv = CivilizationData.Instance.CivFromEnum(CivEnum.BORG);
                     break;
                 default:
                     break;

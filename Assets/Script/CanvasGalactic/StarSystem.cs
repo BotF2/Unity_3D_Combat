@@ -10,6 +10,7 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using UnityEngine.XR;
 using JetBrains.Annotations;
+using UnityEngine.UI;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -25,9 +26,11 @@ namespace BOTF3D_GalaxyMap
         public StarSystemEnum _sysEnum;
         public string _sysName;
         public StarType _starType;
-        //public Civ _civEnum;
+        public string _name;
         public Civilization _ownerCiv;
         public string _ownerName;
+        public Sprite _ownerInsigniaSprite;
+        public Sprite _ownerCivSprite;
         public float _sysCredits;
         //public float _sysTaxRate; Set it at civ level
         public float _systemPopLimit;

@@ -9,13 +9,16 @@ namespace Assets.Script
 {
     public class Diplomatic: MonoBehaviour
     {
-        public enum DiplomaticRelations
+        // see CivilizationData DoDiplomacy
+        public GameManager gameManager;
+        public enum DiplomaticRelation
         {
-            AtWar,
-            Hostile,
-            Neutral,
-            AtPease,
-            WillFightAlongSide
+            UnKnow, // 500 RelationshipScore in RelationshipInfo.cs
+            AtWar, // 0 RelationshipScore in RelationshipInfo.cs - down 5 point each stardate (negative converts to zero)
+            Hostile, // <250 RelationshipScore in RelationshipInfo.cs
+            Neutral, // 250 - 750 RelationshipScore in RelationshipInfo.cs - no change
+            AtPease, // >750 RelationshipScore in RelationshipInfo.cs - up 3 point each stardate
+            WillFightAlongSide // 500 RelationshipScore in RelationshipInfo.cs
         }
         public List<CivEnum> FightWithFed = new List<CivEnum>() { CivEnum.FED };
         //public List<Civilization> FightWithTerran;

@@ -8,7 +8,7 @@ using UnityEngine;
 using Assets.Script;
 using BOTF3D_Combat;
 using UnityEngine.XR;
-using static UnityEngine.ParticleSystem;
+//using static UnityEngine.ParticleSystem;
 using UnityEngine.Rendering;
 using BOTF3D_GalaxyMap;
 
@@ -32,6 +32,7 @@ namespace BOTF3D_Core
         public Sprite _insignia;
         public List<Fleet> civFleetList;
         public List<float> _sysTradeAllocation = new List<float> { 100f,};
+        public Dictionary<int,int> deltaRelation;
         //public float _civPopulation; // credits per game time
         //private List<Bonus> _globalBonuses;
         //private readonly CivilizationMapData _mapData;
@@ -69,6 +70,13 @@ namespace BOTF3D_Core
 
         #endregion Fields
 
+        // helper method when you want to work with relationships.
+        public RelationshipInfo GetRelationshipWith(Civilization otherCivilization)
+        {
+            return RelationshipManager.GetRelationshipInfo(this, otherCivilization);
+        }
+
+        // ... other faction code
         public Civilization(int sysCivInt)
         {
             this._civID = sysCivInt;

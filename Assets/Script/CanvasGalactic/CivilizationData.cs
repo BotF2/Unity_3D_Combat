@@ -14,6 +14,7 @@ namespace BOTF3D_GalaxyMap
     {
         #region Fields
         public GameManager gameManager;
+        public static List<Civilization> civsInGame = new List<Civilization>();
         public StarSystemData starSystemData;
         [SerializeField]
         public static Canvas canvasGalactic;
@@ -71,6 +72,7 @@ namespace BOTF3D_GalaxyMap
             }
             #endregion          
         }
+        public static CivilizationData Instance { get; private set; }
         public static Civilization Create(int systemInt)
         {
             Civilization daCiv = new Civilization(systemInt);
@@ -99,10 +101,14 @@ namespace BOTF3D_GalaxyMap
            // daCiv._civPopulation = int.Parse(sysStrings[9]);
             daCiv._civCredits = int.Parse(sysStrings[10]);
             daCiv._civTechPoints = int.Parse(sysStrings[11]);
-            //daCiv._civTechLevel = TechLevel.EARLY; ToDo: set this by enough techpoints to get new ship images
+            //daCiv._civTechLevel = TechLevel.EARLY; ToDo: set this by enough tech points to get new ship images
             daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
+            daCiv._homeSystem._ownerCiv = daCiv;
+            List<Civilization> civsWeKnow = new List<Civilization>() { daCiv }; // instantiate list with knowing our self
+            daCiv._contactList = civsWeKnow;
             List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
             daCiv._ownedSystem = ownedSystemStarterList;
+            civsInGame.Add(daCiv);
 
             return daCiv;
         }
@@ -116,8 +122,138 @@ namespace BOTF3D_GalaxyMap
                 CivilizationData.CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
             }
             numStars = gameManager._galaxyStarCount.Length;
+            //gameManager.SetCivs();
         }
-        public void DoSystemPoduction()
+        public void UpdateCivContactListOnStartCivSelection(TechLevel ourStartTechLevel)
+        {
+            switch (ourStartTechLevel)
+            {
+                case TechLevel.EARLY:
+                    {
+                       // LoadOurStartingMinor();
+                    }
+                    break;
+                case TechLevel.DEVELOPED:
+                    {
+                        LoadOurStartingMinor();
+                    }
+                    break;
+                case TechLevel.ADVANCED:
+                    {
+                        LoadOurStartingMinor();
+                        foreach (Civilization aCiv in civsInGame)
+                        {
+                            if (aCiv._civEnum == CivEnum.FED || aCiv._civEnum == CivEnum.ROM ||
+                                aCiv._civEnum == CivEnum.KLING || aCiv._civEnum == CivEnum.CARD ||
+                                aCiv._civEnum == CivEnum.DOM || aCiv._civEnum == CivEnum.BORG)
+                            {
+                                foreach (Civilization thisCiv in civsInGame)
+                                {
+                                    if(!thisCiv._contactList.Contains(aCiv))
+                                    thisCiv._contactList.Add(aCiv);
+                                }
+                            }
+                            
+                        }
+                    }
+                    break;
+                case TechLevel.SUPREME:
+                    {
+                        LoadOurStartingMinor();
+                        foreach (Civilization aCiv in civsInGame)
+                        {
+                            aCiv._contactList = civsInGame;
+                        }
+                    }    
+                    break;
+                default:
+                    break;
+            }
+        }
+        public Civilization CivFromEnum(CivEnum civEnum)
+        {
+            if(civsInGame.Count > 0)
+            foreach (Civilization aCiv in civsInGame)
+            {
+                if (aCiv._civEnum == civEnum)
+                    return aCiv;
+            }
+            return null;
+        }
+        private void LoadOurStartingMinor()
+        {
+            foreach (Civilization aCiv in civsInGame)
+            {
+                switch (aCiv._civEnum)
+                {
+                    case CivEnum.FED:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.VULCANS);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Vulcans #146);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+                    case CivEnum.ROM:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.ZAKDORN);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Zackdorn #155);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+
+                    case CivEnum.KLING:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.KRIOSIANS);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Kriosians);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+                    case CivEnum.CARD:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.BAJORANS);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Bajorans #23);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+                    case CivEnum.DOM:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.DOSI);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Dosi #50);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+                    case CivEnum.BORG:
+                        {
+                            Civilization minorCiv = CivFromEnum(CivEnum.NECHANI);
+                            if (minorCiv != null)
+                            {
+                                aCiv._contactList.Add(minorCiv); //Nechani #96);
+                                minorCiv._contactList.Add(aCiv);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void DoSystemProduction()
         {
             //var numStars = gameManager._galaxyStarCount.Length;
             
@@ -182,6 +318,25 @@ namespace BOTF3D_GalaxyMap
             }
             
         }
+        public void DoDiplomacy()
+        {
+            for (int i = 0; i < CivilizationDictionary.Count; i++)
+
+                for (int j = 0; j < CivilizationDictionary.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
+                        var civ1 = CivilizationDictionary[civArray[i]];
+                        var civ2 = CivilizationDictionary[civArray[j]];
+                        RelationshipInfo relationshipInfo = RelationshipManager.GetRelationshipInfo(civ1, civ2);
+                        relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
+                        civ1.deltaRelation[j] = 0;
+                    }
+                }
+        }
+            
+        //}
         //public void AddSysCredits()
         //// ship quality = civTech * research points
         //// time to produce ship = population(Credits)/civTech, a drain on credits

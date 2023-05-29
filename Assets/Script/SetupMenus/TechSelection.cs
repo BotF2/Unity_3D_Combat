@@ -37,10 +37,10 @@ namespace BOTF3D_Core
         {
             TechLevelGroup = GetComponent<ToggleGroup>();
             TechLevelGroup.enabled = true;
-            Early.isOn = true;
-            Early.Select();
-            Early.OnSelect(null); // turns background selected color on, go figure.
-            Developed.isOn = false;
+            Early.isOn = false;
+            Developed.isOn = true;
+            Developed.Select();
+            Developed.OnSelect(null); // turns background selected color on, go figure.
             Advanced.isOn = false;
             Supreme.isOn = false;
         }
