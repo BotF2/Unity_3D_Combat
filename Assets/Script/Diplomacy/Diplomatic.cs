@@ -15,7 +15,6 @@ namespace Assets.Script
             Hostile,
             Neutral,
             AtPease,
-            WillTrade,
             WillFightAlongSide
         }
         public List<CivEnum> FightWithFed = new List<CivEnum>() { CivEnum.FED };

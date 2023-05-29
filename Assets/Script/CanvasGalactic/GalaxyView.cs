@@ -814,9 +814,6 @@ namespace BOTF3D_GalaxyMap
                     //myButton.image.sprite.
                 }
             }
-            else
-            { 
-                // do random galaxy here
             }
 
             gameManager.galaxy = galaxy;

@@ -26,7 +26,6 @@ namespace BOTF3D_GalaxyMap
         public string _sysName;
         public StarType _starType;
         //public Civ _civEnum;
-        //public Sprite _civInsignia;// do we get it from Civ and not system??
         public Civilization _ownerCiv;
         public string _ownerName;
         public float _sysCredits;
