@@ -32,46 +32,56 @@ namespace BOTF3D_Core
         public Sprite _insignia;
         public List<Fleet> civFleetList;
         public List<float> _sysTradeAllocation = new List<float> { 100f,};
-        public Dictionary<int,int> deltaRelation;
+        //public int[,] relationshipScoresArray; // index of other civ, int relationship score value
+        ////public RelationshipInfo relationshipInfo;
+        //public Dictionary<int,int> deltaRelation = new Dictionary<int, int>() { { 0, 0 } }; // key is other civ and amount of change per time check
         //public float _civPopulation; // credits per game time
-        //private List<Bonus> _globalBonuses;
-        //private readonly CivilizationMapData _mapData;
-        //private readonly ResearchPool _research;
-        //private readonly ResourcePool _resources;
-        //private readonly List<SitRepEntry> _sitRepEntries;
+        //public List<Bonus> _globalBonuses;
+        //public readonly CivilizationMapData _mapData;
+        //public readonly ResearchPool _research;
+        //public readonly ResourcePool _resources;
+        //public readonly List<SitRepEntry> _sitRepEntries;
         //public int _totalPopulation;
-        //private readonly Meter _totalValue;
+        //public readonly Meter _totalValue;
         public float _civTechPoints;
         public TechLevel _civTechLevel;
         public float _civTaxRate;
-        public float _cviGrowthRate; // currently using private float techPopGrowthRate = 0.01f in CivilizationData
+        public float _cviGrowthRate; // currently using public float techPopGrowthRate = 0.01f in CivilizationData
         //public float _intel;
         public float _civCredits;
-        //private readonly Treasury _treasury;
-        //private int _maintenanceCostLastTurn;
-        //private int _rankCredits;
+        //public readonly Treasury _treasury;
+        //public int _maintenanceCostLastTurn;
+        //public int _rankCredits;
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
         public List<Civilization> _contactList;
        // public StarSystem _homeColony;
         public List<StarSystem> _ownedSystem;
         public List<Ship> _fleet;
-        //private List<int> _IntelIDs;
-        //private MapLocation? _homeColonyLocation;
-        //private int _seatOfGovernmentId = -1;
-        //private readonly Meter _totalIntelligenceAttackingAccumulated;
-        //private readonly Meter _totalIntelligenceDefenseAccumulated;
-        public string _text;
-        //private int _rankMaint;
-        //private int _rankResearch;
-        //private int _rankIntelAttack;
-        //private readonly string newline = Environment.NewLine;
-        //private readonly IPlayer _localPlayer;
-        //private readonly AppContext _appContext;
+        //public List<int> _IntelIDs;
+        //public MapLocation? _homeColonyLocation;
+        //public int _seatOfGovernmentId = -1;
+        //public readonly Meter _totalIntelligenceAttackingAccumulated;
+        //public readonly Meter _totalIntelligenceDefenseAccumulated;
+        public string _civInfoText;
+        //public int _rankMaint;
+        //public int _rankResearch;
+        //public int _rankIntelAttack;
+        //public readonly string newline = Environment.NewLine;
+        //public readonly IPlayer _localPlayer;
+        //public readonly AppContext _appContext
 
         #endregion Fields
 
+        //public void Start()
+        //{
+        //    deltaRelation = new Dictionary<int, int>() { {0,0} }; // initialize deltaRelation Dictionary;         
+        //}
         // helper method when you want to work with relationships.
-        public RelationshipInfo GetRelationshipWith(Civilization otherCivilization)
+        //public int GetRelationshipInt(Civilization otherCivilization)
+        //{
+        //    return RelationshipManager.GetRelationshipScore(this, otherCivilization);
+        //}
+        public RelationshipInfo GetRelationshipInfoWith(Civilization otherCivilization)
         {
             return RelationshipManager.GetRelationshipInfo(this, otherCivilization);
         }

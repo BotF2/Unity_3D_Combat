@@ -733,7 +733,7 @@ namespace BOTF3D_GalaxyMap
                 }
             }
         }
-        Go from here
+
         public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
         {
             // ToDo Implement both cannon and readme based on incoming GalaxyType selection

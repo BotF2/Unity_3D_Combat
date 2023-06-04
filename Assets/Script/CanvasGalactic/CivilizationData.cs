@@ -109,6 +109,9 @@ namespace BOTF3D_GalaxyMap
             List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
             daCiv._ownedSystem = ownedSystemStarterList;
             civsInGame.Add(daCiv);
+            //daCiv.relationshipScoresArray = new int[systemInt,0];
+            //if (!daCiv.deltaRelation.ContainsKey(systemInt))
+            //    daCiv.deltaRelation.Add(systemInt, 0);
 
             return daCiv;
         }
@@ -119,7 +122,10 @@ namespace BOTF3D_GalaxyMap
             {
                 Civilization aCiv = CivilizationData.Create(ints[i]); 
                 starSystemData.UpdateSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
-                CivilizationData.CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
+                CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
+                //if (!aCiv.deltaRelation.ContainsKey(ints[i]))
+                //    aCiv.deltaRelation.Add(ints[i], 0);
+
             }
             numStars = gameManager._galaxyStarCount.Length;
             //gameManager.SetCivs();
@@ -321,19 +327,25 @@ namespace BOTF3D_GalaxyMap
         public void DoDiplomacy()
         {
             for (int i = 0; i < CivilizationDictionary.Count; i++)
-
+            {
                 for (int j = 0; j < CivilizationDictionary.Count; j++)
                 {
                     if (i != j)
                     {
-                        CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
-                        var civ1 = CivilizationDictionary[civArray[i]];
-                        var civ2 = CivilizationDictionary[civArray[j]];
+                        // Do we need to time this or does it just happen
+                        // CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
+                        Civilization civ1 = CivilizationDictionary[(CivEnum)i];
+                        Civilization civ2 = CivilizationDictionary[(CivEnum)j];
                         RelationshipInfo relationshipInfo = RelationshipManager.GetRelationshipInfo(civ1, civ2);
-                        relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
-                        civ1.deltaRelation[j] = 0;
+                        //relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
+                        //civ1.deltaRelation[j] = 0;
                     }
                 }
+            }
+        }
+        public void MoveGalacticThings()
+        {
+
         }
             
         //}

@@ -9,7 +9,7 @@ namespace Assets.Script
 {
     public class Diplomatic: MonoBehaviour
     {
-        // see CivilizationData DoDiplomacy
+        // see CivilizationData DoDiplomacy SEE RELATIONSHIPINFO RelationshipInfo.cs
         public GameManager gameManager;
         public enum DiplomaticRelation
         {

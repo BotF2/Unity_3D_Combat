@@ -31,7 +31,7 @@ namespace BOTF3D_Core
         }
         private void TimeCheck()
         {
-            // Civilization Tech at production [shipyard] (TIME IS KEY, low tech produced faster weaker unit [cardassian] vs high tech produced slower stronger [borg],
+            // Civilization Tech at production [shipyard] (TIME IS KEY, low tech civ produces ships faster but weaker [cardassian] vs high tech produced slower stronger [borg],
             // Fed 10, Rom 12, Kling 10, Card 5 Dom 15, Borg 20
             // in production the higher the civ tech the longer to build in shipyard
             // Tech Level driven by Research Points, RS(the era, Enterprise vs TOS vs TNG vs...) all civs at enterprise era stars at 10RS and at TOS ear 20 RS

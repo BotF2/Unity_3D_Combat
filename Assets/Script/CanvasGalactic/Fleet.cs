@@ -36,20 +36,20 @@ namespace BOTF3D_GalaxyMap
         }
         void Update()
         {
-            if (newTarget)
-                Turn();
+            //if (newTarget) // galaxy fleets always face camera, not turning
+            //    Turn();
             if (inDeepSpace)
                 Move();
         }
-        void Turn()
-        {
-            if (target != null)
-            {
-                transform.rotation = Quaternion.LookRotation(target.position);
-                newTarget = false;
-                inDeepSpace = true;
-            }
-        }
+        //void Turn() // galaxy fleets always face camera, not turning
+        //{
+        //    if (target != null)
+        //    {
+        //        transform.rotation = Quaternion.LookRotation(target.position);
+        //        newTarget = false;
+        //        inDeepSpace = true;
+        //    }
+        //}
         void Move()
         {
             transform.position += transform.forward * movementSpeed * Time.deltaTime;

@@ -1684,7 +1684,7 @@ namespace BOTF3D_Core
                         default:
                             break;
                     }
-                    RelationshipManager.Initialize(CivilizationData.civsInGame);
+                    //RelationshipManager.Initialize(CivilizationData.civsInGame);
                     PanelMain_Menu.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelLoadGame_Menu.SetActive(false);
@@ -1712,6 +1712,7 @@ namespace BOTF3D_Core
                     PanelSystem_View.SetActive(false);
                     this.SetCivs();
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
+                    RelationshipManager.Initialize(CivilizationData.civsInGame);
                     break;
 
                 case State.GALACTIC_MAP_INIT:

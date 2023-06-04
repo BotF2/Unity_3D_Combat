@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -588,6 +588,7 @@ VisualEffect:
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -845,7 +846,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -869,7 +870,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -893,7 +894,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -917,7 +918,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -941,7 +942,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -965,7 +966,7 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _hostPlayerCiv:
     _civID: 0
     _civEnum: 0
@@ -1046,7 +1047,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -1070,7 +1071,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -1094,7 +1095,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -1118,7 +1119,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -1142,7 +1143,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -1166,8 +1167,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantZeroCiv:
+    _civInfoText: 
+  _clientZeroCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -1247,7 +1248,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -1271,7 +1272,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -1295,7 +1296,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -1319,7 +1320,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -1343,7 +1344,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -1367,8 +1368,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantOneCiv:
+    _civInfoText: 
+  _clientOneCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -1448,7 +1449,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -1472,7 +1473,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -1496,7 +1497,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -1520,7 +1521,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -1544,7 +1545,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -1568,8 +1569,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantTwoCiv:
+    _civInfoText: 
+  _clientTwoCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -1649,7 +1650,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -1673,7 +1674,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -1697,7 +1698,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -1721,7 +1722,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -1745,7 +1746,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -1769,8 +1770,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantThreeCiv:
+    _civInfoText: 
+  _clientThreeCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -1850,7 +1851,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -1874,7 +1875,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -1898,7 +1899,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -1922,7 +1923,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -1946,7 +1947,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -1970,8 +1971,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFourCiv:
+    _civInfoText: 
+  _clientFourCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -2051,7 +2052,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -2075,7 +2076,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -2099,7 +2100,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -2123,7 +2124,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -2147,7 +2148,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -2171,8 +2172,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFiveCiv:
+    _civInfoText: 
+  _clientFiveCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -2252,7 +2253,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -2276,7 +2277,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -2300,7 +2301,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -2324,7 +2325,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -2348,7 +2349,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -2372,15 +2373,15 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
   _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
@@ -3202,9 +3203,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!81 &45544411
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3227,9 +3239,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -3371,6 +3391,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4919279783028184138, guid: c57774e263194434d9ca36f268977fbb, type: 3}
@@ -3442,6 +3463,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c57774e263194434d9ca36f268977fbb, type: 3}
 --- !u!1 &58313681
 GameObject:
@@ -4408,9 +4432,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!20 &114930957
 Camera:
   m_ObjectHideFlags: 0
@@ -4425,9 +4460,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -11422,6 +11465,7 @@ VisualEffect:
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -13076,7 +13120,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -13100,7 +13144,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -13124,7 +13168,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -13148,7 +13192,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -13172,7 +13216,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -13196,7 +13240,7 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _hostPlayerCiv:
     _civID: 0
     _civEnum: 0
@@ -13277,7 +13321,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -13301,7 +13345,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -13325,7 +13369,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -13349,7 +13393,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -13373,7 +13417,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -13397,8 +13441,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantZeroCiv:
+    _civInfoText: 
+  _clientZeroCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -13478,7 +13522,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -13502,7 +13546,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -13526,7 +13570,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -13550,7 +13594,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -13574,7 +13618,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -13598,8 +13642,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantOneCiv:
+    _civInfoText: 
+  _clientOneCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -13679,7 +13723,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -13703,7 +13747,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -13727,7 +13771,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -13751,7 +13795,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -13775,7 +13819,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -13799,8 +13843,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantTwoCiv:
+    _civInfoText: 
+  _clientTwoCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -13880,7 +13924,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -13904,7 +13948,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -13928,7 +13972,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -13952,7 +13996,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -13976,7 +14020,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -14000,8 +14044,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantThreeCiv:
+    _civInfoText: 
+  _clientThreeCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -14081,7 +14125,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -14105,7 +14149,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -14129,7 +14173,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -14153,7 +14197,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -14177,7 +14221,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -14201,8 +14245,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFourCiv:
+    _civInfoText: 
+  _clientFourCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -14282,7 +14326,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -14306,7 +14350,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -14330,7 +14374,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -14354,7 +14398,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -14378,7 +14422,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -14402,8 +14446,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFiveCiv:
+    _civInfoText: 
+  _clientFiveCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -14483,7 +14527,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -14507,7 +14551,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -14531,7 +14575,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -14555,7 +14599,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -14579,7 +14623,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -14603,15 +14647,15 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
   _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
@@ -15750,7 +15794,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -16197,9 +16243,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 0
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!45 &584432634
 Skybox:
   m_ObjectHideFlags: 0
@@ -16223,9 +16280,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -18594,9 +18659,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!81 &675372014
 AudioListener:
   m_ObjectHideFlags: 0
@@ -18619,9 +18695,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -19351,14 +19435,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1 &705809155
 GameObject:
   m_ObjectHideFlags: 0
@@ -19469,14 +19556,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1 &708420319
 GameObject:
   m_ObjectHideFlags: 0
@@ -19858,14 +19948,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1 &722487411
 GameObject:
   m_ObjectHideFlags: 0
@@ -20439,6 +20532,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
@@ -20508,6 +20602,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5059819757968094375, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
     - {fileID: 2449267925695694470, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 180068646}
   m_SourcePrefab: {fileID: 100100000, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
 --- !u!1 &726855480
 GameObject:
@@ -22749,6 +22849,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
@@ -22818,6 +22919,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2449267925695694470, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
     - {fileID: 5059819757968094375, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 802029860}
   m_SourcePrefab: {fileID: 100100000, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
 --- !u!1 &802029858 stripped
 GameObject:
@@ -23379,6 +23486,7 @@ VisualEffect:
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -25228,9 +25336,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -25307,9 +25423,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 0
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25733,6 +25860,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
@@ -25784,6 +25912,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
 --- !u!1 &1009268800
 GameObject:
@@ -27004,6 +27135,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
@@ -27055,6 +27187,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
 --- !u!1 &1092034102
 GameObject:
@@ -29103,6 +29238,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169797908}
   m_CullTransparentMesh: 1
+--- !u!1 &1171831151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171831152}
+  - component: {fileID: 1171831153}
+  m_Layer: 6
+  m_Name: MoveGalacticThings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1171831152
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171831151}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1171831153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171831151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3139d45223e87a4ab4558066823be1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  civilizationData: {fileID: 1863091656}
+  gameManager: {fileID: 1187732007}
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -29215,7 +29401,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -29239,7 +29425,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -29263,7 +29449,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -29287,7 +29473,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -29311,7 +29497,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -29335,7 +29521,7 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _hostPlayerCiv:
     _civID: 0
     _civEnum: 0
@@ -29416,7 +29602,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -29440,7 +29626,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -29464,7 +29650,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -29488,7 +29674,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -29512,7 +29698,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -29536,8 +29722,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantZeroCiv:
+    _civInfoText: 
+  _clientZeroCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -29617,7 +29803,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -29641,7 +29827,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -29665,7 +29851,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -29689,7 +29875,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -29713,7 +29899,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -29737,8 +29923,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantOneCiv:
+    _civInfoText: 
+  _clientOneCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -29818,7 +30004,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -29842,7 +30028,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -29866,7 +30052,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -29890,7 +30076,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -29914,7 +30100,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -29938,8 +30124,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantTwoCiv:
+    _civInfoText: 
+  _clientTwoCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -30019,7 +30205,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -30043,7 +30229,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -30067,7 +30253,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -30091,7 +30277,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -30115,7 +30301,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -30139,8 +30325,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantThreeCiv:
+    _civInfoText: 
+  _clientThreeCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -30220,7 +30406,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -30244,7 +30430,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -30268,7 +30454,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -30292,7 +30478,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -30316,7 +30502,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -30340,8 +30526,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFourCiv:
+    _civInfoText: 
+  _clientFourCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -30421,7 +30607,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -30445,7 +30631,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -30469,7 +30655,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -30493,7 +30679,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -30517,7 +30703,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -30541,8 +30727,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFiveCiv:
+    _civInfoText: 
+  _clientFiveCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -30622,7 +30808,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -30646,7 +30832,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -30670,7 +30856,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -30694,7 +30880,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -30718,7 +30904,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -30742,15 +30928,15 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 1
-  _cliantOne: 2
-  _cliantTwo: 3
-  _cliantThree: 4
-  _cliantFour: 5
-  _cliantFive: 6
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
   _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
@@ -31479,7 +31665,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -31513,6 +31701,7 @@ RectTransform:
   - {fileID: 625295888}
   - {fileID: 296507808}
   - {fileID: 2110164448}
+  - {fileID: 1171831152}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32059,9 +32248,20 @@ MonoBehaviour:
   m_Dithering: 1
   m_ClearDepth: 0
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!20 &1234502405
 Camera:
   m_ObjectHideFlags: 0
@@ -32076,9 +32276,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 17.137775
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 17.137775
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -33200,6 +33408,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
@@ -33273,6 +33482,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5059819757968094375, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
     - {fileID: 2449267925695694470, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709259036}
   m_SourcePrefab: {fileID: 100100000, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
 --- !u!1 &1312564548
 GameObject:
@@ -35849,6 +36064,7 @@ VisualEffect:
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -36612,14 +36828,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 1
+  m_Version: 3
   m_UsePipelineSettings: 1
   m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
+  m_RenderingLayers: 1
   m_CustomShadowLayers: 0
   m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 1
 --- !u!1 &1412062663
 GameObject:
   m_ObjectHideFlags: 0
@@ -39631,9 +39850,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!20 &1528842462
 Camera:
   m_ObjectHideFlags: 0
@@ -39648,9 +39878,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -43248,7 +43486,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -43272,7 +43510,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -43296,7 +43534,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -43320,7 +43558,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -43344,7 +43582,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -43368,7 +43606,7 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _hostPlayerCiv:
     _civID: 0
     _civEnum: 0
@@ -43449,7 +43687,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -43473,7 +43711,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -43497,7 +43735,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -43521,7 +43759,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -43545,7 +43783,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -43569,8 +43807,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantZeroCiv:
+    _civInfoText: 
+  _clientZeroCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -43650,7 +43888,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -43674,7 +43912,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -43698,7 +43936,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -43722,7 +43960,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -43746,7 +43984,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -43770,8 +44008,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantOneCiv:
+    _civInfoText: 
+  _clientOneCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -43851,7 +44089,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -43875,7 +44113,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -43899,7 +44137,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -43923,7 +44161,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -43947,7 +44185,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -43971,8 +44209,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantTwoCiv:
+    _civInfoText: 
+  _clientTwoCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -44052,7 +44290,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -44076,7 +44314,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -44100,7 +44338,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -44124,7 +44362,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -44148,7 +44386,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -44172,8 +44410,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantThreeCiv:
+    _civInfoText: 
+  _clientThreeCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -44253,7 +44491,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -44277,7 +44515,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -44301,7 +44539,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -44325,7 +44563,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -44349,7 +44587,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -44373,8 +44611,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFourCiv:
+    _civInfoText: 
+  _clientFourCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -44454,7 +44692,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -44478,7 +44716,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -44502,7 +44740,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -44526,7 +44764,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -44550,7 +44788,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -44574,8 +44812,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFiveCiv:
+    _civInfoText: 
+  _clientFiveCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -44655,7 +44893,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -44679,7 +44917,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -44703,7 +44941,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -44727,7 +44965,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -44751,7 +44989,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -44775,15 +45013,15 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
   _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
@@ -48861,9 +49099,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -48920,9 +49166,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!81 &1765663167
 AudioListener:
   m_ObjectHideFlags: 0
@@ -51537,7 +51794,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -51561,7 +51818,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -51585,7 +51842,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -51609,7 +51866,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -51633,7 +51890,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -51657,7 +51914,7 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _hostPlayerCiv:
     _civID: 0
     _civEnum: 0
@@ -51738,7 +51995,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -51762,7 +52019,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -51786,7 +52043,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -51810,7 +52067,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -51834,7 +52091,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -51858,8 +52115,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantZeroCiv:
+    _civInfoText: 
+  _clientZeroCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -51939,7 +52196,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -51963,7 +52220,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -51987,7 +52244,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -52011,7 +52268,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -52035,7 +52292,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -52059,8 +52316,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantOneCiv:
+    _civInfoText: 
+  _clientOneCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -52140,7 +52397,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -52164,7 +52421,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -52188,7 +52445,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -52212,7 +52469,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -52236,7 +52493,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -52260,8 +52517,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantTwoCiv:
+    _civInfoText: 
+  _clientTwoCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -52341,7 +52598,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -52365,7 +52622,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -52389,7 +52646,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -52413,7 +52670,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -52437,7 +52694,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -52461,8 +52718,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantThreeCiv:
+    _civInfoText: 
+  _clientThreeCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -52542,7 +52799,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -52566,7 +52823,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -52590,7 +52847,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -52614,7 +52871,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -52638,7 +52895,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -52662,8 +52919,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFourCiv:
+    _civInfoText: 
+  _clientFourCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -52743,7 +53000,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -52767,7 +53024,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -52791,7 +53048,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -52815,7 +53072,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -52839,7 +53096,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -52863,8 +53120,8 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
-  _cliantFiveCiv:
+    _civInfoText: 
+  _clientFiveCiv:
     _civID: 0
     _civEnum: 0
     _shortName: 
@@ -52944,7 +53201,7 @@ MonoBehaviour:
                         _civTaxRate: 0
                         _cviGrowthRate: 0
                         _civCredits: 0
-                        _text: 
+                        _civInfoText: 
                       _ownerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
@@ -52968,7 +53225,7 @@ MonoBehaviour:
                     _contactList: []
                     _ownedSystem: []
                     _fleet: []
-                    _text: 
+                    _civInfoText: 
                   _ownerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
@@ -52992,7 +53249,7 @@ MonoBehaviour:
                 _contactList: []
                 _ownedSystem: []
                 _fleet: []
-                _text: 
+                _civInfoText: 
               _ownerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
@@ -53016,7 +53273,7 @@ MonoBehaviour:
             _contactList: []
             _ownedSystem: []
             _fleet: []
-            _text: 
+            _civInfoText: 
           _ownerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
@@ -53040,7 +53297,7 @@ MonoBehaviour:
         _contactList: []
         _ownedSystem: []
         _fleet: []
-        _text: 
+        _civInfoText: 
       _ownerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
@@ -53064,15 +53321,15 @@ MonoBehaviour:
     _contactList: []
     _ownedSystem: []
     _fleet: []
-    _text: 
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
   _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
@@ -55093,8 +55350,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942135829}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -55170,9 +55436,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942135829}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
@@ -56717,6 +56991,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
@@ -56790,6 +57065,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5059819757968094375, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
     - {fileID: 2449267925695694470, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 677462506436477676, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1832737419}
   m_SourcePrefab: {fileID: 100100000, guid: 4d19f847dd6736b4690df9e8998cac07, type: 3}
 --- !u!1 &2024125983
 GameObject:
@@ -58094,9 +58375,20 @@ MonoBehaviour:
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!81 &2067639438
 AudioListener:
   m_ObjectHideFlags: 0
@@ -58119,9 +58411,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -59571,6 +59871,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4913125867695963902, guid: 10af618c74c866d479ae2d8c61d25215, type: 3}
@@ -59646,12 +59947,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6588912704471013719, guid: 10af618c74c866d479ae2d8c61d25215, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 677462504803926599}
   m_SourcePrefab: {fileID: 100100000, guid: 10af618c74c866d479ae2d8c61d25215, type: 3}
 --- !u!1001 &6385705435751637702
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4685806518276286800, guid: b9c47c808056f6f4483d2a4def22daac, type: 3}
@@ -59719,12 +60027,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5906543263285133649, guid: b9c47c808056f6f4483d2a4def22daac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 677462504759600025}
   m_SourcePrefab: {fileID: 100100000, guid: b9c47c808056f6f4483d2a4def22daac, type: 3}
 --- !u!1001 &6612797864863691145
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1195700024}
     m_Modifications:
     - target: {fileID: 6612797864483817455, guid: 29e9a01a1232ae24682274b1b3438e1e, type: 3}
@@ -59820,4 +60135,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29e9a01a1232ae24682274b1b3438e1e, type: 3}
