@@ -16,8 +16,6 @@ namespace Assets.Script
         // each faction will get an index in the array
         private static Dictionary<Civilization, int> civRelationshipIndexes;
 
-
-
         // this method must be called at the start of your game to initialize the civilization manager
         public static void Initialize(ICollection<Civilization> civilizations)
         {

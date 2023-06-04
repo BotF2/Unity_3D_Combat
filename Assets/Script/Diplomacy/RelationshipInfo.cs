@@ -40,17 +40,6 @@ namespace Assets.Script
         {
             get { return this.RelationshipScore > 90; } // another example of a relationship property
         }
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         //see CivilizationData DoDiplomacy(int relationScore)
     }
     //public class Civilization and CivilizationData

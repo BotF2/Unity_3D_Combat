@@ -75,7 +75,6 @@ namespace BOTF3D_Core
         {
             return RelationshipManager.GetRelationshipInfo(this, otherCivilization);
         }
-
         // ... other faction code
         public Civilization(int sysCivInt)
         {
