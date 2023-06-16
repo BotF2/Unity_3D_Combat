@@ -33,6 +33,7 @@ TagManager:
   - FED_TRANSPORT_I(CLONE)
   - FED_TRANSPORT_I(CLONE)
   - KLING_TRANSPORT_I(CLONE)
+  - SysOwnerCivImage
   layers:
   - Default
   - TransparentFX

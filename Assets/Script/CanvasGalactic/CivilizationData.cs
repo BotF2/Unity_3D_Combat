@@ -125,7 +125,6 @@ namespace BOTF3D_GalaxyMap
                 CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
                 //if (!aCiv.deltaRelation.ContainsKey(ints[i]))
                 //    aCiv.deltaRelation.Add(ints[i], 0);
-
             }
             numStars = gameManager._galaxyStarCount.Length;
             //gameManager.SetCivs();
@@ -326,16 +325,17 @@ namespace BOTF3D_GalaxyMap
         }
         public void DoDiplomacy()
         {
-            for (int i = 0; i < CivilizationDictionary.Count; i++)
+            for (int i = 0; i < civsInGame.Count; i++)
             {
-                for (int j = 0; j < CivilizationDictionary.Count; j++)
+                for (int j = 0; j < civsInGame.Count; j++)
                 {
                     if (i != j)
                     {
                         // Do we need to time this or does it just happen
                         // CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
-                        Civilization civ1 = CivilizationDictionary[(CivEnum)i];
-                        Civilization civ2 = CivilizationDictionary[(CivEnum)j];
+                        
+                        Civilization civ1 = civsInGame[i];
+                        Civilization civ2 = civsInGame[j];
                         RelationshipInfo relationshipInfo = RelationshipManager.GetRelationshipInfo(civ1, civ2);
                         //relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
                         //civ1.deltaRelation[j] = 0;

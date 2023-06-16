@@ -30,10 +30,10 @@ namespace Assets.Script
             foreach (Civilization civ in civilizations)
             {
                 civRelationshipIndexs[civ] = j;
-                if (!civ.deltaRelation.ContainsKey(j))
-                {
-                    civ.deltaRelation.Add(j, 0); // zero here for no delta Relation change at initialization
-                }
+                //if (!civ.deltaRelation.ContainsKey(j))
+                //{
+                //    civ.deltaRelation.Add(j, 0); // zero here for no delta Relation change at initialization
+                //}
                 j++;
             }
         }
@@ -49,25 +49,6 @@ namespace Assets.Script
             }
             return relationshipInfo;
         }
-        //public static int GetRelationshipScore(Civilization civilization1, Civilization civilization2)
-        //{
-        //    int civilization1Index = civRelationshipIndexs[civilization1];
-        //    int civilization2Index = civRelationshipIndexs[civilization2];
-             
-        //    //civilization1.
-
-        //    //int relationshipScore = 0;
-        //    //RelationshipInfo civRelationshipInfo = civRelationships[civilization1Index, civilization2Index];
-
-        //    //if (civRelationshipInfo == null)
-        //    //{
-        //    //    civRelationshipInfo = new RelationshipInfo();
-        //    //    civRelationships[civilization1Index, civilization2Index] = civRelationshipInfo;
-        //    //}
-
-        //    return 0; // civRelationshipInfo;
-        //}
-
     }
 
     

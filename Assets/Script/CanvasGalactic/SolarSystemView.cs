@@ -18,6 +18,7 @@ namespace BOTF3D_GalaxyMap
     {
         public GameManager gameManager;
         public SolarSystem solarSystem;
+       // public StarSystemData starSystemData;
         public Sprite[] starSprites;
         public Sprite[] solFedSys;
         public Sprite[] m_TypeHabitable;
@@ -87,7 +88,7 @@ namespace BOTF3D_GalaxyMap
         //        this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);
         //    }
         //}
-        public void ShowNextSolarSystemView(int buttonSystemID)
+        public void ShowNextSolarSystemView(int buttonSystemID)// background solar system view
         {
             while (transform.childCount > 0) // transform is the SSView child of the solar system button, delelt old systems from prior update
             {
@@ -107,7 +108,7 @@ namespace BOTF3D_GalaxyMap
             {
                 this.LoadSpritesForOrbital(this.transform, solarSystem.Children[i], buttonSystemID, i);
             }
-
+            //starSystemData.UpdateSystemOwnerImage(buttonSystemID);
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG, int systemID, int i)
         {
@@ -138,7 +139,7 @@ namespace BOTF3D_GalaxyMap
                 {
                     case 0:
                         string starColor = systemDataArray[7];
-                        gameObject.name = "Star"; // star is system view is single sprite
+                        gameObject.name = "Star"; // star in system view is single sprite
                         switch (starColor)
                         {
                             case "Blue":

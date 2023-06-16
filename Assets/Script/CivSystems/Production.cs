@@ -45,7 +45,7 @@ namespace BOTF3D_Core
             // total Credits is population (popCredits),+ population to credits over time
             // Produce();
             civilizationData.DoSystemProduction();
-            civilizationData.DoDiplomacy();
+            civilizationData.DoDiplomacy(); // ??not on time steps, just do it???
             //civilizationData.DoConsumption();
             //civilizationData.AddTech();
             //civilizationData.AddSpy();

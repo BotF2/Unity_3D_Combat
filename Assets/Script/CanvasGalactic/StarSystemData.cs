@@ -17,13 +17,22 @@ namespace BOTF3D_GalaxyMap
 {
     public class StarSystemData : MonoBehaviour
     {
-        private Sprite _civOwnerImage;
-        //public GameObject myImage;
+
+        public Image civOwnerImage;
+
+        public Sprite spriteForOwner;
+
+        public string civOwnerName;
+
         [SerializeField]
-        public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>(); // { { StarSystemEnum.PLACEHOLDER, new StarSystem(900) } };
+        public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>(); 
         private void Start()
         {
-            //myImage.AddComponent(typeof(Sprite));
+            //GameObject imageObject = GameObject.FindGameObjectWithTag("SysOwnerCivImage");
+            //if (imageObject != null)
+            //{
+            //    civOwnerImage = imageObject.GetComponent<Image>();
+            //}
         }
         public static StarSystem Create(int systemInt)
         {
@@ -44,8 +53,9 @@ namespace BOTF3D_GalaxyMap
             daSystem._systemPopLimit = int.Parse(sysStrings[33]);
             daSystem._currentSysPop = int.Parse(sysStrings[6]);
             daSystem._ownerName = sysStrings[5];
+            
             daSystem._ownerInsigniaSprite = Resources.Load<Sprite>("Insignia/" + daSystem._ownerName);
-           //daSystem._ownerCiv = do this in CivilizationData
+            daSystem._ownerCivSprite = Resources.Load<Sprite>("Civilizations/" + daSystem._ownerName.ToLower());
             daSystem._currentSysFactories = float.Parse(sysStrings[32]);
             //_civInsignia leave for CivilizationData to do
             //daSystem._systemPopulation = int.Parse(sysStrings[6]);
@@ -53,17 +63,24 @@ namespace BOTF3D_GalaxyMap
                 daSystem._homeColony = true;
             else daSystem._homeColony = false;
             daSystem._text = "blah, blah, blah";
-            
+           //SetSystemOwner(daSystem);
+            //civOwnerSprite = daSystem._ownerCivSprite;
+            //civOwnerName = daSystem._ownerName;
 
             return daSystem;
         }
-
+        //private void SetSystemOwner(StarSystem theSystem)
+        //{
+        //    civOwnerSprite = theSystem._ownerCivSprite;
+        //    civOwnerName = theSystem._ownerName;
+        //}
         public void LoadSystemDictionary(int[] starArray)
         {
             for (int i = 0; i < starArray.Length; i++)
             {
                 var sys = StarSystemData.Create(starArray[i]);
-                
+                civOwnerImage.sprite = sys._ownerCivSprite;
+                civOwnerName = sys._ownerName;
                 StarSystemDictionary.Add(sys._sysEnum, sys);
             }
         }
@@ -89,11 +106,27 @@ namespace BOTF3D_GalaxyMap
                 theSystem._homeColony = true;
             }
             else theSystem._homeColony = false;
+            civOwnerImage.sprite = theSystem._ownerCivSprite;
+            civOwnerName = theSystem._ownerName;
 
         }
+        //public void ownerImageSpriteChange(StarSystem sys, Civilization civ)
+        //{
+        //    // code here for getting sprite by civ
+        //    civOwnerImage.sprite = spriteForOwner;
+        //}
         public StarSystem GetSystem(StarSystemEnum sysEnum)
         {
             return StarSystemDictionary[sysEnum];
         }
+        public Sprite GetSystemOwnerSprite(StarSystemEnum sysEnum)
+        {
+            return StarSystemDictionary[sysEnum]._ownerInsigniaSprite;
+        }
+        public string GetSystemOwenerName(StarSystemEnum sysEnum)
+        {
+            return StarSystemDictionary[sysEnum]._ownerName;
+        }
+
     }
 }
