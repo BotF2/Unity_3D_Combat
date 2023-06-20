@@ -19,16 +19,16 @@ namespace BOTF3D_GalaxyMap
 	{
         #region Fields
 
-        public int _systemInt;
+        public int _sysInt;
         public int _x;
         public int _y;
         public int _z;
         public StarSystemEnum _sysEnum;
         public string _sysName;
         public StarType _starType;
-        public string _name;
         public Civilization _ownerCiv;
-        public string _ownerName;
+        public string _originalOwnerName;
+        public string _currentOwnerName;
         public Sprite _ownerInsigniaSprite;
         public Sprite _ownerCivSprite;
         public float _sysCredits;
@@ -49,7 +49,7 @@ namespace BOTF3D_GalaxyMap
 
         public StarSystem(int sysInt)
         {
-            this._systemInt = sysInt;           
+            this._sysInt = sysInt;           
         }
     }
 }

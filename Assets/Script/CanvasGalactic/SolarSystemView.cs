@@ -17,12 +17,18 @@ namespace BOTF3D_GalaxyMap
     public class SolarSystemView : MonoBehaviour
     {
         public GameManager gameManager;
-        public SolarSystem solarSystem;
-       // public StarSystemData starSystemData;
+        private SolarSystem solarSystem;
+        public Image civOwnerImage;
+        public Image civInsigniaImage;
+        public Sprite spriteForOwnerCiv;
+        public Sprite spriteForOwnerInsignia;
+        private string originalCivOwnerName;
+        public string currentCivOwnerName;
+        public string sysDataName;
         public Sprite[] starSprites;
         public Sprite[] solFedSys;
         public Sprite[] m_TypeHabitable;
-        public Sprite[] h_TypeUninbaitable;
+        public Sprite[] h_TypeUnInhabitable;
         public Sprite[] k_TypeMarsLike;
         public Sprite[] j_TypeGasGiants;
         public Sprite[] moonType;
@@ -72,25 +78,10 @@ namespace BOTF3D_GalaxyMap
             }
             solarSystem = null;
         }
-        //public void ShowSolarSystemView(Galaxy galaxy, int solarSystemID) // called from gameManager with the input galaxy
-        //{
-        //    while (transform.childCount > 0) // delelt old systems from prior update
-        //    {
-        //        Transform child = transform.GetChild(0);
-        //        child.SetParent(null); // decreases number of children in while loop
-        //        Destroy(child.gameObject);
-        //    }
-        //    //orbitalGameObjectMap = new Dictionary<OrbitalGalactic, GameObject>();
-        //    //solarSystem = SolarSystems[0];
-        //    solarSystem = ourGalaxy.SolarSystems[solarSystemID];
-        //    for (int i = 0; i < solarSystem.Children.Count; i++)
-        //    {
-        //        this.MakeSpritesForOrbital(this.transform, solarSystem.Children[i]);
-        //    }
-        //}
+
         public void ShowNextSolarSystemView(int buttonSystemID)// background solar system view
         {
-            while (transform.childCount > 0) // transform is the SSView child of the solar system button, delelt old systems from prior update
+            while (transform.childCount > 0) // transform is the SSView child of the solar system button, delete old systems from prior update
             {
                 Transform child = transform.GetChild(0);
                 child.SetParent(null); // decreases number of children in while loop
@@ -108,7 +99,10 @@ namespace BOTF3D_GalaxyMap
             {
                 this.LoadSpritesForOrbital(this.transform, solarSystem.Children[i], buttonSystemID, i);
             }
-            //starSystemData.UpdateSystemOwnerImage(buttonSystemID);
+            //StarSystem theSystem = starSystemData.StarSystemDictionary[(StarSystemEnum)sysID];
+            this.civOwnerImage.sprite = mySolarSystem.spriteForOwnerCiv;
+            this.civInsigniaImage.sprite = mySolarSystem.spriteForOwnerInsignia;
+            this.currentCivOwnerName = mySolarSystem.sysName;
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG, int systemID, int i)
         {
@@ -148,11 +142,11 @@ namespace BOTF3D_GalaxyMap
                                 break;
                             case "Orange":
                                 renderer.sprite = starSprites[1];
-                                systemColorTint = new Color(1f, 0.827f, 0.588f); // Oragneish
+                                systemColorTint = new Color(1f, 0.827f, 0.588f); // Orangish
                                 break;
                             case "Red":
                                 renderer.sprite = starSprites[2];
-                                systemColorTint = new Color(0.96f, 0.58f, 0.58f); // redish
+                                systemColorTint = new Color(0.96f, 0.58f, 0.58f); // reddish
                                 break;
                             case "White":
                                 renderer.sprite = starSprites[3];
@@ -162,17 +156,17 @@ namespace BOTF3D_GalaxyMap
                                 systemColorTint = new Color(0.992f, 0.984f, 0.698f); // yellowish
                                 break;
                             case "Nebula":
-                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use firts planet sprite as 'star'
+                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use first planet sprite as 'star'
                                 break;
                             case "Complex":
-                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use firts planet sprite as 'star'
+                                renderer.sprite = m_TypeHabitable[int.Parse(systemDataDictionary[systemID][9])]; // use first planet sprite as 'star'
                                 break;
                             default:
                                 break;
                         }
                         break;
                     case 1 + (int)PlanetType.H_uninhabitable:
-                        renderer.sprite = h_TypeUninbaitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
+                        renderer.sprite = h_TypeUnInhabitable[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];
                         break;
                     case 1 + (int)PlanetType.J_gasGiant:
                         renderer.sprite = j_TypeGasGiants[int.Parse(systemDataDictionary[systemID][9 + (i * 3)])];

@@ -25792,7 +25792,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e158a4594f15f043be96da5caa9ecfb, type: 3}
   - {fileID: 21300000, guid: 5041c50602baa6a4eb55f1c9f11bb416, type: 3}
   - {fileID: 21300000, guid: 70954972651c9a849a7a22386057b625, type: 3}
-  h_TypeUninbaitable:
+  h_TypeUnInhabitable:
   - {fileID: 21300000, guid: 39859a54ac8b5954580f87fcaac9edd2, type: 3}
   - {fileID: 21300000, guid: 23f43cdc188e5c94096f840a08e56e9c, type: 3}
   - {fileID: 21300000, guid: 65467ecbb226bf9478147d9f1f5eba5e, type: 3}

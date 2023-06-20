@@ -2206,11 +2206,11 @@ namespace BOTF3D_Core
 
             Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                { "FED", FED_StarSystem },
-                { "ROM", ROM_StarSystem },
-                { "KLING", KLING_StarSystem },
-                { "CARD", CARD_StarSystem },
-                { "DOM", DOM_StarSystem },
+                { "FEDERATION", FED_StarSystem },
+                { "ROMULAN", ROM_StarSystem },
+                { "KLINGON", KLING_StarSystem },
+                { "CARDASSIAN", CARD_StarSystem },
+                { "DOMINION", DOM_StarSystem },
                 { "BORG", BORG_StarSystem },
                 { "ACAMARIANS", ACAMARIANS_StarSystem },
                 { "AKAALI", AKAALI_StarSystem },
@@ -2374,11 +2374,11 @@ namespace BOTF3D_Core
 
             Dictionary<string, GameObject> fleetPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                { "FED", FED_fleet },
-                { "ROM", ROM_fleet },
-                { "KLING", KLING_fleet },
-                { "CARD", CARD_fleet },
-                { "DOM", DOM_fleet },
+                { "FEDERATION", FED_fleet },
+                { "ROMULAN", ROM_fleet },
+                { "KLINGON", KLING_fleet },
+                { "CARDASSIAN", CARD_fleet },
+                { "DOMINION", DOM_fleet },
                 { "BORG", BORG_fleet },
                 { "ACAMARIANS", ACAMARIANS_fleet },
                 { "AKAALI", AKAALI_fleet },

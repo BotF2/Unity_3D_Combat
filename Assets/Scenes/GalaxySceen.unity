@@ -772,70 +772,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -847,7 +842,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -871,7 +867,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -895,7 +892,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -919,7 +917,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -943,7 +942,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -973,70 +973,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -1048,7 +1043,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -1072,7 +1068,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -1096,7 +1093,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -1120,7 +1118,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -1144,7 +1143,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -1174,70 +1174,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -1249,7 +1244,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -1273,7 +1269,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -1297,7 +1294,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -1321,7 +1319,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -1345,7 +1344,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -1375,70 +1375,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -1450,7 +1445,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -1474,7 +1470,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -1498,7 +1495,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -1522,7 +1520,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -1546,7 +1545,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -1576,70 +1576,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -1651,7 +1646,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -1675,7 +1671,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -1699,7 +1696,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -1723,7 +1721,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -1747,7 +1746,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -1777,70 +1777,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -1852,7 +1847,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -1876,7 +1872,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -1900,7 +1897,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -1924,7 +1922,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -1948,7 +1947,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -1978,70 +1978,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -2053,7 +2048,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -2077,7 +2073,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -2101,7 +2098,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -2125,7 +2123,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -2149,7 +2148,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -2179,70 +2179,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -2254,7 +2249,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -2278,7 +2274,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -2302,7 +2299,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -2326,7 +2324,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -2350,7 +2349,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -13033,70 +13033,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -13108,7 +13103,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -13132,7 +13128,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -13156,7 +13153,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -13180,7 +13178,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -13204,7 +13203,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -13234,70 +13234,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -13309,7 +13304,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -13333,7 +13329,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -13357,7 +13354,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -13381,7 +13379,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -13405,7 +13404,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -13435,70 +13435,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -13510,7 +13505,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -13534,7 +13530,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -13558,7 +13555,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -13582,7 +13580,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -13606,7 +13605,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -13636,70 +13636,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -13711,7 +13706,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -13735,7 +13731,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -13759,7 +13756,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -13783,7 +13781,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -13807,7 +13806,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -13837,70 +13837,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -13912,7 +13907,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -13936,7 +13932,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -13960,7 +13957,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -13984,7 +13982,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -14008,7 +14007,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -14038,70 +14038,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -14113,7 +14108,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -14137,7 +14133,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -14161,7 +14158,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -14185,7 +14183,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -14209,7 +14208,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -14239,70 +14239,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -14314,7 +14309,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -14338,7 +14334,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -14362,7 +14359,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -14386,7 +14384,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -14410,7 +14409,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -14440,70 +14440,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -14515,7 +14510,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -14539,7 +14535,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -14563,7 +14560,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -14587,7 +14585,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -14611,7 +14610,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -16559,6 +16559,82 @@ MonoBehaviour:
   _hoverTipManager: {fileID: 1696207954}
   _starSysEnum: 0
   _sysLocation: {x: 0, y: 0, z: 0}
+--- !u!1 &606282001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606282002}
+  - component: {fileID: 606282004}
+  - component: {fileID: 606282003}
+  m_Layer: 5
+  m_Name: SysOwnerInsignia
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &606282002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606282001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalScale: {x: 1.002252, y: 1.0022521, z: 1.0022521}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1215819748}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -870, y: 470}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &606282003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606282001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &606282004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606282001}
+  m_CullTransparentMesh: 1
 --- !u!1 &608701528
 GameObject:
   m_ObjectHideFlags: 0
@@ -23058,6 +23134,7 @@ MonoBehaviour:
   gameManager: {fileID: 1187732007}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
+  nextSolarSystem: {fileID: 1759457393}
   fleetManager: {fileID: 1432764803}
   solarSystemView: {fileID: 1538149116}
   hoverTips: {fileID: 605296299}
@@ -24932,8 +25009,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -836, y: 438}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -790, y: 470}
+  m_SizeDelta: {x: 75, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &944088932
 MonoBehaviour:
@@ -29314,70 +29391,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -29389,7 +29461,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -29413,7 +29486,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -29437,7 +29511,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -29461,7 +29536,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -29485,7 +29561,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -29515,70 +29592,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -29590,7 +29662,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -29614,7 +29687,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -29638,7 +29712,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -29662,7 +29737,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -29686,7 +29762,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -29716,70 +29793,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -29791,7 +29863,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -29815,7 +29888,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -29839,7 +29913,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -29863,7 +29938,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -29887,7 +29963,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -29917,70 +29994,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -29992,7 +30064,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -30016,7 +30089,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -30040,7 +30114,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -30064,7 +30139,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -30088,7 +30164,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -30118,70 +30195,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -30193,7 +30265,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -30217,7 +30290,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -30241,7 +30315,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -30265,7 +30340,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -30289,7 +30365,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -30319,70 +30396,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -30394,7 +30466,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -30418,7 +30491,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -30442,7 +30516,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -30466,7 +30541,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -30490,7 +30566,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -30520,70 +30597,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -30595,7 +30667,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -30619,7 +30692,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -30643,7 +30717,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -30667,7 +30742,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -30691,7 +30767,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -30721,70 +30798,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -30796,7 +30868,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -30820,7 +30893,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -30844,7 +30918,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -30868,7 +30943,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -30892,7 +30968,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -31916,6 +31993,7 @@ RectTransform:
   m_Children:
   - {fileID: 124711529}
   - {fileID: 944088931}
+  - {fileID: 606282002}
   - {fileID: 556048601}
   - {fileID: 1379797968}
   - {fileID: 1950418315}
@@ -40161,6 +40239,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
+  starSystemData: {fileID: 2090482233}
+  civOwnerImage: {fileID: 944088932}
+  civInsigniaImage: {fileID: 606282003}
+  spriteForOwnerCiv: {fileID: 0}
+  spriteForOwnerInsignia: {fileID: 0}
+  currentCivOwnerName: 
+  sysDataName: 
   starSprites:
   - {fileID: 21300000, guid: 0b16da30b58278b48a82b0b416105d82, type: 3}
   - {fileID: 21300000, guid: 128bd615a1419c34cb3a6fb03b02035b, type: 3}
@@ -40198,22 +40283,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e158a4594f15f043be96da5caa9ecfb, type: 3}
   - {fileID: 21300000, guid: 5041c50602baa6a4eb55f1c9f11bb416, type: 3}
   - {fileID: 21300000, guid: 3a7dcc06c3bb18d4699c59caa91d05b3, type: 3}
-  h_TypeUninbaitable:
-  - {fileID: 21300000, guid: 39859a54ac8b5954580f87fcaac9edd2, type: 3}
-  - {fileID: 21300000, guid: 23f43cdc188e5c94096f840a08e56e9c, type: 3}
-  - {fileID: 21300000, guid: 65467ecbb226bf9478147d9f1f5eba5e, type: 3}
-  - {fileID: 21300000, guid: 25d454d5eaf1616478f1a3800e8b58e1, type: 3}
-  - {fileID: 21300000, guid: 188215bbb590c774c8397093014a8406, type: 3}
-  - {fileID: 21300000, guid: 981fbb3a9a9f6c448b5846a69f8bd898, type: 3}
-  - {fileID: 21300000, guid: f9d6107cbc446f146b954fa77785f3b8, type: 3}
-  - {fileID: 21300000, guid: 399fbc9cf7a2da344b21cf85729316b6, type: 3}
-  - {fileID: 21300000, guid: 7ce1d6620737fe74b8bdab3f33fa32bb, type: 3}
-  - {fileID: 21300000, guid: 79216f4ce7d1cce488c681c42cf32dba, type: 3}
-  - {fileID: 21300000, guid: afc3929da4e246847a9342dd6e725ac3, type: 3}
-  - {fileID: 21300000, guid: a6fe240245c3d954bae475b1962eaa21, type: 3}
-  - {fileID: 21300000, guid: ad0d52baa9cb49745bdceca36be02da3, type: 3}
-  - {fileID: 21300000, guid: d331545a33977ef49919c8a6b98a4680, type: 3}
-  - {fileID: 21300000, guid: afc3929da4e246847a9342dd6e725ac3, type: 3}
+  h_TypeUnInhabitable: []
   k_TypeMarsLike:
   - {fileID: 21300000, guid: eede8d5c6e469794a864dad6f3b5c6d1, type: 3}
   - {fileID: 21300000, guid: d9967657f77bdca449c1aa4ada961d1c, type: 3}
@@ -43349,70 +43419,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -43424,7 +43489,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -43448,7 +43514,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -43472,7 +43539,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -43496,7 +43564,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -43520,7 +43589,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -43550,70 +43620,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -43625,7 +43690,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -43649,7 +43715,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -43673,7 +43740,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -43697,7 +43765,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -43721,7 +43790,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -43751,70 +43821,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -43826,7 +43891,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -43850,7 +43916,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -43874,7 +43941,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -43898,7 +43966,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -43922,7 +43991,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -43952,70 +44022,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -44027,7 +44092,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -44051,7 +44117,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -44075,7 +44142,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -44099,7 +44167,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -44123,7 +44192,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -44153,70 +44223,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -44228,7 +44293,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -44252,7 +44318,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -44276,7 +44343,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -44300,7 +44368,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -44324,7 +44393,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -44354,70 +44424,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -44429,7 +44494,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -44453,7 +44519,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -44477,7 +44544,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -44501,7 +44569,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -44525,7 +44594,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -44555,70 +44625,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -44630,7 +44695,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -44654,7 +44720,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -44678,7 +44745,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -44702,7 +44770,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -44726,7 +44795,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -44756,70 +44826,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -44831,7 +44896,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -44855,7 +44921,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -44879,7 +44946,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -44903,7 +44971,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -44927,7 +44996,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -51657,70 +51727,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -51732,7 +51797,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -51756,7 +51822,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -51780,7 +51847,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -51804,7 +51872,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -51828,7 +51897,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -51858,70 +51928,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -51933,7 +51998,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -51957,7 +52023,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -51981,7 +52048,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -52005,7 +52073,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -52029,7 +52098,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -52059,70 +52129,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -52134,7 +52199,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -52158,7 +52224,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -52182,7 +52249,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -52206,7 +52274,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -52230,7 +52299,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -52260,70 +52330,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -52335,7 +52400,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -52359,7 +52425,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -52383,7 +52450,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -52407,7 +52475,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -52431,7 +52500,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -52461,70 +52531,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -52536,7 +52601,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -52560,7 +52626,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -52584,7 +52651,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -52608,7 +52676,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -52632,7 +52701,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -52662,70 +52732,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -52737,7 +52802,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -52761,7 +52827,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -52785,7 +52852,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -52809,7 +52877,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -52833,7 +52902,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -52863,70 +52933,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -52938,7 +53003,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -52962,7 +53028,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -52986,7 +53053,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -53010,7 +53078,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -53034,7 +53103,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -53064,70 +53134,65 @@ MonoBehaviour:
     _shortName: 
     _longName: 
     _homeSystem:
-      _systemInt: 0
+      _sysInt: 0
       _x: 0
       _y: 0
       _z: 0
       _sysEnum: 0
       _sysName: 
       _starType: 0
-      _name: 
       _ownerCiv:
         _civID: 0
         _civEnum: 0
         _shortName: 
         _longName: 
         _homeSystem:
-          _systemInt: 0
+          _sysInt: 0
           _x: 0
           _y: 0
           _z: 0
           _sysEnum: 0
           _sysName: 
           _starType: 0
-          _name: 
           _ownerCiv:
             _civID: 0
             _civEnum: 0
             _shortName: 
             _longName: 
             _homeSystem:
-              _systemInt: 0
+              _sysInt: 0
               _x: 0
               _y: 0
               _z: 0
               _sysEnum: 0
               _sysName: 
               _starType: 0
-              _name: 
               _ownerCiv:
                 _civID: 0
                 _civEnum: 0
                 _shortName: 
                 _longName: 
                 _homeSystem:
-                  _systemInt: 0
+                  _sysInt: 0
                   _x: 0
                   _y: 0
                   _z: 0
                   _sysEnum: 0
                   _sysName: 
                   _starType: 0
-                  _name: 
                   _ownerCiv:
                     _civID: 0
                     _civEnum: 0
                     _shortName: 
                     _longName: 
                     _homeSystem:
-                      _systemInt: 0
+                      _sysInt: 0
                       _x: 0
                       _y: 0
                       _z: 0
                       _sysEnum: 0
                       _sysName: 
                       _starType: 0
-                      _name: 
                       _ownerCiv:
                         _civID: 0
                         _civEnum: 0
@@ -53139,7 +53204,8 @@ MonoBehaviour:
                         _cviGrowthRate: 0
                         _civCredits: 0
                         _civInfoText: 
-                      _ownerName: 
+                      _originalOwnerName: 
+                      _currentOwnerName: 
                       _ownerInsigniaSprite: {fileID: 0}
                       _ownerCivSprite: {fileID: 0}
                       _sysCredits: 0
@@ -53163,7 +53229,8 @@ MonoBehaviour:
                     _ownedSystem: []
                     _fleet: []
                     _civInfoText: 
-                  _ownerName: 
+                  _originalOwnerName: 
+                  _currentOwnerName: 
                   _ownerInsigniaSprite: {fileID: 0}
                   _ownerCivSprite: {fileID: 0}
                   _sysCredits: 0
@@ -53187,7 +53254,8 @@ MonoBehaviour:
                 _ownedSystem: []
                 _fleet: []
                 _civInfoText: 
-              _ownerName: 
+              _originalOwnerName: 
+              _currentOwnerName: 
               _ownerInsigniaSprite: {fileID: 0}
               _ownerCivSprite: {fileID: 0}
               _sysCredits: 0
@@ -53211,7 +53279,8 @@ MonoBehaviour:
             _ownedSystem: []
             _fleet: []
             _civInfoText: 
-          _ownerName: 
+          _originalOwnerName: 
+          _currentOwnerName: 
           _ownerInsigniaSprite: {fileID: 0}
           _ownerCivSprite: {fileID: 0}
           _sysCredits: 0
@@ -53235,7 +53304,8 @@ MonoBehaviour:
         _ownedSystem: []
         _fleet: []
         _civInfoText: 
-      _ownerName: 
+      _originalOwnerName: 
+      _currentOwnerName: 
       _ownerInsigniaSprite: {fileID: 0}
       _ownerCivSprite: {fileID: 0}
       _sysCredits: 0
@@ -58616,8 +58686,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   civOwnerImage: {fileID: 944088932}
-  spriteForOwner: {fileID: 0}
-  civOwnerName: 
+  civInsigniaImage: {fileID: 606282003}
+  spriteForOwnerCiv: {fileID: 0}
+  spriteForOwnerInsignia: {fileID: 0}
+  currentCivOwnerName: 
 --- !u!114 &2092684547
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,6 +21,8 @@ namespace BOTF3D_GalaxyMap
         public SystemType sysType;
         public StarType sysStarType;
         public Planet[] sysPlanets;
+        public Sprite spriteForOwnerCiv;
+        public Sprite spriteForOwnerInsignia;
 
         public SolarSystem LoadSystem(string[] systemData, int whatButton)
         {
@@ -35,6 +37,8 @@ namespace BOTF3D_GalaxyMap
             this.sysStarType = GetStarTypeEnum(systemData[8]);
             this.sysPlanets = GetPlanetArray(systemData);
             this.AddChild(myStar);
+            this.spriteForOwnerInsignia = Resources.Load<Sprite>("Insignias/" + systemData[5]);
+            this.spriteForOwnerCiv = Resources.Load<Sprite>("Civilizations/" + systemData[5].ToLower());
             if (systemData[7] == "Nebula" || systemData[7] == "Complex")
             {
                 // ToDo sprite sheet animation / nebula background too

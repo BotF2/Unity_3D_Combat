@@ -398,7 +398,7 @@ RectTransform:
   - {fileID: 3027755178531600843}
   - {fileID: 2285021763440072562}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -488,7 +488,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5741144930767694370}
-        m_TargetAssemblyTypeName: Assets.Script.NextSolarSystem, Assembly-CSharp
+        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.NextSolarSystem, Assembly-CSharp
         m_MethodName: ShowThisSolarSystemView
         m_Mode: 3
         m_Arguments:
@@ -519,9 +519,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2178242268351434931}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 250, y: 250, z: 250}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4961153818964160876
@@ -666,3 +674,4 @@ MonoBehaviour:
   hideSystemButton: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
+  starSystemData: {fileID: 0}

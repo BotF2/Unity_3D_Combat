@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 
 namespace BOTF3D_GalaxyMap
 {
+    [System.Serializable]
     public class CivilizationData : MonoBehaviour
     {
         #region Fields
@@ -121,8 +122,8 @@ namespace BOTF3D_GalaxyMap
             for (int i = 0; i < ints.Length; i++)
             {
                 Civilization aCiv = CivilizationData.Create(ints[i]); 
-                starSystemData.UpdateSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
-                CivilizationDictionary.Add((CivEnum)ints[i], aCiv);
+                starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
+                CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
                 //if (!aCiv.deltaRelation.ContainsKey(ints[i]))
                 //    aCiv.deltaRelation.Add(ints[i], 0);
             }

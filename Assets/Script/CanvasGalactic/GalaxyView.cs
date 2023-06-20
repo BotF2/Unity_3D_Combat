@@ -19,6 +19,7 @@ namespace BOTF3D_GalaxyMap
 
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
+        public NextSolarSystem nextSolarSystem;
         public GameObject fleetManager;
         public SolarSystemView solarSystemView;
         [SerializeField]
@@ -772,9 +773,6 @@ namespace BOTF3D_GalaxyMap
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
 
-                        //var hidSys = sysEmptyList[sysIndex].AddComponent<HideSystemButton>();
-                        //hidSys.weAreHiding = false;
-
                         sysEmptyList[sysIndex].SetActive(true);
                     }
                     // The PreFabStarSystemDictionary and PrefabFleetDictionary are setup in Unity, Hierarchy, GameManager, the public Prefab lists
@@ -784,6 +782,8 @@ namespace BOTF3D_GalaxyMap
                     // Get Civ to find contact list for fog of war
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
                     FogOfWarNaming(starSystemNewGameOb, civy);
+                    //var ourStarSystemData = starSystemNewGameOb.GetComponentInChildren<StarSystemData>();
+                    //ourStarSystemData = new StarSystemData(sysIndex);
 
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
                     sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
@@ -791,6 +791,7 @@ namespace BOTF3D_GalaxyMap
                     sysSphere.name = sysIndex.ToString();
                     sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
                     var ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
+                    
                     ourSystem._systemSphere = sysSphere;
 
                     Civilization theCiv = CivilizationData.Create(sysIndex); // and civs make systems

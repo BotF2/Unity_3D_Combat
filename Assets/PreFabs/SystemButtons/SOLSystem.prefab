@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3368568847799921217
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5162830055170688851}
-  - component: {fileID: 5203232471682203372}
-  m_Layer: 30
-  m_Name: ShowSystem
-  m_TagString: SolarSystemViewObject
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5162830055170688851
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368568847799921217}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4761592045379931412}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5203232471682203372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3368568847799921217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4125db910ed07d408a32cf4b3290d8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  solarSystemView: {fileID: 3368568847799921217}
-  hideSystemButton: {fileID: 0}
-  hide: {fileID: 0}
-  view: {fileID: 0}
 --- !u!1 &4761592045379931411
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,9 +34,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4761592045621579168}
-  - {fileID: 5162830055170688851}
+  - {fileID: 7230471785987628838}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -175,10 +122,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1390401745, guid: 07b775ad12b3b2b4db6350120a0c43b4, type: 3}
-    m_PressedSprite: {fileID: -104373352, guid: 07b775ad12b3b2b4db6350120a0c43b4, type: 3}
-    m_SelectedSprite: {fileID: 1847801897, guid: 07b775ad12b3b2b4db6350120a0c43b4, type: 3}
-    m_DisabledSprite: {fileID: -1788533222, guid: 07b775ad12b3b2b4db6350120a0c43b4, type: 3}
+    m_HighlightedSprite: {fileID: -1765349410, guid: 15dc215019d43d249a53c9e4688222ed, type: 3}
+    m_PressedSprite: {fileID: -1522936391, guid: 15dc215019d43d249a53c9e4688222ed, type: 3}
+    m_SelectedSprite: {fileID: 730956691, guid: 15dc215019d43d249a53c9e4688222ed, type: 3}
+    m_DisabledSprite: {fileID: 507525170, guid: 15dc215019d43d249a53c9e4688222ed, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -190,8 +137,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5203232471682203372}
-        m_TargetAssemblyTypeName: Assets.Script.NextSolarSystem, Assembly-CSharp
+      - m_Target: {fileID: 9214111346467753109}
+        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.NextSolarSystem, Assembly-CSharp
         m_MethodName: ShowThisSolarSystemView
         m_Mode: 3
         m_Arguments:
@@ -210,9 +157,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4761592045379931411}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 250, y: 250, z: 250}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4761592045621579183
@@ -350,3 +305,57 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5213551503247254946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7230471785987628838}
+  - component: {fileID: 9214111346467753109}
+  m_Layer: 30
+  m_Name: ShowSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7230471785987628838
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5213551503247254946}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4761592045379931412}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9214111346467753109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5213551503247254946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4125db910ed07d408a32cf4b3290d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solarSystemView: {fileID: 0}
+  hideSystemButton: {fileID: 0}
+  hide: {fileID: 0}
+  view: {fileID: 0}
+  starSystemData: {fileID: 0}
