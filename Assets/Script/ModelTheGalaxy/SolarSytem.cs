@@ -16,7 +16,7 @@ namespace BOTF3D_GalaxyMap
         public int sysID;
         public Vector3 sysLocation;
         public string sysName;
-        //public CivEnum sysCivOwner; // no civ, not in the view, only the class
+        public string sysOwner;
         public int sysPop;
         public SystemType sysType;
         public StarType sysStarType;
@@ -37,8 +37,10 @@ namespace BOTF3D_GalaxyMap
             this.sysStarType = GetStarTypeEnum(systemData[8]);
             this.sysPlanets = GetPlanetArray(systemData);
             this.AddChild(myStar);
-            this.spriteForOwnerInsignia = Resources.Load<Sprite>("Insignias/" + systemData[5]);
+            this.spriteForOwnerInsignia = Resources.Load<Sprite>("Insignias/" + systemData[5]); // using name of original civ of system 
             this.spriteForOwnerCiv = Resources.Load<Sprite>("Civilizations/" + systemData[5].ToLower());
+            this.sysName = systemData[4];
+            this.sysOwner = systemData[5];
             if (systemData[7] == "Nebula" || systemData[7] == "Complex")
             {
                 // ToDo sprite sheet animation / nebula background too

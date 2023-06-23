@@ -11,6 +11,7 @@ using UnityEngine.Rendering.VirtualTexturing;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
+using TMPro;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -18,13 +19,17 @@ namespace BOTF3D_GalaxyMap
     {
         public GameManager gameManager;
         private SolarSystem solarSystem;
-        public Image civOwnerImage;
+        public Image civOwnerImage; // asigned in inspector, just like StarSystemData
         public Image civInsigniaImage;
         public Sprite spriteForOwnerCiv;
         public Sprite spriteForOwnerInsignia;
         private string originalCivOwnerName;
-        public string currentCivOwnerName;
-        public string sysDataName;
+        public GameObject ownerTxMeshName;
+        public string ownerStringName;
+        TextMeshProUGUI ownerName;
+        public GameObject sysTxMeshName;
+        public string sysStringName;
+        TextMeshProUGUI sysName;
         public Sprite[] starSprites;
         public Sprite[] solFedSys;
         public Sprite[] m_TypeHabitable;
@@ -47,8 +52,10 @@ namespace BOTF3D_GalaxyMap
         void Start()
         {
             gameManager = GameManager.Instance;
-
             systemDataDictionary = GalaxyView.SystemDataDictionary; // this really works
+            ownerName = ownerTxMeshName.GetComponent<TextMeshProUGUI>();
+        
+            sysName = sysTxMeshName.GetComponent<TextMeshProUGUI>();
         }
         void Update()
         {
@@ -102,7 +109,10 @@ namespace BOTF3D_GalaxyMap
             //StarSystem theSystem = starSystemData.StarSystemDictionary[(StarSystemEnum)sysID];
             this.civOwnerImage.sprite = mySolarSystem.spriteForOwnerCiv;
             this.civInsigniaImage.sprite = mySolarSystem.spriteForOwnerInsignia;
-            this.currentCivOwnerName = mySolarSystem.sysName;
+            this.ownerStringName = mySolarSystem.sysOwner;
+            ownerName.SetText(ownerStringName);
+            this.sysStringName = mySolarSystem.sysName;
+            sysName.SetText(sysStringName);
         }
         private void LoadSpritesForOrbital(Transform transformParent, OrbitalGalactic orbitalG, int systemID, int i)
         {

@@ -18,7 +18,7 @@ namespace BOTF3D_GalaxyMap
 
     public class StarSystemData : MonoBehaviour
     {
-        public Image civOwnerImage;
+        public Image civOwnerImage; // asigned in inspector just like SolarSystemView
         public Image civInsigniaImage;
         public Sprite spriteForOwnerCiv;
         public Sprite spriteForOwnerInsignia;
