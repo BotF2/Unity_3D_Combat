@@ -11687,6 +11687,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487025400}
   m_CullTransparentMesh: 1
+--- !u!1 &491606036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491606037}
+  - component: {fileID: 491606038}
+  m_Layer: 6
+  m_Name: RelationshipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &491606037
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491606036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &491606038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491606036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fec03cc175be454cbfcd93a052cb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &511944025
 GameObject:
   m_ObjectHideFlags: 0
@@ -12852,18 +12901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
-  FightWithFed: 00000000
-  FightWithRom: 010000000200000003000000
-  FightWithKling: 010000000200000003000000
-  FightWithCard: 010000000200000003000000
-  FightWithDom: 
-  FightWithBorg: 
-  FightFed: 010000000200000003000000
-  FightRom: 00000000
-  FightKling: 00000000
-  FightCard: 00000000
-  FightDom: 
-  FightBorg: 
+  civilizationData: {fileID: 0}
 --- !u!114 &546406687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17979,18 +18017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
-  FightWithFed: 00000000
-  FightWithRom: 020000000300000004000000
-  FightWithKling: 020000000300000004000000
-  FightWithCard: 020000000300000004000000
-  FightWithDom: 
-  FightWithBorg: 
-  FightFed: 020000000300000004000000
-  FightRom: 00000000
-  FightKling: 00000000
-  FightCard: 00000000
-  FightDom: 
-  FightBorg: 
+  civilizationData: {fileID: 0}
 --- !u!4 &654966030
 Transform:
   m_ObjectHideFlags: 0
@@ -31765,6 +31792,8 @@ RectTransform:
   - {fileID: 296507808}
   - {fileID: 2110164448}
   - {fileID: 1171831152}
+  - {fileID: 491606037}
+  - {fileID: 1804780003}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50306,6 +50335,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797597343}
   m_CullTransparentMesh: 1
+--- !u!1 &1804780002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804780003}
+  - component: {fileID: 1804780004}
+  m_Layer: 6
+  m_Name: Diplomatic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1804780003
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804780002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1804780004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804780002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a70d604bd11a041b57babddeb86a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1187732007}
+  civilizationData: {fileID: 1863091656}
 --- !u!1 &1813087268
 GameObject:
   m_ObjectHideFlags: 0

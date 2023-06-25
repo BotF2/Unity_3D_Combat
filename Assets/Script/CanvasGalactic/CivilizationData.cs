@@ -7,6 +7,7 @@ using Assets.Script;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -109,6 +110,7 @@ namespace BOTF3D_GalaxyMap
             daCiv._contactList = civsWeKnow;
             List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
             daCiv._ownedSystem = ownedSystemStarterList;
+            //daCiv._relationshipDictionary = new Dictionary<int, int>();
             civsInGame.Add(daCiv);
             //daCiv.relationshipScoresArray = new int[systemInt,0];
             //if (!daCiv.deltaRelation.ContainsKey(systemInt))
@@ -124,12 +126,20 @@ namespace BOTF3D_GalaxyMap
                 Civilization aCiv = CivilizationData.Create(ints[i]); 
                 starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
                 CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
-                //if (!aCiv.deltaRelation.ContainsKey(ints[i]))
                 //    aCiv.deltaRelation.Add(ints[i], 0);
             }
             numStars = gameManager._galaxyStarCount.Length;
             //gameManager.SetCivs();
         }
+
+        public void LoadRelationshipDictionaryOfCivs(int[] intsArray)
+        {
+            for (int i = 0; i < intsArray.Length; i++)
+            {
+                CivilizationDictionary[(CivEnum)intsArray[i]]._relationshipDictionary.Add((CivEnum)intsArray[i], (DiplomaticEnum)(-3));
+            }
+        }
+
         public void UpdateCivContactListOnStartCivSelection(TechLevel ourStartTechLevel)
         {
             switch (ourStartTechLevel)
@@ -324,25 +334,48 @@ namespace BOTF3D_GalaxyMap
             }
             
         }
+        //public void PopulateCivRelationshipInfo(List<Civilization> ourCivs)
+        //{
+        //    foreach (var civ in ourCivs)
+        //    {
+        //        //int[] ourInfo = new int[ourCivs.Count];
+        //        //for (int i = 0; i < ourCivs.Count; i++)
+        //        //{
+        //        //    ourInfo[i] = -100;
+        //        //}
+        //        //RelationshipInfo[] temp = new RelationshipInfo[ourCivs.Count];
+        //        for (int i = 0; i < ourCivs.Count; i++)
+        //        {
+        //            RelationshipInfo myInfo = new RelationshipInfo();
+        //            myInfo.RelationshipScore = -100;
+        //            civ._relationshipManager.relationshipInfos[i] = myInfo;
+        //        }
+
+        //        //relationshipInfos.AddRange(temp);
+        //        //RelationshipManager theArrayofInfo = new RelationshipManager(ourInfo);
+        //       // civ._relationshipManager.relationshipInfos.AddRange(temp);
+        //    }
+            
+        //}
         public void DoDiplomacy()
         {
-            for (int i = 0; i < civsInGame.Count; i++)
-            {
-                for (int j = 0; j < civsInGame.Count; j++)
-                {
-                    if (i != j)
-                    {
-                        // Do we need to time this or does it just happen
-                        // CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
+            //for (int i = 0; i < civsInGame.Count; i++)
+            //{
+            //    for (int j = 0; j < civsInGame.Count; j++)
+            //    {
+            //        if (i != j)
+            //        {
+            //            // Do we need to time this or does it just happen
+            //            // CivEnum[] civArray = (CivEnum[])Enum.GetValues(typeof(CivEnum));
                         
-                        Civilization civ1 = civsInGame[i];
-                        Civilization civ2 = civsInGame[j];
-                        RelationshipInfo relationshipInfo = RelationshipManager.GetRelationshipInfo(civ1, civ2);
-                        //relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
-                        //civ1.deltaRelation[j] = 0;
-                    }
-                }
-            }
+            //            Civilization civ1 = civsInGame[i];
+            //            Civilization civ2 = civsInGame[j];
+            //            RelationshipInfo relationshipInfo = RelationshipManager.GetRelationshipInfo(civ1, civ2);
+            //            //relationshipInfo.RelationshipScore += civ1.deltaRelation[j];
+            //            //civ1.deltaRelation[j] = 0;
+            //        }
+            //    }
+            //}
         }
         public void MoveGalacticThings()
         {

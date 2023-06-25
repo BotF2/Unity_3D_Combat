@@ -32,9 +32,10 @@ namespace BOTF3D_Core
         public Sprite _insignia;
         public List<Fleet> civFleetList;
         public List<float> _sysTradeAllocation = new List<float> { 100f,};
-        //public int[,] relationshipScoresArray; // index of other civ, int relationship score value
-        ////public RelationshipInfo relationshipInfo;
-        //public Dictionary<int,int> deltaRelation = new Dictionary<int, int>() { { 0, 0 } }; // key is other civ and amount of change per time check
+        //public RelationshipManager _relationshipManager;
+        //public int[,] relationshipScoresArray; // index of player and other civ, holds int relationship score value
+        //public RelationshipInfo relationshipInfo; // has property of relationship score -100 to +100
+        public Dictionary<CivEnum, DiplomaticEnum> _relationshipDictionary = new Dictionary<CivEnum, DiplomaticEnum>() { {(CivEnum)111, (DiplomaticEnum)(-3) } }; // key is other civ (111 is Placeholder) and DiplomaticEnum -3 is unknown 
         //public float _civPopulation; // credits per game time
         //public List<Bonus> _globalBonuses;
         //public readonly CivilizationMapData _mapData;
@@ -54,6 +55,7 @@ namespace BOTF3D_Core
         //public int _rankCredits;
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
         public List<Civilization> _contactList;
+        //public Dictionary<int, DiplomaticRelation>
        // public StarSystem _homeColony;
         public List<StarSystem> _ownedSystem;
         public List<Ship> _fleet;
@@ -81,10 +83,10 @@ namespace BOTF3D_Core
         //{
         //    return RelationshipManager.GetRelationshipScore(this, otherCivilization);
         //}
-        public RelationshipInfo GetRelationshipInfoWith(Civilization otherCivilization)
-        {
-            return RelationshipManager.GetRelationshipInfo(this, otherCivilization);
-        }
+        //public RelationshipInfo GetRelationshipInfoWith(Civilization otherCivilization)
+        //{
+        //    return RelationshipManager.GetRelationshipInfo(this, otherCivilization);
+        //}
         // ... other faction code
         public Civilization(int sysCivInt)
         {

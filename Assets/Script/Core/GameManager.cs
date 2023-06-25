@@ -14,9 +14,19 @@ using BOTF3D_Combat;
 namespace BOTF3D_Core
 {
     #region Enums
+    public enum DiplomaticEnum
+    {
+        IsUnknown = -3,
+        IsTotalWar = -2,
+        IsColdWar = -1,
+        IsNeutral = 0,
+        IsFriend = 1,
+        IsAlly = 2,
+        IsUnified = 3,
+    }
     public enum CivEnum
     {
-        FED,
+        FED = 0,
         ROM,
         KLING,
         CARD,
@@ -634,6 +644,7 @@ namespace BOTF3D_Core
         public SolarSystemView solarSystemView;
         public Ship ship;
         public CivilizationData civilizationData;
+        //public RelationshipManager relationshipManager;
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
         public CameraMoveOnClick cameraMoveOnClick;
@@ -1663,6 +1674,7 @@ namespace BOTF3D_Core
                     _timeManager.StartClock();
                     starSysData.LoadSystemDictionary(_galaxyStarCount);
                     civData.LoadDictionaryOfCivs(this._galaxyStarCount);
+                    civData.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
                     civData.UpdateCivContactListOnStartCivSelection(_techLevel);
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
@@ -1712,7 +1724,12 @@ namespace BOTF3D_Core
                     PanelSystem_View.SetActive(false);
                     this.SetCivs();
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
-                    RelationshipManager.Initialize(CivilizationData.civsInGame);
+                    //relationshipManager = new RelationshipManager(CivilizationData.civsInGame);
+                    //RelationshipManager.SetUpDiplomaticRelations(CivilizationData.civsInGame);
+                    //foreach (Civilization civ in CivilizationData.civsInGame)
+                    //{
+                    //    civilizationData.PopulateCivRelationshipInfo(CivilizationData.civsInGame);
+                    //}
                     break;
 
                 case State.GALACTIC_MAP_INIT:
