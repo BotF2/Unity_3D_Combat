@@ -26,16 +26,18 @@ namespace BOTF3D_Core
         public string _longName;
         //public Race race -- try to leave this off, too complicated
         public StarSystem _homeSystem;
+        public bool _weAreMajorCiv;
         //public Traits _traitOne;
         //public Traits _traitTwo;
         public Sprite _civImage;
         public Sprite _insignia;
         public List<Fleet> civFleetList;
-        public List<float> _sysTradeAllocation = new List<float> { 100f,};
+        public List<float> _sysTradeAllocation = new List<float> { 100f, };
         //public RelationshipManager _relationshipManager;
         //public int[,] relationshipScoresArray; // index of player and other civ, holds int relationship score value
         //public RelationshipInfo relationshipInfo; // has property of relationship score -100 to +100
-        public Dictionary<CivEnum, DiplomaticEnum> _relationshipDictionary = new Dictionary<CivEnum, DiplomaticEnum>() { {(CivEnum)111, (DiplomaticEnum)(-3) } }; // key is other civ (111 is Placeholder) and DiplomaticEnum -3 is unknown 
+        public Dictionary<CivEnum, DiplomaticEnum> _relationshipDictionary = new Dictionary<CivEnum, DiplomaticEnum>() { { (CivEnum)111, (DiplomaticEnum)(-3) } }; // key is other civ (111 is Placeholder) and DiplomaticEnum -3 is unknown 
+        public List<float> _relationshipScores = new List<float>();
         //public float _civPopulation; // credits per game time
         //public List<Bonus> _globalBonuses;
         //public readonly CivilizationMapData _mapData;

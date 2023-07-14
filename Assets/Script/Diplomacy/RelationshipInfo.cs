@@ -10,7 +10,7 @@ using System;
 namespace Assets.Script
 {
     //[Serializable]
-    public class RelationshipInfo : MonoBehaviour
+    public class RelationshipInfo 
     {
         // the RelationshipInfo class can store properties of the civ relationships for RelationshipManager
         public int RelationshipScore = -100; // to +100

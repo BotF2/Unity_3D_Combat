@@ -11,7 +11,7 @@ using Unity.VisualScripting;
 
 namespace BOTF3D_GalaxyMap
 {
-    [System.Serializable]
+    //[System.Serializable]
     public class CivilizationData : MonoBehaviour
     {
         #region Fields
@@ -80,6 +80,9 @@ namespace BOTF3D_GalaxyMap
             Civilization daCiv = new Civilization(systemInt);
             var sysStrings = CivilizationData.CivDataDictionary[systemInt];
             daCiv._civEnum = (CivEnum)systemInt;
+            if (systemInt <= 5) // update on adding more playable major civs
+                daCiv._weAreMajorCiv = true;
+            else daCiv._weAreMajorCiv = false;
             daCiv._shortName = sysStrings[2];
             daCiv._longName = sysStrings[3];
 
@@ -112,7 +115,11 @@ namespace BOTF3D_GalaxyMap
             daCiv._ownedSystem = ownedSystemStarterList;
             //daCiv._relationshipDictionary = new Dictionary<int, int>();
             civsInGame.Add(daCiv);
-            //daCiv.relationshipScoresArray = new int[systemInt,0];
+            //for (int i = 0; i < systemInt; i++)
+            //{
+
+            //}
+            //daCiv._relationshipScores ;
             //if (!daCiv.deltaRelation.ContainsKey(systemInt))
             //    daCiv.deltaRelation.Add(systemInt, 0);
 
@@ -126,7 +133,12 @@ namespace BOTF3D_GalaxyMap
                 Civilization aCiv = CivilizationData.Create(ints[i]); 
                 starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
                 CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
-                //    aCiv.deltaRelation.Add(ints[i], 0);
+                List<float> ourRelationScores = new List<float>();
+                for (int j = 0; j < ints.Length; j++)
+                {
+                    ourRelationScores.Add(-100F);
+                }
+                aCiv._relationshipScores = ourRelationScores;
             }
             numStars = gameManager._galaxyStarCount.Length;
             //gameManager.SetCivs();
@@ -134,6 +146,7 @@ namespace BOTF3D_GalaxyMap
 
         public void LoadRelationshipDictionaryOfCivs(int[] intsArray)
         {
+            //diplomacy.cs has the WhatIsOurDipomaticEnum methode
             for (int i = 0; i < intsArray.Length; i++)
             {
                 CivilizationDictionary[(CivEnum)intsArray[i]]._relationshipDictionary.Add((CivEnum)intsArray[i], (DiplomaticEnum)(-3));

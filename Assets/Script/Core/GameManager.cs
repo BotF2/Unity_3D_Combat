@@ -21,8 +21,8 @@ namespace BOTF3D_Core
         IsColdWar = -1,
         IsNeutral = 0,
         IsFriend = 1,
-        IsAlly = 2,
-        IsUnified = 3,
+        IsAlly = 2, // major to major civ
+        IsMember = 3, // minor to major civ
     }
     public enum CivEnum
     {

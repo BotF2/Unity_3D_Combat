@@ -5,14 +5,15 @@ using BOTF3D_GalaxyMap;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor.Experimental.GraphView;
 
 namespace Assets.Script
 {
     public class Diplomatic : MonoBehaviour
     {
         // see CivilizationData DoDiplomacy SEE RELATIONSHIPINFO RelationshipInfo.cs
-        public GameManager gameManager;
-        public CivilizationData civilizationData;
+        //public GameManager gameManager;
+        //public CivilizationData civilizationData;
 
 
         //private List<DiplomaticRelation> diploRelationList;
@@ -49,13 +50,40 @@ namespace Assets.Script
         {
             // update diplomacy here
         }
-        public DiplomaticEnum WhatIsOurDiploicEnum(CivEnum civE)
+        public DiplomaticEnum WhatIsOurDiploicEnum(CivEnum civ1, CivEnum civ2)
         {
-            return CivilizationData.CivilizationDictionary[civE]._relationshipDictionary[civE];
+            var ourScore = CivilizationData.CivilizationDictionary[civ1]._relationshipScores[(int)civ2];
+            if (ourScore <= -2)
+            {
+                return DiplomaticEnum.IsTotalWar;
+            }
+            else if (ourScore <= -1)
+            {
+                return DiplomaticEnum.IsColdWar;
+            }
+            else if (ourScore < 1 )
+            {
+                return DiplomaticEnum.IsNeutral;
+            }
+            else if (ourScore <= 2)
+            {
+                return DiplomaticEnum.IsFriend;
+            }
+            else if (ourScore <= 3)
+            {
+                if(CivilizationData.CivilizationDictionary[civ1]._weAreMajorCiv && CivilizationData.CivilizationDictionary[civ1]._weAreMajorCiv)
+                    { return DiplomaticEnum.IsAlly; }
+                else{ return DiplomaticEnum.IsMember; }
+                
+            }
+            return CivilizationData.CivilizationDictionary[civ1]._relationshipDictionary[civ2];
         }
-        public void UpdateDiplomaticRelation(CivEnum civ1, CivEnum civ2, float delta)
+        public void UpdateelationshipScore(CivEnum civ1, CivEnum civ2, float deltaRlastionshipScore)
         {
             // do math to change relationship, look up current relation and see when to change it
+            var currentScore = CivilizationData.CivilizationDictionary[civ1]._relationshipScores[(int)civ2];
+            var newScore = currentScore + deltaRlastionshipScore;
+            CivilizationData.CivilizationDictionary[civ1]._relationshipScores[(int)civ2] = newScore;
         }
     }
 
