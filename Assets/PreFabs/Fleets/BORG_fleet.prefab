@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8487369973628043658}
   - component: {fileID: 1674423119136610005}
   - component: {fileID: -7574215791769629436}
+  - component: {fileID: 1769354568343144877}
   m_Layer: 6
   m_Name: BORG_fleet
   m_TagString: Untagged
@@ -111,6 +112,12 @@ MonoBehaviour:
   _location: {fileID: 0}
   _lineDrawSpeed: 6
   _insigniaSprite: {fileID: 0}
+  target: {fileID: 0}
+  newTarget: 0
+  inDeepSpace: 0
+  movementSpeed: 0
+  rotationalDamp: 0
+  destinationList: []
 --- !u!136 &-7574215791769629436
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -119,9 +126,32 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2369376019372463250}
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1769354568343144877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2369376019372463250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3139d45223e87a4ab4558066823be1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  warpSpeed: 0

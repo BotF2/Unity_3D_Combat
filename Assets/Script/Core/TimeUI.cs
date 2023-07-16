@@ -14,6 +14,10 @@ namespace BOTF3D_Core
     public class TimeUI : MonoBehaviour
     {
         [SerializeField]
+        MoveGalacticObjects moveGalacticObjects;
+        //[SerializeField]
+        //GalaxyView galaxyView;
+        [SerializeField]
         public TextMeshProUGUI timeText;
         private void OnEnable()
         {

@@ -29,6 +29,7 @@ namespace BOTF3D_GalaxyMap
         [SerializeField] float movementSpeed = 10f;
         [SerializeField] float rotationalDamp = .5f;
         public List<GameObject> destinationList;
+       // public MoveGalacticObjects moveGalacticObjects;
 
         public Fleet(List<GalaxyShip> ships)
         {

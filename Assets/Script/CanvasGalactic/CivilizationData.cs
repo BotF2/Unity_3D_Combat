@@ -390,10 +390,10 @@ namespace BOTF3D_GalaxyMap
             //    }
             //}
         }
-        public void MoveGalacticThings()
-        {
+        //public void MoveGalacticThings()
+        //{
 
-        }
+        //}
             
         //}
         //public void AddSysCredits()

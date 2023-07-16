@@ -139,7 +139,9 @@ namespace BOTF3D_GalaxyMap
         }
         public StarSystem GetSystem(StarSystemEnum sysEnum)
         {
+            if (StarSystemDictionary.ContainsKey(sysEnum))
             return StarSystemDictionary[sysEnum];
+            else return null;
         }
         public Sprite GetSystemOwnerSprite(StarSystemEnum sysEnum)
         {

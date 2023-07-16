@@ -19,6 +19,7 @@ namespace BOTF3D_GalaxyMap
 
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
+        //public MoveGalacticObjects moveGalacticObjects;
         public NextSolarSystem nextSolarSystem;
         public GameObject fleetManager;
         public SolarSystemView solarSystemView;
@@ -361,7 +362,7 @@ namespace BOTF3D_GalaxyMap
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
-        public List<GameObject> _fleetObjInGalaxy = new List<GameObject>();
+        public static List<GameObject> _fleetObjInGalaxy = new List<GameObject>();
         // private OrbitalGalactic mySolarSystem; // star and planets
 
         // See Box Collider in Game view, Galaxy
@@ -727,7 +728,7 @@ namespace BOTF3D_GalaxyMap
                             return;
                         else
                         {
-                            _fleetObjInGalaxy.Remove(fleetObject);
+                            _fleetObjInGalaxy.Remove(fleetObject); // destroy fleets with no ships
                             fleetObject.IsDestroyed();
                         }
                     }
@@ -810,6 +811,20 @@ namespace BOTF3D_GalaxyMap
                         firstFleet.inDeepSpace = false;
                         firstFleet.newTarget = false;
                         theCiv.civFleetList = new List<Fleet> { firstFleet };
+                        _fleetObjInGalaxy.Add(firstFleet.gameObject);
+                        //StarSystem nextSystem = starSystemData.GetSystem((StarSystemEnum)(sysIndex + 1));
+                        //if ( nextSystem != null)
+                        //{    if (nextSystem.!= null)
+                        //        {
+                        MoveGalacticObjects moveGalacticObjects = firstFleet.GetComponent<MoveGalacticObjects>();
+                        moveGalacticObjects.SetObjectTrans(firstFleet.gameObject);
+                        moveGalacticObjects.MyWarpSpeed(5f);
+                        moveGalacticObjects.ProvideTargetPosition(new Vector3(tempObject.transform.position.x + 20000f, tempObject.transform.position.y + 20000f, tempObject.transform.position.z + 20000f));
+
+                        //        }
+                        //}
+                        //moveGalacticObjects.ProvideTarget(;
+                        //moveGalacticObjects.MyWarpSpeed(10f);
                     }
 
 
