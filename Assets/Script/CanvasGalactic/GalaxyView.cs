@@ -812,10 +812,7 @@ namespace BOTF3D_GalaxyMap
                         firstFleet.newTarget = false;
                         theCiv.civFleetList = new List<Fleet> { firstFleet };
                         _fleetObjInGalaxy.Add(firstFleet.gameObject);
-                        //StarSystem nextSystem = starSystemData.GetSystem((StarSystemEnum)(sysIndex + 1));
-                        //if ( nextSystem != null)
-                        //{    if (nextSystem.!= null)
-                        //        {
+    
                         MoveGalacticObjects moveGalacticObjects = firstFleet.GetComponent<MoveGalacticObjects>();
                         moveGalacticObjects.SetObjectTrans(firstFleet.gameObject);
                         moveGalacticObjects.MyWarpSpeed(5f);

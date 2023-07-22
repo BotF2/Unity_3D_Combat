@@ -14,7 +14,8 @@ namespace BOTF3D_GalaxyMap
         [SerializeField]
         private GameObject target;
         [SerializeField]
-        public float warpSpeed = 1f;
+        public float warpSpeed = 5f;
+        private float realSpeedFactor = 0.05f;
 
         Transform myTrans;
         Vector3 myTargetPosition;
@@ -65,11 +66,11 @@ namespace BOTF3D_GalaxyMap
             //myTrans.position += myTrans.forward * warpSpeed; // * Time.deltaTime;
             if (target != null && myTrans != null)
             { 
-                myTrans.position = Vector3.MoveTowards(myTrans.position, target.transform.position, warpSpeed/10);
+                myTrans.position = Vector3.MoveTowards(myTrans.position, target.transform.position, warpSpeed*realSpeedFactor);
             }
             else if(myTargetPosition != null && myTrans != null)
             {
-                myTrans.position = Vector3.MoveTowards(myTrans.position, myTargetPosition, warpSpeed/10);
+                myTrans.position = Vector3.MoveTowards(myTrans.position, myTargetPosition, warpSpeed*realSpeedFactor);
             }
         }
     }

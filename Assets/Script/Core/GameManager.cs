@@ -672,6 +672,7 @@ namespace BOTF3D_Core
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
+        private GameObject GalacticGrid;
           
         public SinglePlayer _SinglePlayer;
         public MultiPlayer _MultiPlayer;
@@ -1190,6 +1191,7 @@ namespace BOTF3D_Core
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+            GalacticGrid = CanvasGalactic.transform.Find("GalacticGrid").gameObject;
 
             // GameObjects for the system buttons
             AllSystemsList = new List<GameObject> {  FED_StarSystem,
@@ -1713,7 +1715,7 @@ namespace BOTF3D_Core
                     cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
                     cameraGalactica.enabled = true;
                     cameraTelescope.enabled = true;
-
+                    GalacticGrid.SetActive(true);
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
@@ -1738,6 +1740,7 @@ namespace BOTF3D_Core
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     PanelLobby_Menu.SetActive(false);
+                    GalacticGrid.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
 

@@ -20,7 +20,7 @@ namespace BOTF3D_Core
         private float minuteToRealTime = 2f;
         private float timer;
         private bool showTime = false;
-        int aCounter = 5;
+        int moveCounter = 5;
 
         public void StartClock()
         {
@@ -37,16 +37,16 @@ namespace BOTF3D_Core
             if (showTime)
             {
                 timer -= Time.deltaTime;
-                if (aCounter < 1)
+                if (moveCounter < 1)
                 {
                     for (int i = 0; i < GalaxyView._fleetObjInGalaxy.Count; i++)
                     {
                         var myMoveGalactic = GalaxyView._fleetObjInGalaxy[i].GetComponent<MoveGalacticObjects>();
                         myMoveGalactic.ThrustVector(); 
                     }
-                    aCounter = 5;
+                    moveCounter = 5;
                 }
-                else aCounter--;
+                else moveCounter--;
                 if (timer <= 0)
                 {
                     gameMinute++;
