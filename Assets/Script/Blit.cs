@@ -94,8 +94,8 @@ namespace Assets.Script
 				// Can't read and write to same color target, use a TemporaryRT
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.GetTemporaryRT(0, 1, 1, 0);
-					Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
+                    cmd.GetTemporaryRT(Shader.PropertyToID(destination.name), 1,1,0);
+                    Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
 					Blit(cmd, source, destination);
 				}
 				else
@@ -111,12 +111,12 @@ namespace Assets.Script
 			{
 				if (settings.dstType == Target.TextureID)
 				{
-					cmd.ReleaseTemporaryRT(0);
+                    cmd.ReleaseTemporaryRT(Shader.PropertyToID(destination.name)); ;
 				}
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.ReleaseTemporaryRT(0);
-				}
+                    cmd.ReleaseTemporaryRT(Shader.PropertyToID(destination.name));
+                }
 			}
 		}
 
