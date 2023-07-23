@@ -40,8 +40,8 @@ namespace Assets.Script
 			private RTHandle source { get; set; }
 			private RTHandle destination { get; set; }
 
-			RTHandle m_TemporaryColorTexture;
-			RTHandle m_DestinationTexture;
+			RenderTargetHandle m_TemporaryColorTexture;
+			RenderTargetHandle m_DestinationTexture;
 			string m_ProfilerTag;
 
 			public BlitPass(RenderPassEvent renderPassEvent, BlitSettings settings, string tag)
@@ -50,11 +50,11 @@ namespace Assets.Script
 				this.settings = settings;
 				blitMaterial = settings.blitMaterial;
 				m_ProfilerTag = tag;
-				//m_TemporaryColorTexture.Init("_TemporaryColorTexture");
-				//if (settings.dstType == Target.TextureID)
-				//{
-				//	m_DestinationTexture.Init(settings.dstTextureId);
-				//}
+				m_TemporaryColorTexture.Init("_TemporaryColorTexture");
+				if (settings.dstType == Target.TextureID)
+				{
+					m_DestinationTexture.Init(settings.dstTextureId);
+				}
 			}
 
 			public void Setup(RTHandle source, RTHandle destination)
@@ -86,21 +86,20 @@ namespace Assets.Script
 					{
 						opaqueDesc.graphicsFormat = settings.graphicsFormat;
 					}
-					cmd.GetTemporaryRT(0, 1, 1, 0
-						);
+					cmd.GetTemporaryRT(m_DestinationTexture.id, opaqueDesc, filterMode);
 				}
 
 				//Debug.Log($"src = {source},     dst = {destination} ");
 				// Can't read and write to same color target, use a TemporaryRT
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.GetTemporaryRT(0, 1, 1, 0);
-					Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
-					Blit(cmd, source, destination);
+					cmd.GetTemporaryRT(m_TemporaryColorTexture.id, opaqueDesc, filterMode);
+                    Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
+                    //Blit(cmd, m_TemporaryColorTexture.Identifier(), destination);
 				}
 				else
 				{
-					Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
+                    Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
 				}
 
 				context.ExecuteCommandBuffer(cmd);
@@ -111,11 +110,11 @@ namespace Assets.Script
 			{
 				if (settings.dstType == Target.TextureID)
 				{
-					cmd.ReleaseTemporaryRT(0);
+					cmd.ReleaseTemporaryRT(m_DestinationTexture.id);
 				}
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.ReleaseTemporaryRT(0);
+					cmd.ReleaseTemporaryRT(m_TemporaryColorTexture.id);
 				}
 			}
 		}
@@ -149,7 +148,7 @@ namespace Assets.Script
 			RenderTextureObject
 		}
 
-		public BlitSettings settings = new();
+		public BlitSettings settings = new BlitSettings();
 
 		public BlitPass blitPass;
 
@@ -185,21 +184,21 @@ namespace Assets.Script
 		//	dstIdentifier = UpdateIdentifier(settings.dstType, settings.dstTextureId, settings.dstTextureObject);
 		//}
 
-		//private RTHandle UpdateIdentifier(Target type, string s, RenderTexture obj)
-		//{
-		//	if (type == Target.RenderTextureObject)
-		//	{
-		//		return obj;
-		//	}
-		//	else if (type == Target.TextureID)
-		//	{
-		//		m_RTHandle.Init(s);
-		//		return new RTHandle(this, type);
-		//		//return s;
-		//	}
-		//	return new RTHandle();
-		//}
-		//RTHandle;
+		private RenderTargetIdentifier UpdateIdentifier(Target type, string s, RenderTexture obj)
+		{
+			if (type == Target.RenderTextureObject)
+			{
+				return obj;
+			}
+			else if (type == Target.TextureID)
+			{
+				//RenderTargetHandle m_RTHandle = new RenderTargetHandle();
+				//m_RTHandle.Init(s);
+				//return m_RTHandle.Identifier();
+				return s;
+			}
+			return new RenderTargetIdentifier();
+		}
 
 		public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
 		{
