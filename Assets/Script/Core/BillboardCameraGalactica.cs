@@ -14,18 +14,27 @@ namespace BOTF3D_Core
 
         void Start()
         {
-            foreach (Camera camera in Camera.allCameras)
-            {
-                if (camera.tag == "GalacticCamera")
-                {
-                    cameraGal = camera;
-                }
-            }
+            //foreach (Camera camera in Camera.allCameras)
+            //{
+            //   // if (camera.tag == "CameraOrthoGalactic")
+            //    if (camera.tag == "GalacticCamera")
+            //    {
+            //        cameraGal = camera;
+            //    }
+            //}
         }
 
         // Update is called once per frame
         void LateUpdate()
         {
+            foreach (Camera camera in Camera.allCameras)
+            {
+                // if (camera.tag == "CameraOrthoGalactic")
+                if (camera.tag == "GalacticCamera")
+                {
+                    cameraGal = camera;
+                }
+            }
             transform.LookAt(cameraGal.transform, Vector3.up);
             transform.rotation = cameraGal.transform.rotation;
         }

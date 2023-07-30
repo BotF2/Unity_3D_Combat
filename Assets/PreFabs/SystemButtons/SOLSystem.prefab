@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 124299536620563853}
   - component: {fileID: -2870740921722464267}
-  m_Layer: 30
+  m_Layer: 6
   m_Name: SolSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 10685ab0d0edb0846a66d32a49b7ce5f, type: 3}
@@ -36,7 +36,6 @@ RectTransform:
   - {fileID: 4761592045621579168}
   - {fileID: 7230471785987628838}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -181,7 +180,7 @@ GameObject:
   - component: {fileID: 4761592045621579168}
   - component: {fileID: 4761592045621579170}
   - component: {fileID: 4761592045621579169}
-  m_Layer: 30
+  m_Layer: 6
   m_Name: StarName (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +200,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4761592045379931412}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -315,7 +313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7230471785987628838}
   - component: {fileID: 9214111346467753109}
-  m_Layer: 30
+  m_Layer: 6
   m_Name: ShowSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +333,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4761592045379931412}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -358,4 +355,3 @@ MonoBehaviour:
   hideSystemButton: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
-  starSystemData: {fileID: 0}
