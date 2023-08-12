@@ -3369,6 +3369,7 @@ GameObject:
   - component: {fileID: 45544410}
   - component: {fileID: 45544413}
   - component: {fileID: 45544414}
+  - component: {fileID: 45544415}
   m_Layer: 6
   m_Name: CameraGalactica
   m_TagString: GalacticCamera
@@ -3529,6 +3530,18 @@ MonoBehaviour:
   cameraManagerGalactica: {fileID: 1160279386}
   cam: {fileID: 45544412}
   cameraZoomed: 0
+--- !u!114 &45544415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45544408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9b52012b7193847a1c6345d32a731c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &49629551
 GameObject:
   m_ObjectHideFlags: 0
@@ -34495,7 +34508,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34505,7 +34518,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34515,7 +34528,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34525,7 +34538,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34535,7 +34548,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34545,7 +34558,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34555,7 +34568,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 4294967295
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -34570,10 +34583,6 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: a8d582db83c784d46a94a21594462dea, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 2
-    m_Data: {fileID: 68506294, guid: 92795f192b9c67748bd79007349effdd, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1224024585, guid: 92795f192b9c67748bd79007349effdd, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: 1624750675, guid: f0dbcfa7ec4291b45a7f202c1f7b2bd5, type: 3}
   m_TileMatrixArray:
