@@ -774,10 +774,6 @@ namespace BOTF3D_GalaxyMap
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
                         hTips._hoverTipManager = hoverTipManager;
-                        //size = _cameraGalactica.orthographicSize;
-                        //Vector3 scale = new Vector3(size, size, size);
-                        // Object to scale.transform.localScale = scale;
-                        // xfontsize * size = new yfontsize????
 
                         sysEmptyList[sysIndex].SetActive(true);
                     }
@@ -785,9 +781,8 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-                    //GameObject starName = GameObject.FindGameObjectsWithTag(StarName);
 
-                    starSystemNewGameOb.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = Screen.height/20;
+                    //starSystemNewGameOb.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = Screen.height/20;
                     // Get Civ to find contact list for fog of war
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
                     FogOfWarNaming(starSystemNewGameOb, civy);
