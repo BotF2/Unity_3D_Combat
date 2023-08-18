@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BOTF3D_Core;
+using BOTF3D_Combat;
+using Assets.Script;
 
-public class GalaxyDropLine : MonoBehaviour
+namespace BOTF3D_GalaxyMap
 {
-    private LineRenderer lineRenderer;
-    private Transform[] points;
 
-    private void Awake()
+    public class GalaxyDropLine : MonoBehaviour
     {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-    public void SetUpLine(Transform[] points)
-    {
-        lineRenderer.positionCount = points.Length;
-        this.points = points;
+        private LineRenderer lineRenderer;
+        private Transform[] points;
+
+        private void Awake()
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
+        public void SetUpLine(Transform[] points)
+        {
+            lineRenderer.positionCount = points.Length;
+            this.points = points;
+        }
     }
 }

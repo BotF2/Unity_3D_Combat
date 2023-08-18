@@ -9,7 +9,6 @@ using BOTF3D_Combat;
 using Assets.Script;
 using Unity.VisualScripting;
 using TMPro;
-using UnityEditor.Rendering;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -371,6 +370,7 @@ namespace BOTF3D_GalaxyMap
         public Material _material;
         public GameObject _systemSpherePrefab;
         public Vector3 _systemPosition;
+   
 
         void Awake()
         {
@@ -768,6 +768,12 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
+                        GalaxyDropLine line = new GalaxyDropLine();
+                        Vector3 systemPoint = new Vector3(x, y, z);
+                        //Transform systemTransform = new Transform();
+                        //Vector3 planePoint = new Vector3(x, y, 216f);
+                        //Transform[] endPoints = new Transform[tempObject.transform, planePoint]; 
+                        //line.SetUpLine();
 
                         var hTips = sysEmptyList[sysIndex].AddComponent<HoverTips>();
                         hTips._hoverTipManager = hoverTipManager;
@@ -781,7 +787,8 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
-
+                 
+                    
                     //starSystemNewGameOb.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = Screen.height/20;
                     // Get Civ to find contact list for fog of war
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
