@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1823835912101739468}
   - component: {fileID: 3357825342315912624}
-  - component: {fileID: 5610813742692642286}
   m_Layer: 6
   m_Name: Tile
   m_TagString: Untagged
@@ -27,7 +26,7 @@ RectTransform:
   m_GameObject: {fileID: 3946632997283140747}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 1000, y: 1000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -89,18 +88,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5610813742692642286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946632997283140747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56239f843a16d9e4e9be1c08df1da45b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _baseColor: {r: 0.4537647, g: 0.9339623, b: 0.92926025, a: 0.5019608}
-  _offsetColor: {r: 0.374466, g: 0.8018868, b: 0.6933951, a: 0.5019608}
-  _renderer: {fileID: 0}

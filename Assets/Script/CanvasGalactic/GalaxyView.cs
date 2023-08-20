@@ -22,6 +22,7 @@ namespace BOTF3D_GalaxyMap
         public NextSolarSystem nextSolarSystem;
         public GameObject fleetManager;
         public SolarSystemView solarSystemView;
+        public GalaxyDropLine galaxyDropLine;
         [SerializeField]
         public HoverTips hoverTips;
         public HoverTipManager hoverTipManager;
@@ -368,6 +369,7 @@ namespace BOTF3D_GalaxyMap
         public Camera _cameraGalactica;
         public Mesh _mesh;
         public Material _material;
+        public GameObject _lineEndpointPrefab;
         public GameObject _systemSpherePrefab;
         public Vector3 _systemPosition;
    
@@ -768,12 +770,17 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
-                        GalaxyDropLine line = new GalaxyDropLine();
-                        Vector3 systemPoint = new Vector3(x, y, z);
-                        //Transform systemTransform = new Transform();
-                        //Vector3 planePoint = new Vector3(x, y, 216f);
-                        //Transform[] endPoints = new Transform[tempObject.transform, planePoint]; 
-                        //line.SetUpLine();
+                        GalaxyDropLine line = Instantiate(galaxyDropLine, new Vector3(0, 0, 0), Quaternion.identity);
+                        line.name = sysEmptyList[sysIndex].name + "_line";
+                        GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
+                        emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_EndPoint";
+                        //Find tile, get position, grabe z and put it into emptyForPlanePoint.transform?
+                        //emptyForPlanePoint.transform.Translate(new Vector3(x, y, 218f), Space.World);
+                        emptyForPlanePoint.transform.SetParent(canvasGalactic.transform, false );
+                        emptyForPlanePoint.layer = 6;
+                        //line.transform.SetParent(sysEmptyList[sysIndex].transform, true);
+                        Transform[] endPoints = new Transform[2] { sysEmptyList[sysIndex].transform, emptyForPlanePoint.transform}; 
+                        line.SetUpLine(endPoints);
 
                         var hTips = sysEmptyList[sysIndex].AddComponent<HoverTips>();
                         hTips._hoverTipManager = hoverTipManager;
