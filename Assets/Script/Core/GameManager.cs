@@ -647,7 +647,8 @@ namespace BOTF3D_Core
         //public RelationshipManager relationshipManager;
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
-        public CameraMoveOnClick cameraMoveOnClick;
+
+        public GridManager gridManager;
         public Camera cameraGalactica;
         public Camera cameraTelescope;
         public Combat combat;
@@ -672,8 +673,7 @@ namespace BOTF3D_Core
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
-        private GameObject GalacticGrid;
-          
+      
         public SinglePlayer _SinglePlayer;
         public MultiPlayer _MultiPlayer;
         public LoadGamePanel _LoadGamePanel;
@@ -1721,7 +1721,7 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-
+                    gridManager.SeeGrid();
                     PanelGalaxyUI.SetActive(true);
                     PanelSystem_View.SetActive(false);
                     this.SetCivs();
@@ -1742,6 +1742,7 @@ namespace BOTF3D_Core
                     PanelLobby_Menu.SetActive(false);
                     //GalacticGrid.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
+                    gridManager.HideGrid();
                     break;
 
                 case State.SYSTEM_PLAY:
@@ -1750,7 +1751,7 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
-                    
+                    gridManager.HideGrid();                   
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     PanelSystem_View.SetActive(true);
                     if (_playerOwnesSystem)
@@ -1781,6 +1782,7 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                    gridManager.SeeGrid();
                    
                     SwitchtState(State.GALACTIC_MAP);
                     //SwitchtState(State.GALACTIC_MAP);
@@ -1796,6 +1798,7 @@ namespace BOTF3D_Core
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     SwitchtState(State.COMBAT_MENU);
+                    gridManager.HideGrid();
                     break;
                 case State.COMBAT_MENU:
                     PanelSystem_View.SetActive(false);
@@ -1972,6 +1975,7 @@ namespace BOTF3D_Core
                     break;
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
+                    gridManager.SeeGrid();
                     //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     PanelGalaxyUI.SetActive(false);
@@ -1984,6 +1988,7 @@ namespace BOTF3D_Core
                     break;
                 case State.SYSTEM_PLAY:
                     PanelSystem_View.SetActive(false);
+                    gridManager.HideGrid();
                     //CommandMenu.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY_INIT:
@@ -1994,6 +1999,7 @@ namespace BOTF3D_Core
                     PanelSystem_View.SetActive(false);
                     //CommandMenu.SetActive(false);   
                     PanelGalactic_Completed.SetActive(false);
+                    gridManager.HideGrid();
                     break;
                 case State.COMBAT_MENU:
                     //panelGalactic_Play.SetActive(false);

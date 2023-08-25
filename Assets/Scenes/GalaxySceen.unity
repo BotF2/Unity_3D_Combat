@@ -330,6 +330,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5613186}
   m_CullTransparentMesh: 1
+--- !u!1 &5684184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5684186}
+  - component: {fileID: 5684185}
+  m_Layer: 5
+  m_Name: MultiPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &5684185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227b53fffcfcca345a7de27e1f5e9ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &5684186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1208553312}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &18733017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,7 +2523,7 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  cameraMoveOnClick: {fileID: 0}
+  gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
@@ -3386,6 +3434,10 @@ MonoBehaviour:
   cameraManagerGalactica: {fileID: 1160279386}
   cam: {fileID: 45544412}
   cameraZoomed: 0
+  colliderName: 
+  _initRotation: {x: 0, y: 0, z: 0}
+  _initFieldOfView: 0
+  _initPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &45544415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,6 +3483,7 @@ RectTransform:
   - {fileID: 1428395821}
   - {fileID: 1723573037}
   - {fileID: 1728448565}
+  - {fileID: 1067984789}
   m_Father: {fileID: 572942815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11553,6 +11606,10 @@ MonoBehaviour:
   cameraManagerGalactica: {fileID: 0}
   cam: {fileID: 45544412}
   cameraZoomed: 0
+  colliderName: 
+  _initRotation: {x: 0, y: 0, z: 0}
+  _initFieldOfView: 0
+  _initPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &470745636
 GameObject:
   m_ObjectHideFlags: 0
@@ -14786,7 +14843,7 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  cameraMoveOnClick: {fileID: 0}
+  gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
@@ -24208,8 +24265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1484c59e52fab1043937ac0d9ad50dbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 10
-  _height: 10
   _tilePrefab: {fileID: 1333433713}
   _canvasGalactic: {fileID: 1195700023}
 --- !u!1 &889922729
@@ -26898,6 +26953,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1066171211}
   m_CullTransparentMesh: 1
+--- !u!1 &1067984787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1067984789}
+  - component: {fileID: 1067984788}
+  m_Layer: 5
+  m_Name: LoadGamePanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1067984788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067984787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04f790d0bf351146b7db825dceaceff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 0}
+--- !u!224 &1067984789
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067984787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 49629552}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1074826592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28829,7 +28933,6 @@ MonoBehaviour:
   _movementSpeed: 10
   _speedAccelerationFactor: 1.5
   _initPositonButton: 114
-  _cameraMoveOnClick: {fileID: 2110164449}
   lookAtOffset: 2
   _rotateSpeed: 20
   maxRotation: 20
@@ -28841,6 +28944,8 @@ MonoBehaviour:
   combatStopGalacticPlay: {fileID: 563330764}
   returnToGalaxyFromSystemView: {fileID: 556048600}
   buttonFleets: {fileID: 1099698884}
+  _pubilicCameraGalactica: {fileID: 45544412}
+  cameraZoomed: 0
 --- !u!1 &1162540796
 GameObject:
   m_ObjectHideFlags: 0
@@ -31210,7 +31315,7 @@ MonoBehaviour:
   civilizationData: {fileID: 1863091656}
   cameraMultiTarget: {fileID: 807690122}
   cameraManagerGalactica: {fileID: 1160279386}
-  cameraMoveOnClick: {fileID: 2110164449}
+  gridManager: {fileID: 885219057}
   cameraGalactica: {fileID: 45544412}
   cameraTelescope: {fileID: 675372015}
   combat: {fileID: 697508099}
@@ -31220,8 +31325,8 @@ MonoBehaviour:
   Canvas: {fileID: 572942814}
   CanvasGalactic: {fileID: 1195700020}
   _SinglePlayer: {fileID: 2141310086}
-  _MultiPlayer: {fileID: 553410909}
-  _LoadGamePanel: {fileID: 354149417}
+  _MultiPlayer: {fileID: 5684185}
+  _LoadGamePanel: {fileID: 1067984788}
   _SaveGamePanel: {fileID: 2145219097}
   _SettingsGamePanel: {fileID: 1595721849}
   _ExitQuit: {fileID: 1398289160}
@@ -31961,7 +32066,6 @@ RectTransform:
   - {fileID: 914893810}
   - {fileID: 625295888}
   - {fileID: 296507808}
-  - {fileID: 2110164448}
   - {fileID: 1171831152}
   - {fileID: 491606037}
   - {fileID: 1804780003}
@@ -32021,6 +32125,7 @@ RectTransform:
   m_Children:
   - {fileID: 2095206507}
   - {fileID: 1397952229}
+  - {fileID: 5684186}
   m_Father: {fileID: 726855481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -45455,7 +45560,7 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  cameraMoveOnClick: {fileID: 0}
+  gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
@@ -53853,7 +53958,7 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  cameraMoveOnClick: {fileID: 0}
+  gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
@@ -59702,57 +59807,6 @@ Transform:
   - {fileID: 1262117641}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2110164447
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2110164448}
-  - component: {fileID: 2110164449}
-  m_Layer: 6
-  m_Name: CameraMoveOnClick
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2110164448
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110164447}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1195700024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2110164449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110164447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50b6990f94b0b0479d3738ae6a83eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraManagerGalactica: {fileID: 1160279386}
-  cam: {fileID: 45544412}
-  cameraZoomed: 0
 --- !u!1 &2114013900
 GameObject:
   m_ObjectHideFlags: 0
