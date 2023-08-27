@@ -15,8 +15,14 @@ namespace BOTF3D_GalaxyMap
 
         private void Awake()
         {
+           
             lineRenderer = GetComponent<LineRenderer>();
         }
+        //public GalaxyDropLine(LineRenderer lineRender)
+        //{
+        //    if (lineRender == null)
+        //    lineRenderer = lineRender;
+        //}
         public void SetUpLine(Transform[] points)
         {
             

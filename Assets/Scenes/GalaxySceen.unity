@@ -3297,6 +3297,7 @@ Transform:
   - {fileID: 2099772395}
   - {fileID: 1099698885}
   - {fileID: 574892381}
+  - {fileID: 1068485262}
   m_Father: {fileID: 1528842457}
   m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!114 &45544410
@@ -3431,13 +3432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50b6990f94b0b0479d3738ae6a83eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraManagerGalactica: {fileID: 1160279386}
-  cam: {fileID: 45544412}
-  cameraZoomed: 0
-  colliderName: 
-  _initRotation: {x: 0, y: 0, z: 0}
-  _initFieldOfView: 0
-  _initPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &45544415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9203,20 +9197,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galaxyShipList: []
+  shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _origin: {fileID: 0}
-  _destination: {fileID: 0}
   _location: {fileID: 0}
-  _lineDrawSpeed: 0
+  canvasGalactic: {fileID: 1195700023}
+  _galaxyPlanePoint: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  target: {fileID: 0}
-  newTarget: 0
   inDeepSpace: 0
-  movementSpeed: 0
-  rotationalDamp: 0
-  destinationList: []
+  warpSpeed: 0
 --- !u!1 &300791551
 GameObject:
   m_ObjectHideFlags: 0
@@ -10507,6 +10496,63 @@ RectTransform:
   m_AnchoredPosition: {x: 560, y: -10}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &411998742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 411998743}
+  - component: {fileID: 411998744}
+  m_Layer: 6
+  m_Name: Fleet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &411998743
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411998742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1068485262}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &411998744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411998742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipsInFeet: []
+  _civilization: 0
+  _techPoints: 0
+  _location: {fileID: 0}
+  canvasGalactic: {fileID: 0}
+  _galaxyPlanePoint: {fileID: 0}
+  _insigniaSprite: {fileID: 0}
+  inDeepSpace: 0
+  warpSpeed: 0
 --- !u!1 &424524825
 GameObject:
   m_ObjectHideFlags: 0
@@ -11603,13 +11649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50b6990f94b0b0479d3738ae6a83eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraManagerGalactica: {fileID: 0}
-  cam: {fileID: 45544412}
-  cameraZoomed: 0
-  colliderName: 
-  _initRotation: {x: 0, y: 0, z: 0}
-  _initFieldOfView: 0
-  _initPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &470745636
 GameObject:
   m_ObjectHideFlags: 0
@@ -18781,6 +18820,140 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!1 &669499609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 669499610}
+  - component: {fileID: 669499612}
+  - component: {fileID: 669499611}
+  m_Layer: 6
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &669499610
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669499609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1068485262}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &669499611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669499609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Reset View
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 46
+  m_fontSizeBase: 46
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &669499612
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669499609}
+  m_CullTransparentMesh: 1
 --- !u!1 &670529372
 GameObject:
   m_ObjectHideFlags: 0
@@ -23299,13 +23472,13 @@ MonoBehaviour:
   fleetManager: {fileID: 1432764803}
   solarSystemView: {fileID: 1538149116}
   galaxyDropLine: {fileID: 1288255190}
+  galaxyFirstFleetDropLine: {fileID: 1288255190}
   hoverTips: {fileID: 605296299}
   hoverTipManager: {fileID: 1696207954}
   canvasGalactic: {fileID: 1195700023}
   PanelFleetManager: {fileID: 1432764803}
   NumbersForSystem: 
   zoomLevels: 150000000000
-  _cameraGalactica: {fileID: 45544412}
   _mesh: {fileID: 0}
   _material: {fileID: 0}
   _lineEndpointPrefab: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
@@ -24637,20 +24810,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galaxyShipList: []
+  shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _origin: {fileID: 0}
-  _destination: {fileID: 0}
   _location: {fileID: 0}
-  _lineDrawSpeed: 6
+  canvasGalactic: {fileID: 0}
+  _galaxyPlanePoint: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  target: {fileID: 0}
-  newTarget: 0
   inDeepSpace: 0
-  movementSpeed: 0
-  rotationalDamp: 0
-  destinationList: []
+  warpSpeed: 0
 --- !u!1 &923451405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
@@ -27002,6 +27170,153 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1068485261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068485262}
+  - component: {fileID: 1068485266}
+  - component: {fileID: 1068485265}
+  - component: {fileID: 1068485264}
+  - component: {fileID: 1068485263}
+  m_Layer: 6
+  m_Name: ResetViewButton
+  m_TagString: ButtonStopGalacticPlay
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1068485262
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 7300}
+  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 669499610}
+  - {fileID: 411998743}
+  m_Father: {fileID: 45544409}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -3147, y: -2829}
+  m_SizeDelta: {x: 300, y: 76}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1068485263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1068485264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.12941177}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1068485265}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1160279386}
+        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.CameraManagerGalactica, Assembly-CSharp
+        m_MethodName: ResetGalacticCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GameManager.EndGalacticPlayClicked
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1068485265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1068485266
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_CullTransparentMesh: 1
 --- !u!114 &1074826592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27721,7 +28036,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.12941177}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -27741,9 +28056,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 807470229}
-        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.GalaxyView, Assembly-CSharp
-        m_MethodName: EnterFleetManager
+      - m_Target: {fileID: 1160279386}
+        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.CameraManagerGalactica, Assembly-CSharp
+        m_MethodName: ResetGalacticCamera
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28944,6 +29259,7 @@ MonoBehaviour:
   combatStopGalacticPlay: {fileID: 563330764}
   returnToGalaxyFromSystemView: {fileID: 556048600}
   buttonFleets: {fileID: 1099698884}
+  buttonResetView: {fileID: 1068485261}
   _pubilicCameraGalactica: {fileID: 45544412}
   cameraZoomed: 0
 --- !u!1 &1162540796
@@ -29566,7 +29882,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  warpSpeed: 1
+  warpSpeed: 0
+  endpointPrefab: {fileID: 2218199268191981727, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -32048,6 +32365,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 807470228}
+  - {fileID: 1171831152}
   - {fileID: 885219056}
   - {fileID: 1288255189}
   - {fileID: 1674043620}
@@ -32066,7 +32384,6 @@ RectTransform:
   - {fileID: 914893810}
   - {fileID: 625295888}
   - {fileID: 296507808}
-  - {fileID: 1171831152}
   - {fileID: 491606037}
   - {fileID: 1804780003}
   - {fileID: 559159800}
@@ -34505,8 +34822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56239f843a16d9e4e9be1c08df1da45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.2793699, g: 0.8113208, b: 0.71995944, a: 0.27058825}
-  _offsetColor: {r: 0.3186632, g: 0.78879637, b: 0.8773585, a: 0.2784314}
+  _baseColor: {r: 0.36078432, g: 0.4692035, b: 0.9254902, a: 0.14117648}
+  _offsetColor: {r: 0.9056604, g: 0.90514654, b: 0.8321823, a: 0}
   _renderer: {fileID: 882956354}
 --- !u!1 &1335244625
 GameObject:

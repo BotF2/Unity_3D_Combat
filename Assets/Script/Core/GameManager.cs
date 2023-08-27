@@ -1672,7 +1672,7 @@ namespace BOTF3D_Core
                 case State.MAIN_INIT:
                     //ToDo; SetGalaxyMapSize();
                     
-                    fleet.SendTheAllSystemsList(AllSystemsList);
+                    //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
                     starSysData.LoadSystemDictionary(_galaxyStarCount);
                     civData.LoadDictionaryOfCivs(this._galaxyStarCount);
@@ -1712,6 +1712,7 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP:
                     cameraManagerGalactica.ActivateCombatStopGalacticPlay(true);
                     cameraManagerGalactica.ActivateButtonFleets(true);
+                    cameraManagerGalactica.ActivateRestViewButton(true);
                     cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
                     cameraGalactica.enabled = true;
                     cameraTelescope.enabled = true;
@@ -1737,6 +1738,7 @@ namespace BOTF3D_Core
                 case State.GALACTIC_MAP_INIT:
                     cameraManagerGalactica.ActivateCombatStopGalacticPlay(false);
                     cameraManagerGalactica.ActivateButtonFleets(false);
+                    cameraManagerGalactica.ActivateRestViewButton(false);
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     PanelLobby_Menu.SetActive(false);

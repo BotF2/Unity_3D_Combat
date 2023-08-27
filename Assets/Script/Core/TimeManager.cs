@@ -39,9 +39,9 @@ namespace BOTF3D_Core
                 timer -= Time.deltaTime;
                 if (moveCounter < 1)
                 {
-                    for (int i = 0; i < GalaxyView._fleetObjInGalaxy.Count; i++)
+                    for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
                     {
-                        var myMoveGalactic = GalaxyView._fleetObjInGalaxy[i].GetComponent<MoveGalacticObjects>();
+                        MoveGalacticObjects myMoveGalactic = GalaxyView._movingGalaxyObjects[i].GetComponent<MoveGalacticObjects>();
                         myMoveGalactic.ThrustVector(); 
                     }
                     moveCounter = 5;

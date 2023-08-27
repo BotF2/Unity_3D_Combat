@@ -108,6 +108,7 @@ namespace BOTF3D_GalaxyMap
         public GameObject combatStopGalacticPlay;
         public GameObject returnToGalaxyFromSystemView;
         public GameObject buttonFleets;
+        public GameObject buttonResetView;
         private float _currentIncrease = 0.1f; // active control of camera movement rate
         private Vector3 _initPosition;
         private Vector3 _initRotation;
@@ -230,6 +231,8 @@ namespace BOTF3D_GalaxyMap
             {
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
+                _pubilicCameraGalactica.fieldOfView = _initFieldOfView;
+                _pubilicCameraGalactica.transform.eulerAngles = _initRotationCam;
                 //_cameraMoveOnClick.cam.fieldOfView = _zoomLevel;
             }
             //Right Mouse Click
@@ -275,10 +278,12 @@ namespace BOTF3D_GalaxyMap
             this.transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y,
                  ClampAngles(transform.rotation.eulerAngles.z, minRotation, maxRotation));
         }
-        public void ResetZoomInCamera()
+        public void ResetGalacticCamera()
         {
             transform.position = _initPosition;
             transform.eulerAngles = _initRotation;
+            _pubilicCameraGalactica.fieldOfView = _initFieldOfView;
+            _pubilicCameraGalactica.transform.eulerAngles = _initRotationCam;
         }
 
         public void ActivateCombatStopGalacticPlay(bool turnOn)
@@ -315,6 +320,17 @@ namespace BOTF3D_GalaxyMap
             else
             {
                 buttonFleets.SetActive(false);
+            }
+        }
+        public void ActivateRestViewButton(bool turnOn)
+        {
+            if (turnOn)
+            {
+                buttonResetView.SetActive(true);
+            }
+            else
+            {
+                buttonResetView.SetActive(false);
             }
         }
 
