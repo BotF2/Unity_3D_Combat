@@ -42,7 +42,8 @@ namespace BOTF3D_Core
                     for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
                     {
                         MoveGalacticObjects myMoveGalactic = GalaxyView._movingGalaxyObjects[i].GetComponent<MoveGalacticObjects>();
-                        myMoveGalactic.ThrustVector(); 
+                        myMoveGalactic.ThrustVector(); // move galaxy objects
+                       // myMoveGalactic.MovePlanePoint(); // move objects plane endpoints
                     }
                     moveCounter = 5;
                 }

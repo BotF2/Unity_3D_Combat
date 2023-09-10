@@ -35,7 +35,9 @@ namespace BOTF3D_GalaxyMap
             if (lineRenderer != null && points != null)
             {
                 for (int i = 0; i < points.Length; i++ )
-                { lineRenderer.SetPosition(i, points[i].position); }
+                {
+                    lineRenderer.SetPosition(i, points[i].position);
+                }
             }
         }
     }

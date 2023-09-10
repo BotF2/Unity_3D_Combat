@@ -19,6 +19,7 @@ namespace BOTF3D_GalaxyMap
         [SerializeField]
         Canvas _canvasGalactic;
         List<Tile> _tile;
+        
         //private Transform _cam;
 
         private void Start()

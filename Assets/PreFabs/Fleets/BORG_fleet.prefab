@@ -35,7 +35,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -104,20 +103,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galaxyShipList: []
+  shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _origin: {fileID: 0}
-  _destination: {fileID: 0}
-  _location: {fileID: 0}
-  _lineDrawSpeed: 6
+  canvasGalactic: {fileID: 0}
+  galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  target: {fileID: 0}
-  newTarget: 0
   inDeepSpace: 0
-  movementSpeed: 0
-  rotationalDamp: 0
-  destinationList: []
+  warpSpeed: 0
 --- !u!136 &-7574215791769629436
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,5 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3139d45223e87a4ab4558066823be1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  galaxyView: {fileID: 0}
   target: {fileID: 0}
   warpSpeed: 0
+  planeEndPoint: {fileID: 0}

@@ -18,12 +18,12 @@ namespace BOTF3D_GalaxyMap
 
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
-        //public MoveGalacticObjects moveGalacticObjects;
+        public MoveGalacticObjects thisMovingObject;
         public NextSolarSystem nextSolarSystem;
-        public GameObject fleetManager;
+        public GridManager gridManager;
         public SolarSystemView solarSystemView;
-        public GalaxyDropLine galaxyDropLine;
-        public GalaxyDropLine galaxyFirstFleetDropLine;
+        public GalaxyDropLine systemDropLine;
+        public GalaxyDropLine fleetDropLine;
         [SerializeField]
         public HoverTips hoverTips;
         public HoverTipManager hoverTipManager;
@@ -358,21 +358,19 @@ namespace BOTF3D_GalaxyMap
         #endregion
         private List<GameObject> sysEmptyList;
         private List<GameObject> fleetEmptyList;
+        public static GameObject galaxyTile;
         public List<int> NumbersForSystem;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
         Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
-        public static List<GameObject> _ObjectsInGalaxy = new List<GameObject>();
+        public static List<GameObject> _objectsInGalaxy = new List<GameObject>();
         public static List<GameObject> _movingGalaxyObjects = new List<GameObject>();
-        // private OrbitalGalactic mySolarSystem; // star and planets
-
-        // See Box Collider in Game view, Galaxy
-        //public Camera _cameraGalactica;
+        
         public Mesh _mesh;
         public Material _material;
         public GameObject _lineEndpointPrefab;
-        //public GameObject _fleetLineEndpointPrefab; moved to fleet
+        public GameObject _fleetLineEndpointPrefab; 
         public GameObject _systemSpherePrefab;
         public Vector3 _systemPosition;
    
@@ -713,37 +711,36 @@ namespace BOTF3D_GalaxyMap
         }
         void Update()
         {
-            if (ourGalaxy == null)
-                return;
+            //if (ourGalaxy == null)
+            //    return;
 
             // loop systems and updating data 
-            else
+            if (_movingGalaxyObjects.Count != 0)
             {
-                // ToDo: update system buttons features, owner color
-                // UpdateSystemButtons(SolarSystem)
-            }
-            if (_ObjectsInGalaxy.Count != 0)
-            {
-                foreach (var fleetObject in _ObjectsInGalaxy)
+                foreach (var fleetObject in _movingGalaxyObjects)
                 {
-                    if (fleetObject.GetComponent<Fleet>() != null)
-                    {
+                    //if (fleetObject.GetComponent<Fleet>() != null)
+                    //{
                         var myFleet = fleetObject.GetComponent<Fleet>();
-                        if (myFleet.shipsInFeet.Count != 0)
-                            if (myFleet.warpSpeed != 0 && !_movingGalaxyObjects.Contains(myFleet.gameObject))
-                            {
-                                _movingGalaxyObjects.Add(myFleet.gameObject);
-                            }
-                            else if(_movingGalaxyObjects.Contains(myFleet.gameObject))
-                            {
-                                _movingGalaxyObjects.Remove(myFleet.gameObject);
-                            }
-                        else
-                        {
-                            _ObjectsInGalaxy.Remove(fleetObject); // destroy fleets with no ships
-                            fleetObject.IsDestroyed();
-                        }
-                    }
+                        float x = myFleet.gameObject.transform.localPosition.x;
+                        float y = myFleet.gameObject.transform.localPosition.y;
+                        //myFleet.gameObject.transform.SetParent(canvasGalactic.transform, false);
+                        Vector3 worldSpace = new Vector3(x, y, 600f);
+                        myFleet.galaxyPlaneGO.transform.Translate(worldSpace, Space.World);
+                        //if (myFleet.shipsInFeet.Count != 0)
+                        //if (myFleet.warpSpeed != 0)
+                        //{
+
+
+                        //}
+
+                        //else
+                        //{
+                        //    _objectsInGalaxy.Remove(fleetObject); // destroy fleets with no ships
+                        //    fleetObject.IsDestroyed();
+                        //}
+                    //}
+                    
                 }
             }
         }
@@ -780,8 +777,9 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
-                        GalaxyDropLine line = Instantiate(galaxyDropLine, new Vector3(0, 0, 0), Quaternion.identity);
+                        GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(0, 0, 0), Quaternion.identity);
                         line.name = sysEmptyList[sysIndex].name + "_line";
+
                         GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
                         emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_EndPoint";
 
@@ -803,6 +801,8 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+                    _objectsInGalaxy.Add(starSystemNewGameOb);
+
                  
                     
                     //starSystemNewGameOb.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = Screen.height/20;
@@ -828,38 +828,42 @@ namespace BOTF3D_GalaxyMap
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey],
                             new Vector3(0, 0, 0), Quaternion.identity);
                         // firstFleetOfSystem.transform.SetParent ???
-                        firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false); 
+                        firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false); ; 
                         firstFleetOfSystem.transform.position = sysEmptyList[sysIndex].transform.position;
                         firstFleetOfSystem.transform.Translate(0, -5, 15);
                         firstFleetOfSystem.transform.localScale = new Vector3(2, 2, 2);
                         firstFleetOfSystem.layer = 6;
                         firstFleetOfSystem.SetActive(true);
-                        Fleet firstFleet = firstFleetOfSystem.GetComponent<Fleet>();
-                        firstFleet.gameObject.SetActive(true);
+                        firstFleetOfSystem.name = sysEmptyList[sysIndex].name + "_fleet";
+                        Fleet firstFleet = firstFleetOfSystem.GetComponent<Fleet>();    
                         firstFleet.inDeepSpace = false;
-                        firstFleet._location = starSystemNewGameOb.transform;
+                     
                         theCiv.civFleetList = new List<Fleet> { firstFleet };
-                        _ObjectsInGalaxy.Add(firstFleet.gameObject);
-                        //_movingGalaxyObjects.Add(firstFleet.gameObject);
-                        //int x = int.Parse(SystemDataDictionary[sysIndex][1]);
-                        //int y = int.Parse(SystemDataDictionary[sysIndex][2]) - 5;
-                        //GameObject emptyForFleetPlanePoint = Instantiate(_fleetLineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
-                        GalaxyDropLine fleetLine = Instantiate(galaxyFirstFleetDropLine, 
-                            new Vector3(0,0,0), Quaternion.identity);
-
-                        //emptyForFleetPlanePoint.transform.SetParent(canvasGalactic.transform, false);
-
-                        //emptyForFleetPlanePoint.layer = 6;
-                        //emptyForFleetPlanePoint.name = sysEmptyList[sysIndex].name + "_FirstFleetEndPoint";
-                        //firstFleet._galaxyPlanePoint = emptyForFleetPlanePoint.transform;
+                        _objectsInGalaxy.Add(firstFleet.gameObject);
+                        _movingGalaxyObjects.Add(firstFleet.gameObject);
+                        float x = firstFleetOfSystem.transform.localPosition.x;
+                        float y = firstFleetOfSystem.transform.localPosition.y;
+                        GalaxyDropLine fleetLine = Instantiate(systemDropLine, new Vector3(0,0,0), Quaternion.identity);
+                        fleetLine.name = firstFleetOfSystem.name + "_line";
                         
-                        //Transform[] endFleetPoints = new Transform[2] { firstFleet.transform, emptyForFleetPlanePoint.transform };
-                        //fleetLine.SetUpLine(endFleetPoints);
+                        GameObject fleetPlaneGameObj = Instantiate(_fleetLineEndpointPrefab,
+                            new Vector3(x,y,600f), Quaternion.identity);
+                        fleetPlaneGameObj.name = sysEmptyList[sysIndex].name + "_FirstFleetEndPoint";
+                        fleetPlaneGameObj.transform.SetParent(canvasGalactic.transform, false);
+                      
+                        fleetPlaneGameObj.layer = 6;
+                        firstFleet.galaxyPlaneGO = fleetPlaneGameObj;
+                        // fleetPlaneGameObj.SetActive(true);
+
+                        Transform[] endFleetPoints = new Transform[2] 
+                            { firstFleetOfSystem.transform, fleetPlaneGameObj.transform };
+                        fleetLine.SetUpLine(endFleetPoints);
                         // Temp get fleets moving to galatic center
                         GameObject targetWeMoveTo = new GameObject();
                         targetWeMoveTo.transform.position = new Vector3(0, 0, 0);
-                        MoveGalacticObjects moveGalacticObjects = firstFleet.GetComponent<MoveGalacticObjects>();
-                        moveGalacticObjects.BoldlyGo(firstFleet.gameObject, targetWeMoveTo, 5f, fleetLine);
+                        MoveGalacticObjects moveGalacticObject = firstFleet.GetComponent<MoveGalacticObjects>();
+                        thisMovingObject = moveGalacticObject;
+                        thisMovingObject.BoldlyGo(firstFleet, targetWeMoveTo, 5f); //, fleetLine);
 
                     }
 
@@ -886,6 +890,12 @@ namespace BOTF3D_GalaxyMap
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
         }
+        void MoveGalacticDropLines()
+        {
+
+        }
+
+
         private void RandomizeMap()
         {
 
@@ -1014,19 +1024,19 @@ namespace BOTF3D_GalaxyMap
             }
             #endregion
         }
-        public void ExitFleetManager()
-        {
-            fleetManager.SetActive(false);
-        }
-        public void EnterFleetManager()
-        {
-            if (fleetManager.active == false)
-            {
-                //fleetManager.SetActive(true);
-                fleetManager.SetActiveRecursively(true);
-            }
-            else fleetManager.SetActiveRecursively(false);
-        }
+        //public void ExitFleetManager()
+        //{
+        //    fleetManager.SetActive(false);
+        //}
+        //public void EnterFleetManager()
+        //{
+        //    if (fleetManager.active == false)
+        //    {
+        //        //fleetManager.SetActive(true);
+        //        fleetManager.SetActiveRecursively(true);
+        //    }
+        //    else fleetManager.SetActiveRecursively(false);
+        //}
         //public static void DrawColliderMesh(Mesh mesh, Matrix4x4 matrix, Material material, int layer, Camera camera = null, int submeshindex = 0, MaterialPropertyBlock properties =null, bool castShadows)
         //{
 

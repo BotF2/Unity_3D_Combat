@@ -9200,9 +9200,8 @@ MonoBehaviour:
   shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _location: {fileID: 0}
   canvasGalactic: {fileID: 1195700023}
-  _galaxyPlanePoint: {fileID: 0}
+  galaxyPlaneGO: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
   _insigniaSprite: {fileID: 0}
   inDeepSpace: 0
   warpSpeed: 0
@@ -10547,9 +10546,8 @@ MonoBehaviour:
   shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _location: {fileID: 0}
   canvasGalactic: {fileID: 0}
-  _galaxyPlanePoint: {fileID: 0}
+  galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
   inDeepSpace: 0
   warpSpeed: 0
@@ -23468,11 +23466,12 @@ MonoBehaviour:
   gameManager: {fileID: 1187732007}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
+  thisMovingObject: {fileID: 0}
   nextSolarSystem: {fileID: 1759457393}
-  fleetManager: {fileID: 1432764803}
+  gridManager: {fileID: 885219057}
   solarSystemView: {fileID: 1538149116}
-  galaxyDropLine: {fileID: 1288255190}
-  galaxyFirstFleetDropLine: {fileID: 1288255190}
+  systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
+  fleetDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
   hoverTips: {fileID: 605296299}
   hoverTipManager: {fileID: 1696207954}
   canvasGalactic: {fileID: 1195700023}
@@ -23482,6 +23481,7 @@ MonoBehaviour:
   _mesh: {fileID: 0}
   _material: {fileID: 0}
   _lineEndpointPrefab: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
+  _fleetLineEndpointPrefab: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
   _systemSpherePrefab: {fileID: 8073333632421716659, guid: 4822127584c666a43bb612c9319efd6a, type: 3}
   _systemPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &807690121
@@ -24813,9 +24813,8 @@ MonoBehaviour:
   shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _location: {fileID: 0}
   canvasGalactic: {fileID: 0}
-  _galaxyPlanePoint: {fileID: 0}
+  galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
   inDeepSpace: 0
   warpSpeed: 0
@@ -29881,9 +29880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3139d45223e87a4ab4558066823be1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  galaxyView: {fileID: 807470229}
   target: {fileID: 0}
   warpSpeed: 0
-  endpointPrefab: {fileID: 2218199268191981727, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
+  planeEndPoint: {fileID: 0}
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -32282,6 +32282,7 @@ GameObject:
   - component: {fileID: 1195700022}
   - component: {fileID: 1195700021}
   - component: {fileID: 1195700025}
+  - component: {fileID: 1195700026}
   m_Layer: 6
   m_Name: CanvasGalactic
   m_TagString: GalacticCanvas
@@ -32412,6 +32413,39 @@ MonoBehaviour:
   tipText: {fileID: 1502799076}
   tipWindow: {fileID: 266983070}
   starSystemData: {fileID: 2090482233}
+--- !u!114 &1195700026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195700020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c7610e9682a2445b1597977baf6093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1187732007}
+  cameraManagerGalactica: {fileID: 1160279386}
+  starSystemData: {fileID: 2090482233}
+  thisMovingObject: {fileID: 1171831153}
+  nextSolarSystem: {fileID: 1759457393}
+  gridManager: {fileID: 0}
+  solarSystemView: {fileID: 1538149116}
+  systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
+  fleetDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
+  hoverTips: {fileID: 605296299}
+  hoverTipManager: {fileID: 1696207954}
+  canvasGalactic: {fileID: 1195700023}
+  PanelFleetManager: {fileID: 0}
+  NumbersForSystem: 
+  zoomLevels: 150000000000
+  _mesh: {fileID: 0}
+  _material: {fileID: 0}
+  _lineEndpointPrefab: {fileID: 0}
+  _fleetLineEndpointPrefab: {fileID: 0}
+  _systemSpherePrefab: {fileID: 0}
+  _systemPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1208553311
 GameObject:
   m_ObjectHideFlags: 0
@@ -33859,17 +33893,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7134927743425125001, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
   m_PrefabInstance: {fileID: 4256085197602283691}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1288255190 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
-  m_PrefabInstance: {fileID: 4256085197602283691}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1288255188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73102eb551419f74cb49fd317d4254fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1288255192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34822,8 +34845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56239f843a16d9e4e9be1c08df1da45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.36078432, g: 0.4692035, b: 0.9254902, a: 0.14117648}
-  _offsetColor: {r: 0.9056604, g: 0.90514654, b: 0.8321823, a: 0}
+  _baseColor: {r: 0.36078432, g: 0.4692035, b: 0.9254902, a: 0.29803923}
+  _offsetColor: {r: 0.9056604, g: 0.90514654, b: 0.8321823, a: 0.043137256}
   _renderer: {fileID: 882956354}
 --- !u!1 &1335244625
 GameObject:

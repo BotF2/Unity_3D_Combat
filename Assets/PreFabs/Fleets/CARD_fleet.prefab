@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1674423119136610005}
   - component: {fileID: 1588476979324043018}
   - component: {fileID: -4444255922997881843}
+  - component: {fileID: -3225810710773493908}
   m_Layer: 6
   m_Name: CARD_fleet
   m_TagString: Untagged
@@ -35,7 +36,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -104,20 +104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  galaxyShipList: []
+  shipsInFeet: []
   _civilization: 0
   _techPoints: 0
-  _origin: {fileID: 0}
-  _destination: {fileID: 0}
-  _location: {fileID: 0}
-  _lineDrawSpeed: 6
+  canvasGalactic: {fileID: 0}
+  galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  target: {fileID: 0}
-  newTarget: 0
   inDeepSpace: 0
-  movementSpeed: 0
-  rotationalDamp: 0
-  destinationList: []
+  warpSpeed: 0
 --- !u!136 &1588476979324043018
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,5 +147,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3139d45223e87a4ab4558066823be1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  galaxyView: {fileID: 0}
   target: {fileID: 0}
   warpSpeed: 0
+  planeEndPoint: {fileID: 0}
+--- !u!114 &-3225810710773493908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2369376019372463250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c7610e9682a2445b1597977baf6093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
+  starSystemData: {fileID: 0}
+  thisMovingObject: {fileID: 0}
+  nextSolarSystem: {fileID: 0}
+  solarSystemView: {fileID: 0}
+  systemDropLine: {fileID: 0}
+  fleetDropLine: {fileID: 0}
+  hoverTips: {fileID: 0}
+  hoverTipManager: {fileID: 0}
+  canvasGalactic: {fileID: 0}
+  PanelFleetManager: {fileID: 0}
+  NumbersForSystem: 
+  zoomLevels: 150000000000
+  _mesh: {fileID: 0}
+  _material: {fileID: 0}
+  _lineEndpointPrefab: {fileID: 0}
+  _fleetLineEndpointPrefab: {fileID: 0}
+  _systemSpherePrefab: {fileID: 0}
+  _systemPosition: {x: 0, y: 0, z: 0}

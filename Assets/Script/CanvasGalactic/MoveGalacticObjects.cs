@@ -12,7 +12,7 @@ namespace BOTF3D_GalaxyMap
 {
     public class MoveGalacticObjects : MonoBehaviour
     {
-        //public GalaxyView galaxyView;
+        public GalaxyView galaxyView;
         [SerializeField]
         private GameObject target;
         [SerializeField]
@@ -23,8 +23,8 @@ namespace BOTF3D_GalaxyMap
         Transform lastTrans;
         Vector3 myTargetPosition;
         Transform _galaxyPlanePoint;
-        public GameObject endpointPrefab;
-        private GalaxyDropLine galaxyDropLine;
+        public GameObject planeEndPoint;
+        //private GalaxyDropLine galaxyDropLine;
 
         private void Awake()
         {
@@ -32,39 +32,50 @@ namespace BOTF3D_GalaxyMap
         }
         private void Update()
         {
-            if (myTrans != null && lastTrans != null)
-            {
-                if (myTrans.transform != lastTrans.transform)
-                {
-                    var fleet = this.GetComponentInParent<Fleet>();
-                    if (fleet._galaxyPlanePoint != null)
-                    {
-                        Vector3 planePint = new Vector3(myTrans.position.x, myTrans.position.y, 600f);
-                        GameObject emptyForFleetPlanePoint = Instantiate(endpointPrefab, planePint, Quaternion.identity);
-                        Transform[] endFleetPoints = new Transform[2] { myTrans, emptyForFleetPlanePoint.transform };
-                        galaxyDropLine.SetUpLine(endFleetPoints);
-                    }
-                }
-            }
+            //if (myTrans != null && lastTrans != null)
+            //{
+            //    if (myTrans.transform != lastTrans.transform)
+            //    {
+            //        var fleet = this.GetComponentInParent<Fleet>();
+            //        if (fleet._galaxyPlanePoint != null)
+            //        {
+            //            Vector3 planePint = new Vector3(myTrans.position.x, myTrans.position.y, 600f);
+            //            GameObject emptyForFleetPlanePoint = Instantiate(endpointPrefab, planePint, Quaternion.identity);
+            //            Transform[] endFleetPoints = new Transform[2] { myTrans, emptyForFleetPlanePoint.transform };
+            //            galaxyDropLine.SetUpLine(endFleetPoints);
+            //        }
+            //    }
+            //}
 
         }
-        public void BoldlyGo(GameObject myGameObject, GameObject myTarget, float myWarpSpeed, GalaxyDropLine fleetLine)
+        public void BoldlyGo(Fleet fleet, GameObject myTarget, float myWarpSpeed) //, GalaxyDropLine fleetLine)
         {
-            if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(myGameObject))
+            if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
             {
-                GalaxyView._movingGalaxyObjects.Remove(myGameObject);
+                GalaxyView._movingGalaxyObjects.Remove(fleet.gameObject);
                 return;
             }
-            else if (!GalaxyView._movingGalaxyObjects.Contains(myGameObject))
+            else if (!GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
             {
-                GalaxyView._movingGalaxyObjects.Add(myGameObject);
+                GalaxyView._movingGalaxyObjects.Add(fleet.gameObject);
             }
-            galaxyDropLine = fleetLine;
-            myTrans = myGameObject.transform;
+            //galaxyDropLine = fleetLine;
+            myTrans = fleet.transform;
             lastTrans = myTrans;
             myTargetPosition = myTarget.transform.position;
             warpSpeed = myWarpSpeed;
             
+        }
+        public void MovePlanePoint()
+        {
+            //for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
+            //{
+            //    Fleet ourFleet = GalaxyView._movingGalaxyObjects[i].GetComponent<Fleet>();
+            //    Vector3 planeEndPoint = new Vector3(
+            //        ourFleet.transform.position.x, ourFleet.transform.position.y, 600f);
+            //    ourFleet.galaxyPlanePoint.Translate(planeEndPoint, Space.World);
+                
+            //}
         }
         //private void SetObjectTrans(GameObject myObject)
         //{
