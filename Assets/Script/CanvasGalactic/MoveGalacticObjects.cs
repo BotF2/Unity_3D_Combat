@@ -15,15 +15,16 @@ namespace BOTF3D_GalaxyMap
         public GalaxyView galaxyView;
         [SerializeField]
         private GameObject target;
+        private GameObject planeEndPoint;
         [SerializeField]
         public float warpSpeed = 5f;
         private float realSpeedFactor = 0.05f;
 
         Transform myTrans;
-        Transform lastTrans;
+        //Transform lastTrans;
         Vector3 myTargetPosition;
-        Transform _galaxyPlanePoint;
-        public GameObject planeEndPoint;
+        Transform _galaxyPlaneTrans;
+        //public GameObject planeEndPoint;
         //private GalaxyDropLine galaxyDropLine;
 
         private void Awake()
@@ -48,7 +49,7 @@ namespace BOTF3D_GalaxyMap
             //}
 
         }
-        public void BoldlyGo(Fleet fleet, GameObject myTarget, float myWarpSpeed) //, GalaxyDropLine fleetLine)
+        public void BoldlyGo(Fleet fleet, GameObject myTarget, GameObject newPlaneEndPoint, float myWarpSpeed) //, GalaxyDropLine fleetLine)
         {
             if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
             {
@@ -61,70 +62,27 @@ namespace BOTF3D_GalaxyMap
             }
             //galaxyDropLine = fleetLine;
             myTrans = fleet.transform;
-            lastTrans = myTrans;
+            //lastTrans = myTrans;
             myTargetPosition = myTarget.transform.position;
             warpSpeed = myWarpSpeed;
-            
-        }
-        public void MovePlanePoint()
-        {
-            //for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
-            //{
-            //    Fleet ourFleet = GalaxyView._movingGalaxyObjects[i].GetComponent<Fleet>();
-            //    Vector3 planeEndPoint = new Vector3(
-            //        ourFleet.transform.position.x, ourFleet.transform.position.y, 600f);
-            //    ourFleet.galaxyPlanePoint.Translate(planeEndPoint, Space.World);
-                
-            //}
-        }
-        //private void SetObjectTrans(GameObject myObject)
-        //{
-            
-        //}
-        //private void ProvideTarget(GameObject myTarget)
-        //{
-        //    target = myTarget; //.GetComponent<GameObject>();
-        //    myTargetPosition = myTrans.position;
-        //}
-        ////public void ProvidGalaxyPlaneTrans(Transform trans)
-        ////{
-        ////    _galaxyPlanePoint = trans;
-        ////}
-        //private void ProvideTargetPosition(Vector3 position)
-        //{
-        //    myTargetPosition = position;
-        //    var myTempOb = new GameObject();
-        //    myTempOb.transform.position = position;
-        //    target = myTempOb;
-        //}
-        //private void MyWarpSpeed(float warpFactor)
-        //{
-        //    warpSpeed = warpFactor;
-        //}
-        //private void OnEnable()
-        //{
-        //    TimeManager.OnMinuteChanged += TimeCheck;
-        //}
-        //private void OnDisable()
-        //{
-        //    TimeManager.OnMinuteChanged -= TimeCheck;
-        //}
-        //private void TimeCheck()
-        //{
-        //    ThrustVector(); // myT.position += myT.forward * warpSpeed; // * Time.deltaTime;
-        //}
+            _galaxyPlaneTrans = newPlaneEndPoint.transform;
 
-        public void ThrustVector()
+        }
+
+        public void ThrustVector() // called from TimeManager
         {
             //myTrans.position += myTrans.forward * warpSpeed; // * Time.deltaTime;
             if (target != null && myTrans != null)
             { 
                 myTrans.position = Vector3.MoveTowards(myTrans.position, target.transform.position, warpSpeed*realSpeedFactor);
-                
+                _galaxyPlaneTrans.position = new Vector3(myTrans.position.x, myTrans.position.y, _galaxyPlaneTrans.position.z);
+                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.y, 600f);
             }
             else if(myTargetPosition != null && myTrans != null)
             {
                 myTrans.position = Vector3.MoveTowards(myTrans.position, myTargetPosition, warpSpeed*realSpeedFactor);
+                _galaxyPlaneTrans.position = new Vector3(myTrans.position.x, myTrans.position.y, _galaxyPlaneTrans.position.z);
+                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.y, 600f);
             }
         }
     }
