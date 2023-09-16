@@ -166,14 +166,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}

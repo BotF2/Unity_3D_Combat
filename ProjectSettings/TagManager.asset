@@ -14,16 +14,26 @@ TagManager:
   - FED_DESTROYER_II(CLONE)
   - FED_SCOUT_II(CLONE)
   - FED_SCOUT_IV(CLONE)
-  - FED_COLONYSHIP_I(CLONE)
   - KLING_CRUISER_II(CLONE)
   - KLING_DESTROYER_I(CLONE)
   - KLING_SCOUT_I(CLONE)
-  - KLING_COLONYSHIP_I(CLONE)
+  - KLING_TRANSPORT_I(CLONE)
   - ROM_CRUISER_II
   - ROM_CRUISER_III(CLONE)
   - ROM_SCOUT_III(CLONE)
   - BORG_CRUISER_II(CLONE)
   - SolarSystemViewObject
+  - HoverTipManager
+  - ButtonStopGalacticPlay
+  - TabDefense
+  - TabResearch
+  - TabSpy
+  - TabIndustry
+  - FleetCamera
+  - FED_TRANSPORT_I(CLONE)
+  - FED_TRANSPORT_I(CLONE)
+  - KLING_TRANSPORT_I(CLONE)
+  - SysOwnerCivImage
   layers:
   - Default
   - TransparentFX
@@ -60,4 +70,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Galactic
+    uniqueID: 2225732755
     locked: 0

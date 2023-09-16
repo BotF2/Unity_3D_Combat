@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using BOTF3D_Combat;
 
 namespace Assets.Script
 {
@@ -34,11 +37,11 @@ namespace Assets.Script
 
 			private BlitSettings settings;
 
-			private RenderTargetIdentifier source { get; set; }
-			private RenderTargetIdentifier destination { get; set; }
+			private RTHandle source { get; set; }
+			private RTHandle destination { get; set; }
 
-			RenderTargetHandle m_TemporaryColorTexture;
-			RenderTargetHandle m_DestinationTexture;
+			RTHandle m_TemporaryColorTexture;
+			RTHandle m_DestinationTexture;
 			string m_ProfilerTag;
 
 			public BlitPass(RenderPassEvent renderPassEvent, BlitSettings settings, string tag)
@@ -47,14 +50,14 @@ namespace Assets.Script
 				this.settings = settings;
 				blitMaterial = settings.blitMaterial;
 				m_ProfilerTag = tag;
-				m_TemporaryColorTexture.Init("_TemporaryColorTexture");
-				if (settings.dstType == Target.TextureID)
-				{
-					m_DestinationTexture.Init(settings.dstTextureId);
-				}
+				//m_TemporaryColorTexture.Init("_TemporaryColorTexture");
+				//if (settings.dstType == Target.TextureID)
+				//{
+				//	m_DestinationTexture.Init(settings.dstTextureId);
+				//}
 			}
 
-			public void Setup(RenderTargetIdentifier source, RenderTargetIdentifier destination)
+			public void Setup(RTHandle source, RTHandle destination)
 			{
 				this.source = source;
 				this.destination = destination;
@@ -83,16 +86,17 @@ namespace Assets.Script
 					{
 						opaqueDesc.graphicsFormat = settings.graphicsFormat;
 					}
-					cmd.GetTemporaryRT(m_DestinationTexture.id, opaqueDesc, filterMode);
+					cmd.GetTemporaryRT(0, 1, 1, 0
+						);
 				}
 
 				//Debug.Log($"src = {source},     dst = {destination} ");
 				// Can't read and write to same color target, use a TemporaryRT
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.GetTemporaryRT(m_TemporaryColorTexture.id, opaqueDesc, filterMode);
-					Blit(cmd, source, m_TemporaryColorTexture.Identifier(), blitMaterial, settings.blitMaterialPassIndex);
-					Blit(cmd, m_TemporaryColorTexture.Identifier(), destination);
+                    cmd.GetTemporaryRT(Shader.PropertyToID(destination.name), 1,1,0);
+                    Blit(cmd, source, destination, blitMaterial, settings.blitMaterialPassIndex);
+					Blit(cmd, source, destination);
 				}
 				else
 				{
@@ -107,12 +111,12 @@ namespace Assets.Script
 			{
 				if (settings.dstType == Target.TextureID)
 				{
-					cmd.ReleaseTemporaryRT(m_DestinationTexture.id);
+                    cmd.ReleaseTemporaryRT(Shader.PropertyToID(destination.name)); ;
 				}
 				if (source == destination || (settings.srcType == settings.dstType && settings.srcType == Target.CameraColor))
 				{
-					cmd.ReleaseTemporaryRT(m_TemporaryColorTexture.id);
-				}
+                    cmd.ReleaseTemporaryRT(Shader.PropertyToID(destination.name));
+                }
 			}
 		}
 
@@ -145,11 +149,11 @@ namespace Assets.Script
 			RenderTextureObject
 		}
 
-		public BlitSettings settings = new BlitSettings();
+		public BlitSettings settings = new();
 
 		public BlitPass blitPass;
 
-		private RenderTargetIdentifier srcIdentifier, dstIdentifier;
+		private RTHandle srcIdentifier, dstIdentifier;
 
 		public override void Create()
 		{
@@ -167,35 +171,35 @@ namespace Assets.Script
 				settings.graphicsFormat = SystemInfo.GetGraphicsFormat(UnityEngine.Experimental.Rendering.DefaultFormat.LDR);
 			}
 
-			UpdateSrcIdentifier();
-			UpdateDstIdentifier();
+			//UpdateSrcIdentifier();
+			//UpdateDstIdentifier();
 		}
 
-		private void UpdateSrcIdentifier()
-		{
-			srcIdentifier = UpdateIdentifier(settings.srcType, settings.srcTextureId, settings.srcTextureObject);
-		}
+		//private void UpdateSrcIdentifier()
+		//{
+		//	srcIdentifier = UpdateIdentifier(settings.srcType, settings.srcTextureId, settings.srcTextureObject);
+		//}
 
-		private void UpdateDstIdentifier()
-		{
-			dstIdentifier = UpdateIdentifier(settings.dstType, settings.dstTextureId, settings.dstTextureObject);
-		}
+		//private void UpdateDstIdentifier()
+		//{
+		//	dstIdentifier = UpdateIdentifier(settings.dstType, settings.dstTextureId, settings.dstTextureObject);
+		//}
 
-		private RenderTargetIdentifier UpdateIdentifier(Target type, string s, RenderTexture obj)
-		{
-			if (type == Target.RenderTextureObject)
-			{
-				return obj;
-			}
-			else if (type == Target.TextureID)
-			{
-				//RenderTargetHandle m_RTHandle = new RenderTargetHandle();
-				//m_RTHandle.Init(s);
-				//return m_RTHandle.Identifier();
-				return s;
-			}
-			return new RenderTargetIdentifier();
-		}
+		//private RTHandle UpdateIdentifier(Target type, string s, RenderTexture obj)
+		//{
+		//	if (type == Target.RenderTextureObject)
+		//	{
+		//		return obj;
+		//	}
+		//	else if (type == Target.TextureID)
+		//	{
+		//		m_RTHandle.Init(s);
+		//		return new RTHandle(this, type);
+		//		//return s;
+		//	}
+		//	return new RTHandle();
+		//}
+		//RTHandle;
 
 		public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
 		{
@@ -216,13 +220,13 @@ namespace Assets.Script
 				{
 					settings.srcType = Target.TextureID;
 					settings.srcTextureId = "_AfterPostProcessTexture";
-					UpdateSrcIdentifier();
+					//UpdateSrcIdentifier();
 				}
 				if (settings.dstType == Target.CameraColor)
 				{
 					settings.dstType = Target.TextureID;
 					settings.dstTextureId = "_AfterPostProcessTexture";
-					UpdateDstIdentifier();
+					//UpdateDstIdentifier();
 				}
 			}
 			else
@@ -232,18 +236,18 @@ namespace Assets.Script
 				{
 					settings.srcType = Target.CameraColor;
 					settings.srcTextureId = "";
-					UpdateSrcIdentifier();
+					//UpdateSrcIdentifier();
 				}
 				if (settings.dstType == Target.TextureID && settings.dstTextureId == "_AfterPostProcessTexture")
 				{
 					settings.dstType = Target.CameraColor;
 					settings.dstTextureId = "";
-					UpdateDstIdentifier();
+					//UpdateDstIdentifier();
 				}
 			}
 
-			var src = (settings.srcType == Target.CameraColor) ? renderer.cameraColorTarget : srcIdentifier;
-			var dest = (settings.dstType == Target.CameraColor) ? renderer.cameraColorTarget : dstIdentifier;
+			var src = (settings.srcType == Target.CameraColor) ? renderer.cameraColorTargetHandle : srcIdentifier;
+			var dest = (settings.dstType == Target.CameraColor) ? renderer.cameraColorTargetHandle : dstIdentifier;
 
 			blitPass.Setup(src, dest);
 			renderer.EnqueuePass(blitPass);

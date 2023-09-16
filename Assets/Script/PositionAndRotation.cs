@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System;
+using BOTF3D_GalaxyMap;
+using BOTF3D_Core;
+using BOTF3D_Combat;
 
 namespace Assets.Script
 {
