@@ -4,28 +4,25 @@ using UnityEngine;
 using BOTF3D_Core;
 using BOTF3D_Combat;
 using Assets.Script;
+using System;
 
 namespace BOTF3D_GalaxyMap
 {
 
     public class GalaxyDropLine : MonoBehaviour
     {
+        //private GameObject gameObject;
         private LineRenderer lineRenderer;
         private Transform[] points;
 
         private void Awake()
-        {
-           
+        {       
             lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.gameObject.layer = 7; // the default gameObject for our lines will showup so set it to "NoSeeEm" layer
         }
-        //public GalaxyDropLine(LineRenderer lineRender)
-        //{
-        //    if (lineRender == null)
-        //    lineRenderer = lineRender;
-        //}
+
         public void SetUpLine(Transform[] points)
-        {
-            
+        {     
             //lineRenderer.alignment = LineAlignment.TransformZ;
             lineRenderer.positionCount = points.Length;
             this.points = points;

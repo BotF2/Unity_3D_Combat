@@ -711,38 +711,7 @@ namespace BOTF3D_GalaxyMap
         }
         void Update()
         {
-            //if (ourGalaxy == null)
-            //    return;
 
-            // loop systems and updating data 
-            //if (_movingGalaxyObjects.Count != 0)
-            //{
-            //    foreach (var fleetObject in _movingGalaxyObjects)
-            //    {
-            //        //if (fleetObject.GetComponent<Fleet>() != null)
-            //        //{
-            //            var myFleet = fleetObject.GetComponent<Fleet>();
-            //            float x = myFleet.gameObject.transform.localPosition.x;
-            //            float y = myFleet.gameObject.transform.localPosition.y;
-            //            //myFleet.gameObject.transform.SetParent(canvasGalactic.transform, false);
-            //            Vector3 worldSpace = new Vector3(x, y, 600f);
-            //            myFleet.galaxyPlaneGO.transform.Translate(worldSpace, Space.World);
-            //            //if (myFleet.shipsInFeet.Count != 0)
-            //            //if (myFleet.warpSpeed != 0)
-            //            //{
-
-
-            //            //}
-
-            //            //else
-            //            //{
-            //            //    _objectsInGalaxy.Remove(fleetObject); // destroy fleets with no ships
-            //            //    fleetObject.IsDestroyed();
-            //            //}
-            //        //}
-                    
-            //    }
-            //}
         }
 
         public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
@@ -778,13 +747,13 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
                         GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(0, 0, 0), Quaternion.identity);
-                        line.name = sysEmptyList[sysIndex].name + "_line";
+                        line.name = sysEmptyList[sysIndex].name + "_SystemLine";
 
                         GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
-                        emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_EndPoint";
+                        emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_SystemPlanePoint";
 
                         emptyForPlanePoint.transform.SetParent(canvasGalactic.transform, false );
-                        emptyForPlanePoint.layer = 6;
+                        emptyForPlanePoint.layer = 7;
 
                         Transform[] endPoints = new Transform[2] { sysEmptyList[sysIndex].transform, emptyForPlanePoint.transform}; 
                         line.SetUpLine(endPoints);
@@ -803,14 +772,8 @@ namespace BOTF3D_GalaxyMap
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
                     _objectsInGalaxy.Add(starSystemNewGameOb);
 
-                 
-                    
-                    //starSystemNewGameOb.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = Screen.height/20;
-                    // Get Civ to find contact list for fog of war
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
                     FogOfWarNaming(starSystemNewGameOb, civy);
-                    //var ourStarSystemData = starSystemNewGameOb.GetComponentInChildren<StarSystemData>();
-                    //ourStarSystemData = new StarSystemData(sysIndex);
 
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
                     sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
@@ -822,7 +785,7 @@ namespace BOTF3D_GalaxyMap
                     ourSystem._systemSphere = sysSphere;
 
                     Civilization theCiv = CivilizationData.Create(sysIndex); // and civs make systems
-                    if (sysIndex <6 && GameManager.PrefabFleetDitionary[ourKey] != null)
+                    if (i < 6 && GameManager.PrefabFleetDitionary[ourKey] != null)
                     {
                      
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey],
@@ -844,13 +807,13 @@ namespace BOTF3D_GalaxyMap
                         float x = firstFleetOfSystem.transform.localPosition.x;
                         float y = firstFleetOfSystem.transform.localPosition.y;
                         GalaxyDropLine fleetLine = Instantiate(systemDropLine, new Vector3(0,0,0), Quaternion.identity);
-                        fleetLine.name = firstFleetOfSystem.name + "_line";
-                        
+                        fleetLine.name = firstFleetOfSystem.name + "_FleetLine";
+                        //fleetLine.gameObject.layer = 1;
                         GameObject fleetPlaneGameObj = Instantiate(_fleetLineEndpointPrefab,
                             new Vector3(x,y,600f), Quaternion.identity);
-                        fleetPlaneGameObj.name = sysEmptyList[sysIndex].name + "_planeEndPoint";
+                        fleetPlaneGameObj.name = sysEmptyList[sysIndex].name + "_FleetPlanePoint";
                         fleetPlaneGameObj.transform.SetParent(canvasGalactic.transform, false);                    
-                        fleetPlaneGameObj.layer = 6;
+                        fleetPlaneGameObj.layer = 7;
                         //firstFleet.galaxyPlaneGO = fleetPlaneGameObj;
                         // fleetPlaneGameObj.SetActive(true);
 

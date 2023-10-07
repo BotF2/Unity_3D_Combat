@@ -3272,7 +3272,6 @@ GameObject:
   - component: {fileID: 45544411}
   - component: {fileID: 45544410}
   - component: {fileID: 45544413}
-  - component: {fileID: 45544414}
   - component: {fileID: 45544415}
   m_Layer: 6
   m_Name: CameraGalactica
@@ -3295,9 +3294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2099772395}
-  - {fileID: 1099698885}
   - {fileID: 574892381}
-  - {fileID: 1068485262}
   m_Father: {fileID: 1528842457}
   m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!114 &45544410
@@ -3392,7 +3389,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 103a00c0297676a4aaf940adfd6ccecc, type: 2}
   m_TargetDisplay: 0
@@ -3418,20 +3415,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_MaxRayIntersections: 0
---- !u!114 &45544414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45544408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a50b6990f94b0b0479d3738ae6a83eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &45544415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10505,7 +10490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 411998743}
   - component: {fileID: 411998744}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fleet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10848,7 +10833,7 @@ GameObject:
   - component: {fileID: 433448562}
   - component: {fileID: 433448564}
   - component: {fileID: 433448563}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15975,7 +15960,6 @@ RectTransform:
   - {fileID: 487025401}
   - {fileID: 798439247}
   - {fileID: 216946336}
-  - {fileID: 1628868729}
   - {fileID: 1887259936}
   - {fileID: 18733018}
   - {fileID: 1710218978}
@@ -16010,7 +15994,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 4294967295
 --- !u!114 &572942818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17586,9 +17570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9ed530538647246bc9bab97f4b144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starSystemData: {fileID: 2090482233}
-  sysSphere: {fileID: 0}
-  sysCollider: {fileID: 0}
 --- !u!1 &634080230
 GameObject:
   m_ObjectHideFlags: 0
@@ -18829,7 +18810,7 @@ GameObject:
   - component: {fileID: 669499610}
   - component: {fileID: 669499612}
   - component: {fileID: 669499611}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20139,7 +20120,7 @@ GameObject:
   - component: {fileID: 717513987}
   - component: {fileID: 717513989}
   - component: {fileID: 717513988}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22231,7 +22212,7 @@ GameObject:
   - component: {fileID: 780654237}
   - component: {fileID: 780654236}
   - component: {fileID: 780654235}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Scrollbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23429,7 +23410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 807470228}
   - component: {fileID: 807470229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GalaxyView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23467,7 +23448,7 @@ MonoBehaviour:
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 0}
-  nextSolarSystem: {fileID: 1759457393}
+  nextSolarSystem: {fileID: 0}
   gridManager: {fileID: 885219057}
   solarSystemView: {fileID: 1538149116}
   systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
@@ -24284,7 +24265,7 @@ GameObject:
   - component: {fileID: 877225572}
   - component: {fileID: 877225571}
   - component: {fileID: 877225570}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24772,7 +24753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918233892}
   - component: {fileID: 918233893}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Fleet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27181,14 +27162,14 @@ GameObject:
   - component: {fileID: 1068485266}
   - component: {fileID: 1068485265}
   - component: {fileID: 1068485264}
-  - component: {fileID: 1068485263}
-  m_Layer: 6
+  - component: {fileID: 1068485267}
+  m_Layer: 8
   m_Name: ResetViewButton
   m_TagString: ButtonStopGalacticPlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1068485262
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27197,31 +27178,19 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068485261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7300}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 669499610}
   - {fileID: 411998743}
-  m_Father: {fileID: 45544409}
+  m_Father: {fileID: 1628868729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -3147, y: -2829}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1068485263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068485261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1068485264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27292,14 +27261,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 33815774639d01740abd61016323240c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -27316,6 +27285,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068485261}
   m_CullTransparentMesh: 1
+--- !u!114 &1068485267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068485261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76dc48d9f65e344b877af41c2a439db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1074826592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27970,14 +27951,13 @@ GameObject:
   - component: {fileID: 1099698889}
   - component: {fileID: 1099698888}
   - component: {fileID: 1099698887}
-  - component: {fileID: 1099698886}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: FleetButton
   m_TagString: ButtonStopGalacticPlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1099698885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27985,32 +27965,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099698884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7300}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 700}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 717513987}
   - {fileID: 918233892}
-  m_Father: {fileID: 45544409}
+  m_Father: {fileID: 1628868729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -2103, y: -2829}
+  m_AnchoredPosition: {x: -100000, y: -130000}
   m_SizeDelta: {x: 190, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1099698886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099698884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1099698887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28087,8 +28055,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 33815774639d01740abd61016323240c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -28688,6 +28656,55 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 0
+--- !u!1 &1131777031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131777032}
+  - component: {fileID: 1131777033}
+  m_Layer: 6
+  m_Name: GalaxyObjectClick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1131777032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131777031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1131777033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131777031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6465b428c7af4874ca991dd03962a814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraManagerGalactica: {fileID: 1160279386}
 --- !u!1 &1133465171
 GameObject:
   m_ObjectHideFlags: 0
@@ -28751,7 +28768,7 @@ GameObject:
   - component: {fileID: 1138940485}
   - component: {fileID: 1138940487}
   - component: {fileID: 1138940486}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Item Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29247,6 +29264,7 @@ MonoBehaviour:
   _movementSpeed: 10
   _speedAccelerationFactor: 1.5
   _initPositonButton: 114
+  ClickUI: 1
   lookAtOffset: 2
   _rotateSpeed: 20
   maxRotation: 20
@@ -29259,6 +29277,7 @@ MonoBehaviour:
   returnToGalaxyFromSystemView: {fileID: 556048600}
   buttonFleets: {fileID: 1099698884}
   buttonResetView: {fileID: 1068485261}
+  clickSolarSystem: {fileID: 0}
   _pubilicCameraGalactica: {fileID: 45544412}
   cameraZoomed: 0
 --- !u!1 &1162540796
@@ -29730,7 +29749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1168109555}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Sliding Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29883,7 +29902,6 @@ MonoBehaviour:
   galaxyView: {fileID: 807470229}
   target: {fileID: 0}
   warpSpeed: 0
-  planeEndPoint: {fileID: 0}
 --- !u!1 &1187732006
 GameObject:
   m_ObjectHideFlags: 0
@@ -32303,10 +32321,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  m_BlockingObjects: 1
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32
 --- !u!114 &1195700022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32365,6 +32383,8 @@ RectTransform:
   m_LocalScale: {x: 0.07670622, y: 0.07670622, z: 0.07670622}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2032902992}
+  - {fileID: 1628868729}
   - {fileID: 807470228}
   - {fileID: 1171831152}
   - {fileID: 885219056}
@@ -32384,6 +32404,7 @@ RectTransform:
   - {fileID: 465113644}
   - {fileID: 914893810}
   - {fileID: 625295888}
+  - {fileID: 1131777032}
   - {fileID: 296507808}
   - {fileID: 491606037}
   - {fileID: 1804780003}
@@ -32429,7 +32450,7 @@ MonoBehaviour:
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 1171831153}
-  nextSolarSystem: {fileID: 1759457393}
+  nextSolarSystem: {fileID: 0}
   gridManager: {fileID: 0}
   solarSystemView: {fileID: 1538149116}
   systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
@@ -34935,7 +34956,7 @@ GameObject:
   - component: {fileID: 1340660509}
   - component: {fileID: 1340660511}
   - component: {fileID: 1340660510}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Item Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35412,7 +35433,7 @@ GameObject:
   - component: {fileID: 1364578115}
   - component: {fileID: 1364578117}
   - component: {fileID: 1364578116}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36939,7 +36960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1396830144}
   - component: {fileID: 1396830145}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40460,7 +40481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1526263537}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40672,7 +40693,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528842456}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -42907,13 +42928,14 @@ GameObject:
   - component: {fileID: 1628868729}
   - component: {fileID: 1628868731}
   - component: {fileID: 1628868730}
-  m_Layer: 5
+  - component: {fileID: 1628868732}
+  m_Layer: 8
   m_Name: PanelGalaxyUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1628868729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42921,19 +42943,21 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628868728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.001, y: 0.001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1068485262}
+  - {fileID: 1099698885}
   - {fileID: 1860278202}
   - {fileID: 1897196159}
-  m_Father: {fileID: 572942815}
+  m_Father: {fileID: 1195700024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -800, y: 500}
+  m_SizeDelta: {x: -1600, y: -1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628868730
 MonoBehaviour:
@@ -42973,6 +42997,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628868728}
   m_CullTransparentMesh: 1
+--- !u!114 &1628868732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628868728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1638703339
 GameObject:
   m_ObjectHideFlags: 0
@@ -42985,7 +43021,7 @@ GameObject:
   - component: {fileID: 1638703343}
   - component: {fileID: 1638703342}
   - component: {fileID: 1638703341}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Viewport
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46879,7 +46915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1696207955}
   - component: {fileID: 1696207954}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HoverTipManger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48922,7 +48958,7 @@ GameObject:
   - component: {fileID: 1747540802}
   - component: {fileID: 1747540804}
   - component: {fileID: 1747540803}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49537,7 +49573,7 @@ GameObject:
   - component: {fileID: 1759457392}
   - component: {fileID: 1759457393}
   m_Layer: 6
-  m_Name: NextSolarSystem
+  m_Name: ClickSolarSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49576,8 +49612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 1538149114}
   hideSystemButton: {fileID: 609649302}
-  hide: {fileID: 0}
-  view: {fileID: 0}
+  cameraManagerGalactica: {fileID: 1160279386}
+  hide: {fileID: 609649304}
+  view: {fileID: 1538149116}
 --- !u!114 &1760306683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52037,7 +52074,7 @@ GameObject:
   - component: {fileID: 1860278205}
   - component: {fileID: 1860278204}
   - component: {fileID: 1860278203}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ButtonStopGalacticPlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55721,7 +55758,7 @@ GameObject:
   - component: {fileID: 1897196161}
   - component: {fileID: 1897196160}
   - component: {fileID: 1897196163}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: DropdownSystems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57299,7 +57336,7 @@ GameObject:
   - component: {fileID: 1975232475}
   - component: {fileID: 1975232477}
   - component: {fileID: 1975232476}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58352,6 +58389,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029327209}
   m_CullTransparentMesh: 1
+--- !u!1 &2032902991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032902992}
+  - component: {fileID: 2032902994}
+  - component: {fileID: 2032902993}
+  m_Layer: 5
+  m_Name: CameraG_UI
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2032902992
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032902991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032902993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032902991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 1
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 610397795}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
+--- !u!20 &2032902994
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032902991}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.01
+  far clip plane: 1000000
+  field of view: 29
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 103a00c0297676a4aaf940adfd6ccecc, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &2035239057
 GameObject:
   m_ObjectHideFlags: 0
@@ -58482,7 +58647,7 @@ GameObject:
   - component: {fileID: 2042120959}
   - component: {fileID: 2042120961}
   - component: {fileID: 2042120960}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Item Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61411,6 +61576,10 @@ PrefabInstance:
     - target: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
       propertyPath: m_Name
       value: LineEndPointEmtpy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

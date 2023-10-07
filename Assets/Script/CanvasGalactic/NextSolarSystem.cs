@@ -14,7 +14,6 @@ using UnityEngine.EventSystems;
 
 namespace BOTF3D_GalaxyMap
 {
-
     public class NextSolarSystem : MonoBehaviour
     {
         public GameObject solarSystemView;

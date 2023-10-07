@@ -1172,7 +1172,7 @@ namespace BOTF3D_Core
             CanvasGalactic = GameObject.Find("CanvasGalactic");
           
             //buttonStopGalacticPlay = CanvasGalactic.transform.Find("ButtonStopGalacticPlay").;
-            PanelGalaxyUI = Canvas.transform.Find("PanelGalaxyUI").gameObject;
+            //PanelGalaxyUI = CanvasGalactic.transform.GetComponentInChildren(String "PanelGalaxyUI", ).gameObject;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -1183,6 +1183,7 @@ namespace BOTF3D_Core
             PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
             var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
             PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
+            PanelGalaxyUI = GameObject.Find("PanelGalaxyUI").gameObject;
 
             //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;

@@ -50,8 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 3368568847799921217}
   hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
+  BlockedByUI: 0
 --- !u!1 &4761592045379931411
 GameObject:
   m_ObjectHideFlags: 0

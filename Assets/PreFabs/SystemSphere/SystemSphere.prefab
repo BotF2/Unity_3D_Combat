@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8073333632421716659}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 600, y: 600, z: 600}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5543426550500341676
 MeshFilter:
@@ -131,9 +131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8073333632421716659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf9ed530538647246bc9bab97f4b144c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6465b428c7af4874ca991dd03962a814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starSystemData: {fileID: 0}
-  sysSphere: {fileID: 0}
-  sysCollider: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
