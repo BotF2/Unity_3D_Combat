@@ -1183,7 +1183,7 @@ namespace BOTF3D_Core
             PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
             var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
             PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
-            PanelGalaxyUI = GameObject.Find("PanelGalaxyUI").gameObject;
+            PanelGalaxyUI = CanvasGalactic.transform.Find("PanelGalaxyUI").gameObject;
 
             //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
@@ -1623,6 +1623,7 @@ namespace BOTF3D_Core
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
+                    PanelGalaxyUI.SetActive(false);
 
                     PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;
@@ -1743,6 +1744,7 @@ namespace BOTF3D_Core
                     cameraGalactica.enabled = false;
                     cameraTelescope.enabled = false;
                     PanelLobby_Menu.SetActive(false);
+                    PanelGalaxyUI.SetActive(false );
                     //GalacticGrid.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     gridManager.HideGrid();

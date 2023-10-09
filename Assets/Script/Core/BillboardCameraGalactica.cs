@@ -16,7 +16,7 @@ namespace BOTF3D_Core
         {
             foreach (Camera camera in Camera.allCameras)
             {
-                // if (camera.tag == "CameraOrthoGalactic")
+                //if (camera.name = "CameraGalactica")
                 if (camera.tag == "GalacticCamera")
                 {
                     cameraGal = camera;

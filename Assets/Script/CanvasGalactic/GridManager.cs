@@ -30,23 +30,23 @@ namespace BOTF3D_GalaxyMap
         }
         void GenerateGrid()
         {
-            for (int y = 0; y < _height; y++)
-            {
-                for (int x = 0; x < _width; x++)
-                {
+            //for (int y = 0; y < _height; y++)
+            //{
+            //    for (int x = 0; x < _width; x++)
+            //    {
 
-                    Tile spawnedTile = Instantiate(_tilePrefab, new Vector3((x * 1000f) - 5300f, (y * 1000f) - 9800, 600f), Quaternion.identity);
-                    spawnedTile.enabled = true;
+            //        Tile spawnedTile = Instantiate(_tilePrefab, new Vector3((x * 1000f) - 5300f, (y * 1000f) - 9800, 600f), Quaternion.identity);
+            //        spawnedTile.enabled = true;
 
-                    spawnedTile.name = $"Tile {x} {y}";
-                    spawnedTile.transform.SetParent(_canvasGalactic.transform, false);
-                    var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
-                    spawnedTile.Init(isOffset);
-                    _tile.Add(spawnedTile);
-                    spawnedTile.gameObject.SetActive(true);
-                    spawnedTile.GetComponent<SpriteRenderer>().enabled = false;
-                }
-            }
+            //        spawnedTile.name = $"Tile {x} {y}";
+            //        spawnedTile.transform.SetParent(_canvasGalactic.transform, false);
+            //        var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
+            //        spawnedTile.Init(isOffset);
+            //        _tile.Add(spawnedTile);
+            //        spawnedTile.gameObject.SetActive(true);
+            //        spawnedTile.GetComponent<SpriteRenderer>().enabled = false;
+            //    }
+            //}
             //_cam.transform.position = new Vector3((float)_width/2 -0.5f, (float)_height/2 -0.5f,);
         }
         public void SeeGrid()

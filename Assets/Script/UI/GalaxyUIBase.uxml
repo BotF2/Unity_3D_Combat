@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Script/UI/GalaxyBaseUI.uss?fileID=7433441132597879392&amp;guid=378c81f87affb5c47a232d8e9d079c9f&amp;type=3#GalaxyBaseUI" />
+    <ui:VisualElement name="Container" style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="Galaxy Map" display-tooltip-when-elided="true" class="header" />
+    </ui:VisualElement>
+</ui:UXML>

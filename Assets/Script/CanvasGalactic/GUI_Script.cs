@@ -15,8 +15,8 @@ public class GUI_Script : MonoBehaviour
     {
         
     }
-    private void OnGUI()
-    {
-        GUI.Label  (new Rect(5,5,800,200), "Galaxy View");
-    }
+    //private void OnGUI()
+    //{
+    //    GUI.Label(new Rect(5, 5, 800, 200), "Galaxy View");
+    //}
 }
