@@ -1172,7 +1172,6 @@ namespace BOTF3D_Core
             CanvasGalactic = GameObject.Find("CanvasGalactic");
           
             //buttonStopGalacticPlay = CanvasGalactic.transform.Find("ButtonStopGalacticPlay").;
-            //PanelGalaxyUI = CanvasGalactic.transform.GetComponentInChildren(String "PanelGalaxyUI", ).gameObject;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -1896,20 +1895,20 @@ namespace BOTF3D_Core
                     _statePassedMain_Init = true;
                     //PanelGalactic_Map.SetActive(true);
                    // PanelGalacticTelescope.SetActive(true);
-                    PanelGalaxyUI.SetActive(true);
+                    //PanelGalaxyUI.SetActive(true);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
                     //PanelGalactic_Map.SetActive(false);
                    // PanelGalacticTelescope.SetActive(false);
-                    PanelGalaxyUI.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
                     //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
-                    PanelGalaxyUI.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY_INIT:
