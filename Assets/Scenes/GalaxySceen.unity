@@ -2527,12 +2527,15 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
+  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
@@ -5218,6 +5221,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136473968}
   m_CullTransparentMesh: 1
+--- !u!1 &141037299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 141037300}
+  - component: {fileID: 141037301}
+  - component: {fileID: 141037302}
+  m_Layer: 6
+  m_Name: ResetViewGalacticButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &141037300
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141037299}
+  m_LocalRotation: {x: -0.100188084, y: -0, z: -0, w: 0.99496853}
+  m_LocalPosition: {x: 0, y: 0, z: -9746.912}
+  m_LocalScale: {x: 6.142807, y: 6.142808, z: 80.08226}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 572942815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -76878.96, y: 41833.91}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &141037301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141037299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: cc1488b41e0c99448a833bf252db8a04, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 9b0c05ab45a0e094a9dbfadfb00a8d7d, type: 3}
+  m_SortingOrder: 0
+--- !u!114 &141037302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141037299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bdd9c6023bb1b747adb819a074e81c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraManagerGalactica: {fileID: 1160279386}
 --- !u!1 &141114220
 GameObject:
   m_ObjectHideFlags: 0
@@ -10236,14 +10305,14 @@ RectTransform:
   m_GameObject: {fileID: 352649687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 601}
-  m_LocalScale: {x: 1303.6753, y: 1303.6753, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1628868729}
+  m_Father: {fileID: 1195700024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9394, y: -43478}
+  m_AnchoredPosition: {x: -239.4209, y: -2795.0352}
   m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352649689
@@ -14944,12 +15013,15 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
+  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
@@ -16036,6 +16108,7 @@ RectTransform:
   - {fileID: 487025401}
   - {fileID: 798439247}
   - {fileID: 216946336}
+  - {fileID: 141037300}
   - {fileID: 1887259936}
   - {fileID: 18733018}
   - {fileID: 1710218978}
@@ -31728,12 +31801,15 @@ MonoBehaviour:
   gridManager: {fileID: 885219057}
   cameraGalactica: {fileID: 45544412}
   cameraTelescope: {fileID: 675372015}
+  cameraGalacticUI: {fileID: 2032902994}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529375}
   actOnCombatOrder: {fileID: 330116306}
   zoomCamera: {fileID: 1788582308}
   Canvas: {fileID: 572942814}
   CanvasGalactic: {fileID: 1195700020}
+  galaxyBackground: {fileID: 352649687}
+  resetViewGalacticButton: {fileID: 141037299}
   _SinglePlayer: {fileID: 2141310086}
   _MultiPlayer: {fileID: 5684185}
   _LoadGamePanel: {fileID: 1067984788}
@@ -32458,6 +32534,7 @@ RectTransform:
   m_LocalScale: {x: 0.07670622, y: 0.07670622, z: 0.07670622}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 352649688}
   - {fileID: 1628868729}
   - {fileID: 2032902992}
   - {fileID: 807470228}
@@ -43021,7 +43098,6 @@ RectTransform:
   m_LocalScale: {x: 0.07670622, y: 0.07670622, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 352649688}
   - {fileID: 1068485262}
   - {fileID: 1099698885}
   - {fileID: 1860278202}
@@ -43040,7 +43116,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628868728}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!114 &1628868732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45987,12 +46063,15 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
+  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
@@ -54386,12 +54465,15 @@ MonoBehaviour:
   gridManager: {fileID: 0}
   cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
+  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
@@ -58449,7 +58531,7 @@ GameObject:
   - component: {fileID: 2032902994}
   - component: {fileID: 2032902993}
   m_Layer: 8
-  m_Name: CameraG_UI
+  m_Name: Galactic_UI_Camera
   m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
