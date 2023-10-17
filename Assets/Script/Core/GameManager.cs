@@ -1174,7 +1174,8 @@ namespace BOTF3D_Core
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.           
             CanvasGalactic = GameObject.Find("CanvasGalactic");
-          
+          // more stuff
+
             //buttonStopGalacticPlay = CanvasGalactic.transform.Find("ButtonStopGalacticPlay").;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
