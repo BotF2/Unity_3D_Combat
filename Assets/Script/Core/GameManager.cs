@@ -1188,7 +1188,16 @@ namespace BOTF3D_Core
             var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
             PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
 
-            // use Camera.Main list of cams to  find cameraGalactica //Array cameraGalactica = Camera.GetAllCameras();
+            Camera[] camGalactica = Camera.allCameras;
+
+            for (int i = 0; i < camGalactica.Count(); i++)
+            {
+                if (camGalactica[i].name == "CameraGalactica")
+                {
+                    if (camGalactica[i] != null)
+                        cameraGalactica = camGalactica[i];
+                }
+            }
             //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
@@ -1627,8 +1636,12 @@ namespace BOTF3D_Core
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
-                    cameraGalactica.enabled = true;
-                    cameraGalactica.fieldOfView = 179;
+                    //resetViewGalacticButton.SetActive(false);
+                    if (cameraGalactica != null)
+                    {
+                        cameraGalactica.enabled = true;
+                        cameraGalactica.fieldOfView = 179;
+                    }
 
                     PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1927042168274911253}
   - component: {fileID: 7885073816749280247}
-  m_Layer: 30
+  m_Layer: 6
   m_Name: ShowSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
   hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
 --- !u!1 &4306060808014556862
@@ -64,7 +65,7 @@ GameObject:
   - component: {fileID: 4306060808014556861}
   - component: {fileID: 4306060808014556860}
   - component: {fileID: 6887220654020710591}
-  m_Layer: 30
+  m_Layer: 6
   m_Name: StarName (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +216,7 @@ GameObject:
   - component: {fileID: 4306060808537133548}
   - component: {fileID: 4306060808537133547}
   - component: {fileID: 7252429467737842387}
-  m_Layer: 30
+  m_Layer: 7
   m_Name: BajorSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: ffe0ed11d364c024aba4a5a16a489d7c, type: 3}

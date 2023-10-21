@@ -28,13 +28,13 @@ namespace BOTF3D_GalaxyMap
             hideSystemButton = GameObject.Find("HideSystemButton");
             hide = hideSystemButton.GetComponent<HideSystemButton>();
         }
-        public void ShowThisSolarSystemView(int buttonSystemID)
-        {
-            if (hide.weAreHidding == false)
-            {
-                view.ShowNextSolarSystemView(buttonSystemID);
-            }
+        ////public void ShowThisSolarSystemView(int buttonSystemID)
+        ////{
+        ////    if (hide.weAreHidding == false)
+        ////    {
+        ////        view.ShowNextSolarSystemView(buttonSystemID);
+        ////    }
 
-        }
+        ////}
     }
 }

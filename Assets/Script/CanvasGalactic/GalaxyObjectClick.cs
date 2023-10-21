@@ -22,6 +22,7 @@ public class GalaxyObjectClick : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         ClickUI = false;
-        cameraManagerGalactica.ClickUI = false;
+        if (cameraManagerGalactica != null)
+            cameraManagerGalactica.ClickUI = false;
     }
 }

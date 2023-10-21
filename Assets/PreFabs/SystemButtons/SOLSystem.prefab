@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4761592045379931414}
   - component: {fileID: 124299536620563853}
   - component: {fileID: -2870740921722464267}
-  m_Layer: 6
-  m_Name: SolSystem
+  m_Layer: 7
+  m_Name: SOLSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 10685ab0d0edb0846a66d32a49b7ce5f, type: 3}
   m_NavMeshLayer: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9214111346467753109}
-        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.NextSolarSystem, Assembly-CSharp
+        m_TargetAssemblyTypeName: BOTF3D_GalaxyMap.ClickSolarSystem, Assembly-CSharp
         m_MethodName: ShowThisSolarSystemView
         m_Mode: 3
         m_Arguments:
@@ -368,5 +368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
   hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}

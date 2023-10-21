@@ -2525,9 +2525,7 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
   gridManager: {fileID: 0}
-  cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
-  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
@@ -3276,7 +3274,6 @@ GameObject:
   - component: {fileID: 45544411}
   - component: {fileID: 45544410}
   - component: {fileID: 45544413}
-  - component: {fileID: 45544415}
   m_Layer: 6
   m_Name: CameraGalactica
   m_TagString: GalacticCamera
@@ -3421,18 +3418,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 191
   m_MaxRayIntersections: 0
---- !u!114 &45544415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45544408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9b52012b7193847a1c6345d32a731c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &49629551
 GameObject:
   m_ObjectHideFlags: 0
@@ -5238,7 +5223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &141037300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15011,9 +14996,7 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
   gridManager: {fileID: 0}
-  cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
-  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
@@ -31799,9 +31782,7 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 807690122}
   cameraManagerGalactica: {fileID: 1160279386}
   gridManager: {fileID: 885219057}
-  cameraGalactica: {fileID: 45544412}
   cameraTelescope: {fileID: 675372015}
-  cameraGalacticUI: {fileID: 2032902994}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529375}
   actOnCombatOrder: {fileID: 330116306}
@@ -46061,9 +46042,7 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
   gridManager: {fileID: 0}
-  cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
-  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
@@ -54463,9 +54442,7 @@ MonoBehaviour:
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
   gridManager: {fileID: 0}
-  cameraGalactica: {fileID: 0}
   cameraTelescope: {fileID: 0}
-  cameraGalacticUI: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}

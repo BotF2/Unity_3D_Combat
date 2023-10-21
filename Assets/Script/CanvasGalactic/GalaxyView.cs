@@ -938,7 +938,7 @@ namespace BOTF3D_GalaxyMap
             }
             //fleetManager.SetActive(false);
             solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
-            solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
+            //solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
         }
 
         public void SetZoomLevel(ulong zl)

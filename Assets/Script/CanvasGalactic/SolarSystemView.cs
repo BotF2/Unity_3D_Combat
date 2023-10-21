@@ -97,7 +97,7 @@ namespace BOTF3D_GalaxyMap
 
             gameManager.ChangeSystemClicked(buttonSystemID, this); // clicked galaxy map star
 
-            gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, 0);
+            gameManager.SwitchtState(GameManager.State.GALACTIC_MAP_INIT, buttonSystemID);
             systemDataArray = systemDataDictionary[buttonSystemID];
             var mySolarSystem = new SolarSystem();
             mySolarSystem.LoadSystem(systemDataArray, buttonSystemID);
