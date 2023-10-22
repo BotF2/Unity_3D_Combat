@@ -9,6 +9,7 @@ using BOTF3D_Combat;
 using Assets.Script;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEditor.Rendering;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -20,7 +21,7 @@ namespace BOTF3D_GalaxyMap
         public StarSystemData starSystemData;
         public MoveGalacticObjects thisMovingObject;
         public NextSolarSystem nextSolarSystem;
-        public GridManager gridManager;
+        //public GridManager gridManager;
         public SolarSystemView solarSystemView;
         public GalaxyDropLine systemDropLine;
         public GalaxyDropLine fleetDropLine;
@@ -731,12 +732,13 @@ namespace BOTF3D_GalaxyMap
                 if (keysForSystemDictionary[sysIndex].Length != 0)
                 {
                     GameObject tempObject = GameObject.Find("CanvasGalactic");
+                    sysEmptyList[sysIndex] = new GameObject(); // object no longer null
 
                     if (tempObject != null)
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
 
-                        sysEmptyList[sysIndex] = new GameObject();
+                        //sysEmptyList[sysIndex] = new GameObject();
 
                         sysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
                         int x = int.Parse(SystemDataDictionary[sysIndex][1]);
@@ -767,20 +769,23 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].SetActive(true);
                     }
                     // The PreFabStarSystemDictionary and PrefabFleetDictionary are setup in Unity, Hierarchy, GameManager, the public Prefab lists
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
                     _objectsInGalaxy.Add(starSystemNewGameOb);
 
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
-                    FogOfWarNaming(starSystemNewGameOb, civy);
+                    FogOfWarNaming(starSystemNewGameOb, civy); // Do not name race at star, give only coordenants
+                    TMP_Text textMeshPro = starSystemNewGameOb.GetComponentInChildren<TMP_Text>();
+                    // font size set in SclaeMeshText.cs for distance from camera
+                    textMeshPro.transform.SetParent(sysEmptyList[sysIndex].transform, false); //parent TMP_Text to empty, not button so it is not clickable 
 
-                    GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z');
-                    sysSphere.transform.SetParent(starSystemNewGameOb.transform, false);
+                    GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity);
+                    sysSphere.transform.SetParent(sysEmptyList[sysIndex].transform, false); //starSystemNewGameOb.transform, false);
                     sysSphere.transform.localScale = new Vector3(27000, 27000, 27000);
                     sysSphere.name = sysIndex.ToString();
-                    sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
-                    var ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
+                    //sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
+                    StarSystem ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
                     
                     ourSystem._systemSphere = sysSphere;
 

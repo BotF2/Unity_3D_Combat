@@ -10274,6 +10274,7 @@ GameObject:
   - component: {fileID: 352649688}
   - component: {fileID: 352649690}
   - component: {fileID: 352649689}
+  - component: {fileID: 352649691}
   m_Layer: 6
   m_Name: GalaxyBackground
   m_TagString: Untagged
@@ -10338,6 +10339,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352649687}
   m_CullTransparentMesh: 1
+--- !u!65 &352649691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352649687}
+  m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 99.94851, y: 150.4001, z: 1}
+  m_Center: {x: -0.068283014, y: 0.34085807, z: 0}
 --- !u!1 &354149416
 GameObject:
   m_ObjectHideFlags: 0
@@ -23581,7 +23603,6 @@ MonoBehaviour:
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 0}
   nextSolarSystem: {fileID: 0}
-  gridManager: {fileID: 885219057}
   solarSystemView: {fileID: 1538149116}
   systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
   fleetDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
@@ -29395,7 +29416,6 @@ MonoBehaviour:
   _movementSpeed: 10
   _speedAccelerationFactor: 1.5
   _initPositonButton: 114
-  ClickUI: 1
   lookAtOffset: 2
   _rotateSpeed: 20
   maxRotation: 20
@@ -29408,8 +29428,9 @@ MonoBehaviour:
   returnToGalaxyFromSystemView: {fileID: 556048600}
   buttonFleets: {fileID: 1099698884}
   buttonResetView: {fileID: 1068485261}
-  clickSolarSystem: {fileID: 0}
-  _pubilicCameraGalactica: {fileID: 45544412}
+  backgroundImageObject: {fileID: 352649687}
+  clickSolarSystem: {fileID: 1759457393}
+  _publicCameraGalactica: {fileID: 45544412}
   cameraZoomed: 0
 --- !u!1 &1162540796
 GameObject:
@@ -32583,7 +32604,6 @@ MonoBehaviour:
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 1171831153}
   nextSolarSystem: {fileID: 0}
-  gridManager: {fileID: 0}
   solarSystemView: {fileID: 1538149116}
   systemDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}
   fleetDropLine: {fileID: 4035141804177294303, guid: 14cdec8ed1869274a9c32f02a473c429, type: 3}

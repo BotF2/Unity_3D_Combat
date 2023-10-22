@@ -91,7 +91,7 @@ namespace BOTF3D_GalaxyMap
 
 
         // In Galaxy Map X is right left, Y is in out and z is negative up down
-        public bool ClickUI = false;
+        //public bool ClickUI = false;
         [Header("Camera Positioning")]
         private Vector2 cameraOffset = new Vector2(10f, 14f);
         public float lookAtOffset = 400f;
@@ -114,6 +114,7 @@ namespace BOTF3D_GalaxyMap
         public GameObject returnToGalaxyFromSystemView;
         public GameObject buttonFleets;
         public GameObject buttonResetView;
+        public GameObject backgroundImageObject;
         public ClickSolarSystem clickSolarSystem;
         private float _currentIncrease = 0.1f; // active control of camera movement rate
         private Vector3 _initPosition;
@@ -121,7 +122,7 @@ namespace BOTF3D_GalaxyMap
         private Vector3 _initRotationCam;
         private float _zoomLevel;
         float _initFieldOfView;
-        public Camera _pubilicCameraGalactica; //this camera cameraGalactica is assinged in Unity Hierarchy and works for raycast
+        public Camera _publicCameraGalactica; //this camera cameraGalactica is assinged in Unity Hierarchy and works for raycast
         public bool cameraZoomed = false; // this checks to see if the camera was zoomed
         private string colliderName;
         //private Vector3 _initRotation;
@@ -141,8 +142,8 @@ namespace BOTF3D_GalaxyMap
 
             camGalactica.transform.LookAt(transform.position + Vector3.forward * lookAtOffset);
 
-            _initRotationCam = _pubilicCameraGalactica.transform.eulerAngles;
-            _initFieldOfView = _pubilicCameraGalactica.fieldOfView;
+            _initRotationCam = _publicCameraGalactica.transform.eulerAngles;
+            _initFieldOfView = _publicCameraGalactica.fieldOfView;
         }
         private void Start()
         {
@@ -237,8 +238,8 @@ namespace BOTF3D_GalaxyMap
             {
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
-                _pubilicCameraGalactica.fieldOfView = _initFieldOfView;
-                _pubilicCameraGalactica.transform.eulerAngles = _initRotationCam;
+                _publicCameraGalactica.fieldOfView = _initFieldOfView;
+                _publicCameraGalactica.transform.eulerAngles = _initRotationCam;
                 //_cameraMoveOnClick.cam.fieldOfView = _zoomLevel;
             }
 
@@ -249,23 +250,28 @@ namespace BOTF3D_GalaxyMap
                 {
                     //Create variables to cast a ray on object
  
-                    Ray ray = _pubilicCameraGalactica.ScreenPointToRay(Input.mousePosition);
+                    Ray ray = _publicCameraGalactica.ScreenPointToRay(Input.mousePosition);
                    // bool isOverUI = EventSystem.current.IsPointerOverGameObject();
                     //if (Physics.Raycast(ray, out RaycastHit hit) && !isOverUI)
                     if (Physics.Raycast(ray, out RaycastHit hit)) // && !isOverUI)
                     {
-                        colliderName = hit.collider.name;
+                        Collider collider = backgroundImageObject.GetComponent<Collider>();
+                        //hit.collider.gameObject
+                        //colliderName = hit.collider.name;
 
                         //Detect if ray hit system 
-                        if (colliderName.Contains("System"))// && !ClickUI)
+                        if (hit.collider == collider)  //colliderName.Contains("System"))
                         {
                             float deep = hit.collider.transform.position.y;
 
                             float newZoom = (deep + 15000f) / 200f;
-                            _pubilicCameraGalactica.fieldOfView = 85 - newZoom;
-                            _pubilicCameraGalactica.transform.rotation =
-                                Quaternion.LookRotation(hit.collider.transform.position - _pubilicCameraGalactica.transform.position);
-                            
+                            _publicCameraGalactica.fieldOfView = 85 - newZoom;
+                            _publicCameraGalactica.transform.rotation =
+                                Quaternion.LookRotation(hit.point - _publicCameraGalactica.transform.position, Vector3.up);
+
+                        // trying to correct roll of camera on LookRotation
+                            //_publicCameraGalactica.transform.localEulerAngles = new Vector3(_publicCameraGalactica.transform.localEulerAngles.x, _publicCameraGalactica.transform.localEulerAngles.y, backgroundImageObject.transform.localEulerAngles.z - _publicCameraGalactica.transform.localEulerAngles.z);
+                            //_publicCameraGalactica.transform.localEulerAngles = new Vector3(_publicCameraGalactica.transform.localEulerAngles.x, 1, _publicCameraGalactica.transform.localEulerAngles.z);
                             cameraZoomed = true;
                             this.SetZoomedStatus();
                             //ClickUI = true;
@@ -278,8 +284,8 @@ namespace BOTF3D_GalaxyMap
                 }
                 else // if (!ClickUI)
                 {
-                    _pubilicCameraGalactica.fieldOfView = _initFieldOfView;
-                    _pubilicCameraGalactica.transform.eulerAngles = _initRotationCam;
+                    _publicCameraGalactica.fieldOfView = _initFieldOfView;
+                    _publicCameraGalactica.transform.eulerAngles = _initRotationCam;
 
                     cameraZoomed = false;
                     this.SetZoomedStatus();
@@ -299,8 +305,8 @@ namespace BOTF3D_GalaxyMap
             //{
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
-                _pubilicCameraGalactica.fieldOfView = _initFieldOfView;
-                _pubilicCameraGalactica.transform.eulerAngles = _initRotationCam;
+                _publicCameraGalactica.fieldOfView = _initFieldOfView;
+                _publicCameraGalactica.transform.eulerAngles = _initRotationCam;
             //}
         }
         //private void OnMouseUp()

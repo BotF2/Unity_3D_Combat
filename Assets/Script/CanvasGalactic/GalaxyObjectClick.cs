@@ -21,8 +21,17 @@ public class GalaxyObjectClick : MonoBehaviour, IPointerClickHandler
     //}
     public void OnPointerClick(PointerEventData eventData)
     {
-        ClickUI = false;
-        if (cameraManagerGalactica != null)
-            cameraManagerGalactica.ClickUI = false;
+        // could tell us what game object was clicked
+        //    if (EventSystem.current.IsPointerOverGameObject())
+        //    {
+        //        if (EventSystem.current.currentSelectedGameObject.name == "ResetViewButton")
+        //        {
+        //            ClickUI = true;
+        //        }
+        //    }
+        //eventData.selectedObject
+        //ClickUI = false;
+        //if (cameraManagerGalactica != null)
+        //    cameraManagerGalactica.ClickUI = false;
     }
 }

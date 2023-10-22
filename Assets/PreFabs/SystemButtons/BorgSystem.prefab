@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
   hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
 --- !u!1 &4306060808014556862
@@ -64,6 +65,7 @@ GameObject:
   - component: {fileID: 4306060808014556861}
   - component: {fileID: 4306060808014556860}
   - component: {fileID: 6902554777620115978}
+  - component: {fileID: 4127686246365557433}
   m_Layer: 30
   m_Name: StarName (TMP)
   m_TagString: Untagged
@@ -201,6 +203,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camGalactica: {fileID: 0}
   textMesh: {fileID: 0}
+--- !u!114 &4127686246365557433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306060808014556862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4306060808537133550
 GameObject:
   m_ObjectHideFlags: 0

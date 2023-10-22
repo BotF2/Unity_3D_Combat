@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   solarSystemView: {fileID: 0}
   hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
   hide: {fileID: 0}
   view: {fileID: 0}
 --- !u!1 &4306060808014556862
@@ -64,6 +65,7 @@ GameObject:
   - component: {fileID: 4306060808014556861}
   - component: {fileID: 4306060808014556860}
   - component: {fileID: 9157208696803757962}
+  - component: {fileID: 1437685469649323403}
   m_Layer: 30
   m_Name: StarName (TMP)
   m_TagString: Untagged
@@ -87,7 +89,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 60}
+  m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4306060808014556861
@@ -201,6 +203,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camGalactica: {fileID: 0}
   textMesh: {fileID: 0}
+--- !u!114 &1437685469649323403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306060808014556862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4306060808537133550
 GameObject:
   m_ObjectHideFlags: 0
