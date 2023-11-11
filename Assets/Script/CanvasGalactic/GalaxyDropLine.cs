@@ -18,7 +18,7 @@ namespace BOTF3D_GalaxyMap
         private void Awake()
         {       
             lineRenderer = GetComponent<LineRenderer>();
-            lineRenderer.gameObject.layer = 7; // the default gameObject for our lines will showup so set it to "NoSeeEm" layer
+            lineRenderer.gameObject.layer = 6; 
         }
 
         public void SetUpLine(Transform[] points)

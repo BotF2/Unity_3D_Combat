@@ -10,6 +10,7 @@ using Assets.Script;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEditor.Rendering;
+using UnityEngine.EventSystems;
 
 namespace BOTF3D_GalaxyMap
 {
@@ -737,7 +738,9 @@ namespace BOTF3D_GalaxyMap
                     if (tempObject != null)
                     {
                         canvasGalactic = tempObject.GetComponent<Canvas>();
-
+                        //canvasGalactic.AddComponent<EventSystem>();
+                        //canvasGalactic.AddComponent<StandaloneInputModule>();
+                        //canvasGalactic.AddComponent<GraphicRaycaster>();
                         //sysEmptyList[sysIndex] = new GameObject();
 
                         sysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
@@ -748,6 +751,7 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.Translate(worldSpace, Space.World);
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
+                        
                         GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(0, 0, 0), Quaternion.identity);
                         line.name = sysEmptyList[sysIndex].name + "_SystemLine";
 
@@ -764,7 +768,7 @@ namespace BOTF3D_GalaxyMap
                         hTips._hoverTipManager = hoverTipManager;
                         hTips._starSysEnum = (StarSystemEnum)sysIndex;
                         hTips._sysLocation = worldSpace;
-                        hTips._hoverTipManager = hoverTipManager;
+                        //hTips._hoverTipManager = hoverTipManager;
 
                         sysEmptyList[sysIndex].SetActive(true);
                     }
@@ -775,10 +779,10 @@ namespace BOTF3D_GalaxyMap
                     _objectsInGalaxy.Add(starSystemNewGameOb);
 
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
-                    FogOfWarNaming(starSystemNewGameOb, civy); // Do not name race at star, give only coordenants
+                    FogOfWarNaming(starSystemNewGameOb, civy); // Do not name star, give only coordenants
                     TMP_Text textMeshPro = starSystemNewGameOb.GetComponentInChildren<TMP_Text>();
                     // font size set in SclaeMeshText.cs for distance from camera
-                    textMeshPro.transform.SetParent(sysEmptyList[sysIndex].transform, false); //parent TMP_Text to empty, not button so it is not clickable 
+                    //textMeshPro.transform.SetParent(sysEmptyList[sysIndex].transform, false); //parent TMP_Text to empty, not button so it is not clickable 
 
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     sysSphere.transform.SetParent(sysEmptyList[sysIndex].transform, false); //starSystemNewGameOb.transform, false);
@@ -811,7 +815,7 @@ namespace BOTF3D_GalaxyMap
                         _movingGalaxyObjects.Add(firstFleet.gameObject);
                         float x = firstFleetOfSystem.transform.localPosition.x;
                         float y = firstFleetOfSystem.transform.localPosition.y;
-                        GalaxyDropLine fleetLine = Instantiate(systemDropLine, new Vector3(0,0,0), Quaternion.identity);
+                        GalaxyDropLine fleetLine = Instantiate(fleetDropLine, new Vector3(0,0,0), Quaternion.identity);
                         fleetLine.name = firstFleetOfSystem.name + "_FleetLine";
                         //fleetLine.gameObject.layer = 1;
                         GameObject fleetPlaneGameObj = Instantiate(_fleetLineEndpointPrefab,

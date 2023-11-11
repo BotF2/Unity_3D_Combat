@@ -10,13 +10,12 @@ using UnityEngine.UIElements;
 using Unity.VisualScripting;
 using DG.Tweening;
 using Unity.VisualScripting.Dependencies.NCalc;
-
+//using System.Numerics;
 
 namespace BOTF3D_GalaxyMap
 {
     public class CameraManagerGalactica : MonoBehaviour
-    {
-        
+    {       
         #region UI
 
         [Space]
@@ -89,9 +88,8 @@ namespace BOTF3D_GalaxyMap
 
         #endregion UI
 
-
         // In Galaxy Map X is right left, Y is in out and z is negative up down
-        //public bool ClickUI = false;
+     
         [Header("Camera Positioning")]
         private Vector2 cameraOffset = new Vector2(10f, 14f);
         public float lookAtOffset = 400f;
@@ -234,7 +232,7 @@ namespace BOTF3D_GalaxyMap
 
             }
             // Return to init position, R
-            if (Input.GetKeyDown(_initPositonButton))
+            if (Input.GetKeyDown(_initPositonButton)) // r key
             {
                 transform.position = _initPosition;
                 transform.eulerAngles = _initRotation;
@@ -244,53 +242,43 @@ namespace BOTF3D_GalaxyMap
             }
 
             //Right Mouse Click
-            if (Input.GetMouseButtonDown(1)) // && !ClickUI)
+            if (Input.GetMouseButtonDown(1)) // right mouse button
             {
                 if (!cameraZoomed)
                 {
                     //Create variables to cast a ray on object
- 
+                    int layerMask = 1 << 8; // in raycast below, we are only going to hit in layer 8 GalacticUI,
+                                            // the background image of galaxy
                     Ray ray = _publicCameraGalactica.ScreenPointToRay(Input.mousePosition);
-                   // bool isOverUI = EventSystem.current.IsPointerOverGameObject();
-                    //if (Physics.Raycast(ray, out RaycastHit hit) && !isOverUI)
-                    if (Physics.Raycast(ray, out RaycastHit hit)) // && !isOverUI)
+
+                    if (Physics.Raycast(ray, out RaycastHit hit, 10000f,layerMask)) 
                     {
                         Collider collider = backgroundImageObject.GetComponent<Collider>();
-                        //hit.collider.gameObject
-                        //colliderName = hit.collider.name;
 
-                        //Detect if ray hit system 
-                        if (hit.collider == collider)  //colliderName.Contains("System"))
+                        //Detect if ray hit background image 
+                        if (hit.collider == collider) 
                         {
                             float deep = hit.collider.transform.position.y;
 
                             float newZoom = (deep + 15000f) / 200f;
-                            _publicCameraGalactica.fieldOfView = 85 - newZoom;
+                            _publicCameraGalactica.fieldOfView = 90 - newZoom;
+
                             _publicCameraGalactica.transform.rotation =
                                 Quaternion.LookRotation(hit.point - _publicCameraGalactica.transform.position, Vector3.up);
-
-                        // trying to correct roll of camera on LookRotation
-                            //_publicCameraGalactica.transform.localEulerAngles = new Vector3(_publicCameraGalactica.transform.localEulerAngles.x, _publicCameraGalactica.transform.localEulerAngles.y, backgroundImageObject.transform.localEulerAngles.z - _publicCameraGalactica.transform.localEulerAngles.z);
-                            //_publicCameraGalactica.transform.localEulerAngles = new Vector3(_publicCameraGalactica.transform.localEulerAngles.x, 1, _publicCameraGalactica.transform.localEulerAngles.z);
                             cameraZoomed = true;
-                            this.SetZoomedStatus();
-                            //ClickUI = true;
+                            //this.SetZoomedStatus();
                         }
-                        //else
-                        //{
-                        //    ClickUI = true;
-                        //}
+ 
                     }
                 }
-                else // if (!ClickUI)
+                else 
                 {
                     _publicCameraGalactica.fieldOfView = _initFieldOfView;
                     _publicCameraGalactica.transform.eulerAngles = _initRotationCam;
 
                     cameraZoomed = false;
-                    this.SetZoomedStatus();
+                    //this.SetZoomedStatus();
                 }
-                //ClickUI = true;
             }
    
         }
@@ -309,22 +297,7 @@ namespace BOTF3D_GalaxyMap
                 _publicCameraGalactica.transform.eulerAngles = _initRotationCam;
             //}
         }
-        //private void OnMouseUp()
-        //{
-        //    //ClickUI = false;
-        //    if (EventSystem.current.IsPointerOverGameObject())
-        //    {
-        //        if (EventSystem.current.currentSelectedGameObject.name == "ResetViewButton")
-        //        {
-        //            ClickUI = true;
-        //        }
-        //    }
-        //}
-            //    if (ClickUI)
-            //    {
-            //        Debug.Log("Click UI button");
-            //    }
-            //}
+
         public void ActivateCombatStopGalacticPlay(bool turnOn)
         {
             if (turnOn)

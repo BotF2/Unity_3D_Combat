@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5292211225405982137}
   - component: {fileID: -4291368039863463709}
   - component: {fileID: -3899839111983664774}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SystemSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

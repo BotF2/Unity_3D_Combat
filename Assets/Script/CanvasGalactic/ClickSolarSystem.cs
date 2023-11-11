@@ -28,17 +28,17 @@ namespace BOTF3D_GalaxyMap
         {
             solarSystemView = GameObject.Find("SolarSystemView");
             view = solarSystemView.GetComponent<SolarSystemView>();
-            hideSystemButton = GameObject.Find("HideSystemButton");
-            hide = hideSystemButton.GetComponent<HideSystemButton>();
+            //hideSystemButton = GameObject.Find("HideSystemButton");
+            //hide = hideSystemButton.GetComponent<HideSystemButton>();
         }
         public void ShowThisSolarSystemView(int buttonSystemID)
         {
             //bool isOverUI = EventSystem.current.IsPointerOverGameObject();
-            if (hide.weAreHidding == false) // && !BlockedByUI)
-            {
+            //if (hide.weAreHidding == false) 
+            //{
                 view.ShowNextSolarSystemView(buttonSystemID);
                 
-            }
+            //}
             //if (isOverUI)
             //{
             //    if (EventSystem.current.currentSelectedGameObject.name == "ResetViewButton")
