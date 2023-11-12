@@ -56,7 +56,7 @@ namespace BOTF3D_Core
         //public int _maintenanceCostLastTurn;
         //public int _rankCredits;
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
-        public List<Civilization> _contactList;
+        public List<Civilization> _contactList; //**** who we have met
         //public Dictionary<int, DiplomaticRelation>
        // public StarSystem _homeColony;
         public List<StarSystem> _ownedSystem;

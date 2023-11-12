@@ -779,8 +779,8 @@ namespace BOTF3D_GalaxyMap
                     _objectsInGalaxy.Add(starSystemNewGameOb);
 
                     Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
-                    FogOfWarNaming(starSystemNewGameOb, civy); // Do not name star, give only coordenants
-                    TMP_Text textMeshPro = starSystemNewGameOb.GetComponentInChildren<TMP_Text>();
+                    FogOfWarNaming(starSystemNewGameOb, civy); // Do not name unexpolored star, give only coordenants
+                    //TMP_Text textMeshPro = starSystemNewGameOb.GetComponentInChildren<TMP_Text>();
                     // font size set in SclaeMeshText.cs for distance from camera
                     //textMeshPro.transform.SetParent(sysEmptyList[sysIndex].transform, false); //parent TMP_Text to empty, not button so it is not clickable 
 
@@ -868,9 +868,12 @@ namespace BOTF3D_GalaxyMap
         }
         private void FogOfWarNaming(GameObject sysObject, Civilization civy)
         {
-            if (gameManager._localPlayer != (CivEnum)civy._civID)
+            // minors we know at game start are loaded in CivilizationData.LoadOurStartingMinor()
+            if (gameManager._localPlayer != (CivEnum)civy._civID) // cast int _civID to CivEnum
             {
-                sysObject.GetComponentInChildren<TMP_Text>().text =
+                var civPlayer = gameManager.civilizationData.CivFromEnum(gameManager._localPlayer);
+                if (!civPlayer._contactList.Contains(civy))
+                    sysObject.GetComponentInChildren<TMP_Text>().text =
                     "x" + ((int)sysObject.transform.position.x).ToString() +
                     ",y" + ((int)sysObject.transform.position.y).ToString() +
                     ",z" + ((int)sysObject.transform.position.z).ToString();

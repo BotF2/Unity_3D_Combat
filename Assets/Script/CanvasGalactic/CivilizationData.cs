@@ -201,6 +201,7 @@ namespace BOTF3D_GalaxyMap
         }
         public Civilization CivFromEnum(CivEnum civEnum)
         {
+
             if(civsInGame.Count > 0)
             foreach (Civilization aCiv in civsInGame)
             {

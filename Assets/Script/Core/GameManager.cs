@@ -661,7 +661,7 @@ namespace BOTF3D_Core
         public GameObject CanvasGalactic;
         private GameObject PanelLobby_Menu;
         //private GameObject PanelGalaxyUI;
-        public  GameObject galaxyBackground;
+        public GameObject galaxyBackground;
         public GameObject resetViewGalacticButton;
         private GameObject PanelLoadGame_Menu;
         private GameObject PanelSaveGame_Menu;
