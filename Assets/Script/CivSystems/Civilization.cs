@@ -93,6 +93,7 @@ namespace BOTF3D_Core
         public Civilization(int sysCivInt)
         {
             this._civID = sysCivInt;
+            //this._civEnum
         }
     }
 }

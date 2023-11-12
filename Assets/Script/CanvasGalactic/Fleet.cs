@@ -7,14 +7,19 @@ using System.Linq;
 using Assets.Script;
 using BOTF3D_Core;
 using BOTF3D_Combat;
+using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 
 namespace BOTF3D_GalaxyMap
 {
     public class Fleet : MonoBehaviour
     {
         public List<GalaxyShip> shipsInFeet = new List<GalaxyShip>();
-        public CivEnum _civilization;
+        public CivEnum _civEnum;
+        //public Civilization _civilization;
         public float _techPoints;
+        public float _techSpeed;
+        private Rigidbody _rigidbody;
         //public Transform _origin;
         //public Transform _destination;
         //public Transform _loca;
@@ -39,17 +44,24 @@ namespace BOTF3D_GalaxyMap
         {
             GameObject canvasObject = GameObject.Find("CanvasGalactic");
             canvasGalactic = canvasObject.GetComponent<Canvas>();
+            //this.civilizationData = game
+            
         }
         public Fleet(List<GalaxyShip> ships) 
         {
             shipsInFeet = ships;
+            
             //_location = where;
         }
-        private void Update()
-        {
- 
-        }
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.GetComponent<Fleet>() != null)
+            {
+                var whoTwo = collision.gameObject.GetComponent<Fleet>()._civEnum;
+            }
+            
+        }
         void SetTarget()
         {
             //newTarget = true;

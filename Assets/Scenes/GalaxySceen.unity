@@ -9238,8 +9238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipsInFeet: []
-  _civilization: 0
+  _civEnum: 0
   _techPoints: 0
+  _techSpeed: 0
   canvasGalactic: {fileID: 1195700023}
   galaxyPlaneGO: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
   _insigniaSprite: {fileID: 0}
@@ -10681,8 +10682,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipsInFeet: []
-  _civilization: 0
+  _civEnum: 0
   _techPoints: 0
+  _techSpeed: 0
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
@@ -24945,8 +24947,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipsInFeet: []
-  _civilization: 0
+  _civEnum: 0
   _techPoints: 0
+  _techSpeed: 0
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1674423119136610005}
   - component: {fileID: 1588476979324043018}
   - component: {fileID: -4444255922997881843}
-  - component: {fileID: -3225810710773493908}
+  - component: {fileID: 8661952820740557189}
   m_Layer: 6
   m_Name: CARD_fleet
   m_TagString: Untagged
@@ -105,8 +105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipsInFeet: []
-  _civilization: 0
+  _civEnum: 3
   _techPoints: 0
+  _techSpeed: 0
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
@@ -150,36 +151,30 @@ MonoBehaviour:
   galaxyView: {fileID: 0}
   target: {fileID: 0}
   warpSpeed: 0
-  planeEndPoint: {fileID: 0}
---- !u!114 &-3225810710773493908
-MonoBehaviour:
+--- !u!54 &8661952820740557189
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2369376019372463250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84c7610e9682a2445b1597977baf6093, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  cameraManagerGalactica: {fileID: 0}
-  starSystemData: {fileID: 0}
-  thisMovingObject: {fileID: 0}
-  nextSolarSystem: {fileID: 0}
-  solarSystemView: {fileID: 0}
-  systemDropLine: {fileID: 0}
-  fleetDropLine: {fileID: 0}
-  hoverTips: {fileID: 0}
-  hoverTipManager: {fileID: 0}
-  canvasGalactic: {fileID: 0}
-  PanelFleetManager: {fileID: 0}
-  NumbersForSystem: 
-  zoomLevels: 150000000000
-  _mesh: {fileID: 0}
-  _material: {fileID: 0}
-  _lineEndpointPrefab: {fileID: 0}
-  _fleetLineEndpointPrefab: {fileID: 0}
-  _systemSpherePrefab: {fileID: 0}
-  _systemPosition: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
