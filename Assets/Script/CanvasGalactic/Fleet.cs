@@ -16,7 +16,7 @@ namespace BOTF3D_GalaxyMap
     {
         public List<GalaxyShip> shipsInFeet = new List<GalaxyShip>();
         public CivEnum _civEnum;
-        //public Civilization _civilization;
+        //public GameManager _gameManager;
         public float _techPoints;
         public float _techSpeed;
         private Rigidbody _rigidbody;
@@ -53,12 +53,18 @@ namespace BOTF3D_GalaxyMap
             
             //_location = where;
         }
+        //public CivilizationData GetCivData()
+        //{
 
+        //    return 
+        //}
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.GetComponent<Fleet>() != null)
             {
                 var whoTwo = collision.gameObject.GetComponent<Fleet>()._civEnum;
+                //Civilization who2 = _gameManager.
+                //Civilization who2 = _civilizationData.CivFromEnum(whoTwo); 
             }
             
         }

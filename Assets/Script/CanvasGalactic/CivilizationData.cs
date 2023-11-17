@@ -16,6 +16,8 @@ namespace BOTF3D_GalaxyMap
     {
         #region Fields
         public GameManager gameManager;
+        public Fleet fleet;
+        private CivilizationData civData;
         public static List<Civilization> civsInGame = new List<Civilization>();
         public StarSystemData starSystemData;
         [SerializeField]
@@ -35,6 +37,7 @@ namespace BOTF3D_GalaxyMap
         //public List<StarSystem> _sysList;
         [SerializeField]
         public ProductionSliders proSliders;
+        private int count = 0;
         #endregion
         public void Awake()
         {
@@ -141,12 +144,15 @@ namespace BOTF3D_GalaxyMap
                 aCiv._relationshipScores = ourRelationScores;
             }
             numStars = gameManager._galaxyStarCount.Length;
-            //gameManager.SetCivs();
+            if (count < 1)
+            {
+                //civData = fleet.GetCivData();
+                count++;
+            }
         }
 
         public void LoadRelationshipDictionaryOfCivs(int[] intsArray)
         {
-            //diplomacy.cs has the WhatIsOurDipomaticEnum methode
             for (int i = 0; i < intsArray.Length; i++)
             {
                 CivilizationDictionary[(CivEnum)intsArray[i]]._relationshipDictionary.Add((CivEnum)intsArray[i], (DiplomaticEnum)(-3));
