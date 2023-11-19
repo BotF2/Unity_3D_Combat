@@ -15,7 +15,7 @@ using BOTF3D_GalaxyMap;
 namespace BOTF3D_Core
 {
     [System.Serializable]
-    public class Civilization
+    public class Civilization // has what is unique to a civ
     {
         #region Fields
 
@@ -24,8 +24,9 @@ namespace BOTF3D_Core
         public CivEnum _civEnum;
         public string _shortName;
         public string _longName;
+        public StarSystemEnum _homeSystemEnum;
         //public Race race -- try to leave this off, too complicated
-        public StarSystem _homeSystem;
+        //public StarSystem _homeSystem;
         public bool _weAreMajorCiv;
         //public Traits _traitOne;
         //public Traits _traitTwo;
@@ -58,9 +59,9 @@ namespace BOTF3D_Core
         //public List<CivHistory> _civHist_List = new List<CivHistory>();
         public List<Civilization> _contactList; //**** who we have met
         //public Dictionary<int, DiplomaticRelation>
-       // public StarSystem _homeColony;
-        public List<StarSystem> _ownedSystem;
-        public List<Ship> _fleet;
+
+        public List<StarSystemEnum> _ownedSystemEnums;
+        public List<Ship> _listCombatShips;
         //public List<int> _IntelIDs;
         //public MapLocation? _homeColonyLocation;
         //public int _seatOfGovernmentId = -1;

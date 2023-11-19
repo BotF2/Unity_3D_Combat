@@ -16,13 +16,13 @@ namespace BOTF3D_Core
 {
     public class AlphaChange : MonoBehaviour
     {
-        [SerializeField] private Material myMaterial;
+        //[SerializeField] private Material myMaterial;
 
-        private void Start()
-        {
-            Color color = myMaterial.color;
-            color.a = 0.05f;
-            myMaterial.color = color;
-        }
+        //private void Start()
+        //{
+        //    Color color = myMaterial.color;
+        //    color.a = 0.05f;
+        //    myMaterial.color = color;
+        //}
     }
 }

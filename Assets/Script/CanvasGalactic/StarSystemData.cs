@@ -107,9 +107,9 @@ namespace BOTF3D_GalaxyMap
             StarSystem theSystem = StarSystemData.StarSystemDictionary[sysEnum];
             theSystem._fleetsInSystem.Remove(fleet.gameObject);
         }
-        public void LoadSystemOwner(Civilization civ, StarSystem sys) // Now CivilizationData can provide civ data for system
+        public void LoadSystemOwner(Civilization civ, StarSystemEnum sys) // Now CivilizationData can provide civ data for system
         {
-            StarSystem theSystem = StarSystemData.StarSystemDictionary[sys._sysEnum];
+            StarSystem theSystem = StarSystemData.StarSystemDictionary[sys];
             theSystem._ownerCiv = civ;
             theSystem._currentOwnerName = civ._shortName;
             theSystem._ownerInsigniaSprite = civ._insignia; // Resources.Load<Sprite>("Insignia/" + sys._sysName.ToUpper());

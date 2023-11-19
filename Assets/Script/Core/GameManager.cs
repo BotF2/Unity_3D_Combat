@@ -1455,9 +1455,9 @@ namespace BOTF3D_Core
         public void ChangeSystemClicked(int systemID, SolarSystemView ssView) //(SolarSystemView ssView)
         {
 
-            var currentStarSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemID];
+            var currentStarSystemEnum = (StarSystemEnum)systemID;
             Civilization localPlayerCiv = _localPlayerCiv;
-            if (localPlayerCiv._ownedSystem.Contains(currentStarSystem))
+            if (localPlayerCiv._ownedSystemEnums.Contains(currentStarSystemEnum))
                 { _playerOwnesSystem = true; }
             else { _playerOwnesSystem = false; }
             PanelLobby_Menu.SetActive(false);
@@ -1695,8 +1695,7 @@ namespace BOTF3D_Core
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    //ToDo; SetGalaxyMapSize();
-                    
+                    //ToDo; SetGalaxyMapSize();                   
                     //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
                     starSysData.LoadSystemDictionary(_galaxyStarCount);
@@ -1750,7 +1749,8 @@ namespace BOTF3D_Core
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    gridManager.SeeGrid();
+                    gridManager.SeeGrid(); // turned off downstram
+                    //
                     //PanelGalaxyUI.SetActive(true);
                     //ResetGalaxyView.enabled = true;
                     //ResetGalaxyView.SetUpResetViewGalaxyButton();
@@ -2164,7 +2164,10 @@ namespace BOTF3D_Core
 
             }
         }
-
+        //public CivilizationData SendCivDataToFleet(Fleet fleet)
+        //{
+        //    return civData;
+        //}
         //private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
         //{
         //    string[] _nameParts = shipName.ToUpper().Split('_');

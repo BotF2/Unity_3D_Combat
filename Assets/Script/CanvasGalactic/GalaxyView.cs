@@ -368,6 +368,7 @@ namespace BOTF3D_GalaxyMap
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
         public static List<GameObject> _objectsInGalaxy = new List<GameObject>();
         public static List<GameObject> _movingGalaxyObjects = new List<GameObject>();
+        public static List<GameObject> _starSystemObjects = new List<GameObject>();
         
         public Mesh _mesh;
         public Material _material;
@@ -725,24 +726,20 @@ namespace BOTF3D_GalaxyMap
 
             Galaxy galaxy = new Galaxy(gameManager);
             //if (canonOrRandom == GalaxyType.CANON)
+            GameObject tempObject = GameObject.Find("CanvasGalactic");
+            canvasGalactic = tempObject.GetComponent<Canvas>();
             for (int i = 0; i < numStars.Length; i++)
             {
-                //float size = 37f;
+                Civilization civy;
                 int sysIndex = numStars[i];
                 string ourKey = keysForSystemDictionary[sysIndex];
                 if (keysForSystemDictionary[sysIndex].Length != 0)
                 {
-                    GameObject tempObject = GameObject.Find("CanvasGalactic");
+                    
                     sysEmptyList[sysIndex] = new GameObject(); // object no longer null
 
                     if (tempObject != null)
                     {
-                        canvasGalactic = tempObject.GetComponent<Canvas>();
-                        //canvasGalactic.AddComponent<EventSystem>();
-                        //canvasGalactic.AddComponent<StandaloneInputModule>();
-                        //canvasGalactic.AddComponent<GraphicRaycaster>();
-                        //sysEmptyList[sysIndex] = new GameObject();
-
                         sysEmptyList[sysIndex].name = SystemDataDictionary[sysIndex][4];
                         int x = int.Parse(SystemDataDictionary[sysIndex][1]);
                         int y = int.Parse(SystemDataDictionary[sysIndex][2]);
@@ -776,21 +773,25 @@ namespace BOTF3D_GalaxyMap
                     GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
+                    
                     _objectsInGalaxy.Add(starSystemNewGameOb);
+                    _starSystemObjects.Add(starSystemNewGameOb);
 
-                    Civilization civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
+                    civy = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex];
+                    civy._homeSystemEnum = (StarSystemEnum)sysIndex;
+                    StarSystemEnum someEnum = (StarSystemEnum)sysIndex;
+                    starSystemNewGameOb.name = someEnum.ToString();
+                    
                     FogOfWarNaming(starSystemNewGameOb, civy); // Do not name unexpolored star, give only coordenants
                     //TMP_Text textMeshPro = starSystemNewGameOb.GetComponentInChildren<TMP_Text>();
-                    // font size set in SclaeMeshText.cs for distance from camera
-                    //textMeshPro.transform.SetParent(sysEmptyList[sysIndex].transform, false); //parent TMP_Text to empty, not button so it is not clickable 
 
                     GameObject sysSphere = Instantiate(_systemSpherePrefab, new Vector3(0, 0, 0), Quaternion.identity);
                     sysSphere.transform.SetParent(sysEmptyList[sysIndex].transform, false); //starSystemNewGameOb.transform, false);
                     sysSphere.transform.localScale = new Vector3(27000, 27000, 27000);
-                    sysSphere.name = sysIndex.ToString();
+                    sysSphere.name = someEnum + "_Sphere";
                     //sysSphere.layer = 2; // Ignore Raycast clicks on system button, only count fleets
                     StarSystem ourSystem = starSystemData.GetSystem((StarSystemEnum)sysIndex);
-                    
+
                     ourSystem._systemSphere = sysSphere;
 
                     Civilization theCiv = CivilizationData.Create(sysIndex); // and civs make systems
@@ -834,7 +835,7 @@ namespace BOTF3D_GalaxyMap
                         targetWeMoveTo.transform.position = new Vector3(0, 0, 0);
                         MoveGalacticObjects moveGalacticObject = firstFleet.GetComponent<MoveGalacticObjects>();
                         thisMovingObject = moveGalacticObject;
-                        thisMovingObject.BoldlyGo(firstFleet, targetWeMoveTo, fleetPlaneGameObj, 5f); ; //, fleetLine);
+                        thisMovingObject.BoldlyGo(firstFleet, targetWeMoveTo, fleetPlaneGameObj, 200f); ; //, fleetLine);
 
                     }
 

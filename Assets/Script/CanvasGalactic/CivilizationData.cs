@@ -12,12 +12,11 @@ using Unity.VisualScripting;
 namespace BOTF3D_GalaxyMap
 {
     //[System.Serializable]
-    public class CivilizationData : MonoBehaviour
+    public class CivilizationData : MonoBehaviour // has list of civs and civs data dictionaries?
     {
         #region Fields
         public GameManager gameManager;
-        public Fleet fleet;
-        private CivilizationData civData;
+
         public static List<Civilization> civsInGame = new List<Civilization>();
         public StarSystemData starSystemData;
         [SerializeField]
@@ -78,7 +77,7 @@ namespace BOTF3D_GalaxyMap
             #endregion          
         }
         public static CivilizationData Instance { get; private set; }
-        public static Civilization Create(int systemInt)
+        public static Civilization Create(int systemInt) // new instance of a civ (Civilization is not inheriting MonoBehavior so can have new construtor instance
         {
             Civilization daCiv = new Civilization(systemInt);
             var sysStrings = CivilizationData.CivDataDictionary[systemInt];
@@ -110,12 +109,12 @@ namespace BOTF3D_GalaxyMap
             daCiv._civCredits = int.Parse(sysStrings[10]);
             daCiv._civTechPoints = int.Parse(sysStrings[11]);
             //daCiv._civTechLevel = TechLevel.EARLY; ToDo: set this by enough tech points to get new ship images
-            daCiv._homeSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)systemInt];
-            daCiv._homeSystem._ownerCiv = daCiv;
+            daCiv._homeSystemEnum = (StarSystemEnum)systemInt;
+           // daCiv._homeSystem._ownerCiv = daCiv;
             List<Civilization> civsWeKnow = new List<Civilization>() { daCiv }; // instantiate list with knowing our self
             daCiv._contactList = civsWeKnow;
-            List<StarSystem> ownedSystemStarterList = new List<StarSystem>() { daCiv._homeSystem };
-            daCiv._ownedSystem = ownedSystemStarterList;
+            List<StarSystemEnum> ownedSystemStarterList = new List<StarSystemEnum>() { daCiv._homeSystemEnum };
+            daCiv._ownedSystemEnums = ownedSystemStarterList;
             //daCiv._relationshipDictionary = new Dictionary<int, int>();
             civsInGame.Add(daCiv);
             //for (int i = 0; i < systemInt; i++)
@@ -134,7 +133,7 @@ namespace BOTF3D_GalaxyMap
             for (int i = 0; i < ints.Length; i++)
             {
                 Civilization aCiv = CivilizationData.Create(ints[i]); 
-                starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystem); // Star Systems instantiated first so go back now, set Civ for owner of system
+                starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystemEnum); // Star Systems instantiated first so go back now, set Civ for owner of system
                 CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
                 List<float> ourRelationScores = new List<float>();
                 for (int j = 0; j < ints.Length; j++)
@@ -144,11 +143,6 @@ namespace BOTF3D_GalaxyMap
                 aCiv._relationshipScores = ourRelationScores;
             }
             numStars = gameManager._galaxyStarCount.Length;
-            if (count < 1)
-            {
-                //civData = fleet.GetCivData();
-                count++;
-            }
         }
 
         public void LoadRelationshipDictionaryOfCivs(int[] intsArray)
@@ -298,17 +292,18 @@ namespace BOTF3D_GalaxyMap
                 var civIndex = gameManager._galaxyStarCount[i];
                 Civilization civ = CivilizationDictionary[(CivEnum)civIndex];
                 CalculateCivSysAllocation(civ);
-                if (civ._ownedSystem.Count > 0)
+                if (civ._ownedSystemEnums.Count > 0)
                 {
-                    for (int j= 0; j< civ._ownedSystem.Count; j++)
+                    for (int j= 0; j< civ._ownedSystemEnums.Count; j++)
                     {
-                        StarSystem starSys = civ._ownedSystem[j];
+                        StarSystemEnum starSysEnum = civ._ownedSystemEnums[j];
+                        StarSystem starSys = StarSystemData.StarSystemDictionary[starSysEnum];
                         float sysPopLimit = (starSys._systemPopLimit + civ._civTechPoints); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
                         if (starSys._currentSysPop < sysPopLimit)
                         {
                             starSys._currentSysPop += starSys._currentSysPop * techPopGrowthRate;
 
-                            if (civ._ownedSystem.Count > 1) // profit from trade 
+                            if (civ._ownedSystemEnums.Count > 1) // profit from trade 
                             {
                                 civ._civCredits += 5f;
                             }
@@ -325,9 +320,9 @@ namespace BOTF3D_GalaxyMap
                         starSys._sysCredits -= starSys._sysCredits * civ._civTaxRate;
                         DoSysConsumption(starSys);
                     }
-                    for (int k = 0; k < civ._ownedSystem.Count; k++) // apply trade income from civ credits
+                    for (int k = 0; k < civ._ownedSystemEnums.Count; k++) // apply trade income from civ credits
                     {
-                        StarSystem starSys = civ._ownedSystem[k];
+                        StarSystem starSys = StarSystemData.StarSystemDictionary[(StarSystemEnum)k];
                         starSys._sysCredits += civ._civCredits * (civ._sysTradeAllocation[k] / 100f);
                     }
                 }
@@ -347,8 +342,8 @@ namespace BOTF3D_GalaxyMap
         {
             // ToDo: get slider imput here for trade credit allocation
             civ._sysTradeAllocation.Clear();
-            float allocation = 100f/ civ._ownedSystem.Count;
-            for (int i = 0; i < civ._ownedSystem.Count; i++)
+            float allocation = 100f/ civ._ownedSystemEnums.Count;
+            for (int i = 0; i < civ._ownedSystemEnums.Count; i++)
             {
                 civ._sysTradeAllocation.Add(allocation);              
             }
@@ -397,6 +392,10 @@ namespace BOTF3D_GalaxyMap
             //    }
             //}
         }
+        //public void SendCivDataToFleet()
+        //{
+        //    fleet.GetCivData(this);
+        //}
         //public void MoveGalacticThings()
         //{
 

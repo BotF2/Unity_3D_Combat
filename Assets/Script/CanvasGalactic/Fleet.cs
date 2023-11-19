@@ -9,14 +9,16 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using Unity.VisualScripting;
 using System.Runtime.CompilerServices;
+using TMPro;
+using UnityEditor.Rendering;
 
 namespace BOTF3D_GalaxyMap
 {
-    public class Fleet : MonoBehaviour
+    public class Fleet : MonoBehaviour // Should this be FleetData inheriting from MonoBehavior with a Fleet not inheriting but are the new instances?
     {
         public List<GalaxyShip> shipsInFeet = new List<GalaxyShip>();
         public CivEnum _civEnum;
-        //public GameManager _gameManager;
+
         public float _techPoints;
         public float _techSpeed;
         private Rigidbody _rigidbody;
@@ -50,21 +52,50 @@ namespace BOTF3D_GalaxyMap
         public Fleet(List<GalaxyShip> ships) 
         {
             shipsInFeet = ships;
-            
-            //_location = where;
-        }
-        //public CivilizationData GetCivData()
-        //{
 
-        //    return 
-        //}
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
+ 
             if (collision.gameObject.GetComponent<Fleet>() != null)
             {
-                var whoTwo = collision.gameObject.GetComponent<Fleet>()._civEnum;
-                //Civilization who2 = _gameManager.
-                //Civilization who2 = _civilizationData.CivFromEnum(whoTwo); 
+                Fleet fleetOne = collision.gameObject.GetComponent<Fleet>();
+                Fleet fleetTwo = collision.contacts[0].thisCollider.gameObject.GetComponent<Fleet>();
+                //var systemSomething = collision.contacts[0].thisCollider.gameObject.GetComponent<>();
+                if (fleetTwo != null)
+                {
+                    Civilization civOne = CivilizationData.CivilizationDictionary[fleetOne._civEnum];
+                    Civilization civTwo = CivilizationData.CivilizationDictionary[fleetTwo._civEnum];
+                    if (!civOne._contactList.Contains(civTwo))
+                    //if (!civTwo._contactList.Contains(civOne))
+                    {
+                        civOne._contactList.Add(civTwo);
+                        civTwo._contactList.Add(civOne);
+                        for (int i = 0; i < GalaxyView._starSystemObjects.Count(); i++)
+                        {
+                            GameObject sysObject = GalaxyView._starSystemObjects[i];
+                            for (global::System.Int32 j = 0; j < civOne._ownedSystemEnums.Count(); j++)
+                            {
+                                var someSysEnum = civOne._ownedSystemEnums[j];
+                                if (sysObject.name == someSysEnum.ToString())
+                                {
+                                    sysObject.GetComponentInChildren<TMP_Text>().text = sysObject.name;
+                                }
+                            }
+                            for (global::System.Int32 j = 0; j < civTwo._ownedSystemEnums.Count(); j++)
+                            {
+                                var someOtherSysEnum = civTwo._ownedSystemEnums[j];
+                                if (sysObject.name == someOtherSysEnum.ToString())
+                                {
+                                    sysObject.GetComponentInChildren<TMP_Text>().text = sysObject.name;
+                                }
+                            }
+                        }
+
+                    }
+                }
+       
             }
             
         }

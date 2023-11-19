@@ -233,15 +233,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 0
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
+  m_ActiveFontFeatures: 00000000
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -340,6 +342,7 @@ GameObject:
   - component: {fileID: 4761592045379932904}
   - component: {fileID: 124299536620563853}
   - component: {fileID: 8685106457984644328}
+  - component: {fileID: 6225974571584122755}
   m_Layer: 6
   m_Name: AcamarianSystem
   m_TagString: Untagged
@@ -495,6 +498,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 250, y: 250, z: 250}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6225974571584122755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4761592045379931411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc51dc8cc3ef9e41bc2d44fedfb1cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  civOwnerImage: {fileID: 0}
+  civInsigniaImage: {fileID: 0}
+  spriteForOwnerCiv: {fileID: 0}
+  spriteForOwnerInsignia: {fileID: 0}
+  currentCivOwnerName: 
 --- !u!1 &5205738399727365952
 GameObject:
   m_ObjectHideFlags: 0
