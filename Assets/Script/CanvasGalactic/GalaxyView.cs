@@ -17,7 +17,8 @@ namespace BOTF3D_GalaxyMap
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
-
+        public GalaxyShip galaxyShip;
+        //public CivilizationData civilizationData;
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
         public MoveGalacticObjects thisMovingObject;
@@ -363,7 +364,7 @@ namespace BOTF3D_GalaxyMap
         public static GameObject galaxyTile;
         public List<int> NumbersForSystem;
         public ulong zoomLevels = 150000000000; // times 1 billion zoom
-        Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
+       // Dictionary<SolarSystem, GameObject> solarSystemGameObjectMap; // put in the ss sprit and get the ss game object
         private char separator = ',';
         public static Dictionary<int, string[]> SystemDataDictionary = new Dictionary<int, string[]>();
         public static List<GameObject> _objectsInGalaxy = new List<GameObject>();
@@ -770,7 +771,7 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].SetActive(true);
                     }
                     // The PreFabStarSystemDictionary and PrefabFleetDictionary are setup in Unity, Hierarchy, GameManager, the public Prefab lists
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDictionary[ourKey], new Vector3(0, 0, 0), Quaternion.identity);
                     starSystemNewGameOb.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);
                     
@@ -794,13 +795,16 @@ namespace BOTF3D_GalaxyMap
 
                     ourSystem._systemSphere = sysSphere;
 
-                    Civilization theCiv = CivilizationData.Create(sysIndex); // and civs make systems
-                    if (i < 6 && GameManager.PrefabFleetDitionary[ourKey] != null)
+                    Civilization theCiv = CivilizationData.CivilizationDictionary[(CivEnum)sysIndex]; // get civ out of Dictionary
+                    if (i < 6 && GameManager.PrefabFleetDictionary[ourKey] != null) //now add fleet below, we do not see shipyards
                     {
-                     
-                        GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDitionary[ourKey],
+                        /// We will Instantiate the shipyard with a model when entering combat, in system we will manage the yard 
+                        //GameObject firstShipYard = Instantiate(GameManager.PrefabShipYardDictionary[theCiv._shortName],
+                        //    new Vector3(0, 0, 0), Quaternion.identity);
+
+                        GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDictionary[ourKey],
                             new Vector3(0, 0, 0), Quaternion.identity);
-                        // firstFleetOfSystem.transform.SetParent ???
+
                         firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false);  
                         firstFleetOfSystem.transform.position = sysEmptyList[sysIndex].transform.position;
                         firstFleetOfSystem.transform.Translate(0, -5, 15);
@@ -808,12 +812,33 @@ namespace BOTF3D_GalaxyMap
                         firstFleetOfSystem.layer = 6;
                         firstFleetOfSystem.SetActive(true);
                         firstFleetOfSystem.name = sysEmptyList[sysIndex].name + "_fleet";
-                        Fleet firstFleet = firstFleetOfSystem.GetComponent<Fleet>();    
-                        firstFleet.inDeepSpace = false;
+                        FleetData firstFleetData = firstFleetOfSystem.GetComponent<FleetData>();
+                        List<GalaxyShip> starterGalaxyShips = new List<GalaxyShip>();
+                        var techLevel = GameManager._techLevel;
+                        foreach (var item in GameManager.GalaxyShipNameDictionary)
+                        {
+                            if (item.Key.Contains(((CivEnum)sysIndex).ToString()))
+                            {
+                                List<GalaxyShip> galaxyShipsOfType = new List<GalaxyShip>();
+                                for (int j = 0; j < item.Value; j++)
+                                {
+
+                                    GalaxyShip gShip = new GalaxyShip();
+                                    gShip._civilization = (CivEnum)sysIndex;
+                                    gShip._shipName = item.Key;
+                                    gShip._techLeve = techLevel;
+                                    galaxyShipsOfType.Add(gShip);
+                                }
+                                starterGalaxyShips.AddRange(galaxyShipsOfType);
+                            }
+                        }
+
+                        firstFleetData.ShipsInFeet = starterGalaxyShips.ToArray();
+                        firstFleetData._inDeepSpace = false;
                      
-                        theCiv.civFleetList = new List<Fleet> { firstFleet };
-                        _objectsInGalaxy.Add(firstFleet.gameObject);
-                        _movingGalaxyObjects.Add(firstFleet.gameObject);
+                        theCiv.civFleetList = new List<FleetData> { firstFleetData };
+                        _objectsInGalaxy.Add(firstFleetData.gameObject);
+                        _movingGalaxyObjects.Add(firstFleetData.gameObject);
                         float x = firstFleetOfSystem.transform.localPosition.x;
                         float y = firstFleetOfSystem.transform.localPosition.y;
                         GalaxyDropLine fleetLine = Instantiate(fleetDropLine, new Vector3(0,0,0), Quaternion.identity);
@@ -833,9 +858,9 @@ namespace BOTF3D_GalaxyMap
                         // Temp get fleets moving to galatic center
                         GameObject targetWeMoveTo = new GameObject();
                         targetWeMoveTo.transform.position = new Vector3(0, 0, 0);
-                        MoveGalacticObjects moveGalacticObject = firstFleet.GetComponent<MoveGalacticObjects>();
+                        MoveGalacticObjects moveGalacticObject = firstFleetData.GetComponent<MoveGalacticObjects>();
                         thisMovingObject = moveGalacticObject;
-                        thisMovingObject.BoldlyGo(firstFleet, targetWeMoveTo, fleetPlaneGameObj, 200f); ; //, fleetLine);
+                        thisMovingObject.BoldlyGo(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f); ; //, fleetLine);
 
                     }
 
@@ -913,10 +938,10 @@ namespace BOTF3D_GalaxyMap
             }
             return number;
         }
-        private void StarterFleetForCivs(List<GalaxyShip> fleetShips)
+        private void StarterFleetForCivs(GalaxyShip[] fleetShips)
         {
 
-            Fleet newFleet = new Fleet(fleetShips);
+            FleetData newFleet = new FleetData(fleetShips);
 
             GameObject tempObject = GameObject.Find("CanvasGalactic");
             if (tempObject != null)
@@ -934,7 +959,7 @@ namespace BOTF3D_GalaxyMap
             //_fleetObjInGalaxy.Add(fleetNewGameOb);           
         }
 
-        public void UpdateTheFleet(Fleet fleet, List<GalaxyShip> newShipList)
+        public void UpdateTheFleet(FleetData fleet, List<GalaxyShip> newShipList)
         {
 
         }
@@ -950,7 +975,7 @@ namespace BOTF3D_GalaxyMap
 
             }
             //fleetManager.SetActive(false);
-            solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
+            //solarSystemGameObjectMap = new Dictionary<SolarSystem, GameObject>();
             //solarSystemView.ShowNextSolarSystemView(buttonSystemID); // the number is found in Unity Inspector, button On Click 
         }
 

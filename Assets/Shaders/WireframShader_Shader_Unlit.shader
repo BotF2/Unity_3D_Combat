@@ -80,7 +80,7 @@ Shader "Unlit/WireframShader_Shader_Unlit"
                 triStream.Append(o);
             }
 
-            **fixed4 _WireframeBackColour;
+            fixed4 _WireframeBackColour;
             float _WireframeWidth;
 
             fixed4 frag(g2f i) : SV_Target

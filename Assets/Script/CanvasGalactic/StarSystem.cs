@@ -20,7 +20,7 @@ namespace BOTF3D_GalaxyMap
         #region Fields
 
         public int _sysInt;
-        public int _x;
+        public int _x;//done location vetor and tranform move in MonoBehavior inheriting StarSystemData attached to a GO?
         public int _y;
         public int _z;
         public StarSystemEnum _sysEnum;
@@ -49,6 +49,7 @@ namespace BOTF3D_GalaxyMap
 
         public StarSystem(int sysInt)
         {
+            // to do, check that system is still owned if we are past create Galaxy phase
             this._sysInt = sysInt;           
         }
     }

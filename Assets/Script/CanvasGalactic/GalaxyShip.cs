@@ -10,13 +10,65 @@ using BOTF3D_Combat;
 
 namespace BOTF3D_GalaxyMap
 {
-    public class GalaxyShip : MonoBehaviour // Do We Need this as well as Fleet?????
+    public class GalaxyShip // Do We Need this as well as Fleet?????
     {
         public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
                                         //public Combat combat;
         public CivEnum _civilization;
-        public ShipType _shipType;
-        //public float _techPoints; // this comes from the owner civ so fill it in once in combat, not here
+        public string _shipName;
+        public TechLevel _techLeve;
+        public float _techPoints; // this comes from the owner civ so fill it in once in combat, not here
+
+        public GalaxyShip LoadGalaxyShip(CivEnum civEnum, string shipName, TechLevel techLevel) //float techPoints)
+        {
+            this._civilization = civEnum;
+            this._shipName = shipName;
+            this._techLeve = techLevel;
+            //this._techPoints = techPoints;
+            return this;
+        }
+        public List<GalaxyShip> LoadListGalaxyShips(int[] numGalaxyShips, GalaxyShip[] galaxyShips) 
+        {
+            List<GalaxyShip> galayShipList = new List<GalaxyShip>();
+            for (int i = 0; i < numGalaxyShips.Count(); i++)
+            {
+                for (int j = 0; j < numGalaxyShips[i]; j++)
+                {
+                    galayShipList.Add(galayShipList[i]);
+                }
+            }
+            return galayShipList;
+            //GalaxyShip galaxyShip = new GalaxyShip();
+            //return new List<GalaxyShip> {galaxyShip};
+        }
+        //public CivEnum CivEnumFromName(string name)
+        //{
+        //    var file = new FileStream(name, FileMode.Open, FileAccess.Read);
+
+        //    var _dataPoints = new List<string>();
+        //    using (var reader = new StreamReader(file))
+        //    {
+
+        //        while (!reader.EndOfStream)
+        //        {
+        //            var line = reader.ReadLine();
+        //            if (line == null)
+        //                continue;
+        //            _dataPoints.Add(line.Trim());
+        //            if (line.Length > 0)
+        //            {
+        //                var coll = line.Split("-");
+        //                if (Enum.TryParse<CivEnum>(coll[0], out CivEnum civEnum))
+        //                {
+        //                    return civEnum;
+        //                }
+
+        //            }
+        //        }
+        //        return CivEnum.UNINHABITED;
+        //    }
+        //}
+        
 
         private void Awake()
         {
@@ -43,9 +95,6 @@ namespace BOTF3D_GalaxyMap
             //        break;
             //    case "HVYCURISER":
             //        _shipType = ShipType.HvyCruiser;
-            //        break;
-            //    case "TRANSPORT":
-            //        _shipType = ShipType.Transport;
             //        break;
             //    case "TRANSPORT":
             //        _shipType = ShipType.Transport;

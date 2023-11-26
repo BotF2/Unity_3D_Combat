@@ -15,17 +15,19 @@ using UnityEngine.Rendering.VirtualTexturing;
 
 namespace BOTF3D_GalaxyMap
 {
-
+//    [System.Serializable]
     public class StarSystemData : MonoBehaviour
     {
         public Image civOwnerImage; // asigned in inspector just like SolarSystemView
         public Image civInsigniaImage;
-        public Sprite spriteForOwnerCiv;
-        public Sprite spriteForOwnerInsignia;
+        // Should all the location be in the MonoBehavior inheriting StarSystemData attached to a GO?
+        //public Transform _loca;
+        //public Sprite spriteForOwnerCiv;
+        //public Sprite spriteForOwnerInsignia;
         private string originalCivOwnerName;
         public string currentCivOwnerName;
         private string sysDataName;
-
+        public List<ShipYardData> shipYardDataList;
         //[SerializeField]
         public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>();
 
@@ -84,7 +86,7 @@ namespace BOTF3D_GalaxyMap
         //    civOwnerSprite = theSystem._ownerCivSprite;
         //    civOwnerName = theSystem._ownerName;
         //}
-        public void LoadSystemDictionary(int[] starArray)
+        public void LoadSystemData(int[] starArray)
         {
             for (int i = 0; i < starArray.Length; i++)
             {

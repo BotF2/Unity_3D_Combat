@@ -246,7 +246,7 @@ namespace BOTF3D_Combat
                                 break;
                         }
 
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDictionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];    
                         PopulateShipData(shipGameOb); // Ship class script is attached in prefab so fill in the data
                         ShipScaleAndRotation(shipGameOb, rotationOnY);
@@ -323,7 +323,7 @@ namespace BOTF3D_Combat
                             default:
                                 break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDictionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
@@ -411,7 +411,7 @@ namespace BOTF3D_Combat
                         default:
                             break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDictionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are
@@ -481,7 +481,7 @@ namespace BOTF3D_Combat
                             default:
                                 break;
                         }
-                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDitionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
+                        GameObject shipGameOb = Instantiate(GameManager.PrefabShipDictionary[preCombatShipNames[i]], new Vector3(xLocation, yLocation, zLocation), Quaternion.identity);
                         shipGameOb.name = preCombatShipNames[i];
                         var aCameraTarget = shipGameOb;
                         //GameObject aCameraTarget = Instantiate(cameraEmpty, new Vector3(xLocation, yLocation, zLocation), Quaternion.identity); // camera target where ships are

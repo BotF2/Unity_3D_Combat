@@ -34,8 +34,8 @@ namespace BOTF3D_GalaxyMap
             {
                 inSysList.Add(other);
                 starSystemData.AddFleet(sysEnum, (other.gameObject));
-                var fleet = other.gameObject.GetComponent<Fleet>();
-                fleet.inDeepSpace = false;
+                var fleet = other.gameObject.GetComponent<FleetData>();
+                fleet._inDeepSpace = false;
             }
         } 
         private void OnTriggerExit(Collider other)
@@ -44,8 +44,8 @@ namespace BOTF3D_GalaxyMap
             {
                 inSysList.Remove(other);
                 starSystemData.RemoveFleet(sysEnum, (other.gameObject));
-                var fleet = other.gameObject.GetComponent<Fleet>();
-                fleet.inDeepSpace = true;
+                var fleet = other.gameObject.GetComponent<FleetData>();
+                fleet._inDeepSpace = true;
             }
         }
         public void AddSystemSphere(StarSystemEnum systemKey) // Use the Ditoinary

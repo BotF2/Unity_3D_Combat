@@ -1072,6 +1072,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -7764,10 +7770,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
+  _fleetCivID: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _name: 
+  _insignia: {fileID: 0}
+  _buildCost: 0
+  _yardImage: {fileID: 0}
+  _origin: {fileID: 0}
+  _destination: {fileID: 0}
+  _loca: {fileID: 0}
   canvasGalactic: {fileID: 1195700023}
   galaxyPlaneGO: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
   _insigniaSprite: {fileID: 0}
@@ -9214,10 +9230,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
+  _fleetCivID: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _name: 
+  _insignia: {fileID: 0}
+  _buildCost: 0
+  _yardImage: {fileID: 0}
+  _origin: {fileID: 0}
+  _destination: {fileID: 0}
+  _loca: {fileID: 0}
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
@@ -12113,6 +12139,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -20669,6 +20701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
+  civilizationData: {fileID: 1863091656}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 0}
@@ -22019,10 +22052,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
+  _fleetCivID: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _name: 
+  _insignia: {fileID: 0}
+  _buildCost: 0
+  _yardImage: {fileID: 0}
+  _origin: {fileID: 0}
+  _destination: {fileID: 0}
+  _loca: {fileID: 0}
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
@@ -27451,6 +27494,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 1132767801056259965, guid: dfc5864bdb2ea05438c51055d1fec6aa, type: 3}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 4761592045379931411, guid: a3ac92f173b967f4f844412922280184, type: 3}
   ROM_StarSystem: {fileID: 2178242268351434931, guid: 9c33d0079d6e31f42a061ba3c70c4259, type: 3}
   KLING_StarSystem: {fileID: 4761592045379931411, guid: 625880a2fbbcbe2499317d1dd19d0e19, type: 3}
@@ -28139,6 +28188,7 @@ RectTransform:
   - {fileID: 559159800}
   - {fileID: 882956352}
   - {fileID: 1305399671}
+  - {fileID: 1388595287}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -28176,6 +28226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
+  civilizationData: {fileID: 0}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 1171831153}
@@ -29894,10 +29945,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
+  _fleetCivID: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _name: 
+  _insignia: {fileID: 0}
+  _buildCost: 0
+  _yardImage: {fileID: 0}
+  _origin: {fileID: 0}
+  _destination: {fileID: 0}
+  _loca: {fileID: 0}
   canvasGalactic: {fileID: 1195700023}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
@@ -32412,6 +32473,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268041225}
   m_CullTransparentMesh: 1
+--- !u!1 &1388595286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388595287}
+  - component: {fileID: 1388595288}
+  m_Layer: 6
+  m_Name: GalaxyShip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1388595287
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388595286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1195700024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1388595288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388595286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3442368ba92cba74d9bedd1085747cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1187732007}
+  _civilization: 0
+  _shipType: 0
+  _techLeve: 0
+  _techPoints: 0
 --- !u!1 &1388725595
 GameObject:
   m_ObjectHideFlags: 0
@@ -40312,6 +40426,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -47236,6 +47356,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -52577,9 +52703,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   civOwnerImage: {fileID: 944088932}
   civInsigniaImage: {fileID: 606282003}
-  spriteForOwnerCiv: {fileID: 0}
-  spriteForOwnerInsignia: {fileID: 0}
   currentCivOwnerName: 
+  shipYardDataList: []
 --- !u!114 &2092684547
 MonoBehaviour:
   m_ObjectHideFlags: 0

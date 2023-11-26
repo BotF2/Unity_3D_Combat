@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Assets.Script;
 using BOTF3D_Combat;
-using UnityEngine.XR;
-//using static UnityEngine.ParticleSystem;
-using UnityEngine.Rendering;
 using BOTF3D_GalaxyMap;
 
 namespace BOTF3D_Core
@@ -32,7 +26,7 @@ namespace BOTF3D_Core
         //public Traits _traitTwo;
         public Sprite _civImage;
         public Sprite _insignia;
-        public List<Fleet> civFleetList;
+        public List<FleetData> civFleetList;
         public List<float> _sysTradeAllocation = new List<float> { 100f, };
         //public RelationshipManager _relationshipManager;
         //public int[,] relationshipScoresArray; // index of player and other civ, holds int relationship score value

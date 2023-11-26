@@ -12,12 +12,12 @@ using Unity.VisualScripting;
 namespace BOTF3D_GalaxyMap
 {
     //[System.Serializable]
-    public class CivilizationData : MonoBehaviour // has list of civs and civs data dictionaries?
+    public class CivilizationData : MonoBehaviour // has list of civsInGame, starSytemData and civs data dictionaries?
     {
         #region Fields
         public GameManager gameManager;
 
-        public static List<Civilization> civsInGame = new List<Civilization>();
+        public static List<Civilization> civsInGame = new List<Civilization>(); // should this be in GameManager
         public StarSystemData starSystemData;
         [SerializeField]
         public static Canvas canvasGalactic;
@@ -77,7 +77,7 @@ namespace BOTF3D_GalaxyMap
             #endregion          
         }
         public static CivilizationData Instance { get; private set; }
-        public static Civilization Create(int systemInt) // new instance of a civ (Civilization is not inheriting MonoBehavior so can have new construtor instance
+        public static Civilization CreateCivs(int systemInt) // new instance of a civ (Civilization is not inheriting MonoBehavior so can have new construtor instance
         {
             Civilization daCiv = new Civilization(systemInt);
             var sysStrings = CivilizationData.CivDataDictionary[systemInt];
@@ -132,7 +132,7 @@ namespace BOTF3D_GalaxyMap
         {
             for (int i = 0; i < ints.Length; i++)
             {
-                Civilization aCiv = CivilizationData.Create(ints[i]); 
+                Civilization aCiv = CivilizationData.CreateCivs(ints[i]); 
                 starSystemData.LoadSystemOwner(aCiv, aCiv._homeSystemEnum); // Star Systems instantiated first so go back now, set Civ for owner of system
                 CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
                 List<float> ourRelationScores = new List<float>();
@@ -210,7 +210,34 @@ namespace BOTF3D_GalaxyMap
             }
             return null;
         }
-        private void LoadOurStartingMinor()
+        public CivEnum CivEnumFromName(string name)
+        {
+            var file = new FileStream(name, FileMode.Open, FileAccess.Read);
+
+            var _dataPoints = new List<string>();
+            using (var reader = new StreamReader(file))
+            {
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (line == null)
+                        continue;
+                    _dataPoints.Add(line.Trim());
+                    if (line.Length > 0)
+                    {
+                        var coll = line.Split("-");
+                        if (Enum.TryParse<CivEnum>(coll[0], out CivEnum civEnum))
+                        {
+                            return civEnum;
+                        }
+
+                    }
+                }
+                return CivEnum.UNINHABITED;
+            }
+        }
+            private void LoadOurStartingMinor()
         {
             foreach (Civilization aCiv in civsInGame)
             {

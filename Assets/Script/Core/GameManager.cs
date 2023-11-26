@@ -8,6 +8,7 @@ using Assets.Script;
 using BOTF3D_GalaxyMap;
 using BOTF3D_Combat;
 using UnityEngine.UIElements;
+using UnityEngine.Rendering;
 
 //using MLAPI;
 //using UnityEngine.UI;
@@ -639,7 +640,7 @@ namespace BOTF3D_Core
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
-        public Fleet fleet;
+        public FleetData fleet;
         [SerializeField] private CivilizationData civData;
         [SerializeField] private StarSystemData starSysData;
         public SolarSystemView solarSystemView;
@@ -691,6 +692,7 @@ namespace BOTF3D_Core
         public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
+        public static Dictionary<string, int> GalaxyShipNameDictionary = new Dictionary<string, int>();
         //public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
 
         public GameObject animFriend1;
@@ -710,7 +712,7 @@ namespace BOTF3D_Core
         public int offsetEnemyRight = 5500; // start here
         public int offsetEnemyLeft = -5800;
 
-        #region prefab ships and stations
+        #region prefab ships and stations GO
         public GameObject Borg_Destroyer_i; // prefab ships
         public GameObject Borg_Destroyer_ii;
         public GameObject Borg_Cube_ii;
@@ -758,7 +760,18 @@ namespace BOTF3D_Core
         public GameObject Rom_Scout_ii;
         public GameObject Rom_Scout_iii;
 
-        public static Dictionary<string, GameObject> PrefabShipDitionary;
+        public static Dictionary<string, GameObject> PrefabShipDictionary;
+        #endregion
+
+        #region prefab shipyard GO
+        public GameObject Fed_ShipYard; // for prefab shipyards
+        public GameObject Rom_ShipYard;
+        public GameObject Kling_ShipYard;
+        public GameObject Card_ShipYard;
+        public GameObject Dom_ShipYard;
+        public GameObject Borg_ShipYard;
+
+        public static Dictionary<string, GameObject> PrefabShipYardDictionary;
         #endregion
 
         #region prefab Star Systems and Fleets, button gameobjects
@@ -1081,8 +1094,8 @@ namespace BOTF3D_Core
         public GameObject ZIBALIANS_fleet;
         // public GameObject GALACTIC_Center; // do not need a galactic center system button
         public List<GameObject> AllSystemsList;
-        public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
-        public static Dictionary<string, GameObject> PrefabFleetDitionary;
+        public static Dictionary<string, GameObject> PrefabStarSystemDictionary;
+        public static Dictionary<string, GameObject> PrefabFleetDictionary;
         #endregion
         //public Sprite FedCiv
         #region Animation empties by ship type Now from ActOnCombatOrder.cs?
@@ -1393,6 +1406,8 @@ namespace BOTF3D_Core
             _galaxyType = GalaxyType.CANON;
             SetGalaxyMapCanon(GalaxyType.CANON);
             SetTechLevel(TechLevel.DEVELOPED);
+
+    
             // Civ selection happens in CivSelection.cs and Tech level in TechSelection.cs
             _localPlayer = CivEnum.FED;
             if (_isSinglePlayer)
@@ -1698,10 +1713,11 @@ namespace BOTF3D_Core
                     //ToDo; SetGalaxyMapSize();                   
                     //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
-                    starSysData.LoadSystemDictionary(_galaxyStarCount);
+                    starSysData.LoadSystemData(_galaxyStarCount);
                     civData.LoadDictionaryOfCivs(this._galaxyStarCount);
                     civData.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
                     civData.UpdateCivContactListOnStartCivSelection(_techLevel);
+                    LoadGalaxyShips();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
                         case CivEnum.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
@@ -1743,13 +1759,13 @@ namespace BOTF3D_Core
                     cameraGalactica.enabled = true;
                     cameraGalactica.fieldOfView = 45f;
                     cameraTelescope.enabled = false;
-                    //cameraGalacticUI.enabled = true;
+
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    gridManager.SeeGrid(); // turned off downstram
+                   // gridManager.SeeGrid(); // turned off downstram
                     //
                     //PanelGalaxyUI.SetActive(true);
                     //ResetGalaxyView.enabled = true;
@@ -2272,8 +2288,18 @@ namespace BOTF3D_Core
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            if (PrefabShipDitionary == null) // do not load twice
-                PrefabShipDitionary = tempShipPrefabDitionary;
+            if (PrefabShipDictionary == null) // do not load twice
+                PrefabShipDictionary = tempShipPrefabDitionary;
+
+            Dictionary<string, GameObject> tempShipYardPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                { "FED", Fed_ShipYard }, { "ROM", Rom_ShipYard },
+                { "KLING", Kling_ShipYard }, { "CARD", Card_ShipYard },
+                { "DOM", Dom_ShipYard },{ "BORG", Borg_ShipYard },
+
+            };
+            if (PrefabShipYardDictionary == null) // do not load twice
+                PrefabShipYardDictionary = tempShipYardPrefabDitionary;
 
             Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
@@ -2438,9 +2464,9 @@ namespace BOTF3D_Core
 
             };
             
-            if (PrefabStarSystemDitionary == null)
+            if (PrefabStarSystemDictionary == null)
             {
-                PrefabStarSystemDitionary = systemPrefabDitionary;
+                PrefabStarSystemDictionary = systemPrefabDitionary;
             }
 
             Dictionary<string, GameObject> fleetPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
@@ -2606,9 +2632,9 @@ namespace BOTF3D_Core
 
             };
 
-            if (PrefabFleetDitionary == null)
+            if (PrefabFleetDictionary == null)
             {
-                PrefabFleetDitionary = fleetPrefabDitionary;
+                PrefabFleetDictionary = fleetPrefabDitionary;
             }
         }
 
@@ -2623,10 +2649,6 @@ namespace BOTF3D_Core
             var _dataPoints = new List<string>();
             using (var reader = new StreamReader(file))
             {
-                //Note1("string", int, int, int, int, int"---------------  reading __to_PLZ_DB.txt (from file)");
-                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-                //Console.WriteLine(infotext);
-
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -2652,10 +2674,64 @@ namespace BOTF3D_Core
 
                 reader.Close();
                 ShipDataDictionary = _shipDataDictionary;
-                //StaticStuff staticStuffToLoad = new StaticStuff();
-                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
             }
             #endregion
+        }
+        public void LoadGalaxyShips()
+        {
+            if (GalaxyShipNameDictionary.Count == 0)
+            {
+                string filename;
+                switch (_techLevel)
+                {
+                    case TechLevel.EARLY:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsEarly.txt";
+                        break;
+                    case TechLevel.DEVELOPED:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsDeveloped.txt";
+                        break;
+                    case TechLevel.ADVANCED:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShips.Advanced.txt";
+                        break;
+                    case TechLevel.SUPREME:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsSupreme.txt";
+                        break;
+                    default:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsEarly.txt";
+                        break;
+                }
+                #region Read ShipData.txt 
+
+                Dictionary<string, int> _galaxyShipNameDictionary = new Dictionary<string, int>();
+                var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+                var _dataPoints = new List<string>();
+                using (var reader = new StreamReader(file))
+                {
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        if (line == null)
+                            continue;
+                        _dataPoints.Add(line.Trim());
+                        //int[] _shipInts = new int[4];
+                        if (line.Length > 0)
+                        {
+                            var coll = line.Split(separator);
+                            for (int i = 0; i < coll.Length; i += 2)
+                            {
+                                _ = int.TryParse(coll[0 + (i)], out int currentValueOne);
+                                _galaxyShipNameDictionary.Add(coll[1 + (i)], currentValueOne);
+                            }
+                        }
+                    }
+
+                    reader.Close();
+                    GalaxyShipNameDictionary = _galaxyShipNameDictionary;
+                }
+                #endregion
+            }
         }
         //public void LoadSystemData(string filename)
         //{

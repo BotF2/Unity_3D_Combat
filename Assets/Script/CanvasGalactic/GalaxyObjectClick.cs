@@ -4,34 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GalaxyObjectClick : MonoBehaviour, IPointerClickHandler
+namespace BOTF3D_GalaxyMap
 {
-    bool ClickUI = true;
-    public CameraManagerGalactica cameraManagerGalactica;
-    // Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
-    public void OnPointerClick(PointerEventData eventData)
+    public class GalaxyObjectClick : MonoBehaviour, IPointerClickHandler
     {
-        // could tell us what game object was clicked
-        //    if (EventSystem.current.IsPointerOverGameObject())
-        //    {
-        //        if (EventSystem.current.currentSelectedGameObject.name == "ResetViewButton")
-        //        {
-        //            ClickUI = true;
-        //        }
-        //    }
-        //eventData.selectedObject
-        //ClickUI = false;
-        //if (cameraManagerGalactica != null)
-        //    cameraManagerGalactica.ClickUI = false;
+        bool ClickUI = true;
+        public CameraManagerGalactica cameraManagerGalactica;
+        // Start is called before the first frame update
+        //void Start()
+        //{
+
+        //}
+
+        //// Update is called once per frame
+        //void Update()
+        //{
+
+        //}
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            // could tell us what game object was clicked
+            //    if (EventSystem.current.IsPointerOverGameObject())
+            //    {
+            //        if (EventSystem.current.currentSelectedGameObject.name == "ResetViewButton")
+            //        {
+            //            ClickUI = true;
+            //        }
+            //    }
+            //eventData.selectedObject
+            //ClickUI = false;
+            //if (cameraManagerGalactica != null)
+            //    cameraManagerGalactica.ClickUI = false;
+        }
     }
 }
