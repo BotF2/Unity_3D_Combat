@@ -12,8 +12,8 @@ namespace BOTF3D_GalaxyMap
 {
     public class GalaxyShip : MonoBehaviour // Do We Need this as well as Fleet?????
     {
-        public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
-                                        //public Combat combat;
+        //public GameManager gameManager; // grant access to GameManager by assigning it in the Unit inspector field for public gameManager
+        //public GameObject prefabGalaxyShip;                                //public Combat combat;
         public CivEnum _civilization;
         public string _shipName;
         public TechLevel _techLeve;
@@ -27,20 +27,20 @@ namespace BOTF3D_GalaxyMap
             //this._techPoints = techPoints;
             return this;
         }
-        //public List<GalaxyShip> LoadListGalaxyShips(int[] numGalaxyShips, GalaxyShip[] galaxyShips) 
-        //{
-        //    List<GalaxyShip> galayShipList = new List<GalaxyShip>();
-        //    for (int i = 0; i < numGalaxyShips.Count(); i++)
-        //    {
-        //        for (int j = 0; j < numGalaxyShips[i]; j++)
-        //        {
-        //            galayShipList.Add(galayShipList[i]);
-        //        }
-        //    }
-        //    return galayShipList;
-        //    //GalaxyShip galaxyShip = new GalaxyShip();
-        //    //return new List<GalaxyShip> {galaxyShip};
-        //}
+        public List<GalaxyShip> LoadListGalaxyShips(int[] numGalaxyShips, GalaxyShip[] galaxyShips)
+        {
+            List<GalaxyShip> galayShipList = new List<GalaxyShip>();
+            for (int i = 0; i < numGalaxyShips.Count(); i++)
+            {
+                for (int j = 0; j < numGalaxyShips[i]; j++)
+                {
+                    galayShipList.Add(galayShipList[i]);
+                }
+            }
+            return galayShipList;
+            //GalaxyShip galaxyShip = new GalaxyShip();
+            //return new List<GalaxyShip> {galaxyShip};
+        }
         //public CivEnum CivEnumFromName(string name)
         //{
         //    var file = new FileStream(name, FileMode.Open, FileAccess.Read);
@@ -68,7 +68,7 @@ namespace BOTF3D_GalaxyMap
         //        return CivEnum.UNINHABITED;
         //    }
         //}
-        
+
 
         private void Awake()
         {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1657045544122036200}
   - component: {fileID: 5342533112303857219}
   m_Layer: 6
-  m_Name: GalaxyShips
+  m_Name: GalaxyShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

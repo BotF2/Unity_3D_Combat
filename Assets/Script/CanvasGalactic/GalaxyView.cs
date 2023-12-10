@@ -17,7 +17,7 @@ namespace BOTF3D_GalaxyMap
     public class GalaxyView : MonoBehaviour // !!! INSIDE PanelGalactic_Map IN UNITY HIERARCHY - GALAXYSCEEN !!!
     {
         public GameManager gameManager;
-        public GalaxyShip galaxyShip;
+        public GameObject prefabForGalaxyShip;
         //public CivilizationData civilizationData;
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
@@ -816,24 +816,25 @@ namespace BOTF3D_GalaxyMap
                         List<GalaxyShip> starterGalaxyShips = new List<GalaxyShip>();
                         var techLevel = GameManager._techLevel;
                         foreach (var item in GameManager.GalaxyShipNameDictionary)
-                        {
+                        { 
+
                             if (item.Key.Contains(((CivEnum)sysIndex).ToString()))
                             {
-                                List<GalaxyShip> galaxyShipsOfType = new List<GalaxyShip>();
-                                for (int j = 0; j < item.Value; j++)
+                                for (int j = 0; j <item.Value; j++)
                                 {
-                                    //GameObject gShip = Instantiate(Resources.Load("GalaxyShips"));
-                                    ////GalaxyShip gShip = new GalaxyShip();
-                                    //gShip._civilization = (CivEnum)sysIndex;
-                                    //gShip._shipName = item.Key;
-                                    //gShip._techLeve = techLevel;
-                                    //galaxyShipsOfType.Add(gShip);
+                                    GameObject currentGalaxyShip = Instantiate<GameObject>(prefabForGalaxyShip, new Vector3(1000, 1000, 1000), Quaternion.identity) as GameObject;
+                                    GalaxyShip thisGShip = currentGalaxyShip.GetComponent<GalaxyShip>();
+                                    thisGShip._shipName = item.Key + "_" + j.ToString();
+                                    thisGShip._civilization = (CivEnum)sysIndex;
+                                    thisGShip._techLeve = techLevel;
+                                    currentGalaxyShip.transform.SetParent(firstFleetOfSystem.transform, false);
+                                    starterGalaxyShips.Add(thisGShip);
                                 }
-                                starterGalaxyShips.AddRange(galaxyShipsOfType);
                             }
                         }
 
                         firstFleetData.ShipsInFeet = starterGalaxyShips.ToArray();
+
                         firstFleetData._inDeepSpace = false;
                      
                         theCiv.civFleetList = new List<FleetData> { firstFleetData };
