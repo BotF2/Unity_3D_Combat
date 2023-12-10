@@ -822,12 +822,12 @@ namespace BOTF3D_GalaxyMap
                                 List<GalaxyShip> galaxyShipsOfType = new List<GalaxyShip>();
                                 for (int j = 0; j < item.Value; j++)
                                 {
-
-                                    GalaxyShip gShip = new GalaxyShip();
-                                    gShip._civilization = (CivEnum)sysIndex;
-                                    gShip._shipName = item.Key;
-                                    gShip._techLeve = techLevel;
-                                    galaxyShipsOfType.Add(gShip);
+                                    //GameObject gShip = Instantiate(Resources.Load("GalaxyShips"));
+                                    ////GalaxyShip gShip = new GalaxyShip();
+                                    //gShip._civilization = (CivEnum)sysIndex;
+                                    //gShip._shipName = item.Key;
+                                    //gShip._techLeve = techLevel;
+                                    //galaxyShipsOfType.Add(gShip);
                                 }
                                 starterGalaxyShips.AddRange(galaxyShipsOfType);
                             }

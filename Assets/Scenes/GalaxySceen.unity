@@ -7770,6 +7770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
@@ -7787,8 +7788,8 @@ MonoBehaviour:
   canvasGalactic: {fileID: 1195700023}
   galaxyPlaneGO: {fileID: 7097427491992853688, guid: dda9bbe1830b368478843638437fbc18, type: 3}
   _insigniaSprite: {fileID: 0}
-  inDeepSpace: 0
-  warpSpeed: 0
+  _inDeepSpace: 0
+  _warpSpeed: 0
 --- !u!1 &300791551
 GameObject:
   m_ObjectHideFlags: 0
@@ -9230,6 +9231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
@@ -9247,8 +9249,8 @@ MonoBehaviour:
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  inDeepSpace: 0
-  warpSpeed: 0
+  _inDeepSpace: 0
+  _warpSpeed: 0
 --- !u!1 &424524825
 GameObject:
   m_ObjectHideFlags: 0
@@ -20701,7 +20703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
-  civilizationData: {fileID: 1863091656}
+  galaxyShip: {fileID: 0}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 0}
@@ -22052,6 +22054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
@@ -22069,8 +22072,8 @@ MonoBehaviour:
   canvasGalactic: {fileID: 0}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  inDeepSpace: 0
-  warpSpeed: 0
+  _inDeepSpace: 0
+  _warpSpeed: 0
 --- !u!1 &923451405 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4978760092634217269, guid: 14587fb6c664caf4598f22a33f785b53, type: 3}
@@ -28226,7 +28229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
-  civilizationData: {fileID: 0}
+  galaxyShip: {fileID: 0}
   cameraManagerGalactica: {fileID: 1160279386}
   starSystemData: {fileID: 2090482233}
   thisMovingObject: {fileID: 1171831153}
@@ -29945,6 +29948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b076b95789e1844ba5502f8a975ddcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShipsInFeet: []
   _civEnum: 0
   _techPoints: 0
   _techSpeed: 0
@@ -29962,8 +29966,8 @@ MonoBehaviour:
   canvasGalactic: {fileID: 1195700023}
   galaxyPlaneGO: {fileID: 0}
   _insigniaSprite: {fileID: 0}
-  inDeepSpace: 0
-  warpSpeed: 0
+  _inDeepSpace: 0
+  _warpSpeed: 0
 --- !u!1001 &1310823754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32473,59 +32477,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268041225}
   m_CullTransparentMesh: 1
---- !u!1 &1388595286
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1388595287}
-  - component: {fileID: 1388595288}
-  m_Layer: 6
-  m_Name: GalaxyShip
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1388595287
+--- !u!224 &1388595287 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+  m_PrefabInstance: {fileID: 7412553777650394566}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388595286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1195700024}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1388595288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388595286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3442368ba92cba74d9bedd1085747cb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1187732007}
-  _civilization: 0
-  _shipType: 0
-  _techLeve: 0
-  _techPoints: 0
 --- !u!1 &1388725595
 GameObject:
   m_ObjectHideFlags: 0
@@ -54554,6 +54510,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2306657901118150393}
   m_CullTransparentMesh: 1
+--- !u!1001 &7412553777650394566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1195700024}
+    m_Modifications:
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1657045544122036200, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584079592234490201, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: m_Name
+      value: GalaxyShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5342533112303857219, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1187732007}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a09bc8836fca75746a0de275f943f46e, type: 3}
 --- !u!1001 &8059578117735106174
 PrefabInstance:
   m_ObjectHideFlags: 0
