@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using BOTF3D_GalaxyMap;
-using BOTF3D_Core;
-using BOTF3D_Combat;
-using System;
-using Unity.VisualScripting;
-using UnityEngine.Apple.ReplayKit;
 
 namespace Assets.Script
 {

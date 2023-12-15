@@ -31,10 +31,10 @@ namespace BOTF3D_GalaxyMap
         //    this._fleetCivID = civInt; // to do, get location data to pass on to FleetData from system x,y,z 
         //}
 
-        [MenuItem("Tools/MyTool/Do It in C#")]
-        static void DoIt()
-        {
-            EditorUtility.DisplayDialog("MyTool", "Do It in C# !", "OK", "");
-        }
+        ////[MenuItem("Tools/MyTool/Do It in C#")]
+        ////static void DoIt()
+        ////{
+        ////    EditorUtility.DisplayDialog("MyTool", "Do It in C# !", "OK", "");
+        ////}
     }
 }

@@ -1,11 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using BOTF3D_Core;
-using BOTF3D_Combat;
-using Assets.Script;
-using UnityEngine.WSA;
 
 namespace BOTF3D_GalaxyMap
 {
