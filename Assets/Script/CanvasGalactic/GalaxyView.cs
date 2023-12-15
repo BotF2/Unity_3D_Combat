@@ -715,7 +715,11 @@ namespace BOTF3D_GalaxyMap
         }
         void Update()
         {
-
+            if (Input.GetMouseButtonDown(0))
+            {
+                Vector3 mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+                //Collider targetObject = Physics.OverlapCapsule(mousePosition);
+            }
         }
 
         public void InstantiateSystemButtons(int[] numStars, GalaxyType canonOrRandom)
@@ -868,10 +872,7 @@ namespace BOTF3D_GalaxyMap
 
                     starSystemNewGameOb.SetActive(true);
 
-                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
-                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
-                    //Button myButton = starSystemNewGameOb.GetComponentInChildren<Button>();
-                    //myButton.image.sprite.
+ 
                 }
                 if (canonOrRandom == GalaxyType.RANDOM)
                 {
@@ -884,7 +885,7 @@ namespace BOTF3D_GalaxyMap
                     }
                 }
             }
-            //gameManager.SetCivs();
+            //Build a travelPointMarker;
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
         }
