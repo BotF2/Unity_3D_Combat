@@ -24,7 +24,7 @@ namespace BOTF3D_Combat
         public GameObject animEnemy2;
         public GameObject animEnemy3;
 
-        int ySeparator = 40; // gap in grid between ships on y axis
+        int ySeparator = 40; // gap in grid between ships on inputY axis
         int zSeparator = 70;
         float shipScale = 100f;
 
@@ -195,7 +195,7 @@ namespace BOTF3D_Combat
                         switch (arrayNames[1].ToUpper())
                         {
                             case "SCOUT":
-                                yLocation = yScout; // set scouts in top section, y up, z deep, x left right from camera view
+                                yLocation = yScout; // set scouts in top section, inputY up, z deep, x left right from camera view
                                 if (_scoutShips % 2 == 0)
                                 {
                                     yLocation += ySeparator;

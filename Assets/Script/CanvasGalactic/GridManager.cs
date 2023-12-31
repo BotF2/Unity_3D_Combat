@@ -18,23 +18,23 @@ namespace BOTF3D_GalaxyMap
 
         private void Start()
         {
-            Tile notNull = new Tile();
-            _tile = new List<Tile> { notNull };
-            GenerateGrid();
+            //Tile notNull = new Tile();
+            //_tile = new List<Tile> { notNull };
+            //GenerateGrid();
         }
         void GenerateGrid()
         {
-            //for (int y = 0; y < _height; y++)
+            //for (int inputY = 0; inputY < _height; inputY++)
             //{
             //    for (int x = 0; x < _width; x++)
             //    {
 
-            //        Tile spawnedTile = Instantiate(_tilePrefab, new Vector3((x * 1000f) - 5300f, (y * 1000f) - 9800, 600f), Quaternion.identity);
+            //        Tile spawnedTile = Instantiate(_tilePrefab, new Vector3((x * 1000f) - 5300f, (inputY * 1000f) - 9800, 600f), Quaternion.identity);
             //        spawnedTile.enabled = true;
 
-            //        spawnedTile.name = $"Tile {x} {y}";
+            //        spawnedTile.name = $"Tile {x} {inputY}";
             //        spawnedTile.transform.SetParent(_canvasGalactic.transform, false);
-            //        var isOffset = (x % 2 == 0 && y % 2 != 0) || (x % 2 != 0 && y % 2 == 0);
+            //        var isOffset = (x % 2 == 0 && inputY % 2 != 0) || (x % 2 != 0 && inputY % 2 == 0);
             //        spawnedTile.Init(isOffset);
             //        _tile.Add(spawnedTile);
             //        spawnedTile.gameObject.SetActive(true);
@@ -45,31 +45,31 @@ namespace BOTF3D_GalaxyMap
         }
         public void SeeGrid()
         {
-            if (_tile != null)
-            {
-                foreach (Tile tile in _tile)
-                {
-                    if (tile != null)
-                    {
-                        //tile.gameObject.SetActive(true);
-                        tile.GetComponent<SpriteRenderer>().enabled = true;
-                    }
-                }
-            }
+            //if (_tile != null)
+            //{
+            //    foreach (Tile tile in _tile)
+            //    {
+            //        if (tile != null)
+            //        {
+            //            //tile.gameObject.SetActive(true);
+            //            tile.GetComponent<SpriteRenderer>().enabled = true;
+            //        }
+            //    }
+            //}
         }
         public void HideGrid()
         {
-            if (_tile != null)
-            {
-                foreach (Tile tile in _tile)
-                {
-                    if (tile != null)
-                    {
-                        tile.GetComponent<SpriteRenderer>().enabled = false;
-                        //tile.gameObject.SetActive(false);
-                    }
-                }
-            }
+            //if (_tile != null)
+            //{
+            //    foreach (Tile tile in _tile)
+            //    {
+            //        if (tile != null)
+            //        {
+            //            tile.GetComponent<SpriteRenderer>().enabled = false;
+            //            //tile.gameObject.SetActive(false);
+            //        }
+            //    }
+            //}
         }
     }
 }

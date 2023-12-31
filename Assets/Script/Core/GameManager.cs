@@ -705,7 +705,7 @@ namespace BOTF3D_Core
         public GameObject Friend_0; // prefab empty gameobject to clone instantiate into the grids
         public GameObject Enemy_0;
         private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
-        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
+        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on inputY axis
         public int zFactor = 3000;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
         public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
@@ -2033,7 +2033,7 @@ namespace BOTF3D_Core
                     break;
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
-                    gridManager.SeeGrid();
+                   // gridManager.SeeGrid();
                     //PanelGalactic_Map.SetActive(false);
                     //PanelGalacticTelescope.SetActive(false);
                     //PanelGalaxyUI.SetActive(false);
@@ -2046,7 +2046,7 @@ namespace BOTF3D_Core
                     break;
                 case State.SYSTEM_PLAY:
                     PanelSystem_View.SetActive(false);
-                    gridManager.HideGrid();
+                   // gridManager.HideGrid();
                     //CommandMenu.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY_INIT:
@@ -2057,7 +2057,7 @@ namespace BOTF3D_Core
                     PanelSystem_View.SetActive(false);
                     //CommandMenu.SetActive(false);   
                     PanelGalactic_Completed.SetActive(false);
-                    gridManager.HideGrid();
+                    //gridManager.HideGrid();
                     break;
                 case State.COMBAT_MENU:
                     //panelGalactic_Play.SetActive(false);
@@ -2994,7 +2994,7 @@ namespace BOTF3D_Core
 
             //    newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
             //    cameraTargets.Add(newEmptyCameraTarget);
-            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.z * shipScale);
             //    _tempPrefabFriend.transform.SetParent(resetFriendArray[0].transform, true);
             //    _friendsLocal.Add(i, _tempPrefabFriend);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabFriend, FriendOrFoe.friend);
@@ -3040,7 +3040,7 @@ namespace BOTF3D_Core
 
             //    anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
             //    cameraTargets.Add(anEmptyCameraTarget);
-            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.z * shipScale);
             //    _tempPrefabEnemy.transform.SetParent(resetEnemyArray[0].transform, true);
             //    _enemysLocal.Add(i, _tempPrefabEnemy);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabEnemy, FriendOrFoe.enemy);

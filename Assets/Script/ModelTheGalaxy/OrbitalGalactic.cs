@@ -42,7 +42,7 @@ namespace Assets.Script
                         Mathf.Cos(InitAngle + OffsetAngle) * OrbitalDistance,
                         0,
                         Mathf.Sin(InitAngle + OffsetAngle) * OrbitalDistance
-                        ); // y (up/down) is locked to zero but consider addint in 3D
+                        ); // inputY (up/down) is locked to zero but consider addint in 3D
                 }
                 if (Parent != null)
                 {

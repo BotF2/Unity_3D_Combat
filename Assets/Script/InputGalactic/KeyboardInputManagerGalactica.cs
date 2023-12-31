@@ -43,7 +43,7 @@ namespace Assets.Script
                 OnRotateInput?.Invoke(-1f);
             }
             // up down
-            if (Input.GetKey(KeyCode.DownArrow)) // mainly y up down
+            if (Input.GetKey(KeyCode.DownArrow)) // mainly inputY up down
             {
                 OnMoveInput?.Invoke(-Vector3.forward);
             }

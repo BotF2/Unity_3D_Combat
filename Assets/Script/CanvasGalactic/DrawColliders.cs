@@ -99,7 +99,7 @@ namespace BOTF3D_GalaxyMap
                     //    Matrix4x4 oldGizmosMatrix = Gizmos.matrix;
 
                     //    Gizmos.matrix = Matrix4x4.TRS(_sphereTemp.transform.TransformPoint(_sphereTemp.center), _sphereTemp.transform.rotation, Vector3.one *
-                    //        Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.x), Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.y), Mathf.Abs(_sphereTemp.transform.lossyScale.z))));
+                    //        Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.x), Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.inputY), Mathf.Abs(_sphereTemp.transform.lossyScale.z))));
                     //    Gizmos.DrawWireSphere(Vector3.zero, _sphereTemp.radius);
 
                     //    Gizmos.matrix = oldGizmosMatrix;
@@ -107,8 +107,8 @@ namespace BOTF3D_GalaxyMap
                     //else if ((_capsuleTemp = _temp as CapsuleCollider) != null)
                     //{
                     //    Vector3 ls = _capsuleTemp.transform.lossyScale;
-                    //    var centerHalfScale = new Vector3(_capsuleTemp.center.x * ls.x, _capsuleTemp.center.y * ls.y, _capsuleTemp.center.z * ls.z);
-                    //    float halfHeight = _capsuleTemp.height * Mathf.Abs(ls.y) * 0.5f;
+                    //    var centerHalfScale = new Vector3(_capsuleTemp.center.x * ls.x, _capsuleTemp.center.inputY * ls.inputY, _capsuleTemp.center.z * ls.z);
+                    //    float halfHeight = _capsuleTemp.height * Mathf.Abs(ls.inputY) * 0.5f;
                     //    var directionVector = _capsuleTemp.transform.up;
 
                     //    // direction == 0 is the X-axis

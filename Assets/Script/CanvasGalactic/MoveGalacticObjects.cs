@@ -24,8 +24,7 @@ namespace BOTF3D_GalaxyMap
         //Transform lastTrans;
         Vector3 myTargetPosition;
         Transform _galaxyPlaneTrans;
-        //public GameObject planeEndPoint;
-        //private GalaxyDropLine galaxyDropLine;
+
 
         private void Awake()
         {
@@ -40,7 +39,7 @@ namespace BOTF3D_GalaxyMap
             //        var fleet = this.GetComponentInParent<Fleet>();
             //        if (fleet._galaxyPlanePoint != null)
             //        {
-            //            Vector3 planePint = new Vector3(myTrans.position.x, myTrans.position.y, 600f);
+            //            Vector3 planePint = new Vector3(myTrans.position.x, myTrans.position.inputY, 600f);
             //            GameObject emptyForFleetPlanePoint = Instantiate(endpointPrefab, planePint, Quaternion.identity);
             //            Transform[] endFleetPoints = new Transform[2] { myTrans, emptyForFleetPlanePoint.transform };
             //            galaxyDropLine.SetUpLine(endFleetPoints);
@@ -76,13 +75,13 @@ namespace BOTF3D_GalaxyMap
             { 
                 myTrans.position = Vector3.MoveTowards(myTrans.position, target.transform.position, warpSpeed*realSpeedFactor);
                 _galaxyPlaneTrans.position = new Vector3(myTrans.position.x, myTrans.position.y, _galaxyPlaneTrans.position.z);
-                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.y, 600f);
+                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.inputY, 600f);
             }
             else if(myTargetPosition != null && myTrans != null)
             {
                 myTrans.position = Vector3.MoveTowards(myTrans.position, myTargetPosition, warpSpeed*realSpeedFactor);
                 _galaxyPlaneTrans.position = new Vector3(myTrans.position.x, myTrans.position.y, _galaxyPlaneTrans.position.z);
-                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.y, 600f);
+                //_galaxyPlaneTrans.Translate(myTrans.localPosition.x, myTrans.localPosition.inputY, 600f);
             }
         }
     }

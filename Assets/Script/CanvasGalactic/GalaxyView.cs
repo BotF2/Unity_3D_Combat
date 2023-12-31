@@ -865,8 +865,7 @@ namespace BOTF3D_GalaxyMap
                         targetWeMoveTo.transform.position = new Vector3(0, 0, 0);
                         MoveGalacticObjects moveGalacticObject = firstFleetData.GetComponent<MoveGalacticObjects>();
                         thisMovingObject = moveGalacticObject;
-                        thisMovingObject.BoldlyGo(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f); ; //, fleetLine);
-
+                        thisMovingObject.BoldlyGo(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f);
                     }
 
 
@@ -880,8 +879,8 @@ namespace BOTF3D_GalaxyMap
                     foreach (var sysEmpty in sysEmptyList)
                     {
                         // space out sysEmpties on Galaxy view in a random distribution
-                        // call RandomizeMap to get random x, y and z for: Vector3 worldSpace = new Vector3(x, y, z);
-                        // sysEmpty.transform.Translate(random values here x, y, z);
+                        // call RandomizeMap to get random x, inputY and z for: Vector3 worldSpace = new Vector3(x, inputY, z);
+                        // sysEmpty.transform.Translate(random values here x, inputY, z);
                     }
                 }
             }
@@ -903,7 +902,7 @@ namespace BOTF3D_GalaxyMap
                 if (!civPlayer._contactList.Contains(civy))
                     sysObject.GetComponentInChildren<TMP_Text>().text =
                     "x" + ((int)sysObject.transform.position.x).ToString() +
-                    ",y" + ((int)sysObject.transform.position.y).ToString() +
+                    ",inputY" + ((int)sysObject.transform.position.y).ToString() +
                     ",z" + ((int)sysObject.transform.position.z).ToString();
             }
 
@@ -951,7 +950,7 @@ namespace BOTF3D_GalaxyMap
                 canvasGalactic = tempObject.GetComponent<Canvas>();
             }
             //GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
-            //fleetNewGameOb.transform.Translate(location.position.x, location.position.y, location.position.z, Space.World);
+            //fleetNewGameOb.transform.Translate(location.position.x, location.position.inputY, location.position.z, Space.World);
             //fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
             //fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
