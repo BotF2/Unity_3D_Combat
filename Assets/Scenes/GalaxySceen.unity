@@ -26726,10 +26726,9 @@ MonoBehaviour:
   returnToGalaxyFromSystemView: {fileID: 556048600}
   buttonFleets: {fileID: 1099698884}
   buttonResetView: {fileID: 1068485261}
-  backgroundImageObject: {fileID: 352649687}
+  _targetPointer: {fileID: 0}
   clickSolarSystem: {fileID: 1759457393}
   _publicCameraGalactica: {fileID: 45544412}
-  cameraZoomed: 0
 --- !u!1 &1162540796
 GameObject:
   m_ObjectHideFlags: 0

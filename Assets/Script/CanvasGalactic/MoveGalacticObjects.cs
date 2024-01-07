@@ -15,7 +15,7 @@ namespace BOTF3D_GalaxyMap
         public GalaxyView galaxyView;
         [SerializeField]
         private GameObject target;
-        private GameObject planeEndPoint;
+        //private GameObject planeEndPoint;
         [SerializeField]
         public float warpSpeed = 5f;
         private float realSpeedFactor = 0.05f;
