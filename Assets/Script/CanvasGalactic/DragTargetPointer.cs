@@ -61,7 +61,7 @@ namespace BOTF3D_GalaxyMap
                     {
                         _rayHit = true;
                         Vector3 updatePosition = Input.mousePosition - GetTargetPosition();
-                        thePosition = updatePosition;
+                        thePosition = updatePosition; //new Vector3(updatePosition.x, updatePosition.z, updatePosition.y);
                     }
                 }
             }
@@ -70,16 +70,17 @@ namespace BOTF3D_GalaxyMap
                 //Detect if the middle mouse button (scroll wheel) is held down in frame
                 if (Input.GetMouseButton(2))
                 {
+
                     Vector3 tempPosition = galaxyCamera.ScreenToWorldPoint(Input.mousePosition - thePosition);
                     tempPosition.x = Mathf.Clamp(tempPosition.x, -595f, 550f);
-                    tempPosition.z = Mathf.Clamp(tempPosition.z, (-157f), (340f));
+                    tempPosition.y = Mathf.Clamp(tempPosition.y, (-785f/2), (363f/2));
 
                     if (Input.mouseScrollDelta.y != 0)
                     {
                         z += Input.mouseScrollDelta.y * 10f;
                         z = Mathf.Clamp(z, -100f, (_backgoundGalaxyImage.transform.position.z - 10f));
                     }
-                    Vector3 forGalaxyPosition = new Vector3(tempPosition.x, (-tempPosition.z * 2.3f), z);
+                    Vector3 forGalaxyPosition = new Vector3(tempPosition.x, tempPosition.y*2, z);
                     transform.position = forGalaxyPosition;
                     _targetPlaneGObj.transform.position = new Vector3(transform.position.x,
                         transform.position.y, _backgoundGalaxyImage.transform.position.z);
