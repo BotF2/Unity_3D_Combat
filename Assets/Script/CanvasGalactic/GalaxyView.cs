@@ -879,8 +879,8 @@ namespace BOTF3D_GalaxyMap
                     foreach (var sysEmpty in sysEmptyList)
                     {
                         // space out sysEmpties on Galaxy view in a random distribution
-                        // call RandomizeMap to get random x, inputY and z for: Vector3 worldSpace = new Vector3(x, inputY, z);
-                        // sysEmpty.transform.Translate(random values here x, inputY, z);
+                        // call RandomizeMap to get random x, inputY and zLine for: Vector3 worldSpace = new Vector3(x, inputY, zLine);
+                        // sysEmpty.transform.Translate(random values here x, inputY, zLine);
                     }
                 }
             }
@@ -903,7 +903,7 @@ namespace BOTF3D_GalaxyMap
                     sysObject.GetComponentInChildren<TMP_Text>().text =
                     "x" + ((int)sysObject.transform.position.x).ToString() +
                     ",inputY" + ((int)sysObject.transform.position.y).ToString() +
-                    ",z" + ((int)sysObject.transform.position.z).ToString();
+                    ",zLine" + ((int)sysObject.transform.position.z).ToString();
             }
 
         }
@@ -950,7 +950,7 @@ namespace BOTF3D_GalaxyMap
                 canvasGalactic = tempObject.GetComponent<Canvas>();
             }
             //GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
-            //fleetNewGameOb.transform.Translate(location.position.x, location.position.inputY, location.position.z, Space.World);
+            //fleetNewGameOb.transform.Translate(location.position.x, location.position.inputY, location.position.zLine, Space.World);
             //fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
             //fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 

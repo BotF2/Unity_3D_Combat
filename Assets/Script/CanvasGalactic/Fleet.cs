@@ -28,7 +28,7 @@ namespace BOTF3D_GalaxyMap
 
         //public Fleet(int civInt)
         //{
-        //    this._fleetCivID = civInt; // to do, get location data to pass on to FleetData from system x,inputY,z 
+        //    this._fleetCivID = civInt; // to do, get location data to pass on to FleetData from system x,inputY,zLine 
         //}
 
         ////[MenuItem("Tools/MyTool/Do It in C#")]

@@ -88,7 +88,7 @@ namespace BOTF3D_GalaxyMap
 
         #endregion UI
 
-        // In Galaxy Map X is right left, Y is in out and z is negative up down
+        // In Galaxy Map X is right left, Y is in out and zLine is negative up down
      
         [Header("Camera Positioning")]
         private Vector2 cameraOffset = new Vector2(10f, 14f);
@@ -369,7 +369,7 @@ namespace BOTF3D_GalaxyMap
             Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
             Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y),
             Mathf.Clamp(transform.position.z, minBounds.z, maxBounds.z));
-            //transform.position.z);
+            //transform.position.zLine);
         }
         public float ClampAngles(float angle, float min, float max)
         {

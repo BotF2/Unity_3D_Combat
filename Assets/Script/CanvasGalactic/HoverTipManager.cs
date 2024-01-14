@@ -86,7 +86,7 @@ namespace BOTF3D_GalaxyMap
                 img.texture = theSystem._ownerCiv._civImage.texture;
 
                 tipWindow.gameObject.SetActive(true);
-                tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.inputY + 200, theLocation.z - 100);
+                tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.inputY + 200, theLocation.zLine - 100);
             }
         }
         private void HideTip()

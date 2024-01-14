@@ -997,7 +997,6 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  gridManager: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
@@ -8976,7 +8975,7 @@ BoxCollider:
   m_Material: {fileID: 13400000, guid: a53b6371ea1de0a47abebc560f0886fc, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12186,7 +12185,6 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  gridManager: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
@@ -27574,7 +27572,6 @@ MonoBehaviour:
   civilizationData: {fileID: 1863091656}
   cameraMultiTarget: {fileID: 807690122}
   cameraManagerGalactica: {fileID: 1160279386}
-  gridManager: {fileID: 0}
   cameraTelescope: {fileID: 675372015}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529375}
@@ -30884,9 +30881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56239f843a16d9e4e9be1c08df1da45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseColor: {r: 0.36078432, g: 0.4692035, b: 0.9254902, a: 0.29803923}
-  _offsetColor: {r: 0.9056604, g: 0.90514654, b: 0.8321823, a: 0.043137256}
-  _renderer: {fileID: 882956354}
 --- !u!1 &1335244625
 GameObject:
   m_ObjectHideFlags: 0
@@ -40454,7 +40448,6 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  gridManager: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
@@ -47384,7 +47377,6 @@ MonoBehaviour:
   civilizationData: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
   cameraManagerGalactica: {fileID: 0}
-  gridManager: {fileID: 0}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}

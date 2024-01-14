@@ -195,7 +195,7 @@ namespace BOTF3D_Combat
                         switch (arrayNames[1].ToUpper())
                         {
                             case "SCOUT":
-                                yLocation = yScout; // set scouts in top section, inputY up, z deep, x left right from camera view
+                                yLocation = yScout; // set scouts in top section, inputY up, zLine deep, x left right from camera view
                                 if (_scoutShips % 2 == 0)
                                 {
                                     yLocation += ySeparator;

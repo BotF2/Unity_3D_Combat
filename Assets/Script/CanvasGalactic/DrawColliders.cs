@@ -99,7 +99,7 @@ namespace BOTF3D_GalaxyMap
                     //    Matrix4x4 oldGizmosMatrix = Gizmos.matrix;
 
                     //    Gizmos.matrix = Matrix4x4.TRS(_sphereTemp.transform.TransformPoint(_sphereTemp.center), _sphereTemp.transform.rotation, Vector3.one *
-                    //        Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.x), Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.inputY), Mathf.Abs(_sphereTemp.transform.lossyScale.z))));
+                    //        Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.x), Mathf.Max(Mathf.Abs(_sphereTemp.transform.lossyScale.inputY), Mathf.Abs(_sphereTemp.transform.lossyScale.zLine))));
                     //    Gizmos.DrawWireSphere(Vector3.zero, _sphereTemp.radius);
 
                     //    Gizmos.matrix = oldGizmosMatrix;
@@ -107,7 +107,7 @@ namespace BOTF3D_GalaxyMap
                     //else if ((_capsuleTemp = _temp as CapsuleCollider) != null)
                     //{
                     //    Vector3 ls = _capsuleTemp.transform.lossyScale;
-                    //    var centerHalfScale = new Vector3(_capsuleTemp.center.x * ls.x, _capsuleTemp.center.inputY * ls.inputY, _capsuleTemp.center.z * ls.z);
+                    //    var centerHalfScale = new Vector3(_capsuleTemp.center.x * ls.x, _capsuleTemp.center.inputY * ls.inputY, _capsuleTemp.center.zLine * ls.zLine);
                     //    float halfHeight = _capsuleTemp.height * Mathf.Abs(ls.inputY) * 0.5f;
                     //    var directionVector = _capsuleTemp.transform.up;
 
@@ -127,7 +127,7 @@ namespace BOTF3D_GalaxyMap
                     //    Vector3 capsuleBoundsEnd = centerHalfScale - directionVector * halfHeight;
 
                     //    DebugExtension.DrawCapsule(capsuleBoundsStart, capsuleBoundsEnd, GizmoColor,
-                    //        _capsuleTemp.radius * Mathf.Max(Mathf.Abs(ls.x), Mathf.Abs(ls.z)) // scale radius by: capsule radius, multiplied by the largest of X and Z lossyScales
+                    //        _capsuleTemp.radius * Mathf.Max(Mathf.Abs(ls.x), Mathf.Abs(ls.zLine)) // scale radius by: capsule radius, multiplied by the largest of X and Z lossyScales
                     //        );
 
                     //    Gizmos.matrix = oldGizmosMatrix;

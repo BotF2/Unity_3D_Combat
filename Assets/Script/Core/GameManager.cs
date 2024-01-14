@@ -650,7 +650,7 @@ namespace BOTF3D_Core
         public CameraMultiTarget cameraMultiTarget;
         public CameraManagerGalactica cameraManagerGalactica;
 
-        public GridManager gridManager;
+        //public GridManager gridManager;
         private Camera cameraGalactica;
         public Camera cameraTelescope;
         //public Camera cameraGalacticUI;
@@ -2994,7 +2994,7 @@ namespace BOTF3D_Core
 
             //    newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
             //    cameraTargets.Add(newEmptyCameraTarget);
-            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.zLine * shipScale);
             //    _tempPrefabFriend.transform.SetParent(resetFriendArray[0].transform, true);
             //    _friendsLocal.Add(i, _tempPrefabFriend);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabFriend, FriendOrFoe.friend);
@@ -3040,7 +3040,7 @@ namespace BOTF3D_Core
 
             //    anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
             //    cameraTargets.Add(anEmptyCameraTarget);
-            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.zLine * shipScale);
             //    _tempPrefabEnemy.transform.SetParent(resetEnemyArray[0].transform, true);
             //    _enemysLocal.Add(i, _tempPrefabEnemy);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabEnemy, FriendOrFoe.enemy);

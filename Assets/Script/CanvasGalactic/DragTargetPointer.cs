@@ -7,6 +7,7 @@ using BOTF3D_Combat;
 using UnityEngine.InputSystem;
 using static UnityEditor.PlayerSettings;
 using UnityEngine.UIElements;
+using DG.Tweening;
 //using UnityEngine.Windows;
 
 
@@ -15,15 +16,17 @@ namespace BOTF3D_GalaxyMap
 
     public class DragTargetPointer : MonoBehaviour
     {
-        Vector3 thePosition;
+        Vector3 screenPosition;
+        public Vector3 worldPosition;
         public Camera galaxyCamera;
         public GalaxyDropLine targetDropLine;
         public GameObject _targetLineEndpointPrefab;
         private GameObject _targetPlaneGObj;
         public Canvas canvasGalactic;
         public GameObject _backgoundGalaxyImage;
-        private float z = 0f;
+        private float zLine = 0f;
         private bool _rayHit = false; 
+        //private Plane _targetPlane;
 
         private void Start()
         {
@@ -37,51 +40,83 @@ namespace BOTF3D_GalaxyMap
                 new Vector3(x, y, 600f), Quaternion.identity);
             _targetPlaneGObj.name = "_targetPlanePoint";
             _targetPlaneGObj.transform.SetParent(canvasGalactic.transform, false);
-            _targetPlaneGObj.layer = 7;
+            _targetPlaneGObj.layer = 7; // noSeeEm
 
-            Transform[] endFleetPoints = new Transform[2]
+            Transform[] endFleetPoints = new Transform[2] // transform array for line drawing
                 { this.transform, _targetPlaneGObj.transform };
             targetLine.SetUpLine(endFleetPoints);
         }
         void Update()
         {
-            // if raycast hits TargetPointer
+            //Detect scroll wheel click then if raycast hits TargetPointer
             if (Input.GetMouseButtonDown(2))
             {
-                int layerMask = 1 << 6; // in raycast below, we are only going to hit in layer 6 Galactic,
+                int layerMaskT = 1 << 6; // in raycast below, we are only going to hitT in layer 6 Galactic,
 
-                Ray ray = galaxyCamera.ScreenPointToRay(Input.mousePosition);
+                Ray rayT = galaxyCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-                if (Physics.Raycast(ray, out RaycastHit hit, 10000f, layerMask))
+                if (Physics.Raycast(rayT, out RaycastHit hitT, 100000f, layerMaskT))
                 {
-                    Collider collider = this.GetComponent<Collider>();
+                    Collider colliderT = this.GetComponent<Collider>();
 
-                    //Detect if ray hit background image 
-                    if (hit.collider == collider)
+                    //Detect if rayT hitT background image 
+                    if (hitT.collider == colliderT)
                     {
                         _rayHit = true;
-                        Vector3 updatePosition = Input.mousePosition - GetTargetPosition();
-                        thePosition = updatePosition; //new Vector3(updatePosition.x, updatePosition.z, updatePosition.y);
+                        screenPosition = Mouse.current.position.ReadValue();
                     }
                 }
             }
             if (_rayHit)
-            {           
+            {
                 //Detect if the middle mouse button (scroll wheel) is held down in frame
                 if (Input.GetMouseButton(2))
                 {
-
-                    Vector3 tempPosition = galaxyCamera.ScreenToWorldPoint(Input.mousePosition - thePosition);
-                    tempPosition.x = Mathf.Clamp(tempPosition.x, -595f, 550f);
-                    tempPosition.y = Mathf.Clamp(tempPosition.y, (-785f/2), (363f/2));
-
                     if (Input.mouseScrollDelta.y != 0)
                     {
-                        z += Input.mouseScrollDelta.y * 10f;
-                        z = Mathf.Clamp(z, -100f, (_backgoundGalaxyImage.transform.position.z - 10f));
+                        zLine = transform.position.z;
+                        zLine += Input.mouseScrollDelta.y * 10f;
+                        zLine = Mathf.Clamp(zLine, -60f, (_backgoundGalaxyImage.transform.position.z - 10f));
+                        int layerMaskT = 1 << 6; // in raycast below, we are only going to hitT in layer 6 Galactic,
+
+                        Ray rayT = galaxyCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+                        if (Physics.Raycast(rayT, out RaycastHit hitT, 100000f, layerMaskT))
+                        {
+                            Collider colliderT = this.GetComponent<Collider>();
+
+                            //Detect if rayT hitT background image 
+                            if (hitT.collider == colliderT)
+                            {
+                                worldPosition = new Vector3(transform.position.x, transform.position.y, zLine);
+                            }
+
+                        }
                     }
-                    Vector3 forGalaxyPosition = new Vector3(tempPosition.x, tempPosition.y*2, z);
-                    transform.position = forGalaxyPosition;
+                    Vector3 newV3 = Mouse.current.position.ReadValue();
+                    if (newV3 != screenPosition)
+                    {
+                        if (Input.mouseScrollDelta.y != 0)
+                        {
+                            zLine = transform.position.z;
+                            zLine += Input.mouseScrollDelta.y * 10f;
+                            zLine = Mathf.Clamp(zLine, -60f, (_backgoundGalaxyImage.transform.position.z - 10f));
+                        }
+                        screenPosition = newV3;
+                        int layerMaskB = 1 << 8; // in raycast below, we are only going to hitB in layer 8 GalacticUI,
+                        Ray rayB = galaxyCamera.ScreenPointToRay(screenPosition);
+                        if (Physics.Raycast(rayB, out RaycastHit hitB, 100000f, layerMaskB))
+                        {
+                            Collider colliderB = _backgoundGalaxyImage.GetComponent<Collider>();
+
+                            if (hitB.collider == colliderB)
+                            {
+                                worldPosition = new Vector3(hitB.point.x, hitB.point.y, zLine);
+                            }
+
+                        }
+                    }
+                    transform.position = worldPosition;
                     _targetPlaneGObj.transform.position = new Vector3(transform.position.x,
                         transform.position.y, _backgoundGalaxyImage.transform.position.z);
                 }
@@ -89,34 +124,8 @@ namespace BOTF3D_GalaxyMap
                 {
                     _rayHit = false;
                 }
-     
+
             }
         }
-        private Vector3 GetTargetPosition()
-        {
-            return galaxyCamera.WorldToScreenPoint(transform.position);
-
-        }
-
-        //private void OnMouseDown() // for left mouse button
-        //{
-        //    Vector3 tempPosition = Input.mousePosition - GetTargetPosition();
-        //    thePosition = tempPosition;
-        //    //MoveTargetPlaneEmpty();
-        //}
-        //private void OnMouseDrag() // for left mouse button drag
-        //{
-
-        //    Vector3 tempPosition = galaxyCamera.ScreenToWorldPoint(Input.mousePosition - thePosition);
-        //    tempPosition.x = Mathf.Clamp(tempPosition.x, -595f, 550f);
-        //    tempPosition.z = Mathf.Clamp(tempPosition.z, (-157f), (340f));
-            
-        //    Vector3 forGalaxyPosition = new Vector3(tempPosition.x, (-tempPosition.z * 2.3f), 0f);
-        //    //forGalaxyPosition.z += Input.mouseScrollDelta.y * 0.1f;
-        //    transform.position = forGalaxyPosition;
-        //    //transform.Translate(Vector3.up * Input.GetAxis("Mouse ScrollWheel"));
-        //    _targetPlaneGObj.transform.position = new Vector3(transform.position.x,
-        //        transform.position.y, _backgoundGalaxyImage.transform.position.z);
-        //}
     }
 }
