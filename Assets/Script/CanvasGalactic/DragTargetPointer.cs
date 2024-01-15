@@ -6,15 +6,12 @@ using BOTF3D_Core;
 using BOTF3D_Combat;
 using UnityEngine.InputSystem;
 using static UnityEditor.PlayerSettings;
-using UnityEngine.UIElements;
-using DG.Tweening;
-//using UnityEngine.Windows;
+
 
 
 namespace BOTF3D_GalaxyMap
 {
-
-    public class DragTargetPointer : MonoBehaviour
+   public class DragTargetPointer : MonoBehaviour
     {
         Vector3 screenPosition;
         public Vector3 worldPosition;
@@ -113,7 +110,6 @@ namespace BOTF3D_GalaxyMap
                             {
                                 worldPosition = new Vector3(hitB.point.x, hitB.point.y, zLine);
                             }
-
                         }
                     }
                     transform.position = worldPosition;
