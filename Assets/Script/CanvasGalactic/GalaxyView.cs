@@ -754,13 +754,14 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].transform.SetParent(canvasGalactic.transform, false);
                         sysEmptyList[sysIndex].layer = 6;
                         
-                        GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(0, 0, 0), Quaternion.identity);
+                        GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(x, y, z), Quaternion.identity);
                         line.name = sysEmptyList[sysIndex].name + "_SystemLine";
+                        line.transform.SetParent(sysEmptyList[sysIndex].transform, true);
 
-                        GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
+                        GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(0, 0, 600f), Quaternion.identity);
                         emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_SystemPlanePoint";
 
-                        emptyForPlanePoint.transform.SetParent(canvasGalactic.transform, false );
+                        emptyForPlanePoint.transform.SetParent(sysEmptyList[sysIndex].transform, false);
                         emptyForPlanePoint.layer = 7;
 
                         Transform[] endPoints = new Transform[2] { sysEmptyList[sysIndex].transform, emptyForPlanePoint.transform}; 
@@ -809,9 +810,11 @@ namespace BOTF3D_GalaxyMap
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDictionary[ourKey],
                             new Vector3(0, 0, 0), Quaternion.identity);
 
-                        firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false);  
-                        firstFleetOfSystem.transform.position = sysEmptyList[sysIndex].transform.position;
+                        //firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false);
+
+                        firstFleetOfSystem.transform.Translate(sysEmptyList[sysIndex].transform.position, Space.World);//position = sysEmptyList[sysIndex].transform.position;
                         firstFleetOfSystem.transform.Translate(0, -5, 15);
+                        firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, true);
                         firstFleetOfSystem.transform.localScale = new Vector3(2, 2, 2);
                         firstFleetOfSystem.layer = 6;
                         firstFleetOfSystem.SetActive(true);
@@ -826,12 +829,14 @@ namespace BOTF3D_GalaxyMap
                             {
                                 for (int j = 0; j <item.Value; j++)
                                 {
-                                    GameObject currentGalaxyShip = Instantiate<GameObject>(prefabForGalaxyShip, new Vector3(1000, 1000, 1000), Quaternion.identity) as GameObject;
+                                    GameObject currentGalaxyShip = Instantiate<GameObject>(prefabForGalaxyShip, firstFleetOfSystem.transform.position,
+                                        Quaternion.identity) as GameObject;
+                                    currentGalaxyShip.transform.SetParent(firstFleetOfSystem.transform, true);
                                     GalaxyShip thisGShip = currentGalaxyShip.GetComponent<GalaxyShip>();
                                     thisGShip._shipName = item.Key + "_" + j.ToString();
                                     thisGShip._civilization = (CivEnum)sysIndex;
                                     thisGShip._techLeve = techLevel;
-                                    currentGalaxyShip.transform.SetParent(firstFleetOfSystem.transform, false);
+                                    //currentGalaxyShip.transform.SetParent(firstFleetOfSystem.transform, false);
                                     starterGalaxyShips.Add(thisGShip);
                                 }
                             }
@@ -847,12 +852,13 @@ namespace BOTF3D_GalaxyMap
                         float x = firstFleetOfSystem.transform.localPosition.x;
                         float y = firstFleetOfSystem.transform.localPosition.y;
                         GalaxyDropLine fleetLine = Instantiate(fleetDropLine, new Vector3(0,0,0), Quaternion.identity);
+                        fleetLine.transform.SetParent(firstFleetOfSystem.transform, false);
                         fleetLine.name = firstFleetOfSystem.name + "_FleetLine";
                         //fleetLine.gameObject.layer = 1;
                         GameObject fleetPlaneGameObj = Instantiate(_fleetLineEndpointPrefab,
-                            new Vector3(x,y,600f), Quaternion.identity);
+                            new Vector3(0,0,600f), Quaternion.identity);
                         fleetPlaneGameObj.name = sysEmptyList[sysIndex].name + "_FleetPlanePoint";
-                        fleetPlaneGameObj.transform.SetParent(canvasGalactic.transform, false);                    
+                        fleetPlaneGameObj.transform.SetParent(firstFleetOfSystem.transform, false);                    
                         fleetPlaneGameObj.layer = 7;
                         //firstFleet.galaxyPlaneGO = fleetPlaneGameObj;
                         // fleetPlaneGameObj.SetActive(true);
@@ -862,7 +868,9 @@ namespace BOTF3D_GalaxyMap
                         fleetLine.SetUpLine(endFleetPoints);
                         // Temp get fleets moving to galatic center
                         GameObject targetWeMoveTo = new GameObject();
-                        targetWeMoveTo.transform.position = new Vector3(0, 0, 0);
+                        targetWeMoveTo.transform.position = new Vector3(0, firstFleetOfSystem.transform.position.y,
+                            firstFleetOfSystem.transform.position.z);
+                        targetWeMoveTo.name = firstFleetOfSystem.name + "_Temp Target";
                         MoveGalacticObjects moveGalacticObject = firstFleetData.GetComponent<MoveGalacticObjects>();
                         thisMovingObject = moveGalacticObject;
                         thisMovingObject.BoldlyGo(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f);

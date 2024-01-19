@@ -29,18 +29,18 @@ namespace BOTF3D_GalaxyMap
             float x = this.transform.localPosition.x;
             float y = this.transform.localPosition.y;
 
-            GalaxyDropLine targetLine = Instantiate(targetDropLine, new Vector3(0, 0, 0), Quaternion.identity);
-            targetLine.name = this.name + "_targetLine";
-            //targetLine.gameObject.layer = 1;
-            _targetPlaneGObj = Instantiate(_targetLineEndpointPrefab,
-                new Vector3(x, y, 600f), Quaternion.identity);
-            _targetPlaneGObj.name = "_targetPlanePoint";
-            _targetPlaneGObj.transform.SetParent(canvasGalactic.transform, false);
-            _targetPlaneGObj.layer = 7; // noSeeEm
+            //GalaxyDropLine targetLine = Instantiate(targetDropLine, new Vector3(0, 0, 0), Quaternion.identity);
+            //targetLine.name = this.name + "_targetLine";
+            ////targetLine.gameObject.layer = 1;
+            //_targetPlaneGObj = Instantiate(_targetLineEndpointPrefab,
+            //    new Vector3(x, y, 600f), Quaternion.identity);
+            //_targetPlaneGObj.name = "_targetPlanePoint";
+            //_targetPlaneGObj.transform.SetParent(canvasGalactic.transform, false);
+            //_targetPlaneGObj.layer = 7; // noSeeEm
 
-            Transform[] endFleetPoints = new Transform[2] // transform array for line drawing
-                { this.transform, _targetPlaneGObj.transform };
-            targetLine.SetUpLine(endFleetPoints);
+            //Transform[] endFleetPoints = new Transform[2] // transform array for line drawing
+            //    { this.transform, _targetPlaneGObj.transform };
+            //targetLine.SetUpLine(endFleetPoints);
         }
     }
 }
