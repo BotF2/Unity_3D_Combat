@@ -736,6 +736,7 @@ namespace BOTF3D_GalaxyMap
             for (int i = 0; i < numStars.Length; i++)
             {
                 Civilization civy;
+                //GalaxyDropLine line;
                 int sysIndex = numStars[i];
                 string ourKey = keysForSystemDictionary[sysIndex];
                 if (keysForSystemDictionary[sysIndex].Length != 0)
@@ -755,16 +756,17 @@ namespace BOTF3D_GalaxyMap
                         sysEmptyList[sysIndex].layer = 6;
                         
                         GalaxyDropLine line = Instantiate(systemDropLine, new Vector3(x, y, z), Quaternion.identity);
+            
                         line.name = sysEmptyList[sysIndex].name + "_SystemLine";
-                        line.transform.SetParent(sysEmptyList[sysIndex].transform, true);
+                        line.transform.SetParent(sysEmptyList[sysIndex].transform, false);
 
-                        GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(0, 0, 600f), Quaternion.identity);
+                        GameObject emptyForPlanePoint = Instantiate(_lineEndpointPrefab, new Vector3(x, y, 600f), Quaternion.identity);
                         emptyForPlanePoint.name = sysEmptyList[sysIndex].name + "_SystemPlanePoint";
 
-                        emptyForPlanePoint.transform.SetParent(sysEmptyList[sysIndex].transform, false);
+                        emptyForPlanePoint.transform.SetParent(canvasGalactic.transform, false);
                         emptyForPlanePoint.layer = 7;
 
-                        Transform[] endPoints = new Transform[2] { sysEmptyList[sysIndex].transform, emptyForPlanePoint.transform}; 
+                        Transform[] endPoints = new Transform[2] {sysEmptyList[sysIndex].transform, emptyForPlanePoint.transform}; 
                         line.SetUpLine(endPoints);
 
                         var hTips = sysEmptyList[sysIndex].AddComponent<HoverTips>();
@@ -851,35 +853,32 @@ namespace BOTF3D_GalaxyMap
                         _movingGalaxyObjects.Add(firstFleetData.gameObject);
                         float x = firstFleetOfSystem.transform.localPosition.x;
                         float y = firstFleetOfSystem.transform.localPosition.y;
-                        GalaxyDropLine fleetLine = Instantiate(fleetDropLine, new Vector3(0,0,0), Quaternion.identity);
+                        GalaxyDropLine fleetLine = Instantiate(fleetDropLine, new Vector3(x,y,0), Quaternion.identity);
                         fleetLine.transform.SetParent(firstFleetOfSystem.transform, false);
                         fleetLine.name = firstFleetOfSystem.name + "_FleetLine";
                         //fleetLine.gameObject.layer = 1;
                         GameObject fleetPlaneGameObj = Instantiate(_fleetLineEndpointPrefab,
-                            new Vector3(0,0,600f), Quaternion.identity);
+                            new Vector3(x,y,600f), Quaternion.identity);
                         fleetPlaneGameObj.name = sysEmptyList[sysIndex].name + "_FleetPlanePoint";
-                        fleetPlaneGameObj.transform.SetParent(firstFleetOfSystem.transform, false);                    
+                        fleetPlaneGameObj.transform.SetParent(canvasGalactic.transform, false);                    
                         fleetPlaneGameObj.layer = 7;
-                        //firstFleet.galaxyPlaneGO = fleetPlaneGameObj;
-                        // fleetPlaneGameObj.SetActive(true);
 
                         Transform[] endFleetPoints = new Transform[2] 
                             { firstFleetOfSystem.transform, fleetPlaneGameObj.transform };
                         fleetLine.SetUpLine(endFleetPoints);
-                        // Temp get fleets moving to galatic center
+                        // Temp get fleets moving to galatic center line
                         GameObject targetWeMoveTo = new GameObject();
                         targetWeMoveTo.transform.position = new Vector3(0, firstFleetOfSystem.transform.position.y,
                             firstFleetOfSystem.transform.position.z);
                         targetWeMoveTo.name = firstFleetOfSystem.name + "_Temp Target";
                         MoveGalacticObjects moveGalacticObject = firstFleetData.GetComponent<MoveGalacticObjects>();
                         thisMovingObject = moveGalacticObject;
-                        thisMovingObject.BoldlyGo(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f);
+                        thisMovingObject.BoldlyGoing(firstFleetData, targetWeMoveTo, fleetPlaneGameObj, 200f);
                     }
 
 
                     starSystemNewGameOb.SetActive(true);
-
- 
+                
                 }
                 if (canonOrRandom == GalaxyType.RANDOM)
                 {
