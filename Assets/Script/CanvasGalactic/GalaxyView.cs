@@ -812,7 +812,7 @@ namespace BOTF3D_GalaxyMap
                         GameObject firstFleetOfSystem = Instantiate(GameManager.PrefabFleetDictionary[ourKey],
                             new Vector3(0, 0, 0), Quaternion.identity);
 
-                        //firstFleetOfSystem.transform.SetParent(canvasGalactic.transform, false);
+                        //firstFleetOfSystem.transform.SetParent(_canvasGalactic.transform, false);
 
                         firstFleetOfSystem.transform.Translate(sysEmptyList[sysIndex].transform.position, Space.World);//position = sysEmptyList[sysIndex].transform.position;
                         firstFleetOfSystem.transform.Translate(0, -5, 15);
@@ -958,7 +958,7 @@ namespace BOTF3D_GalaxyMap
             }
             //GameObject fleetNewGameOb = Instantiate(GameManager.PrefabFleetDitionary[civEnum.ToString()], new Vector3(0, 0, 0), Quaternion.identity);
             //fleetNewGameOb.transform.Translate(location.position.x, location.position.inputY, location.position.zLine, Space.World);
-            //fleetNewGameOb.transform.SetParent(canvasGalactic.transform, false);
+            //fleetNewGameOb.transform.SetParent(_canvasGalactic.transform, false);
             //fleetNewGameOb.transform.localScale = new Vector3(1, 1, 1);
 
             //fleetNewGameOb.SetActive(true);

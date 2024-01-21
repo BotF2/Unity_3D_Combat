@@ -35,7 +35,7 @@ namespace BOTF3D_GalaxyMap
             //_targetPlaneGObj = Instantiate(_targetLineEndpointPrefab,
             //    new Vector3(x, y, 600f), Quaternion.identity);
             //_targetPlaneGObj.name = "_targetPlanePoint";
-            //_targetPlaneGObj.transform.SetParent(canvasGalactic.transform, false);
+            //_targetPlaneGObj.transform.SetParent(_canvasGalactic.transform, false);
             //_targetPlaneGObj.layer = 7; // noSeeEm
 
             //Transform[] endFleetPoints = new Transform[2] // transform array for line drawing

@@ -43,7 +43,7 @@ namespace BOTF3D_GalaxyMap
             //GameObject tempObject = GameObject.Find("CanvasGalactic");
             //if (tempObject != null)
             //{
-            //    canvasGalactic = tempObject.GetComponent<Canvas>();
+            //    _canvasGalactic = tempObject.GetComponent<Canvas>();
             //}
             #region Read Civilization Data.txt 
             char separator = ',';

@@ -21,10 +21,10 @@ EditorUserSettings:
       value: 520356575457595f09590d73147107444f4e497f7d71706729794b61b7b96d6f
       flags: 0
     RecentlyUsedSceneGuid-5:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      value: 5a050c565507590c5e5b5e7247220744464f1a2c747c7f3529781b37bab96c3c
       flags: 0
     RecentlyUsedSceneGuid-6:
-      value: 5a050c565507590c5e5b5e7247220744464f1a2c747c7f3529781b37bab96c3c
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
       flags: 0
     UIBuilder.EditorExtensionModeKey:
       value: 37434103
@@ -62,3 +62,4 @@ EditorUserSettings:
   m_VCOtherOverlayIcons: 1
   m_VCAllowAsyncUpdate: 1
   m_ArtifactGarbageCollection: 1
+  m_CompressAssetsOnImport: 1
