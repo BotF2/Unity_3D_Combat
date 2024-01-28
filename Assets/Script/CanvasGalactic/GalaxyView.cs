@@ -18,7 +18,7 @@ namespace BOTF3D_GalaxyMap
     {
         public GameManager gameManager;
         public GameObject prefabForGalaxyShip;
-        //public CivilizationData civilizationData;
+        public DragTargetPointer dragTargetPointer;
         public CameraManagerGalactica cameraManagerGalactica;
         public StarSystemData starSystemData;
         public MoveGalacticObjects thisMovingObject;
@@ -890,8 +890,9 @@ namespace BOTF3D_GalaxyMap
                         // sysEmpty.transform.Translate(random values here x, inputY, zLine);
                     }
                 }
+                
             }
-            //Build a travelPointMarker;
+            dragTargetPointer.InstantiateTargetPointer();
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
         }
