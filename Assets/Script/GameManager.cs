@@ -792,8 +792,10 @@ namespace Assets.Script
         }
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
-            SwitchtState(State.MAIN_INIT);
-            //TurnOnGalacticSystems(true);
+            // turned off Galaxys here: SwitchtState(State.MAIN_INIT);
+            // open Combat for now
+            SwitchtState(State.COMBAT_MENU);
+            
         }
         public void GalaxyMapClicked() // in system going back to galactic map
         {
@@ -1054,6 +1056,9 @@ namespace Assets.Script
                 case State.COMBAT_MENU:
                     PanelLobby_Menu.SetActive(false);
                     PanelCombat_Menu.SetActive(true);
+                    PanelSystem_Play.SetActive(false);                    
+                    PanelSystem_Play.SetActive(false);
+                    PanelGalactic_Map.SetActive(false);
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
