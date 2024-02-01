@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class NextSolarSystem : MonoBehaviour 
     {

@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     internal class Planet : OrbitalGalactic
     {

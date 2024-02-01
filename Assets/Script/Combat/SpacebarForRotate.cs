@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Assets.Script;
+using Assets.Core;
 using System;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class SpacebarForRotate : MonoBehaviour
     {

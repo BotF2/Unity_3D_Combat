@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace Assets.Script
+namespace Assets.Core
 {
 
     public class GalaxyMapTypeSelection : MonoBehaviour, IPointerDownHandler

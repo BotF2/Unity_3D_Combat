@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Assets.Script;
+using Assets.Core;
 
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class ExitQuit : MonoBehaviour
     {

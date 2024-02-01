@@ -9,7 +9,7 @@ using UnityEngine;
 //using MLAPI;
 //using UnityEngine.UI;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     #region Enums
     public enum Civilization

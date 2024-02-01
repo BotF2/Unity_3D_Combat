@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     internal class FaceGalacticCamera : MonoBehaviour
     {

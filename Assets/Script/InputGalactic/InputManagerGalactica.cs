@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.Script;
+using Assets.Core;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public abstract class InputManagerGalactica : MonoBehaviour
     {

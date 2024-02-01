@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-namespace Assets.Script
+namespace Assets.Core
 {
    
     public class E_Animator1 : MonoBehaviour

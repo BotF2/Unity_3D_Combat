@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     class PositionAndRotation
     {

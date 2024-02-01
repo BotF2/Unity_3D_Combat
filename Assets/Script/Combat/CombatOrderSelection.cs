@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     [RequireComponent(typeof(Toggle))]
     public class CombatOrderSelection : MonoBehaviour, IPointerDownHandler

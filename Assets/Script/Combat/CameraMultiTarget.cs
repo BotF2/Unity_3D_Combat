@@ -1,10 +1,10 @@
-﻿using Assets.Script;
+﻿using Assets.Core;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Script
+namespace Assets.Core
 {
 	enum TurnDirection
 	{

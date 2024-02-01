@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using System.Linq;
 using System.Net;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class SolarSystemView : MonoBehaviour 
     {

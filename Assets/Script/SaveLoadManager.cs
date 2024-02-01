@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class SaveLoadManager : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     class ProjectionHits
     {

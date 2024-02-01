@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class MasterVolumeControl : MonoBehaviour
     {

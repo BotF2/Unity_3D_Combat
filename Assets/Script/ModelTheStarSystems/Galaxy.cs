@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 
-namespace Assets.Script
+namespace Assets.Core
 {
     public class Galaxy
     {
