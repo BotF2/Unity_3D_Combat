@@ -16,7 +16,7 @@ namespace Assets.Script
         public Combat combat;
         public Civilization _civilization;
         public ShipType _shipType;
-        public GalaxySize _techLevel;
+        public TechLevel _techLevel;
         public int _shieldsMaxHealth; // set in ShipData.txt
         public int _hullMaxHealth;
         public int _torpedoDamage; // update with data of torpedo that hits
