@@ -24,6 +24,9 @@ TagManager:
   - ROM_SCOUT_III(CLONE)
   - BORG_CRUISER_II(CLONE)
   - SolarSystemViewObject
+  - BORG_DESTROYER_III(CLONE)
+  - KLING_SCOUT_II(CLONE)
+  - ROM_CRUISER_II(CLONE)
   layers:
   - Default
   - TransparentFX
