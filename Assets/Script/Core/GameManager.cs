@@ -790,7 +790,7 @@ namespace Assets.Core
         {
             // turned off Galaxys here: SwitchtState(State.MAIN_INIT);
             // open Combat for now
-            SwitchtState(State.COMBAT_MENU);
+            SwitchtState(State.GALACTIC_MAP_INIT);
             
         }
         public void GalaxyMapClicked() // in system going back to galactic map
