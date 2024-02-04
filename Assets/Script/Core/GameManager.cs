@@ -726,11 +726,7 @@ namespace Assets.Core
                                      // Galaxy galaxy = new Galaxy();
                                      // Galaxy = galaxy;
 
-            // *** moving load Combat ships to BeginState newState CombatMenu CombatInit that turns true on entering combat in galaxy view.
 
-            //StarterGalaxyObjects(); // GNDN ToDo: move to Main_Init in pre for galaxy play
-
-            // LoadCombatData();
         }
 
         public void BackToLobbyClick()  // from Main Menu
