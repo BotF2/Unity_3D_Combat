@@ -11554,7 +11554,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Combat, \nno Galaxy \nfor now"
+  m_text: 'Galaxy Map
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d5aabc3ee1e5b04190fb4cdca2721c0, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 2246d9047bd8dc14a82e70c1d41c6028, type: 2}
