@@ -1,11 +1,14 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
-//using Unity.VisualScripting;
-using UnityEngine;
+using GalaxyMap;
+
 //using MLAPI;
 //using UnityEngine.UI;
 
@@ -138,6 +141,7 @@ namespace Assets.Core
 
     public class GameManager : MonoBehaviour
     {
+        List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
