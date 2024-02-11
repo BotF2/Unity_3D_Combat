@@ -1201,22 +1201,6 @@ namespace BOTF3D_Core
             var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
             PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
 
-            //Camera[] cameras = Camera.allCameras;
-
-            //for (int i = 0; i < cameras.Count(); i++)
-            //{
-            //    if (cameras[i].name == "CameraGalactica")
-            //    {
-            //        if (cameras[i] != null)
-            //            cameraGalactica = cameras[i];
-            //    }
-            //    //if (cameras[i].name == "Camera_UI")
-            //    //{
-            //    //    if (cameras[i] != null)
-
-            //    //}
-            //}
-            //PanelGalacticTelescope = CanvasGalactic.transform.Find("PanelGalacticTelescope").gameObject;
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
