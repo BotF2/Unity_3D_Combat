@@ -1,13 +1,11 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
+using UnityEngine;
 using GalaxyMap;
+
 
 //using MLAPI;
 //using UnityEngine.UI;
@@ -15,16 +13,342 @@ using GalaxyMap;
 namespace Assets.Core
 {
     #region Enums
-    public enum Civilization
+    public enum DiplomaticEnum
     {
-        FED,
-        TERRAN,
+        IsUnknown = -3,
+        IsTotalWar = -2,
+        IsColdWar = -1,
+        IsNeutral = 0,
+        IsFriend = 1,
+        IsAlly = 2, // major to major civ
+        IsMember = 3, // minor to major civ
+    }
+    public enum CivEnum
+    {
+        FED = 0,
         ROM,
         KLING,
         CARD,
         DOM,
-        BORG
+        BORG,
+        ACAMARIANS,
+        AKAALI,
+        AKRITIRIANS,
+        ALDEANS,
+        ALGOLIANS,
+        ALSAURIANS,
+        ANDORIANS,
+        ANGOSIANS,
+        ANKARI,
+        ANTEDEANS,
+        ANTICANS,
+        ARBAZAN,
+        ARDANANS,
+        ARGRATHI,
+        ARKARIANS,
+        ATREANS,
+        AXANAR,
+        BAJORANS,
+        BAKU,
+        BANDI,
+        BANEANS,
+        BARZANS,
+        BENZITES,
+        BETAZOIDS,
+        BILANAIANS,
+        BOLIANS,
+        BOMAR,
+        BOSLICS,
+        BOTHA,
+        BREELLIANS,
+        BREEN,
+        BREKKIANS,
+        BYNARS,
+        CAIRN,
+        CALDONIANS,
+        CAPELLANS,
+        CHALNOTH,
+        CORIDAN,
+        CORVALLENS,
+        CYTHERIANS,
+        DELTANS,
+        DENOBULANS,
+        DEVORE,
+        DOPTERIANS,
+        DOSI,
+        DRAI,
+        DREMANS,
+        EDO,
+        ELAURIANS,
+        ELAYSIANS,
+        ENTHARANS,
+        EVORA,
+        EXCALBIANS,
+        FERENGI,
+        FLAXIANS,
+        GORN,
+        GRAZERITES,
+        HAAKONIANS,
+        HALKANS,
+        HAZARI,
+        HEKARANS,
+        HIROGEN,
+        HORTA,
+        IYAARANS,
+        JNAII,
+        KAELON,
+        KAREMMA,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRON,
+        KRADIN,
+        KREETASSANS,
+        KRIOSIANS,
+        KTARIANS,
+        LEDOSIANS,
+        LISSEPIANS,
+        LOKIRRIM,
+        LURIANS,
+        MALCORIANS,
+        MALON,
+        MAQUIS,
+        MARKALIANS,
+        MERIDIANS,
+        MINTAKANS,
+        MIRADORN,
+        MIZARIANS,
+        MOKRA,
+        MONEANS,
+        NAUSICAANS,
+        NECHANI,
+        NEZU,
+        NORCADIANS,
+        NUMIRI,
+        NUUBARI,
+        NYRIANS,
+        OCAMPA,
+        ORIONS,
+        ORNARANS,
+        PAKLED,
+        PARADANS,
+        QUARREN,
+        RAKHARI,
+        RAKOSANS,
+        RAMATIANS,
+        PLACEHOLDER,
+        RIGELIANS,
+        RISIANS,
+        RUTIANS,
+        SELAY,
+        SHELIAK,
+        SIKARIANS,
+        SKRREEA,
+        SONA,
+        SULIBAN,
+        TAKARANS,
+        TAKARIANS,
+        TAKTAK,
+        TALARIANS,
+        TALAXIANS,
+        TALOSIANS,
+        TAMARIANS,
+        TANUGANS,
+        TELLARITES,
+        TEPLANS,
+        THOLIANS,
+        TILONIANS,
+        TLANI,
+        TRABE,
+        TRILL,
+        TROGORANS,
+        TZENKETHI,
+        ULLIANS,
+        VAADWAUR,
+        VENTAXIANS,
+        VHNORI,
+        VIDIIANS,
+        VISSIANS,
+        VORGONS,
+        VORI,
+        VULCANS,
+        WADI,
+        XANTHANS,
+        XEPOLITES,
+        XINDI,
+        XYRILLIANS,
+        YADERANS,
+        YRIDIANS,
+        ZAHL,
+        ZAKDORN,
+        ZALKONIANS,
+        ZIBALIANS,
+        UNINHABITED,
     }
+    #region StarSystemEnums
+    public enum StarSystemEnum
+    {
+        SOL,
+        ROMULUS,
+        KRONOS,
+        CARDASSIA,
+        OMARIAN_NEBULA,
+        UNICOMPLEX,
+        ACAMA,
+        AKAALI,
+        AKRITIRI,
+        ALDEA,
+        ALGOL,
+        ALSAURI,
+        ANDORI,
+        ANGOSIA,
+        ANKARI,
+        ANTEDEA,
+        ANTICA,
+        ARBAZ,
+        ARDANA,
+        ARGRATHI,
+        ARKARI,
+        ATREA,
+        AXANAR,
+        BAJOR,
+        BAKU,
+        BANDI,
+        BANEA,
+        BARZA,
+        BENZAR,
+        BETAZED,
+        BILANA,
+        BOLIA,
+        BOMAR,
+        BOSLIC,
+        BOTHA,
+        BREEL,
+        BREEN,
+        BREKKA,
+        BYNAR,
+        CAIRN,
+        CALDON,
+        CAPELLA,
+        CHALNOTH,
+        CORIDAN,
+        CORVALLE,
+        CYTHERIA,
+        DELTA,
+        DENOBULA,
+        DEVORE,
+        DOPTERIA,
+        DOSI,
+        DRAI,
+        DREMA,
+        EDO,
+        ELAURIA,
+        ELAYSIA,
+        ENTHARA,
+        EVORA,
+        EXCALBIA,
+        FERENGI,
+        FLAXIA,
+        GORN,
+        GRAZERITES,
+        HAAKONIA,
+        HALKA,
+        HAZARI,
+        HEKARA,
+        HIROGEN,
+        HORTA,
+        IYAARA,
+        JNAII,
+        KAELON,
+        KAREMMA,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRON,
+        KRADIN,
+        KREETASSA,
+        KRIOSIA,
+        KTARIA,
+        LEDOSIA,
+        LISSEPIA,
+        LOKIRRIM,
+        LURIA,
+        MALCORIA,
+        MALON,
+        MAQUIS,
+        MARKALIA,
+        MERIDIA,
+        MINTAKA,
+        MIRADORN,
+        MIZARIA,
+        MOKRA,
+        MONEA,
+        NAUSICAA,
+        NECHANI,
+        NEZU,
+        NORCADIA,
+        NUMIRI,
+        NUUBARI,
+        NYRIA,
+        OCAMPA,
+        ORION,
+        ORNARA,
+        PAKLED,
+        PARADA,
+        QUARREN,
+        RAKHARI,
+        RAKOSA,
+        RAMATIA,
+        HELIOS,
+        RIGELIA,
+        RISIA,
+        RUTIA,
+        SELAY,
+        SHELIAK,
+        SIKARIA,
+        SKRREEA,
+        SONA,
+        SULIBAN,
+        TAKARA,
+        TAKARIA,
+        TAKTAK,
+        TALARIA,
+        TALAX,
+        TALOSIA,
+        TAMARIA,
+        TANUGA,
+        TELLAR,
+        TEPLA,
+        THOLIA,
+        TILONIA,
+        TLANI,
+        TRABE,
+        TRILL,
+        TROGORA,
+        TZENKETHI,
+        ULLIA,
+        VAADWAUR,
+        VENTAXIA,
+        VHNORI,
+        VIDIIA,
+        VISSIA,
+        VORGON,
+        VORI,
+        VULCAN,
+        WADI,
+        XANTHAN,
+        XEPOLITES,
+        XINDI,
+        XYRILLIA,
+        YADERA,
+        YRIDIA,
+        ZAHL,
+        ZAKDORN,
+        ZALKONIA,
+        ZIBAL,
+        PLACEHOLDER,
+    }
+    #endregion starSystemEnums
     public enum GalaxyType
     {
         CANON,
@@ -53,33 +377,7 @@ namespace Assets.Core
         OMARIAN_NEBULA,
         DELTA_PRIME
     }
-    public enum SystemData
-    {
-        Sys_Int,
-        X_Vector3,
-        Y_Vector3,
-        Z_Vector3,
-        Name,
-        Civ_Owner,
-        Sys_Type,
-        Star_Type,
-        Planet_1,
-        Moons_1,
-        Planet_2,
-        Moons_2,
-        Planet_3,
-        Moons_3,
-        Planet_4,
-        Moons_4,
-        Planet_5,
-        Moons_5,
-        Planet_6,
-        Moons_6,
-        Planet_7,
-        Moons_7,
-        Planet_8,
-        Moons_8
-    }
+
     public enum FriendOrFoe
     {
         friend,
@@ -94,16 +392,20 @@ namespace Assets.Core
         LtCruiser,
         HvyCruiser,
         Transport,
-        Colonyship,
-        Construction,
         OneMore
     }
     public enum SystemType
     {
-        SolarSystem,
+        YellowStarSystem,
+        OrangeStarSystem,
+        WhiteStarSystem,
+        RedStarSystem,
         NebulaSystem,
         ComplexSystem,
         BlackHoleSystem,
+        WormHoleSystem,
+        TranWarpHubSystem,
+        SolarSystem
     }
     public enum StarType
     {
@@ -115,7 +417,7 @@ namespace Assets.Core
         Nebula,
         Complex,
         BlackHole,
-        WormHole,//???
+        WormHole//???
 
     }
     public enum PlanetType
@@ -126,8 +428,173 @@ namespace Assets.Core
         L_marginalForLife,
         K_marsLike,
         Moon
-       
+
     }
+    public enum Systems
+    {
+        #region System Names
+
+        SOL,
+        ROMULAN,
+        KLINGON,
+        CARDASSIAN,
+        DOMINION,
+        BORG,
+        ACAMAR,
+        AKAALI,
+        AKRITIRI,
+        ALDEA,
+        ALGOL,
+        ALSAURI,
+        ANDORIAN,
+        ANGOSIA,
+        ANKARI,
+        ANTEDEA,
+        ANTICA,
+        ARBAZ,
+        ARDANA,
+        ARGRATHI,
+        ARKARIA,
+        ATREA,
+        AXANAR,
+        BAJOR,
+        BAKU,
+        BANDI,
+        BANEA,
+        BARZA,
+        BENZAR,
+        BETAZED,
+        BILANA,
+        BOLIA,
+        BOMAR,
+        BOSLIC,
+        BOTHA,
+        BREEL,
+        BREEN,
+        BREKKA,
+        BYNAR,
+        CAIRN,
+        CALDON,
+        CAPELLA,
+        CHALNOTH,
+        CORIDAN,
+        CORVALLE,
+        CYTHERIA,
+        DELTA,
+        DENOBULA,
+        DEVORE,
+        DOPTERIA,
+        DOSI,
+        DRAI,
+        DREMA,
+        EDO,
+        ELAURIA,
+        ELAYSIA,
+        ENTHARA,
+        EVORA,
+        EXCALBIA,
+        FERENGI,
+        FLAXIA,
+        GORN,
+        GRAZERITES,
+        HAAKONIA,
+        HALKA,
+        HAZARI,
+        HEKARA,
+        HIROGEN,
+        HORTA,
+        IYAARA,
+        JNAII,
+        KAELON,
+        KAREMMA,
+        KAZON,
+        KELLERUN,
+        KESPRYTT,
+        KLAESTRON,
+        KRADIN,
+        KREETASSA,
+        KRIOSIA,
+        KTARIA,
+        LEDOSIA,
+        LISSEPIA,
+        LOKIRRIM,
+        LURIA,
+        MALCORIA,
+        MALON,
+        MAQUIS,
+        MARKALIA,
+        MERIDIA,
+        MINTAKA,
+        MIRADORN,
+        MIZARIA,
+        MOKRA,
+        MONEA,
+        NAUSICAA,
+        NECHANI,
+        NEZU,
+        NORCADIA,
+        NUMIRI,
+        NUUBARI,
+        NYRIA,
+        OCAMPA,
+        ORION,
+        ORNARA,
+        PAKLED,
+        PARADA,
+        QUARREN,
+        RAKHARI,
+        RAKOSA,
+        RAMATIA,
+        REMUS,
+        RIGELIA,
+        RISIA,
+        RUTIA,
+        SELAY,
+        SHELIAK,
+        SIKARIA,
+        SKRREEA,
+        SONA,
+        SULIBAN,
+        TAKARA,
+        TAKARIA,
+        TAKTAK,
+        TALARIA,
+        TALAX,
+        TALOSIA,
+        TAMARIA,
+        TANUGA,
+        TELLAR,
+        TEPLA,
+        THOLIA,
+        TILONIA,
+        TLANI,
+        TRABE,
+        TRILL,
+        TROGORA,
+        TZENKETHI,
+        ULLIA,
+        VAADWAUR,
+        VENTAXIA,
+        VHNORI,
+        VIDIIA,
+        VISSIA,
+        VORGON,
+        VORI,
+        VULCAN,
+        WADI,
+        XANTHAN,
+        XEPOLITES,
+        XINDI,
+        XYRILLIA,
+        YADERA,
+        YRIDIA,
+        ZAHL,
+        ZAKDORN,
+        ZALKONIA,
+        ZIBAL
+        #endregion
+    }
+
     public enum Orders
     {
         Engage,
@@ -141,65 +608,74 @@ namespace Assets.Core
 
     public class GameManager : MonoBehaviour
     {
-        List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
-        public Civilization _localPlayer;
-        public Civilization _hostPlayer;
-        public Civilization _cliantZero;
-        public Civilization _cliantOne;
-        public Civilization _cliantTwo;
-        public Civilization _cliantThree;
-        public Civilization _cliantFour;
-        public Civilization _cliantFive;
+        public Civilization _localPlayerCiv;
+        public Civilization _hostPlayerCiv;
+        public Civilization _clientZeroCiv;
+        public Civilization _clientOneCiv;
+        public Civilization _clientTwoCiv;
+        public Civilization _clientThreeCiv;
+        public Civilization _clientFourCiv;
+        public Civilization _clientFiveCiv;
+        public CivEnum _localPlayer;
+        public CivEnum _hostPlayer;
+        public CivEnum _clientZero;
+        public CivEnum _clientOne;
+        public CivEnum _clientTwo;
+        public CivEnum _clientThree;
+        public CivEnum _clientFour;
+        public CivEnum _clientFive;
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
-        public int _galaxyStarCount; 
+        public int[] _galaxyStarCount;
         public int _solarSystemID;
         public Orders _combatOrder;
 
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
+        public FleetData fleet;
+        //[SerializeField] private CivilizationData civData;
+        [SerializeField] private StarSystemData starSysData;
         public SolarSystemView solarSystemView;
         public Ship ship;
+        //public CivilizationData civilizationData;
+        //public RelationshipManager relationshipManager;
         public CameraMultiTarget cameraMultiTarget;
+        public CameraManagerGalactica cameraManagerGalactica;
+
+        //public GridManager gridManager;
+        public Camera cameraGalactica;
+        public Camera cameraTelescope;
+        //public Camera cameraGalacticUI;
         public Combat combat;
-        // public CameraManagerGalactica cameraManagerGalactica;
-        //public Camera galacticCamera; 
         public InstantiateCombatShips instantiateCombatShips;
         public ActOnCombatOrder actOnCombatOrder;
         public ZoomCamera zoomCamera;
         public GameObject Canvas;
         public GameObject CanvasGalactic;
         private GameObject PanelLobby_Menu;
+        //private GameObject PanelGalaxyUI;
+        public GameObject galaxyBackground;
+        public GameObject resetViewGalacticButton;
         private GameObject PanelLoadGame_Menu;
         private GameObject PanelSaveGame_Menu;
         private GameObject PanelSettings_Menu;
         private GameObject PanelCredits_Menu;
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
-        private GameObject PanelGalactic_Map; 
-        private GameObject PanelSystem_Play;
+        private GameObject PanelSystem_View;
+        private GameObject PanelSysCommand_Menu;
+        private GameObject PanelFleetManager;
         private GameObject PanelGalactic_Completed;
         private GameObject PanelCombat_Menu;
         private GameObject PanelCombat_Play;
         private GameObject PanelCombat_Completed;
         private GameObject PanelGameOver;
-       //// private GameObject SystemGalacticCore;
-       // public GameObject System_FEDERATION ;
-       //// private GameObject System_TERRANEMPIRE ;
-       // public GameObject System_ROMULANS ;
-       // public GameObject System_KLINGONS ;
-       // public GameObject System_CARDASSIANS ;
-       // public GameObject System_DOMINION ;
-       // public GameObject System_BORG ;
-       // public GameObject System_ACAMARIANS ;
-       // public GameObject System_AKAALI ;
-       // public GameObject System_AKRITIRIANS ;
-            
+
         public SinglePlayer _SinglePlayer;
         public MultiPlayer _MultiPlayer;
         public LoadGamePanel _LoadGamePanel;
@@ -208,10 +684,12 @@ namespace Assets.Core
         public ExitQuit _ExitQuit;
         public CreditsGamePanel _CreditsGamePanel;
         public CombatOrderSelection combatOrderSelection;
+        public TimeManager _timeManager;
 
         public float shipScale = 2000f; // old LoadCombatData Combat
         private char separator = ',';
         public static Dictionary<string, int[]> ShipDataDictionary = new Dictionary<string, int[]>();
+        public static Dictionary<string, int> GalaxyShipNameDictionary = new Dictionary<string, int>();
         //public static Dictionary<string, string[]> SystemDataDictionary = new Dictionary<string, string[]>();
 
         public GameObject animFriend1;
@@ -221,17 +699,17 @@ namespace Assets.Core
         public GameObject animEnemy2;
         public GameObject animEnemy3;
 
-        public GameObject Friend_0; // prefab empty gameobject to clone instantiat into the grids
+        public GameObject Friend_0; // prefab empty gameobject to clone instantiate into the grids
         public GameObject Enemy_0;
         private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
-        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
+        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on inputY axis
         public int zFactor = 3000;
         public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
         public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
         public int offsetEnemyRight = 5500; // start here
         public int offsetEnemyLeft = -5800;
 
-        #region prefab ships and stations
+        #region prefab ships and stations GO
         public GameObject Borg_Destroyer_i; // prefab ships
         public GameObject Borg_Destroyer_ii;
         public GameObject Borg_Cube_ii;
@@ -261,15 +739,15 @@ namespace Assets.Core
         public GameObject Fed_Scout_ii;
         public GameObject Fed_Scout_iii;
         public GameObject Fed_Scout_iv;
-        public GameObject Fed_Colonyship_i;
-        public GameObject Fed_Colonyship_ii;
+        public GameObject Fed_Transport_i;
+        public GameObject Fed_Transport_ii;
 
         public GameObject Kling_Cruiser_ii;
         public GameObject Kling_Destroyer_i;
         public GameObject Kling_Destroyer_ii;
         public GameObject Kling_Scout_i;
         public GameObject Kling_Scout_ii;
-        public GameObject Kling_Colonyship_i;
+        public GameObject Kling_Transport_i;
 
         public GameObject Rom_Destroyer_i;
         public GameObject Rom_Destroyer_ii;
@@ -279,10 +757,21 @@ namespace Assets.Core
         public GameObject Rom_Scout_ii;
         public GameObject Rom_Scout_iii;
 
-        public static Dictionary<string, GameObject> PrefabShipDitionary;
+        public static Dictionary<string, GameObject> PrefabShipDictionary;
         #endregion
 
-        #region prefab Star Systems, button gameobjects
+        #region prefab shipyard GO
+        public GameObject Fed_ShipYard; // for prefab shipyards
+        public GameObject Rom_ShipYard;
+        public GameObject Kling_ShipYard;
+        public GameObject Card_ShipYard;
+        public GameObject Dom_ShipYard;
+        public GameObject Borg_ShipYard;
+
+        public static Dictionary<string, GameObject> PrefabShipYardDictionary;
+        #endregion
+
+        #region prefab Star Systems and Fleets, button gameobjects
         public GameObject FED_StarSystem;
         public GameObject ROM_StarSystem;
         public GameObject KLING_StarSystem;
@@ -441,9 +930,169 @@ namespace Assets.Core
         public GameObject ZAKDORN_StarSystem;
         public GameObject ZALKONIANS_StarSystem;
         public GameObject ZIBALIANS_StarSystem;
-       // public GameObject GALACTIC_Center; // do not need a galactic center system button
+
+        public GameObject FED_fleet;
+        public GameObject ROM_fleet;
+        public GameObject KLING_fleet;
+        public GameObject CARD_fleet;
+        public GameObject DOM_fleet;
+        public GameObject BORG_fleet;
+        public GameObject ACAMARIANS_fleet;
+        public GameObject AKAALI_fleet;
+        public GameObject AKRITIRIANS_fleet;
+        public GameObject ALDEANS_fleet;
+        public GameObject ALGOLIANS_fleet;
+        public GameObject ALSAURIANS_fleet;
+        public GameObject ANDORIANS_fleet;
+        public GameObject ANGOSIANS_fleet;
+        public GameObject ANKARI_fleet;
+        public GameObject ANTEDEANS_fleet;
+        public GameObject ANTICANS_fleet;
+        public GameObject ARBAZAN_fleet;
+        public GameObject ARDANANS_fleet;
+        public GameObject ARGRATHI_fleet;
+        public GameObject ARKARIANS_fleet;
+        public GameObject ATREANS_fleet;
+        public GameObject AXANAR_fleet;
+        public GameObject BAJORANS_fleet;
+        public GameObject BAKU_fleet;
+        public GameObject BANDI_fleet;
+        public GameObject BANEANS_fleet;
+        public GameObject BARZANS_fleet;
+        public GameObject BENZITES_fleet;
+        public GameObject BETAZOIDS_fleet;
+        public GameObject BILANAIANS_fleet;
+        public GameObject BOLIANS_fleet;
+        public GameObject BOMAR_fleet;
+        public GameObject BOSLICS_fleet;
+        public GameObject BOTHA_fleet;
+        public GameObject BREELLIANS_fleet;
+        public GameObject BREEN_fleet;
+        public GameObject BREKKIANS_fleet;
+        public GameObject BYNARS_fleet;
+        public GameObject CAIRN_fleet;
+        public GameObject CALDONIANS_fleet;
+        public GameObject CAPELLANS_fleet;
+        public GameObject CHALNOTH_fleet;
+        public GameObject CORIDAN_fleet;
+        public GameObject CORVALLENS_fleet;
+        public GameObject CYTHERIANS_fleet;
+        public GameObject DELTANS_fleet;
+        public GameObject DENOBULANS_fleet;
+        public GameObject DEVORE_fleet;
+        public GameObject DOPTERIANS_fleet;
+        public GameObject DOSI_fleet;
+        public GameObject DRAI_fleet;
+        public GameObject DREMANS_fleet;
+        public GameObject EDO_fleet;
+        public GameObject ELAURIANS_fleet;
+        public GameObject ELAYSIANS_fleet;
+        public GameObject ENTHARANS_fleet;
+        public GameObject EVORA_fleet;
+        public GameObject EXCALBIANS_fleet;
+        public GameObject FERENGI_fleet;
+        public GameObject FLAXIANS_fleet;
+        public GameObject GORN_fleet;
+        public GameObject GRAZERITES_fleet;
+        public GameObject HAAKONIANS_fleet;
+        public GameObject HALKANS_fleet;
+        public GameObject HAZARI_fleet;
+        public GameObject HEKARANS_fleet;
+        public GameObject HIROGEN_fleet;
+        public GameObject HORTA_fleet;
+        public GameObject IYAARANS_fleet;
+        public GameObject JNAII_fleet;
+        public GameObject KAELON_fleet;
+        public GameObject KAREMMA_fleet;
+        public GameObject KAZON_fleet;
+        public GameObject KELLERUN_fleet;
+        public GameObject KESPRYTT_fleet;
+        public GameObject KLAESTRONIANS_fleet;
+        public GameObject KRADIN_fleet;
+        public GameObject KREETASSANS_fleet;
+        public GameObject KRIOSIANS_fleet;
+        public GameObject KTARIANS_fleet;
+        public GameObject LEDOSIANS_fleet;
+        public GameObject LISSEPIANS_fleet;
+        public GameObject LOKIRRIM_fleet;
+        public GameObject LURIANS_fleet;
+        public GameObject MALCORIANS_fleet;
+        public GameObject MALON_fleet;
+        public GameObject MAQUIS_fleet;
+        public GameObject MARKALIANS_fleet;
+        public GameObject MERIDIANS_fleet;
+        public GameObject MINTAKANS_fleet;
+        public GameObject MIRADORN_fleet;
+        public GameObject MIZARIANS_fleet;
+        public GameObject MOKRA_fleet;
+        public GameObject MONEANS_fleet;
+        public GameObject NAUSICAANS_fleet;
+        public GameObject NECHANI_fleet;
+        public GameObject NEZU_fleet;
+        public GameObject NORCADIANS_fleet;
+        public GameObject NUMIRI_fleet;
+        public GameObject NUUBARI_fleet;
+        public GameObject NYRIANS_fleet;
+        public GameObject OCAMPA_fleet;
+        public GameObject ORIONS_fleet;
+        public GameObject ORNARANS_fleet;
+        public GameObject PAKLED_fleet;
+        public GameObject PARADANS_fleet;
+        public GameObject QUARREN_fleet;
+        public GameObject RAKHARI_fleet;
+        public GameObject RAKOSANS_fleet;
+        public GameObject RAMATIANS_fleet;
+        public GameObject REMANS_fleet;
+        public GameObject RIGELIANS_fleet;
+        public GameObject RISIANS_fleet;
+        public GameObject RUTIANS_fleet;
+        public GameObject SELAY_fleet;
+        public GameObject SHELIAK_fleet;
+        public GameObject SIKARIANS_fleet;
+        public GameObject SKRREEA_fleet;
+        public GameObject SONA_fleet;
+        public GameObject SULIBAN_fleet;
+        public GameObject TAKARANS_fleet;
+        public GameObject TAKARIANS_fleet;
+        public GameObject TAKTAK_fleet;
+        public GameObject TALARIANS_fleet;
+        public GameObject TALAXIANS_fleet;
+        public GameObject TALOSIANS_fleet;
+        public GameObject TAMARIANS_fleet;
+        public GameObject TANUGANS_fleet;
+        public GameObject TELLARITES_fleet;
+        public GameObject TEPLANS_fleet;
+        public GameObject THOLIANS_fleet;
+        public GameObject TILONIANS_fleet;
+        public GameObject TLANI_fleet;
+        public GameObject TRABE_fleet;
+        public GameObject TRILL_fleet;
+        public GameObject TROGORANS_fleet;
+        public GameObject TZENKETHI_fleet;
+        public GameObject ULLIANS_fleet;
+        public GameObject VAADWAUR_fleet;
+        public GameObject VENTAXIANS_fleet;
+        public GameObject VHNORI_fleet;
+        public GameObject VIDIIANS_fleet;
+        public GameObject VISSIANS_fleet;
+        public GameObject VORGONS_fleet;
+        public GameObject VORI_fleet;
+        public GameObject VULCANS_fleet;
+        public GameObject WADI_fleet;
+        public GameObject XANTHANS_fleet;
+        public GameObject XEPOLITES_fleet;
+        public GameObject XINDI_fleet;
+        public GameObject XYRILLIANS_fleet;
+        public GameObject YADERANS_fleet;
+        public GameObject YRIDIANS_fleet;
+        public GameObject ZAHL_fleet;
+        public GameObject ZAKDORN_fleet;
+        public GameObject ZALKONIANS_fleet;
+        public GameObject ZIBALIANS_fleet;
+        // public GameObject GALACTIC_Center; // do not need a galactic center system button
         public List<GameObject> AllSystemsList;
-        public static Dictionary<string, GameObject> PrefabStarSystemDitionary;
+        public static Dictionary<string, GameObject> PrefabStarSystemDictionary;
+        public static Dictionary<string, GameObject> PrefabFleetDictionary;
         #endregion
         //public Sprite FedCiv
         #region Animation empties by ship type Now from ActOnCombatOrder.cs?
@@ -506,17 +1155,21 @@ namespace Assets.Core
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
 
         //List<Tuple<CombatUnit, CombatWeapon[]>> // will we need to us this here too?
-        public enum State { LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT, MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, GALACTIC_MAP_INIT, SYSTEM_PLAY, GALACTIC_COMPLETED,
-            COMBAT_MENU, COMBAT_INIT, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER };
+        public enum State
+        {
+            LOBBY_MENU, LOBBY_INIT, LOAD_MENU, SAVE_MENU, SETTINGS_MENU, CREDITS_MENU, MAIN_MENU, MAIN_INIT,
+            MULTIPLAYER_MENU, SYSTEM_PLAY_INIT, GALACTIC_MAP, GALACTIC_MAP_INIT, SYSTEM_PLAY, GALACTIC_COMPLETED,
+            COMBAT_MENU, COMBAT_SETUP, COMBAT_PLAY, COMBAT_COMPLETED, GAMEOVER
+        };
         private State _state;
 
-        private int _level;
+        //private int _level;
 
-        public int Level
-        {
-            get { return _level; }
-            set { _level = value; }
-        }
+        //public int Level
+        //{
+        //    get { return _level; }
+        //    set { _level = value; }
+        //}
 
         bool _isSwitchingState = false;
 
@@ -525,13 +1178,18 @@ namespace Assets.Core
         public bool _statePassedCombatMenu_Init = false;
         public bool _statePassedCombatInit = false; // COMBAT INIT
         public bool _statePassedCombatPlay = false;
+        public bool _playerOwnesSystem = false;
         //private GameObject canvas;
 
         private void Awake()
         {
+
             Instance = this; // static reference to single GameManager
-            Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.
+            Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.           
             CanvasGalactic = GameObject.Find("CanvasGalactic");
+            // more stuff
+
+            //buttonStopGalacticPlay = CanvasGalactic.transform.Find("ButtonStopGalacticPlay").;
             PanelLobby_Menu = Canvas.transform.Find("PanelLobby_Menu").gameObject;
             PanelLoadGame_Menu = Canvas.transform.Find("PanelLoadGame_Menu").gameObject;
             PanelSaveGame_Menu = Canvas.transform.Find("PanelSaveGame_Menu").gameObject;
@@ -539,13 +1197,18 @@ namespace Assets.Core
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
-            PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
+            PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
+            var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
+            PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
+
+            PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
             PanelCombat_Play = Canvas.transform.Find("PanelCombat_Play").gameObject;
             PanelCombat_Completed = Canvas.transform.Find("PanelCombat_Completed").gameObject;
             PanelGameOver = Canvas.transform.Find("PanelGameOver").gameObject;
+            //GalacticGrid = CanvasGalactic.transform.Find("GalacticGrid").gameObject;
+
             // GameObjects for the system buttons
             AllSystemsList = new List<GameObject> {  FED_StarSystem,
                                                      ROM_StarSystem,
@@ -723,21 +1386,32 @@ namespace Assets.Core
             LoadPrefabs();
 
             _galaxySize = GalaxySize.SMALL;
-            _localPlayer = Civilization.FED;
+            SetGalaxyMapSize(GalaxySize.SMALL);
+            _galaxyType = GalaxyType.CANON;
+            SetGalaxyMapCanon(GalaxyType.CANON);
+            SetTechLevel(TechLevel.DEVELOPED);
+
+
+            // Civ selection happens in CivSelection.cs and Tech level in TechSelection.cs
+            _localPlayer = CivEnum.FED;
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
                                      //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
                                      // Galaxy galaxy = new Galaxy();
                                      // Galaxy = galaxy;
 
+            // *** moving load Combat ships to BeginState newState CombatMenu CombatInit that turns true on entering combat in galaxy view.
 
+            //StarterGalaxyObjects(); // GNDN ToDo: move to Main_Init in pre for galaxy play
+
+            // LoadCombatData();
         }
 
         public void BackToLobbyClick()  // from Main Menu
         {
             _statePassedLobbyInit = false;
             SwitchtState(State.LOBBY_MENU);
-            _LoadGamePanel.ClosePanel();
+            //_LoadGamePanel.ClosePanel();
         }
 
         public void SinglePlayerLobbyClicked() // go to main menu through LOBBY_INIT
@@ -776,74 +1450,139 @@ namespace Assets.Core
             _ExitQuit.ExitTheGame();
 
         }
+
         public void ChangeSystemClicked(int systemID, SolarSystemView ssView) //(SolarSystemView ssView)
         {
+
+            var currentStarSystemEnum = (StarSystemEnum)systemID;
+            Civilization localPlayerCiv = _localPlayerCiv;
+            if (localPlayerCiv._ownedSystemEnums.Contains(currentStarSystemEnum))
+            { _playerOwnesSystem = true; }
+            else { _playerOwnesSystem = false; }
             PanelLobby_Menu.SetActive(false);
             _solarSystemID = systemID;
             solarSystemView = ssView;
+
             SwitchtState(State.SYSTEM_PLAY);
             for (int i = 0; i < AllSystemsList.Count; i++)
             {
                 if (systemID != i & AllSystemsList[i] != null)
-                AllSystemsList[i].SetActive(false);
+                    AllSystemsList[i].SetActive(false);
             }
-
             // ToDo: get Empire and techlevel from MainMenu
         }
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
-            // turned off Galaxys here: SwitchtState(State.MAIN_INIT);
-            // open Combat for now
-            SwitchtState(State.GALACTIC_MAP_INIT);
-
-
+            SwitchtState(State.MAIN_INIT);
+            //TurnOnGalacticSystems(true);
         }
-
         public void GalaxyMapClicked() // in system going back to galactic map
         {
 
-           // PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
-            SwitchtState(State.SYSTEM_PLAY_INIT); // end systeme, then load galaxy map
+            // PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            SwitchtState(State.SYSTEM_PLAY_INIT); // end system, then load galaxy map
+            //cameraMoveOnClick.cameraZoomed = false;
             //PanelGalactic_Map.SetActive(true);
         }
-        public void TurnOnGalacticSystems(bool offOn)
+        public void LargeGalacticMapSizeClicked(bool newValue)
         {
-            // a loop here through all systems setting them active = true
-            //for (int i = 0; i < _galaxyStarCount; i++)
-            //{
-            //    AllSystemsList[i].SetActive(true);
-            //    if (i != 0)
-            //     ActiveSystemList.Add(AllSystemsList[i]);
-            //}
-            //System_FEDERATION.SetActive(offOn);
-            //System_ROMULANS.SetActive(offOn);
-            // System_KLINGONS.SetActive(offOn);
+            if (newValue)
+                SetGalaxyMapSize(GalaxySize.LARGE);
         }
-        public void SetGalaxyMapSize() // 
+        public void MediumGalacticMapSizeClicked(bool newValue)
         {
-            switch (_galaxySize)
+            if (newValue)
+                SetGalaxyMapSize(GalaxySize.MEDIUM);
+        }
+        public void SmallGalacticMapSizeClicked(bool newValue)
+        {
+            if (newValue)
+                SetGalaxyMapSize(GalaxySize.SMALL);
+        }
+
+        public void SetGalaxyMapSize(GalaxySize size) // 
+        {
+            switch (size)
             {
                 case GalaxySize.SMALL:
-                    _galaxyStarCount = 6; // 30;
-                   // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
+                    _galaxyStarCount = new int[]
+                    {0,1,2,3,4,5,23,50,146,155}; //,6,7,12,54,59,61,90,95,105,103,113,116,125,129,131,135,138,146,147,150,155}; 
+                                                 // LoadGalacticMapButtons("SMALL"); // system buttons are loaded in GalaxyView.cs
                     break;
                 case GalaxySize.MEDIUM:
-                    _galaxyStarCount = 40;
+                    _galaxyStarCount = new int[]
+                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23,50, 54, 59, 61, 90, 95, 105, 103, 113,146,155}; //, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
                     //LoadGalacticMapButtons("MEDIUM");
                     break;
                 case GalaxySize.LARGE:
-                    _galaxyStarCount = 50;
+                    _galaxyStarCount = new int[]
+                    { 0, 1, 2, 3, 4, 5, 6, 7, 12, 23,50, 54, 59, 61, 90, 95, 105, 103, 113, 116, 125, 129, 131, 135, 138, 146, 147, 150, 155 };
                     //LoadGalacticMapButtons("LARGE");
                     break;
                 default:
                     break;
             }
         }
+        public void SetCivs()
+        {
+            _localPlayerCiv = civilizationData.CivFromEnum(_localPlayer);
+            _hostPlayerCiv = civilizationData.CivFromEnum(_hostPlayer);
+            _clientZeroCiv = civilizationData.CivFromEnum(_clientZero);
+            _clientOneCiv = civilizationData.CivFromEnum(_clientOne);
+            _clientTwoCiv = civilizationData.CivFromEnum(_clientTwo);
+            _clientThreeCiv = civilizationData.CivFromEnum(_clientThree);
+            _clientFourCiv = civilizationData.CivFromEnum(_clientFour);
+            _clientFiveCiv = civilizationData.CivFromEnum(_clientFive);
+        }
+        public void CanonClicked(bool newValue)
+        {
+            if (newValue)
+                SetGalaxyMapCanon(GalaxyType.CANON);
+        }
+        public void RandomClicked(bool newValue)
+        {
+            if (newValue)
+                SetGalaxyMapCanon(GalaxyType.RANDOM);
+        }
+        public void SetGalaxyMapCanon(GalaxyType type) // 
+        {
+            switch (type)
+            {
+                case GalaxyType.CANON:
+                    _galaxyType = GalaxyType.CANON;
+                    break;
+                case GalaxyType.RANDOM:
+                    _galaxyType = GalaxyType.RANDOM;// not working yet
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        public void SetTechLevel(TechLevel newTechLevel)
+        {
+            switch (newTechLevel)
+            {
+                case TechLevel.EARLY:
+                    _techLevel = TechLevel.EARLY;
+                    break;
+                case TechLevel.DEVELOPED:
+                    _techLevel = TechLevel.DEVELOPED;
+                    break;
+                case TechLevel.ADVANCED:
+                    _techLevel = TechLevel.ADVANCED;
+                    break;
+                case TechLevel.SUPREME:
+                    _techLevel = TechLevel.SUPREME;
+                    break;
+            }
+        }
         public void LoadGalacticMapButtons(string mapsize)
         {
+
             //switch (mapsize)
             //{
-            //    case "SMALL":                   
+            //    case "SMALL":
             //        break;
 
             //    case "MEDIUM":
@@ -864,7 +1603,7 @@ namespace Assets.Core
 
         public void CombatPlayClicked()
         {
-            SwitchtState(State.COMBAT_INIT);
+            SwitchtState(State.COMBAT_SETUP);
         }
         public void ResetFriendAndEnemyDictionaries()
         {
@@ -901,11 +1640,12 @@ namespace Assets.Core
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
-                    //if (CanvasWorld != null)
-                    //{
-                        //CanvasWorld.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
-                    //}
+                    //resetViewGalacticButton.SetActive(false);
+                    if (cameraGalactica != null)
+                    {
+                        cameraGalactica.enabled = true;
+                        cameraGalactica.fieldOfView = 179;
+                    }
 
                     PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;
@@ -954,119 +1694,168 @@ namespace Assets.Core
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
-                    switch (_galaxyType) // ToDo: get input from Main Menu
-                    {
-                        case GalaxyType.CANON:
-                            // canon type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize(); // set number of stars this._galaxyStarCount int
-                            break;
-                        case GalaxyType.RANDOM:
-                            // generate type galaxy.cs SolarSystemsMap dictionary
-                            SetGalaxyMapSize();
-                            //GenerateGalaxyMap();                           
-                            break;
-                    }
-                   
+                    //ToDo; SetGalaxyMapSize();                   
+                    //fleet.SendTheAllSystemsList(AllSystemsList);
+                    _timeManager.StartClock();
+                    starSysData.LoadSystemData(_galaxyStarCount);
+                    civData.LoadDictionaryOfCivs(this._galaxyStarCount);
+                    civData.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
+                    civData.UpdateCivContactListOnStartCivSelection(_techLevel);
+                    LoadGalaxyShips();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
-                        case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
+                        case CivEnum.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
                             // set 
                             break;
-                        case Civilization.TERRAN:
+                        //case Civilization.TERRAN:
+                        //    break;
+                        case CivEnum.ROM:
                             break;
-                        case Civilization.ROM:
+                        case CivEnum.KLING:
                             break;
-                        case Civilization.KLING:
+                        case CivEnum.CARD:
                             break;
-                        case Civilization.CARD:
+                        case CivEnum.DOM:
                             break;
-                        case Civilization.DOM:
-                            break;
-                        case Civilization.BORG:
+                        case CivEnum.BORG:
                             break;
                         default:
                             break;
                     }
+                    //RelationshipManager.Initialize(CivilizationData.civsInGame);
                     PanelMain_Menu.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelLoadGame_Menu.SetActive(false);
                     PanelSaveGame_Menu.SetActive(false);
-                    //CanvasWorld = GameObject.Find("CanvasWorld");
-                    //CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
-
+                    //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
-                    galaxyView.InstantiateSystemButtons(_galaxyStarCount);
+                    galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
+                    //galaxyView.InstantiateFleet(_galaxyStarCount);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-                    
+                    cameraManagerGalactica.ActivateCombatStopGalacticPlay(true);
+                    cameraManagerGalactica.ActivateButtonFleets(true);
+                    cameraManagerGalactica.ActivateRestViewButton(true);
+                    cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
+                    resetViewGalacticButton.SetActive(true);
+                    galaxyBackground.SetActive(true);
+                    cameraGalactica.enabled = true;
+                    cameraGalactica.fieldOfView = 45f;
+                    cameraTelescope.enabled = false;
+
                     PanelLobby_Menu.SetActive(false);
                     //PanelSystem_Play.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                   // CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
+                    // gridManager.SeeGrid(); // turned off downstram
+                    //
+                    //PanelGalaxyUI.SetActive(true);
+                    //ResetGalaxyView.enabled = true;
+                    //ResetGalaxyView.SetUpResetViewGalaxyButton();
 
-                    PanelSystem_Play.SetActive(false);
+                    //resetGalaxyView.enabled = true;
+                    PanelSystem_View.SetActive(false);
+                    this.SetCivs();
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
+                    //relationshipManager = new RelationshipManager(CivilizationData.civsInGame);
+                    //RelationshipManager.SetUpDiplomaticRelations(CivilizationData.civsInGame);
+                    //foreach (Civilization civ in CivilizationData.civsInGame)
+                    //{
+                    //    civilizationData.PopulateCivRelationshipInfo(CivilizationData.civsInGame);
+                    //}
                     break;
 
                 case State.GALACTIC_MAP_INIT:
+                    cameraManagerGalactica.ActivateCombatStopGalacticPlay(false);
+                    cameraManagerGalactica.ActivateButtonFleets(false);
+                    cameraManagerGalactica.ActivateRestViewButton(false);
+                    resetViewGalacticButton.SetActive(false);
+                    galaxyBackground.SetActive(false);
+                    cameraGalactica.enabled = false;
+                    cameraTelescope.enabled = false;
+                    //cameraGalacticUI.enabled= false;
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
+                    //GalacticGrid.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
+                    //gridManager.HideGrid();
                     break;
 
                 case State.SYSTEM_PLAY:
+                    PanelFleetManager.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
+                    cameraGalactica.enabled = false;
+                    cameraTelescope.enabled = false;
+                    //cameraGalacticUI.enabled = false;
+                    //gridManager.HideGrid();                   
                     PanelMultiplayerLobby_Menu.SetActive(false);
-
-                    // PanelGalactic_Map.SetActive(false);
-                    //CanvasWorld.SetActive(false);
-                    PanelSystem_Play.SetActive(true);
+                    PanelSystem_View.SetActive(true);
+                    if (_playerOwnesSystem)
+                    {
+                        PanelSysCommand_Menu.SetActive(true);
+                        cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
+                    }
+                    else
+                    {
+                        PanelSysCommand_Menu.SetActive(false);
+                        cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(true);
+                    }
                     _statePassedMain_Init = true;
-                    //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;
                 case State.SYSTEM_PLAY_INIT:
+                    PanelSysCommand_Menu.SetActive(false);
+                    // PanelGalaxyUI.SetActive(true);
                     solarSystemView.TurnOffSolarSystemview(galaxy, _solarSystemID);//solarSystemView);
-                   // TurnOnGalacticSystems(true);
-                    PanelSystem_Play.SetActive(false);
+                    //cameraManagerGalactica.ActivateReturnToGalaxyViewFromSystem(false);
+                    //cameraManagerGalactica.gameObject.SetActive(true);
+                    //cameraManagerGalactica.enabled = true;
+                    //cameraManagerGalactica.TurnOnGalaxyFly();
+                    cameraManagerGalactica.ResetGalacticCamLocation();
+                    // TurnOnGalacticSystems(true);
+                    PanelSystem_View.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    
-                    PanelGalactic_Map.SetActive(true);
+                    //gridManager.SeeGrid();
+                    resetViewGalacticButton.SetActive(true);
+                    galaxyBackground.SetActive(true);
+                    SwitchtState(State.GALACTIC_MAP);
                     //SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
                     break;
                 case State.GALACTIC_COMPLETED:
-                    PanelSystem_Play.SetActive(false);
+                    PanelSystem_View.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
-                    PanelSystem_Play.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
-                    //CanvasWorld.SetActive(false);
-                    //PanelCombat_Menu.SetActive(true);
-                    //panelCombat_Completed.SetActive(true);
+                    //PanelGalaxyUI.SetActive(false);
+                    //buttonStopGalacticPlay.enabled= false;
+                    _statePassedMain_Init = true;
+                    cameraGalactica.enabled = false;
+                    cameraTelescope.enabled = false;
+                    resetViewGalacticButton.SetActive(false);
+                    galaxyBackground.SetActive(false);
                     SwitchtState(State.COMBAT_MENU);
+                    //gridManager.HideGrid();
                     break;
                 case State.COMBAT_MENU:
+                    PanelSystem_View.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     PanelCombat_Menu.SetActive(true);
-                    PanelSystem_Play.SetActive(false);                    
-                    PanelSystem_Play.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+
+                    //galaxyView.TurnOffGalaxyView(galaxy);
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
                     //_combatWarpIn = true; // turn false again in E_animator3 call to GameManager WarpInOver()
+                    //PanelGalaxyUI.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     _statePassedCombatMenu_Init = true;
                     FriendShips = combat.UpdateFriendCombatants().ToList();
@@ -1083,6 +1872,7 @@ namespace Assets.Core
                     SwitchtState(State.COMBAT_PLAY);
                     break;
                 case State.COMBAT_PLAY:
+                    //PanelGalaxyUI.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     _statePassedCombatPlay = true;
                     break;
@@ -1141,15 +1931,22 @@ namespace Assets.Core
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
+                    //PanelGalactic_Map.SetActive(true);
+                    // PanelGalacticTelescope.SetActive(true);
+                    //PanelGalaxyUI.SetActive(true);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
+                    // PanelGalacticTelescope.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY_INIT:
@@ -1167,12 +1964,14 @@ namespace Assets.Core
                     //    End Combat
                     //}
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
+
                     //if (F_Animator3.)
                     //instantiateCombatShips.PreCombatSetup(EnemyNameArray, false);
                     //_statePassedCombatInitRight = true;
                     break;
                 case State.COMBAT_PLAY:
+                    PanelLobby_Menu.SetActive(false);
                     // _statePassedInit = true;
                     break;
                 case State.COMBAT_COMPLETED:
@@ -1218,28 +2017,39 @@ namespace Assets.Core
                     break;
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    // gridManager.SeeGrid();
+                    //PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
+                    //PanelGalacticTelescope.SetActive(false);
+                    //PanelGalaxyUI.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY:
-                    PanelSystem_Play.SetActive(false);
+                    PanelSystem_View.SetActive(false);
+                    // gridManager.HideGrid();
+                    //CommandMenu.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY_INIT:
                     PanelLobby_Menu.SetActive(false);
+                    //nelGalactic_Map.SetActive(true);
                     break;
                 case State.GALACTIC_COMPLETED:
-                    PanelSystem_Play.SetActive(false);
+                    PanelSystem_View.SetActive(false);
+                    //CommandMenu.SetActive(false);   
                     PanelGalactic_Completed.SetActive(false);
+                    //gridManager.HideGrid();
                     break;
                 case State.COMBAT_MENU:
                     //panelGalactic_Play.SetActive(false);
                     PanelCombat_Menu.SetActive(false);
                     break;
-                case State.COMBAT_INIT:
+                case State.COMBAT_SETUP:
                     PanelCombat_Menu.SetActive(false);
+                    PanelLobby_Menu.SetActive(false);
                     // panelGalactic_Completed.SetActive(false);
                     break;
                 case State.COMBAT_PLAY:
@@ -1260,9 +2070,9 @@ namespace Assets.Core
         }
 
         public void SetCameraTargets()
-         {
-            List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0}; // dummies
-           
+        {
+            List<GameObject> _cameraTargets = new List<GameObject>() { Friend_0, Enemy_0 }; // dummies
+
             List<GameObject> multiTargets = instantiateCombatShips.GetCameraTargets(); // get list - array for CameraMultiTarget
             List<GameObject> survivingTargets = new List<GameObject>();
             if (multiTargets.Count() > 0)
@@ -1274,10 +2084,10 @@ namespace Assets.Core
                         survivingTargets.Add(multiTargets[i]);
                     }
                 }
-                
+
                 _cameraTargets.AddRange(survivingTargets);
             }
-          
+
             cameraMultiTarget.SetTargets(_cameraTargets.ToArray()); // start multiCamera - main camers before warp in of ships
         }
         public void ProvideFriendCombatShips(int numIndex, GameObject daObject)
@@ -1296,20 +2106,18 @@ namespace Assets.Core
         {
             List<GameObject> allDaShipObjectInCombat = new List<GameObject>();
             allDaShipObjectInCombat = FriendShips;
-            //var _keys = EnemyShips.Keys.ToArray();
-            //var _shipObjects = EnemyShips.Values.ToArray();
-            //FriendShips.
+
             for (int i = 0; i < EnemyShips.Count; i++)
             {
                 allDaShipObjectInCombat.Add(EnemyShips[i]);
             }
-            
+
             foreach (var shipGameObject in allDaShipObjectInCombat)
             {
                 var arrayOfName = shipGameObject.name.ToUpper().Split('_');
                 shipGameObject.layer = SetShipLayer(arrayOfName[0]);
-                
-            } 
+
+            }
         }
 
         public int SetShipLayer(string civ)
@@ -1356,7 +2164,10 @@ namespace Assets.Core
 
             }
         }
-
+        //public CivilizationData SendCivDataToFleet(Fleet fleet)
+        //{
+        //    return civData;
+        //}
         //private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
         //{
         //    string[] _nameParts = shipName.ToUpper().Split('_');
@@ -1407,11 +2218,11 @@ namespace Assets.Core
         public void LoadFriendAndEnemyNames()
         {
             string[] _friendNameArray = new string[] { "FED_CRUISER_II", "FED_CRUISER_III", "FED_DESTROYER_II", "FED_DESTROYER_II",
-                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_COLONYSHIP_I" };
+                "FED_DESTROYER_I", "FED_SCOUT_II", "FED_SCOUT_IV" , "FED_TRANSPORT_I" };
             FriendNameArray = _friendNameArray;
-            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_COLONYSHIP_I","CARD_SCOUT_I",
+            string[] _enemyNameArray = new string[] {"KLING_DESTROYER_I", "KLING_DESTROYER_I", "KLING_CRUISER_II", "KLING_SCOUT_II", "KLING_TRANSPORT_I","CARD_SCOUT_I",
                 "ROM_CRUISER_III", "ROM_CRUISER_II", "ROM_SCOUT_III"}; //"KLING_DESTROYER_I",
-            
+
             EnemyNameArray = _enemyNameArray;
         }
 
@@ -1449,28 +2260,38 @@ namespace Assets.Core
         }
         public void LoadPrefabs()
         {
-            Dictionary<string, GameObject> tempPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            Dictionary<string, GameObject> tempShipPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
                 { "FED_DESTROYER_I", Fed_Destroyer_i }, { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_II", Fed_Cruiser_ii }, { "FED_DESTROYER_II", Fed_Destroyer_ii }, // { "FED_SCOUT_II", Fed_Scout_ii },
                 { "FED_CRUISER_III", Fed_Cruiser_iii }, {"FED_SCOUT_IV", Fed_Scout_iv},//{ "FED_DESTROYER_III", Fed_Destroyer_iii }, { "FED_SCOUT_III", Fed_Scout_iii },
-                { "FED_COLONYSHIP_I", Fed_Colonyship_i }, 
+                { "FED_TRANSPORT_I", Fed_Transport_i },
                 { "KLING_DESTROYER_I", Kling_Destroyer_i},
-                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii }, {"KLING_COLONYSHIP_I", Kling_Colonyship_i},
+                { "KLING_CRUISER_II", Kling_Cruiser_ii }, { "KLING_SCOUT_II", Kling_Scout_ii }, {"KLING_TRANSPORT_I", Kling_Transport_i},
                 { "CARD_SCOUT_I", Card_Scout_i },
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            if (PrefabShipDitionary == null) // do not load twice
-                PrefabShipDitionary = tempPrefabDitionary;
+            if (PrefabShipDictionary == null) // do not load twice
+                PrefabShipDictionary = tempShipPrefabDitionary;
+
+            Dictionary<string, GameObject> tempShipYardPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                { "FED", Fed_ShipYard }, { "ROM", Rom_ShipYard },
+                { "KLING", Kling_ShipYard }, { "CARD", Card_ShipYard },
+                { "DOM", Dom_ShipYard },{ "BORG", Borg_ShipYard },
+
+            };
+            if (PrefabShipYardDictionary == null) // do not load twice
+                PrefabShipYardDictionary = tempShipYardPrefabDitionary;
 
             Dictionary<string, GameObject> systemPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {
-                { "FED", FED_StarSystem },
-                { "ROM", ROM_StarSystem },
-                { "KLING", KLING_StarSystem },
-                { "CARD", CARD_StarSystem },
-                { "DOM", DOM_StarSystem },
+                { "FEDERATION", FED_StarSystem },
+                { "ROMULAN", ROM_StarSystem },
+                { "KLINGON", KLING_StarSystem },
+                { "CARDASSIAN", CARD_StarSystem },
+                { "DOMINION", DOM_StarSystem },
                 { "BORG", BORG_StarSystem },
                 { "ACAMARIANS", ACAMARIANS_StarSystem },
                 { "AKAALI", AKAALI_StarSystem },
@@ -1624,12 +2445,180 @@ namespace Assets.Core
                 { "ZAKDORN", ZAKDORN_StarSystem },
                 { "ZALKONIANS", ZALKONIANS_StarSystem },
                 { "ZIBALIANS", ZIBALIANS_StarSystem },
-                //{ "GALACTIC_CENTER", GALACTIC_Center }
+
             };
-            
-            if (PrefabStarSystemDitionary == null)
+
+            if (PrefabStarSystemDictionary == null)
             {
-                PrefabStarSystemDitionary = systemPrefabDitionary;
+                PrefabStarSystemDictionary = systemPrefabDitionary;
+            }
+
+            Dictionary<string, GameObject> fleetPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
+            {
+                { "FEDERATION", FED_fleet },
+                { "ROMULAN", ROM_fleet },
+                { "KLINGON", KLING_fleet },
+                { "CARDASSIAN", CARD_fleet },
+                { "DOMINION", DOM_fleet },
+                { "BORG", BORG_fleet },
+                { "ACAMARIANS", ACAMARIANS_fleet },
+                { "AKAALI", AKAALI_fleet },
+                { "AKRITIRIANS", AKRITIRIANS_fleet },
+                { "ALDEANS", ALDEANS_fleet },
+                { "ALGOLIANS", ALGOLIANS_fleet },
+                { "ALSAURIANS", ALSAURIANS_fleet },
+                { "ANDORIANS", ANDORIANS_fleet },
+                { "ANGOSIANS", ANGOSIANS_fleet },
+                { "ANKARI", ANKARI_fleet },
+                { "ANTEDEANS", ANTEDEANS_fleet },
+                { "ANTICANS", ANTICANS_fleet },
+                { "ARBAZAN", ARBAZAN_fleet },
+                { "ARDANANS", ARDANANS_fleet },
+                { "ARGRATHI", ARGRATHI_fleet },
+                { "ARKARIANS", ARKARIANS_fleet },
+                { "ATREANS", ATREANS_fleet },
+                { "AXANAR", AXANAR_fleet },
+                { "BAJORANS", BAJORANS_fleet },
+                { "BAKU", BAKU_fleet },
+                { "BANDI", BANDI_fleet },
+                { "BANEANS", BANEANS_fleet },
+                { "BARZANS", BARZANS_fleet },
+                { "BENZITES", BENZITES_fleet },
+                { "BETAZOIDS", BETAZOIDS_fleet },
+                { "BILANAIANS", BILANAIANS_fleet },
+                { "BOLIANS", BOLIANS_fleet },
+                { "BOMAR", BOMAR_fleet },
+                { "BOSLICS", BOSLICS_fleet },
+                { "BOTHA", BOTHA_fleet },
+                { "BREELLIANS", BREELLIANS_fleet },
+                { "BREEN", BREEN_fleet },
+                { "BREKKIANS", BREKKIANS_fleet },
+                { "BYNARS", BYNARS_fleet },
+                { "CAIRN", CAIRN_fleet },
+                { "CALDONIANS", CALDONIANS_fleet },
+                { "CAPELLANS", CAPELLANS_fleet },
+                { "CHALNOTH", CHALNOTH_fleet },
+                { "CORIDAN", CORIDAN_fleet },
+                { "CORVALLENS", CORVALLENS_fleet },
+                { "CYTHERIANS", CYTHERIANS_fleet },
+                { "DELTANS", DELTANS_fleet },
+                { "DENOBULANS", DENOBULANS_fleet },
+                { "DEVORE", DEVORE_fleet },
+                { "DOPTERIANS", DOPTERIANS_fleet },
+                { "DOSI", DOSI_fleet },
+                { "DRAI", DRAI_fleet },
+                { "DREMANS", DREMANS_fleet },
+                { "EDO", EDO_fleet },
+                { "ELAURIANS", ELAURIANS_fleet },
+                { "ELAYSIANS", ELAYSIANS_fleet },
+                { "ENTHARANS", ENTHARANS_fleet },
+                { "EVORA", EVORA_fleet },
+                { "EXCALBIANS", EXCALBIANS_fleet },
+                { "FERENGI", FERENGI_fleet },
+                { "FLAXIANS", FLAXIANS_fleet },
+                { "GORN", GORN_fleet },
+                { "GRAZERITES", GRAZERITES_fleet },
+                { "HAAKONIANS", HAAKONIANS_fleet },
+                { "HALKANS", HALKANS_fleet },
+                { "HAZARI", HAZARI_fleet },
+                { "HEKARANS", HEKARANS_fleet },
+                { "HIROGEN", HIROGEN_fleet },
+                { "HORTA", HORTA_fleet },
+                { "IYAARANS", IYAARANS_fleet },
+                { "JNAII", JNAII_fleet },
+                { "KAELON", KAELON_fleet },
+                { "KAREMMA", KAREMMA_fleet },
+                { "KAZON", KAZON_fleet },
+                { "KELLERUN", KELLERUN_fleet },
+                { "KESPRYTT", KESPRYTT_fleet },
+                { "KLAESTRONIANS", KLAESTRONIANS_fleet },
+                { "KRADIN", KRADIN_fleet },
+                { "KREETASSANS", KREETASSANS_fleet },
+                { "KRIOSIANS", KRIOSIANS_fleet },
+                { "KTARIANS", KTARIANS_fleet },
+                { "LEDOSIANS", LEDOSIANS_fleet },
+                { "LISSEPIANS", LISSEPIANS_fleet },
+                { "LOKIRRIM", LOKIRRIM_fleet },
+                { "LURIANS", LURIANS_fleet },
+                { "MALCORIANS", MALCORIANS_fleet },
+                { "MALON", MALON_fleet },
+                { "MAQUIS", MAQUIS_fleet },
+                { "MARKALIANS", MARKALIANS_fleet },
+                { "MERIDIANS", MERIDIANS_fleet },
+                { "MINTAKANS", MINTAKANS_fleet },
+                { "MIRADORN", MIRADORN_fleet },
+                { "MIZARIANS", MIZARIANS_fleet },
+                { "MOKRA", MOKRA_fleet },
+                { "MONEANS", MONEANS_fleet },
+                { "NAUSICAANS", NAUSICAANS_fleet },
+                { "NECHANI", NECHANI_fleet },
+                { "NEZU", NEZU_fleet },
+                { "NORCADIANS", NORCADIANS_fleet },
+                { "NUMIRI", NUMIRI_fleet },
+                { "NUUBARI", NUUBARI_fleet },
+                { "NYRIANS", NYRIANS_fleet },
+                { "OCAMPA", OCAMPA_fleet },
+                { "ORIONS", ORIONS_fleet },
+                { "ORNARANS", ORNARANS_fleet },
+                { "PAKLED", PAKLED_fleet },
+                { "PARADANS", PARADANS_fleet },
+                { "QUARREN", QUARREN_fleet },
+                { "RAKHARI", RAKHARI_fleet },
+                { "RAKOSANS", RAKOSANS_fleet },
+                { "RAMATIANS", RAMATIANS_fleet },
+                { "REMANS", REMANS_fleet },
+                { "RIGELIANS", RIGELIANS_fleet },
+                { "RISIANS", RISIANS_fleet },
+                { "RUTIANS", RUTIANS_fleet },
+                { "SELAY", SELAY_fleet },
+                { "SHELIAK", SHELIAK_fleet },
+                { "SIKARIANS", SIKARIANS_fleet },
+                { "SKRREEA", SKRREEA_fleet },
+                { "SONA", SONA_fleet },
+                { "SULIBAN", SULIBAN_fleet },
+                { "TAKARANS", TAKARANS_fleet },
+                { "TAKARIANS", TAKARIANS_fleet },
+                { "TAKTAK", TAKTAK_fleet },
+                { "TALARIANS", TALARIANS_fleet },
+                { "TALAXIANS", TALAXIANS_fleet },
+                { "TALOSIANS", TALOSIANS_fleet },
+                { "TAMARIANS", TAMARIANS_fleet },
+                { "TANUGANS", TANUGANS_fleet },
+                { "TELLARITES", TELLARITES_fleet },
+                { "TEPLANS", TEPLANS_fleet },
+                { "THOLIANS", THOLIANS_fleet },
+                { "TILONIANS", TILONIANS_fleet },
+                { "TLANI", TLANI_fleet },
+                { "TRABE", TRABE_fleet },
+                { "TRILL", TRILL_fleet },
+                { "TROGORANS", TROGORANS_fleet },
+                { "TZENKETHI", TZENKETHI_fleet },
+                { "ULLIANS", ULLIANS_fleet },
+                { "VAADWAUR", VAADWAUR_fleet },
+                { "VENTAXIANS", VENTAXIANS_fleet },
+                { "VHNORI", VHNORI_fleet },
+                { "VIDIIANS", VIDIIANS_fleet },
+                { "VISSIANS", VISSIANS_fleet },
+                { "VORGONS", VORGONS_fleet },
+                { "VORI", VORI_fleet },
+                { "VULCANS", VULCANS_fleet },
+                { "WADI", WADI_fleet },
+                { "XANTHANS", XANTHANS_fleet },
+                { "XEPOLITES", XEPOLITES_fleet },
+                { "XINDI", XINDI_fleet },
+                { "XYRILLIANS", XYRILLIANS_fleet },
+                { "YADERANS", YADERANS_fleet },
+                { "YRIDIANS", YRIDIANS_fleet },
+                { "ZAHL", ZAHL_fleet },
+                { "ZAKDORN", ZAKDORN_fleet },
+                { "ZALKONIANS", ZALKONIANS_fleet },
+                { "ZIBALIANS", ZIBALIANS_fleet },
+
+            };
+
+            if (PrefabFleetDictionary == null)
+            {
+                PrefabFleetDictionary = fleetPrefabDitionary;
             }
         }
 
@@ -1644,10 +2633,6 @@ namespace Assets.Core
             var _dataPoints = new List<string>();
             using (var reader = new StreamReader(file))
             {
-                //Note1("string", int, int, int, int, int"---------------  reading __to_PLZ_DB.txt (from file)");
-                //string infotext = "---------------  reading __to_PLZ_DB.txt (from file)";
-                //Console.WriteLine(infotext);
-
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
@@ -1673,10 +2658,64 @@ namespace Assets.Core
 
                 reader.Close();
                 ShipDataDictionary = _shipDataDictionary;
-                //StaticStuff staticStuffToLoad = new StaticStuff();
-                //staticStuffToLoad.LoadStaticShipData(_shipDataDictionary);
             }
             #endregion
+        }
+        public void LoadGalaxyShips()
+        {
+            if (GalaxyShipNameDictionary.Count == 0)
+            {
+                string filename;
+                switch (_techLevel)
+                {
+                    case TechLevel.EARLY:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsEarly.txt";
+                        break;
+                    case TechLevel.DEVELOPED:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsDeveloped.txt";
+                        break;
+                    case TechLevel.ADVANCED:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShips.Advanced.txt";
+                        break;
+                    case TechLevel.SUPREME:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsSupreme.txt";
+                        break;
+                    default:
+                        filename = Environment.CurrentDirectory + "\\Assets\\" + "GalaxyShipsEarly.txt";
+                        break;
+                }
+                #region Read ShipData.txt 
+
+                Dictionary<string, int> _galaxyShipNameDictionary = new Dictionary<string, int>();
+                var file = new FileStream(filename, FileMode.Open, FileAccess.Read);
+
+                var _dataPoints = new List<string>();
+                using (var reader = new StreamReader(file))
+                {
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        if (line == null)
+                            continue;
+                        _dataPoints.Add(line.Trim());
+                        //int[] _shipInts = new int[4];
+                        if (line.Length > 0)
+                        {
+                            var coll = line.Split(separator);
+                            for (int i = 0; i < coll.Length; i += 2)
+                            {
+                                _ = int.TryParse(coll[0 + (i)], out int currentValueOne);
+                                _galaxyShipNameDictionary.Add(coll[1 + (i)], currentValueOne);
+                            }
+                        }
+                    }
+
+                    reader.Close();
+                    GalaxyShipNameDictionary = _galaxyShipNameDictionary;
+                }
+                #endregion
+            }
         }
         //public void LoadSystemData(string filename)
         //{
@@ -1939,7 +2978,7 @@ namespace Assets.Core
 
             //    newEmptyCameraTarget.transform.SetParent(resetFriendArray[0].transform, true);
             //    cameraTargets.Add(newEmptyCameraTarget);
-            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabFriend.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.zLine * shipScale);
             //    _tempPrefabFriend.transform.SetParent(resetFriendArray[0].transform, true);
             //    _friendsLocal.Add(i, _tempPrefabFriend);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabFriend, FriendOrFoe.friend);
@@ -1985,7 +3024,7 @@ namespace Assets.Core
 
             //    anEmptyCameraTarget.transform.SetParent(resetEnemyArray[0].transform, true);
             //    cameraTargets.Add(anEmptyCameraTarget);
-            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.y * shipScale, transform.localScale.z * shipScale);
+            //    _tempPrefabEnemy.transform.localScale = new Vector3(transform.localScale.x * shipScale, transform.localScale.inputY * shipScale, transform.localScale.zLine * shipScale);
             //    _tempPrefabEnemy.transform.SetParent(resetEnemyArray[0].transform, true);
             //    _enemysLocal.Add(i, _tempPrefabEnemy);
             //    GameObject animationEmtpy = GetAnimatorEmpty(_tempPrefabEnemy, FriendOrFoe.enemy);
@@ -2053,6 +3092,6 @@ namespace Assets.Core
         //            return new Vector3(0, 0, 07);
         //    }
         //}
-    
+
     }
 }

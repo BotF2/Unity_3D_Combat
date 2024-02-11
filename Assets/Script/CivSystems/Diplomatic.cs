@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GalaxyMap;
+
 namespace Assets.Core
 {
     public class Diplomatic: MonoBehaviour

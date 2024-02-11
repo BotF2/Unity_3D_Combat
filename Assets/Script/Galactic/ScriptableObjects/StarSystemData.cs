@@ -6,7 +6,7 @@ using Assets.Core;
 namespace GalaxyMap
 {
     [CreateAssetMenu(menuName = "Galaxy/SystemData")]
-    public class StarSystemData : ScriptableObject
+    public class StarSystemData : ScriptableObject // ToDo move StarSystemData in MonoBehavior to this
     {
         public new string name;
         public string description;
