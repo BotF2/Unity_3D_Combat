@@ -892,7 +892,7 @@ namespace BOTF3D_GalaxyMap
                 }
                 
             }
-          //  dragTargetPointer.InstantiateTargetPointer();
+            //dragTargetPointer.InstantiateTargetPointer();
             gameManager.galaxy = galaxy;
             SolarSystemView view = new SolarSystemView();
         }
