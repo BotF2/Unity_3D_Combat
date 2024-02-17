@@ -638,7 +638,7 @@ namespace Assets.Core
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
         public FleetData fleet;
-        //[SerializeField] private CivilizationData civData;
+        [SerializeField] private CivilizationData civData;
         [SerializeField] private StarSystemData starSysData;
         public SolarSystemView solarSystemView;
         public Ship ship;
@@ -682,7 +682,7 @@ namespace Assets.Core
         public SaveGamePanel _SaveGamePanel;
         public SettingsGamePanel _SettingsGamePanel;
         public ExitQuit _ExitQuit;
-        public CreditsGamePanel _CreditsGamePanel;
+        public CreditsGamePanel _creditsGamePanel;
         public CombatOrderSelection combatOrderSelection;
         public TimeManager _timeManager;
 
@@ -757,7 +757,7 @@ namespace Assets.Core
         public GameObject Rom_Scout_ii;
         public GameObject Rom_Scout_iii;
 
-        public static Dictionary<string, GameObject> PrefabShipDictionary;
+        public static Dictionary<string, GameObject> PrefabShipDitionary;
         #endregion
 
         #region prefab shipyard GO
@@ -1183,7 +1183,7 @@ namespace Assets.Core
 
         private void Awake()
         {
-
+            LoadPrefabs();
             Instance = this; // static reference to single GameManager
             Canvas = GameObject.Find("Canvas"); // What changed? Now we have to code that unity use to assign in the Inspector.           
             CanvasGalactic = GameObject.Find("CanvasGalactic");
@@ -1383,7 +1383,7 @@ namespace Assets.Core
             LoadShipData(Environment.CurrentDirectory + "\\Assets\\" + "ShipData.txt"); // populate prefabs
             //LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");                                                                            // ToDo: LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
             LoadStartGameObjectNames(Environment.CurrentDirectory + "\\Assets\\" + "Temp_GameObjectData.txt"); //"EarlyGameObjectData.txt");
-            LoadPrefabs();
+           // LoadPrefabs();
 
             _galaxySize = GalaxySize.SMALL;
             SetGalaxyMapSize(GalaxySize.SMALL);
@@ -1443,7 +1443,7 @@ namespace Assets.Core
         public void CreditsClicked()
         {
             SwitchtState(State.CREDITS_MENU);
-            _CreditsGamePanel.OpenPanel();
+            _creditsGamePanel.OpenPanel();
         }
         public void ExitClicked()
         {
@@ -1525,14 +1525,14 @@ namespace Assets.Core
         }
         public void SetCivs()
         {
-            _localPlayerCiv = civilizationData.CivFromEnum(_localPlayer);
-            _hostPlayerCiv = civilizationData.CivFromEnum(_hostPlayer);
-            _clientZeroCiv = civilizationData.CivFromEnum(_clientZero);
-            _clientOneCiv = civilizationData.CivFromEnum(_clientOne);
-            _clientTwoCiv = civilizationData.CivFromEnum(_clientTwo);
-            _clientThreeCiv = civilizationData.CivFromEnum(_clientThree);
-            _clientFourCiv = civilizationData.CivFromEnum(_clientFour);
-            _clientFiveCiv = civilizationData.CivFromEnum(_clientFive);
+            //_localPlayerCiv = civilizationData.CivFromEnum(_localPlayer);
+            //_hostPlayerCiv = civilizationData.CivFromEnum(_hostPlayer);
+            //_clientZeroCiv = civilizationData.CivFromEnum(_clientZero);
+            //_clientOneCiv = civilizationData.CivFromEnum(_clientOne);
+            //_clientTwoCiv = civilizationData.CivFromEnum(_clientTwo);
+            //_clientThreeCiv = civilizationData.CivFromEnum(_clientThree);
+            //_clientFourCiv = civilizationData.CivFromEnum(_clientFour);
+            //_clientFiveCiv = civilizationData.CivFromEnum(_clientFive);
         }
         public void CanonClicked(bool newValue)
         {
@@ -1729,7 +1729,7 @@ namespace Assets.Core
                     PanelSaveGame_Menu.SetActive(false);
                     //PanelGalaxyUI.SetActive(false);
                     _statePassedMain_Init = true;
-                    galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
+                    //galaxyView.InstantiateSystemButtons(_galaxyStarCount, (GalaxyType)_galaxyType);
                     //galaxyView.InstantiateFleet(_galaxyStarCount);
                     SwitchtState(State.GALACTIC_MAP);
                     break;
@@ -1749,22 +1749,9 @@ namespace Assets.Core
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
-                    // gridManager.SeeGrid(); // turned off downstram
-                    //
-                    //PanelGalaxyUI.SetActive(true);
-                    //ResetGalaxyView.enabled = true;
-                    //ResetGalaxyView.SetUpResetViewGalaxyButton();
-
-                    //resetGalaxyView.enabled = true;
                     PanelSystem_View.SetActive(false);
-                    this.SetCivs();
-                    //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
-                    //relationshipManager = new RelationshipManager(CivilizationData.civsInGame);
-                    //RelationshipManager.SetUpDiplomaticRelations(CivilizationData.civsInGame);
-                    //foreach (Civilization civ in CivilizationData.civsInGame)
-                    //{
-                    //    civilizationData.PopulateCivRelationshipInfo(CivilizationData.civsInGame);
-                    //}
+                    //this.SetCivs();
+         
                     break;
 
                 case State.GALACTIC_MAP_INIT:
@@ -2272,8 +2259,8 @@ namespace Assets.Core
                 { "ROM_SCOUT_III", Rom_Scout_iii },
                 { "ROM_CRUISER_II", Rom_Cruiser_ii }, { "ROM_CRUISER_III", Rom_Cruiser_iii }
             };
-            if (PrefabShipDictionary == null) // do not load twice
-                PrefabShipDictionary = tempShipPrefabDitionary;
+            if (PrefabShipDitionary == null) // do not load twice
+                PrefabShipDitionary = tempShipPrefabDitionary;
 
             Dictionary<string, GameObject> tempShipYardPrefabDitionary = new Dictionary<string, GameObject>() // !! only try to load prefabs that exist
             {

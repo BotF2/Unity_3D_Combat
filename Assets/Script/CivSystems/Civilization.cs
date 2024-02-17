@@ -18,6 +18,13 @@ namespace Assets.Core
         public string _shortName;
         public string _longName;
         public StarSystemEnum _homeSystemEnum;
+        public static Civilization FED;
+        public static Civilization ROM;
+        public static Civilization KLING;
+        public static Civilization CARD;
+        public static Civilization DOM;
+        public static Civilization BORG;
+        public static Civilization TERRAN;
         //public Race race -- try to leave this off, too complicated
         //public StarSystem _homeSystem;
         public bool _weAreMajorCiv;
@@ -70,7 +77,17 @@ namespace Assets.Core
 
         #endregion Fields
 
-        //public void Start()
+        public void Awake() 
+        {
+            FED = new Civilization(0);
+            ROM = new Civilization(1);
+            KLING = new Civilization(2);
+            CARD = new Civilization(3);
+            DOM = new Civilization(4);
+            BORG = new Civilization(5);
+            TERRAN = new Civilization(300);
+        }
+
         //{
         //    deltaRelation = new Dictionary<int, int>() { {0,0} }; // initialize deltaRelation Dictionary;         
         //}

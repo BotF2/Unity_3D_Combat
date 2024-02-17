@@ -36,12 +36,12 @@ namespace Assets.Core
                 timer -= Time.deltaTime;
                 if (moveCounter < 1)
                 {
-                    for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
-                    {
-                        MoveGalacticObjects myMoveGalactic = GalaxyView._movingGalaxyObjects[i].GetComponent<MoveGalacticObjects>();
-                        myMoveGalactic.ThrustVector(); // move galaxy objects
-                       // myMoveGalactic.MovePlanePoint(); // move objects plane endpoints
-                    }
+                    //for (int i = 0; i < GalaxyView._movingGalaxyObjects.Count; i++)
+                    //{
+                    //    MoveGalacticObjects myMoveGalactic = GalaxyView._movingGalaxyObjects[i].GetComponent<MoveGalacticObjects>();
+                    //    myMoveGalactic.ThrustVector(); // move galaxy objects
+                    //   // myMoveGalactic.MovePlanePoint(); // move objects plane endpoints
+                    //}
                     moveCounter = 5;
                 }
                 else moveCounter--;

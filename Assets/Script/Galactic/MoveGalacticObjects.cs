@@ -49,21 +49,21 @@ namespace GalaxyMap
         }
         public void BoldlyGoing(FleetData fleet, GameObject myTarget, GameObject newPlaneEndPoint, float myWarpSpeed) //, GalaxyDropLine fleetLine)
         {
-            if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
-            {
-                GalaxyView._movingGalaxyObjects.Remove(fleet.gameObject);
-                return;
-            }
-            else if (!GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
-            {
-                GalaxyView._movingGalaxyObjects.Add(fleet.gameObject);
-            }
-            //galaxyDropLine = fleetLine;
-            myTrans = fleet.transform;
-            //lastTrans = myTrans;
-            myTargetPosition = myTarget.transform.position;
-            warpSpeed = myWarpSpeed;
-            _galaxyPlaneTrans = newPlaneEndPoint.transform;
+            //if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
+            //{
+            //    GalaxyView._movingGalaxyObjects.Remove(fleet.gameObject);
+            //    return;
+            //}
+            //else if (!GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
+            //{
+            //    GalaxyView._movingGalaxyObjects.Add(fleet.gameObject);
+            //}
+            ////galaxyDropLine = fleetLine;
+            //myTrans = fleet.transform;
+            ////lastTrans = myTrans;
+            //myTargetPosition = myTarget.transform.position;
+            //warpSpeed = myWarpSpeed;
+            //_galaxyPlaneTrans = newPlaneEndPoint.transform;
 
         }
 

@@ -55,8 +55,8 @@ namespace GalaxyMap
         private bool DoWeKnowThem(Civilization civ)
         {
             bool weKnowThem= false;
-            if (GameManager.Instance._localPlayerCiv == null) 
-                GameManager.Instance.SetCivs();
+            //if (GameManager.Instance._localPlayerCiv == null) 
+               // GameManager.Instance.SetCivs();
             Civilization localPlayer = GameManager.Instance._localPlayerCiv;
             for (int i = 0; i < localPlayer._contactList.Count; i++)
             {

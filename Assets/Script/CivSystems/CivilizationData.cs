@@ -15,7 +15,7 @@ namespace GalaxyMap
     {
         #region Fields
         public GameManager gameManager;
-
+        private Canvas _canvasGalactic;
         public static List<Civilization> civsInGame = new List<Civilization>(); // should this be in GameManager
         public StarSystemData starSystemData;
         [SerializeField]
@@ -39,11 +39,11 @@ namespace GalaxyMap
         #endregion
         public void Awake()
         {
-            //GameObject tempObject = GameObject.Find("CanvasGalactic");
-            //if (tempObject != null)
-            //{
-            //    _canvasGalactic = tempObject.GetComponent<Canvas>();
-            //}
+            GameObject tempObject = GameObject.Find("CanvasGalactic");
+            if (tempObject != null)
+            {
+                _canvasGalactic = tempObject.GetComponent<Canvas>();
+            }
             #region Read Civilization Data.txt 
             char separator = ',';
             Dictionary<int, string[]> _civDataDictionary = new Dictionary<int, string[]>();
@@ -76,6 +76,8 @@ namespace GalaxyMap
             #endregion          
         }
         public static CivilizationData Instance { get; private set; }
+
+
         public static Civilization CreateCivs(int systemInt) // new instance of a civ (Civilization is not inheriting MonoBehavior so can have new construtor instance
         {
             Civilization daCiv = new Civilization(systemInt);

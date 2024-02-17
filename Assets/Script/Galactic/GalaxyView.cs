@@ -373,7 +373,7 @@ namespace GalaxyMap
                 string ourKey = keysForSytemDictioanry[i];
                 if (keysForSytemDictioanry[i].Length != 0)
                 {
-                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDitionary[keysForSytemDictioanry[i]],
+                    GameObject starSystemNewGameOb = Instantiate(GameManager.PrefabStarSystemDictionary[keysForSytemDictioanry[i]],
                         new Vector3(0, 0, 0), Quaternion.identity); //VectorValue(ourKey,'z')
                     starSystemNewGameOb.transform.SetParent(SysEmptyList[i].transform, false);
                     starSystemNewGameOb.transform.localScale = new Vector3(1, 1, 1);

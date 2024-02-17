@@ -848,35 +848,212 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
+  _localPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _hostPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientZeroCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientOneCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientTwoCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientThreeCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFourCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFiveCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
-  _galaxyStarCount: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
+  _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  fleet: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
+  cameraGalactica: {fileID: 0}
+  cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
   _SaveGamePanel: {fileID: 0}
   _SettingsGamePanel: {fileID: 0}
   _ExitQuit: {fileID: 0}
-  _CreditsGamePanel: {fileID: 0}
+  _creditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 0}
+  _timeManager: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
   animFriend2: {fileID: 0}
@@ -918,14 +1095,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -933,6 +1110,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -1091,6 +1274,164 @@ MonoBehaviour:
   ZAKDORN_StarSystem: {fileID: 0}
   ZALKONIANS_StarSystem: {fileID: 0}
   ZIBALIANS_StarSystem: {fileID: 0}
+  FED_fleet: {fileID: 0}
+  ROM_fleet: {fileID: 0}
+  KLING_fleet: {fileID: 0}
+  CARD_fleet: {fileID: 0}
+  DOM_fleet: {fileID: 0}
+  BORG_fleet: {fileID: 0}
+  ACAMARIANS_fleet: {fileID: 0}
+  AKAALI_fleet: {fileID: 0}
+  AKRITIRIANS_fleet: {fileID: 0}
+  ALDEANS_fleet: {fileID: 0}
+  ALGOLIANS_fleet: {fileID: 0}
+  ALSAURIANS_fleet: {fileID: 0}
+  ANDORIANS_fleet: {fileID: 0}
+  ANGOSIANS_fleet: {fileID: 0}
+  ANKARI_fleet: {fileID: 0}
+  ANTEDEANS_fleet: {fileID: 0}
+  ANTICANS_fleet: {fileID: 0}
+  ARBAZAN_fleet: {fileID: 0}
+  ARDANANS_fleet: {fileID: 0}
+  ARGRATHI_fleet: {fileID: 0}
+  ARKARIANS_fleet: {fileID: 0}
+  ATREANS_fleet: {fileID: 0}
+  AXANAR_fleet: {fileID: 0}
+  BAJORANS_fleet: {fileID: 0}
+  BAKU_fleet: {fileID: 0}
+  BANDI_fleet: {fileID: 0}
+  BANEANS_fleet: {fileID: 0}
+  BARZANS_fleet: {fileID: 0}
+  BENZITES_fleet: {fileID: 0}
+  BETAZOIDS_fleet: {fileID: 0}
+  BILANAIANS_fleet: {fileID: 0}
+  BOLIANS_fleet: {fileID: 0}
+  BOMAR_fleet: {fileID: 0}
+  BOSLICS_fleet: {fileID: 0}
+  BOTHA_fleet: {fileID: 0}
+  BREELLIANS_fleet: {fileID: 0}
+  BREEN_fleet: {fileID: 0}
+  BREKKIANS_fleet: {fileID: 0}
+  BYNARS_fleet: {fileID: 0}
+  CAIRN_fleet: {fileID: 0}
+  CALDONIANS_fleet: {fileID: 0}
+  CAPELLANS_fleet: {fileID: 0}
+  CHALNOTH_fleet: {fileID: 0}
+  CORIDAN_fleet: {fileID: 0}
+  CORVALLENS_fleet: {fileID: 0}
+  CYTHERIANS_fleet: {fileID: 0}
+  DELTANS_fleet: {fileID: 0}
+  DENOBULANS_fleet: {fileID: 0}
+  DEVORE_fleet: {fileID: 0}
+  DOPTERIANS_fleet: {fileID: 0}
+  DOSI_fleet: {fileID: 0}
+  DRAI_fleet: {fileID: 0}
+  DREMANS_fleet: {fileID: 0}
+  EDO_fleet: {fileID: 0}
+  ELAURIANS_fleet: {fileID: 0}
+  ELAYSIANS_fleet: {fileID: 0}
+  ENTHARANS_fleet: {fileID: 0}
+  EVORA_fleet: {fileID: 0}
+  EXCALBIANS_fleet: {fileID: 0}
+  FERENGI_fleet: {fileID: 0}
+  FLAXIANS_fleet: {fileID: 0}
+  GORN_fleet: {fileID: 0}
+  GRAZERITES_fleet: {fileID: 0}
+  HAAKONIANS_fleet: {fileID: 0}
+  HALKANS_fleet: {fileID: 0}
+  HAZARI_fleet: {fileID: 0}
+  HEKARANS_fleet: {fileID: 0}
+  HIROGEN_fleet: {fileID: 0}
+  HORTA_fleet: {fileID: 0}
+  IYAARANS_fleet: {fileID: 0}
+  JNAII_fleet: {fileID: 0}
+  KAELON_fleet: {fileID: 0}
+  KAREMMA_fleet: {fileID: 0}
+  KAZON_fleet: {fileID: 0}
+  KELLERUN_fleet: {fileID: 0}
+  KESPRYTT_fleet: {fileID: 0}
+  KLAESTRONIANS_fleet: {fileID: 0}
+  KRADIN_fleet: {fileID: 0}
+  KREETASSANS_fleet: {fileID: 0}
+  KRIOSIANS_fleet: {fileID: 0}
+  KTARIANS_fleet: {fileID: 0}
+  LEDOSIANS_fleet: {fileID: 0}
+  LISSEPIANS_fleet: {fileID: 0}
+  LOKIRRIM_fleet: {fileID: 0}
+  LURIANS_fleet: {fileID: 0}
+  MALCORIANS_fleet: {fileID: 0}
+  MALON_fleet: {fileID: 0}
+  MAQUIS_fleet: {fileID: 0}
+  MARKALIANS_fleet: {fileID: 0}
+  MERIDIANS_fleet: {fileID: 0}
+  MINTAKANS_fleet: {fileID: 0}
+  MIRADORN_fleet: {fileID: 0}
+  MIZARIANS_fleet: {fileID: 0}
+  MOKRA_fleet: {fileID: 0}
+  MONEANS_fleet: {fileID: 0}
+  NAUSICAANS_fleet: {fileID: 0}
+  NECHANI_fleet: {fileID: 0}
+  NEZU_fleet: {fileID: 0}
+  NORCADIANS_fleet: {fileID: 0}
+  NUMIRI_fleet: {fileID: 0}
+  NUUBARI_fleet: {fileID: 0}
+  NYRIANS_fleet: {fileID: 0}
+  OCAMPA_fleet: {fileID: 0}
+  ORIONS_fleet: {fileID: 0}
+  ORNARANS_fleet: {fileID: 0}
+  PAKLED_fleet: {fileID: 0}
+  PARADANS_fleet: {fileID: 0}
+  QUARREN_fleet: {fileID: 0}
+  RAKHARI_fleet: {fileID: 0}
+  RAKOSANS_fleet: {fileID: 0}
+  RAMATIANS_fleet: {fileID: 0}
+  REMANS_fleet: {fileID: 0}
+  RIGELIANS_fleet: {fileID: 0}
+  RISIANS_fleet: {fileID: 0}
+  RUTIANS_fleet: {fileID: 0}
+  SELAY_fleet: {fileID: 0}
+  SHELIAK_fleet: {fileID: 0}
+  SIKARIANS_fleet: {fileID: 0}
+  SKRREEA_fleet: {fileID: 0}
+  SONA_fleet: {fileID: 0}
+  SULIBAN_fleet: {fileID: 0}
+  TAKARANS_fleet: {fileID: 0}
+  TAKARIANS_fleet: {fileID: 0}
+  TAKTAK_fleet: {fileID: 0}
+  TALARIANS_fleet: {fileID: 0}
+  TALAXIANS_fleet: {fileID: 0}
+  TALOSIANS_fleet: {fileID: 0}
+  TAMARIANS_fleet: {fileID: 0}
+  TANUGANS_fleet: {fileID: 0}
+  TELLARITES_fleet: {fileID: 0}
+  TEPLANS_fleet: {fileID: 0}
+  THOLIANS_fleet: {fileID: 0}
+  TILONIANS_fleet: {fileID: 0}
+  TLANI_fleet: {fileID: 0}
+  TRABE_fleet: {fileID: 0}
+  TRILL_fleet: {fileID: 0}
+  TROGORANS_fleet: {fileID: 0}
+  TZENKETHI_fleet: {fileID: 0}
+  ULLIANS_fleet: {fileID: 0}
+  VAADWAUR_fleet: {fileID: 0}
+  VENTAXIANS_fleet: {fileID: 0}
+  VHNORI_fleet: {fileID: 0}
+  VIDIIANS_fleet: {fileID: 0}
+  VISSIANS_fleet: {fileID: 0}
+  VORGONS_fleet: {fileID: 0}
+  VORI_fleet: {fileID: 0}
+  VULCANS_fleet: {fileID: 0}
+  WADI_fleet: {fileID: 0}
+  XANTHANS_fleet: {fileID: 0}
+  XEPOLITES_fleet: {fileID: 0}
+  XINDI_fleet: {fileID: 0}
+  XYRILLIANS_fleet: {fileID: 0}
+  YADERANS_fleet: {fileID: 0}
+  YRIDIANS_fleet: {fileID: 0}
+  ZAHL_fleet: {fileID: 0}
+  ZAKDORN_fleet: {fileID: 0}
+  ZALKONIANS_fleet: {fileID: 0}
+  ZIBALIANS_fleet: {fileID: 0}
   AllSystemsList: []
   animationEmpties:
   - {fileID: 0}
@@ -1112,6 +1453,7 @@ MonoBehaviour:
   _statePassedCombatMenu_Init: 0
   _statePassedCombatInit: 0
   _statePassedCombatPlay: 0
+  _playerOwnesSystem: 0
 --- !u!1 &37557591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4951,7 +5293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.9968, y: 540}
+  m_AnchoredPosition: {x: -959.99677, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -6862,7 +7204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -688, y: 630.0002}
+  m_AnchoredPosition: {x: -688, y: 630.00024}
   m_SizeDelta: {x: 500, y: 400}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &341990382
@@ -11300,20 +11642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c42c52c750dee647b8807a72a39da8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FightWithFed: 00000000
-  FightWithTerran: 
-  FightWithRom: 020000000300000004000000
-  FightWithKling: 020000000300000004000000
-  FightWithCard: 020000000300000004000000
-  FightWithDom: 
-  FightWithBorg: 
-  FightFed: 020000000300000004000000
-  FightTerran: 
-  FightRom: 00000000
-  FightKling: 00000000
-  FightCard: 00000000
-  FightDom: 
-  FightBorg: 
 --- !u!4 &654966030
 Transform:
   m_ObjectHideFlags: 0
@@ -12135,8 +12463,88 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _friendCivs: 00000000
-  _enemyCivs: 030000000200000004000000
+  _friendCivs:
+  - _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _enemyCivs:
+  - _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  - _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  - _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
 --- !u!4 &697508100
 Transform:
   m_ObjectHideFlags: 0
@@ -14908,7 +15316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.4968, y: 514}
+  m_AnchoredPosition: {x: -940.49677, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -18984,18 +19392,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f1a0e20b3c35241bcd480c6f521e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraOffset: {x: 0, y: 0}
+  _active: 1
+  _mouseSense: 1.8
+  _enableMovement: 1
+  _movementSpeed: 20
+  _boostedSpeed: 4
+  _speedFactor: 2
+  _initPositonButton: 114
   lookAtOffset: 2
-  inOutSpeed: 100
-  lateralSpeed: 100
-  upDownSpeed: 10
-  rotateSpeed: 20
-  minBounds: {x: -6000, y: -4000}
-  maxBounds: {x: 1112000, y: 1118000}
-  zoomSpeed: 400
-  nearZoomLimit: 2
-  farZoomLimit: 16
-  startingZoom: 5
+  _rotateSpeed: 20
+  maxRotation: 0
+  minRotation: 0
+  minBounds: {x: -6000, y: -4000, z: 0}
+  maxBounds: {x: 1112000, y: 1118000, z: 0}
+  zoomed: 0
+  telescopeHolder: {fileID: 0}
+  combatStopGalacticPlay: {fileID: 0}
+  returnToGalaxyFromSystemView: {fileID: 0}
+  buttonFleets: {fileID: 0}
+  buttonResetView: {fileID: 0}
+  _targetPointer: {fileID: 0}
+  clickSolarSystem: {fileID: 0}
+  _publicCameraGalactica: {fileID: 45544412}
 --- !u!1 &1164812502
 GameObject:
   m_ObjectHideFlags: 0
@@ -19356,35 +19774,212 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
+  _localPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _hostPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientZeroCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientOneCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientTwoCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientThreeCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFourCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFiveCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 1
-  _cliantOne: 2
-  _cliantTwo: 3
-  _cliantThree: 4
-  _cliantFour: 5
-  _cliantFive: 6
-  _galaxyStarCount: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
+  _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 807470229}
+  fleet: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 1538149116}
   ship: {fileID: 1670698544}
   cameraMultiTarget: {fileID: 807690122}
+  cameraManagerGalactica: {fileID: 0}
+  cameraGalactica: {fileID: 0}
+  cameraTelescope: {fileID: 0}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529373}
   actOnCombatOrder: {fileID: 330116306}
   zoomCamera: {fileID: 1788582308}
   Canvas: {fileID: 572942814}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 2141310086}
   _MultiPlayer: {fileID: 553410909}
   _LoadGamePanel: {fileID: 354149417}
   _SaveGamePanel: {fileID: 2145219097}
   _SettingsGamePanel: {fileID: 1595721849}
   _ExitQuit: {fileID: 1398289160}
-  _CreditsGamePanel: {fileID: 1784682053}
+  _creditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 932392496}
+  _timeManager: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 677462504803926597}
   animFriend2: {fileID: 677462504759600023}
@@ -19426,14 +20021,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 8139663474559741778, guid: 70930d94db43bd54581896088501f697, type: 3}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 3222463155622924485, guid: fa058069bb29ea941b73117d2b832a85, type: 3}
-  Fed_Colonyship_i: {fileID: 5012787407966965585, guid: de42228b8883f054796cd89579f64a41, type: 3}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 1358903930982077462, guid: 3cfdad2c45b391e4a89b77ba0a5a783b, type: 3}
   Kling_Destroyer_i: {fileID: 4118301941742209220, guid: cc1e4c322ccea574c8846590f5ec0d36, type: 3}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 960271130701890872, guid: a83ec879888398b408291ab09a821cf3, type: 3}
-  Kling_Colonyship_i: {fileID: 1426752258958691384, guid: a5f75a80ac75baa479183a08796fdde7, type: 3}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 6474706349711357221, guid: 72d8a1154b291bd4890a81ac90939553, type: 3}
@@ -19441,6 +20036,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 1132767801056259965, guid: dfc5864bdb2ea05438c51055d1fec6aa, type: 3}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 3346189262701856372, guid: 8c9ac4dc3817c114cb1f0eca490dc49b, type: 3}
   ROM_StarSystem: {fileID: 2178242268351434931, guid: 9c33d0079d6e31f42a061ba3c70c4259, type: 3}
   KLING_StarSystem: {fileID: 4761592045379931411, guid: 625880a2fbbcbe2499317d1dd19d0e19, type: 3}
@@ -19599,6 +20200,164 @@ MonoBehaviour:
   ZAKDORN_StarSystem: {fileID: 0}
   ZALKONIANS_StarSystem: {fileID: 0}
   ZIBALIANS_StarSystem: {fileID: 0}
+  FED_fleet: {fileID: 0}
+  ROM_fleet: {fileID: 0}
+  KLING_fleet: {fileID: 0}
+  CARD_fleet: {fileID: 0}
+  DOM_fleet: {fileID: 0}
+  BORG_fleet: {fileID: 0}
+  ACAMARIANS_fleet: {fileID: 0}
+  AKAALI_fleet: {fileID: 0}
+  AKRITIRIANS_fleet: {fileID: 0}
+  ALDEANS_fleet: {fileID: 0}
+  ALGOLIANS_fleet: {fileID: 0}
+  ALSAURIANS_fleet: {fileID: 0}
+  ANDORIANS_fleet: {fileID: 0}
+  ANGOSIANS_fleet: {fileID: 0}
+  ANKARI_fleet: {fileID: 0}
+  ANTEDEANS_fleet: {fileID: 0}
+  ANTICANS_fleet: {fileID: 0}
+  ARBAZAN_fleet: {fileID: 0}
+  ARDANANS_fleet: {fileID: 0}
+  ARGRATHI_fleet: {fileID: 0}
+  ARKARIANS_fleet: {fileID: 0}
+  ATREANS_fleet: {fileID: 0}
+  AXANAR_fleet: {fileID: 0}
+  BAJORANS_fleet: {fileID: 0}
+  BAKU_fleet: {fileID: 0}
+  BANDI_fleet: {fileID: 0}
+  BANEANS_fleet: {fileID: 0}
+  BARZANS_fleet: {fileID: 0}
+  BENZITES_fleet: {fileID: 0}
+  BETAZOIDS_fleet: {fileID: 0}
+  BILANAIANS_fleet: {fileID: 0}
+  BOLIANS_fleet: {fileID: 0}
+  BOMAR_fleet: {fileID: 0}
+  BOSLICS_fleet: {fileID: 0}
+  BOTHA_fleet: {fileID: 0}
+  BREELLIANS_fleet: {fileID: 0}
+  BREEN_fleet: {fileID: 0}
+  BREKKIANS_fleet: {fileID: 0}
+  BYNARS_fleet: {fileID: 0}
+  CAIRN_fleet: {fileID: 0}
+  CALDONIANS_fleet: {fileID: 0}
+  CAPELLANS_fleet: {fileID: 0}
+  CHALNOTH_fleet: {fileID: 0}
+  CORIDAN_fleet: {fileID: 0}
+  CORVALLENS_fleet: {fileID: 0}
+  CYTHERIANS_fleet: {fileID: 0}
+  DELTANS_fleet: {fileID: 0}
+  DENOBULANS_fleet: {fileID: 0}
+  DEVORE_fleet: {fileID: 0}
+  DOPTERIANS_fleet: {fileID: 0}
+  DOSI_fleet: {fileID: 0}
+  DRAI_fleet: {fileID: 0}
+  DREMANS_fleet: {fileID: 0}
+  EDO_fleet: {fileID: 0}
+  ELAURIANS_fleet: {fileID: 0}
+  ELAYSIANS_fleet: {fileID: 0}
+  ENTHARANS_fleet: {fileID: 0}
+  EVORA_fleet: {fileID: 0}
+  EXCALBIANS_fleet: {fileID: 0}
+  FERENGI_fleet: {fileID: 0}
+  FLAXIANS_fleet: {fileID: 0}
+  GORN_fleet: {fileID: 0}
+  GRAZERITES_fleet: {fileID: 0}
+  HAAKONIANS_fleet: {fileID: 0}
+  HALKANS_fleet: {fileID: 0}
+  HAZARI_fleet: {fileID: 0}
+  HEKARANS_fleet: {fileID: 0}
+  HIROGEN_fleet: {fileID: 0}
+  HORTA_fleet: {fileID: 0}
+  IYAARANS_fleet: {fileID: 0}
+  JNAII_fleet: {fileID: 0}
+  KAELON_fleet: {fileID: 0}
+  KAREMMA_fleet: {fileID: 0}
+  KAZON_fleet: {fileID: 0}
+  KELLERUN_fleet: {fileID: 0}
+  KESPRYTT_fleet: {fileID: 0}
+  KLAESTRONIANS_fleet: {fileID: 0}
+  KRADIN_fleet: {fileID: 0}
+  KREETASSANS_fleet: {fileID: 0}
+  KRIOSIANS_fleet: {fileID: 0}
+  KTARIANS_fleet: {fileID: 0}
+  LEDOSIANS_fleet: {fileID: 0}
+  LISSEPIANS_fleet: {fileID: 0}
+  LOKIRRIM_fleet: {fileID: 0}
+  LURIANS_fleet: {fileID: 0}
+  MALCORIANS_fleet: {fileID: 0}
+  MALON_fleet: {fileID: 0}
+  MAQUIS_fleet: {fileID: 0}
+  MARKALIANS_fleet: {fileID: 0}
+  MERIDIANS_fleet: {fileID: 0}
+  MINTAKANS_fleet: {fileID: 0}
+  MIRADORN_fleet: {fileID: 0}
+  MIZARIANS_fleet: {fileID: 0}
+  MOKRA_fleet: {fileID: 0}
+  MONEANS_fleet: {fileID: 0}
+  NAUSICAANS_fleet: {fileID: 0}
+  NECHANI_fleet: {fileID: 0}
+  NEZU_fleet: {fileID: 0}
+  NORCADIANS_fleet: {fileID: 0}
+  NUMIRI_fleet: {fileID: 0}
+  NUUBARI_fleet: {fileID: 0}
+  NYRIANS_fleet: {fileID: 0}
+  OCAMPA_fleet: {fileID: 0}
+  ORIONS_fleet: {fileID: 0}
+  ORNARANS_fleet: {fileID: 0}
+  PAKLED_fleet: {fileID: 0}
+  PARADANS_fleet: {fileID: 0}
+  QUARREN_fleet: {fileID: 0}
+  RAKHARI_fleet: {fileID: 0}
+  RAKOSANS_fleet: {fileID: 0}
+  RAMATIANS_fleet: {fileID: 0}
+  REMANS_fleet: {fileID: 0}
+  RIGELIANS_fleet: {fileID: 0}
+  RISIANS_fleet: {fileID: 0}
+  RUTIANS_fleet: {fileID: 0}
+  SELAY_fleet: {fileID: 0}
+  SHELIAK_fleet: {fileID: 0}
+  SIKARIANS_fleet: {fileID: 0}
+  SKRREEA_fleet: {fileID: 0}
+  SONA_fleet: {fileID: 0}
+  SULIBAN_fleet: {fileID: 0}
+  TAKARANS_fleet: {fileID: 0}
+  TAKARIANS_fleet: {fileID: 0}
+  TAKTAK_fleet: {fileID: 0}
+  TALARIANS_fleet: {fileID: 0}
+  TALAXIANS_fleet: {fileID: 0}
+  TALOSIANS_fleet: {fileID: 0}
+  TAMARIANS_fleet: {fileID: 0}
+  TANUGANS_fleet: {fileID: 0}
+  TELLARITES_fleet: {fileID: 0}
+  TEPLANS_fleet: {fileID: 0}
+  THOLIANS_fleet: {fileID: 0}
+  TILONIANS_fleet: {fileID: 0}
+  TLANI_fleet: {fileID: 0}
+  TRABE_fleet: {fileID: 0}
+  TRILL_fleet: {fileID: 0}
+  TROGORANS_fleet: {fileID: 0}
+  TZENKETHI_fleet: {fileID: 0}
+  ULLIANS_fleet: {fileID: 0}
+  VAADWAUR_fleet: {fileID: 0}
+  VENTAXIANS_fleet: {fileID: 0}
+  VHNORI_fleet: {fileID: 0}
+  VIDIIANS_fleet: {fileID: 0}
+  VISSIANS_fleet: {fileID: 0}
+  VORGONS_fleet: {fileID: 0}
+  VORI_fleet: {fileID: 0}
+  VULCANS_fleet: {fileID: 0}
+  WADI_fleet: {fileID: 0}
+  XANTHANS_fleet: {fileID: 0}
+  XEPOLITES_fleet: {fileID: 0}
+  XINDI_fleet: {fileID: 0}
+  XYRILLIANS_fleet: {fileID: 0}
+  YADERANS_fleet: {fileID: 0}
+  YRIDIANS_fleet: {fileID: 0}
+  ZAHL_fleet: {fileID: 0}
+  ZAKDORN_fleet: {fileID: 0}
+  ZALKONIANS_fleet: {fileID: 0}
+  ZIBALIANS_fleet: {fileID: 0}
   AllSystemsList: []
   animationEmpties:
   - {fileID: 677462504803926597}
@@ -19620,6 +20379,7 @@ MonoBehaviour:
   _statePassedCombatMenu_Init: 0
   _statePassedCombatInit: 0
   _statePassedCombatPlay: 0
+  _playerOwnesSystem: 0
 --- !u!4 &1187732008
 Transform:
   m_ObjectHideFlags: 0
@@ -28315,7 +29075,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
   combat: {fileID: 697508099}
-  _civilization: 0
+  _civilization:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
   _shipType: 0
   _techLevel: 0
   _shieldsMaxHealth: 0
@@ -28351,35 +29131,212 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
+  _localPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _hostPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientZeroCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientOneCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientTwoCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientThreeCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFourCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFiveCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
-  _galaxyStarCount: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
+  _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  fleet: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
+  cameraGalactica: {fileID: 0}
+  cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
   _SaveGamePanel: {fileID: 0}
   _SettingsGamePanel: {fileID: 0}
   _ExitQuit: {fileID: 0}
-  _CreditsGamePanel: {fileID: 0}
+  _creditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 0}
+  _timeManager: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
   animFriend2: {fileID: 0}
@@ -28421,14 +29378,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -28436,6 +29393,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -28594,6 +29557,164 @@ MonoBehaviour:
   ZAKDORN_StarSystem: {fileID: 0}
   ZALKONIANS_StarSystem: {fileID: 0}
   ZIBALIANS_StarSystem: {fileID: 0}
+  FED_fleet: {fileID: 0}
+  ROM_fleet: {fileID: 0}
+  KLING_fleet: {fileID: 0}
+  CARD_fleet: {fileID: 0}
+  DOM_fleet: {fileID: 0}
+  BORG_fleet: {fileID: 0}
+  ACAMARIANS_fleet: {fileID: 0}
+  AKAALI_fleet: {fileID: 0}
+  AKRITIRIANS_fleet: {fileID: 0}
+  ALDEANS_fleet: {fileID: 0}
+  ALGOLIANS_fleet: {fileID: 0}
+  ALSAURIANS_fleet: {fileID: 0}
+  ANDORIANS_fleet: {fileID: 0}
+  ANGOSIANS_fleet: {fileID: 0}
+  ANKARI_fleet: {fileID: 0}
+  ANTEDEANS_fleet: {fileID: 0}
+  ANTICANS_fleet: {fileID: 0}
+  ARBAZAN_fleet: {fileID: 0}
+  ARDANANS_fleet: {fileID: 0}
+  ARGRATHI_fleet: {fileID: 0}
+  ARKARIANS_fleet: {fileID: 0}
+  ATREANS_fleet: {fileID: 0}
+  AXANAR_fleet: {fileID: 0}
+  BAJORANS_fleet: {fileID: 0}
+  BAKU_fleet: {fileID: 0}
+  BANDI_fleet: {fileID: 0}
+  BANEANS_fleet: {fileID: 0}
+  BARZANS_fleet: {fileID: 0}
+  BENZITES_fleet: {fileID: 0}
+  BETAZOIDS_fleet: {fileID: 0}
+  BILANAIANS_fleet: {fileID: 0}
+  BOLIANS_fleet: {fileID: 0}
+  BOMAR_fleet: {fileID: 0}
+  BOSLICS_fleet: {fileID: 0}
+  BOTHA_fleet: {fileID: 0}
+  BREELLIANS_fleet: {fileID: 0}
+  BREEN_fleet: {fileID: 0}
+  BREKKIANS_fleet: {fileID: 0}
+  BYNARS_fleet: {fileID: 0}
+  CAIRN_fleet: {fileID: 0}
+  CALDONIANS_fleet: {fileID: 0}
+  CAPELLANS_fleet: {fileID: 0}
+  CHALNOTH_fleet: {fileID: 0}
+  CORIDAN_fleet: {fileID: 0}
+  CORVALLENS_fleet: {fileID: 0}
+  CYTHERIANS_fleet: {fileID: 0}
+  DELTANS_fleet: {fileID: 0}
+  DENOBULANS_fleet: {fileID: 0}
+  DEVORE_fleet: {fileID: 0}
+  DOPTERIANS_fleet: {fileID: 0}
+  DOSI_fleet: {fileID: 0}
+  DRAI_fleet: {fileID: 0}
+  DREMANS_fleet: {fileID: 0}
+  EDO_fleet: {fileID: 0}
+  ELAURIANS_fleet: {fileID: 0}
+  ELAYSIANS_fleet: {fileID: 0}
+  ENTHARANS_fleet: {fileID: 0}
+  EVORA_fleet: {fileID: 0}
+  EXCALBIANS_fleet: {fileID: 0}
+  FERENGI_fleet: {fileID: 0}
+  FLAXIANS_fleet: {fileID: 0}
+  GORN_fleet: {fileID: 0}
+  GRAZERITES_fleet: {fileID: 0}
+  HAAKONIANS_fleet: {fileID: 0}
+  HALKANS_fleet: {fileID: 0}
+  HAZARI_fleet: {fileID: 0}
+  HEKARANS_fleet: {fileID: 0}
+  HIROGEN_fleet: {fileID: 0}
+  HORTA_fleet: {fileID: 0}
+  IYAARANS_fleet: {fileID: 0}
+  JNAII_fleet: {fileID: 0}
+  KAELON_fleet: {fileID: 0}
+  KAREMMA_fleet: {fileID: 0}
+  KAZON_fleet: {fileID: 0}
+  KELLERUN_fleet: {fileID: 0}
+  KESPRYTT_fleet: {fileID: 0}
+  KLAESTRONIANS_fleet: {fileID: 0}
+  KRADIN_fleet: {fileID: 0}
+  KREETASSANS_fleet: {fileID: 0}
+  KRIOSIANS_fleet: {fileID: 0}
+  KTARIANS_fleet: {fileID: 0}
+  LEDOSIANS_fleet: {fileID: 0}
+  LISSEPIANS_fleet: {fileID: 0}
+  LOKIRRIM_fleet: {fileID: 0}
+  LURIANS_fleet: {fileID: 0}
+  MALCORIANS_fleet: {fileID: 0}
+  MALON_fleet: {fileID: 0}
+  MAQUIS_fleet: {fileID: 0}
+  MARKALIANS_fleet: {fileID: 0}
+  MERIDIANS_fleet: {fileID: 0}
+  MINTAKANS_fleet: {fileID: 0}
+  MIRADORN_fleet: {fileID: 0}
+  MIZARIANS_fleet: {fileID: 0}
+  MOKRA_fleet: {fileID: 0}
+  MONEANS_fleet: {fileID: 0}
+  NAUSICAANS_fleet: {fileID: 0}
+  NECHANI_fleet: {fileID: 0}
+  NEZU_fleet: {fileID: 0}
+  NORCADIANS_fleet: {fileID: 0}
+  NUMIRI_fleet: {fileID: 0}
+  NUUBARI_fleet: {fileID: 0}
+  NYRIANS_fleet: {fileID: 0}
+  OCAMPA_fleet: {fileID: 0}
+  ORIONS_fleet: {fileID: 0}
+  ORNARANS_fleet: {fileID: 0}
+  PAKLED_fleet: {fileID: 0}
+  PARADANS_fleet: {fileID: 0}
+  QUARREN_fleet: {fileID: 0}
+  RAKHARI_fleet: {fileID: 0}
+  RAKOSANS_fleet: {fileID: 0}
+  RAMATIANS_fleet: {fileID: 0}
+  REMANS_fleet: {fileID: 0}
+  RIGELIANS_fleet: {fileID: 0}
+  RISIANS_fleet: {fileID: 0}
+  RUTIANS_fleet: {fileID: 0}
+  SELAY_fleet: {fileID: 0}
+  SHELIAK_fleet: {fileID: 0}
+  SIKARIANS_fleet: {fileID: 0}
+  SKRREEA_fleet: {fileID: 0}
+  SONA_fleet: {fileID: 0}
+  SULIBAN_fleet: {fileID: 0}
+  TAKARANS_fleet: {fileID: 0}
+  TAKARIANS_fleet: {fileID: 0}
+  TAKTAK_fleet: {fileID: 0}
+  TALARIANS_fleet: {fileID: 0}
+  TALAXIANS_fleet: {fileID: 0}
+  TALOSIANS_fleet: {fileID: 0}
+  TAMARIANS_fleet: {fileID: 0}
+  TANUGANS_fleet: {fileID: 0}
+  TELLARITES_fleet: {fileID: 0}
+  TEPLANS_fleet: {fileID: 0}
+  THOLIANS_fleet: {fileID: 0}
+  TILONIANS_fleet: {fileID: 0}
+  TLANI_fleet: {fileID: 0}
+  TRABE_fleet: {fileID: 0}
+  TRILL_fleet: {fileID: 0}
+  TROGORANS_fleet: {fileID: 0}
+  TZENKETHI_fleet: {fileID: 0}
+  ULLIANS_fleet: {fileID: 0}
+  VAADWAUR_fleet: {fileID: 0}
+  VENTAXIANS_fleet: {fileID: 0}
+  VHNORI_fleet: {fileID: 0}
+  VIDIIANS_fleet: {fileID: 0}
+  VISSIANS_fleet: {fileID: 0}
+  VORGONS_fleet: {fileID: 0}
+  VORI_fleet: {fileID: 0}
+  VULCANS_fleet: {fileID: 0}
+  WADI_fleet: {fileID: 0}
+  XANTHANS_fleet: {fileID: 0}
+  XEPOLITES_fleet: {fileID: 0}
+  XINDI_fleet: {fileID: 0}
+  XYRILLIANS_fleet: {fileID: 0}
+  YADERANS_fleet: {fileID: 0}
+  YRIDIANS_fleet: {fileID: 0}
+  ZAHL_fleet: {fileID: 0}
+  ZAKDORN_fleet: {fileID: 0}
+  ZALKONIANS_fleet: {fileID: 0}
+  ZIBALIANS_fleet: {fileID: 0}
   AllSystemsList: []
   animationEmpties:
   - {fileID: 0}
@@ -28615,6 +29736,7 @@ MonoBehaviour:
   _statePassedCombatMenu_Init: 0
   _statePassedCombatInit: 0
   _statePassedCombatPlay: 0
+  _playerOwnesSystem: 0
 --- !u!1 &1673767480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 423041649167797722, guid: aca3a77a22b381843b892e112885a0a7, type: 3}
@@ -31707,35 +32829,212 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
+  _localPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _hostPlayerCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientZeroCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientOneCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientTwoCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientThreeCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFourCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
+  _clientFiveCiv:
+    _civID: 0
+    _civEnum: 0
+    _shortName: 
+    _longName: 
+    _homeSystemEnum: 0
+    _weAreMajorCiv: 0
+    _civImage: {fileID: 0}
+    _insignia: {fileID: 0}
+    civFleetList: []
+    _sysTradeAllocation: []
+    _relationshipScores: []
+    _civTechPoints: 0
+    _civTechLevel: 0
+    _civTaxRate: 0
+    _cviGrowthRate: 0
+    _civCredits: 0
+    _contactList: []
+    _ownedSystemEnums: 
+    _listCombatShips: []
+    _civInfoText: 
   _localPlayer: 0
   _hostPlayer: 0
-  _cliantZero: 0
-  _cliantOne: 0
-  _cliantTwo: 0
-  _cliantThree: 0
-  _cliantFour: 0
-  _cliantFive: 0
-  _galaxyStarCount: 0
+  _clientZero: 0
+  _clientOne: 0
+  _clientTwo: 0
+  _clientThree: 0
+  _clientFour: 0
+  _clientFive: 0
+  _galaxyStarCount: 
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
+  fleet: {fileID: 0}
+  civData: {fileID: 0}
+  starSysData: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
+  cameraManagerGalactica: {fileID: 0}
+  cameraGalactica: {fileID: 0}
+  cameraTelescope: {fileID: 0}
   combat: {fileID: 0}
   instantiateCombatShips: {fileID: 0}
   actOnCombatOrder: {fileID: 0}
   zoomCamera: {fileID: 0}
   Canvas: {fileID: 0}
   CanvasGalactic: {fileID: 0}
+  galaxyBackground: {fileID: 0}
+  resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 0}
   _MultiPlayer: {fileID: 0}
   _LoadGamePanel: {fileID: 0}
   _SaveGamePanel: {fileID: 0}
   _SettingsGamePanel: {fileID: 0}
   _ExitQuit: {fileID: 0}
-  _CreditsGamePanel: {fileID: 0}
+  _creditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 0}
+  _timeManager: {fileID: 0}
   shipScale: 2000
   animFriend1: {fileID: 0}
   animFriend2: {fileID: 0}
@@ -31777,14 +33076,14 @@ MonoBehaviour:
   Fed_Scout_ii: {fileID: 0}
   Fed_Scout_iii: {fileID: 0}
   Fed_Scout_iv: {fileID: 0}
-  Fed_Colonyship_i: {fileID: 0}
-  Fed_Colonyship_ii: {fileID: 0}
+  Fed_Transport_i: {fileID: 0}
+  Fed_Transport_ii: {fileID: 0}
   Kling_Cruiser_ii: {fileID: 0}
   Kling_Destroyer_i: {fileID: 0}
   Kling_Destroyer_ii: {fileID: 0}
   Kling_Scout_i: {fileID: 0}
   Kling_Scout_ii: {fileID: 0}
-  Kling_Colonyship_i: {fileID: 0}
+  Kling_Transport_i: {fileID: 0}
   Rom_Destroyer_i: {fileID: 0}
   Rom_Destroyer_ii: {fileID: 0}
   Rom_Cruiser_ii: {fileID: 0}
@@ -31792,6 +33091,12 @@ MonoBehaviour:
   Rom_Scout_i: {fileID: 0}
   Rom_Scout_ii: {fileID: 0}
   Rom_Scout_iii: {fileID: 0}
+  Fed_ShipYard: {fileID: 0}
+  Rom_ShipYard: {fileID: 0}
+  Kling_ShipYard: {fileID: 0}
+  Card_ShipYard: {fileID: 0}
+  Dom_ShipYard: {fileID: 0}
+  Borg_ShipYard: {fileID: 0}
   FED_StarSystem: {fileID: 0}
   ROM_StarSystem: {fileID: 0}
   KLING_StarSystem: {fileID: 0}
@@ -31950,6 +33255,164 @@ MonoBehaviour:
   ZAKDORN_StarSystem: {fileID: 0}
   ZALKONIANS_StarSystem: {fileID: 0}
   ZIBALIANS_StarSystem: {fileID: 0}
+  FED_fleet: {fileID: 0}
+  ROM_fleet: {fileID: 0}
+  KLING_fleet: {fileID: 0}
+  CARD_fleet: {fileID: 0}
+  DOM_fleet: {fileID: 0}
+  BORG_fleet: {fileID: 0}
+  ACAMARIANS_fleet: {fileID: 0}
+  AKAALI_fleet: {fileID: 0}
+  AKRITIRIANS_fleet: {fileID: 0}
+  ALDEANS_fleet: {fileID: 0}
+  ALGOLIANS_fleet: {fileID: 0}
+  ALSAURIANS_fleet: {fileID: 0}
+  ANDORIANS_fleet: {fileID: 0}
+  ANGOSIANS_fleet: {fileID: 0}
+  ANKARI_fleet: {fileID: 0}
+  ANTEDEANS_fleet: {fileID: 0}
+  ANTICANS_fleet: {fileID: 0}
+  ARBAZAN_fleet: {fileID: 0}
+  ARDANANS_fleet: {fileID: 0}
+  ARGRATHI_fleet: {fileID: 0}
+  ARKARIANS_fleet: {fileID: 0}
+  ATREANS_fleet: {fileID: 0}
+  AXANAR_fleet: {fileID: 0}
+  BAJORANS_fleet: {fileID: 0}
+  BAKU_fleet: {fileID: 0}
+  BANDI_fleet: {fileID: 0}
+  BANEANS_fleet: {fileID: 0}
+  BARZANS_fleet: {fileID: 0}
+  BENZITES_fleet: {fileID: 0}
+  BETAZOIDS_fleet: {fileID: 0}
+  BILANAIANS_fleet: {fileID: 0}
+  BOLIANS_fleet: {fileID: 0}
+  BOMAR_fleet: {fileID: 0}
+  BOSLICS_fleet: {fileID: 0}
+  BOTHA_fleet: {fileID: 0}
+  BREELLIANS_fleet: {fileID: 0}
+  BREEN_fleet: {fileID: 0}
+  BREKKIANS_fleet: {fileID: 0}
+  BYNARS_fleet: {fileID: 0}
+  CAIRN_fleet: {fileID: 0}
+  CALDONIANS_fleet: {fileID: 0}
+  CAPELLANS_fleet: {fileID: 0}
+  CHALNOTH_fleet: {fileID: 0}
+  CORIDAN_fleet: {fileID: 0}
+  CORVALLENS_fleet: {fileID: 0}
+  CYTHERIANS_fleet: {fileID: 0}
+  DELTANS_fleet: {fileID: 0}
+  DENOBULANS_fleet: {fileID: 0}
+  DEVORE_fleet: {fileID: 0}
+  DOPTERIANS_fleet: {fileID: 0}
+  DOSI_fleet: {fileID: 0}
+  DRAI_fleet: {fileID: 0}
+  DREMANS_fleet: {fileID: 0}
+  EDO_fleet: {fileID: 0}
+  ELAURIANS_fleet: {fileID: 0}
+  ELAYSIANS_fleet: {fileID: 0}
+  ENTHARANS_fleet: {fileID: 0}
+  EVORA_fleet: {fileID: 0}
+  EXCALBIANS_fleet: {fileID: 0}
+  FERENGI_fleet: {fileID: 0}
+  FLAXIANS_fleet: {fileID: 0}
+  GORN_fleet: {fileID: 0}
+  GRAZERITES_fleet: {fileID: 0}
+  HAAKONIANS_fleet: {fileID: 0}
+  HALKANS_fleet: {fileID: 0}
+  HAZARI_fleet: {fileID: 0}
+  HEKARANS_fleet: {fileID: 0}
+  HIROGEN_fleet: {fileID: 0}
+  HORTA_fleet: {fileID: 0}
+  IYAARANS_fleet: {fileID: 0}
+  JNAII_fleet: {fileID: 0}
+  KAELON_fleet: {fileID: 0}
+  KAREMMA_fleet: {fileID: 0}
+  KAZON_fleet: {fileID: 0}
+  KELLERUN_fleet: {fileID: 0}
+  KESPRYTT_fleet: {fileID: 0}
+  KLAESTRONIANS_fleet: {fileID: 0}
+  KRADIN_fleet: {fileID: 0}
+  KREETASSANS_fleet: {fileID: 0}
+  KRIOSIANS_fleet: {fileID: 0}
+  KTARIANS_fleet: {fileID: 0}
+  LEDOSIANS_fleet: {fileID: 0}
+  LISSEPIANS_fleet: {fileID: 0}
+  LOKIRRIM_fleet: {fileID: 0}
+  LURIANS_fleet: {fileID: 0}
+  MALCORIANS_fleet: {fileID: 0}
+  MALON_fleet: {fileID: 0}
+  MAQUIS_fleet: {fileID: 0}
+  MARKALIANS_fleet: {fileID: 0}
+  MERIDIANS_fleet: {fileID: 0}
+  MINTAKANS_fleet: {fileID: 0}
+  MIRADORN_fleet: {fileID: 0}
+  MIZARIANS_fleet: {fileID: 0}
+  MOKRA_fleet: {fileID: 0}
+  MONEANS_fleet: {fileID: 0}
+  NAUSICAANS_fleet: {fileID: 0}
+  NECHANI_fleet: {fileID: 0}
+  NEZU_fleet: {fileID: 0}
+  NORCADIANS_fleet: {fileID: 0}
+  NUMIRI_fleet: {fileID: 0}
+  NUUBARI_fleet: {fileID: 0}
+  NYRIANS_fleet: {fileID: 0}
+  OCAMPA_fleet: {fileID: 0}
+  ORIONS_fleet: {fileID: 0}
+  ORNARANS_fleet: {fileID: 0}
+  PAKLED_fleet: {fileID: 0}
+  PARADANS_fleet: {fileID: 0}
+  QUARREN_fleet: {fileID: 0}
+  RAKHARI_fleet: {fileID: 0}
+  RAKOSANS_fleet: {fileID: 0}
+  RAMATIANS_fleet: {fileID: 0}
+  REMANS_fleet: {fileID: 0}
+  RIGELIANS_fleet: {fileID: 0}
+  RISIANS_fleet: {fileID: 0}
+  RUTIANS_fleet: {fileID: 0}
+  SELAY_fleet: {fileID: 0}
+  SHELIAK_fleet: {fileID: 0}
+  SIKARIANS_fleet: {fileID: 0}
+  SKRREEA_fleet: {fileID: 0}
+  SONA_fleet: {fileID: 0}
+  SULIBAN_fleet: {fileID: 0}
+  TAKARANS_fleet: {fileID: 0}
+  TAKARIANS_fleet: {fileID: 0}
+  TAKTAK_fleet: {fileID: 0}
+  TALARIANS_fleet: {fileID: 0}
+  TALAXIANS_fleet: {fileID: 0}
+  TALOSIANS_fleet: {fileID: 0}
+  TAMARIANS_fleet: {fileID: 0}
+  TANUGANS_fleet: {fileID: 0}
+  TELLARITES_fleet: {fileID: 0}
+  TEPLANS_fleet: {fileID: 0}
+  THOLIANS_fleet: {fileID: 0}
+  TILONIANS_fleet: {fileID: 0}
+  TLANI_fleet: {fileID: 0}
+  TRABE_fleet: {fileID: 0}
+  TRILL_fleet: {fileID: 0}
+  TROGORANS_fleet: {fileID: 0}
+  TZENKETHI_fleet: {fileID: 0}
+  ULLIANS_fleet: {fileID: 0}
+  VAADWAUR_fleet: {fileID: 0}
+  VENTAXIANS_fleet: {fileID: 0}
+  VHNORI_fleet: {fileID: 0}
+  VIDIIANS_fleet: {fileID: 0}
+  VISSIANS_fleet: {fileID: 0}
+  VORGONS_fleet: {fileID: 0}
+  VORI_fleet: {fileID: 0}
+  VULCANS_fleet: {fileID: 0}
+  WADI_fleet: {fileID: 0}
+  XANTHANS_fleet: {fileID: 0}
+  XEPOLITES_fleet: {fileID: 0}
+  XINDI_fleet: {fileID: 0}
+  XYRILLIANS_fleet: {fileID: 0}
+  YADERANS_fleet: {fileID: 0}
+  YRIDIANS_fleet: {fileID: 0}
+  ZAHL_fleet: {fileID: 0}
+  ZAKDORN_fleet: {fileID: 0}
+  ZALKONIANS_fleet: {fileID: 0}
+  ZIBALIANS_fleet: {fileID: 0}
   AllSystemsList: []
   animationEmpties:
   - {fileID: 0}
@@ -31971,6 +33434,7 @@ MonoBehaviour:
   _statePassedCombatMenu_Init: 0
   _statePassedCombatInit: 0
   _statePassedCombatPlay: 0
+  _playerOwnesSystem: 0
 --- !u!114 &1798064315
 MonoBehaviour:
   m_ObjectHideFlags: 0

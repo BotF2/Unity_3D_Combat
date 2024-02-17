@@ -105,9 +105,9 @@ namespace Assets.Core
                 case "TRANSPORT":
                     _shipType = ShipType.Transport;
                     break;
-                case "COLONYSHIP":
-                    _shipType = ShipType.Colonyship;
-                    break;
+                //case "COLONYSHIP":
+                //    _shipType = ShipType.Colonyship;
+                //    break;
                 case "ONEMORE":
                     _shipType = ShipType.OneMore;
                     break;
