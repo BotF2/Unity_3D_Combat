@@ -14,16 +14,16 @@ namespace GalaxyMap
     public class HoverTipManager : MonoBehaviour
     {
         public GameManager gameManager;
-        public CivilizationData civilizationData;
+        public Civilization civ;
         public TextMeshProUGUI tipText;
         public RectTransform tipWindow;
 
         private RawImage img;
 
         private Vector3 theLocation;
-        private StarSystem theStarSystem;
+        private StarSystemSO theStarSystem;
         [SerializeField]
-        public StarSystemData starSystemData;
+        public StarSystemSO starSystemData;
 
         public static Action<StarSystemEnum> OnMouseHover;
         public static Action OnMouseLoseFocus;
@@ -48,29 +48,30 @@ namespace GalaxyMap
             Vector3 where = new Vector3(currentPosition.x, currentPosition.y, currentPosition.z - 5);
             theLocation = where;
         }
-        public void WhatSystem( StarSystemEnum starSysEnum)
+        public void WhatSystem(StarSystemEnum starSysEnum)
         {
-            theStarSystem = StarSystemData.StarSystemDictionary[starSysEnum];
+            theStarSystem = StarSystemManager.starSysDataDictionary[starSysEnum];
         }
-        private bool DoWeKnowThem(Civilization civ)
+        private bool DoWeKnowThem(CivEnum civEnum)
         {
+            //ToDo only local payer for now
             bool weKnowThem= false;
-            //if (GameManager.Instance._localPlayerCiv == null) 
-               // GameManager.Instance.SetCivs();
-            Civilization localPlayer = GameManager.Instance._localPlayerCiv;
-            for (int i = 0; i < localPlayer._contactList.Count; i++)
-            {
-                if (localPlayer._contactList[i]._shortName == civ._shortName)
-                    weKnowThem = true;
-            }
+            ////if (GameManager.Instance._localPlayerCiv == null) 
+            //   // GameManager.Instance.SetCivs();
+            //Civilization localPlayer = GameManager.Instance._localPlayerCiv;
+            //for (int i = 0; i < localPlayer._contactList.Count; i++)
+            //{
+            //    if (localPlayer._contactList[i]. == civ._shortNameText)
+            //        weKnowThem = true;
+            //}
             return weKnowThem;
         }
         private void ShowTip(StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
         {
-            StarSystem theSystem = StarSystemData.StarSystemDictionary[starSystemEnum];
-            if (DoWeKnowThem(theSystem._ownerCiv))
+            StarSystemSO theSystem = StarSystemManager.starSysDataDictionary[starSystemEnum];
+            if (DoWeKnowThem(theSystem.starSystemCurrentOwner))
             {
-                tipText.text = theSystem._ownerCiv._shortName;
+                tipText.text = theSystem._currentOwnerName;
                 tipWindow.localScale = new Vector3(1, 1, 1);
                 if (theSystem._y > -1000)
                 {
@@ -81,7 +82,7 @@ namespace GalaxyMap
                     tipWindow.localScale *= 1.5f; // if deep into screen make it bigger
                 }
                 img = tipWindow.gameObject.GetComponent<RawImage>();
-                img.texture = theSystem._ownerCiv._civImage.texture;
+                img.texture = theSystem._civOwnerSprite.texture;
 
                 tipWindow.gameObject.SetActive(true);
                 tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.inputY + 200, theLocation.zLine - 100);

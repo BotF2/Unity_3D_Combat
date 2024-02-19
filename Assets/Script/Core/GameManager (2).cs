@@ -214,8 +214,8 @@ namespace Assets.Core
         //        private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
         //        public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
         //        public int zFactor = 3000;
-        //        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
-        //        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
+        //        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world currentPosition
+        //        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world currentPosition
         //        public int offsetEnemyRight = 5500; // start here
         //        public int offsetEnemyLeft = -5800;
 

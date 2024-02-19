@@ -15,36 +15,36 @@ using UnityEngine.Rendering.VirtualTexturing;
 namespace GalaxyMap
 {
     //[System.Serializable]
-    //public class StarSystemData2 : MonoBehaviour
-    //{
+    public class StarSystemDataOld: MonoBehaviour
+    {
         //public Image civOwnerImage; // asigned in inspector just like SolarSystemView
-        //public Image civInsigniaImage;
+        //public Image civInsignia;
         //private string originalCivOwnerName;
         //public string currentCivOwnerName;
         //private string sysDataName;
-       // public List<ShipYardData> shipYardDataList;
+        // public List<ShipYardData> shipYardDataList;
         //[SerializeField]
-        //public static Dictionary<StarSystemEnum, StarSystem> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystem>();
+        //public static Dictionary<StarSystemEnum, StarSystemManager> StarSystemDictionary = new Dictionary<StarSystemEnum, StarSystemManager>();
 
-        //public StarSystemData(int sysID)
+        //public StarSystemSO(int sysID)
         //{
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)sysID];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
         //    civOwnerImage.sprite = theSystem._ownerCivSprite;
-        //    civInsigniaImage.sprite = theSystem._ownerInsigniaSprite;
+        //    civInsignia.sprite = theSystem._ownerInsigniaSprite;
         //    currentCivOwnerName = theSystem._currentOwnerName;
         //}
-        //public void UpdateActiveSystemData(int sysID) // update StarSystemData so correct image and name shows in viewed system
+        //public void UpdateActiveSystemData(int sysID) // update StarSystemSO so correct image and name shows in viewed system
         //{
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[(StarSystemEnum)sysID];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
         //    this.civOwnerImage.sprite = theSystem._ownerCivSprite;
-        //    this.civInsigniaImage.sprite = theSystem._ownerInsigniaSprite;
+        //    this.civInsignia.sprite = theSystem._ownerInsigniaSprite;
         //    this.currentCivOwnerName = theSystem._currentOwnerName;
         //    //originalCivOwnerName = theSystem._originalOwnerName;
         //}
-        //public static StarSystem Create(int systemInt)
+        //public static StarSystemManager InitializFleet(int systemInt)
         //{
         //    //ToDo make some uninhabited systems to colonize
-        //    StarSystem daSystem = new StarSystem(systemInt);
+        //    StarSystemManager daSystem = new StarSystemManager(systemInt);
         //    string[] sysStrings = GalaxyView.SystemDataDictionary[systemInt];
         //    daSystem._sysInt = systemInt;
         //    daSystem._x = int.Parse(sysStrings[1]);
@@ -76,7 +76,7 @@ namespace GalaxyMap
 
         //    return daSystem;
         //}
-        //private void SetSystemOwner(StarSystem theSystem)
+        //private void SetSystemOwner(StarSystemManager theSystem)
         //{
         //    civOwnerSprite = theSystem._ownerCivSprite;
         //    civOwnerName = theSystem._ownerName;
@@ -85,9 +85,9 @@ namespace GalaxyMap
         //{
         //    for (int i = 0; i < starArray.Length; i++)
         //    {
-        //        var sys = StarSystemData.Create(starArray[i]);
+        //        var sys = StarSystemSO.InitializFleet(starArray[i]);
         //        this.civOwnerImage.sprite = sys._ownerCivSprite;
-        //        this.civInsigniaImage.sprite = sys._ownerInsigniaSprite;
+        //        this.civInsignia.sprite = sys._ownerInsigniaSprite;
         //        this.currentCivOwnerName = sys._currentOwnerName;
         //        this.originalCivOwnerName = sys._originalOwnerName;
         //        this.sysDataName = sys._sysName;
@@ -96,45 +96,45 @@ namespace GalaxyMap
         //}
         //public void AddFleet(StarSystemEnum sysEnum, GameObject fleet)
         //{
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[sysEnum];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[sysEnum];
         //    theSystem._fleetsInSystem.Add(fleet.gameObject);
         //}
         //public void RemoveFleet(StarSystemEnum sysEnum, GameObject fleet)
         //{
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[sysEnum];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[sysEnum];
         //    theSystem._fleetsInSystem.Remove(fleet.gameObject);
         //}
         //public void LoadSystemOwner(Civilization civ, StarSystemEnum sys) // Now CivilizationData can provide civ data for system
         //{
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[sys];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[sys];
         //    theSystem._ownerCiv = civ;
-        //    theSystem._currentOwnerName = civ._shortName;
+        //    theSystem._currentOwnerName = civ._shortNameString;
         //    theSystem._ownerInsigniaSprite = civ._insignia; // Resources.Load<Sprite>("Insignia/" + sys._sysName.ToUpper());
         //    theSystem._ownerCivSprite = civ._civImage; //Resources.Load<Sprite>("Civilizations/" + sys._sysName.ToLower());
         //    theSystem._homeColony = true;
         //    //civOwnerImage.sprite = theSystem._ownerCivSprite;
-        //    //civInsigniaImage.sprite = theSystem._ownerInsigniaSprite;
+        //    //civInsignia.sprite = theSystem._ownerInsigniaSprite;
         //    //originalCivOwnerName = theSystem._originalOwnerName;
         //}
-        //public void UpdateSystemOwner(StarSystem sys, Civilization civ) // change civ owner in StarSystemDictionary
+        //public void UpdateSystemOwner(StarSystemManager sys, Civilization civ) // change civ owner in StarSystemDictionary
         //{
         //    // code here for getting sprite by civ
-        //    StarSystem theSystem = StarSystemData.StarSystemDictionary[sys._sysEnum];
+        //    StarSystemManager theSystem = StarSystemSO.StarSystemDictionary[sys._sysEnum];
         //    theSystem._ownerCiv = civ;
-        //    theSystem._currentOwnerName = civ._shortName;
+        //    theSystem._currentOwnerName = civ._shortNameString;
         //    theSystem._ownerInsigniaSprite = civ._insignia; // Resources.Load<Sprite>("Insignia/" + sys._sysName.ToUpper());
         //    theSystem._ownerCivSprite = civ._civImage; //Resources.Load<Sprite>("Civilizations/" + sys._sysName.ToLower());
-        //    if (civ._shortName.ToUpper() == sys._originalOwnerName.ToUpper())
+        //    if (civ._shortNameString.ToUpper() == sys._originalOwnerName.ToUpper())
         //    {
         //        theSystem._homeColony = true;
         //    }
         //    else theSystem._homeColony = false;
         //    //civOwnerImage.sprite = theSystem._ownerCivSprite;
-        //    //civInsigniaImage.sprite = theSystem._ownerInsigniaSprite;
+        //    //civInsignia.sprite = theSystem._ownerInsigniaSprite;
         //    //originalCivOwnerName = theSystem._originalOwnerName;
 
         //}
-        //public StarSystem GetSystem(StarSystemEnum sysEnum)
+        //public StarSystemManager GetSystem(StarSystemEnum sysEnum)
         //{
         //    if (StarSystemDictionary.ContainsKey(sysEnum))
         //        return StarSystemDictionary[sysEnum];
@@ -149,5 +149,5 @@ namespace GalaxyMap
         //    return StarSystemDictionary[sysEnum]._originalOwnerName;
         //}
 
-    //}
+    }
 }

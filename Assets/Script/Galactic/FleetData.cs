@@ -1,34 +1,25 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Core;
+using UnityEngine.UI;
 
 namespace GalaxyMap
 {
-    [CreateAssetMenu(menuName = "Galaxy/FleetData")]
-    public class FleetData: ScriptableObject
+    public class FleetData : MonoBehaviour
     {
         public new string name;
         public string description;
         public Sprite insign;
-        public Vector3 location;
-        public Civilization civOwnerEnum;
-        public List<Ship> ships;
-        //[SerializeField]
-        public float warpFactor; // public?
-        //public GameObject destination;
-        //public GameObject origin;
-        public float defaultWarp =0;
-        [HideInInspector]
-        public GameObject myObject;
+        public Vector3 currentPosition;
+        public CivEnum civOwnerEnum;
+        public List<Ship> galaxyShips; // ToDo make a GalaxyShip scriptable obj for the list
+        public int fleetNum;
+        public float maxWarpFactor;
+        public float warpFactor; 
+        public float defaultWarp = 0;
+        public GameObject targetDestination;
+        public GameObject thisGameObject;
 
-        public void ResetData()
-        {
-            myObject = null;
-            warpFactor = defaultWarp;
-            location = Vector3.zero;
-        }
     }
 }
-

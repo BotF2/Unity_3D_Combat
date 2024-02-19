@@ -637,9 +637,9 @@ namespace Assets.Core
         public static Dictionary<int, GameObject> CombatObjects = new Dictionary<int, GameObject>();
         public Galaxy galaxy; // = new Galaxy(GameManager.Instance, GalaxyType.ELLIPTICAL, 20);
         public GalaxyView galaxyView;
-        public FleetData fleet;
-        [SerializeField] private CivilizationData civData;
-        [SerializeField] private StarSystemData starSysData;
+        //public FleetController fleet;
+        [SerializeField] private Civilization civ;
+       // [SerializeField] private StarSystemSO starSysData;
         public SolarSystemView solarSystemView;
         public Ship ship;
         //public CivilizationData civilizationData;
@@ -704,8 +704,8 @@ namespace Assets.Core
         private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
         public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on inputY axis
         public int zFactor = 3000;
-        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
-        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
+        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world currentPosition
+        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world currentPosition
         public int offsetEnemyRight = 5500; // start here
         public int offsetEnemyLeft = -5800;
 
@@ -1197,9 +1197,9 @@ namespace Assets.Core
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
+            //PanelSysCommand_Menu = Canvas.transform.Find("PanelSysCommandMenu").gameObject;
             var cameraManagerGalactic = CanvasGalactic.transform.Find("CameraManagerGalactica").gameObject;
-            PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
+            //PanelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
 
             PanelSystem_View = Canvas.transform.Find("PanelSystemView").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
@@ -1635,6 +1635,7 @@ namespace Assets.Core
             switch (newState)
             {
                 case State.LOBBY_MENU:
+                    CanvasGalactic.SetActive(false);
                     PanelMain_Menu.SetActive(false); // turn off if returning to lobby
                     PanelLoadGame_Menu.SetActive(false);
                     PanelSaveGame_Menu.SetActive(false);
@@ -1643,7 +1644,7 @@ namespace Assets.Core
                     //resetViewGalacticButton.SetActive(false);
                     if (cameraGalactica != null)
                     {
-                        cameraGalactica.enabled = true;
+                        cameraGalactica.enabled = false;
                         cameraGalactica.fieldOfView = 179;
                     }
 
@@ -1697,10 +1698,10 @@ namespace Assets.Core
                     //ToDo; SetGalaxyMapSize();                   
                     //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
-                    starSysData.LoadSystemData(_galaxyStarCount);
-                    civData.LoadDictionaryOfCivs(this._galaxyStarCount);
-                    civData.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
-                    civData.UpdateCivContactListOnStartCivSelection(_techLevel);
+                    //starSysData.LoadSystemData(_galaxyStarCount);
+                    civ.LoadDictionaryOfCivs(this._galaxyStarCount);
+                    civ.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
+                    civ.UpdateCivContactListOnStartCivSelection(_techLevel);
                     LoadGalaxyShips();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {
@@ -1734,6 +1735,7 @@ namespace Assets.Core
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
+                    CanvasGalactic.SetActive(true);
                     cameraManagerGalactica.ActivateCombatStopGalacticPlay(true);
                     cameraManagerGalactica.ActivateButtonFleets(true);
                     cameraManagerGalactica.ActivateRestViewButton(true);
@@ -2153,7 +2155,7 @@ namespace Assets.Core
         }
         //public CivilizationData SendCivDataToFleet(Fleet fleet)
         //{
-        //    return civData;
+        //    return civ;
         //}
         //private void UpdateTheArrays(string shipName, List<GameObject> shortList, FriendOrFoe side, NearOrFar nearOrFar)
         //{

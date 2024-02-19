@@ -254,7 +254,7 @@ namespace GalaxyMap
             //{
             //    if (!cameraZoomed)
             //    {
-            //        //Create variables to cast a ray on object
+            //        //InitializFleet variables to cast a ray on object
             //        int layerMask = 1 << 8; // in raycast below, we are only going to hit in layer 8 GalacticUI,
             //                                // the background image of galaxy
             //        Ray ray = _publicCameraGalactica.ScreenPointToRay(Input.mousePosition);

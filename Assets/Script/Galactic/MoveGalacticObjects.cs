@@ -47,7 +47,7 @@ namespace GalaxyMap
             //}
 
         }
-        public void BoldlyGoing(FleetData fleet, GameObject myTarget, GameObject newPlaneEndPoint, float myWarpSpeed) //, GalaxyDropLine fleetLine)
+        public void BoldlyGoing(FleetController fleet, GameObject myTarget, GameObject newPlaneEndPoint, float myWarpSpeed) //, GalaxyDropLine fleetLine)
         {
             //if (myWarpSpeed == 0 && GalaxyView._movingGalaxyObjects.Contains(fleet.gameObject))
             //{

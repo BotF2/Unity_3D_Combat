@@ -848,174 +848,14 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
-  _localPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _hostPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientZeroCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientOneCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientTwoCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientThreeCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFourCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFiveCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  _localPlayerCiv: {fileID: 0}
+  _hostPlayerCiv: {fileID: 0}
+  _clientZeroCiv: {fileID: 0}
+  _clientOneCiv: {fileID: 0}
+  _clientTwoCiv: {fileID: 0}
+  _clientThreeCiv: {fileID: 0}
+  _clientFourCiv: {fileID: 0}
+  _clientFiveCiv: {fileID: 0}
   _localPlayer: 0
   _hostPlayer: 0
   _clientZero: 0
@@ -1028,9 +868,7 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
-  fleet: {fileID: 0}
-  civData: {fileID: 0}
-  starSysData: {fileID: 0}
+  civ: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
@@ -1635,6 +1473,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37557591}
   m_CullTransparentMesh: 1
+--- !u!1 &37826010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37826012}
+  - component: {fileID: 37826011}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &37826011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37826010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cce91c708d9a2b840bd686408375f7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &37826012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37826010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1187732008}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &45121800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2564,7 +2446,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116710139}
-  - component: {fileID: 116710140}
   m_Layer: 6
   m_Name: Fleet
   m_TagString: Untagged
@@ -2579,36 +2460,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116710138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1195700024}
-  m_RootOrder: 4
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &116710140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116710138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074ceb58d5e801b49a670d5f55b5f738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fleetData: {fileID: 0}
-  nameText: {fileID: 0}
-  descriptionText: {fileID: 0}
-  artworkImage: {fileID: 0}
-  warpFactor: 0
 --- !u!1 &116968676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5122,6 +4986,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201045959}
   m_CullTransparentMesh: 1
+--- !u!1 &202216273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 202216274}
+  - component: {fileID: 202216275}
+  m_Layer: 6
+  m_Name: KeyboardInputManagerGalactica
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &202216274
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202216273}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &202216275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202216273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1536fff1933a72b4cac93580ab3cda00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &212903650
 GameObject:
   m_ObjectHideFlags: 0
@@ -5293,7 +5206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -959.99677, y: 540}
+  m_AnchoredPosition: {x: -959.9968, y: 540}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216946337
@@ -5563,6 +5476,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235195145}
   m_CullTransparentMesh: 1
+--- !u!1001 &239597304
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 344427423}
+    m_Modifications:
+    - target: {fileID: 6612797864483817455, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937492, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_Name
+      value: TipWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+--- !u!224 &239597305 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6612797864772937495, guid: 1193e0433f9372c44bea70a2b822ce56, type: 3}
+  m_PrefabInstance: {fileID: 239597304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &241056228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7249,6 +7268,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341990380}
   m_CullTransparentMesh: 1
+--- !u!1 &344427422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344427423}
+  - component: {fileID: 344427424}
+  m_Layer: 6
+  m_Name: HoverTips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &344427423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344427422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 625363449}
+  - {fileID: 239597305}
+  m_Father: {fileID: 1195700024}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &344427424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344427422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37b078ad4bd6834e8fe8d08ee39a977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipToShow: 
+  _hoverTipManager: {fileID: 625363450}
+  _starSysEnum: 0
+  _sysLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &354149416
 GameObject:
   m_ObjectHideFlags: 0
@@ -10996,6 +11070,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &625363448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625363449}
+  - component: {fileID: 625363450}
+  m_Layer: 6
+  m_Name: HoverTipManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &625363449
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625363448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 344427423}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &625363450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625363448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407c660a13c989241833ab723ba77318, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1187732007}
+  civ: {fileID: 1525271578}
+  tipText: {fileID: 0}
+  tipWindow: {fileID: 0}
+  starSystemData: {fileID: 0}
 --- !u!1 &634080230
 GameObject:
   m_ObjectHideFlags: 0
@@ -12464,87 +12592,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   _friendCivs:
-  - _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  - {fileID: 0}
   _enemyCivs:
-  - _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  - _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  - _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &697508100
 Transform:
   m_ObjectHideFlags: 0
@@ -15316,7 +15368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -940.49677, y: 514}
+  m_AnchoredPosition: {x: -940.4968, y: 514}
   m_SizeDelta: {x: -1959, y: -1132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798439248
@@ -15484,7 +15536,16 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 11.301402, y: 11.301402, z: 11.301402}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 878357881}
+  - {fileID: 116710139}
+  - {fileID: 202216274}
+  - {fileID: 1466929659}
+  - {fileID: 1559003241}
+  - {fileID: 1948203793}
+  - {fileID: 1274157416}
+  - {fileID: 1609537423}
+  - {fileID: 877483075}
   m_Father: {fileID: 1195700024}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16116,19 +16177,90 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877483074}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1195700024}
-  m_RootOrder: 3
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &878357880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878357881}
+  - component: {fileID: 878357882}
+  m_Layer: 6
+  m_Name: StarSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &878357881
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878357880}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &878357882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878357880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4ac8b101ec7c8459866fbd34d50546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starSystemData: {fileID: 0}
+  _sysInt: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _sysEnum: 0
+  _sysName: 
+  _starType: 0
+  _ownerCiv: {fileID: 0}
+  _originalOwnerName: 
+  _currentOwnerName: 
+  _ownerInsigniaSprite: {fileID: 0}
+  _ownerCivSprite: {fileID: 0}
+  _sysCredits: 0
+  _systemPopLimit: 0
+  _currentSysPop: 0
+  _currentSysFactories: 0
+  _homeColony: 0
+  _text: 
+  _systemSphere: {fileID: 0}
+  nameText: {fileID: 0}
+  artworkImage: {fileID: 0}
 --- !u!1 &889922729
 GameObject:
   m_ObjectHideFlags: 0
@@ -17779,6 +17911,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030132185}
   m_CullTransparentMesh: 1
+--- !u!1 &1032771005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032771006}
+  - component: {fileID: 1032771007}
+  m_Layer: 0
+  m_Name: Diplomatic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1032771006
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032771005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1525271577}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1032771007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032771005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c42c52c750dee647b8807a72a39da8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1059438667
 GameObject:
   m_ObjectHideFlags: 0
@@ -19774,174 +19950,14 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
-  _localPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _hostPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientZeroCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientOneCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientTwoCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientThreeCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFourCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFiveCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  _localPlayerCiv: {fileID: 0}
+  _hostPlayerCiv: {fileID: 0}
+  _clientZeroCiv: {fileID: 0}
+  _clientOneCiv: {fileID: 0}
+  _clientTwoCiv: {fileID: 0}
+  _clientThreeCiv: {fileID: 0}
+  _clientFourCiv: {fileID: 0}
+  _clientFiveCiv: {fileID: 0}
   _localPlayer: 0
   _hostPlayer: 0
   _clientZero: 0
@@ -19954,22 +19970,20 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 807470229}
-  fleet: {fileID: 0}
-  civData: {fileID: 0}
-  starSysData: {fileID: 0}
+  civ: {fileID: 0}
   solarSystemView: {fileID: 1538149116}
   ship: {fileID: 1670698544}
   cameraMultiTarget: {fileID: 807690122}
-  cameraManagerGalactica: {fileID: 0}
-  cameraGalactica: {fileID: 0}
+  cameraManagerGalactica: {fileID: 1160279386}
+  cameraGalactica: {fileID: 45544412}
   cameraTelescope: {fileID: 0}
   combat: {fileID: 697508099}
   instantiateCombatShips: {fileID: 670529373}
   actOnCombatOrder: {fileID: 330116306}
   zoomCamera: {fileID: 1788582308}
   Canvas: {fileID: 572942814}
-  CanvasGalactic: {fileID: 0}
-  galaxyBackground: {fileID: 0}
+  CanvasGalactic: {fileID: 1195700020}
+  galaxyBackground: {fileID: 160145269}
   resetViewGalacticButton: {fileID: 0}
   _SinglePlayer: {fileID: 2141310086}
   _MultiPlayer: {fileID: 553410909}
@@ -19979,7 +19993,7 @@ MonoBehaviour:
   _ExitQuit: {fileID: 1398289160}
   _creditsGamePanel: {fileID: 0}
   combatOrderSelection: {fileID: 932392496}
-  _timeManager: {fileID: 0}
+  _timeManager: {fileID: 37826011}
   shipScale: 2000
   animFriend1: {fileID: 677462504803926597}
   animFriend2: {fileID: 677462504759600023}
@@ -20391,7 +20405,9 @@ Transform:
   m_LocalPosition: {x: 0.056625366, y: 49.334896, z: -56.796936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 37826012}
+  - {fileID: 1525271577}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20490,8 +20506,7 @@ RectTransform:
   - {fileID: 807470228}
   - {fileID: 1160279385}
   - {fileID: 2037503728}
-  - {fileID: 877483075}
-  - {fileID: 116710139}
+  - {fileID: 344427423}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21855,6 +21870,57 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!1 &1274157415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274157416}
+  - component: {fileID: 1274157417}
+  m_Layer: 6
+  m_Name: TimeUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1274157416
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274157415}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1274157417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274157415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70e18baff254a0419319e315f2184a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveGalacticObjects: {fileID: 1609537424}
+  timeText: {fileID: 0}
 --- !u!1 &1280520448
 GameObject:
   m_ObjectHideFlags: 0
@@ -25581,6 +25647,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466316130}
   m_CullTransparentMesh: 1
+--- !u!1 &1466929658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1466929659}
+  - component: {fileID: 1466929660}
+  m_Layer: 0
+  m_Name: ClickSolarSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1466929659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466929658}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1466929660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466929658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02258aac5af2d304e9fbc8f23b68edd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solarSystemView: {fileID: 0}
+  hideSystemButton: {fileID: 0}
+  cameraManagerGalactica: {fileID: 1160279386}
+  hide: {fileID: 0}
+  view: {fileID: 0}
 --- !u!1 &1478507604
 GameObject:
   m_ObjectHideFlags: 0
@@ -26613,6 +26728,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521965796}
   m_CullTransparentMesh: 1
+--- !u!1 &1525271576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1525271577}
+  - component: {fileID: 1525271578}
+  m_Layer: 0
+  m_Name: Civilization
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1525271577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525271576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.056625366, y: -49.334896, z: 56.796936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1032771006}
+  m_Father: {fileID: 1187732008}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525271578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525271576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f27e90169c3caa41bd0a2017851792f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  civilizationData: {fileID: 0}
+  _civID: 0
+  _civEnum: 0
+  _shortNameText: {fileID: 0}
+  _longNameText: {fileID: 0}
+  _descriptionText: {fileID: 0}
+  _artworkCivImage: {fileID: 0}
+  _homeSystemEnum: 0
+  _weAreMajorCiv: 0
+  _civImage: {fileID: 0}
+  _insignia: {fileID: 0}
+  civFleetList: []
+  _sysTradeAllocation: []
+  _relationshipScores: []
+  _civTechPoints: 0
+  _civTechLevel: 0
+  _civTaxRate: 0
+  _cviGrowthRate: 0
+  _civCredits: 0
+  _contactList: []
+  _ownedSystemEnums: 
 --- !u!1 &1525765084
 GameObject:
   m_ObjectHideFlags: 0
@@ -27279,6 +27461,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543727072}
   m_CullTransparentMesh: 1
+--- !u!1 &1559003240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1559003241}
+  - component: {fileID: 1559003242}
+  m_Layer: 0
+  m_Name: GalaxyObjectClick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1559003241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559003240}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1559003242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559003240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bfc05ca3a50e4478acbd9fde507fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraManagerGalactica: {fileID: 1160279386}
 --- !u!1 &1562757533
 GameObject:
   m_ObjectHideFlags: 0
@@ -28169,6 +28396,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605516652}
   m_CullTransparentMesh: 1
+--- !u!1 &1609537422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1609537423}
+  - component: {fileID: 1609537424}
+  m_Layer: 6
+  m_Name: MoveGalacticObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1609537423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609537422}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.088484585, y: 0.088484585, z: 0.088484585}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1609537424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609537422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2da9007df6b984f99bb6e87be03317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  galaxyView: {fileID: 807470229}
+  target: {fileID: 0}
+  warpSpeed: 5
 --- !u!1 &1609889133
 GameObject:
   m_ObjectHideFlags: 0
@@ -29075,27 +29354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1187732007}
   combat: {fileID: 697508099}
-  _civilization:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  _civilization: {fileID: 0}
   _shipType: 0
   _techLevel: 0
   _shieldsMaxHealth: 0
@@ -29131,174 +29390,14 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
-  _localPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _hostPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientZeroCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientOneCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientTwoCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientThreeCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFourCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFiveCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  _localPlayerCiv: {fileID: 0}
+  _hostPlayerCiv: {fileID: 0}
+  _clientZeroCiv: {fileID: 0}
+  _clientOneCiv: {fileID: 0}
+  _clientTwoCiv: {fileID: 0}
+  _clientThreeCiv: {fileID: 0}
+  _clientFourCiv: {fileID: 0}
+  _clientFiveCiv: {fileID: 0}
   _localPlayer: 0
   _hostPlayer: 0
   _clientZero: 0
@@ -29311,9 +29410,7 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
-  fleet: {fileID: 0}
-  civData: {fileID: 0}
-  starSysData: {fileID: 0}
+  civ: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
@@ -32829,174 +32926,14 @@ MonoBehaviour:
   _weAreFriend: 0
   _warpingInIsOver: 0
   _isSinglePlayer: 0
-  _localPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _hostPlayerCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientZeroCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientOneCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientTwoCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientThreeCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFourCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
-  _clientFiveCiv:
-    _civID: 0
-    _civEnum: 0
-    _shortName: 
-    _longName: 
-    _homeSystemEnum: 0
-    _weAreMajorCiv: 0
-    _civImage: {fileID: 0}
-    _insignia: {fileID: 0}
-    civFleetList: []
-    _sysTradeAllocation: []
-    _relationshipScores: []
-    _civTechPoints: 0
-    _civTechLevel: 0
-    _civTaxRate: 0
-    _cviGrowthRate: 0
-    _civCredits: 0
-    _contactList: []
-    _ownedSystemEnums: 
-    _listCombatShips: []
-    _civInfoText: 
+  _localPlayerCiv: {fileID: 0}
+  _hostPlayerCiv: {fileID: 0}
+  _clientZeroCiv: {fileID: 0}
+  _clientOneCiv: {fileID: 0}
+  _clientTwoCiv: {fileID: 0}
+  _clientThreeCiv: {fileID: 0}
+  _clientFourCiv: {fileID: 0}
+  _clientFiveCiv: {fileID: 0}
   _localPlayer: 0
   _hostPlayer: 0
   _clientZero: 0
@@ -33009,9 +32946,7 @@ MonoBehaviour:
   _solarSystemID: 0
   _combatOrder: 0
   galaxyView: {fileID: 0}
-  fleet: {fileID: 0}
-  civData: {fileID: 0}
-  starSysData: {fileID: 0}
+  civ: {fileID: 0}
   solarSystemView: {fileID: 0}
   ship: {fileID: 0}
   cameraMultiTarget: {fileID: 0}
@@ -35339,6 +35274,53 @@ MonoBehaviour:
   Borg: {fileID: 1943177254}
   CivilizationGroup: {fileID: 1943903696}
   Canvas: {fileID: 572942814}
+--- !u!1 &1948203792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948203793}
+  - component: {fileID: 1948203794}
+  m_Layer: 0
+  m_Name: HideSystemButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948203793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948203792}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 807470228}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1948203794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948203792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ba0ffa80bf99c47b58c6fb822e73e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelFleetManager: {fileID: 0}
+  canvasGalactica: {fileID: 1195700023}
+  weAreHidding: 0
 --- !u!1 &1950418314
 GameObject:
   m_ObjectHideFlags: 0
