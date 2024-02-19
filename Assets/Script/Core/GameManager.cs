@@ -1701,7 +1701,7 @@ namespace Assets.Core
                     //starSysData.LoadSystemData(_galaxyStarCount);
                     civ.LoadDictionaryOfCivs(this._galaxyStarCount);
                     civ.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
-                    civ.UpdateCivContactListOnStartCivSelection(_techLevel);
+                    civ.UpdateCivContactListOnStartCivSelection(_techLevel);//??
                     LoadGalaxyShips();
                     switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
                     {

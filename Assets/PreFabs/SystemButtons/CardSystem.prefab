@@ -148,6 +148,8 @@ GameObject:
   - component: {fileID: 1408337172147834671}
   - component: {fileID: 1408337172147834670}
   - component: {fileID: 1408337172147834665}
+  - component: {fileID: 6995117356525014774}
+  - component: {fileID: -3097673675124847078}
   m_Layer: 30
   m_Name: CardSystem
   m_TagString: Untagged
@@ -286,6 +288,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd9330479ce7844995d6188ebcce402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6995117356525014774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408337172147834668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471744d69a3b2fb48920e59500255c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  civOwnerImage: {fileID: 0}
+  civInsignia: {fileID: 0}
+  currentCivOwnerName: 
+  starSystemData: {fileID: 0}
+  _sysInt: 0
+  _x: 0
+  _y: 0
+  _z: 0
+  _sysEnum: 0
+  _sysName: 
+  _starType: 0
+  _ownerCiv: {fileID: 0}
+  _originalOwnerName: 
+  _currentOwnerName: 
+  _ownerInsigniaSprite: {fileID: 0}
+  _ownerCivSprite: {fileID: 0}
+  _sysCredits: 0
+  _systemPopLimit: 0
+  _currentSysPop: 0
+  _currentSysFactories: 0
+  _homeColony: 0
+  _text: 
+  _systemSphere: {fileID: 0}
+  nameText: {fileID: 0}
+  artworkImage: {fileID: 0}
+--- !u!114 &-3097673675124847078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408337172147834668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80714970d240b2a4b86be9194fdc5583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starSystemData: {fileID: 0}
 --- !u!1 &1408337172674621564
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,3 +700,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4125db910ed07d408a32cf4b3290d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  solarSystemView: {fileID: 0}

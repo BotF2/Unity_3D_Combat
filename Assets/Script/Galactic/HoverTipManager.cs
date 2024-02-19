@@ -14,7 +14,7 @@ namespace GalaxyMap
     public class HoverTipManager : MonoBehaviour
     {
         public GameManager gameManager;
-        public Civilization civ;
+        public CivData civ;
         public TextMeshProUGUI tipText;
         public RectTransform tipWindow;
 

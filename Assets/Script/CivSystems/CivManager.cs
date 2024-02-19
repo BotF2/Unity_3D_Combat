@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Assets.Core;
-using GalaxyMap;
 using System.IO;
 using DG.Tweening.Core.Easing;
 using UnityEngine.UI;
@@ -20,11 +19,10 @@ namespace Assets.Core
         public GameObject civPrefab;
         public List<CivController> civControllers;
         public CivSO civSOFed;
-        public GameManager gameManager;
-        public Dictionary<StarSystemEnum, StarSystemSO> starSysDataDictionary = new Dictionary<StarSystemEnum, StarSystemSO>();
-        public Dictionary<int, FleetController> fleetsDictionary = new Dictionary<int, FleetController>();
+        //public GameManager gameManager;
+        public Dictionary<int, CivController> fleetsDictionary = new Dictionary<int, CivController>();
         public static Dictionary<CivEnum, CivData> civDataDictionary = new Dictionary<CivEnum, CivData>();
-        private Canvas _canvasGalactic;
+        //private Canvas _canvasGalactic;
         public int _civID;
         public CivEnum _civEnum;
         public Text _shortNameText;
@@ -103,7 +101,7 @@ namespace Assets.Core
             GameObject tempObject = GameObject.Find("CanvasGalactic");
             if (tempObject != null)
             {
-                _canvasGalactic = tempObject.GetComponent<Canvas>();
+                //_canvasGalactic = tempObject.GetComponent<Canvas>();
             }
             #region Read Civilization Data.txt 
             char separator = ',';

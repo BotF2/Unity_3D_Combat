@@ -2,7 +2,6 @@
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using Assets.Core;
 using UnityEngine.XR;
 using JetBrains.Annotations;
 using UnityEngine.UI;

@@ -16,6 +16,7 @@ namespace GalaxyMap
     public class StarSystemManager : MonoBehaviour
     {
         #region Fields
+        public GameObject starSystemPrefab;
         public StarSystemSO starSystemData;
         public int _sysInt;
         public int _x;//done currentPosition vetor and tranform move in MonoBehavior inheriting StarSystemSO attached to a GO?
@@ -52,13 +53,13 @@ namespace GalaxyMap
 
         private void Start()
         {
-            if (starSystemData == null)
-            {
-                nameText.text = starSystemData.name;
-                //descriptionText.text = starSystemData.description;
-                artworkImage.sprite = starSystemData.starSprit;
-                starSystemData.location = transform.position;
-            }
+            //if (starSystemData == null)
+            //{
+            //    //nameText.text = starSystemData.name;
+            //    //descriptionText.text = starSystemData.description;
+            //    artworkImage.sprite = starSystemData.starSprit;
+            //    starSystemData.location = transform.position;
+            //}
         }
         public static StarSystemSO Create(int systemInt)
         {
@@ -153,9 +154,9 @@ namespace GalaxyMap
             }
         }
 
-        private void OnDisable()
-        {
-            starSystemData.ResetData();
-        }
+        //private void OnDisable()
+        //{
+        //    starSystemData.ResetData();
+        //}
     }
 }

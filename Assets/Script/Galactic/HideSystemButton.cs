@@ -19,7 +19,7 @@ namespace GalaxyMap
         private void Awake()
         {
             var cameraManagerGalactic = canvasGalactica.transform.Find("CameraManagerGalactica").gameObject;
-            panelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
+            ////panelFleetManager = cameraManagerGalactic.transform.Find("PanelFleetManager").gameObject;
         }
         private void Update()
         {
