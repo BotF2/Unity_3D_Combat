@@ -145,10 +145,10 @@ namespace Assets.Core
             //    _longNameText.text = CivData._longNameString;
             //    _descriptionText.text = CivData._descriptionString;
             //    _artworkCivImage.sprite = CivData._civInsign;
-            //    _homeSystemEnum = CivData._homeSystemEnum;
+            //    _homeSysEnum = CivData._homeSysEnum;
             //    starSysDataDictionary = CivData.starSystemsDictionary;
             //    fleetsDictionary = CivData.fleetsDictionary;
-            //    _homeSystemEnum = CivData._homeSystemEnum;
+            //    _homeSysEnum = CivData._homeSysEnum;
             //}
         }
         void Update()
@@ -157,7 +157,7 @@ namespace Assets.Core
             //{
             //    starSysDataDictionary = CivData.starSystemsDictionary;
             //    fleetsDictionary = CivData.fleetsDictionary;
-            //    _homeSystemEnum = CivData._homeSystemEnum;
+            //    _homeSysEnum = CivData._homeSysEnum;
             //}
         }
         public static CivData Instance { get; private set; } // Do we still need this???
@@ -186,7 +186,7 @@ namespace Assets.Core
             //go.name = newCivData.name + "PlaneForInsignia";
             //var rend = go.GetComponent<Renderer>();
             //rend.material.mainTexture = Resources.Load(pathInsignia) as Texture;
-            //newCivData._civInsign = Sprite.Create((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            //newCivData._civInsign = Sprite.InitializStarSystem((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
             //go.gameObject.SetActive(false);
 
             //GetImage(systemInt, 7, "Civilizations/", newCivData); // 7 is Civ
@@ -195,18 +195,18 @@ namespace Assets.Core
             //GameObject buildImage = GameObject.CreatePrimitive(PrimitiveType.Plane);
             //var rendTwo = buildImage.GetComponent<Renderer>();
             //rendTwo.material.mainTexture = Resources.Load(pathCiv) as Texture;
-            //newCivData._civImage = Sprite.Create((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            //newCivData._civImage = Sprite.InitializStarSystem((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
             //buildImage.gameObject.SetActive(false);
             //// newCivData._civPopulation = int.Parse(sysStrings[9]);
             //newCivData._civCredits = int.Parse(sysStrings[10]);
             //newCivData._civTechPoints = int.Parse(sysStrings[11]);
             ////newCivData._civTechLevel = TechLevel.EARLY; ToDo: set this by enough tech points to get new ship images
-            //newCivData._homeSystemEnum = (StarSystemEnum)systemInt;
+            //newCivData._homeSysEnum = (StarSystemEnum)systemInt;
             //// newCivData._homeSystem._ownerCiv = newCivData;
             //List<CivData> civsWeKnow = new List<CivData>() { newCivData }; // instantiate list with knowing our self
             //newCivData._contactList = civsWeKnow;
-            //List<StarSystemEnum> ownedSystemStarterList = new List<StarSystemEnum>() { newCivData._homeSystemEnum };
-            //newCivData._ownedSystemEnums = ownedSystemStarterList;
+            //List<StarSystemEnum> ownedSystemStarterList = new List<StarSystemEnum>() { newCivData._homeSysEnum };
+            //newCivData._ownedSysEnums = ownedSystemStarterList;
             ////newCivData._relationshipDictionary = new Dictionary<int, int>();
             //civsInGame.Add(newCivData);
             //for (int i = 0; i < systemInt; i++)
@@ -246,7 +246,7 @@ namespace Assets.Core
             for (int i = 0; i < ints.Length; i++)
             {
                 //CivData aCiv = Civilization.CreateCivs(ints[i]);
-                //StarSystemManager.starSysDataDictionary.LoadSystemOwner(aCiv, aCiv._homeSystemEnum); // StarSystemSO exists now so go back to set Civ for owner of system
+                //StarSystemManager.starSysDataDictionary.LoadSystemOwner(aCiv, aCiv._homeSysEnum); // StarSystemSO exists now so go back to set Civ for owner of system
                 //CivilizationDictionary.Add((CivEnum)aCiv._civID, aCiv);
                 //List<float> ourRelationScores = new List<float>();
                 //for (int j = 0; j < ints.Length; j++)

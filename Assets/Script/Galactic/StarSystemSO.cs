@@ -7,40 +7,35 @@ namespace GalaxyMap
     [CreateAssetMenu(menuName = "Galaxy/StarSystemSO")]
     public class StarSystemSO : ScriptableObject // ToDo move StarSystemSO in MonoBehavior to this
     {
-        public int _sysInt;
-        public int _x;//done currentPosition vetor and tranform move in MonoBehavior inheriting StarSystemSO attached to a GO?
-        public int _y;
-        public int _z;
-        public string sysName;
-        public Vector3 location;
-        public StarSystemEnum _starSystemEnum;
-        public CivEnum starSystemFirstOwner;
-        public CivEnum starSystemCurrentOwner;
-        public StarType starSystemType;
-        //public Civilization civOwnerEnum;
-        public float _sysCredits = 10f;
-        public int _systemPopLimit;
-        public int _currentSysPop;
-        public string _originalOwnerName;
-        public string _currentOwnerName;
-
-        [HideInInspector]
-        public Sprite starSprit;
-        public Sprite _civOwnerSprite; // asigned in inspector just like SolarSystemView
-        public Sprite _ownerInsignia;
-        public float _currentSysFactories;
-        private string originalCivOwnerName;
-        public string currentCivOwnerName;
-        public bool _homeColony;
-        public GameObject myObject;
-        public string _text;
-        public static Dictionary<StarSystemEnum, StarSystemSO> StarSystemDictionary =
+        [SerializeField] int _sysInt;
+        [SerializeField] int _x;//done currentPosition vetor and tranform move in MonoBehavior inheriting StarSystemSO attached to a GO?
+        [SerializeField] int _y;
+        [SerializeField] int _z;
+        [SerializeField] string sysName;
+        [SerializeField] StarSystemEnum _starSysEnum;
+        [SerializeField] Vector3 location;
+        [SerializeField] CivEnum originalOwner;
+        [HideInInspector] public CivEnum currentOwner;
+        [HideInInspector] public Civilization currentCivOwner;
+        [HideInInspector] public string currentCivOwnerName;
+        [HideInInspector] public Sprite _civOwnerSprite;
+        [HideInInspector] StarType starType;
+        [SerializeField] Sprite starSprit;
+        [HideInInspector] public float _sysCredits = 10f;
+        [HideInInspector] public int _systemPopLimit;
+        [HideInInspector] int _currentSysPop;      
+        [HideInInspector] public Sprite _ownerInsignia;
+        [HideInInspector] public float _currentSysFactories;
+        [HideInInspector] public bool _homeColony;
+        [HideInInspector] public string _description;
+        [HideInInspector] public static Dictionary<StarSystemEnum, StarSystemSO> StarSysDictionary =
             new Dictionary<StarSystemEnum, StarSystemSO>();
+        [HideInInspector] public GameObject myObject;
 
 
         //public StarSystemSO(int sysID)
         //{
-        //    StarSystemSO theSystemData = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
+        //    StarSystemSO theSystemData = StarSystemSO.StarSysDictionary[(StarSystemEnum)sysID];
         //    _civOwnerSprite = theSystemData._ownerCivSprite;
         //    civInsignia = theSystemData._ownerInsigniaSprite;
         //    currentCivOwnerName = theSystemData._currentOwnerName;
@@ -48,7 +43,7 @@ namespace GalaxyMap
 
         //public void UpdateActiveSystemData(int sysID) // update StarSystemSO so correct image and name shows in viewed system
         //{
-        //    StarSystemManager theSystemData = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
+        //    StarSystemManager theSystemData = StarSystemSO.StarSysDictionary[(StarSystemEnum)sysID];
         //    this.civOwnerImage.sprite = theSystemData._ownerCivSprite;
         //    this.civInsignia.sprite = theSystemData._ownerInsigniaSprite;
         //    this.currentCivOwnerName = theSystemData._currentOwnerName;
@@ -101,23 +96,13 @@ namespace GalaxyMap
         //        this.currentCivOwnerName = sysData._currentOwnerName;
         //        this.originalCivOwnerName = sysData._originalOwnerName;
         //        this.systemName = sysData._sysName;
-        //        StarSystemDictionary.Add(sysData._sysEnum, sysData);
+        //        StarSysDictionary.Add(sysData._sysEnum, sysData);
         //    }
         //}
-        public void AddFleet(CivData civData, FleetController fleetData)
-        {
-            //if (!civData.fleetsDictionary.ContainsKey(fleetData.fleetNum))
-            //    civData.fleetsDictionary.Add(fleetData.fleetNum,fleetData);
-            //else do something
-        }
-        public void RemoveFleet(CivData civData, FleetController fleetData)
-        {
-            //if (civData.fleetsDictionary.ContainsKey(fleetData.fleetNum))
-            //    civData.fleetsDictionary.Remove(fleetData.fleetNum);
-        }
+
         public void LoadSystemOwner(CivData civData, StarSystemSO sysData) // Now CivData can provide newCivDataOnwer data for system
         { // Do we need this anymore?
-            //StarSystemSO theSystemData = StarSystemManager.StarSystemDictionary[sysData];
+            //StarSystemSO theSystemData = StarSystemManager.StarSysDictionary[sysData];
             //theSystemData._ownerCiv = civData;
             //theSystemData._currentOwnerName = civData._shortNameText.ToString();
             //theSystemData._ownerInsigniaSprite = civData._insignia; // Resources.Load<Sprite>("Insignia/" + sysData._sysName.ToUpper());
@@ -127,10 +112,10 @@ namespace GalaxyMap
             //civInsignia.sprite = theSystemData._ownerInsigniaSprite;
             //originalCivOwnerName = theSystemData._originalOwnerName;
         }
-        //public void UpdateSystemOwner(StarSystemSO theSystemData, CivData newCivDataOnwer) // change newCivDataOnwer owner in StarSystemDictionary
+        //public void UpdateSystemOwner(StarSystemSO theSystemData, CivData newCivDataOnwer) // change newCivDataOnwer owner in StarSysDictionary
         //{
         //    // code here for getting sprite by newCivDataOnwer
-        //    //StarSystemSO theSystemData = newCivDataOnwer.starSysDataDictionary[sysData._starSystemEnum];
+        //    //StarSystemSO theSystemData = newCivDataOnwer.starSysDataDictionary[sysData._starSysEnum];
       
         //    theSystemData.starSystemCurrentOwner = newCivDataOnwer._civEnum;
         //    theSystemData._civOwnerSprite = newCivDataOnwer._civInsign; // Resources.Load<Sprite>("Insignia/" + sysData._sysName.ToUpper());
@@ -145,24 +130,22 @@ namespace GalaxyMap
         //}
         //public StarSystemSO GetSystem(StarSystemEnum sysEnum)
         //{
-        //    if (StarSystemDictionary.ContainsKey(sysEnum))
-        //        return StarSystemDictionary[sysEnum];
+        //    if (StarSysDictionary.ContainsKey(sysEnum))
+        //        return StarSysDictionary[sysEnum];
         //    else return null;
         //}
         //public Sprite GetSystemOwnerSprite(StarSystemEnum sysEnum)
         //{
-        //    return StarSystemDictionary[sysEnum]._ownerInsignia;
+        //    return StarSysDictionary[sysEnum]._ownerInsignia;
         //}
         //public string GetSystemOwenerName(StarSystemEnum sysEnum)
         //{
-        //    return StarSystemDictionary[sysEnum]._originalOwnerName;
+        //    return StarSysDictionary[sysEnum]._originalOwnerName;
         //}
         public void ResetData()
         {
             myObject = null;
-            location = Vector3.zero;
         }
-
     }
 }
 

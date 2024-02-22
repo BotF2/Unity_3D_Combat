@@ -20,7 +20,7 @@ namespace Assets.Core
         public string _descriptionString; // not in Civilization.txt
         public Sprite _civInsign;
         public Sprite _civImage;
-        public StarSystemEnum _homeSystemEnum;
+        public StarSystemEnum _homeSysEnum;
         public bool _weAreMajorCiv;
         public float _civTechPoints;
         public TechLevel _civTechLevel;
@@ -30,10 +30,10 @@ namespace Assets.Core
         public float _civCredits;
         public float _sysTradeAllocation;
         public List<CivData> _contactList; //**** who we have met
-        public List<StarSystemEnum> _ownedSystemEnums;
+        public List<StarSystemEnum> _ownedSysEnums;
         //private Canvas _canvasGalactic;
         //public static List<Civilization> civsInGame = new List<Civilization>(); // should this be in GameManager
-        //public StarSystemSO starSystemData;
+        //public StarSystemSO starSysData;
         [SerializeField]
         public static Canvas canvasGalactic;
         public PanelCommand panelCommand;
@@ -103,18 +103,18 @@ namespace Assets.Core
                 var civIndex = gameManager._galaxyStarCount[i];
                 CivData civ = CivilizationDictionary[(CivEnum)civIndex];
                 CalculateCivSysAllocation(civ);
-                if (civ._ownedSystemEnums.Count > 0)
+                if (civ._ownedSysEnums.Count > 0)
                 {
-                    for (int j= 0; j< civ._ownedSystemEnums.Count; j++)
+                    for (int j= 0; j< civ._ownedSysEnums.Count; j++)
                     {
-                        StarSystemEnum starSysEnum = civ._ownedSystemEnums[j];
-                        StarSystemSO starSysData = StarSystemSO.StarSystemDictionary[starSysEnum];
+                        StarSystemEnum starSysEnum = civ._ownedSysEnums[j];
+                        StarSystemSO starSysData = StarSystemSO.StarSysDictionary[starSysEnum];
                         float sysPopLimit = (starSysData._systemPopLimit + civ._civTechPoints); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
                         if (starSysData._currentSysPop < sysPopLimit)
                         {
                             starSysData._currentSysPop += starSysData._currentSysPop * (int)techPopGrowthRate;
 
-                            if (civ._ownedSystemEnums.Count > 1) // profit from trade 
+                            if (civ._ownedSysEnums.Count > 1) // profit from trade 
                             {
                                 civ._civCredits += 5f;
                             }
@@ -131,9 +131,9 @@ namespace Assets.Core
                         starSysData._sysCredits -= starSysData._sysCredits * civ._civTaxRate;
                         DoSysConsumption(starSysData);
                     }
-                    for (int k = 0; k < civ._ownedSystemEnums.Count; k++) // apply trade income from civ credits
+                    for (int k = 0; k < civ._ownedSysEnums.Count; k++) // apply trade income from civ credits
                     {
-                        //StarSystemSO starSys = StarSystemSO.StarSystemDictionary[(StarSystemEnum)k];
+                        //StarSystemSO starSys = StarSystemSO.StarSysDictionary[(StarSystemEnum)k];
                         //starSys._sysCredits += civ._civCredits * (civ._sysTradeAllocation[k] / 100f);
                     }
                 }
@@ -153,8 +153,8 @@ namespace Assets.Core
         {
             // ToDo: get slider imput here for trade credit allocation
             //civ._sysTradeAllocation.Clear();
-            //float allocation = 100f/ civ._ownedSystemEnums.Count;
-            //for (int i = 0; i < civ._ownedSystemEnums.Count; i++)
+            //float allocation = 100f/ civ._ownedSysEnums.Count;
+            //for (int i = 0; i < civ._ownedSysEnums.Count; i++)
             //{
             //    civ._sysTradeAllocation.Add(allocation);              
             //}

@@ -1698,7 +1698,7 @@ namespace Assets.Core
                     //ToDo; SetGalaxyMapSize();                   
                     //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
-                    //starSysData.LoadSystemData(_galaxyStarCount);
+                    starSysData.LoadSystemData(_galaxyStarCount);
                     civ.LoadDictionaryOfCivs(this._galaxyStarCount);
                     civ.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
                     civ.UpdateCivContactListOnStartCivSelection(_techLevel);//??
