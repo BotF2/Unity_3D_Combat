@@ -15,8 +15,12 @@ namespace GalaxyMap
     {
         public Image civOwnerImage;
         public Image civInsignia;
+        public GameObject thisGameObject;
+        // List of Industrial facilities, list shipyards ToDo
+        public Vector3 position;
         private string originalCivOwnerName;
         public string currentCivOwnerName;
+        public CivEnum currentCivOwnerEnum;
         private string sysDataName;
         public StarSystemSO starSysData;
         public int _sysInt;
@@ -33,7 +37,7 @@ namespace GalaxyMap
         public Sprite _ownerCivSprite;
         public float _sysCredits;
         //public float _sysTaxRate; Set it at civ level
-        public float _systemPopLimit;
+        public float _sysPopLimit;
         public float _currentSysPop;
         //public float _systemFactoryLimit; Do it all with pop limit??
         public float _currentSysFactories;
@@ -83,7 +87,7 @@ namespace GalaxyMap
         //        daSystem._starType = star;
         //    //daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
         //    daSystem._sysCredits = 10f;
-        //    daSystem._systemPopLimit = int.Parse(sysStrings[33]);
+        //    daSystem._maxSysPop = int.Parse(sysStrings[33]);
         //    daSystem._currentSysPop = int.Parse(sysStrings[6]);
         //    daSystem._originalOwnerName = sysStrings[5];
         //    daSystem._currentOwnerName = sysStrings[5];

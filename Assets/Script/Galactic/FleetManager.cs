@@ -11,10 +11,10 @@ namespace GalaxyMap
 {
     public class FleetManager: MonoBehaviour
     {
+        public FleetController fleetController;
         public GameObject fleetPrefab;
         public List<FleetController> fleetControllers;
         public FleetSO fleetSO;
-        public FleetController fleetController;
         public Dictionary<int,int> civFleetCounter = new Dictionary<int, int>(); // key int for civ enum, value is next fleet number
        // public static Dictionary<CivEnum, List<FleetController>> fleetDataDictionary = new Dictionary<CivEnum, List<FleetController>>();
 
@@ -29,15 +29,16 @@ namespace GalaxyMap
         {
             if (fleetController != null)
             {
-                fleetSO.myObject = gameObject;
-                fleetController.fleetData.currentPosition = transform.position;
+                fleetSO.myObject = fleetPrefab;
+               // fleetController.fleetData.currentPosition = transform.position; ???????
             }
         }
         void Update()
         {
             if (fleetController != null)
             {
-                fleetSO.currentPosition = transform.position;
+                // Does this belong in Controller, not managaer?
+                //fleetSO.currentPosition = transform.position;
             }
         }
         private void OnDisable()
@@ -50,7 +51,7 @@ namespace GalaxyMap
         {
             int nextNumber;
             GameObject fleetGO = Instantiate(fleetPrefab);
-            InitizeFleetController(fleetGO.GetComponent<FleetController>(), fleetSO);
+            InitializFleetController(fleetGO.GetComponent<FleetController>(), fleetSO);
             if(civFleetCounter.TryGetValue((int)civEnum, out nextNumber))
             {
                 fleetController.fleetData.fleetNum = nextNumber;
@@ -72,7 +73,7 @@ namespace GalaxyMap
 
             return fleetController;
         }
-        public void InitizeFleetController(FleetController fleetController, FleetSO fleetSO)
+        public void InitializFleetController(FleetController fleetController, FleetSO fleetSO)
         { 
             fleetController.fleetData.name = fleetSO.name;
         }
@@ -87,7 +88,7 @@ namespace GalaxyMap
             //}
 
         }
-        public void RemoveShipsToFleet(FleetController fleetContoler, List<Ship> removeList)
+        public void RemoveShipsFromFleet(FleetController fleetContoler, List<Ship> removeList)
         {
 
             // ToDo Make new Fleet out of the removed list and or destroy fleet with empty list

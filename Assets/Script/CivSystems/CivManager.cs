@@ -13,8 +13,6 @@ namespace Assets.Core
     [System.Serializable]
     public class CivManager : MonoBehaviour
     {
-        #region Fields
-
         //ToDo: add 2 Traits for a civ
         public GameObject civPrefab;
         public List<CivController> civControllers;
@@ -86,8 +84,6 @@ namespace Assets.Core
         //public readonly string newline = Environment.NewLine;
         //public readonly IPlayer _localPlayer;
         //public readonly AppContext _appContext
-
-        #endregion Fields
 
         public void Awake()
         {
@@ -187,6 +183,7 @@ namespace Assets.Core
             //var rend = go.GetComponent<Renderer>();
             //rend.material.mainTexture = Resources.Load(pathInsignia) as Texture;
             //newCivData._civInsign = Sprite.InitializStarSystem((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            //newCivData._civInsign = Sprite.InitializSystem((Texture2D)rend.material.mainTexture, new Rect(0, 0, rend.material.mainTexture.width, rend.material.mainTexture.height), new Vector2(0.5f, 0.5f));
             //go.gameObject.SetActive(false);
 
             //GetImage(systemInt, 7, "Civilizations/", newCivData); // 7 is Civ
@@ -196,6 +193,7 @@ namespace Assets.Core
             //var rendTwo = buildImage.GetComponent<Renderer>();
             //rendTwo.material.mainTexture = Resources.Load(pathCiv) as Texture;
             //newCivData._civImage = Sprite.InitializStarSystem((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
+            //newCivData._civImage = Sprite.InitializSystem((Texture2D)rendTwo.material.mainTexture, new Rect(0, 0, rendTwo.material.mainTexture.width, rendTwo.material.mainTexture.height), new Vector2(0.5f, 0.5f));
             //buildImage.gameObject.SetActive(false);
             //// newCivData._civPopulation = int.Parse(sysStrings[9]);
             //newCivData._civCredits = int.Parse(sysStrings[10]);

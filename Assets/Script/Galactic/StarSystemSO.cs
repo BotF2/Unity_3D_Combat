@@ -12,30 +12,32 @@ namespace GalaxyMap
         [SerializeField] int _y;
         [SerializeField] int _z;
         [SerializeField] string sysName;
-        [SerializeField] StarSystemEnum _starSysEnum;
-        [SerializeField] Vector3 location;
-        [SerializeField] CivEnum originalOwner;
-        [HideInInspector] public CivEnum currentOwner;
-        [HideInInspector] public Civilization currentCivOwner;
-        [HideInInspector] public string currentCivOwnerName;
-        [HideInInspector] public Sprite _civOwnerSprite;
-        [HideInInspector] StarType starType;
+        [HideInInspector] public Vector3 position;
+        [SerializeField] StarSystemEnum _starSystemEnum;
+        [SerializeField] CivEnum starSystemFirstOwner;
+        [SerializeField] CivEnum starSystemCurrentOwner;
+        [SerializeField] StarType starSystemType;
+        [SerializeField] float _sysCredits = 10f;
+        [SerializeField] int _maxSysPop;
+        [SerializeField] int _currentSysPop;
+        [HideInInspector]public string _originalOwnerName;
+        [SerializeField] string _currentOwnerName;
         [SerializeField] Sprite starSprit;
-        [HideInInspector] public float _sysCredits = 10f;
-        [HideInInspector] public int _systemPopLimit;
-        [HideInInspector] int _currentSysPop;      
-        [HideInInspector] public Sprite _ownerInsignia;
-        [HideInInspector] public float _currentSysFactories;
-        [HideInInspector] public bool _homeColony;
-        [HideInInspector] public string _description;
-        [HideInInspector] public static Dictionary<StarSystemEnum, StarSystemSO> StarSysDictionary =
-            new Dictionary<StarSystemEnum, StarSystemSO>();
-        [HideInInspector] public GameObject myObject;
+        [SerializeField] Sprite _civOwnerSprite; // asigned in inspector just like SolarSystemView
+        [SerializeField] Sprite _ownerInsignia;
+        [SerializeField] float _currentSysFactories;
+        [HideInInspector] string originalCivOwnerName;
+        [SerializeField] public string currentCivOwnerName;
+        [SerializeField] bool _homeColony;
+        [HideInInspector]public GameObject myObject;
+        [SerializeField] string _text;
+        //public static Dictionary<StarSystemEnum, StarSystemSO> StarSystemDictionary =
+        //    new Dictionary<StarSystemEnum, StarSystemSO>();
 
 
         //public StarSystemSO(int sysID)
         //{
-        //    StarSystemSO theSystemData = StarSystemSO.StarSysDictionary[(StarSystemEnum)sysID];
+        //    StarSystemSO theSystemData = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
         //    _civOwnerSprite = theSystemData._ownerCivSprite;
         //    civInsignia = theSystemData._ownerInsigniaSprite;
         //    currentCivOwnerName = theSystemData._currentOwnerName;
@@ -43,7 +45,7 @@ namespace GalaxyMap
 
         //public void UpdateActiveSystemData(int sysID) // update StarSystemSO so correct image and name shows in viewed system
         //{
-        //    StarSystemManager theSystemData = StarSystemSO.StarSysDictionary[(StarSystemEnum)sysID];
+        //    StarSystemManager theSystemData = StarSystemSO.StarSystemDictionary[(StarSystemEnum)sysID];
         //    this.civOwnerImage.sprite = theSystemData._ownerCivSprite;
         //    this.civInsignia.sprite = theSystemData._ownerInsigniaSprite;
         //    this.currentCivOwnerName = theSystemData._currentOwnerName;
@@ -66,7 +68,7 @@ namespace GalaxyMap
         //    //    daSystem._starType = star;
         //    //daSystem._ownerCiv = CivData.CivilizationDictionary[(CivEnum)systemInt];
         //    daSystem._sysCredits = 10f;
-        //    daSystem._systemPopLimit = int.Parse(sysStrings[33]);
+        //    daSystem._maxSysPop = int.Parse(sysStrings[33]);
         //    daSystem._currentSysPop = int.Parse(sysStrings[6]);
         //    daSystem._originalOwnerName = sysStrings[5];
         //    daSystem._currentOwnerName = sysStrings[5];
@@ -96,28 +98,38 @@ namespace GalaxyMap
         //        this.currentCivOwnerName = sysData._currentOwnerName;
         //        this.originalCivOwnerName = sysData._originalOwnerName;
         //        this.systemName = sysData._sysName;
-        //        StarSysDictionary.Add(sysData._sysEnum, sysData);
+        //        StarSystemDictionary.Add(sysData._sysEnum, sysData);
         //    }
         //}
-
-        public void LoadSystemOwner(CivData civData, StarSystemSO sysData) // Now CivData can provide newCivDataOnwer data for system
-        { // Do we need this anymore?
-            //StarSystemSO theSystemData = StarSystemManager.StarSysDictionary[sysData];
-            //theSystemData._ownerCiv = civData;
-            //theSystemData._currentOwnerName = civData._shortNameText.ToString();
-            //theSystemData._ownerInsigniaSprite = civData._insignia; // Resources.Load<Sprite>("Insignia/" + sysData._sysName.ToUpper());
-            //theSystemData._ownerCivSprite = civData._civImage; //Resources.Load<Sprite>("Civilizations/" + sysData._sysName.ToLower());
-            //theSystemData._homeColony = true;
-            //civOwnerImage.sprite = theSystemData._ownerCivSprite;
-            //civInsignia.sprite = theSystemData._ownerInsigniaSprite;
-            //originalCivOwnerName = theSystemData._originalOwnerName;
-        }
-        //public void UpdateSystemOwner(StarSystemSO theSystemData, CivData newCivDataOnwer) // change newCivDataOnwer owner in StarSysDictionary
+        //public void AddFleet(CivData civData, FleetController fleetData)
+        //{
+        //    //if (!civData.fleetsDictionary.ContainsKey(fleetData.fleetNum))
+        //    //    civData.fleetsDictionary.Add(fleetData.fleetNum,fleetData);
+        //    //else do something
+        //}
+        //public void RemoveFleet(CivData civData, FleetController fleetData)
+        //{
+        //    //if (civData.fleetsDictionary.ContainsKey(fleetData.fleetNum))
+        //    //    civData.fleetsDictionary.Remove(fleetData.fleetNum);
+        //}
+        //public void LoadSystemOwner(CivData civData, StarSystemSO sysData) // Now CivData can provide newCivDataOnwer data for system
+        //{ // Do we need this anymore?
+        //    //StarSystemSO theSystemData = StarSystemManager.StarSystemDictionary[sysData];
+        //    //theSystemData._ownerCiv = civData;
+        //    //theSystemData._currentOwnerName = civData._shortNameText.ToString();
+        //    //theSystemData._ownerInsigniaSprite = civData._insignia; // Resources.Load<Sprite>("Insignia/" + sysData._sysName.ToUpper());
+        //    //theSystemData._ownerCivSprite = civData._civImage; //Resources.Load<Sprite>("Civilizations/" + sysData._sysName.ToLower());
+        //    //theSystemData._homeColony = true;
+        //    //civOwnerImage.sprite = theSystemData._ownerCivSprite;
+        //    //civInsignia.sprite = theSystemData._ownerInsigniaSprite;
+        //    //originalCivOwnerName = theSystemData._originalOwnerName;
+        //}
+        //public void UpdateSystemOwner(StarSystemSO theSystemData, CivData newCivDataOnwer) // change newCivDataOnwer owner in StarSystemDictionary
         //{
         //    // code here for getting sprite by newCivDataOnwer
-        //    //StarSystemSO theSystemData = newCivDataOnwer.starSysDataDictionary[sysData._starSysEnum];
+        //    //StarSystemSO theSystemData = newCivDataOnwer.starSysDataDictionary[sysData._starSystemEnum];
       
-        //    theSystemData.starSystemCurrentOwner = newCivDataOnwer._civEnum;
+        //    theSystemData.starSysCurrentOwner = newCivDataOnwer._civEnum;
         //    theSystemData._civOwnerSprite = newCivDataOnwer._civInsign; // Resources.Load<Sprite>("Insignia/" + sysData._sysName.ToUpper());
         //    theSystemData._ownerInsignia = newCivDataOnwer._civImage; //Resources.Load<Sprite>("Civilizations/" + sysData._sysName.ToLower());
         //    if (newCivDataOnwer._civEnum.ToString() == theSystemData.starSystemFirstOwner.ToString())
@@ -130,22 +142,24 @@ namespace GalaxyMap
         //}
         //public StarSystemSO GetSystem(StarSystemEnum sysEnum)
         //{
-        //    if (StarSysDictionary.ContainsKey(sysEnum))
-        //        return StarSysDictionary[sysEnum];
+        //    if (StarSystemDictionary.ContainsKey(sysEnum))
+        //        return StarSystemDictionary[sysEnum];
         //    else return null;
         //}
         //public Sprite GetSystemOwnerSprite(StarSystemEnum sysEnum)
         //{
-        //    return StarSysDictionary[sysEnum]._ownerInsignia;
+        //    return StarSystemDictionary[sysEnum]._ownerInsignia;
         //}
         //public string GetSystemOwenerName(StarSystemEnum sysEnum)
         //{
-        //    return StarSysDictionary[sysEnum]._originalOwnerName;
+        //    return StarSystemDictionary[sysEnum]._originalOwnerName;
         //}
         public void ResetData()
         {
             myObject = null;
+            position = Vector3.zero;
         }
+
     }
 }
 

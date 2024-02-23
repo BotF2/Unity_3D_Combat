@@ -639,7 +639,7 @@ namespace Assets.Core
         public GalaxyView galaxyView;
         //public FleetController fleet;
         [SerializeField] private Civilization civ;
-       // [SerializeField] private StarSystemSO starSysData;
+        public StarSystemManager starSysManager;
         public SolarSystemView solarSystemView;
         public Ship ship;
         //public CivilizationData civilizationData;
@@ -1698,7 +1698,7 @@ namespace Assets.Core
                     //ToDo; SetGalaxyMapSize();                   
                     //fleet.SendTheAllSystemsList(AllSystemsList);
                     _timeManager.StartClock();
-                    starSysData.LoadSystemData(_galaxyStarCount);
+                    starSysManager.LoadSystemData(_galaxyStarCount);
                     civ.LoadDictionaryOfCivs(this._galaxyStarCount);
                     civ.LoadRelationshipDictionaryOfCivs(this._galaxyStarCount);
                     civ.UpdateCivContactListOnStartCivSelection(_techLevel);//??

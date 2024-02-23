@@ -20,6 +20,10 @@ namespace GalaxyMap
         public float defaultWarp = 0;
         public GameObject targetDestination;
         public GameObject thisGameObject;
-
+        public GameObject IntersectingFleet { get; set; }
+        public void IntersectingFleets(GameObject go)
+        {
+            
+        }
     }
 }

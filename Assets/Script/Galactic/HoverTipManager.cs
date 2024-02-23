@@ -50,7 +50,7 @@ namespace GalaxyMap
         }
         public void WhatSystem(StarSystemEnum starSysEnum)
         {
-            theStarSystem = StarSystemManager.starSysDataDictionary[starSysEnum];
+           // theStarSystem = StarSystemManager.starSysDataDictionary[starSysEnum];
         }
         private bool DoWeKnowThem(CivEnum civEnum)
         {
@@ -68,25 +68,25 @@ namespace GalaxyMap
         }
         private void ShowTip(StarSystemEnum starSystemEnum) //, Vector2 mousePosition);
         {
-            StarSystemSO theSystem = StarSystemManager.starSysDataDictionary[starSystemEnum];
-            if (DoWeKnowThem(theSystem.starSystemCurrentOwner))
-            {
-                tipText.text = theSystem._currentOwnerName;
-                tipWindow.localScale = new Vector3(1, 1, 1);
-                if (theSystem._y > -1000)
-                {
-                    tipWindow.localScale *= 2f; // if deep into screen make it bigger
-                }
-                else if (theSystem._x > -4700)
-                {
-                    tipWindow.localScale *= 1.5f; // if deep into screen make it bigger
-                }
-                img = tipWindow.gameObject.GetComponent<RawImage>();
-                img.texture = theSystem._civOwnerSprite.texture;
+            //StarSystemSO theSystem = StarSystemManager.starSysDataDictionary[starSystemEnum];
+            //if (DoWeKnowThem(theSystem.starSystemCurrentOwner))
+            //{
+            //    tipText.text = theSystem._currentOwnerName;
+            //    tipWindow.localScale = new Vector3(1, 1, 1);
+            //    if (theSystem._y > -1000)
+            //    {
+            //        tipWindow.localScale *= 2f; // if deep into screen make it bigger
+            //    }
+            //    else if (theSystem._x > -4700)
+            //    {
+            //        tipWindow.localScale *= 1.5f; // if deep into screen make it bigger
+            //    }
+            //    img = tipWindow.gameObject.GetComponent<RawImage>();
+            //    img.texture = theSystem._civOwnerSprite.texture;
 
-                tipWindow.gameObject.SetActive(true);
-                tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.inputY + 200, theLocation.zLine - 100);
-            }
+            //    tipWindow.gameObject.SetActive(true);
+            //    tipWindow.transform.localPosition = theLocation; //new Vector3 (theLocation.x + 200, theLocation.inputY + 200, theLocation.zLine - 100);
+            //}
         }
         private void HideTip()
         {

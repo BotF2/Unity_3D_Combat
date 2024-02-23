@@ -57,7 +57,7 @@ namespace GalaxyMap
         //        daSystem._starType = star;
         //    //daSystem._ownerCiv = CivilizationData.CivilizationDictionary[(CivEnum)systemInt];
         //    daSystem._sysCredits = 10f;
-        //    daSystem._systemPopLimit = int.Parse(sysStrings[33]);
+        //    daSystem._maxSysPop = int.Parse(sysStrings[33]);
         //    daSystem._currentSysPop = int.Parse(sysStrings[6]);
         //    daSystem._originalOwnerName = sysStrings[5];
         //    daSystem._currentOwnerName = sysStrings[5];

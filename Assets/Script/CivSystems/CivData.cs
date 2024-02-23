@@ -13,8 +13,10 @@ namespace Assets.Core
         public GameManager gameManager;
         public int _civID;
         public CivEnum _civEnum;
-        public Dictionary<StarSystemEnum, StarSystemSO> starSystemsDictionary = new Dictionary<StarSystemEnum, StarSystemSO>();
-        public Dictionary<int, FleetController> fleetsDictionary = new Dictionary<int, FleetController>();
+        public List<StarSystemController> _controllerSysList;
+        public List<FleetController> _controllerFleetList;
+        //public Dictionary<StarSystemEnum, StarSystemSO> starSystemsDictionary = new Dictionary<StarSystemEnum, StarSystemSO>();
+        //public Dictionary<int, FleetController> fleetsDictionary = new Dictionary<int, FleetController>();
         public string _shortNameString;
         public string _longNameString;
         public string _descriptionString; // not in Civilization.txt
@@ -30,7 +32,7 @@ namespace Assets.Core
         public float _civCredits;
         public float _sysTradeAllocation;
         public List<CivData> _contactList; //**** who we have met
-        public List<StarSystemEnum> _ownedSysEnums;
+        //public List<StarSystemEnum> _ownedSystemEnums;
         //private Canvas _canvasGalactic;
         //public static List<Civilization> civsInGame = new List<Civilization>(); // should this be in GameManager
         //public StarSystemSO starSysData;
@@ -98,47 +100,47 @@ namespace Assets.Core
         {
             //var numStars = gameManager._galaxyStarCount.Length;
             
-            for (int i = 0; i < numStars; i++)
-            {
-                var civIndex = gameManager._galaxyStarCount[i];
-                CivData civ = CivilizationDictionary[(CivEnum)civIndex];
-                CalculateCivSysAllocation(civ);
-                if (civ._ownedSysEnums.Count > 0)
-                {
-                    for (int j= 0; j< civ._ownedSysEnums.Count; j++)
-                    {
-                        StarSystemEnum starSysEnum = civ._ownedSysEnums[j];
-                        StarSystemSO starSysData = StarSystemSO.StarSysDictionary[starSysEnum];
-                        float sysPopLimit = (starSysData._systemPopLimit + civ._civTechPoints); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
-                        if (starSysData._currentSysPop < sysPopLimit)
-                        {
-                            starSysData._currentSysPop += starSysData._currentSysPop * (int)techPopGrowthRate;
+            //for (int i = 0; i < numStars; i++)
+            //{
+            //    var civIndex = gameManager._galaxyStarCount[i];
+            //    CivData civ = CivilizationDictionary[(CivEnum)civIndex];
+            //    CalculateCivSysAllocation(civ);
+            //    if (civ._ownedSystemEnums.Count > 0)
+            //    {
+            //        for (int j= 0; j< civ._ownedSystemEnums.Count; j++)
+            //        {
+            //            StarSystemEnum starSysEnum = civ._ownedSystemEnums[j];
+            //            StarSystemSO starSysData = StarSystemSO.StarSystemDictionary[starSysEnum];
+            //            float sysPopLimit = (starSysData._maxSysPop + civ._civTechPoints); // _systemPopulation is fixed, update game value by tech level (_civResearch) and civ
+            //            if (starSysData._currentSysPop < sysPopLimit)
+            //            {
+            //                starSysData._currentSysPop += starSysData._currentSysPop * (int)techPopGrowthRate;
 
-                            if (civ._ownedSysEnums.Count > 1) // profit from trade 
-                            {
-                                civ._civCredits += 5f;
-                            }
-                        }
-                        //ToDo: set factory output at each system by civ level allocation to factories and local factories by system population level
+            //                if (civ._ownedSystemEnums.Count > 1) // profit from trade 
+            //                {
+            //                    civ._civCredits += 5f;
+            //                }
+            //            }
+            //            //ToDo: set factory output at each system by civ level allocation to factories and local factories by system population level
 
-                        //float sysFactoryLimit = (starSysData._systemFactoryLimit + civ._civTechLevel);
-                        //if (starSysData._currentSysFactories < sysFactoryLimit)
-                        //{
-                        //    starSysData._currentSysFactories += starSysData._currentSysFactories * techPopGrowthRate;
-                        //}
-                        starSysData._sysCredits += starSysData._currentSysPop * starSysData._currentSysFactories * civ._civTechPoints * techPopGrowthRate;
-                        // ToDo: set tax rate in slider
-                        starSysData._sysCredits -= starSysData._sysCredits * civ._civTaxRate;
-                        DoSysConsumption(starSysData);
-                    }
-                    for (int k = 0; k < civ._ownedSysEnums.Count; k++) // apply trade income from civ credits
-                    {
-                        //StarSystemSO starSys = StarSystemSO.StarSysDictionary[(StarSystemEnum)k];
-                        //starSys._sysCredits += civ._civCredits * (civ._sysTradeAllocation[k] / 100f);
-                    }
-                }
-                DoCivConsumption(civ);
-            }
+            //            //float sysFactoryLimit = (starSysData._systemFactoryLimit + civ._civTechLevel);
+            //            //if (starSysData._currentSysFactories < sysFactoryLimit)
+            //            //{
+            //            //    starSysData._currentSysFactories += starSysData._currentSysFactories * techPopGrowthRate;
+            //            //}
+            //            starSysData._sysCredits += starSysData._currentSysPop * starSysData._currentSysFactories * civ._civTechPoints * techPopGrowthRate;
+            //            // ToDo: set tax rate in slider
+            //            starSysData._sysCredits -= starSysData._sysCredits * civ._civTaxRate;
+            //            DoSysConsumption(starSysData);
+            //        }
+            //        for (int k = 0; k < civ._ownedSystemEnums.Count; k++) // apply trade income from civ credits
+            //        {
+            //            //StarSystemSO starSys = StarSystemSO.StarSystemDictionary[(StarSystemEnum)k];
+            //            //starSys._sysCredits += civ._civCredits * (civ._sysTradeAllocation[k] / 100f);
+            //        }
+            //    }
+            //    DoCivConsumption(civ);
+            //}
         }
         private void DoSysConsumption(StarSystemSO starSysData)
         {

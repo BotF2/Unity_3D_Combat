@@ -200,12 +200,14 @@ GameObject:
   - component: {fileID: 4306060808537133547}
   - component: {fileID: -3440141241785838113}
   - component: {fileID: -3350810320201970130}
+  - component: {fileID: 3269551148588415320}
+  - component: {fileID: -77799771224068483}
   m_Layer: 30
   m_Name: BorgSystem
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 6d9b1e2fe4f286649a2808703b83bef1, type: 3}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!224 &4306060808537133551
 RectTransform:
@@ -388,6 +390,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starSystemData: {fileID: 0}
+--- !u!65 &3269551148588415320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306060808537133550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-77799771224068483
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4306060808537133550}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4306060808997954071
 GameObject:
   m_ObjectHideFlags: 0

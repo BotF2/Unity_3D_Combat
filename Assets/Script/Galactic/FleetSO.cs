@@ -13,10 +13,11 @@ namespace GalaxyMap
         [SerializeField] Sprite insignSprite; // civ insignia
         [SerializeField] string description;
         [SerializeField] CivEnum civOwnerEnum;
-        [SerializeField] float warpFactor =0f;
+        [SerializeField] public float warpFactor =0f;
         [SerializeField] float defaultWarp = 0f;
         [HideInInspector] public GameObject myObject;
         [HideInInspector] public Vector3 currentPosition;
+        //public GameObject IntersectingFleet {  get; set; }
 
         public void ResetSO()
         {
