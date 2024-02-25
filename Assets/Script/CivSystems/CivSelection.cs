@@ -12,8 +12,7 @@ namespace Assets.Core
         Toggle _activeToggle;
         public Toggle Fed, Kling, Rom, Card, Dom, Borg;
         public ToggleGroup CivilizationGroup;
-        public GameObject Canvas;
-
+        public GameObject Canvas; //
         private void Awake()
         {
             Canvas = GameObject.Find("Canvas"); 
