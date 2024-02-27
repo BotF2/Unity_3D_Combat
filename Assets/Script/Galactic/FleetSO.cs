@@ -6,38 +6,18 @@ using UnityEngine.UI;
 using Assets.Core;
 using Unity.VisualScripting;
 
-namespace GalaxyMap
+[CreateAssetMenu(menuName = "Galaxy/FleetSO")]
+public class FleetSO : ScriptableObject
 {
-    public class FleetSO: ScriptableObject
-    {
-        //public FleetData fleetData;
-        //public Text nameText;
-        //public Text descriptionText;
-        //public Image artworkImage;
-        //public float warpFactor;
-
-        //private void Start()
-        //{
-        //    if (fleetData != null)
-        //    {
-        //        nameText.text = fleetData.name;
-        //        descriptionText.text = fleetData.description;
-        //        artworkImage.sprite = fleetData.insign;
-        //        warpFactor = fleetData.warpFactor;
-        //    }
-        //}
-        //private void OnEnable()
-        //{
-        //    if(fleetData != null)
-        //        fleetData.location = transform.position;
-        //}
-        //void Update()
-        //{
-        //    if (fleetData != null)
-        //    {
-        //        fleetData.location = transform.position;
-        //    }
-        //}
-
-    }
+    public string Insignia;
+    public string CivOwner;
+    public float DefaultWarpFactor = 0f;
+    //public public GameObject myObject;
+    //public Vector3 currentPosition;
+    //public GameObject IntersectingFleet {  get; set; }
 }
+
+
+
+
+

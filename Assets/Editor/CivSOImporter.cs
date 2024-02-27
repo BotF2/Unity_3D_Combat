@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using Assets.Core;
 
 public class CivSOImporter : EditorWindow
 {
@@ -43,10 +44,9 @@ public class CivSOImporter : EditorWindow
 
             if (fields.Length == 12) // Ensure there are enough fields
             {
-                CivilizationSO civ = CreateInstance<CivilizationSO>();
-                civ.CivInt = int.Parse(fields[0]);
+                CivSO civ = CreateInstance<CivSO>();
                 //CivInt	,	Civ Enum	,	Civ Short Name	,	Civ Long Name	,	Home System	,	Triat One	,	Trait Two	,	Civ Image	,	Insginia	,	Population	,	Credits	,	Tech Points
-
+                civ.CivInt = int.Parse(fields[0]);
                 civ.CivEnum = fields[1];
                 civ.CivShortName= fields[2];
                 civ.CivLongName = fields[3];
