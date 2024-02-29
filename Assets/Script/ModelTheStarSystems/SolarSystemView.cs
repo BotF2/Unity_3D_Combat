@@ -209,7 +209,7 @@ namespace Assets.Core
                         ////else
                         //    //orbitalGameObjectMap.Add(orbitalG, gameObject);
                         //gameObject.transform.SetParent(transformParent, false);
-                        //gameObject.transform.position = orbitalG.Position / zoomLevels;
+                        //gameObject.transform.Position = orbitalG.Position / zoomLevels;
                         //gameObject.layer = 5; // UI
                         //gameObject.name = "Orbital";
                         //// orbitalGameObjectMap.Add(orbitalG, gameObject);
@@ -258,7 +258,7 @@ namespace Assets.Core
             //orbitalGameObjectMap[orbitalG] = gameObject; // update map
             //gameObject.layer = 30; // galactic
             gameObject.transform.SetParent(transformParent, false);
-            // set position in 3D
+            // set Position in 3D
             gameObject.transform.position = orbitalG.Position / zoomLevels; // cut down scale of system to view
             SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
             spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);

@@ -549,8 +549,8 @@ namespace GalaxyMap
         //    solarSystemGameObjectMap[ss] = gameObject; // update map
         //    gameObject.layer = 30; // galactic
         //    gameObject.transform.SetParent(transformParent, false);
-        //    // set position in 3D
-        //    gameObject.transform.position = ss.Position / zoomLevels; // cut down scale of system to view
+        //    // set Position in 3D
+        //    gameObject.transform.Position = ss.Position / zoomLevels; // cut down scale of system to view
         //                                                              // ToDo: make buttons here
         //                                                              //SpriteRenderer spritView = gameObject.AddComponent<SpriteRenderer>();
         //                                                              //spritView.transform.localScale = new Vector3(planetMoonScale, planetMoonScale, planetMoonScale);
@@ -568,7 +568,7 @@ namespace GalaxyMap
         //void UpdateSystemButtons(SolarSystem ss)
         //{
         //    GameObject gameObject = solarSystemGameObjectMap[ss];
-        //   // gameObject.transform.position = ss.Position / zoomLevels;
+        //   // gameObject.transform.Position = ss.Position / zoomLevels;
         //    //for (int i = 0; i < ss.Children.Count; i++)
         //    //{
         //    //    UpdateSprites(ss.Children[i]);

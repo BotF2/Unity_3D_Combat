@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using Assets.Core;
+using System;
 
 public class CivSOImporter : EditorWindow
 {
@@ -20,8 +21,6 @@ public class CivSOImporter : EditorWindow
 
         if (GUILayout.Button("Import CIV CSV"))
         {
-
-
             //Output the Game data path to the console
             Debug.Log("dataPath : " + Application.dataPath);
             ImportCIVCSV(filePath);
@@ -47,7 +46,7 @@ public class CivSOImporter : EditorWindow
                 CivSO civ = CreateInstance<CivSO>();
                 //CivInt	,	Civ Enum	,	Civ Short Name	,	Civ Long Name	,	Home System	,	Triat One	,	Trait Two	,	Civ Image	,	Insginia	,	Population	,	Credits	,	Tech Points
                 civ.CivInt = int.Parse(fields[0]);
-                civ.CivEnum = fields[1];
+                civ.CivEnum = GetMyEnum(fields[1]);
                 civ.CivShortName= fields[2];
                 civ.CivLongName = fields[3];
                 civ.CivHomeSystem = fields[4];
@@ -68,4 +67,10 @@ public class CivSOImporter : EditorWindow
 
         Debug.Log("CivSOImporter Import Complete");
     }
-}
+    public static CivEnum GetMyEnum(string title)
+    {
+        CivEnum st;
+        Enum.TryParse(title, out st);
+        return st;
+    }
+} 

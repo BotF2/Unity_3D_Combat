@@ -6,15 +6,14 @@ using Assets.Core;
 [CreateAssetMenu(menuName = "Galaxy/StarSysSO")]
 public class StarSysSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int StarSysInt;
+    public int _x;
+    public int _y;
+    public int _z;
+    public Vector3 Position;
+    public string sysName;
+    public CivEnum starSystemFirstOwner;
+    public StarType starSystemType;
+    public string _originalOwnerName;
+    public Sprite starSprit;
 }

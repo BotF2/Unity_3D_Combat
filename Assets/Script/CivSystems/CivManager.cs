@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -200,14 +201,14 @@ namespace Assets.Core
         public void CreateGame(List<CivSO> civSOList)
         {
 
-            foreach (var civ in civSOList)
+            foreach (var civSO in civSOList)
             {
 
                 CivData data = new CivData();
-                data.CivEnum = civ.CivEnum;
-                data.CivImage = civ.CivImage;
-                data.CivLongName = civ.CivLongName;
-                data.CivShortName = civ.CivShortName;
+                data.CivEnum = civSO.CivEnum;
+                data.CivImage = civSO.CivImage;
+                data.CivLongName = civSO.CivLongName;
+                data.CivShortName = civSO.CivShortName;
 
 
                 civDataList.Add(data);
@@ -248,6 +249,12 @@ namespace Assets.Core
             resultInGameCivData = GetCivDataByName(civname);
 
         }
+        //public static CivEnum GetMyEnum(string title)
+        //{
+        //    CivEnum st;
+        //    Enum.TryParse(title, out st);
+        //    return st;
+        //}
 
         // Start is called before the first frame update
         void Start()

@@ -243,13 +243,13 @@ namespace Assets.Core
                 //}
                 //#endregion
                 //#region Alernate near and far targets
-                //if (Math.Abs(transform.position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
+                //if (Math.Abs(transform.Position.x) <= 200) // when passing the zero point of the x axis turn lockTurn false, ready to turn
                 //    lockTurn = false;
 
                 //int leftRight = 1;
-                //if (_currentTarget.position.x < 0)
+                //if (_currentTarget.Position.x < 0)
                 //    leftRight = -1;
-                //if ((this._currentTarget.position.x * leftRight) - (leftRight * shipGameObject.transform.position.x) < 100 && !lockTurn) // when near the target turn
+                //if ((this._currentTarget.Position.x * leftRight) - (leftRight * shipGameObject.transform.Position.x) < 100 && !lockTurn) // when near the target turn
                 //{
                 //    if (_currentTarget == _farTarget)
                 //    {
@@ -264,7 +264,7 @@ namespace Assets.Core
                 //}
                 #endregion
                 #region turn to target
-                //var targetRotation = Quaternion.LookRotation(this._currentTarget.position - transform.position);
+                //var targetRotation = Quaternion.LookRotation(this._currentTarget.Position - transform.Position);
                 //rigidbody.MoveRotation(Quaternion.RotateTowards(shipGameObject.transform.rotation, targetRotation, turnRate));
                 ////transform.Translate(Vector3.forward * 100 * Time.deltaTime * 3);
                 #endregion

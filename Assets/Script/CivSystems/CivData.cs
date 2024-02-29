@@ -1,3 +1,4 @@
+using Assets.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ public class CivData : MonoBehaviour // has list of civsInGame, starSytemData an
 {
     #region Fields
     public int CivInt;
-    public string CivEnum;
+    public CivEnum CivEnum;
     public string CivShortName;
     public string CivLongName;
     public string CivHomeSystem;

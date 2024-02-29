@@ -11,14 +11,14 @@ public class StarSysSOImporter : EditorWindow
         GetWindow<StarSysSOImporter>("StarSysSO CSV Importer");
     }
 
-    private string filePath = $"Assets/StarSys.csv";
+    private string filePath = $"Assets/StarSysSO.csv";
 
     void OnGUI()
     {
         GUILayout.Label("StarSysSO CSV Importer", EditorStyles.boldLabel);
         filePath = EditorGUILayout.TextField("CSV File Path", filePath);
 
-        if (GUILayout.Button("Import StarSys CSV"))
+        if (GUILayout.Button("Import StarSysSO CSV"))
         {
 
 
@@ -44,24 +44,25 @@ public class StarSysSOImporter : EditorWindow
 
             if (fields.Length == 12) // Ensure there are enough fields
             {
-                //StarSysSO StarSys = CreateInstance<StarSysSO>();
-                ////StarSysInt	,	StarSys Enum	,	StarSys Short Name	,	StarSys Long Name	,	Home System	,	Triat One	,	Trait Two	,	StarSys Image	,	Insginia	,	Population	,	Credits	,	Tech Points
-                //StarSys.StarSysInt = int.Parse(fields[0]);
-                //StarSys.StarSysEnum = fields[1];
-                //StarSys.StarSysShortName= fields[2];
-                //StarSys.StarSysLongName = fields[3];
-                //StarSys.StarSysHomeSystem = fields[4];
-                //StarSys.TraitOne = fields[5];
-                //StarSys.TraitTwo = fields[6];
-                //StarSys.StarSysImage = fields[7];
-                //StarSys.Insignia = fields[8];
-                //StarSys.Population = int.Parse(fields[9]);
-                //StarSys.Credits = int.Parse(fields[10]);
-                //StarSys.TechPoints = int.Parse(fields[11]);
+                StarSysSO StarSysSO = CreateInstance<StarSysSO>();
+                ////StarSysInt	,	StarSysSO Enum	,	StarSysSO Short Name	,	StarSysSO Long Name	,	Home System	,	Triat One	,	Trait Two	,	StarSysSO Image	,	Insginia	,	Population	,	Credits	,	Tech Points
+                StarSysSO.StarSysInt = int.Parse(fields[0]);
+                StarSysSO.Position = new Vector3(int.Parse(fields[1]), int.Parse(fields[2]), int.Parse(fields[3]));
+                //StarSysSO.StarSysEnum = fields[1];
+                //StarSysSO.StarSysShortName= fields[2];
+                //StarSysSO.StarSysLongName = fields[3];
+                //StarSysSO.StarSysHomeSystem = fields[4];
+                //StarSysSO.TraitOne = fields[5];
+                //StarSysSO.TraitTwo = fields[6];
+                //StarSysSO.StarSysImage = fields[7];
+                //StarSysSO.Insignia = fields[8];
+                //StarSysSO.Population = int.Parse(fields[9]);
+                //StarSysSO.Credits = int.Parse(fields[10]);
+                //StarSysSO.TechPoints = int.Parse(fields[11]);
 
 
-                //string assetPath = $"Assets/SO/StarSysilizationSO/StarSysSO_{StarSys.StarSysInt}_{StarSys.StarSysShortName}.asset";
-                //AssetDatabase.CreateAsset(StarSys, assetPath);
+                //string assetPath = $"Assets/SO/StarSysilizationSO/StarSysSO_{StarSysSO.StarSysInt}_{StarSysSO.StarSysShortName}.asset";
+                //AssetDatabase.CreateAsset(StarSysSO, assetPath);
                 //AssetDatabase.SaveAssets();
             }
         }

@@ -6,11 +6,11 @@ using Assets.Core;
 using UnityEngine.Analytics;
 
 
-[CreateAssetMenu(fileName = "CivSO", menuName = "Civ")]
+[CreateAssetMenu(fileName = "CivSO", menuName = "CivSO")]
 public class CivSO : ScriptableObject
 {
     public int CivInt;
-    public string CivEnum;
+    public CivEnum CivEnum;
     public string CivShortName;
     public string CivLongName;
     public string CivHomeSystem;
