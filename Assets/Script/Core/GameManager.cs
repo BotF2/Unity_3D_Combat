@@ -539,7 +539,7 @@ namespace Assets.Core
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            //PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
@@ -904,7 +904,7 @@ namespace Assets.Core
                     //if (CanvasWorld != null)
                     //{
                         //CanvasWorld.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     //}
 
                     PanelLobby_Menu.SetActive(true); // Lobby first             
@@ -993,7 +993,7 @@ namespace Assets.Core
                     PanelSaveGame_Menu.SetActive(false);
                     //CanvasWorld = GameObject.Find("CanvasWorld");
                     //CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
 
                     _statePassedMain_Init = true;
                     galaxyView.InstantiateSystemButtons(_galaxyStarCount);
@@ -1007,7 +1007,7 @@ namespace Assets.Core
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                    // CanvasWorld.SetActive(true);
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
 
                     PanelSystem_Play.SetActive(false);
                     //solarSystemView.ShowNextSolarSystemView( _solarSystemID);
@@ -1015,7 +1015,7 @@ namespace Assets.Core
 
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
 
@@ -1040,7 +1040,7 @@ namespace Assets.Core
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
                     
-                    PanelGalactic_Map.SetActive(true);
+                    //PanelGalactic_Map.SetActive(true);
                     //SwitchtState(State.GALACTIC_MAP);
                     //int firstSolarSystemID = 0; // ToDo: First system 0 to be galaxy and system 1 tie this to home system based on civ set in Main Menu/ or where we left off?
 
@@ -1049,7 +1049,7 @@ namespace Assets.Core
                     PanelSystem_Play.SetActive(false);
                     PanelLobby_Menu.SetActive(false);
                     PanelSystem_Play.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     //CanvasWorld.SetActive(false);
                     //PanelCombat_Menu.SetActive(true);
                     //panelCombat_Completed.SetActive(true);
@@ -1060,7 +1060,7 @@ namespace Assets.Core
                     PanelCombat_Menu.SetActive(true);
                     PanelSystem_Play.SetActive(false);                    
                     PanelSystem_Play.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     LoadFriendAndEnemyNames(); // for combat
                     // combat order toggle in CombatOderSelection code updates GameManager _combatOrder field
                     // _combatOrder = combatOrderSelection.ImplementCombatOrder();
@@ -1144,12 +1144,12 @@ namespace Assets.Core
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     _statePassedMain_Init = true;
                     break;
                 case State.SYSTEM_PLAY_INIT:
@@ -1218,11 +1218,11 @@ namespace Assets.Core
                     break;
                 case State.GALACTIC_MAP:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     break;
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    PanelGalactic_Map.SetActive(false);
+                    //PanelGalactic_Map.SetActive(false);
                     break;
                 case State.SYSTEM_PLAY:
                     PanelSystem_Play.SetActive(false);

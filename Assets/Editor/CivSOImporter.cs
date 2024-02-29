@@ -11,7 +11,7 @@ public class CivSOImporter : EditorWindow
         GetWindow<CivSOImporter>("CivSO CSV Importer");
     }
 
-    private string filePath = "Civilizations.csv";
+    private string filePath = $"Assets/Civilizations.csv";
 
     void OnGUI()
     {

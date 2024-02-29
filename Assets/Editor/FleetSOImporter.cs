@@ -10,7 +10,7 @@ public class FleetSOImporter : EditorWindow
         GetWindow<FleetSOImporter>("FleetSO CSV Importer");
     }
 
-    private string filePath = "Fleet.csv";
+    private string filePath = $"Assets/FleetSO.csv";
 
     void OnGUI()
     {
