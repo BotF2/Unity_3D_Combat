@@ -13,11 +13,11 @@ public class CivSO : ScriptableObject
     public CivEnum CivEnum;
     public string CivShortName;
     public string CivLongName;
-    public string CivHomeSystem;
+    public string CivHomeSystem; //best way???
     public string TraitOne;
     public string TraitTwo;
-    public string CivImage;
-    public string Insignia;
+    public Sprite CivImage;
+    public Sprite Insignia;
     public int Population;
     public int Credits;
     public int TechPoints;

@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a89d43f97af09441b946ee31189257c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5751d0611b14fb4f8de49a3a8fd4206, type: 3}
   m_Name: CivSO_133_TLANI
   m_EditorClassIdentifier: 
   CivInt: 133
-  CivEnum: TLANI
+  CivEnum: 133
   CivShortName: TLANI
   CivLongName: TLANI
   CivHomeSystem: TLANI
   TraitOne: Neutral
   TraitTwo: Peaceful
-  CivImage: tlani
-  Insignia: TLANI
+  CivImage: {fileID: 0}
+  Insignia: {fileID: 0}
   Population: 5
   Credits: 2
   TechPoints: 2

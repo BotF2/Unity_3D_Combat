@@ -8,38 +8,38 @@ namespace GalaxyMap
 {
     public class StarSystem : MonoBehaviour
     {
-        public StarSystemData starSystemData;
+        public StarSysData starSysData;
         public Text nameText;
         public Text descriptionText;
         public Image artworkImage;
 
         private void Start()
         {
-            if (starSystemData == null)
+            if (starSysData == null)
             {
-                nameText.text = starSystemData.name;
-                descriptionText.text = starSystemData.description;
-                artworkImage.sprite = starSystemData.starSprit;
+                nameText.text = starSysData.name;
+                //descriptionText.text = starSysData.description;
+                //artworkImage.sprite = starSysData.starSprit;
             }
         }
         private void OnEnable()
         {
-            if (starSystemData != null)
+            if (starSysData != null)
             {
-                starSystemData.location = transform.position;
+               // starSysData.location = transform.position;
             }
         }
 
         void Update()
         {
-            if (starSystemData != null)
+            if (starSysData != null)
             {
-                starSystemData.location = transform.position;
+                //starSysData.location = transform.position;
             }
         }
         private void OnDisable()
         {
-            starSystemData.ResetData();
+           // starSysData.ResetData();
         }
     }
 }

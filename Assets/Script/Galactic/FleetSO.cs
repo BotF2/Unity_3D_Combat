@@ -12,9 +12,6 @@ public class FleetSO : ScriptableObject
     public string Insignia;
     public string CivOwner;
     public float DefaultWarpFactor = 0f;
-    //public public GameObject myObject;
-    //public Vector3 currentPosition;
-    //public GameObject IntersectingFleet {  get; set; }
 }
 
 

@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
+
 namespace Assets.Core
 {
     public enum CivEnum
@@ -164,7 +166,20 @@ namespace Assets.Core
         ZAHL,
         ZAKDORN,
         ZALKONIANS,
-        ZIBALIANS
+        ZIBALIANS,
+        #endregion
+        TERRAN,
+        ZZUNINHABITED1,
+        #region More Uninhabited
+        ZZUNINHABITED2,
+        ZZUNINHABITED3,
+        ZZUNINHABITED4,
+        ZZUNINHABITED5,
+        ZZUNINHABITED6,
+        ZZUNINHABITED7,
+        ZZUNINHABITED8,
+        ZZUNINHABITED9,
+        ZZUNINHABITED10,
         #endregion
     }
 
@@ -177,7 +192,7 @@ namespace Assets.Core
 
         public List<CivSO> civSOListLarge;
 
-
+        public List<CivData> civDataList;
 
         public void CreateNewGame(int sizeGame)
         {
@@ -195,25 +210,28 @@ namespace Assets.Core
             }
         }
 
-
-        public List<CivData> civDataList;
-
         public void CreateGame(List<CivSO> civSOList)
         {
 
             foreach (var civSO in civSOList)
             {
-
                 CivData data = new CivData();
+                data.CivInt = civSO.CivInt;
                 data.CivEnum = civSO.CivEnum;
-                data.CivImage = civSO.CivImage;
                 data.CivLongName = civSO.CivLongName;
                 data.CivShortName = civSO.CivShortName;
-
-
+                data.TraitOne = civSO.TraitOne;
+                data.TraitTwo = civSO.TraitTwo;
+                data.CivImage = civSO.CivImage;
+                data.Insignia = civSO.Insignia;
+                data.Population = civSO.Population;
+                data.Credits = civSO.Credits;
+                data.TechPoints = civSO.TechPoints;
                 civDataList.Add(data);
 
             }
+            FleetManager.CreateFirstFleets(civDataList);
+
         }
 
         public CivData resultInGameCivData;
@@ -249,12 +267,6 @@ namespace Assets.Core
             resultInGameCivData = GetCivDataByName(civname);
 
         }
-        //public static CivEnum GetMyEnum(string title)
-        //{
-        //    CivEnum st;
-        //    Enum.TryParse(title, out st);
-        //    return st;
-        //}
 
         // Start is called before the first frame update
         void Start()

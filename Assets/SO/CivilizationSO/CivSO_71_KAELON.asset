@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a89d43f97af09441b946ee31189257c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5751d0611b14fb4f8de49a3a8fd4206, type: 3}
   m_Name: CivSO_71_KAELON
   m_EditorClassIdentifier: 
   CivInt: 71
-  CivEnum: KAELON
+  CivEnum: 71
   CivShortName: KAELON
   CivLongName: KAELON
   CivHomeSystem: KAELON
   TraitOne: Arrogant
   TraitTwo: Materialistic
-  CivImage: kaelon
-  Insignia: KAELON
+  CivImage: {fileID: 0}
+  Insignia: {fileID: 0}
   Population: 5
   Credits: 2
   TechPoints: 2

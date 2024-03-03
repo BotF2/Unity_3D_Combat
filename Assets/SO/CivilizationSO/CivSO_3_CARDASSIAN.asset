@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a89d43f97af09441b946ee31189257c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5751d0611b14fb4f8de49a3a8fd4206, type: 3}
   m_Name: CivSO_3_CARDASSIAN
   m_EditorClassIdentifier: 
   CivInt: 3
-  CivEnum: CARD
+  CivEnum: 3
   CivShortName: CARDASSIAN
   CivLongName: Cardassian Union
   CivHomeSystem: CARDASSIA
   TraitOne: Ruthless
   TraitTwo: Materialistic
-  CivImage: cardassian
-  Insignia: CARDASSIAN
+  CivImage: {fileID: 21300000, guid: c72d1e1efe3abc8498879263caae4611, type: 3}
+  Insignia: {fileID: 0}
   Population: 20
   Credits: 100
   TechPoints: 10

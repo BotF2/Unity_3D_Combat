@@ -11,11 +11,12 @@ public class StarSysData : MonoBehaviour
     //public int _z;
     public Vector3 Position;
     public string SysName;
-    public CivEnum StarSystemFirstOwner;
+    public CivEnum FirstOwner;
     public StarType StarType;
-    public string _originalOwnerName;
-    public Sprite starSprit;
-    public string description;
+    public Sprite StarSprit;
+    public string Description;
+    public CivEnum CurrentOwner;
+    public int Population;
 
     void Start()
     {

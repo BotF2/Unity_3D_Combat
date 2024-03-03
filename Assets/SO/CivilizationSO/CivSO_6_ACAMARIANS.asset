@@ -9,18 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a89d43f97af09441b946ee31189257c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5751d0611b14fb4f8de49a3a8fd4206, type: 3}
   m_Name: CivSO_6_ACAMARIANS
   m_EditorClassIdentifier: 
   CivInt: 6
-  CivEnum: ACAMARIANS
+  CivEnum: 6
   CivShortName: ACAMARIANS
   CivLongName: ACAMARIANS
   CivHomeSystem: ACAMA
   TraitOne: Compation
   TraitTwo: Neutral
-  CivImage: acamarians
-  Insignia: ACAMARIANS
+  CivImage: {fileID: 21300000, guid: 9f47054af2d7e0d4e83e75b8db32b229, type: 3}
+  Insignia: {fileID: 0}
   Population: 5
   Credits: 2
   TechPoints: 2
