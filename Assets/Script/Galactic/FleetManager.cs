@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 
@@ -9,47 +10,69 @@ namespace Assets.Core
 {
     public class FleetManager : MonoBehaviour
     {
+        public List<FleetSO> fleetSOListSmall;
+
+        public List<FleetSO> fleetSOListMedium;
+
+        public List<FleetSO> fleetSOListLarge;
 
         public List<FleetData> fleetDataList;
 
-        public static void CreateFirstFleets(List<CivData> gameCivDataList)
+        public static void CreateNewGameFleets(int gameSize)
         {
-
-            foreach (var CivSO in gameCivDataList)
+            if(gameSize == 1)
             {
-                // starter Fleet
-                //    public string fleetName;
-                //public string description;
-                //public Sprite insign;
-                //public Civilization civOwnerEnum;
-                //public Vector3 location;
-                //public List<Ship> ships;
-                //public float warpFactor;
-                //public GameObject destination;
-                //public GameObject origin;
-                //public float defaultWarp = 0;
-
+                CreateGameFleets(fleetSOListSmall) ;
             }
+            if (gameSize == 2)
+            {
+                CreateGameFleets(fleetSOListMedium);
+            }
+            if (gameSize == 3)
+            {
+                CreateGameFleets(fleetSOListLarge);
+            }
+
+            //FleetData myfleet = new FleetData();
+            //myfleet.civOwnerEnum = civData.CivEnum;
+            //myfleet.defaultWarp = 0f;
         }
 
-        public CivData resultInGameCivData;
+        public void CreateGameFleets(List<FleetSO> listFleetSO)
+        {
+            foreach (var fleetSO in listFleetSO)
+            {
+                FleetData data = new FleetData();
+                //data.CivInt = civSO.CivInt;
+                data.civOwnerEnum = fleetSO.CivOwnerEnum;
+                //data.CivLongName = civSO.CivLongName;
+                //data.CivShortName = civSO.CivShortName;
+                //data.TraitOne = civSO.TraitOne;
+                //data.TraitTwo = civSO.TraitTwo;
+                //data.CivImage = civSO.CivImage;
+                //data.Insignia = civSO.Insignia;
+                //data.Population = civSO.Population;
+                //data.Credits = civSO.Credits;
+                //data.TechPoints = civSO.TechPoints;
+                fleetDataList.Add(data);
+            }
+        }
+        public FleetData resultFleetData;
 
 
-        public CivData GetCivDataByName(string shortName)
+        public FleetData GetFleetDataByName(string fleetName)
         {
 
-            CivData result = null;
+            FleetData result = null;
 
 
-            foreach (var civ in fleetDataList)
+            foreach (var fleet in fleetDataList)
             {
 
-                //if (civ.CivShortName.Equals(shortName))
-                //{
-                //    result = civ;
-                //}
-
-
+                if (fleet.fleetName.Equals(fleetName))
+                {
+                    result = fleet;
+                }
             }
             return result;
 
@@ -60,9 +83,9 @@ namespace Assets.Core
 
         //}
 
-        public void GetCivByName(string civname)
+        public void GetFleetByName(string fleetName)
         {
-            resultInGameCivData = GetCivDataByName(civname);
+            resultFleetData = GetFleetDataByName(fleetName);
 
         }
 

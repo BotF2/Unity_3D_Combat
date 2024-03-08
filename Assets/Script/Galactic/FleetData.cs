@@ -9,7 +9,7 @@ public class FleetData: MonoBehaviour
     public string fleetName;
     public string description;
     public Sprite insign;
-    public Civilization civOwnerEnum;
+    public CivEnum civOwnerEnum;
     public Vector3 location;
     public List<Ship> ships;
     public float warpFactor; 

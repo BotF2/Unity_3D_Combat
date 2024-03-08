@@ -198,19 +198,22 @@ namespace Assets.Core
         {
             if (sizeGame == 1)
             {
-                CreateGame(civSOListSmall);
+                CreateGameCivs(civSOListSmall);
+                FleetManager.CreateNewGameFleets(1);
             }
             if (sizeGame == 2)
             {
-                CreateGame(civSOListMedium);
+                CreateGameCivs(civSOListMedium);
+                //FleetManager.CreateNewGameFleets(2);
             }
             if (sizeGame == 3)
             {
-                CreateGame(civSOListLarge);
+                CreateGameCivs(civSOListLarge);
+                //FleetManager.CreateNewGameFleets(3);
             }
         }
 
-        public void CreateGame(List<CivSO> civSOList)
+        public void CreateGameCivs(List<CivSO> civSOList)
         {
 
             foreach (var civSO in civSOList)
@@ -228,14 +231,12 @@ namespace Assets.Core
                 data.Credits = civSO.Credits;
                 data.TechPoints = civSO.TechPoints;
                 civDataList.Add(data);
-
             }
-            FleetManager.CreateFirstFleets(civDataList);
+
 
         }
 
         public CivData resultInGameCivData;
-
 
         public CivData GetCivDataByName(string shortName)
         {

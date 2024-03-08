@@ -9,9 +9,10 @@ using Unity.VisualScripting;
 [CreateAssetMenu(menuName = "Galaxy/FleetSO")]
 public class FleetSO : ScriptableObject
 {
-    public string Insignia;
-    public string CivOwner;
+    public Sprite Insignia;
+    public CivEnum CivOwnerEnum;
     public float DefaultWarpFactor = 0f;
+
 }
 
 
