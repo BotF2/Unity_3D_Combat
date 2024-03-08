@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CivController : MonoBehaviour
+namespace Assets.Core
 {
-    //Fields
-    public CivData civData;
-    public void UpdateCredits()
+    public class CivController : MonoBehaviour
     {
-        civData.Credits += 50;
+        //Fields
+        public CivData civData;
+        public void UpdateCredits()
+        {
+            civData.Credits += 50;
+        }
     }
 }

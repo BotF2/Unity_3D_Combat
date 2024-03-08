@@ -3,26 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FleetController : MonoBehaviour
+namespace Assets.Core
 {
-    //Fields
-    public FleetData fleetData;
-    
+    public class FleetController : MonoBehaviour
+    {
+        //Fields
+        public FleetData fleetData;
 
-    void Update()
-    {
-        if (fleetData != null)
+
+        void Update()
         {
-            fleetData.location = transform.position;
+            if (fleetData != null)
+            {
+                fleetData.location = transform.position;
+            }
         }
-    }
-    public void UpdateWarpFactor(int delta)
-    {
-        fleetData.warpFactor += delta;
-    }
-    private void OnEnable()
-    {
-        if (fleetData != null)
-            fleetData.location = transform.position;
+        public void UpdateWarpFactor(int delta)
+        {
+            fleetData.warpFactor += delta;
+        }
+        private void OnEnable()
+        {
+            if (fleetData != null)
+                fleetData.location = transform.position;
+        }
     }
 }

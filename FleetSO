@@ -2,12 +2,14 @@
     [CreateAssetMenu(menuName = "Galaxy/FleetSO")]
     public class FleetSO : ScriptableObject
     {
-        [SerializeField] Sprite insignSprite; // civ insignia
-        [SerializeField] string description;
-        [SerializeField] CivEnum civOwnerEnum;
-        [SerializeField] public float warpFactor =0f;
-        [SerializeField] float defaultWarp = 0f;
-        [HideInInspector] public GameObject myObject;
-        [HideInInspector] public Vector3 currentPosition;
+        public string Insignia; // civ insignia
+        public string FleetName;
+        public string CivOwnerEnum;
+        public float DefaultWarpFactor = 0f;
+        //public float MaxWarpFactor = 0f;
+        //public  float warpFactor =0f;
+        //public  float defaultWarp = 0f;
+        //public  GameObject myObject;
+        //public  Vector3 currentPosition;
         //public GameObject IntersectingFleet {  get; set; }
     }    
