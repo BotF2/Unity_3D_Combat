@@ -15,7 +15,7 @@ using GalaxyMap;
 namespace Assets.Core
 {
     #region Enums
-    public static enum CivEnum
+    public enum CivEnum
     {
         FED,
         ROM,
@@ -321,14 +321,16 @@ namespace Assets.Core
         public bool _weAreFriend = false;
         public bool _warpingInIsOver = false; // WarpingInCompleted() called from E_Animator3 sets true and set false again in CombatCompleted state in BeginState
         public bool _isSinglePlayer;
-        public Civilization _localPlayer;
-        public Civilization _hostPlayer;
-        public Civilization _cliantZero;
-        public Civilization _cliantOne;
-        public Civilization _cliantTwo;
-        public Civilization _cliantThree;
-        public Civilization _cliantFour;
-        public Civilization _cliantFive;
+        public CivData _localPlayer;
+        public GameObject CivilizationPrefab;
+        public CivManager civManager;
+        //public Civilization _cliantZero;
+        //public Civilization _cliantOne;
+        //public Civilization _cliantTwo;
+        //public Civilization _cliantThree;
+        //public Civilization _cliantFour;
+        //public Civilization _cliantFive;
+        //public Civilization _cliantSix;
         public static GalaxySize _galaxySize;
         public static GalaxyType _galaxyType;
         public static TechLevel _techLevel;
@@ -402,8 +404,8 @@ namespace Assets.Core
         private GameObject[] _cameraTargets; // = new GameObject [] { Friend_0, Enemy_0 };
         public int yFactor = 3000; // old LoadCombatData combat, gap in grid between empties on y axis
         public int zFactor = 3000;
-        public int offsetFriendLeft = -5500; // value of x axis for friend grid left side (start here), world location
-        public int offsetFriendRight = 5800; // value of x axis for friend grid right side, world location
+        public int offsetFriendLeft = -5500; // listSONames of x axis for friend grid left side (start here), world location
+        public int offsetFriendRight = 5800; // listSONames of x axis for friend grid right side, world location
         public int offsetEnemyRight = 5500; // start here
         public int offsetEnemyLeft = -5800;
 
@@ -676,7 +678,7 @@ namespace Assets.Core
         //private GameObject[] _enemyFarCapital;
         //private GameObject[] _enemyColony;
         //private GameObject[] _enemyFarColony;
-        public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;  // key ship gameObject, value target gameObject (problem, is loaded inside LoadCombat()
+        public Dictionary<GameObject, GameObject[]> _shipTargetDictionary;  // key ship gameObject, listSONames target gameObject (problem, is loaded inside LoadCombat()
         #endregion
 
         public static GameManager Instance { get; private set; } // a static singleton, no other script can instatniate a GameManager, must us the singleton
@@ -899,7 +901,8 @@ namespace Assets.Core
             LoadPrefabs();
 
             _galaxySize = GalaxySize.SMALL;
-            _localPlayer = Civilization.FED;
+            //_localPlayer = civManager.CreateLocalPlayer();
+
             if (_isSinglePlayer)
                 _weAreFriend = true; // ToDo: Need to sort out friend and enemy in multiplayer civilizations local player host and clients 
                                      //galacticCamera = cameraManagerGalactica.LoadGalacticCamera();
@@ -968,6 +971,9 @@ namespace Assets.Core
         }
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
+            civManager.CreateNewGame(1);
+            
+            _localPlayer = civManager.CreateLocalPlayer();
             // turned off Galaxys here: SwitchtState(State.MAIN_INIT);
             // open Combat for now
             SwitchtState(State.GALACTIC_MAP_INIT);
@@ -1130,6 +1136,7 @@ namespace Assets.Core
                     PanelMultiplayerLobby_Menu.SetActive(true);
                     break;
                 case State.MAIN_INIT:
+                    //civManager.CreateNewGame(1);
                     switch (_galaxyType) // ToDo: get input from Main Menu
                     {
                         case GalaxyType.CANON:
@@ -1143,23 +1150,23 @@ namespace Assets.Core
                             break;
                     }
                    
-                    switch (_localPlayer) // is set in CivSelection.cs for GameManager._localPlayer
+                    switch (_localPlayer) // is set in CivSelection.cs for GameManager.localPlayer
                     {
-                        case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
-                            // set 
-                            break;
-                        case Civilization.TERRAN:
-                            break;
-                        case Civilization.ROM:
-                            break;
-                        case Civilization.KLING:
-                            break;
-                        case Civilization.CARD:
-                            break;
-                        case Civilization.DOM:
-                            break;
-                        case Civilization.BORG:
-                            break;
+                        //case Civilization.FED: // we already know local player from CivSelection.cs so do we change to a race UI/ ship/ economy here??
+                        //    // set 
+                        //    break;
+                        //case Civilization.TERRAN:
+                        //    break;
+                        //case Civilization.ROM:
+                        //    break;
+                        //case Civilization.KLING:
+                        //    break;
+                        //case Civilization.CARD:
+                        //    break;
+                        //case Civilization.DOM:
+                        //    break;
+                        //case Civilization.BORG:
+                        //    break;
                         default:
                             break;
                     }

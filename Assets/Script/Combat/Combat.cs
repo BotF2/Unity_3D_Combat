@@ -12,8 +12,8 @@ namespace Assets.Core
         public List<GameObject> _friendCombatans; // for now be get the combatant gameObjects as they are instantiated in InstantiatCombatShips
         public List<GameObject> _enemyCombatans;
 
-        public List<Civilization> _friendCivs = new List<Civilization>() { Civilization.FED };
-        public List<Civilization> _enemyCivs = new List<Civilization>() { Civilization.KLING, Civilization.ROM, Civilization.CARD };
+        public List<Civilization> _friendCivs = new List<Civilization>(); //{ Civilization.FED };
+        public List<Civilization> _enemyCivs = new List<Civilization>(); // { Civilization.KLING, Civilization.ROM, Civilization.CARD };
 
         public void AddCombatant(GameObject combatant)
         {
@@ -24,41 +24,41 @@ namespace Assets.Core
             }
             string civName = nameArray[0];
             Civilization daCiv;
-            switch (civName.ToUpper())
-            {
-                case "FED":
-                    daCiv = Civilization.FED;
-                    break;
-                case "TERRAN":
-                    daCiv = Civilization.TERRAN;
-                    break;
-                case "ROM":
-                    daCiv = Civilization.ROM;
-                    break;
-                case "KLING":
-                    daCiv = Civilization.KLING;
-                    break;
-                case "CARD":
-                    daCiv = Civilization.CARD;
-                    break;
-                case "DOM":
-                    daCiv = Civilization.DOM;
-                    break;
-                case "BORG":
-                    daCiv = Civilization.BORG;
-                    break;
-                default:
-                    daCiv = Civilization.FED;
-                    break;
-            }
-            if (_friendCivs.Contains(daCiv))
-            {
-                _friendCivs.Add(daCiv);
-            }
-            else if (_enemyCivs.Contains(daCiv))
-            {
-                _enemyCivs.Add(daCiv);
-            }
+            //switch (civName.ToUpper())
+            //{
+            //    case "FED":
+            //        daCiv = Civilization.FED;
+            //        break;
+            //    case "TERRAN":
+            //        daCiv = Civilization.TERRAN;
+            //        break;
+            //    case "ROM":
+            //        daCiv = Civilization.ROM;
+            //        break;
+            //    case "KLING":
+            //        daCiv = Civilization.KLING;
+            //        break;
+            //    case "CARD":
+            //        daCiv = Civilization.CARD;
+            //        break;
+            //    case "DOM":
+            //        daCiv = Civilization.DOM;
+            //        break;
+            //    case "BORG":
+            //        daCiv = Civilization.BORG;
+            //        break;
+            //    default:
+            //        daCiv = Civilization.FED;
+            //        break;
+            //}
+            //if (_friendCivs.Contains(daCiv))
+            //{
+            //    _friendCivs.Add(daCiv);
+            //}
+            //else if (_enemyCivs.Contains(daCiv))
+            //{
+            //    _enemyCivs.Add(daCiv);
+            //}
         }
     
         public List<GameObject> UpdateFriendCombatants()

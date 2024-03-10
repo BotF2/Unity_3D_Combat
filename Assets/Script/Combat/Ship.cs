@@ -115,32 +115,32 @@ namespace Assets.Core
                     break;
             }
             string civ = nameArray[0];
-            switch (civ.ToUpper())
-            {
-                case "FED":
-                    _civilization = Civilization.FED;
-                    break;
-                case "TERRAN":
-                    _civilization = Civilization.TERRAN;
-                    break;
-                case "ROM":
-                    _civilization = Civilization.ROM;
-                    break;
-                case "KLING":
-                    _civilization = Civilization.KLING;
-                    break;
-                case "CARD":
-                    _civilization = Civilization.CARD;
-                    break;
-                case "DOM":
-                    _civilization = Civilization.DOM;
-                    break;
-                case "BORG":
-                    _civilization = Civilization.BORG;
-                    break;
-                default:
-                    break;
-            }
+            //switch (civ.ToUpper())
+            //{
+            //    case "FED":
+            //        _civilization = Civilization.FED;
+            //        break;
+            //    case "TERRAN":
+            //        _civilization = Civilization.TERRAN;
+            //        break;
+            //    case "ROM":
+            //        _civilization = Civilization.ROM;
+            //        break;
+            //    case "KLING":
+            //        _civilization = Civilization.KLING;
+            //        break;
+            //    case "CARD":
+            //        _civilization = Civilization.CARD;
+            //        break;
+            //    case "DOM":
+            //        _civilization = Civilization.DOM;
+            //        break;
+            //    case "BORG":
+            //        _civilization = Civilization.BORG;
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
         void Start()
         {
@@ -230,7 +230,7 @@ namespace Assets.Core
                 //{
                 //    GameObject fart = new GameObject();
                 //    GameObject[] farty = new GameObject[] { fart, fart };
-                //    //Transform value = fart.transform;
+                //    //Transform listSONames = fart.transform;
                 //    var dictionary = GameManager.Instance.GetShipTravelTargets();
 
                 //    if (dictionary.TryGetValue(shipGameObject, out farty))

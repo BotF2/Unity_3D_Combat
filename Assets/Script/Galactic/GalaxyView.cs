@@ -349,7 +349,7 @@ namespace GalaxyMap
                 ZIBALIANSSysEmpty
             #endregion
             };
-            LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
+          //  LoadSystemData(Environment.CurrentDirectory + "\\Assets\\" + "SystemData.txt");
         }
         void Update()
         {
@@ -426,7 +426,7 @@ namespace GalaxyMap
             switch (axis)
             {
                 case 'x':
-                    number = int.Parse(SystemDataDictionary[systemID][1]);// int key to get sting[] and index of x value
+                    number = int.Parse(SystemDataDictionary[systemID][1]);// int key to get sting[] and index of x listSONames
                     break;
                 case 'y':
                     number = int.Parse(SystemDataDictionary[systemID][2]);

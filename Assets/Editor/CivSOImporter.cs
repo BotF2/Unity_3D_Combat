@@ -15,7 +15,7 @@ public class CivSOImporter : EditorWindow
         GetWindow<CivSOImporter>("CivSO CSV Importer");
     }
 
-    private string filePath = $"Assets/Civilizations.csv";
+    private string filePath = $"Assets/Resources/Data/Civilizations.csv";
 
     void OnGUI()
     {
@@ -63,7 +63,7 @@ public class CivSOImporter : EditorWindow
                 CivSO civ = CreateInstance<CivSO>();
                 //CivInt	,	Civ Enum	,	Civ Short Name	,	Civ Long Name	,	Home System	,	Triat One	,	Trait Two	,	Civ Image	,	Insginia	,	Population	,	Credits	,	Tech Points
                 civ.CivInt = int.Parse(fields[0]);
-                civ.CivEnum = GetMyEnum(fields[1]);
+                civ.CivEnum = GetMyCivEnum(fields[1]);
                 civ.CivShortName= fields[2];
                 civ.CivLongName = fields[3];
                 civ.CivHomeSystem = fields[4];
@@ -84,7 +84,7 @@ public class CivSOImporter : EditorWindow
 
         Debug.Log("CivSOImporter Import Complete");
     }
-    public static CivEnum GetMyEnum(string title)
+    public static CivEnum GetMyCivEnum(string title)
     {
         CivEnum st;
         Enum.TryParse(title, out st);

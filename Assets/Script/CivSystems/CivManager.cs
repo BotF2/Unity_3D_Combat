@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -194,12 +195,30 @@ namespace Assets.Core
 
         public List<CivData> civDataList;
 
-        public void CreateNewGame(int sizeGame)
+        public GameObject civilizationPrefab;
+        public CivData localPlayer;
+
+        public CivData CreateLocalPlayer()
+        {
+            localPlayer = GetCivDataByName("FEDERATION");
+
+            //localPlayer = Instantiate(civilizationPrefab).GetComponent<CivData>();
+            //InitializeCivDataFromCivSO(localPlayer, civSOListSmall[0]); // local player first in list ****
+            //civilizationPrefab.GetComponent<CivData>(); 
+            return localPlayer;
+            
+        }
+        public void InitializeCivDataFromCivSO(CivData civData, CivSO civSO)
+        {
+            civData.CivInt = civSO.CivInt;
+            civData.CivShortName = civSO.CivShortName;
+        }
+            public void CreateNewGame(int sizeGame)
         {
             if (sizeGame == 1)
             {
                 CreateGameCivs(civSOListSmall);
-                FleetManager.CreateNewGameFleets(1);
+                //FleetManager.CreateNewGameFleets(1);
             }
             if (sizeGame == 2)
             {

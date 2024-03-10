@@ -7,6 +7,7 @@ namespace Assets.Core
 {
     public class FleetData : MonoBehaviour
     {
+        public int civIndex;
         public string fleetName;
         public string description;
         public Sprite insign;
@@ -17,6 +18,7 @@ namespace Assets.Core
         public GameObject destination;
         public GameObject origin;
         public float defaultWarp = 0;
+        public FleetNamesSO namesSO;
 
     }
 }

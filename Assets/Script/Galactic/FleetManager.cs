@@ -8,6 +8,12 @@ using UnityEngine;
 
 namespace Assets.Core
 {
+    //public enum FleetNames
+    //{
+    //    st,
+    //    nd,
+
+    //}
     public class FleetManager : MonoBehaviour
     {
         public List<FleetSO> fleetSOListSmall;
@@ -18,47 +24,79 @@ namespace Assets.Core
 
         public List<FleetData> fleetDataList;
 
-        public static void CreateNewGameFleets(int gameSize)
+        public Dictionary<CivEnum, List<FleetNamesSO>> allFleetNames = new Dictionary<CivEnum, List<FleetNamesSO>>();
+
+        public void CreateNewGameFleets(int gameSize)
         {
             if(gameSize == 1)
             {
-                CreateGameFleets(fleetSOListSmall) ;
+                CreateFleetsBySOLists(fleetSOListSmall) ;
             }
             if (gameSize == 2)
             {
-                CreateGameFleets(fleetSOListMedium);
+                CreateFleetsBySOLists(fleetSOListMedium);
             }
             if (gameSize == 3)
             {
-                CreateGameFleets(fleetSOListLarge);
+                CreateFleetsBySOLists(fleetSOListLarge);
             }
-
-            //FleetData myfleet = new FleetData();
-            //myfleet.civOwnerEnum = civData.CivEnum;
-            //myfleet.defaultWarp = 0f;
         }
 
-        public void CreateGameFleets(List<FleetSO> listFleetSO)
+        public void CreateFleetsBySOLists(List<FleetSO> listFleetSO)
         {
             foreach (var fleetSO in listFleetSO)
             {
-                FleetData data = new FleetData();
-                //data.CivInt = civSO.CivInt;
-                data.civOwnerEnum = fleetSO.CivOwnerEnum;
-                //data.CivLongName = civSO.CivLongName;
-                //data.CivShortName = civSO.CivShortName;
-                //data.TraitOne = civSO.TraitOne;
-                //data.TraitTwo = civSO.TraitTwo;
-                //data.CivImage = civSO.CivImage;
-                //data.Insignia = civSO.Insignia;
-                //data.Population = civSO.Population;
-                //data.Credits = civSO.Credits;
-                //data.TechPoints = civSO.TechPoints;
-                fleetDataList.Add(data);
+                FleetData fleet = new FleetData();
+                fleet.civIndex = fleetSO.CivIndex;
+                fleet.civOwnerEnum = fleetSO.CivOwnerEnum;
+                int fleetIntName = 0;
+                fleetIntName = GetUniqueFleetName(fleet.civOwnerEnum, fleetIntName);
+                FleetNameInitializer newFleetName = new FleetNameInitializer();
+                FleetNamesSO myFleetNameSO = newFleetName.CreateFleetNamesSO(fleet.civOwnerEnum, fleetIntName);
+
+                if (allFleetNames.TryGetValue(fleet.civOwnerEnum, out listSONames))
+                {
+                    listSONames.Add(myFleetNameSO);
+                }
+                fleet.fleetName = "fleetIntName";
+                fleetDataList.Add(fleet);
             }
         }
         public FleetData resultFleetData;
+        private List<FleetNamesSO> listSONames;
 
+        public void AddFleetName(CivEnum civ, List<FleetNamesSO> newNameSO)
+        {
+            allFleetNames.Add(civ, newNameSO);
+        }
+
+        public FleetNamesSO FindFleetName(CivEnum civ, string nameSO)
+        {
+            List<FleetNamesSO> myList = new List<FleetNamesSO>();
+            myList = allFleetNames[civ];
+            return myList.Find(data => data.name == nameSO);
+        }
+
+        public int GetUniqueFleetName(CivEnum civEnum, int nameInt)
+        {
+            int intName = 0;
+            if (allFleetNames.TryGetValue(civEnum, out listSONames))
+            {
+
+                for(int i = 0; i < 1000; i++) 
+                {
+                    if (listSONames[i].intName != nameInt)
+                    {
+                        intName =i;
+                       //listSONames.Add
+                        break;
+                    }
+                }
+
+            }
+            
+            return intName;
+        }
 
         public FleetData GetFleetDataByName(string fleetName)
         {

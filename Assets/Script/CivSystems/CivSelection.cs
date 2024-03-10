@@ -10,7 +10,7 @@ namespace Assets.Core
     public class CivSelection : MonoBehaviour, IPointerDownHandler
     {
         Toggle _activeToggle;
-        public Toggle Fed, Kling, Rom, Card, Dom, Borg;
+        public Toggle Fed, Kling, Rom, Card, Dom, Borg; //Terran;
         public ToggleGroup CivilizationGroup;
         public GameObject Canvas; //
         private void Awake()
@@ -25,12 +25,14 @@ namespace Assets.Core
             CivilizationGroup.RegisterToggle(Card);
             CivilizationGroup.RegisterToggle(Dom);
             CivilizationGroup.RegisterToggle(Borg);
+           // CivilizationGroup.RegisterToggle(Terran);
             Fed.isOn = true;
             Kling.isOn = false;
             Rom.isOn = false;
             Card.isOn = false;
             Dom.isOn = false;
-            Borg.isOn = false;           
+            Borg.isOn = false;  
+           // Terran.isOn = false;
         }
         private void Start()
         {
@@ -43,6 +45,7 @@ namespace Assets.Core
             Card.isOn = false;
             Dom.isOn = false;
             Borg.isOn = false;
+           // Terran.isOn = false;
         }
         private void Update()
         {
@@ -55,41 +58,46 @@ namespace Assets.Core
         }
         public void ActiveToggle()
         {
-            switch (_activeToggle.name.ToUpper())
-            {
-                case "TOGGLE_FED":
-                    Fed = _activeToggle;
-                    GameManager.Instance._localPlayer = Civilization.FED;
-                    Debug.Log("Active Fed.");
-                    break;
-                case "TOGGLE_KLING":
-                    Debug.Log("Active Kling.");
-                    GameManager.Instance._localPlayer = Civilization.KLING;
-                    Kling = _activeToggle;
-                    break;
-                case "TOGGLE_ROM":
-                    Debug.Log("Active Rom.");
-                    Rom = _activeToggle;
-                    GameManager.Instance._localPlayer = Civilization.ROM;
-                    break;
-                case "TOGGLE_CARD":
-                    Debug.Log("Active Card.");
-                    Card = _activeToggle;
-                    GameManager.Instance._localPlayer = Civilization.CARD;
-                    break;
-                case "TOGGLE_DOM":
-                    Debug.Log("Active Dom.");
-                    Dom = _activeToggle;
-                    GameManager.Instance._localPlayer = Civilization.DOM;
-                    break;
-                case "TOGGLE_BORG":
-                    Debug.Log("Active Borg.");
-                    Borg = _activeToggle;
-                    GameManager.Instance._localPlayer = Civilization.BORG;
-                    break;
-                default:
-                    break;
-            }
+            //switch (_activeToggle.name.ToUpper())
+            //{
+            //    //case "TOGGLE_FED":
+            //    //    Fed = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.FED;
+            //    //    Debug.Log("Active Fed.");
+            //    //    break;
+            //    //case "TOGGLE_KLING":
+            //    //    Debug.Log("Active Kling.");
+            //    //    GameManager.Instance.localPlayer = Civilization.KLING;
+            //    //    Kling = _activeToggle;
+            //    //    break;
+            //    //case "TOGGLE_ROM":
+            //    //    Debug.Log("Active Rom.");
+            //    //    Rom = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.ROM;
+            //    //    break;
+            //    //case "TOGGLE_CARD":
+            //    //    Debug.Log("Active Card.");
+            //    //    Card = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.CARD;
+            //    //    break;
+            //    //case "TOGGLE_DOM":
+            //    //    Debug.Log("Active Dom.");
+            //    //    Dom = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.DOM;
+            //    //    break;
+            //    //case "TOGGLE_BORG":
+            //    //    Debug.Log("Active Borg.");
+            //    //    Borg = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.BORG;
+            //    //    break;
+            //    //case "TOGGLE_TERRAN":
+            //    //    Debug.Log("Active Borg.");
+            //    //    Terran = _activeToggle;
+            //    //    GameManager.Instance.localPlayer = Civilization.TERRAN;
+            //    //    break;
+            //    //default:
+            //    //    break;
+            //}
         }
 
         public void OnPointerDown(PointerEventData eventData)

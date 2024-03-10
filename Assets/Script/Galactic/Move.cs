@@ -20,7 +20,7 @@ namespace Assets.Core
         //{
         //    GameObject fart = new GameObject();
         //    GameObject[] farty = new GameObject[] { fart, fart };
-        //    //Transform value = fart.transform;
+        //    //Transform listSONames = fart.transform;
         //    var dictionary = GameManager.Instance.GetShipTravelTargets();
 
         //    if (dictionary.TryGetValue(shipGameObject, out farty))
