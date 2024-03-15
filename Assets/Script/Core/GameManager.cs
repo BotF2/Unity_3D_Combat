@@ -359,7 +359,8 @@ namespace Assets.Core
         private GameObject PanelCredits_Menu;
         private GameObject PanelMain_Menu;
         private GameObject PanelMultiplayerLobby_Menu;
-        private GameObject PanelGalactic_Map; 
+        //private GameObject PanelGalaxy;
+        //private GameObject PanelGalactic_Map; 
         private GameObject PanelSystem_Play;
         private GameObject PanelGalactic_Completed;
         private GameObject PanelCombat_Menu;
@@ -717,7 +718,7 @@ namespace Assets.Core
             PanelCredits_Menu = Canvas.transform.Find("PanelCredits_Menu").gameObject;
             PanelMain_Menu = Canvas.transform.Find("PanelMain_Menu").gameObject;
             PanelMultiplayerLobby_Menu = Canvas.transform.Find("PanelMultiplayerLobby_Menu").gameObject;
-            //PanelGalactic_Map = CanvasGalactic.transform.Find("PanelGalactic_Map").gameObject;
+            //PanelGalaxy = CanvasGalactic.transform.Find("PanelGalaxy").gameObject;
             PanelSystem_Play = Canvas.transform.Find("PanelSystemPlay").gameObject;
             PanelGalactic_Completed = Canvas.transform.Find("PanelGalactic_Completed").gameObject;
             PanelCombat_Menu = Canvas.transform.Find("PanelCombat_Menu").gameObject;
@@ -972,7 +973,7 @@ namespace Assets.Core
         public void GalaxyPlayClicked() // BOLDLY GO button in Main Menu
         {
             civManager.CreateNewGame(1);
-            
+            //PanelGalaxy.SetActive(true);
             _localPlayer = civManager.CreateLocalPlayer();
             // turned off Galaxys here: SwitchtState(State.MAIN_INIT);
             // open Combat for now
@@ -1083,12 +1084,7 @@ namespace Assets.Core
                     PanelSaveGame_Menu.SetActive(false);
                     PanelSettings_Menu.SetActive(false);
                     PanelCredits_Menu.SetActive(false);
-                    //if (CanvasWorld != null)
-                    //{
-                        //CanvasWorld.SetActive(false);
-                    //PanelGalactic_Map.SetActive(false);
-                    //}
-
+                    //PanelGalaxy.SetActive(false);
                     PanelLobby_Menu.SetActive(true); // Lobby first             
                     break;
 
@@ -1183,9 +1179,10 @@ namespace Assets.Core
                     SwitchtState(State.GALACTIC_MAP);
                     break;
                 case State.GALACTIC_MAP:
-                    
+                    //CanvasGalactic = GameObject.Find("CanvasGalactic");
+                    //PanelGalaxy = CanvasGalactic.transform.Find("PanelGalaxy").gameObject;
                     PanelLobby_Menu.SetActive(false);
-                    //PanelSystem_Play.SetActive(false);
+                    //PanelGalaxy.SetActive(true);
                     PanelMain_Menu.SetActive(false);
                     PanelMultiplayerLobby_Menu.SetActive(false);
                     _statePassedMain_Init = true;
@@ -1198,7 +1195,7 @@ namespace Assets.Core
 
                 case State.GALACTIC_MAP_INIT:
                     PanelLobby_Menu.SetActive(false);
-                    //PanelGalactic_Map.SetActive(false);
+                    //CameraGalacticaHolder.SetActive(false);
                     SwitchtState(State.SYSTEM_PLAY);
                     break;
 
